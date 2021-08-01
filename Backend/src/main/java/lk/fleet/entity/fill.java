@@ -2,7 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Fill {
 
 }
