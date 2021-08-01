@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Passenger_Application {
+public class PassengerApplication {
     @Id
     public String RequestID;
     public  String No_of_passengers;

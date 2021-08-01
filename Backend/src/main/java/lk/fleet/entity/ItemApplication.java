@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Item_Application {
+public class ItemApplication {
     @Id
     public String RequestID;
     public  int No_of_Items_Carrying;
