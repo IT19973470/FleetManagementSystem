@@ -90,4 +90,8 @@ public class UserAccount {
         this.password = password;
     }
 
+    public void displayA(){
+        System.out.println(123);
+    }
+
 }
