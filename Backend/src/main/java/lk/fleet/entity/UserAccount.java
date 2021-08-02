@@ -90,13 +90,7 @@ public class UserAccount {
     }
 
 
-    public void setD(){
-
-        
-    }
-
-    public void setA(){
-
+    public void displayB(){
         
     }
 }
