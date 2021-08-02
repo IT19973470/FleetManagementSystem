@@ -2,10 +2,9 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.SQLOutput;
 
 @Entity
-public class UserAccount {
+public class DriverAccount {
 
     @Id
     private String employeeID;
@@ -17,6 +16,7 @@ public class UserAccount {
     private String email;
     private String username;
     private String password;
+    private String licenseID;
 
     public String getEmployeeID() {
         return employeeID;
@@ -90,7 +90,11 @@ public class UserAccount {
         this.password = password;
     }
 
-    public void displayB(){
-        System.out.println(456);
+    public String getLicenseID() {
+        return licenseID;
+    }
+
+    public void setLicenseID(String licenseID) {
+        this.licenseID = licenseID;
     }
 }
