@@ -10,9 +10,11 @@ public class TVProgram {
     @Id
     private String programID;
     private String programName;
-    private LocalDate StartingDate;
-    private LocalDate EndingDate;
+    private LocalDate startingDate;
+    private LocalDate endingDate;
+    private double transportCost;
     private String producer;
+
 
     public String getProgramID() {
         return programID;
@@ -31,19 +33,27 @@ public class TVProgram {
     }
 
     public LocalDate getStartingDate() {
-        return StartingDate;
+        return startingDate;
     }
 
     public void setStartingDate(LocalDate startingDate) {
-        StartingDate = startingDate;
+        this.startingDate = startingDate;
     }
 
     public LocalDate getEndingDate() {
-        return EndingDate;
+        return endingDate;
     }
 
     public void setEndingDate(LocalDate endingDate) {
-        EndingDate = endingDate;
+        this.endingDate = endingDate;
+    }
+
+    public double getTransportCost() {
+        return transportCost;
+    }
+
+    public void setTransportCost(double transportCost) {
+        this.transportCost = transportCost;
     }
 
     public String getProducer() {

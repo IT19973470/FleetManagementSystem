@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class UserAccount {
+public class DriverAccount {
 
     @Id
     private String employeeID;
@@ -16,6 +16,7 @@ public class UserAccount {
     private String email;
     private String username;
     private String password;
+    private String licenseID;
 
     public String getEmployeeID() {
         return employeeID;
@@ -87,5 +88,13 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLicenseID() {
+        return licenseID;
+    }
+
+    public void setLicenseID(String licenseID) {
+        this.licenseID = licenseID;
     }
 }
