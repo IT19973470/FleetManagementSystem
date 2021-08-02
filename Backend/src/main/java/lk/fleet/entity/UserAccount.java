@@ -88,10 +88,16 @@ public class UserAccount {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public void displayD() {
 
-    public void displayD(){
-      
     }
+
+    public void displayC(){
+
+
+    }
+
 
 
 }
