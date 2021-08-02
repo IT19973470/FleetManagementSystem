@@ -89,8 +89,12 @@ public class UserAccount {
         this.password = password;
     }
 
+    public void displayA(){
+      
+    }
 
     public void displayB(){
         
     }
+
 }
