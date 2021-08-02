@@ -89,7 +89,14 @@ public class UserAccount {
         this.password = password;
     }
 
+
     public void setD(){
+
+        
+    }
+
+    public void setA(){
+
         
     }
 }
