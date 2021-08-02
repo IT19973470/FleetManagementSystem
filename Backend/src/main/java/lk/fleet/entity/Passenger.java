@@ -9,8 +9,8 @@ public class Passenger {
     @Id
     private String EmpID;
     private String NIC;
-    private  String first_name;
-    private  String last_name;
+    private String first_name;
+    private String last_name;
     private String Address;
     private LocalDate DOB;
     private int contactnumber;
