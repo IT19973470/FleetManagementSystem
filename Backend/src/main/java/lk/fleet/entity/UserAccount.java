@@ -9,7 +9,7 @@ public class UserAccount {
     @Id
     private String employeeID;
     private String type;
-    private String NIC;
+    private String nic;
     private String name;
     private String address;
     private String contactNo;
@@ -33,12 +33,12 @@ public class UserAccount {
         this.type = type;
     }
 
-    public String getNIC() {
-        return NIC;
+    public String getNic() {
+        return nic;
     }
 
-    public void setNIC(String NIC) {
-        this.NIC = NIC;
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     public String getName() {
