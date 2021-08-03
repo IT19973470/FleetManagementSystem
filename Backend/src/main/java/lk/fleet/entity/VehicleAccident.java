@@ -3,6 +3,7 @@ package lk.fleet.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class VehicleAccident {
@@ -10,8 +11,8 @@ public class VehicleAccident {
   @Id
   private String refNumber;
   private LocalDate accidentDate;
-  private LocalDate accidentTime;
-  private String driverName;
+  private LocalTime accidentTime;
+
 
     public String getRefNumber() {
         return refNumber;
@@ -29,19 +30,12 @@ public class VehicleAccident {
         this.accidentDate = accidentDate;
     }
 
-    public LocalDate getAccidentTime() {
+    public LocalTime getAccidentTime() {
         return accidentTime;
     }
 
-    public void setAccidentTime(LocalDate accidentTime) {
+    public void setAccidentTime(LocalTime accidentTime) {
         this.accidentTime = accidentTime;
     }
 
-    public String getDriverName() {
-        return driverName;
-    }
-
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
 }
