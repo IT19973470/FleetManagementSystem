@@ -8,28 +8,10 @@ import java.time.LocalDate;
 public class MaintenanceRequest {
 
     @Id
-    private String maintenanceID;
-    private String driverID;
     private String details;
     private LocalDate date;
     private String type;
-
-    public String getMaintenanceID() {
-        return maintenanceID;
-    }
-
-    public void setMaintenanceID(String maintenanceID) {
-        this.maintenanceID = maintenanceID;
-    }
-
-    public String getDriverID() {
-        return driverID;
-    }
-
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
-    }
-
+    private String description;
     public String getDetails() {
         return details;
     }

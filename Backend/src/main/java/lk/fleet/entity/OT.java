@@ -9,7 +9,6 @@ public class OT {
 
     @Id
     private String otID;
-    private String driverID;
     private String noOfShifts;
     private LocalDate startTime;
     private LocalDate endTime;
@@ -21,14 +20,6 @@ public class OT {
 
     public void setOtID(String otID) {
         this.otID = otID;
-    }
-
-    public String getDriverID() {
-        return driverID;
-    }
-
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
     }
 
     public String getNoOfShifts() {
