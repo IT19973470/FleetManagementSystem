@@ -7,70 +7,70 @@ import java.time.LocalDate;
 @Entity
 public class Passenger {
     @Id
-    private String EmpID;
-    private String NIC;
-    private String first_name;
-    private String last_name;
-    private String Address;
-    private LocalDate DOB;
-    private int contactnumber;
+    private String empID;
+    private String nic;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private LocalDate dob;
+    private int contactNumber;
     private String password;
-    private LocalDate Register_Date;
+    private LocalDate registerDate;
 
     public String getEmpID() {
-        return EmpID;
+        return empID;
     }
 
     public void setEmpID(String empID) {
-        EmpID = empID;
+        this.empID = empID;
     }
 
-    public String getNIC() {
-        return NIC;
+    public String getNic() {
+        return nic;
     }
 
-    public void setNIC(String NIC) {
-        this.NIC = NIC;
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
-    public LocalDate getDOB() {
-        return DOB;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
-    public int getContactnumber() {
-        return contactnumber;
+    public int getContactNumber() {
+        return contactNumber;
     }
 
-    public void setContactnumber(int contactnumber) {
-        this.contactnumber = contactnumber;
+    public void setContactNumber(int contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getPassword() {
@@ -81,11 +81,11 @@ public class Passenger {
         this.password = password;
     }
 
-    public LocalDate getRegister_Date() {
-        return Register_Date;
+    public LocalDate getRegisterDate() {
+        return registerDate;
     }
 
-    public void setRegister_Date(LocalDate register_Date) {
-        Register_Date = register_Date;
+    public void setRegisterDate(LocalDate registerDate) {
+        this.registerDate = registerDate;
     }
 }
