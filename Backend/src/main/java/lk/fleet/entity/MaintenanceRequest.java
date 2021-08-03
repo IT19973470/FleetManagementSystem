@@ -8,11 +8,20 @@ import java.time.LocalTime;
 public class MaintenanceRequest {
 
   @Id
+  private String maintenanceRequestID;
   private String details;
   private LocalDate date;
   private String type;
   private String description;
   private LocalTime time;
+
+  public String getMaintenanceRequestID() {
+    return maintenanceRequestID;
+  }
+
+  public void setMaintenanceRequestID(String maintenanceRequestID) {
+    this.maintenanceRequestID = maintenanceRequestID;
+  }
 
   public String getDetails() {
     return details;
