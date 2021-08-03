@@ -2,6 +2,8 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -13,6 +15,18 @@ public class OverTime {
     private LocalDate startTime;
     private LocalDate endTime;
     private String approval;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Driver driver;
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 
     public String getOverTimeID() {
         return overTimeID;
