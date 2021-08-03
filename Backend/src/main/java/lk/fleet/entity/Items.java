@@ -6,31 +6,31 @@ import javax.persistence.Id;
 @Entity
 public class Items {
     @Id
-    public String ItemID;
-    public  String ItemName;
-    public  int Qty;
+    public String itemID;
+    public  String itemName;
+    public  int qty;
 
     public String getItemID() {
-        return ItemID;
+        return itemID;
     }
 
     public void setItemID(String itemID) {
-        ItemID = itemID;
+        this.itemID = itemID;
     }
 
     public String getItemName() {
-        return ItemName;
+        return itemName;
     }
 
     public void setItemName(String itemName) {
-        ItemName = itemName;
+        this.itemName = itemName;
     }
 
     public int getQty() {
-        return Qty;
+        return qty;
     }
 
     public void setQty(int qty) {
-        Qty = qty;
+        this.qty = qty;
     }
 }

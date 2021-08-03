@@ -6,22 +6,22 @@ import javax.persistence.Id;
 @Entity
 public class ItemApplication {
     @Id
-    public String RequestID;
-    public  int No_of_Items_Carrying;
+    public String requestID;
+    public  int noOfItems;
 
     public String getRequestID() {
-        return RequestID;
+        return requestID;
     }
 
     public void setRequestID(String requestID) {
-        RequestID = requestID;
+        this.requestID = requestID;
     }
 
-    public int getNo_of_Items_Carrying() {
-        return No_of_Items_Carrying;
+    public int getNoOfItems() {
+        return noOfItems;
     }
 
-    public void setNo_of_Items_Carrying(int no_of_Items_Carrying) {
-        No_of_Items_Carrying = no_of_Items_Carrying;
+    public void setNoOfItems(int noOfItems) {
+        this.noOfItems = noOfItems;
     }
 }
