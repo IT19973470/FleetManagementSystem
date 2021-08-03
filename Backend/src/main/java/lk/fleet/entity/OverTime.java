@@ -9,7 +9,6 @@ public class OverTime {
 
     @Id
     private String overTimeID;
-    private String driverID;
     private String noOfShifts;
     private LocalDate startTime;
     private LocalDate endTime;
@@ -21,14 +20,6 @@ public class OverTime {
 
     public void setOverTimeID(String overTimeID) {
         this.overTimeID = overTimeID;
-    }
-
-    public String getDriverID() {
-        return driverID;
-    }
-
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
     }
 
     public String getNoOfShifts() {
