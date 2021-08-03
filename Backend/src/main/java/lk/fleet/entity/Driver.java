@@ -1,7 +1,10 @@
 package lk.fleet.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class Driver {
@@ -17,6 +20,17 @@ public class Driver {
     private String username;
     private String password;
     private String licenseID;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
+    private Set<OverTime> overTimes;
+
+    public Set<OverTime> getOverTimes() {
+        return overTimes;
+    }
+
+    public void setOverTimes(Set<OverTime> overTimes) {
+        this.overTimes = overTimes;
+    }
 
     public String getDriverID() {
         return driverID;
