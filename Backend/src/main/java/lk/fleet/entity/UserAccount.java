@@ -89,13 +89,5 @@ public class UserAccount {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public void displayA(){
-        System.out.println(123);
-    }
-
-    public void displayB(){
-        System.out.println(456);
-    }
 
 }
