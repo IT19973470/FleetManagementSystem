@@ -5,21 +5,21 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class OT {
+public class OverTime {
 
     @Id
-    private String otID;
+    private String overTimeID;
     private String noOfShifts;
     private LocalDate startTime;
     private LocalDate endTime;
     private String approval;
 
-    public String getOtID() {
-        return otID;
+    public String getOverTimeID() {
+        return overTimeID;
     }
 
-    public void setOtID(String otID) {
-        this.otID = otID;
+    public void setOverTimeID(String overTimeID) {
+        this.overTimeID = overTimeID;
     }
 
     public String getNoOfShifts() {
