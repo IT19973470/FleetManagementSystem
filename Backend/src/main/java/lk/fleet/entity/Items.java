@@ -6,9 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Items {
     @Id
-    public String itemID;
-    public  String itemName;
-    public  int qty;
+    private String itemID;
+    private  String itemName;
+    private  int qty;
 
     public String getItemID() {
         return itemID;

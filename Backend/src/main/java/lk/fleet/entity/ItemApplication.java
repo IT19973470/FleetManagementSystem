@@ -6,8 +6,8 @@ import javax.persistence.Id;
 @Entity
 public class ItemApplication {
     @Id
-    public String requestID;
-    public  int noOfItems;
+    private String requestID;
+    private  int noOfItems;
 
     public String getRequestID() {
         return requestID;
