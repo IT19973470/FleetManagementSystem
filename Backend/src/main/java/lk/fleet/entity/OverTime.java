@@ -1,10 +1,8 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class OverTime {
@@ -19,6 +17,9 @@ public class OverTime {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Driver driver;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "overTime")
+    private Set<Shift> shifts;
 
     public Driver getDriver() {
         return driver;
