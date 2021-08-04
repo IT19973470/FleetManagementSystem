@@ -2,12 +2,16 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class PassengerApplication {
     @Id
-    public String requestID;
-    public  String moOfPassengers;
+    private String requestID;
+    private  String moOfPassengers;
+
+    @OneToOne
+    private  Application application;
 
     public String getRequestID() {
         return requestID;
