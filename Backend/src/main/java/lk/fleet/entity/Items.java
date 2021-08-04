@@ -3,6 +3,7 @@ package lk.fleet.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+//Gayan//
 @Entity
 public class Items {
     @Id
