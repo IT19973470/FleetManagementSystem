@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class PassengerPassengerApplication {
 
     @EmbeddedId
-    private PassengerPassengeApplicationrPk passengerPassengeApplicationrPk;
+    private PassengerPassengerApplicationrPk passengerPassengerApplicationrPk;
     @ManyToOne
     @JoinColumn(name="empID",referencedColumnName = "empID",insertable = false, updatable = false,nullable = false)
     private  Passenger passenger;
@@ -18,12 +18,12 @@ public class PassengerPassengerApplication {
     @JoinColumn(name="requestID",referencedColumnName = "requestID",insertable = false, updatable = false,nullable = false)
     private Application application;
 
-    public PassengerPassengeApplicationrPk getFillPk() {
-        return passengerPassengeApplicationrPk;
+    public PassengerPassengerApplicationrPk getFillPk() {
+        return passengerPassengerApplicationrPk;
     }
 
-    public void setFillPk(PassengerPassengeApplicationrPk passengerPassengeApplicationrPk) {
-        this.passengerPassengeApplicationrPk = passengerPassengeApplicationrPk;
+    public void setFillPk(PassengerPassengerApplicationrPk passengerPassengerApplicationrPk) {
+        this.passengerPassengerApplicationrPk = passengerPassengerApplicationrPk;
     }
 
     public Passenger getPassenger() {

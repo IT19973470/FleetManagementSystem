@@ -1,8 +1,8 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Booking {
@@ -12,6 +12,17 @@ public class Booking {
     private LocalDateTime bookingDateTime;
     private String destination;
     private String bookingStatus;
+
+    public Set<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(Set<Application> applications) {
+        this.applications = applications;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
+    private Set<Application> applications;
 
     public String getBookingId() {
         return bookingId;

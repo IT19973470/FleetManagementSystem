@@ -2,6 +2,8 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -13,6 +15,10 @@ public class Shift {
     private LocalTime startingTime;
     private LocalTime endingTime;
     private String attendance;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private OverTime overTime;
 
     public String getShiftId() {
         return shiftId;

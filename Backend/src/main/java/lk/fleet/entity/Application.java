@@ -2,8 +2,11 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
+//Gayan//
 @Entity
 public class Application {
     @Id
@@ -13,6 +16,14 @@ public class Application {
     private String approval;
     private LocalDate depatureDate;
     private LocalDate arrivaleDate;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Booking booking;
+
+    public Booking getBooking() {
+        return booking;
+    }
 
     public String getRequestID() {
         return requestID;
