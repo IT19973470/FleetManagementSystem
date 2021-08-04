@@ -13,16 +13,16 @@ public class Booking {
     private String destination;
     private String bookingStatus;
 
-    public Set<Application> getApplications() {
-        return applications;
-    }
-
-    public void setApplications(Set<Application> applications) {
-        this.applications = applications;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
-    private Set<Application> applications;
+//    public Set<Application> getApplications() {
+//        return applications;
+//    }
+//
+//    public void setApplications(Set<Application> applications) {
+//        this.applications = applications;
+//    }
+//
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
+//    private Set<Application> applications;
 
     public String getBookingId() {
         return bookingId;

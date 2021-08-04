@@ -19,4 +19,20 @@ public class ItemItemApplicationPk implements Serializable {
     public ItemItemApplicationPk() {
 
     }
+
+    public String getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
+    }
+
+    public String getRequestID() {
+        return requestID;
+    }
+
+    public void setRequestID(String requestID) {
+        this.requestID = requestID;
+    }
 }
