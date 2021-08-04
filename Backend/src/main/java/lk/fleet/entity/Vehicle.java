@@ -1,7 +1,5 @@
 package lk.fleet.entity;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
