@@ -1,8 +1,11 @@
 package lk.fleet.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class TVProgram {
@@ -14,6 +17,9 @@ public class TVProgram {
     private LocalDate endingDate;
     private double transportCost;
     private String producer;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "tvProgram")
+    private Set<ProgramBooking> programBookings;
 
 
     public String getProgramID() {
@@ -62,5 +68,13 @@ public class TVProgram {
 
     public void setProducer(String producer) {
         this.producer = producer;
+    }
+
+    public Set<ProgramBooking> getProgramBookings() {
+        return programBookings;
+    }
+
+    public void setProgramBookings(Set<ProgramBooking> programBookings) {
+        this.programBookings = programBookings;
     }
 }
