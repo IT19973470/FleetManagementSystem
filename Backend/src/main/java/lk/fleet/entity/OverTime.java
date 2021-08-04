@@ -18,9 +18,6 @@ public class OverTime {
     @JoinColumn(nullable = false)
     private Driver driver;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "overTime")
-    private Set<Shift> shifts;
-
     public Driver getDriver() {
         return driver;
     }

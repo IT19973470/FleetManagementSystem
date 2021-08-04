@@ -5,19 +5,19 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class Driver_VehiclePK implements Serializable {
+public class DriverVehiclePK implements Serializable {
     @Column(name = "driverID")
     private String driverID;
 
     @Column(name = "vehicleId")
     private String vehicleId;
 
-    public Driver_VehiclePK(String driverID, String vehicleId) {
+    public DriverVehiclePK(String driverID, String vehicleId) {
         this.driverID = driverID;
         this.vehicleId = vehicleId;
     }
 
-    public Driver_VehiclePK() {
+    public DriverVehiclePK() {
 
     }
 
