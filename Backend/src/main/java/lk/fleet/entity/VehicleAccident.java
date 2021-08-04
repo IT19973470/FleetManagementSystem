@@ -49,4 +49,12 @@ public class VehicleAccident {
     public void setInsuranceCompany(String insuranceCompany) {
         this.insuranceCompany = insuranceCompany;
     }
+
+    public AccidentMaintenanceManager getAccidentMaintenanceManager() {
+        return accidentMaintenanceManager;
+    }
+
+    public void setAccidentMaintenanceManager(AccidentMaintenanceManager accidentMaintenanceManager) {
+        this.accidentMaintenanceManager = accidentMaintenanceManager;
+    }
 }

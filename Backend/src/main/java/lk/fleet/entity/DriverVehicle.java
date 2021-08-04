@@ -3,9 +3,9 @@ package lk.fleet.entity;
 import javax.persistence.*;
 
 @Entity
-public class Driver_Vehicle {
+public class DriverVehicle {
     @EmbeddedId
-    private Driver_VehiclePK id;
+    private DriverVehiclePK id;
     private String qty;
     private String type;
 
@@ -14,11 +14,11 @@ public class Driver_Vehicle {
     @JoinColumn(name = "driverID", referencedColumnName = "driverID", insertable = false, updatable = false, nullable = false)
     private Driver driver;
 
-    public Driver_VehiclePK getId() {
+    public DriverVehiclePK getId() {
         return id;
     }
 
-    public void setId(Driver_VehiclePK id) {
+    public void setId(DriverVehiclePK id) {
         this.id = id;
     }
 
