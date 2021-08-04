@@ -14,7 +14,7 @@ public class Booking {
     private String bookingStatus;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
-    private Set<Booking> bookings;
+    private Set<Application> applications;
 
     public String getBookingId() {
         return bookingId;
