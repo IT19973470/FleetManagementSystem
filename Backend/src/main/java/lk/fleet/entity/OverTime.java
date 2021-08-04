@@ -2,33 +2,38 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
-public class OT {
+public class OverTime {
 
     @Id
-    private String otID;
-    private String driverID;
+    private String overTimeID;
     private String noOfShifts;
     private LocalDate startTime;
     private LocalDate endTime;
     private String approval;
 
-    public String getOtID() {
-        return otID;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Driver driver;
+
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setOtID(String otID) {
-        this.otID = otID;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
-    public String getDriverID() {
-        return driverID;
+    public String getOverTimeID() {
+        return overTimeID;
     }
 
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
+    public void setOverTimeID(String overTimeID) {
+        this.overTimeID = overTimeID;
     }
 
     public String getNoOfShifts() {

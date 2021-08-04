@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.SQLOutput;
 
 @Entity
 public class UserAccount {
@@ -88,4 +89,5 @@ public class UserAccount {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

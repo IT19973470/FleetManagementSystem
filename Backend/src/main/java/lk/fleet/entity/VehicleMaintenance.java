@@ -3,17 +3,23 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 @Entity
 public class VehicleMaintenance {
 
-
     @Id
     private String maintenanceID;
-    private String driverName;
-    private String vehicleID;
-    private String vehicleType;
-    private String maintenanceReason;
+    private LocalDate maintenanceDate;
+    private String maintenanceType;
+    private String companyName;
+    private String maintenanceStatus;
+
+
+    @ManyToOne
+    private AccidentMaintenanceManager accidentMaintenanceManager;
+
 
     public String getMaintenanceID() {
         return maintenanceID;
@@ -23,35 +29,44 @@ public class VehicleMaintenance {
         this.maintenanceID = maintenanceID;
     }
 
-    public String getDriverName() {
-        return driverName;
+    public LocalDate getMaintenanceDate() {
+        return maintenanceDate;
     }
 
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
+    public void setMaintenanceDate(LocalDate maintenanceDate) {
+        this.maintenanceDate = maintenanceDate;
     }
 
-    public String getVehicleID() {
-        return vehicleID;
+    public String getMaintenanceType() {
+        return maintenanceType;
     }
 
-    public void setVehicleID(String vehicleID) {
-        this.vehicleID = vehicleID;
+    public void setMaintenanceType(String maintenanceType) {
+        this.maintenanceType = maintenanceType;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
-    public String getMaintenanceReason() {
-        return maintenanceReason;
+    public String getMaintenanceStatus() {
+        return maintenanceStatus;
     }
 
-    public void setMaintenanceReason(String maintenanceReason) {
-        this.maintenanceReason = maintenanceReason;
+    public void setMaintenanceStatus(String maintenanceStatus) {
+        this.maintenanceStatus = maintenanceStatus;
     }
+
+    public AccidentMaintenanceManager getAccidentMaintenanceManager() {
+        return accidentMaintenanceManager;
+    }
+
+    public void setAccidentMaintenanceManager(AccidentMaintenanceManager accidentMaintenanceManager) {
+        this.accidentMaintenanceManager = accidentMaintenanceManager;
+    }
+
 }

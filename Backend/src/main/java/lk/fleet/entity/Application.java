@@ -7,35 +7,35 @@ import java.time.LocalDate;
 @Entity
 public class Application {
     @Id
-    public String RequestID;
-    public String Destination;
-    public String vehicletype;
-    public String approval;
-    public LocalDate Depaturedate;
-    public LocalDate Arrivaledate;
+    private String requestID;
+    private String destination;
+    private String vehicleType;
+    private String approval;
+    private LocalDate depatureDate;
+    private LocalDate arrivaleDate;
 
     public String getRequestID() {
-        return RequestID;
+        return requestID;
     }
 
     public void setRequestID(String requestID) {
-        RequestID = requestID;
+        this.requestID = requestID;
     }
 
     public String getDestination() {
-        return Destination;
+        return destination;
     }
 
     public void setDestination(String destination) {
-        Destination = destination;
+        this.destination = destination;
     }
 
-    public String getVehicletype() {
-        return vehicletype;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicletype(String vehicletype) {
-        this.vehicletype = vehicletype;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public String getApproval() {
@@ -46,19 +46,19 @@ public class Application {
         this.approval = approval;
     }
 
-    public LocalDate getDepaturedate() {
-        return Depaturedate;
+    public LocalDate getDepatureDate() {
+        return depatureDate;
     }
 
-    public void setDepaturedate(LocalDate depaturedate) {
-        Depaturedate = depaturedate;
+    public void setDepatureDate(LocalDate depatureDate) {
+        this.depatureDate = depatureDate;
     }
 
-    public LocalDate getArrivaledate() {
-        return Arrivaledate;
+    public LocalDate getArrivaleDate() {
+        return arrivaleDate;
     }
 
-    public void setArrivaledate(LocalDate arrivaledate) {
-        Arrivaledate = arrivaledate;
+    public void setArrivaleDate(LocalDate arrivaleDate) {
+        this.arrivaleDate = arrivaleDate;
     }
 }

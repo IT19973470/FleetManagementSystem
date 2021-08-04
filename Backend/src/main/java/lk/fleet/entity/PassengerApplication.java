@@ -6,22 +6,22 @@ import javax.persistence.Id;
 @Entity
 public class PassengerApplication {
     @Id
-    public String RequestID;
-    public  String No_of_passengers;
+    public String requestID;
+    public  String moOfPassengers;
 
     public String getRequestID() {
-        return RequestID;
+        return requestID;
     }
 
     public void setRequestID(String requestID) {
-        RequestID = requestID;
+        this.requestID = requestID;
     }
 
-    public String getNo_of_passengers() {
-        return No_of_passengers;
+    public String getMoOfPassengers() {
+        return moOfPassengers;
     }
 
-    public void setNo_of_passengers(String no_of_passengers) {
-        No_of_passengers = no_of_passengers;
+    public void setMoOfPassengers(String moOfPassengers) {
+        this.moOfPassengers = moOfPassengers;
     }
 }
