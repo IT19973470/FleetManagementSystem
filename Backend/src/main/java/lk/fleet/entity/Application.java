@@ -7,12 +7,12 @@ import java.time.LocalDate;
 @Entity
 public class Application {
     @Id
-    public String requestID;
-    public String destination;
-    public String vehicleType;
-    public String approval;
-    public LocalDate depatureDate;
-    public LocalDate arrivaleDate;
+    private String requestID;
+    private String destination;
+    private String vehicleType;
+    private String approval;
+    private LocalDate depatureDate;
+    private LocalDate arrivaleDate;
 
     public String getRequestID() {
         return requestID;

@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,7 +13,10 @@ public class VehicleAccident {
   private String refNumber;
   private LocalDate accidentDate;
   private LocalTime accidentTime;
+  private String insuranceCompany;
 
+  @ManyToOne
+  private AccidentMaintenanceManager accidentMaintenanceManager;
 
     public String getRefNumber() {
         return refNumber;
@@ -38,4 +42,11 @@ public class VehicleAccident {
         this.accidentTime = accidentTime;
     }
 
+    public String getInsuranceCompany() {
+        return insuranceCompany;
+    }
+
+    public void setInsuranceCompany(String insuranceCompany) {
+        this.insuranceCompany = insuranceCompany;
+    }
 }

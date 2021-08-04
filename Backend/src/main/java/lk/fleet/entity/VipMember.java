@@ -6,16 +6,16 @@ import javax.persistence.Id;
 @Entity
 public class VipMember {
     @Id
-    private String VipMemberId;
+    private String vipMemberId;
     private String name;
     private String purpuse;
 
     public String getVipMemberId() {
-        return VipMemberId;
+        return vipMemberId;
     }
 
     public void setVipMemberId(String vipMemberId) {
-        VipMemberId = vipMemberId;
+        this.vipMemberId = vipMemberId;
     }
 
     public String getName() {
