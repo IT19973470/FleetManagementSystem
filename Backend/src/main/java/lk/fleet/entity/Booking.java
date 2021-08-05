@@ -19,35 +19,9 @@ public class Booking {
     @JoinColumn(nullable = false)
     private BookingManagementClerk bookingManagementClerk;
 
-    public BookingManagementClerk getBookingManagementClerk() {
-        return bookingManagementClerk;
-    }
-
-    public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
-        this.bookingManagementClerk = bookingManagementClerk;
-    }
-
     @ManyToOne
     @JoinColumn(nullable = false)
     private Shift shifts;
-
-    public Shift getShifts() {
-        return shifts;
-    }
-
-    public void setShifts(Shift shifts) {
-        this.shifts = shifts;
-    }
-//    public Set<Application> getApplications() {
-//        return applications;
-//    }
-//
-//    public void setApplications(Set<Application> applications) {
-//        this.applications = applications;
-//    }
-//
-//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
-//    private Set<Application> applications;
 
 
     public String getBookingId() {
@@ -80,5 +54,21 @@ public class Booking {
 
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
+    }
+
+    public BookingManagementClerk getBookingManagementClerk() {
+        return bookingManagementClerk;
+    }
+
+    public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
+        this.bookingManagementClerk = bookingManagementClerk;
+    }
+
+    public Shift getShifts() {
+        return shifts;
+    }
+
+    public void setShifts(Shift shifts) {
+        this.shifts = shifts;
     }
 }
