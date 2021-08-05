@@ -8,11 +8,28 @@ import javax.persistence.OneToOne;
 @Entity
 public class PassengerApplication {
     @Id
-    private String requestID;
-    private  String moOfPassengers;
+    private String passengerApplicationID;
+    private  int noOfPassengers;
 
     @OneToOne
     private  Application application;
+
+
+    public String getPassengerApplicationID() {
+        return passengerApplicationID;
+    }
+
+    public void setPassengerApplicationID(String passengerApplicationID) {
+        this.passengerApplicationID = passengerApplicationID;
+    }
+
+    public int getNoOfPassengers() {
+        return noOfPassengers;
+    }
+
+    public void setNoOfPassengers(int noOfPassengers) {
+        this.noOfPassengers = noOfPassengers;
+    }
 
     public Application getApplication() {
         return application;
@@ -20,21 +37,5 @@ public class PassengerApplication {
 
     public void setApplication(Application application) {
         this.application = application;
-    }
-
-    public String getRequestID() {
-        return requestID;
-    }
-
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
-    }
-
-    public String getMoOfPassengers() {
-        return moOfPassengers;
-    }
-
-    public void setMoOfPassengers(String moOfPassengers) {
-        this.moOfPassengers = moOfPassengers;
     }
 }

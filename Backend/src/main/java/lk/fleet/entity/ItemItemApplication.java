@@ -10,29 +10,24 @@ import javax.persistence.ManyToOne;
 public class ItemItemApplication {
 
     @EmbeddedId
-    private ItemItemApplicationPk itemItemApplicationPk;
+    private ItemItemApplicationId itemItemApplicationId;
     @ManyToOne
-    @JoinColumn(name="itemID",referencedColumnName = "itemID",insertable = false, updatable = false,nullable = false)
-    private  Items items;
+    @JoinColumn(name="itemApplicationId",referencedColumnName = "itemApplicationId",insertable = false, updatable = false,nullable = false)
+    private Item item;
 
     @ManyToOne
-    @JoinColumn(name="requestID",referencedColumnName = "requestID",insertable = false, updatable = false,nullable = false)
+    @JoinColumn(name="applicationID",referencedColumnName = "applicationID",insertable = false, updatable = false,nullable = false)
     private Application application;
 
-    public ItemItemApplicationPk getItemItemApplicationPk() {
-        return itemItemApplicationPk;
+
+
+
+    public Item getItem() {
+        return item;
     }
 
-    public void setItemItemApplicationPk(ItemItemApplicationPk itemItemApplicationPk) {
-        this.itemItemApplicationPk = itemItemApplicationPk;
-    }
-
-    public Items getItems() {
-        return items;
-    }
-
-    public void setItems(Items items) {
-        this.items = items;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public Application getApplication() {

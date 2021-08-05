@@ -10,12 +10,13 @@ import java.time.LocalDate;
 @Entity
 public class Application {
     @Id
-    private String requestID;
+    private String applicationID;
     private String destination;
     private String vehicleType;
     private boolean approval;
     private LocalDate depatureDate;
     private LocalDate arrivaleDate;
+    private String reason;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -25,12 +26,12 @@ public class Application {
         return booking;
     }
 
-    public String getRequestID() {
-        return requestID;
+    public String getApplicationID() {
+        return applicationID;
     }
 
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
+    public void setApplicationID(String applicationID) {
+        this.applicationID = applicationID;
     }
 
     public String getDestination() {
@@ -71,6 +72,14 @@ public class Application {
 
     public void setArrivaleDate(LocalDate arrivaleDate) {
         this.arrivaleDate = arrivaleDate;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public void setBooking(Booking booking) {
