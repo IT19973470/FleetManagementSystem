@@ -3,6 +3,7 @@ package lk.fleet.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.SQLOutput;
+import java.time.LocalDate;
 
 @Entity
 public class UserAccount {
@@ -11,10 +12,12 @@ public class UserAccount {
     private String employeeID;
     private String type;
     private String nic;
+    private LocalDate DOB;
     private String name;
     private String address;
     private String contactNo;
     private String email;
+    private LocalDate registeredDate;
     private String username;
     private String password;
 
@@ -36,6 +39,14 @@ public class UserAccount {
 
     public String getNic() {
         return nic;
+    }
+
+    public LocalDate getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(LocalDate DOB) {
+        this.DOB = DOB;
     }
 
     public void setNic(String nic) {
@@ -72,6 +83,14 @@ public class UserAccount {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDate getRegisteredDate() {
+        return registeredDate;
+    }
+
+    public void setRegisteredDate(LocalDate registeredDate) {
+        this.registeredDate = registeredDate;
     }
 
     public String getUsername() {
