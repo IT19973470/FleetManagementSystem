@@ -10,7 +10,7 @@ public class UserAccount {
 
     @Id
     private String employeeID;
-    private String type;
+    private String accountType;
     private String nic;
     private LocalDate DOB;
     private String name;
@@ -29,12 +29,12 @@ public class UserAccount {
         this.employeeID = employeeID;
     }
 
-    public String getType() {
-        return type;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
     public String getNic() {
