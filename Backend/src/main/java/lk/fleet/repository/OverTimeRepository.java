@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface OverTimeRepository extends JpaRepository<OverTime, String> {
 
-    OverTime getOverTimeByOverTimeID(String overTimeID);
+//    OverTime getOverTimeByOverTimeID(String overTimeID);
 
 }

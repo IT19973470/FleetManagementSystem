@@ -6,17 +6,17 @@ import java.io.Serializable;
 
 //Gayan//
 @Embeddable
-public class ItemItemApplicationId implements Serializable {
+public class ItemItemApplicationPK implements Serializable {
 
     private String itemID;
     private String requestID;
 
-    public ItemItemApplicationId(String itemID, String requestID) {
+    public ItemItemApplicationPK(String itemID, String requestID) {
         this.itemID = itemID;
         this.requestID = requestID;
     }
 
-    public ItemItemApplicationId() {
+    public ItemItemApplicationPK() {
 
     }
 
