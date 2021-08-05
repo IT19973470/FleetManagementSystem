@@ -7,26 +7,27 @@ import java.util.Set;
 public class AccidentMaintenanceManager {
 
     @Id
-    private String managerId;
+    private String employeeID;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "accidentMaintenanceManager")
-    private Set<VehicleMaintenance> vehicleMaintenances;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "accidentMaintenanceManager")
-    private Set<VehicleAccident> vehicleAccidents;
 
     @OneToOne
     private UserAccount userAccount;
 
 
 
-    public String getManagerId() {
-        return managerId;
+    public String getEmployeeID() {
+        return employeeID;
     }
 
-    public void setManagerId(String managerId) {
-        this.managerId = managerId;
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
     }
 
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
 
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 }
