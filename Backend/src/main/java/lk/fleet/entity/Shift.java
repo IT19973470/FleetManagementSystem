@@ -15,7 +15,10 @@ public class Shift {
     private boolean attendance;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumns({
+            @JoinColumn(name = "driverID", referencedColumnName = "driverID", updatable = false, nullable = false),
+            @JoinColumn(name = "vehicleId", referencedColumnName = "vehicleId", updatable = false, nullable = false)
+    })
     private DriverVehicle driverVehicle;
 
     @ManyToOne

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 //Gayan//
 public interface ItemApplicationRepository extends JpaRepository<ItemApplication,String> {
-    ItemApplication getItemApplicationByID(String requestID);
+//    ItemApplication getItemApplicationByID(String requestID);
 }
