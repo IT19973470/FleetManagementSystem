@@ -16,6 +16,14 @@ public class Driver {
     @JoinColumn(nullable = false)
     private VehicleDriverManagementClerk vehicleDriverManagementClerk;
 
+    public VehicleDriverManagementClerk getVehicleDriverManagementClerk() {
+        return vehicleDriverManagementClerk;
+    }
+
+    public void setVehicleDriverManagementClerk(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
+        this.vehicleDriverManagementClerk = vehicleDriverManagementClerk;
+    }
+
     public String getDriverID() {
         return driverID;
     }
