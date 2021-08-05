@@ -7,20 +7,25 @@ import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Entity
-public class MeterDetails {
+public class MeterDetail {
 
     @Id
     private String meterID;
-    private int inMeter;
-    private int OutMeter;
+    private double inMeter;
+    private double OutMeter;
     private double mileage;
     private LocalDateTime dateTime;
 
     @OneToOne
     private Token token;
 
-    @ManyToOne
-    private SecurityOfficer securityOfficer;
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
+    }
 
     public String getMeterID() {
         return meterID;
@@ -30,19 +35,19 @@ public class MeterDetails {
         this.meterID = meterID;
     }
 
-    public int getInMeter() {
+    public double getInMeter() {
         return inMeter;
     }
 
-    public void setInMeter(int inMeter) {
+    public void setInMeter(double inMeter) {
         this.inMeter = inMeter;
     }
 
-    public int getOutMeter() {
+    public double getOutMeter() {
         return OutMeter;
     }
 
-    public void setOutMeter(int outMeter) {
+    public void setOutMeter(double outMeter) {
         OutMeter = outMeter;
     }
 
