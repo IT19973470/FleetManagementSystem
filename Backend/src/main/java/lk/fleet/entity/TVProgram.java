@@ -18,10 +18,6 @@ public class TVProgram {
     private double transportCost;
     private String producer;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "tvProgram")
-    private Set<ProgramBooking> programBookings;
-
-
     public String getProgramID() {
         return programID;
     }
@@ -70,11 +66,4 @@ public class TVProgram {
         this.producer = producer;
     }
 
-    public Set<ProgramBooking> getProgramBookings() {
-        return programBookings;
-    }
-
-    public void setProgramBookings(Set<ProgramBooking> programBookings) {
-        this.programBookings = programBookings;
-    }
 }

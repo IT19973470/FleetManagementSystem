@@ -4,6 +4,7 @@ package lk.fleet.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -18,7 +19,10 @@ public class VehicleMaintenance {
 
 
     @ManyToOne
-    private AccidentMaintenanceManager accidentMaintenanceManager;
+    private AccidentMaintenanceManager accidentMaintenanceManager; //(fk) object reference from accidentMaintenanceManager
+
+    @OneToOne
+    private Vehicle vehicle;
 
 
     public String getMaintenanceID() {
@@ -69,5 +73,11 @@ public class VehicleMaintenance {
         this.accidentMaintenanceManager = accidentMaintenanceManager;
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
 
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 }

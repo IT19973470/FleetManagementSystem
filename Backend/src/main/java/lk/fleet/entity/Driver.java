@@ -21,17 +21,6 @@ public class Driver {
     private String password;
     private String licenseID;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
-    private Set<OverTime> overTimes;
-
-    public Set<OverTime> getOverTimes() {
-        return overTimes;
-    }
-
-    public void setOverTimes(Set<OverTime> overTimes) {
-        this.overTimes = overTimes;
-    }
-
     public String getDriverID() {
         return driverID;
     }
