@@ -8,10 +8,12 @@ public class BookingManagementClerkShift {
     @EmbeddedId
     private BookingManagementClerkShiftPK bookingManagementClerkShiftPK;
 
+    @MapsId("bookingManagementClerkId")
     @ManyToOne
     @JoinColumn(name = "bookingManagementClerkId", referencedColumnName = "bookingManagementClerkId", insertable = false, updatable = false, nullable = false)
     private BookingManagementClerk bookingManagementClerk;
 
+    @MapsId("shiftId")
     @ManyToOne
     @JoinColumn(name = "shiftId", referencedColumnName = "shiftId", insertable = false, updatable = false, nullable = false)
     private Shift shift;
