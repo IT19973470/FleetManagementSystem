@@ -16,17 +16,6 @@ public class DriverVehicle {
 
 
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Shift shift;
-
-    public Shift getShift() {
-        return shift;
-    }
-
-    public void setShift(Shift shift) {
-        this.shift = shift;
-    }
 
     public DriverVehiclePK getId() {
         return id;

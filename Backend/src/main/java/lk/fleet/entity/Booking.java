@@ -13,7 +13,7 @@ public class Booking {
     private String bookingId;
     private LocalDateTime bookingDateTime;
     private String destination;
-    private String bookingStatus;
+    private boolean bookingStatus;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -27,17 +27,18 @@ public class Booking {
         this.bookingManagementClerk = bookingManagementClerk;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking")
-    private Set<Shift> shifts;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Shift shifts;
 
-    public Set<Shift> getShifts() {
+    public Shift getShifts() {
         return shifts;
     }
 
-    public void setShifts(Set<Shift> shifts) {
+    public void setShifts(Shift shifts) {
         this.shifts = shifts;
     }
-    //    public Set<Application> getApplications() {
+//    public Set<Application> getApplications() {
 //        return applications;
 //    }
 //
@@ -47,6 +48,7 @@ public class Booking {
 //
 //    @OneToMany(cascade = CascadeType.ALL,mappedBy = "booking",fetch = FetchType.EAGER)
 //    private Set<Application> applications;
+
 
     public String getBookingId() {
         return bookingId;
@@ -72,11 +74,11 @@ public class Booking {
         this.destination = destination;
     }
 
-    public String getBookingStatus() {
+    public boolean isBookingStatus() {
         return bookingStatus;
     }
 
-    public void setBookingStatus(String bookingStatus) {
+    public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
 }
