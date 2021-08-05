@@ -24,14 +24,6 @@ public class DriverVehicle {
         this.driverVehicleID = driverVehicleID;
     }
 
-    public VehicleAccident getVehicleAccident() {
-        return vehicleAccident;
-    }
-
-    public void setVehicleAccident(VehicleAccident vehicleAccident) {
-        this.vehicleAccident = vehicleAccident;
-    }
-
     public String getQty() {
         return qty;
     }
