@@ -1,8 +1,8 @@
 package lk.fleet.repository;
 
-import lk.fleet.entity.MeterDetails;
+import lk.fleet.entity.MeterDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MeterDetailsRepository extends JpaRepository<MeterDetails, String> {
-    MeterDetails getMeterDetailsByMeterID(String meterID);
+public interface MeterDetailsRepository extends JpaRepository<MeterDetail, String> {
+    MeterDetail getMeterDetailsByMeterID(String meterID);
 }

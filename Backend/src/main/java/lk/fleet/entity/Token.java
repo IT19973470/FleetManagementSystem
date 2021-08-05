@@ -10,13 +10,29 @@ public class Token {
     private String tokenID;
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
-    private String transportStatus;
+    private boolean transportStatus;
 
     @OneToOne
     private Booking booking;
 
     @ManyToOne
     private SecurityOfficer securityOfficer;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public SecurityOfficer getSecurityOfficer() {
+        return securityOfficer;
+    }
+
+    public void setSecurityOfficer(SecurityOfficer securityOfficer) {
+        this.securityOfficer = securityOfficer;
+    }
 
     public String getTokenID() {
         return tokenID;
@@ -42,11 +58,12 @@ public class Token {
         this.arrivalDateTime = arrivalDateTime;
     }
 
-    public String getTransportStatus() {
+    public boolean isTransportStatus() {
         return transportStatus;
     }
 
-    public void setTransportStatus(String transportStatus) {
+    public void setTransportStatus(boolean transportStatus) {
         this.transportStatus = transportStatus;
     }
+
 }
