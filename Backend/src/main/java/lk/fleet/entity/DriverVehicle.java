@@ -15,7 +15,6 @@ public class DriverVehicle {
 
 
 
-
     public DriverVehiclePK getDriverVehicleID() {
         return driverVehicleID;
     }
