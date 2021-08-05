@@ -11,11 +11,11 @@ import java.util.Set;
 public class VipMember {
     @Id
     private String vipMemberId;
-    private String firstname;
-    private String lastname;
-    private LocalDate timeperiod;
-    private String purpuse;
-
+    private String firstName;
+    private String lastName;
+    private String contactNumber;
+    private String address;
+    private String position;
 
     public String getVipMemberId() {
         return vipMemberId;
@@ -25,39 +25,43 @@ public class VipMember {
         this.vipMemberId = vipMemberId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public LocalDate getTimeperiod() {
-        return timeperiod;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setTimeperiod(LocalDate timeperiod) {
-        this.timeperiod = timeperiod;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
-    public String getPurpuse() {
-        return purpuse;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPurpuse(String purpuse) {
-        this.purpuse = purpuse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    public String getPosition() {
+        return position;
+    }
 
-
-
+    public void setPosition(String position) {
+        this.position = position;
+    }
 }
