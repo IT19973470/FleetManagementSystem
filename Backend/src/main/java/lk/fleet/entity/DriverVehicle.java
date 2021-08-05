@@ -5,11 +5,10 @@ import javax.persistence.*;
 @Entity
 public class DriverVehicle {
     @EmbeddedId
-    private DriverVehiclePK id;
+    private DriverVehiclePK driverVehicleID;
     private String qty;
     private String type;
 
-    @MapsId("driverID")
     @ManyToOne
     @JoinColumn(name = "driverID", referencedColumnName = "driverID", insertable = false, updatable = false, nullable = false)
     private Driver driver;
@@ -17,12 +16,20 @@ public class DriverVehicle {
 
 
 
-    public DriverVehiclePK getId() {
-        return id;
+    public DriverVehiclePK getDriverVehicleID() {
+        return driverVehicleID;
     }
 
-    public void setId(DriverVehiclePK id) {
-        this.id = id;
+    public void setDriverVehicleID(DriverVehiclePK driverVehicleID) {
+        this.driverVehicleID = driverVehicleID;
+    }
+
+    public VehicleAccident getVehicleAccident() {
+        return vehicleAccident;
+    }
+
+    public void setVehicleAccident(VehicleAccident vehicleAccident) {
+        this.vehicleAccident = vehicleAccident;
     }
 
     public String getQty() {
