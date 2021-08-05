@@ -1,9 +1,6 @@
 package lk.fleet.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -20,6 +17,10 @@ public class Driver {
     private String username;
     private String password;
     private String licenseID;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private VehicleDriverManagementClerk vehicleDriverManagementClerk;
 
     public String getDriverID() {
         return driverID;
