@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 //Gayan//
 @Entity
-public class Items {
+public class Item {
     @Id
     private String itemID;
     private  String itemName;

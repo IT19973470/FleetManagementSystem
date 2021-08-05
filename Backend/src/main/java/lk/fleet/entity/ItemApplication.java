@@ -8,26 +8,18 @@ import javax.persistence.OneToOne;
 @Entity
 public class ItemApplication {
     @Id
-    private String requestID;
+    private String itemApplicationId;
     private  int noOfItems;
 
     @OneToOne
     private Application application;
 
-    public Application getApplication() {
-        return application;
+    public String getItemApplicationId() {
+        return itemApplicationId;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
-    }
-
-    public String getRequestID() {
-        return requestID;
-    }
-
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
+    public void setItemApplicationId(String itemApplicationId) {
+        this.itemApplicationId = itemApplicationId;
     }
 
     public int getNoOfItems() {
@@ -36,5 +28,13 @@ public class ItemApplication {
 
     public void setNoOfItems(int noOfItems) {
         this.noOfItems = noOfItems;
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
     }
 }
