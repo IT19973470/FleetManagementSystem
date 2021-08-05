@@ -14,8 +14,11 @@ public class VehicleAccident {
   private String insuranceNo;
   private String vehicleID;
 
-  @ManyToOne
-  private AccidentMaintenanceManager accidentMaintenanceManager;
+    @ManyToOne
+    private AccidentMaintenanceManager accidentMaintenanceManager;
+
+    @ManyToOne
+    private DriverVehicle driverVehicle;
 
 
     public String getRefNumber() {
@@ -64,5 +67,13 @@ public class VehicleAccident {
 
     public void setAccidentMaintenanceManager(AccidentMaintenanceManager accidentMaintenanceManager) {
         this.accidentMaintenanceManager = accidentMaintenanceManager;
+    }
+
+    public DriverVehicle getDriverVehicle() {
+        return driverVehicle;
+    }
+
+    public void setDriverVehicle(DriverVehicle driverVehicle) {
+        this.driverVehicle = driverVehicle;
     }
 }
