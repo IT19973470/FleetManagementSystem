@@ -1,7 +1,6 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,6 +11,12 @@ public class Token {
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private String transportStatus;
+
+    @OneToOne
+    private Booking booking;
+
+    @ManyToOne
+    private SecurityOfficer securityOfficer;
 
     public String getTokenID() {
         return tokenID;

@@ -2,6 +2,8 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +15,12 @@ public class MeterDetails {
     private int OutMeter;
     private double mileage;
     private LocalDateTime dateTime;
+
+    @OneToOne
+    private Token token;
+
+    @ManyToOne
+    private SecurityOfficer securityOfficer;
 
     public String getMeterID() {
         return meterID;
