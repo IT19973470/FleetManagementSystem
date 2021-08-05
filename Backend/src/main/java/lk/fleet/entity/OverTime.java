@@ -9,10 +9,10 @@ public class OverTime {
 
     @Id
     private String overTimeID;
-    private String noOfShifts;
+    private int noOfShifts;
     private LocalDate startTime;
     private LocalDate endTime;
-    private String approval;
+    private boolean approval;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -34,14 +34,6 @@ public class OverTime {
         this.overTimeID = overTimeID;
     }
 
-    public String getNoOfShifts() {
-        return noOfShifts;
-    }
-
-    public void setNoOfShifts(String noOfShifts) {
-        this.noOfShifts = noOfShifts;
-    }
-
     public LocalDate getStartTime() {
         return startTime;
     }
@@ -58,11 +50,19 @@ public class OverTime {
         this.endTime = endTime;
     }
 
-    public String getApproval() {
+    public int getNoOfShifts() {
+        return noOfShifts;
+    }
+
+    public void setNoOfShifts(int noOfShifts) {
+        this.noOfShifts = noOfShifts;
+    }
+
+    public boolean isApproval() {
         return approval;
     }
 
-    public void setApproval(String approval) {
+    public void setApproval(boolean approval) {
         this.approval = approval;
     }
 }
