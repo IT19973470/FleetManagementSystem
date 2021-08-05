@@ -12,6 +12,10 @@ public class Driver {
     @OneToOne
     private UserAccount userAccount;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private VehicleDriverManagementClerk vehicleDriverManagementClerk;
+
     public String getDriverID() {
         return driverID;
     }

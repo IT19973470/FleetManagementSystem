@@ -10,9 +10,11 @@ public class Vehicle {
     @Id
     private String vehicleId;
     private String vType;
+    private String model;
     private int noOfSeats;
     private int mpg;
     private String fType;
+    private String status;
 
     public String getVehicleId() {
         return vehicleId;
@@ -28,6 +30,14 @@ public class Vehicle {
 
     public void setvType(String vType) {
         this.vType = vType;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getNoOfSeats() {
@@ -54,6 +64,11 @@ public class Vehicle {
         this.fType = fType;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
-
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
