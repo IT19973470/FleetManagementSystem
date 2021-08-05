@@ -13,7 +13,9 @@ public class DriverVehicle {
     @JoinColumn(name = "driverID", referencedColumnName = "driverID", insertable = false, updatable = false, nullable = false)
     private Driver driver;
 
-
+    @ManyToOne
+    @JoinColumn(name = "vehicleId", referencedColumnName = "vehicleId", insertable = false, updatable = false, nullable = false)
+    private Vehicle vehicle;
 
     public DriverVehiclePK getDriverVehicleID() {
         return driverVehicleID;
@@ -45,5 +47,13 @@ public class DriverVehicle {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
