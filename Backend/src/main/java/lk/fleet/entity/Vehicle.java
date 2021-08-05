@@ -9,12 +9,13 @@ public class Vehicle {
 
     @Id
     private String vehicleId;
-    private String vType;
+    private String vehicleType;
     private String model;
     private int noOfSeats;
-    private int mpg;
-    private String fType;
-    private String status;
+    private double initialMpg;
+    private double serviceMpg;
+    private String fuelType;
+    private boolean occupied;
 
     public String getVehicleId() {
         return vehicleId;
@@ -24,12 +25,12 @@ public class Vehicle {
         this.vehicleId = vehicleId;
     }
 
-    public String getvType() {
-        return vType;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setvType(String vType) {
-        this.vType = vType;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public String getModel() {
@@ -48,27 +49,35 @@ public class Vehicle {
         this.noOfSeats = noOfSeats;
     }
 
-    public int getMpg() {
-        return mpg;
+    public double getInitialMpg() {
+        return initialMpg;
     }
 
-    public void setMpg(int mpg) {
-        this.mpg = mpg;
+    public void setInitialMpg(double initialMpg) {
+        this.initialMpg = initialMpg;
     }
 
-    public String getfType() {
-        return fType;
+    public double getServiceMpg() {
+        return serviceMpg;
     }
 
-    public void setfType(String fType) {
-        this.fType = fType;
+    public void setServiceMpg(double serviceMpg) {
+        this.serviceMpg = serviceMpg;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFuelType() {
+        return fuelType;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
     }
 }
