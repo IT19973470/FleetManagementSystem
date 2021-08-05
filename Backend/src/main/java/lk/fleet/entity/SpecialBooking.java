@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class SpecialBooking {
@@ -10,6 +11,9 @@ public class SpecialBooking {
     private String noOfPassengers;
     private String approvedFuelAmount;
     private String description;
+
+    @OneToOne
+    private Booking booking;
 
     public String getSpecialBookingId() {
         return specialBookingId;
@@ -41,5 +45,13 @@ public class SpecialBooking {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
