@@ -15,7 +15,7 @@ public class VehicleMaintenance {
     private LocalDate maintenanceDate;
     private String maintenanceType;
     private String companyName;
-    private Boolean maintenanceStatus;
+    private boolean maintenanceStatus;
 
 
     @ManyToOne
@@ -57,11 +57,11 @@ public class VehicleMaintenance {
         this.companyName = companyName;
     }
 
-    public Boolean getMaintenanceStatus() {
+    public boolean isMaintenanceStatus() {
         return maintenanceStatus;
     }
 
-    public void setMaintenanceStatus(Boolean maintenanceStatus) {
+    public void setMaintenanceStatus(boolean maintenanceStatus) {
         this.maintenanceStatus = maintenanceStatus;
     }
 
