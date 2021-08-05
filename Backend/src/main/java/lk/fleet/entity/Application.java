@@ -13,7 +13,7 @@ public class Application {
     private String requestID;
     private String destination;
     private String vehicleType;
-    private String approval;
+    private boolean approval;
     private LocalDate depatureDate;
     private LocalDate arrivaleDate;
 
@@ -49,11 +49,11 @@ public class Application {
         this.vehicleType = vehicleType;
     }
 
-    public String getApproval() {
+    public boolean isApproval() {
         return approval;
     }
 
-    public void setApproval(String approval) {
+    public void setApproval(boolean approval) {
         this.approval = approval;
     }
 
@@ -71,5 +71,9 @@ public class Application {
 
     public void setArrivaleDate(LocalDate arrivaleDate) {
         this.arrivaleDate = arrivaleDate;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
