@@ -15,21 +15,12 @@ public class DriverVehicle {
 
 
 
-
     public DriverVehiclePK getDriverVehicleID() {
         return driverVehicleID;
     }
 
     public void setDriverVehicleID(DriverVehiclePK driverVehicleID) {
         this.driverVehicleID = driverVehicleID;
-    }
-
-    public VehicleAccident getVehicleAccident() {
-        return vehicleAccident;
-    }
-
-    public void setVehicleAccident(VehicleAccident vehicleAccident) {
-        this.vehicleAccident = vehicleAccident;
     }
 
     public String getQty() {
