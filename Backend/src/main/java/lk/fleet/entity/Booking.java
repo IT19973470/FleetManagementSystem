@@ -1,5 +1,7 @@
 package lk.fleet.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -13,7 +15,29 @@ public class Booking {
     private String destination;
     private String bookingStatus;
 
-//    public Set<Application> getApplications() {
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private BookingManagementClerk bookingManagementClerk;
+
+    public BookingManagementClerk getBookingManagementClerk() {
+        return bookingManagementClerk;
+    }
+
+    public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
+        this.bookingManagementClerk = bookingManagementClerk;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking")
+    private Set<Shift> shifts;
+
+    public Set<Shift> getShifts() {
+        return shifts;
+    }
+
+    public void setShifts(Set<Shift> shifts) {
+        this.shifts = shifts;
+    }
+    //    public Set<Application> getApplications() {
 //        return applications;
 //    }
 //
