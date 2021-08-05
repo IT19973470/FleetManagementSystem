@@ -18,6 +18,26 @@ public class Shift {
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    private Booking booking;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public OverTime getOverTime() {
+        return overTime;
+    }
+
+    public void setOverTime(OverTime overTime) {
+        this.overTime = overTime;
+    }
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private OverTime overTime;
 
     public String getShiftId() {

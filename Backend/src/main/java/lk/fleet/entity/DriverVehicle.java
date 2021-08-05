@@ -14,6 +14,10 @@ public class DriverVehicle {
     @JoinColumn(name = "driverID", referencedColumnName = "driverID", insertable = false, updatable = false, nullable = false)
     private Driver driver;
 
+    @ManyToOne
+    private VehicleAccident vehicleAccident;
+
+
     public DriverVehiclePK getId() {
         return id;
     }

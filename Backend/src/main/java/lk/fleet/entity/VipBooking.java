@@ -1,15 +1,15 @@
 package lk.fleet.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class VipBooking {
     @Id
     private String vipBookingId;
+
+    @OneToOne
+    private Booking booking;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -29,5 +29,13 @@ public class VipBooking {
 
     public void setVipBookingId(String vipBookingId) {
         this.vipBookingId = vipBookingId;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
