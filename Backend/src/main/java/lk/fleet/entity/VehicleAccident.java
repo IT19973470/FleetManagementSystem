@@ -2,17 +2,17 @@ package lk.fleet.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
 public class VehicleAccident {
 
   @Id
-  private String refNumber;
-  private LocalDate accidentDate;
-  private LocalTime accidentTime;
+  private String vehicleAccidentID;
+  private LocalDateTime accidentDate,accidentTime;
   private String insuranceNo;
-  private String vehicleID;
+
 
     @ManyToOne
     private AccidentMaintenanceManager accidentMaintenanceManager;
@@ -21,27 +21,27 @@ public class VehicleAccident {
     private DriverVehicle driverVehicle;
 
 
-    public String getRefNumber() {
-        return refNumber;
+    public String getVehicleAccidentID() {
+        return vehicleAccidentID;
     }
 
-    public void setRefNumber(String refNumber) {
-        this.refNumber = refNumber;
+    public void setVehicleAccidentID(String vehicleAccidentID) {
+        this.vehicleAccidentID = vehicleAccidentID;
     }
 
-    public LocalDate getAccidentDate() {
+    public LocalDateTime getAccidentDate() {
         return accidentDate;
     }
 
-    public void setAccidentDate(LocalDate accidentDate) {
+    public void setAccidentDate(LocalDateTime accidentDate) {
         this.accidentDate = accidentDate;
     }
 
-    public LocalTime getAccidentTime() {
+    public LocalDateTime getAccidentTime() {
         return accidentTime;
     }
 
-    public void setAccidentTime(LocalTime accidentTime) {
+    public void setAccidentTime(LocalDateTime accidentTime) {
         this.accidentTime = accidentTime;
     }
 
@@ -51,14 +51,6 @@ public class VehicleAccident {
 
     public void setInsuranceNo(String insuranceNo) {
         this.insuranceNo = insuranceNo;
-    }
-
-    public String getVehicleID() {
-        return vehicleID;
-    }
-
-    public void setVehicleID(String vehicleID) {
-        this.vehicleID = vehicleID;
     }
 
     public AccidentMaintenanceManager getAccidentMaintenanceManager() {
