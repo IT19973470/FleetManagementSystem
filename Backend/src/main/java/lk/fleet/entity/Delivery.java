@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,6 +16,9 @@ public class Delivery {
     private String contactNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
+
+    @ManyToOne
+    private SecurityOfficer securityOfficer;
 
     public String getDeliveryId() {
         return deliveryId;
@@ -70,5 +74,13 @@ public class Delivery {
 
     public void setDeliveryPersonName(String deliveryPersonName) {
         this.deliveryPersonName = deliveryPersonName;
+    }
+
+    public SecurityOfficer getSecurityOfficer() {
+        return securityOfficer;
+    }
+
+    public void setSecurityOfficer(SecurityOfficer securityOfficer) {
+        this.securityOfficer = securityOfficer;
     }
 }
