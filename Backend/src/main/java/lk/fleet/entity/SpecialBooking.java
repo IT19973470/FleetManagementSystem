@@ -8,8 +8,8 @@ import javax.persistence.OneToOne;
 public class SpecialBooking {
     @Id
     private String specialBookingId;
-    private String noOfPassengers;
-    private String approvedFuelAmount;
+    private int noOfPassengers;
+    private double approvedFuelAmount;
     private String description;
 
     @OneToOne
@@ -23,19 +23,19 @@ public class SpecialBooking {
         this.specialBookingId = specialBookingId;
     }
 
-    public String getNoOfPassengers() {
+    public int getNoOfPassengers() {
         return noOfPassengers;
     }
 
-    public void setNoOfPassengers(String noOfPassengers) {
+    public void setNoOfPassengers(int noOfPassengers) {
         this.noOfPassengers = noOfPassengers;
     }
 
-    public String getApprovedFuelAmount() {
+    public double getApprovedFuelAmount() {
         return approvedFuelAmount;
     }
 
-    public void setApprovedFuelAmount(String approvedFuelAmount) {
+    public void setApprovedFuelAmount(double approvedFuelAmount) {
         this.approvedFuelAmount = approvedFuelAmount;
     }
 

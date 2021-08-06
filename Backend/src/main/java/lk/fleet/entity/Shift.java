@@ -12,38 +12,15 @@ public class Shift {
     private LocalDate shiftDate;
     private LocalTime startingTime;
     private LocalTime endingTime;
-    private String attendance;
+    private boolean attendance;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Booking booking;
+    private DriverVehicle driverVehicle;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shift")
-    private Set <DriverVehicle> driverVehicles;
-
-    public Set<DriverVehicle> getDriverVehicles() {
-        return driverVehicles;
-    }
-
-    public void setDriverVehicles(Set<DriverVehicle> driverVehicles) {
-        this.driverVehicles = driverVehicles;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
-    public OverTime getOverTime() {
-        return overTime;
-    }
-
-    public void setOverTime(OverTime overTime) {
-        this.overTime = overTime;
-    }
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private BookingManagementClerk bookingManagementClerk;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -81,11 +58,35 @@ public class Shift {
         this.endingTime = endingTime;
     }
 
-    public String getAttendance() {
+    public boolean isAttendance() {
         return attendance;
     }
 
-    public void setAttendance(String attendance) {
+    public void setAttendance(boolean attendance) {
         this.attendance = attendance;
+    }
+
+    public DriverVehicle getDriverVehicle() {
+        return driverVehicle;
+    }
+
+    public void setDriverVehicle(DriverVehicle driverVehicle) {
+        this.driverVehicle = driverVehicle;
+    }
+
+    public BookingManagementClerk getBookingManagementClerk() {
+        return bookingManagementClerk;
+    }
+
+    public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
+        this.bookingManagementClerk = bookingManagementClerk;
+    }
+
+    public OverTime getOverTime() {
+        return overTime;
+    }
+
+    public void setOverTime(OverTime overTime) {
+        this.overTime = overTime;
     }
 }

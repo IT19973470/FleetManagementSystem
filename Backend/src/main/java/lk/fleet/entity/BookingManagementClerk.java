@@ -11,17 +11,6 @@ public class BookingManagementClerk {
     @OneToOne
     private UserAccount userAccount;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookingManagementClerk")
-    private Set <Booking> bookings;
-
-    public Set<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
     public String getBookingManagementClerkId() {
         return bookingManagementClerkId;
     }
