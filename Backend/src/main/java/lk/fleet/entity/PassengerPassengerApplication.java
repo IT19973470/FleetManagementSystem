@@ -9,20 +9,20 @@ import javax.persistence.ManyToOne;
 public class PassengerPassengerApplication {
 
     @EmbeddedId
-    private PassengerPassengerApplicationId passengerPassengerApplicationId;
+    private PassengerPassengerApplicationPK passengerPassengerApplicationId;
     @ManyToOne
     @JoinColumn(name="passengerId",referencedColumnName = "passengerId",insertable = false, updatable = false,nullable = false)
     private  Passenger passenger;
 
     @ManyToOne
-    @JoinColumn(name="passengerApplicationID",referencedColumnName = "passengerApplicationID",insertable = false, updatable = false,nullable = false)
+    @JoinColumn(name="applicationID",referencedColumnName = "applicationID",insertable = false, updatable = false,nullable = false)
     private Application application;
 
-    public PassengerPassengerApplicationId getPassengerPassengerApplicationrId() {
+    public PassengerPassengerApplicationPK getPassengerPassengerApplicationrId() {
         return passengerPassengerApplicationId;
     }
 
-    public void setPassengerPassengerApplicationrId(PassengerPassengerApplicationId passengerPassengerApplicationId) {
+    public void setPassengerPassengerApplicationrId(PassengerPassengerApplicationPK passengerPassengerApplicationId) {
         this.passengerPassengerApplicationId = passengerPassengerApplicationId;
     }
 

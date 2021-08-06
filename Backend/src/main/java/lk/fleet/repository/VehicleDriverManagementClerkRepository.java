@@ -4,6 +4,6 @@ import lk.fleet.entity.VehicleDriverManagementClerk;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VehicleDriverManagementClerkRepository extends JpaRepository<VehicleDriverManagementClerk, String> {
-    VehicleDriverManagementClerk getVehicleDriverManagementClerkByVehicleDriverManagementId(String vehicleDriverManagementId);
+//    VehicleDriverManagementClerk getVehicleDriverManagementClerkByVehicleDriverManagementId(String vehicleDriverManagementId);
 
 }

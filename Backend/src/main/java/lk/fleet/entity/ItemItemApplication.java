@@ -10,9 +10,9 @@ import javax.persistence.ManyToOne;
 public class ItemItemApplication {
 
     @EmbeddedId
-    private ItemItemApplicationId itemItemApplicationId;
+    private ItemItemApplicationPK itemItemApplicationId;
     @ManyToOne
-    @JoinColumn(name="itemApplicationId",referencedColumnName = "itemApplicationId",insertable = false, updatable = false,nullable = false)
+    @JoinColumn(name="itemID",referencedColumnName = "itemID",insertable = false, updatable = false,nullable = false)
     private Item item;
 
     @ManyToOne

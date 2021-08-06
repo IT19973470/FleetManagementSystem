@@ -4,18 +4,18 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class PassengerPassengerApplicationId implements Serializable {
+public class PassengerPassengerApplicationPK implements Serializable {
 
 
     private String passengerApplicationID;
     private String passengerId;
 
-    public PassengerPassengerApplicationId(String passengerApplicationID, String passengerId) {
+    public PassengerPassengerApplicationPK(String passengerApplicationID, String passengerId) {
         this.passengerApplicationID = passengerApplicationID;
         this.passengerId = passengerId;
     }
 
-    public PassengerPassengerApplicationId() {
+    public PassengerPassengerApplicationPK() {
 
     }
 
