@@ -1,11 +1,9 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Set;
 
 @Entity
 public class Shift {
@@ -19,6 +17,17 @@ public class Shift {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Booking booking;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shift")
+    private Set <DriverVehicle> driverVehicles;
+
+    public Set<DriverVehicle> getDriverVehicles() {
+        return driverVehicles;
+    }
+
+    public void setDriverVehicles(Set<DriverVehicle> driverVehicles) {
+        this.driverVehicles = driverVehicles;
+    }
 
     public Booking getBooking() {
         return booking;
