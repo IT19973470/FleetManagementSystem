@@ -20,7 +20,13 @@ public class ItemItemApplication {
     private Application application;
 
 
+    public ItemItemApplicationPK getItemItemApplicationId() {
+        return itemItemApplicationId;
+    }
 
+    public void setItemItemApplicationId(ItemItemApplicationPK itemItemApplicationId) {
+        this.itemItemApplicationId = itemItemApplicationId;
+    }
 
     public Item getItem() {
         return item;
