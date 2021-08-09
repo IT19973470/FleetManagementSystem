@@ -18,11 +18,11 @@ public class PassengerPassengerApplication {
     @JoinColumn(name="applicationID",referencedColumnName = "applicationID",insertable = false, updatable = false,nullable = false)
     private Application application;
 
-    public PassengerPassengerApplicationPK getPassengerPassengerApplicationrId() {
+    public PassengerPassengerApplicationPK getPassengerPassengerApplicationId() {
         return passengerPassengerApplicationId;
     }
 
-    public void setPassengerPassengerApplicationrId(PassengerPassengerApplicationPK passengerPassengerApplicationId) {
+    public void setPassengerPassengerApplicationId(PassengerPassengerApplicationPK passengerPassengerApplicationId) {
         this.passengerPassengerApplicationId = passengerPassengerApplicationId;
     }
 
