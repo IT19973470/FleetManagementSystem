@@ -18,13 +18,6 @@ public class Application {
     private LocalDate arrivaleDate;
     private String reason;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Booking booking;
-
-    public Booking getBooking() {
-        return booking;
-    }
 
     public String getApplicationID() {
         return applicationID;
@@ -82,7 +75,5 @@ public class Application {
         this.reason = reason;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
+
 }
