@@ -29,6 +29,10 @@ public class Shift {
     @JoinColumn(nullable = false)
     private OverTime overTime;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Booking booking;
+
     public String getShiftId() {
         return shiftId;
     }
@@ -91,5 +95,13 @@ public class Shift {
 
     public void setOverTime(OverTime overTime) {
         this.overTime = overTime;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
