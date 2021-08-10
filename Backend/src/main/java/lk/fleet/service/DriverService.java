@@ -5,13 +5,10 @@ import lk.fleet.entity.Driver;
 import java.util.List;
 
 public interface DriverService {
-    Driver addDriver(Driver driver);
 
-    List<Driver> getAllDrivers();
+    Object addDriver(Driver driver);
 
-//    Driver getDriverByDriverID(String driverID);
+    Object updateDriver(String driverID, Driver driver);
 
-    Driver updateDriver(Driver driver);
-
-    Driver deleteDriver(Driver driver);
+    boolean deleteDriver(String driverID);
 }
