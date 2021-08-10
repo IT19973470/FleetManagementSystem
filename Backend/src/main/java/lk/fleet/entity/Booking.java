@@ -19,11 +19,6 @@ public class Booking {
     @JoinColumn(nullable = false)
     private BookingManagementClerk bookingManagementClerk;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Shift shifts;
-
-
     public String getBookingId() {
         return bookingId;
     }
@@ -62,13 +57,5 @@ public class Booking {
 
     public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
         this.bookingManagementClerk = bookingManagementClerk;
-    }
-
-    public Shift getShifts() {
-        return shifts;
-    }
-
-    public void setShifts(Shift shifts) {
-        this.shifts = shifts;
     }
 }
