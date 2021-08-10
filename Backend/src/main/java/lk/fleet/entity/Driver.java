@@ -8,6 +8,7 @@ public class Driver {
 
     @Id
     private String driverID;
+    private String lisenseID;
 
     @OneToOne
     private UserAccount userAccount;
@@ -38,5 +39,13 @@ public class Driver {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public String getLisenseID() {
+        return lisenseID;
+    }
+
+    public void setLisenseID(String lisenseID) {
+        this.lisenseID = lisenseID;
     }
 }
