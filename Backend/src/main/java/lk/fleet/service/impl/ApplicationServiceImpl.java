@@ -1,18 +1,12 @@
 package lk.fleet.service.impl;
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.Application;
-import lk.fleet.entity.ItemApplication;
 import lk.fleet.entity.PassengerApplication;
 import lk.fleet.repository.ApplicationRepository;
-import lk.fleet.repository.ItemApplicationRepository;
 import lk.fleet.repository.PassengerApplicationRepository;
 import lk.fleet.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service

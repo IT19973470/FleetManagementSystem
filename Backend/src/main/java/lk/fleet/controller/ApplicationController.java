@@ -17,7 +17,7 @@ public class ApplicationController {
     private  ApplicationService applicationService;
 
 
-//    @PostMapping(value ="/newApplication")
+//    @PostMapping(value ="/newApplication")   // jarawa epa
 //    public Application addApplication(@RequestBody Application application) {
 //        return applicationService.addApplication(application);
 //    }
