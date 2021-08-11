@@ -1,16 +1,13 @@
-package lk.fleet.entity;
+package lk.fleet.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lk.fleet.entity.Application;
+import lk.fleet.entity.Item;
+import lk.fleet.entity.PassengerApplication;
+
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
-//Gayan//
-@Entity
-public class Application {
-    @Id
+public class ApplicationDTO {
     private String applicationID;
     private String destination;
     private String vehicleType;
@@ -18,6 +15,22 @@ public class Application {
     private LocalDate depatureDate;
     private LocalDate arrivaleDate;
     private String reason;
+    private String itemi;
+    private  String itemn;
+    private int qty;
+
+    public ApplicationDTO(Application application) {
+        if(application != null) {
+            this.applicationID=application.getApplicationID();
+            this.destination=application.getDestination();
+            this.vehicleType=application.getVehicleType();
+            this.approval=application.isApproval();
+            this.depatureDate=application.getDepatureDate();
+            this.arrivaleDate=application.getArrivaleDate();
+            this.reason=application.getReason();
+        }
+    }
+
 
 
     public String getApplicationID() {
@@ -75,6 +88,4 @@ public class Application {
     public void setReason(String reason) {
         this.reason = reason;
     }
-
-
 }
