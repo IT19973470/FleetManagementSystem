@@ -17,7 +17,7 @@ public class ApplicationDTO {
     private String reason;
     private String itemi;
     private  String itemn;
-    private int qty;
+    private int qty; //one naa
 
     public ApplicationDTO(Application application) {
         if(application != null) {
