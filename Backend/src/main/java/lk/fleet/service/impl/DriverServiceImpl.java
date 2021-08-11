@@ -1,12 +1,12 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.entity.Driver;
 import lk.fleet.repository.DriverRepository;
+import lk.fleet.repository.UserAccountRepository;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,37 +15,32 @@ public class DriverServiceImpl implements DriverService {
     @Autowired
     private DriverRepository driverRepository;
 
+    @Autowired
+    private UserAccountRepository userAccountRepository;
+
     @Override
-    public Driver addDriver(Driver driver) {
+    public Object addDriver(Driver driver) {
+        userAccountRepository.save(driver.getUserAccount());
         return driverRepository.save(driver);
     }
 
     @Override
-    public List<Driver> getAllDrivers() {
-        return driverRepository.findAll();
-    }
+    public Object updateDriver(String driverID, Driver driver) {
+        Optional<Driver> optionalDriver = driverRepository.findById(driverID);
+        if (optionalDriver.isPresent()){
+            Driver driver1 = optionalDriver.get();
+            driver1.setDriverID(driver.getDriverID());
+            driver1.setLisenseID(driver.getLisenseID());
 
-//    @Override
-//    public Driver getDriverByDriverID(String driverID) {
-//        return driverRepository.getDriverNameUsingdriverID(driverID);
-//    }
-
-    @Override
-    public Driver updateDriver(Driver driver) {
-//        Check whether customer Available
-//        Optional<Driver> driver1 = driverRepository.findById(driver.getDriverID());
-//        if(driver1.isPresent()){
-//            Driver driver2 = driver1.get();
-//            driver2.setUserAccount(driver.getUserAccount());
-//            driver2.setDriverID(driver.getDriverID());
-//            return driverRepository.save(driver2);
-//        }
-        //If if condition true below codes do not run
+            return new DriverDTO(driverRepository.save(driver1));
+        }
         return null;
     }
 
     @Override
-    public Driver deleteDriver(Driver driver) {
-        return null;
+    public boolean deleteDriver(String driverID) {
+        driverRepository.deleteById(driverID);
+        return true;
     }
+
 }
