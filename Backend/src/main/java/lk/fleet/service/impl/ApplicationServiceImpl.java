@@ -18,7 +18,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public Application addApplication(Application application) {
-           return    applicationRepository.save(application); //Jarawa epaaa
+           return    applicationRepository.save(application); //Jarawa epa
     }
 
     @Override
