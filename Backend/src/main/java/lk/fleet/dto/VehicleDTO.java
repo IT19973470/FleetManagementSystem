@@ -1,13 +1,9 @@
-package lk.fleet.entity;
+package lk.fleet.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lk.fleet.entity.Vehicle;
 
+public class VehicleDTO {
 
-@Entity
-public class Vehicle {
-
-    @Id
     private String vehicleId;
     private String vehicleType;
     private String model;
@@ -18,6 +14,21 @@ public class Vehicle {
     private boolean occupied;
     private double fuelConsumption;
     private double fuelBalance;
+
+    public VehicleDTO(Vehicle vehicle) {
+        if (vehicle != null) {
+            this.vehicleId = vehicle.getVehicleId();
+            this.vehicleType = vehicle.getVehicleType();
+            this.model = vehicle.getModel();
+            this.noOfSeats = vehicle.getNoOfSeats();
+            this.initialMeter = vehicle.getInitialMeter();
+            this.serviceMeter = vehicle.getServiceMeter();
+            this.fuelType = vehicle.getFuelType();
+            this.occupied = vehicle.isOccupied();
+            this.fuelConsumption = vehicle.getFuelConsumption();
+            this.fuelBalance = vehicle.getFuelBalance();
+        }
+    }
 
     public String getVehicleId() {
         return vehicleId;
