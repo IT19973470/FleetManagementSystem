@@ -15,9 +15,6 @@ public class ApplicationDTO {
     private LocalDate depatureDate;
     private LocalDate arrivaleDate;
     private String reason;
-    private String itemi;
-    private  String itemn;
-    private int qty; //one naa
 
     public ApplicationDTO(Application application) {
         if(application != null) {
