@@ -4,7 +4,9 @@ import lk.fleet.dto.ApplicationDTO;
 //import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.Application;
+import lk.fleet.entity.Passenger;
 import lk.fleet.entity.PassengerApplication;
+import lk.fleet.entity.PassengerPassengerApplication;
 import lk.fleet.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +26,20 @@ public class ApplicationController {
 //    public Application addApplication(@RequestBody Application application) {
 //        return applicationService.addApplication(application);
 //    }
-        @PostMapping(value ="/newApplication")
-        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
-             return applicationService.addPassengerApplication(application);
-         }
+//        @PostMapping(value ="/newApplication")
+//        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
+//             return applicationService.addPassengerApplication(application);
+//         }
 
+//    @PostMapping(value ="/newApplication1")
+//    public Passenger addPassengerApplication1(@RequestBody Passenger application){
+//        return applicationService.addPassenger(application);
+//    }
+
+    @PostMapping(value ="/Insertall")
+    public PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(@RequestBody PassengerPassengerApplication passengerPassengerApplication){
+        return applicationService.addpassenerApplicationpassengerPassengerApplicationapplication(passengerPassengerApplication);
+    }
         @PutMapping(value = "/updateApplication/{applicationID}")
         public ResponseEntity<ApplicationDTO> updateApplication(@PathVariable String applicationID, @RequestBody Application application){
             return ResponseEntity.ok(applicationService.updateApplication(applicationID, application));

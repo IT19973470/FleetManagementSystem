@@ -15,8 +15,8 @@ public class PassengerPassengerApplication {
     private  Passenger passenger;
 
     @ManyToOne
-    @JoinColumn(name="applicationID",referencedColumnName = "applicationID",insertable = false, updatable = false,nullable = false)
-    private Application application;
+    @JoinColumn(name="passengerApplicationID",referencedColumnName = "passengerApplicationID",insertable = false, updatable = false,nullable = false)
+    private PassengerApplication passengerApplication;
 
     public PassengerPassengerApplicationPK getPassengerPassengerApplicationId() {
         return passengerPassengerApplicationId;
@@ -34,11 +34,11 @@ public class PassengerPassengerApplication {
         this.passenger = passenger;
     }
 
-    public Application getApplication() {
-        return application;
+    public PassengerApplication getPassengerApplication() {
+        return passengerApplication;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setPassengerApplication(PassengerApplication passengerApplication) {
+        this.passengerApplication = passengerApplication;
     }
 }
