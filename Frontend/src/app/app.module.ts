@@ -8,6 +8,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ManageDeliveryComponent } from './main/content/transport-manager/manage-delivery/manage-delivery.component';
+import { ViewDeliveryComponent } from './main/content/transport-manager/view-delivery/view-delivery.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { MainComponent } from './main/main.component';
     FooterComponent,
     ContentComponent,
     NavbarComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent,
+    SignupComponent,
+    ManageDeliveryComponent,
+    ViewDeliveryComponent
   ],
   imports: [
     BrowserModule,
