@@ -11,6 +11,7 @@ public class DeliveryDetail {
     private String deliveryDetailId;
     private String itemName;
     private String itemType;
+    private int itemQty;
 
     @OneToOne
     private Delivery delivery;
@@ -45,5 +46,13 @@ public class DeliveryDetail {
 
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
+    }
+
+    public int getItemQty() {
+        return itemQty;
+    }
+
+    public void setItemQty(int itemQty) {
+        this.itemQty = itemQty;
     }
 }
