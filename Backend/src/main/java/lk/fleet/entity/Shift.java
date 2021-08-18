@@ -26,7 +26,7 @@ public class Shift {
     private BookingManagementClerk bookingManagementClerk;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     private OverTime overTime;
 
     @ManyToOne
