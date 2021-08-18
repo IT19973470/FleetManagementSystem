@@ -20,7 +20,10 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Object addDriver(Driver driver) {
+        driver.setDriverID(driver.getUserAccount().getEmployeeID());
+
         userAccountRepository.save(driver.getUserAccount());
+
         return driverRepository.save(driver);
     }
 
