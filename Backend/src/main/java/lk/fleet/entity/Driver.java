@@ -9,6 +9,7 @@ public class Driver {
     @Id
     private String driverID;
     private String lisenseID;
+    private boolean approval;
 
     @OneToOne
     private UserAccount userAccount;
@@ -47,5 +48,13 @@ public class Driver {
 
     public void setLisenseID(String lisenseID) {
         this.lisenseID = lisenseID;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
     }
 }

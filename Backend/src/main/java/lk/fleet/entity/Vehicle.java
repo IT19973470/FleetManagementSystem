@@ -12,10 +12,12 @@ public class Vehicle {
     private String vehicleType;
     private String model;
     private int noOfSeats;
-    private double initialMpg;
-    private double serviceMpg;
+    private double initialMeter;
+    private double serviceMeter;
     private String fuelType;
     private boolean occupied;
+    private double fuelConsumption;
+    private double fuelBalance;
 
     public String getVehicleId() {
         return vehicleId;
@@ -49,20 +51,36 @@ public class Vehicle {
         this.noOfSeats = noOfSeats;
     }
 
-    public double getInitialMpg() {
-        return initialMpg;
+    public double getInitialMeter() {
+        return initialMeter;
     }
 
-    public void setInitialMpg(double initialMpg) {
-        this.initialMpg = initialMpg;
+    public void setInitialMeter(double initialMeter) {
+        this.initialMeter = initialMeter;
     }
 
-    public double getServiceMpg() {
-        return serviceMpg;
+    public double getServiceMeter() {
+        return serviceMeter;
     }
 
-    public void setServiceMpg(double serviceMpg) {
-        this.serviceMpg = serviceMpg;
+    public void setServiceMeter(double serviceMeter) {
+        this.serviceMeter = serviceMeter;
+    }
+
+    public double getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public void setFuelConsumption(double fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
+    }
+
+    public double getFuelBalance() {
+        return fuelBalance;
+    }
+
+    public void setFuelBalance(double fuelBalance) {
+        this.fuelBalance = fuelBalance;
     }
 
     public String getFuelType() {

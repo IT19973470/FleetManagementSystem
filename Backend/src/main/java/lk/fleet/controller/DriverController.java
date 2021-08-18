@@ -1,44 +1,35 @@
 package lk.fleet.controller;
 
 import lk.fleet.entity.Driver;
+import lk.fleet.entity.UserAccount;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "driver/"+"driverAccount")
+@RequestMapping(value = "fleetmanagement/"+"driverAccount")
 public class DriverController {
 
     @Autowired
     private DriverService driverService;
 
     @PostMapping(value = "/addDriver")
-    public Driver addDriver(@RequestBody Driver driver){
-        return driverService.addDriver(driver);
+    public ResponseEntity addDriver(@RequestBody Driver driver){
+        return  ResponseEntity.ok(driverService.addDriver(driver));
     }
 
-    @GetMapping(value = "/allDrivers")
-    public List<Driver> getAllDrivers(){
-        return driverService.getAllDrivers();
-    }
-
-//    @GetMapping(value = "/getDriver/{driverID}")
-//    public Driver getDriverUsingdriverID(@PathVariable String driverID){
-//        return driverService.getDriverByDriverID(driverID);
-//    }
-
-    @PostMapping(value = "/updateDriver")
-    public Driver updateDriver(@RequestBody Driver driver){
-        return driverService.updateDriver(driver);
+    @PutMapping(value = "/updateDriver/{driverID}")
+    public ResponseEntity updateDriver(@PathVariable String driverID, @RequestBody Driver driver){
+        return ResponseEntity.ok(driverService.updateDriver(driverID,driver));
     }
 
     @DeleteMapping(value = "/deleteDriver/{driverID}")
-    public Driver deleteDriver(@RequestBody Driver driver){
-        return driverService.deleteDriver(driver);
+    public ResponseEntity deleteDriver(@PathVariable String driverID){
+        return ResponseEntity.ok(driverService.deleteDriver(driverID));
     }
-
 
 }

@@ -1,0 +1,12 @@
+div>div{
+  border-bottom: 1px solid #a0a0a0;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  color: #757271;
+  font-weight: bold;
+}
+
+div>div:first-child{
+  border-top: 1px solid #a0a0a0;
+
+}
