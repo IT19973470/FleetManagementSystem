@@ -1,0 +1,7 @@
+.alignLeft{
+  float: left;
+}
+
+#navHeader{
+  background: linear-gradient(110deg, #323130 76%, #E3A71F 60%);
+}
