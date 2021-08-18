@@ -30,8 +30,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         if(optionalUserAccount.isPresent()){
             UserAccount userAccountObj = optionalUserAccount.get();
             userAccountObj.setAccountType(userAccount.getAccountType());
-            userAccount.setNic(userAccount.getNic());
-            userAccountObj.setDOB(userAccount.getDOB());
             userAccountObj.setName(userAccount.getName());
             userAccountObj.setAddress(userAccount.getAddress());
             userAccountObj.setContactNo(userAccount.getContactNo());
