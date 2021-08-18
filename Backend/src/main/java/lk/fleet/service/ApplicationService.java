@@ -15,6 +15,7 @@ public interface ApplicationService {
 //    PassengerApplication addPassengerApplication(PassengerApplication application);
     PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(PassengerPassengerApplication passengerPassengerApplication);
     Passenger addPassenger(Passenger passenger);
+//    ApplicationDTO updateApplication(String applicationID, PassengerPassengerApplication passengerPassengerApplication);
     ApplicationDTO updateApplication(String aplicationID, Application application);
     List<Application> getPassengerApp();
     List<PassengerApplication> getAPassengerApp();

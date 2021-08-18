@@ -1,11 +1,8 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Application;
-import lk.fleet.entity.Item;
-import lk.fleet.entity.PassengerApplication;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class ApplicationDTO {
     private String applicationID;

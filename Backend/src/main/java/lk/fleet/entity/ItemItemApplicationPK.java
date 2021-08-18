@@ -9,11 +9,11 @@ import java.io.Serializable;
 public class ItemItemApplicationPK implements Serializable {
 
     private String itemID;
-    private String requestID;
+    private String itemApplicationId;
 
-    public ItemItemApplicationPK(String itemID, String requestID) {
+    public ItemItemApplicationPK(String itemID, String itemApplicationId) {
         this.itemID = itemID;
-        this.requestID = requestID;
+        this.itemApplicationId = itemApplicationId;
     }
 
     public ItemItemApplicationPK() {
@@ -28,11 +28,11 @@ public class ItemItemApplicationPK implements Serializable {
         this.itemID = itemID;
     }
 
-    public String getRequestID() {
-        return requestID;
+    public String getItemApplicationId() {
+        return itemApplicationId;
     }
 
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
+    public void setItemApplicationId(String itemApplicationId) {
+        this.itemApplicationId = itemApplicationId;
     }
 }
