@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "userAccount")
+@RequestMapping(value = "fleetmanagement/" + "userAccount")
 public class VipBookingController {
 
     @Autowired

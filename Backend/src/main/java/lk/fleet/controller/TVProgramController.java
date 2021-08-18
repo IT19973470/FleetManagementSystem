@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "tvProgram")
+@RequestMapping(value = "fleetmanagement/" + "tvProgram")
 public class TVProgramController {
 
     @Autowired
