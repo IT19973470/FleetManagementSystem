@@ -30,6 +30,7 @@ public class OverTimeServiceImpl implements OverTimeService{
             overTime1.setNoOfShifts(overTime.getNoOfShifts());
             overTime1.setStartTime(overTime.getStartTime());
             overTime1.setEndTime(overTime.getEndTime());
+            overTime1.setApproval(overTime.isApproval());
 
             return new OverTimeDTO(overTimeRepository.save(overTime1));
         }
