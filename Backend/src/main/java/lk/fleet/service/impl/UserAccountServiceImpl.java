@@ -94,6 +94,7 @@ public class UserAccountServiceImpl implements UserAccountService {
             bookingManagementClerkObject.getUserAccount().setContactNo(bookingManagementClerk.getUserAccount().getContactNo());
             bookingManagementClerkObject.getUserAccount().setEmail(bookingManagementClerk.getUserAccount().getEmail());
 
+            bookingManagementClerkObject.getUserAccount().setApproved(true);
             userAccountRepository.save(bookingManagementClerkObject.getUserAccount());
             return new BookingManagementClerkDTO(bookingManagementClerkRepository.save(bookingManagementClerkObject));
         }
@@ -144,7 +145,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public UserAccountDTO login(UserAccount userAccount) {
-        UserAccount userAccountObj = userAccountRepository.findAllByUsernameAndPasswordAndApproved(userAccount.getUsername(), userAccount.getPassword(), true);
+        UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
         return new UserAccountDTO(userAccountObj);
     }
 

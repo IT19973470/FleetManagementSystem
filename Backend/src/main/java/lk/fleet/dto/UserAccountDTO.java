@@ -17,7 +17,7 @@ public class UserAccountDTO {
     private String contactNo;
     private String email;
     private String registeredDate;
-    private String username;
+    private String nameWithInitials;
     private String password;
     private BookingManagementClerkDTO bookingManagementClerkDTO;
 
@@ -33,7 +33,7 @@ public class UserAccountDTO {
             this.contactNo = userAccount.getContactNo();
             this.email = userAccount.getEmail();
             this.registeredDate = userAccount.getRegisteredDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            this.username = userAccount.getUsername();
+            this.nameWithInitials = userAccount.getNameWithInitials();
 //            this.password = userAccount.getPassword();
         }
     }
@@ -112,12 +112,12 @@ public class UserAccountDTO {
         this.registeredDate = registeredDate;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNameWithInitials() {
+        return nameWithInitials;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNameWithInitials(String nameWithInitials) {
+        this.nameWithInitials = nameWithInitials;
     }
 
     public String getPassword() {

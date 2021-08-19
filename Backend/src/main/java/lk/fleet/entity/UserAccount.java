@@ -18,7 +18,7 @@ public class UserAccount {
     private String contactNo;
     private String email;
     private LocalDate registeredDate;
-    private String username;
+    private String nameWithInitials;
     private String password;
     private boolean approved;
 
@@ -94,12 +94,12 @@ public class UserAccount {
         this.registeredDate = registeredDate;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNameWithInitials() {
+        return nameWithInitials;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNameWithInitials(String nameWithInitials) {
+        this.nameWithInitials = nameWithInitials;
     }
 
     public String getPassword() {
