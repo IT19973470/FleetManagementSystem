@@ -37,6 +37,6 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         return true;
     }
 
-    
+
 
 }
