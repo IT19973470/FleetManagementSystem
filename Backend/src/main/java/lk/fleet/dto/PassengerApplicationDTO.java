@@ -1,5 +1,6 @@
 package lk.fleet.dto;
 
+import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.PassengerApplication;
 
 import java.time.LocalDate;
@@ -10,19 +11,22 @@ public class PassengerApplicationDTO {
     private String vehicleType;
     private boolean approval;
     private LocalDate depatureDate;
-    private LocalDate arrivaleDate;
-    private String reason;
-    private int noOfPassengers;
+    private String drivername;
+    private String vehicleId;
 
-    public PassengerApplicationDTO(PassengerApplication passengerApplication) {
-        if(passengerApplication != null) {
-         this.applicationID=passengerApplication.getApplication().getApplicationID();
-         this.destination=passengerApplication.getApplication().getDestination();
-         this.noOfPassengers=passengerApplication.getNoOfPassengers();
+
+    public PassengerApplicationDTO(BookingApplication bookingApplication) {
+        if(bookingApplication != null) {
+         this.applicationID=bookingApplication.getApplication().getApplicationID();
+         this.vehicleType=bookingApplication.getApplication().getVehicleType();
+         this.destination=bookingApplication.getApplication().getDestination();
+         this.depatureDate=bookingApplication.getApplication().getDepatureDate();
+         this.approval=bookingApplication.getApplication().isApproval();
+         this.drivername=bookingApplication.getBooking().getShift().getDriverVehicle().getDriver().getUserAccount().getName();
+         this.vehicleId=bookingApplication.getBooking().getShift().getDriverVehicle().getVehicle().getVehicleId();
         }
 
     }
-
     public String getApplicationID() {
         return applicationID;
     }
@@ -39,11 +43,44 @@ public class PassengerApplicationDTO {
         this.destination = destination;
     }
 
-    public int getNoOfPassengers() {
-        return noOfPassengers;
+
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setNoOfPassengers(int noOfPassengers) {
-        this.noOfPassengers = noOfPassengers;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+
+    public LocalDate getDepatureDate() {
+        return depatureDate;
+    }
+
+    public void setDepatureDate(LocalDate depatureDate) {
+        this.depatureDate = depatureDate;
+    }
+
+    public String getDrivername() {
+        return drivername;
+    }
+
+    public void setDrivername(String drivername) {
+        this.drivername = drivername;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
     }
 }
