@@ -15,6 +15,7 @@ import {ViewDeliveryComponent} from './main/content/transport-manager/view-deliv
 import {RouterModule} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],
