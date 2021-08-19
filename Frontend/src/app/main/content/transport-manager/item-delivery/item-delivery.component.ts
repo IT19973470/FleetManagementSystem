@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavbarService} from "../../../../_service/navbar.service";
 
 @Component({
@@ -8,14 +8,15 @@ import {NavbarService} from "../../../../_service/navbar.service";
 })
 export class ItemDeliveryComponent implements OnInit {
 
-  deliveryDetails = {
+  deliveryDetail = {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
     placeFrom: '',
     companyName: '',
     deliveryDate: '',
-    deliveryTime: ''
+    deliveryTime: '',
+    items: []
   };
 
   constructor() {
