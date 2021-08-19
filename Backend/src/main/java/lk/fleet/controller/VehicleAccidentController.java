@@ -30,4 +30,9 @@ public class VehicleAccidentController {
     public ResponseEntity deleteAccident(@PathVariable String vehicleAccidentID) {
         return ResponseEntity.ok(vehicleAccidentService.deleteAccident(vehicleAccidentID));
     }
+
+    @GetMapping(value = "/getVehicleAccidents")
+    public ResponseEntity getVehicleAccidents() {
+        return ResponseEntity.ok(vehicleAccidentService.getVehicleAccidents());
+    }
 }

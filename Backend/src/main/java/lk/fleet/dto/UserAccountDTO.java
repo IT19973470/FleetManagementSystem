@@ -30,7 +30,7 @@ public class UserAccountDTO {
             this.email = userAccount.getEmail();
             this.registeredDate = userAccount.getRegisteredDate();
             this.username = userAccount.getUsername();
-            this.password = userAccount.getPassword();
+//            this.password = userAccount.getPassword();
         }
     }
 

@@ -10,4 +10,6 @@ public interface UserAccountService {
     UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount);
 
     boolean deleteUserAccount(String employeeID);
+
+    UserAccountDTO login(UserAccount userAccount);
 }

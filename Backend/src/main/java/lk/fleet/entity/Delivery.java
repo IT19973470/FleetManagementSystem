@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ public class Delivery {
     private String contactNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
+    private boolean deliveryStatus;
 
     @ManyToOne
     private SecurityOfficer securityOfficer;
@@ -82,5 +84,13 @@ public class Delivery {
 
     public void setSecurityOfficer(SecurityOfficer securityOfficer) {
         this.securityOfficer = securityOfficer;
+    }
+
+    public boolean isDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(boolean deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 }

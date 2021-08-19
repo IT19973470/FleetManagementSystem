@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavbarService} from "../../_service/navbar.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navBarService: NavbarService) {
+  }
 
   ngOnInit(): void {
   }
 
+  setTopic(topic){
+    this.navBarService.navTopic.next(topic);
+  }
 }

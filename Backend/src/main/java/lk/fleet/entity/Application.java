@@ -2,10 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.time.LocalDate;
-import java.util.Set;
 
 //Gayan//
 @Entity
@@ -21,7 +18,7 @@ public class Application {
 
 
     public String getApplicationID() {
-        return applicationID;
+        return this.applicationID;
     }
 
     public void setApplicationID(String applicationID) {
@@ -75,6 +72,7 @@ public class Application {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
 
 
 }
