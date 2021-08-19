@@ -39,6 +39,7 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         return true;
     }
 
+
     @Override
     public List<VehicleAccidentDTO> getVehicleAccidents() {
         List<VehicleAccident> vehicleAccidents = vehicleAccidentRepository.findAll();
@@ -48,6 +49,7 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         }
         return vehicleAccidentDTOS;
     }
+
 
 
 }
