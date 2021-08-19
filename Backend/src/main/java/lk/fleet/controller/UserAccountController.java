@@ -14,6 +14,11 @@ public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
 
+    @PostMapping(value = "/login")
+    public ResponseEntity login(@RequestBody UserAccount userAccount){
+        return ResponseEntity.ok(userAccountService.login(userAccount));
+    }
+
     @PostMapping(value = "/addUserAccount")
     public ResponseEntity addUserAccount(@RequestBody UserAccount userAccount){
         return ResponseEntity.ok(userAccountService.addUserAccount(userAccount));

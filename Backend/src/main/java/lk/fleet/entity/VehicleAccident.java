@@ -10,8 +10,10 @@ public class VehicleAccident {
 
   @Id
   private String vehicleAccidentID;
-  private LocalDateTime accidentDate,accidentTime;
+  private LocalDate accidentDate;
+  private LocalTime accidentTime;
   private String insuranceNo;
+  private boolean insuranceStatus;
 
 
     @ManyToOne
@@ -29,19 +31,19 @@ public class VehicleAccident {
         this.vehicleAccidentID = vehicleAccidentID;
     }
 
-    public LocalDateTime getAccidentDate() {
+    public LocalDate getAccidentDate() {
         return accidentDate;
     }
 
-    public void setAccidentDate(LocalDateTime accidentDate) {
+    public void setAccidentDate(LocalDate accidentDate) {
         this.accidentDate = accidentDate;
     }
 
-    public LocalDateTime getAccidentTime() {
+    public LocalTime getAccidentTime() {
         return accidentTime;
     }
 
-    public void setAccidentTime(LocalDateTime accidentTime) {
+    public void setAccidentTime(LocalTime accidentTime) {
         this.accidentTime = accidentTime;
     }
 
@@ -51,6 +53,14 @@ public class VehicleAccident {
 
     public void setInsuranceNo(String insuranceNo) {
         this.insuranceNo = insuranceNo;
+    }
+
+    public boolean isInsuranceStatus() {
+        return insuranceStatus;
+    }
+
+    public void setInsuranceStatus(boolean insuranceStatus) {
+        this.insuranceStatus = insuranceStatus;
     }
 
     public AccidentMaintenanceManager getAccidentMaintenanceManager() {

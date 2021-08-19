@@ -21,9 +21,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public Object addDriver(Driver driver) {
         driver.setDriverID(driver.getUserAccount().getEmployeeID());
-
         userAccountRepository.save(driver.getUserAccount());
-
         return driverRepository.save(driver);
     }
 
@@ -32,9 +30,18 @@ public class DriverServiceImpl implements DriverService {
         Optional<Driver> optionalDriver = driverRepository.findById(driverID);
         if (optionalDriver.isPresent()){
             Driver driver1 = optionalDriver.get();
+            driver1.getUserAccount().setName(driver.getUserAccount().getName());
+            driver1.getUserAccount().setAddress(driver.getUserAccount().getAddress());
+            driver1.getUserAccount().setDOB(driver.getUserAccount().getDOB());
+            driver1.getUserAccount().setEmail(driver.getUserAccount().getEmail());
+            driver1.getUserAccount().setNic(driver.getUserAccount().getNic());
+            driver1.getUserAccount().setUsername(driver.getUserAccount().getUsername());
+            driver1.getUserAccount().setPassword(driver.getUserAccount().getPassword());
             driver1.setDriverID(driver.getDriverID());
             driver1.setLisenseID(driver.getLisenseID());
+            driver1.setApproval(driver.isApproval());
 
+            userAccountRepository.save(driver1.getUserAccount());
             return new DriverDTO(driverRepository.save(driver1));
         }
         return null;
