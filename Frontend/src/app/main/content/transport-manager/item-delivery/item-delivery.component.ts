@@ -18,11 +18,11 @@ export class ItemDeliveryComponent implements OnInit {
     deliveryTime: ''
   };
 
-  constructor(private navBarService: NavbarService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('Item Delivery');
+
   }
 
   onSubmit() {
