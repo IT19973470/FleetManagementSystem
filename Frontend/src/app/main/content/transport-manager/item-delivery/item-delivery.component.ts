@@ -25,6 +25,8 @@ export class ItemDeliveryComponent implements OnInit {
   };
 
   item;
+  btnText = 'Add';
+  tblIndex;
 
   constructor(private transportManagerService: TransportManagerService, private router: Router) {
     this.item = this.getNewItem();
@@ -42,15 +44,21 @@ export class ItemDeliveryComponent implements OnInit {
   }
 
   onSubmitItem() {
-    this.deliveryDetail.deliveryItemDetails.push(this.item);
+    if (this.btnText === 'Add') {
+      this.deliveryDetail.deliveryItemDetails.push(this.item);
+    } else if (this.btnText === 'Update') {
+      this.deliveryDetail.deliveryItemDetails[this.tblIndex] = this.item
+    }
     this.item = this.getNewItem();
     this.itemForm.resetForm(this.item);
   }
 
-  setItem(item) {
+  setItem(item, i) {
+    this.tblIndex = i;
     this.item.itemName = item.itemName;
     this.item.itemType = item.itemType;
     this.item.itemQty = item.itemQty;
+    this.btnText = 'Update';
   }
 
   getNewItem() {
