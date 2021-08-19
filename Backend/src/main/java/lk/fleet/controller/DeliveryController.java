@@ -16,18 +16,18 @@ public class DeliveryController {
     @Autowired
     private DeliveryService deliveryService;
 
-    @PostMapping(value = "/addDelivery")
-    public ResponseEntity addDelivery(@RequestBody Delivery delivery){
-        return ResponseEntity.ok(deliveryService.addDelivery(delivery));
-    }
-
-    @PutMapping(value = "/updateDelivery/{deliveryId}")
-    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Booking booking){
-        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, booking));
-    }
-
-    @DeleteMapping(value = "/deleteDelivery/{deliveryId}")
-    public ResponseEntity deleteDelivery(@PathVariable String deliveryId){
-        return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
-    }
+//    @PostMapping(value = "/addDelivery")
+//    public ResponseEntity addDelivery(@RequestBody Delivery delivery){
+//        return ResponseEntity.ok(deliveryService.addDelivery(delivery));
+//    }
+//
+//    @PutMapping(value = "/updateDelivery/{deliveryId}")
+//    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Booking booking){
+//        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, booking));
+//    }
+//
+//    @DeleteMapping(value = "/deleteDelivery/{deliveryId}")
+//    public ResponseEntity deleteDelivery(@PathVariable String deliveryId){
+//        return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
+//    }
 }
