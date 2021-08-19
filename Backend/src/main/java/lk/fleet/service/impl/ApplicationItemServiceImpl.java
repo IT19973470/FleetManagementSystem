@@ -1,14 +1,17 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.ApplicationDTO;
+import lk.fleet.dto.PassengerApplicationDTO;
+import lk.fleet.entity.Application;
 import lk.fleet.entity.ItemItemApplication;
 import lk.fleet.entity.ItemItemApplicationPK;
-import lk.fleet.repository.ApplicationRepository;
-import lk.fleet.repository.ItemApplicationRepository;
-import lk.fleet.repository.ItemItemApplicationRepository;
-import lk.fleet.repository.ItemRepository;
+import lk.fleet.repository.*;
 import lk.fleet.service.ApplicationItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ApplicationItemServiceImpl implements ApplicationItemService {
@@ -21,10 +24,12 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
     ItemRepository itemRepository;
     @Autowired
     ItemItemApplicationRepository itemItemApplicationRepository;
+    @Autowired
+    PassengerApplicationRepository passengerApplicationRepository;
 
 
     @Override
-    public ItemItemApplication addItemApplication(ItemItemApplication itemItemApplication) {
+    public ItemItemApplication addItemItemApplication(ItemItemApplication itemItemApplication) {
         itemRepository.save(itemItemApplication.getItem());
         applicationRepository.save(itemItemApplication.getItemApplication().getApplication());
         itemItemApplication.getItemApplication().setItemApplicationId(itemItemApplication.getItemApplication().getApplication().getApplicationID());
@@ -34,4 +39,9 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
 
         return itemItemApplicationRepository.save(itemItemApplication);
     }
+
+
+
+
+
 }
