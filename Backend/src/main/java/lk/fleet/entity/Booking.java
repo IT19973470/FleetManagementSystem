@@ -19,6 +19,17 @@ public class Booking {
     @JoinColumn(nullable = false)
     private BookingManagementClerk bookingManagementClerk;
 
+    @OneToOne
+    private  Shift shift;
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
+    }
+
     public String getBookingId() {
         return bookingId;
     }

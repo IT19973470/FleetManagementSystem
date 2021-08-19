@@ -30,4 +30,5 @@ public class DeliveryController {
     public ResponseEntity deleteDelivery(@PathVariable String deliveryId){
         return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
     }
+
 }
