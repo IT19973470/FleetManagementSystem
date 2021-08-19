@@ -12,7 +12,7 @@ public class ItemApplication {
     private  int noOfItems;
 
     @OneToOne
-    private ItemApplication application;
+    private Application application;
 
     public String getItemApplicationId() {
         return itemApplicationId;
@@ -30,11 +30,11 @@ public class ItemApplication {
         this.noOfItems = noOfItems;
     }
 
-    public ItemApplication getApplication() {
+    public Application getApplication() {
         return application;
     }
 
-    public void setApplication(ItemApplication application) {
+    public void setApplication(Application application) {
         this.application = application;
     }
 }

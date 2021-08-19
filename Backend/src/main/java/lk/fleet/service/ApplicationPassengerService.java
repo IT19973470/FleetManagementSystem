@@ -10,7 +10,7 @@ import lk.fleet.entity.PassengerPassengerApplication;
 import java.util.List;
 
 
-public interface ApplicationService {
+public interface ApplicationPassengerService {
 //    Application addApplication(Application application); //jarawa epa
 //    PassengerApplication addPassengerApplication(PassengerApplication application);
     PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(PassengerPassengerApplication passengerPassengerApplication);
