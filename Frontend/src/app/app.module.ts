@@ -10,15 +10,14 @@ import {NavbarComponent} from './main/navbar/navbar.component';
 import {MainComponent} from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
-import {ViewDeliveryComponent} from './main/content/transport-manager/view-delivery/view-delivery.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
-import { PersonDeliveryComponent } from './main/content/transport-manager/person-delivery/person-delivery.component';
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
-import { ViewPersonDeliveryComponent } from './main/content/transport-manager/view-person-delivery/view-person-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
+import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +29,11 @@ import { NavTransportManagerComponent } from './main/navbar/nav-transport-manage
     MainComponent,
     LoginComponent,
     SignupComponent,
-    ViewDeliveryComponent,
     ItemDeliveryComponent,
-    PersonDeliveryComponent,
     ViewItemDeliveryComponent,
-    ViewPersonDeliveryComponent,
-    NavTransportManagerComponent
+    NavTransportManagerComponent,
+    ViewPassengerDeliveryComponent,
+    PassengerDeliveryComponent
   ],
   imports: [
     BrowserModule,

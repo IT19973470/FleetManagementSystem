@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleetmanagement/" + "userAccount")
+@RequestMapping(value = "fleetmanagement/" + "delivery")
 public class DeliveryController {
 
     @Autowired
     private DeliveryService deliveryService;
 
-    @PostMapping(value = "/addDelivery")
-    public ResponseEntity addDelivery(@RequestBody Delivery delivery){
-        return ResponseEntity.ok(deliveryService.addDelivery(delivery));
+    @PostMapping(value = "/addItemDelivery")
+    public ResponseEntity addItemDelivery(@RequestBody Delivery delivery){
+        return ResponseEntity.ok(deliveryService.addItemDelivery(delivery));
     }
 
     @PutMapping(value = "/updateDelivery/{deliveryId}")

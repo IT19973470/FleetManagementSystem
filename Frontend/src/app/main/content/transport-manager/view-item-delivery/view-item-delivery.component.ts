@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewItemDeliveryComponent implements OnInit {
 
-  constructor() { }
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+
+  }
+
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
   }
 
 }
