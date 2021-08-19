@@ -16,8 +16,8 @@ public class ItemItemApplication {
     private Item item;
 
     @ManyToOne
-    @JoinColumn(name="applicationID",referencedColumnName = "applicationID",insertable = false, updatable = false,nullable = false)
-    private Application application;
+    @JoinColumn(name="itemApplicationId",referencedColumnName = "itemApplicationId",insertable = false, updatable = false,nullable = false)
+    private ItemApplication itemApplication;
 
 
     public ItemItemApplicationPK getItemItemApplicationId() {
@@ -36,11 +36,11 @@ public class ItemItemApplication {
         this.item = item;
     }
 
-    public Application getApplication() {
-        return application;
+    public ItemApplication getItemApplication() {
+        return itemApplication;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setItemApplication(ItemApplication itemApplication) {
+        this.itemApplication = itemApplication;
     }
 }
