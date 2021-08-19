@@ -12,7 +12,7 @@ public class UserAccount {
     private String employeeID;
     private String accountType;
     private String nic;
-    private LocalDate DOB;
+    private LocalDate dob;
     private String name;
     private String address;
     private String contactNo;
@@ -41,12 +41,12 @@ public class UserAccount {
         return nic;
     }
 
-    public LocalDate getDOB() {
-        return DOB;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
     public void setNic(String nic) {
