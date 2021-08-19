@@ -1,19 +1,35 @@
 <div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/main/view_delivery"
-    #viewDelivery="routerLinkActive"
+    routerLink="/main/view_item_delivery"
+    #viewItemDelivery="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':viewDelivery.isActive?'#c0050e':''}">
-    View Deliveries
+    [ngStyle]="{'color':viewItemDelivery.isActive?'#c0050e':''}">
+    View Item Deliveries
   </div>
 
   <div
-    routerLink="/main/manage_delivery"
-    #manageDelivery="routerLinkActive"
+    routerLink="/main/item_delivery"
+    #itemDelivery="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':manageDelivery.isActive?'#c0050e':''}">
-    Manage Deliveries
+    [ngStyle]="{'color':itemDelivery.isActive?'#c0050e':''}">
+    Item Delivery
+  </div>
+
+  <div
+    routerLink="/main/view_delivery"
+    #viewPassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewPassengerDelivery.isActive?'#c0050e':''}">
+    View Passenger Deliveries
+  </div>
+
+  <div
+    routerLink="/main/view_delivery"
+    #PassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':PassengerDelivery.isActive?'#c0050e':''}">
+    Passenger Delivery
   </div>
 
   <div>

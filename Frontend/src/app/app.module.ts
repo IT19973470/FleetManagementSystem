@@ -10,12 +10,14 @@ import {NavbarComponent} from './main/navbar/navbar.component';
 import {MainComponent} from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
-import {ManageDeliveryComponent} from './main/content/transport-manager/manage-delivery/manage-delivery.component';
 import {ViewDeliveryComponent} from './main/content/transport-manager/view-delivery/view-delivery.component';
 import {RouterModule} from "@angular/router";
-import {RouterTestingModule} from "@angular/router/testing";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
+import { PersonDeliveryComponent } from './main/content/transport-manager/person-delivery/person-delivery.component';
+import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
+import { ViewPersonDeliveryComponent } from './main/content/transport-manager/view-person-delivery/view-person-delivery.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,11 @@ import {HttpClientModule} from "@angular/common/http";
     MainComponent,
     LoginComponent,
     SignupComponent,
-    ManageDeliveryComponent,
-    ViewDeliveryComponent
+    ViewDeliveryComponent,
+    ItemDeliveryComponent,
+    PersonDeliveryComponent,
+    ViewItemDeliveryComponent,
+    ViewPersonDeliveryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../../../../_service/navbar.service";
 
 @Component({
-  selector: 'app-manage-delivery',
-  templateUrl: './manage-delivery.component.html',
-  styleUrls: ['./manage-delivery.component.css']
+  selector: 'app-item-delivery',
+  templateUrl: './item-delivery.component.html',
+  styleUrls: ['./item-delivery.component.css']
 })
-export class ManageDeliveryComponent implements OnInit {
+export class ItemDeliveryComponent implements OnInit {
 
   deliveryDetails = {
     deliveryPersonName: '',
@@ -22,10 +22,11 @@ export class ManageDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('Manage Deliveries');
+    this.navBarService.navTopic.next('Item Delivery');
   }
 
   onSubmit() {
 
   }
+
 }
