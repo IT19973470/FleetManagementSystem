@@ -16,6 +16,8 @@ public class TransportManagerDTO {
         }
     }
 
+
+
     public TransportManagerDTO(TransportManager transportManager, UserAccountDTO userAccount) {
         this(transportManager);
         this.userAccount = userAccount;

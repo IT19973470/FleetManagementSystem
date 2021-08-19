@@ -1,38 +1,44 @@
 package lk.fleet.dto;
 
+import lk.fleet.entity.BookingManagementClerk;
 import lk.fleet.entity.UserAccount;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class UserAccountDTO {
 
     private String employeeID;
     private String accountType;
     private String nic;
-    private LocalDate DOB;
+    private String dob;
     private String name;
     private String address;
     private String contactNo;
     private String email;
-    private LocalDate registeredDate;
-    private String username;
+    private String registeredDate;
+    private String nameWithInitials;
     private String password;
+    private BookingManagementClerkDTO bookingManagementClerkDTO;
+
 
     public UserAccountDTO(UserAccount userAccount){
         if(userAccount != null){
             this.employeeID = userAccount.getEmployeeID();
             this.accountType = userAccount.getAccountType();
             this.nic = userAccount.getNic();
-            this.DOB = userAccount.getDOB();
+            this.dob = userAccount.getDob().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.name = userAccount.getName();
             this.address = userAccount.getAddress();
             this.contactNo = userAccount.getContactNo();
             this.email = userAccount.getEmail();
-            this.registeredDate = userAccount.getRegisteredDate();
-            this.username = userAccount.getUsername();
+            this.registeredDate = userAccount.getRegisteredDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.nameWithInitials = userAccount.getNameWithInitials();
 //            this.password = userAccount.getPassword();
         }
     }
+
+
 
     public String getEmployeeID() {
         return employeeID;
@@ -58,12 +64,12 @@ public class UserAccountDTO {
         this.nic = nic;
     }
 
-    public LocalDate getDOB() {
-        return DOB;
+    public String getDob() {
+        return dob;
     }
 
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getName() {
@@ -98,20 +104,20 @@ public class UserAccountDTO {
         this.email = email;
     }
 
-    public LocalDate getRegisteredDate() {
+    public String getRegisteredDate() {
         return registeredDate;
     }
 
-    public void setRegisteredDate(LocalDate registeredDate) {
+    public void setRegisteredDate(String registeredDate) {
         this.registeredDate = registeredDate;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNameWithInitials() {
+        return nameWithInitials;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNameWithInitials(String nameWithInitials) {
+        this.nameWithInitials = nameWithInitials;
     }
 
     public String getPassword() {
@@ -121,4 +127,14 @@ public class UserAccountDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public BookingManagementClerkDTO getBookingManagementClerkDTO() {
+        return bookingManagementClerkDTO;
+    }
+
+    public void setBookingManagementClerkDTO(BookingManagementClerkDTO bookingManagementClerkDTO) {
+        this.bookingManagementClerkDTO = bookingManagementClerkDTO;
+    }
+
+
 }
