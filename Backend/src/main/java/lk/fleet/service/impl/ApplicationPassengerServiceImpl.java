@@ -3,7 +3,7 @@ import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.*;
 import lk.fleet.repository.*;
-import lk.fleet.service.ApplicationService;
+import lk.fleet.service.ApplicationPassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ApplicationServiceImpl implements ApplicationService {
+public class ApplicationPassengerServiceImpl implements ApplicationPassengerService {
     @Autowired
     private ApplicationRepository applicationRepository;
     @Autowired
@@ -50,9 +50,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(PassengerPassengerApplication passengerPassengerApplication) {
 
-
-        passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID());
         applicationRepository.save(passengerPassengerApplication.getPassengerApplication().getApplication());
+        passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID());
         passengerApplicationRepository.save(passengerPassengerApplication.getPassengerApplication());
         passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
 
@@ -76,6 +75,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         return null;
     }
+
 
     @Override
     public List<Application> getPassengerApp() {

@@ -18,6 +18,7 @@ public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
 
+
     @PostMapping(value = "/addGeneralManagerUserAccount")
     public ResponseEntity addGeneralManagerUserAccount(@RequestBody UserAccount userAccount){
         return ResponseEntity.ok(userAccountService.addGeneralManagerUserAccount(userAccount));
@@ -34,8 +35,19 @@ public class UserAccountController {
     }
 
     @PostMapping(value = "/addVehicleDiverManagementClerkUserAccount")
-    public ResponseEntity addVehicleDiverManagementClerkUserAccount(@RequestBody VehicleDriverManagementClerk vehicleDriverManagementClerk){
+    public ResponseEntity addVehicleDiverManagementClerkUserAccount(@RequestBody VehicleDriverManagementClerk vehicleDriverManagementClerk) {
         return ResponseEntity.ok(userAccountService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk));
+    }
+    
+    @PostMapping(value = "/login")
+    public ResponseEntity login(@RequestBody UserAccount userAccount){
+        return ResponseEntity.ok(userAccountService.login(userAccount));
+    }
+
+    @PostMapping(value = "/addUserAccount")
+    public ResponseEntity addUserAccount(@RequestBody UserAccount userAccount){
+        return ResponseEntity.ok(userAccountService.addUserAccount(userAccount));
+
     }
 
     @PutMapping(value = "/updateUserAccount/{employeeID}")

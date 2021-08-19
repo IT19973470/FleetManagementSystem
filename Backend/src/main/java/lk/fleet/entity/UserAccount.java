@@ -20,6 +20,7 @@ public class UserAccount {
     private LocalDate registeredDate;
     private String username;
     private String password;
+    private boolean approved;
 
     public String getEmployeeID() {
         return employeeID;
@@ -109,4 +110,11 @@ public class UserAccount {
         this.password = password;
     }
 
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
 }

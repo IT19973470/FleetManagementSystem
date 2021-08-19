@@ -34,7 +34,7 @@ public class UserAccountDTO {
             this.email = userAccount.getEmail();
             this.registeredDate = userAccount.getRegisteredDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.username = userAccount.getUsername();
-            this.password = userAccount.getPassword();
+//            this.password = userAccount.getPassword();
         }
     }
 

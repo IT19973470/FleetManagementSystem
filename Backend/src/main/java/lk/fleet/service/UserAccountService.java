@@ -22,6 +22,7 @@ public interface UserAccountService {
     boolean deleteUserAccount(String employeeID);
 
 
+
     VehicleDriverManagementClerkDTO addVehicleDiverManagementClerkUserAccount(VehicleDriverManagementClerk vehicleDriverManagementClerk);
 
     TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager);
@@ -29,4 +30,7 @@ public interface UserAccountService {
     BookingManagementClerkDTO updateBookingManagementClerkAccount(String bookingManagementClerkId, BookingManagementClerk bookingManagementClerk);
 
     VehicleDriverManagementClerkDTO updateVehicleDiverManagementClerkAccount(String vehicleDriverManagementId, VehicleDriverManagementClerk vehicleDriverManagementClerk);
+
+    UserAccountDTO login(UserAccount userAccount);
+
 }

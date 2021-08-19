@@ -122,7 +122,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount) {
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
-        if(optionalUserAccount.isPresent()){
+        if (optionalUserAccount.isPresent()) {
             UserAccount userAccountObj = optionalUserAccount.get();
             userAccountObj.setAccountType(userAccount.getAccountType());
             userAccountObj.setName(userAccount.getName());
@@ -142,6 +142,10 @@ public class UserAccountServiceImpl implements UserAccountService {
         return true;
     }
 
-
+    @Override
+    public UserAccountDTO login(UserAccount userAccount) {
+        UserAccount userAccountObj = userAccountRepository.findAllByUsernameAndPasswordAndApproved(userAccount.getUsername(), userAccount.getPassword(), true);
+        return new UserAccountDTO(userAccountObj);
+    }
 
 }
