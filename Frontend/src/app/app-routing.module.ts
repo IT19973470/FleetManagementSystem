@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {ManageDeliveryComponent} from "./main/content/transport-manager/manage-delivery/manage-delivery.component";
 import {MainComponent} from "./main/main.component";
+import {ViewDeliveryComponent} from "./main/content/transport-manager/view-delivery/view-delivery.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'manage_delivery',
         component: ManageDeliveryComponent
+      },
+      {
+        path: 'view_delivery',
+        component: ViewDeliveryComponent
       }
     ]
   },

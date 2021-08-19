@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavbarService} from "../../../../_service/navbar.service";
 
 @Component({
   selector: 'app-manage-delivery',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageDeliveryComponent implements OnInit {
 
-  constructor() { }
+  deliveryDetails = {
+    deliveryPersonName: '',
+    deliveryPersonNic: '',
+    contactNumber: '',
+    placeFrom: '',
+    companyName: '',
+    deliveryDate: '',
+    deliveryTime: ''
+  };
 
-  ngOnInit(): void {
+  constructor(private navBarService: NavbarService) {
   }
 
+  ngOnInit(): void {
+    this.navBarService.navTopic.next('Manage Deliveries');
+  }
+
+  onSubmit() {
+
+  }
 }

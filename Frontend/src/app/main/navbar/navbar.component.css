@@ -1,12 +1,21 @@
-div>div{
+div > div {
   border-bottom: 1px solid #a0a0a0;
   padding-bottom: 5px;
   padding-top: 5px;
   color: #757271;
   font-weight: bold;
+  cursor: pointer;
 }
 
-div>div:first-child{
+div > div:first-child {
   border-top: 1px solid #a0a0a0;
 
+}
+
+.btnNavActive {
+  /*background-color: #007aa9;*/
+  color: #028894;
+  font-weight: bold;
+  z-index: 9;
+  border-top-color: #028894;
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavbarService} from "../../../../_service/navbar.service";
 
 @Component({
   selector: 'app-view-delivery',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewDeliveryComponent implements OnInit {
 
-  constructor() { }
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
 
-  ngOnInit(): void {
+  constructor(private navBarService: NavbarService) {
   }
 
+  ngOnInit(): void {
+    this.navBarService.navTopic.next('View Deliveries');
+  }
+
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
+  }
 }
