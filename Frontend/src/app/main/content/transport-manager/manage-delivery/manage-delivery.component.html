@@ -1,0 +1,124 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-5" style="margin-top: 40px">
+
+    <form #deliveryForm="ngForm" (ngSubmit)="deliveryForm.form.valid && onSubmit()" novalidate>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Delivery Person Name :
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control"
+                 [(ngModel)]="deliveryDetails.deliveryPersonName"
+                 #deliveryPersonName="ngModel"
+                 name="deliveryPersonName" required>
+          <div *ngIf="(deliveryPersonName.touched || deliveryForm.submitted) && deliveryPersonName.errors?.required"
+               class="validErr">
+            Delivery Person Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Delivery Person Nic :
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control"
+                 [(ngModel)]="deliveryDetails.deliveryPersonNic"
+                 #deliveryPersonNic="ngModel"
+                 name="deliveryPersonNic" required>
+          <div *ngIf="(deliveryPersonNic.touched || deliveryForm.submitted) && deliveryPersonNic.errors?.required"
+               class="validErr">
+            Delivery Person Nic is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Contact Number :
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control"
+                 [(ngModel)]="deliveryDetails.contactNumber"
+                 #contactNumber="ngModel"
+                 name="contactNumber" required>
+          <div *ngIf="(contactNumber.touched || deliveryForm.submitted) && contactNumber.errors?.required"
+               class="validErr">
+            Contact Number is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Place From :
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control"
+                 [(ngModel)]="deliveryDetails.placeFrom"
+                 #placeFrom="ngModel"
+                 name="placeFrom" required>
+          <div *ngIf="(placeFrom.touched || deliveryForm.submitted) && placeFrom.errors?.required"
+               class="validErr">
+            Place From is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Company Name :
+        </div>
+        <div class="col-8">
+          <input type="text" class="form-control"
+                 [(ngModel)]="deliveryDetails.companyName"
+                 #companyName="ngModel"
+                 name="companyName" required>
+          <div *ngIf="(companyName.touched || deliveryForm.submitted) && companyName.errors?.required"
+               class="validErr">
+            Company Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Delivery Date :
+        </div>
+        <div class="col-8">
+          <input type="date" class="form-control"
+                 [(ngModel)]="deliveryDetails.deliveryDate"
+                 #deliveryDate="ngModel"
+                 name="deliveryDate" required>
+          <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
+               class="validErr">
+            Delivery Date is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+          Delivery Time :
+        </div>
+        <div class="col-8">
+          <input type="time" class="form-control"
+                 [(ngModel)]="deliveryDetails.deliveryTime"
+                 #deliveryTime="ngModel"
+                 name="deliveryTime" required>
+          <div *ngIf="(deliveryTime.touched || deliveryForm.submitted) && deliveryTime.errors?.required"
+               class="validErr">
+            Delivery Time is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 40px">
+        <div class="col-12" style="text-align: right">
+          <button type="submit" class="btn btn-warning" style="font-weight: bold">Add Delivery</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

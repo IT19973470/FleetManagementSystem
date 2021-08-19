@@ -1,5 +1,24 @@
-<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px">
-  <div>Passenger</div>
-  <div style="color: #b56e04">Vehicle</div>
-  <div>Driver</div>
+<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/manage_delivery"
+    #manageDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':manageDelivery.isActive?'#c0050e':''}">
+    Manage Deliveries
+  </div>
+
+  <div
+    routerLink="/main/view_delivery"
+    #viewDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewDelivery.isActive?'#c0050e':''}">
+    View Deliveries
+  </div>
+
+  <div>
+    Passenger Transport
+  </div>
+  <!--<div style="color: #b56e04">Vehicle</div>-->
+  <!--<div>Driver</div>-->
 </div>
