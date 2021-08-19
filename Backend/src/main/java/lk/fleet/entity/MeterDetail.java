@@ -2,7 +2,6 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
@@ -14,7 +13,7 @@ public class MeterDetail {
     private double inMeter;
     private double OutMeter;
     private double mileage;
-    private LocalDateTime dateTime;
+    private LocalDateTime updatedDateTime;
 
     @OneToOne
     private Token token;
@@ -59,11 +58,11 @@ public class MeterDetail {
         this.mileage = mileage;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getUpdatedDateTime() {
+        return updatedDateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
+        this.updatedDateTime = updatedDateTime;
     }
 }
