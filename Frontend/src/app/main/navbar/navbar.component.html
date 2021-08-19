@@ -2,6 +2,7 @@
 
   <div
     routerLink="/main/view_item_delivery"
+    (click)="setTopic('View Item Deliveries')"
     #viewItemDelivery="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':viewItemDelivery.isActive?'#c0050e':''}">
@@ -10,6 +11,7 @@
 
   <div
     routerLink="/main/item_delivery"
+    (click)="setTopic('Item Delivery')"
     #itemDelivery="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':itemDelivery.isActive?'#c0050e':''}">
@@ -18,6 +20,7 @@
 
   <div
     routerLink="/main/view_delivery"
+    (click)="setTopic('View Passenger Deliveries')"
     #viewPassengerDelivery="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':viewPassengerDelivery.isActive?'#c0050e':''}">
@@ -26,6 +29,7 @@
 
   <div
     routerLink="/main/view_delivery"
+    (click)="setTopic('Passenger Delivery')"
     #PassengerDelivery="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':PassengerDelivery.isActive?'#c0050e':''}">

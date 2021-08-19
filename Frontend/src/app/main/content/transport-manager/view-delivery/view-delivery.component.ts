@@ -14,11 +14,11 @@ export class ViewDeliveryComponent implements OnInit {
     foundItem: ''
   };
 
-  constructor(private navBarService: NavbarService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('View Deliveries');
+
   }
 
   isTrueOrFalse(reply) {
