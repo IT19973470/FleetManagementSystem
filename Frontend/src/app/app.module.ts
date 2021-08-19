@@ -1,13 +1,23 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ContentComponent } from './main/content/content.component';
-import { NavbarComponent } from './main/navbar/navbar.component';
-import { MainComponent } from './main/main.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {ContentComponent} from './main/content/content.component';
+import {NavbarComponent} from './main/navbar/navbar.component';
+import {MainComponent} from './main/main.component';
+import {LoginComponent} from './login/login.component';
+import {SignupComponent} from './signup/signup.component';
+import {ViewDeliveryComponent} from './main/content/transport-manager/view-delivery/view-delivery.component';
+import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
+import { PersonDeliveryComponent } from './main/content/transport-manager/person-delivery/person-delivery.component';
+import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
+import { ViewPersonDeliveryComponent } from './main/content/transport-manager/view-person-delivery/view-person-delivery.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +26,24 @@ import { MainComponent } from './main/main.component';
     FooterComponent,
     ContentComponent,
     NavbarComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent,
+    SignupComponent,
+    ViewDeliveryComponent,
+    ItemDeliveryComponent,
+    PersonDeliveryComponent,
+    ViewItemDeliveryComponent,
+    ViewPersonDeliveryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

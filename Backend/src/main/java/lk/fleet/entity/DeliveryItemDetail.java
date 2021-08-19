@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class DeliveryDetail {
+public class DeliveryItemDetail {
 
     @Id
     private String deliveryDetailId;

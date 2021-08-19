@@ -1,0 +1,55 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 40px">
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Delivery Person Name</th>
+        <th scope="col">Delivery Person Nic</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col" width="5%" style="text-align: center">View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td style="text-align: center">
+          <i class="fas fa-search" (click)="isTrueOrFalse(true)"></i>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div class="modalTable" [style.visibility]="isModalTable.openTable?'visible':'hidden'">
+  <div (click)="isTrueOrFalse(false)"></div>
+  <div style="">
+    <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
+      <div style="min-width: 1390px;">
+        <i class="fas fa-times" style="cursor: pointer" (click)="isTrueOrFalse(false)"></i>
+      </div>
+
+      <div class="">
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavbarService} from "../_service/navbar.service";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  topic;
+
+  constructor(private navBarService: NavbarService) {
+    navBarService.navTopic.subscribe((topic) => {
+      this.topic = topic;
+    })
+  }
 
   ngOnInit(): void {
   }
