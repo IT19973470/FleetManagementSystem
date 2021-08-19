@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageDeliveryComponent } from './manage-delivery.component';
+import { ViewItemDeliveryComponent } from './view-item-delivery.component';
 
-describe('ManageDeliveryComponent', () => {
-  let component: ManageDeliveryComponent;
-  let fixture: ComponentFixture<ManageDeliveryComponent>;
+describe('ViewItemDeliveryComponent', () => {
+  let component: ViewItemDeliveryComponent;
+  let fixture: ComponentFixture<ViewItemDeliveryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageDeliveryComponent ]
+      declarations: [ ViewItemDeliveryComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageDeliveryComponent);
+    fixture = TestBed.createComponent(ViewItemDeliveryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

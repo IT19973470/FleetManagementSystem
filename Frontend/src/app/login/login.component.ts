@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       if (user !== null && user['accountType'] === 'Transport Manager') {
-        this.router.navigate(['/main/view_delivery'])
+        this.router.navigate(['/main/view_item_delivery'])
       } else {
         this.logged = false;
       }

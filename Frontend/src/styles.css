@@ -2,6 +2,11 @@
 
 div {
   font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+}
+
+input {
+  font-size: 14px;
 }
 
 .modalTable {
@@ -50,10 +55,11 @@ div {
   font-size: 11px;
   font-weight: bold;
 }
+
 /*.row{*/
-  /*padding: 0px;*/
+/*padding: 0px;*/
 /*}*/
 
 /*.col-12,.col-1,.col-10,.col-2{*/
-  /*padding: 0px;*/
+/*padding: 0px;*/
 /*}*/

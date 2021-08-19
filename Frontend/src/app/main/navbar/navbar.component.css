@@ -5,6 +5,7 @@ div > div {
   color: #757271;
   font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
 }
 
 div > div:first-child {
