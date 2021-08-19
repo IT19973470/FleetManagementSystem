@@ -23,6 +23,8 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     private PassengerPassengerApplicationRepository passengerPassengerApplicationRepository;
     @Autowired
     private UserAccountRepository userAccountRepository;
+    @Autowired
+    private BookingApplicationRepository bookingApplicationRepository;
 
 //    @Override
 //    public Application addApplication(Application application) {
@@ -48,34 +50,16 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     }
 
     @Override
-    public PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(PassengerPassengerApplication passengerPassengerApplication) {
+    public PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication) {
 
         applicationRepository.save(passengerPassengerApplication.getPassengerApplication().getApplication());
         passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID());
         passengerApplicationRepository.save(passengerPassengerApplication.getPassengerApplication());
-        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
+        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
 
 
         return passengerPassengerApplicationRepository.save(passengerPassengerApplication);
     }
-
-    @Override
-    public ApplicationDTO updateApplication(String aplicationID,Application application) {
-        Optional<Application> applicationOptional = applicationRepository.findById(aplicationID);
-        if(applicationOptional.isPresent()){
-            Application applicationobj=applicationOptional.get();
-            applicationobj.setApproval(application.isApproval());
-            applicationobj.setArrivaleDate(application.getArrivaleDate());
-            applicationobj.setDepatureDate(application.getDepatureDate());
-            applicationobj.setDestination(application.getDestination());
-            applicationobj.setReason(application.getReason());
-            applicationobj.setVehicleType(application.getVehicleType());
-
-            return  new ApplicationDTO(applicationRepository.save(applicationobj));
-        }
-        return null;
-    }
-
 
     @Override
     public List<Application> getPassengerApp() {
@@ -90,10 +74,10 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
     @Override
     public List<PassengerApplicationDTO> getdto() {
-        List<PassengerApplication> passengerApplications = passengerApplicationRepository.findAll();
+        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
         List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
-        for(PassengerApplication passengerApplication1: passengerApplications){
-            passengerApplicationDTOS.add(new PassengerApplicationDTO(passengerApplication1));
+        for(BookingApplication bookingApplication: bookingApplications){
+            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
         }
 
         return passengerApplicationDTOS;
