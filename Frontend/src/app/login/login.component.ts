@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   user = {
-    username: '',
+    email: '',
     password: ''
   };
   logged = true;
@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
-      if (user !== null && user['accountType'] === 'Transport Manager') {
+      if (user !== null && user['accountType'] === 'TM') {
+        this.router.navigate(['/main/view_item_delivery'])
+      } else if (user['accountType'] === 'SO') {
         this.router.navigate(['/main/view_item_delivery'])
       } else {
         this.logged = false;

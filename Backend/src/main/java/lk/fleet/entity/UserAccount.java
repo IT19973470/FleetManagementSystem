@@ -12,13 +12,13 @@ public class UserAccount {
     private String employeeID;
     private String accountType;
     private String nic;
-    private LocalDate DOB;
+    private LocalDate dob;
     private String name;
     private String address;
     private String contactNo;
     private String email;
     private LocalDate registeredDate;
-    private String username;
+    private String nameWithInitials;
     private String password;
     private boolean approved;
 
@@ -42,12 +42,12 @@ public class UserAccount {
         return nic;
     }
 
-    public LocalDate getDOB() {
-        return DOB;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
     public void setNic(String nic) {
@@ -94,12 +94,12 @@ public class UserAccount {
         this.registeredDate = registeredDate;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNameWithInitials() {
+        return nameWithInitials;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNameWithInitials(String nameWithInitials) {
+        this.nameWithInitials = nameWithInitials;
     }
 
     public String getPassword() {

@@ -8,13 +8,13 @@ import {NavbarService} from "../../_service/navbar.service";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private navBarService: NavbarService) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  setTopic(topic){
-    this.navBarService.navTopic.next(topic);
+  getUser(){
+    return JSON.parse(localStorage.getItem('user'));
   }
 }
