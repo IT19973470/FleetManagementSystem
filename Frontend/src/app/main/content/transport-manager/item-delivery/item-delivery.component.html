@@ -173,7 +173,7 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-12" style="text-align: center">
-              <button class="btn btn-warning" style="font-weight: bold">Add Item</button>
+              <button class="btn btn-warning" style="font-weight: bold">{{btnText}} Item</button>
             </div>
           </div>
         </form>
@@ -202,9 +202,9 @@
             <td>{{item.itemType}}</td>
             <td>{{item.itemQty}}</td>
             <td style="text-align: center">
-              <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item)"></i>
+              <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
             </td>
-            <td style="text-align: center" (click)="deliveryDetail.items.splice(i, 1)">
+            <td style="text-align: center" (click)="deliveryDetail.deliveryItemDetails.splice(i, 1)">
               <i class="fas fa-times" style="color: red;font-size: 20px"></i>
             </td>
           </tr>
