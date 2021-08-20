@@ -21,6 +21,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.router.url === '/main/item_delivery') {
+      this.navBarService.navTopic.next('Item Delivery');
+    }
     this.username = this.navBarService.username;
   }
 

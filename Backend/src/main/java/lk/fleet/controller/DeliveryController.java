@@ -2,6 +2,7 @@ package lk.fleet.controller;
 
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
+import lk.fleet.entity.DeliveryItemDetail;
 import lk.fleet.service.BookingService;
 import lk.fleet.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +18,42 @@ public class DeliveryController {
     private DeliveryService deliveryService;
 
     @PostMapping(value = "/addItemDelivery")
-    public ResponseEntity addItemDelivery(@RequestBody Delivery delivery){
+    public ResponseEntity addItemDelivery(@RequestBody Delivery delivery) {
         return ResponseEntity.ok(deliveryService.addItemDelivery(delivery));
     }
 
     @PutMapping(value = "/updateDelivery/{deliveryId}")
-    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Booking booking){
-        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, booking));
+    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Delivery delivery) {
+        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, delivery));
     }
 
     @DeleteMapping(value = "/deleteDelivery/{deliveryId}")
-    public ResponseEntity deleteDelivery(@PathVariable String deliveryId){
+    public ResponseEntity deleteDelivery(@PathVariable String deliveryId) {
         return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
     }
 
+    @PostMapping(value = "/addItemToDelivery")
+    public ResponseEntity addItemToDelivery(@RequestBody DeliveryItemDetail deliveryItemDetail) {
+        return ResponseEntity.ok(deliveryService.addItemToDelivery(deliveryItemDetail));
+    }
+
+    @PutMapping(value = "/updateItemOnDelivery/{deliveryItemId}")
+    public ResponseEntity updateItemOnDelivery(@PathVariable String deliveryItemId, @RequestBody DeliveryItemDetail deliveryItemDetail) {
+        return ResponseEntity.ok(deliveryService.updateItemOnDelivery(deliveryItemId, deliveryItemDetail));
+    }
+
+    @DeleteMapping(value = "/deleteItemOnDelivery/{deliveryItemId}")
+    public ResponseEntity deleteItemOnDelivery(@PathVariable String deliveryItemId) {
+        return ResponseEntity.ok(deliveryService.deleteItemOnDelivery(deliveryItemId));
+    }
+
+    @GetMapping(value = "/getAllItemDeliveries")
+    public ResponseEntity getAllItemDeliveries() {
+        return ResponseEntity.ok(deliveryService.getAllItemDeliveries());
+    }
+
+    @GetMapping(value = "/getAllPassengerDeliveries")
+    public ResponseEntity getAllPassengerDeliveries() {
+        return ResponseEntity.ok(deliveryService.getAllPassengerDeliveries());
+    }
 }
