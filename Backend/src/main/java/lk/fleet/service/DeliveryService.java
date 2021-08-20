@@ -5,7 +5,8 @@ import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 
 public interface DeliveryService {
-    DeliveryDTO addDelivery(Delivery delivery);
+
+    DeliveryDTO addItemDelivery(Delivery delivery);
 
     DeliveryDTO updateDelivery(String deliveryId, Booking booking);
 
