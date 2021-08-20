@@ -39,6 +39,7 @@ import {CreateNewRequestComponent} from './main/content/applicant/create-new-req
 import {ApplicationStatusComponent} from './main/content/applicant/application-status/application-status.component';
 import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
 import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
+import { UpdatePassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import {FeedbackComponent} from './main/content/applicant/feedback/feedback.comp
     CreateNewRequestComponent,
     ApplicationStatusComponent,
     NotificationsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    UpdatePassengerDeliveryComponent
   ],
   imports: [
     BrowserModule,

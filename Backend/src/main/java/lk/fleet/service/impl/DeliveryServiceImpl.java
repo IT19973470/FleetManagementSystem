@@ -2,10 +2,13 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.DeliveryItemDetailDTO;
+import lk.fleet.dto.DeliveryPassengerDetailDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.DeliveryItemDetail;
+import lk.fleet.entity.DeliveryPassengerDetail;
 import lk.fleet.repository.DeliveryItemDetailRepository;
+import lk.fleet.repository.DeliveryPassengerDetailRepository;
 import lk.fleet.repository.DeliveryRepository;
 import lk.fleet.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class DeliveryServiceImpl implements DeliveryService {
     private DeliveryRepository deliveryRepository;
     @Autowired
     private DeliveryItemDetailRepository deliveryItemDetailRepository;
+    @Autowired
+    private DeliveryPassengerDetailRepository deliveryPassengerDetailRepository;
 
     @Override
     public DeliveryDTO addItemDelivery(Delivery delivery) {
@@ -34,8 +39,19 @@ public class DeliveryServiceImpl implements DeliveryService {
             deliveryItemDetail.setItemDetailId("DelIt" + ++count + dateTime);
             deliveryItemDetail.setDelivery(delivery);
         }
-        deliveryRepository.save(delivery);
-        return null;
+        return new DeliveryDTO(deliveryRepository.save(delivery));
+    }
+
+    @Override
+    public DeliveryDTO addPassengerDelivery(Delivery delivery) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        delivery.setDeliveryId("Del" + dateTime);
+        int count = 0;
+        for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
+            deliveryPassengerDetail.setPassengerDetailId("DelPa" + ++count + dateTime);
+            deliveryPassengerDetail.setDelivery(delivery);
+        }
+        return new DeliveryDTO(deliveryRepository.save(delivery));
     }
 
     @Override
@@ -68,6 +84,13 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    public DeliveryPassengerDetailDTO addPassengerToDelivery(DeliveryPassengerDetail deliveryPassengerDetail) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        deliveryPassengerDetail.setPassengerDetailId("DelPa" + 0 + dateTime);
+        return new DeliveryPassengerDetailDTO(deliveryPassengerDetailRepository.save(deliveryPassengerDetail));
+    }
+
+    @Override
     public DeliveryItemDetailDTO updateItemOnDelivery(String deliveryItemId, DeliveryItemDetail deliveryItemDetail) {
         Optional<DeliveryItemDetail> optionalDeliveryItemDetail = deliveryItemDetailRepository.findById(deliveryItemId);
         if (optionalDeliveryItemDetail.isPresent()) {
@@ -81,8 +104,28 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    public DeliveryPassengerDetailDTO updatePassengerOnDelivery(String deliveryPassengerId, DeliveryPassengerDetail deliveryPassengerDetail) {
+        Optional<DeliveryPassengerDetail> optionalDeliveryPassengerDetail = deliveryPassengerDetailRepository.findById(deliveryPassengerId);
+        if (optionalDeliveryPassengerDetail.isPresent()) {
+            DeliveryPassengerDetail deliveryPassengerDetailObj = optionalDeliveryPassengerDetail.get();
+            deliveryPassengerDetailObj.setPassengerName(deliveryPassengerDetail.getPassengerName());
+            deliveryPassengerDetailObj.setPassengerNic(deliveryPassengerDetail.getPassengerNic());
+            deliveryPassengerDetailObj.setContactNumber(deliveryPassengerDetail.getContactNumber());
+            deliveryPassengerDetailObj.setPassengerType(deliveryPassengerDetail.getPassengerType());
+            return new DeliveryPassengerDetailDTO(deliveryPassengerDetailRepository.save(deliveryPassengerDetailObj));
+        }
+        return null;
+    }
+
+    @Override
     public boolean deleteItemOnDelivery(String deliveryItemId) {
         deliveryItemDetailRepository.deleteById(deliveryItemId);
+        return true;
+    }
+
+    @Override
+    public boolean deletePassengerOnDelivery(String deliveryPassengerId) {
+        deliveryPassengerDetailRepository.deleteById(deliveryPassengerId);
         return true;
     }
 
@@ -95,7 +138,9 @@ public class DeliveryServiceImpl implements DeliveryService {
             for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
                 deliveryItemDetailDTOS.add(new DeliveryItemDetailDTO(deliveryItemDetail));
             }
-            deliveryDTOS.add(new DeliveryDTO(delivery, deliveryItemDetailDTOS));
+            DeliveryDTO deliveryDTO = new DeliveryDTO(delivery);
+            deliveryDTO.setDeliveryItemDetails(deliveryItemDetailDTOS);
+            deliveryDTOS.add(deliveryDTO);
         }
 
         return deliveryDTOS;
@@ -103,6 +148,18 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public List<DeliveryDTO> getAllPassengerDeliveries() {
-        return null;
+        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc();
+        List<DeliveryDTO> deliveryDTOS = new ArrayList<>();
+        for (Delivery delivery : deliveries) {
+            List<DeliveryPassengerDetailDTO> deliveryPassengerDetailDTOS = new ArrayList<>();
+            for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
+                deliveryPassengerDetailDTOS.add(new DeliveryPassengerDetailDTO(deliveryPassengerDetail));
+            }
+            DeliveryDTO deliveryDTO = new DeliveryDTO(delivery);
+            deliveryDTO.setDeliveryPassengerDetails(deliveryPassengerDetailDTOS);
+            deliveryDTOS.add(deliveryDTO);
+        }
+
+        return deliveryDTOS;
     }
 }
