@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewDriverComponent } from './new-driver.component';
+import { NavDriverComponent } from './nav-driver.component';
 
-describe('NewDriverComponent', () => {
-  let component: NewDriverComponent;
-  let fixture: ComponentFixture<NewDriverComponent>;
+describe('NavDriverComponent', () => {
+  let component: NavDriverComponent;
+  let fixture: ComponentFixture<NavDriverComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewDriverComponent ]
+      declarations: [ NavDriverComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewDriverComponent);
+    fixture = TestBed.createComponent(NavDriverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

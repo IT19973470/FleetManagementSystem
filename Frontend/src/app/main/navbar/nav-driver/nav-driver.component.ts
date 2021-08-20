@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../../../_service/navbar.service";
 
 @Component({
-  selector: 'app-new-driver',
-  templateUrl: './new-driver.component.html',
-  styleUrls: ['./new-driver.component.css']
+  selector: 'app-nav-driver',
+  templateUrl: './nav-driver.component.html',
+  styleUrls: ['./nav-driver.component.css']
 })
-export class NewDriverComponent implements OnInit {
+export class NavDriverComponent implements OnInit {
 
   constructor(private navBarService: NavbarService) { }
 

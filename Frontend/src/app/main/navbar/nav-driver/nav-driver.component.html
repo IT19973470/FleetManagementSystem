@@ -20,10 +20,10 @@
 
   <div
     routerLink="/main/fuel_update"
-    (click)="setTopic('Fuel Balance')"
-    #updateFuelBalance="routerLinkActive"
+    (click)="setTopic('Update Fuel Balance')"
+    #fuelUpdate="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':updateFuelBalance.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':fuelUpdate.isActive?'#c0050e':''}">
     Update Fuel Balance
   </div>
 
@@ -38,16 +38,12 @@
 
   <div
     routerLink="/main/shift_details"
-    (click)="setTopic('View Shift')"
+    (click)="setTopic('Shift Details')"
     #shiftDetails="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':shiftDetails.isActive?'#c0050e':''}">
-    View Shift
+    Shift Details
   </div>
 
-  <div>
-    Passenger Transport
-  </div>
-  <!--<div style="color: #b56e04">Vehicle</div>-->
-  <!--<div>Driver</div>-->
 </div>
+

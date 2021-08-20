@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       } else if (user['accountType'] === 'SO') {
         this.router.navigate(['/main/view_item_delivery'])
       } else if (user['accountType'] === 'DR'){
-
+        this.router.navigate(['/main/shift_details'])
       }
       else {
         this.logged = false;
