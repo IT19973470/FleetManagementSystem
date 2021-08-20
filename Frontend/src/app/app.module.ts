@@ -16,6 +16,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import { NewDriverComponent } from './main/navbar/new-driver/new-driver.component';
+import { DriverRegistrationComponent } from './main/content/Driver/driver-registration/driver-registration.component';
+import { OverTimeComponent } from './main/content/Driver/over-time/over-time.component';
+import { ShiftDetailsComponent } from './main/content/Driver/shift-details/shift-details.component';
+import { FuelUpdateComponent } from './main/content/Driver/fuel-update/fuel-update.component';
+import { NewOverTimeComponent } from './main/content/Driver/over-time/new-over-time/new-over-time.component';
+import { ViewOverTimeComponent } from './main/content/Driver/over-time/view-over-time/view-over-time.component';
+import { DriverAccountComponent } from './main/content/Driver/driver-account/driver-account.component';
 
 import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
 import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
@@ -48,7 +56,16 @@ import { FeedbackComponent } from './main/content/applicant/feedback/feedback.co
     SignupComponent,
     ItemDeliveryComponent,
     ViewItemDeliveryComponent,
-
+    ViewPersonDeliveryComponent,
+    NavTransportManagerComponent,
+    NewDriverComponent,
+    DriverRegistrationComponent,
+    OverTimeComponent,
+    ShiftDetailsComponent,
+    FuelUpdateComponent,
+    NewOverTimeComponent,
+    ViewOverTimeComponent,
+    DriverAccountComponent,
     NavTransportManagerComponent,
     ViewPassengerDeliveryComponent,
     PassengerDeliveryComponent,
@@ -65,6 +82,7 @@ import { FeedbackComponent } from './main/content/applicant/feedback/feedback.co
     ApplicationStatusComponent,
     NotificationsComponent,
     FeedbackComponent
+
   ],
   imports: [
     BrowserModule,
