@@ -6,6 +6,7 @@ import {ItemDeliveryComponent} from "./main/content/transport-manager/item-deliv
 import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
+import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'view_item_delivery',
         component: ViewItemDeliveryComponent
+      },
+      {
+        path: 'update_item_delivery',
+        component: UpdateItemDeliveryComponent
       },
       {
         path: 'passenger_delivery',

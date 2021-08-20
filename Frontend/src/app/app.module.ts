@@ -18,6 +18,7 @@ import { ViewItemDeliveryComponent } from './main/content/transport-manager/view
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
 import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
 import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
+import { UpdateItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PassengerDeliveryComponent } from './main/content/transport-manager/pas
     ViewItemDeliveryComponent,
     NavTransportManagerComponent,
     ViewPassengerDeliveryComponent,
-    PassengerDeliveryComponent
+    PassengerDeliveryComponent,
+    UpdateItemDeliveryComponent
   ],
   imports: [
     BrowserModule,

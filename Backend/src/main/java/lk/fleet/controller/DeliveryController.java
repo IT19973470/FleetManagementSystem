@@ -17,18 +17,27 @@ public class DeliveryController {
     private DeliveryService deliveryService;
 
     @PostMapping(value = "/addItemDelivery")
-    public ResponseEntity addItemDelivery(@RequestBody Delivery delivery){
+    public ResponseEntity addItemDelivery(@RequestBody Delivery delivery) {
         return ResponseEntity.ok(deliveryService.addItemDelivery(delivery));
     }
 
     @PutMapping(value = "/updateDelivery/{deliveryId}")
-    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Booking booking){
-        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, booking));
+    public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Delivery delivery) {
+        return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, delivery));
     }
 
     @DeleteMapping(value = "/deleteDelivery/{deliveryId}")
-    public ResponseEntity deleteDelivery(@PathVariable String deliveryId){
+    public ResponseEntity deleteDelivery(@PathVariable String deliveryId) {
         return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
     }
 
+    @GetMapping(value = "/getAllItemDeliveries")
+    public ResponseEntity getAllItemDeliveries() {
+        return ResponseEntity.ok(deliveryService.getAllItemDeliveries());
+    }
+
+    @GetMapping(value = "/getAllPassengerDeliveries")
+    public ResponseEntity getAllPassengerDeliveries() {
+        return ResponseEntity.ok(deliveryService.getAllPassengerDeliveries());
+    }
 }
