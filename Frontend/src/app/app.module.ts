@@ -16,16 +16,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
-
-import { NavApplicantComponent } from './main/navbar/nav-applicant/nav-applicant.component';
-import { ApplicationStatusComponent } from './main/content/applicant/application-status/application-status.component';
-import { FeedbackComponent } from './main/content/applicant/feedback/feedback.component';
-import { NotificationsComponent } from './main/content/applicant/notifications/notifications.component';
-import { CreateNewRequestComponent } from './main/content/applicant/create-new-request/create-new-request.component';
-
 import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
 import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
-
 
 @NgModule({
   declarations: [
@@ -39,19 +31,9 @@ import { PassengerDeliveryComponent } from './main/content/transport-manager/pas
     SignupComponent,
     ItemDeliveryComponent,
     ViewItemDeliveryComponent,
-
-    ViewPersonDeliveryComponent,
-    NavTransportManagerComponent,
-    NavApplicantComponent,
-    ApplicationStatusComponent,
-    FeedbackComponent,
-    NotificationsComponent,
-    CreateNewRequestComponent
-
     NavTransportManagerComponent,
     ViewPassengerDeliveryComponent,
     PassengerDeliveryComponent
-
   ],
   imports: [
     BrowserModule,
