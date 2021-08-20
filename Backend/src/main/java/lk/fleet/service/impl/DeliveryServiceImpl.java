@@ -60,6 +60,30 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    public DeliveryItemDetailDTO addItemToDelivery(DeliveryItemDetail deliveryItemDetail) {
+        return new DeliveryItemDetailDTO(deliveryItemDetailRepository.save(deliveryItemDetail));
+    }
+
+    @Override
+    public DeliveryItemDetailDTO updateItemOnDelivery(String deliveryItemId, DeliveryItemDetail deliveryItemDetail) {
+        Optional<DeliveryItemDetail> optionalDeliveryItemDetail = deliveryItemDetailRepository.findById(deliveryItemId);
+        if (optionalDeliveryItemDetail.isPresent()) {
+            DeliveryItemDetail deliveryItemDetailObj = optionalDeliveryItemDetail.get();
+            deliveryItemDetailObj.setItemName(deliveryItemDetail.getItemName());
+            deliveryItemDetailObj.setItemType(deliveryItemDetail.getItemType());
+            deliveryItemDetailObj.setItemQty(deliveryItemDetail.getItemQty());
+            return new DeliveryItemDetailDTO(deliveryItemDetailRepository.save(deliveryItemDetailObj));
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteItemOnDelivery(String deliveryItemId) {
+        deliveryItemDetailRepository.deleteById(deliveryItemId);
+        return true;
+    }
+
+    @Override
     public List<DeliveryDTO> getAllItemDeliveries() {
         List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc();
         List<DeliveryDTO> deliveryDTOS = new ArrayList<>();

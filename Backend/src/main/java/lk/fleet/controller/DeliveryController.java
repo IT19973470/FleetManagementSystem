@@ -2,6 +2,7 @@ package lk.fleet.controller;
 
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
+import lk.fleet.entity.DeliveryItemDetail;
 import lk.fleet.service.BookingService;
 import lk.fleet.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,21 @@ public class DeliveryController {
     @DeleteMapping(value = "/deleteDelivery/{deliveryId}")
     public ResponseEntity deleteDelivery(@PathVariable String deliveryId) {
         return ResponseEntity.ok(deliveryService.deleteDelivery(deliveryId));
+    }
+
+    @PostMapping(value = "/addItemToDelivery")
+    public ResponseEntity addItemToDelivery(@RequestBody DeliveryItemDetail deliveryItemDetail) {
+        return ResponseEntity.ok(deliveryService.addItemToDelivery(deliveryItemDetail));
+    }
+
+    @PutMapping(value = "/updateItemOnDelivery/{deliveryItemId}")
+    public ResponseEntity updateItemOnDelivery(@PathVariable String deliveryItemId, @RequestBody DeliveryItemDetail deliveryItemDetail) {
+        return ResponseEntity.ok(deliveryService.updateItemOnDelivery(deliveryItemId, deliveryItemDetail));
+    }
+
+    @DeleteMapping(value = "/deleteItemOnDelivery/{deliveryItemId}")
+    public ResponseEntity deleteItemOnDelivery(@PathVariable String deliveryItemId) {
+        return ResponseEntity.ok(deliveryService.deleteItemOnDelivery(deliveryItemId));
     }
 
     @GetMapping(value = "/getAllItemDeliveries")
