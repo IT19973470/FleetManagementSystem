@@ -13,7 +13,7 @@ public interface UserAccountService {
 
     UserAccountDTO addGeneralManagerUserAccount(UserAccount userAccount);
 
-    UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount);
+    UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);
 
     TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager);
 

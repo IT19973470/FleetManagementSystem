@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../_service/login.service";
 import {Router} from "@angular/router";
+import {NavbarService} from "../_service/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   };
   logged = true;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private navBarService: NavbarService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,8 +31,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/main/view_item_delivery'])
       } else if (user['accountType'] === 'DR'){
         this.router.navigate(['/main/shift_details'])
-      }
-      else {
+      } else if (user['accountType'] === 'GM') {
+        this.router.navigate(['/main/create_user_account'])
+      } else if (user['accountType'] === 'AP') {
+        this.router.navigate(['/main/available_transports'])
+      } else {
         this.logged = false;
       }
     }, (err) => {

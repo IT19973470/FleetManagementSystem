@@ -2,4 +2,6 @@
 
 <app-nav-driver *ngIf = "getUser()['accountType']==='DR'"></app-nav-driver>
 
+<app-nav-general-manager *ngIf="getUser()['accountType']==='GM'"></app-nav-general-manager>
 
+<app-nav-applicant *ngIf="getUser()['accountType']==='AP'" ></app-nav-applicant>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TransportManagerService} from "../../../../_service/transport-manager.service";
+import {Router} from "@angular/router";
+import {getAllLifecycleHooks} from "@angular/compiler/src/lifecycle_reflector";
 
 @Component({
   selector: 'app-view-item-delivery',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewItemDeliveryComponent implements OnInit {
 
-  constructor() { }
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
 
-  ngOnInit(): void {
+  deliveryItemDetails = [];
+  deliveryItem = {
+    deliveryItemDetails: []
+  };
+
+  constructor(private transportManagerService: TransportManagerService, private router: Router) {
   }
 
+  ngOnInit(): void {
+    this.getAllItemDeliveries();
+  }
+
+  setItem(deliveryItem) {
+    this.deliveryItem = deliveryItem;
+    this.isTrueOrFalse(true);
+  }
+
+  goToUpdate(deliveryItem) {
+    this.transportManagerService.deliveryItem = deliveryItem;
+    this.router.navigate(['/main/update_item_delivery'])
+  }
+
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
+  }
+
+  getAllItemDeliveries() {
+    this.transportManagerService.getAllItemDeliveries().subscribe((deliveryItemDetails) => {
+      this.deliveryItemDetails = deliveryItemDetails;
+      // console.log(this.deliveryItemDetails)
+    })
+  }
 }

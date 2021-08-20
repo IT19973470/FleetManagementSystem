@@ -1,0 +1,272 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-12">
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create New Request</span>
+  </div>
+
+  <form #deliveryForm="ngForm" (ngSubmit)="deliveryForm.form.valid && onSubmit()" novalidate>
+
+    <div style="display: flex;margin-top: 50px">
+      <div style="width: 50%;padding-right: 20px">
+        <div class="row">
+          <div class="col-4">
+            Employee ID :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.deliveryPassengerName"
+                   #deliveryPassengerName="ngModel"
+                   name="deliveryPassengerName" required>
+            <div *ngIf="(deliveryPassengerName.touched || deliveryForm.submitted) && deliveryPassengerName.errors?.required"
+                 class="validErr">
+              Employee ID is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Destination :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.deliveryPassengerNic"
+                   #deliveryPassengerNic="ngModel"
+                   name="deliveryPassengerNic" required>
+            <div *ngIf="(deliveryPassengerNic.touched || deliveryForm.submitted) && deliveryPassengerNic.errors?.required"
+                 class="validErr">
+              Destination is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Depature Date :
+          </div>
+          <div class="col-8">
+            <input type="datetime-local" class="form-control"
+                   [(ngModel)]="deliveryDetail.deliveryDate"
+                   #deliveryDate="ngModel"
+                   name="deliveryDate" required>
+            <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
+                 class="validErr">
+              Depature Date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Mail :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.contactNumber"
+                   #contactNumber="ngModel"
+                   name="contactNumber" required>
+            <div *ngIf="(contactNumber.touched || deliveryForm.submitted) && contactNumber.errors?.required"
+                 class="validErr">
+              Mail is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Vehicle Type :
+          </div>
+          <div class="col-8">
+
+            <select name="" id="car" class="form-control" [(ngModel)]="deliveryDetail.placeFrom"
+                    #placeFrom="ngModel"
+                    name="placeFrom" required>
+              <option value="volvo">Three wheel</option>
+              <option value="saab">Van</option>
+              <option value="mercedes">Car</option>
+              <option value="audi">Bus</option>
+            </select>
+            <div *ngIf="(placeFrom.touched || deliveryForm.submitted) && placeFrom.errors?.required"
+                 class="validErr">
+              Place From is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Reason :
+          </div>
+          <div class="col-8">
+            <input type="" class="form-control"
+                   [(ngModel)]="deliveryDetail.companyName"
+                   #companyName="ngModel"
+                   name="companyName" required>
+            <div *ngIf="(companyName.touched || deliveryForm.submitted) && companyName.errors?.required"
+                 class="validErr">
+              Company Name is required
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="width: 50%;padding-left: 20px;border-left: 1px solid #dfcda0">
+
+        <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid && onSubmitPassenger()" novalidate>
+
+
+
+          <div style="float: right">
+          <div class="row" style="margin-top: 5px">
+           <div class="col-13" style="text-align: center">
+
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+             <button class="w3-button w3-xlarge w3-circle w3-black">+</button>
+
+            </div>
+            </div>
+            </div>
+
+          <div class="row" style="margin-top: 10px">
+            <div class="col-3">
+              Passenger ID :
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 10px">
+            <div class="col-3">
+              Item ID :
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+
+
+          <div style="float: right">
+            <div class="row" style="margin-top: 5px">
+              <div class="col-13" style="text-align: center">
+
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+                <button class="w3-button w3-xlarge w3-circle w3-black">+</button>
+
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-3">
+              Qty :
+            </div>
+            <div class="col-9">
+              <input type="number" id="quantity" name="quantity" min="1"  class="form-control">
+
+            </div>
+          </div>
+<!--          <div class="row" style="margin-top: 10px">-->
+<!--            <div class="col-3">-->
+<!--              Program Name:-->
+<!--            </div>-->
+<!--            <div class="col-9">-->
+<!--              <select name="" id="car" class="form-control" [(ngModel)]="deliveryDetail.placeFrom"-->
+<!--                      #placeFrom="ngModel"-->
+<!--                      name="placeFrom" required>-->
+<!--                <option value="koopikade">koopikade</option>-->
+<!--                <option value="Nethu">Nethu</option>-->
+<!--                <option value="Atapatama">Atapatama</option>-->
+<!--                <option value="Television iskole">Television iskole</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+        </form>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
+      <div style="width: 100%">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col" width="3%">#</th>
+            <th scope="col">Passenger NIC</th>
+            <th scope="col">Passenger Name</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col" width="5%" style="text-align: center">Update</th>
+            <th scope="col" width="5%" style="text-align: center">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let passenger of deliveryDetail.passengers; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{passenger.passengerName}}</td>
+            <td>{{passenger.passengerNic}}</td>
+            <td>{{passenger.contactNumber}}</td>
+            <td>{{passenger.passengerType}}</td>
+            <td style="text-align: center">
+              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger)"></i>
+            </td>
+            <td style="text-align: center" (click)="deliveryDetail.passengers.splice(i, 1)">
+              <i class="fas fa-times" style="color: red;font-size: 20px"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="deliveryDetail.passengers.length===0" class="validErr" style="text-align: center;font-size: 20px">
+          No passengers available
+        </div>
+
+      </div>
+    </div>
+    <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
+      <div style="width: 100%">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col" width="3%">#</th>
+            <th scope="col">Item ID</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Item Qtantity</th>
+            <th scope="col" width="5%" style="text-align: center">Update</th>
+            <th scope="col" width="5%" style="text-align: center">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let passenger of deliveryDetail.passengers; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{passenger.passengerName}}</td>
+            <td>{{passenger.passengerNic}}</td>
+            <td>{{passenger.contactNumber}}</td>
+            <td>{{passenger.passengerType}}</td>
+            <td style="text-align: center">
+              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger)"></i>
+            </td>
+            <td style="text-align: center" (click)="deliveryDetail.passengers.splice(i, 1)">
+              <i class="fas fa-times" style="color: red;font-size: 20px"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="deliveryDetail.passengers.length===0" class="validErr" style="text-align: center;font-size: 20px">
+          No items available
+        </div>
+
+      </div>
+    </div>
+
+    <div class=""
+         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+      <div class="col-12" style="text-align: right">
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

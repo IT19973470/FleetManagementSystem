@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarService} from "../_service/navbar.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,21 @@ import {NavbarService} from "../_service/navbar.service";
 export class HeaderComponent implements OnInit {
 
   topic;
+  username;
 
-  constructor(private navBarService: NavbarService) {
-    navBarService.navTopic.subscribe((topic) => {
-      this.topic = topic;
-    })
+  constructor(private navBarService: NavbarService, private router: Router) {
+    if (this.router.url !== '/login') {
+      navBarService.navTopic.subscribe((topic) => {
+        this.topic = topic;
+      });
+    }
   }
 
   ngOnInit(): void {
+    if (this.router.url === '/main/item_delivery') {
+      this.navBarService.navTopic.next('Item Delivery');
+    }
+    this.username = this.navBarService.username;
   }
 
 }
