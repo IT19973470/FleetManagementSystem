@@ -47,7 +47,6 @@ const routes: Routes = [
       {
         path: 'create_user_account',
         component: CreateUserAccountComponent
-
       },
       {
         path: 'available_transports',
@@ -56,7 +55,7 @@ const routes: Routes = [
       {
         path: 'create_new_request',
         component: CreateNewRequestComponent
-      },
+      }
     ]
   },
 ];

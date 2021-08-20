@@ -64,7 +64,6 @@ import { FeedbackComponent } from './main/content/applicant/feedback/feedback.co
     ApplicationStatusComponent,
     NotificationsComponent,
     FeedbackComponent
-
   ],
   imports: [
     BrowserModule,
