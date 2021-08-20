@@ -1,0 +1,53 @@
+<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/create_account"
+    (click)="setTopic('Create Account')"
+    #createAccount="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':createAccount.isActive?'#c0050e':''}">
+    Create Account
+  </div>
+
+  <div
+    routerLink="/main/available_transports"
+    (click)="setTopic('Available Transports')"
+    #availableTransports="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':availableTransports.isActive?'#c0050e':''}">
+    Available Transports
+  </div>
+
+  <div
+    routerLink="/main/application_status"
+    (click)="setTopic('Application Status')"
+    #applicationStatus="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':applicationStatus.isActive?'#c0050e':''}">
+    Application Status
+  </div>
+
+  <div
+    routerLink="/main/notification"
+    (click)="setTopic('Notification')"
+    #notification="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':notification.isActive?'#c0050e':''}">
+    Notification
+  </div>
+
+  <div
+    routerLink="/main/feedback"
+    (click)="setTopic('Notification')"
+    #feedback="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':feedback.isActive?'#c0050e':''}">
+    feedback
+  </div>
+
+  <div>
+    Passenger Transport
+  </div>
+  <!--<div style="color: #b56e04">Vehicle</div>-->
+  <!--<div>Driver</div>-->
+</div>

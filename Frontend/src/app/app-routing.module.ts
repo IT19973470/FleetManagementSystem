@@ -4,6 +4,8 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ItemDeliveryComponent} from "./main/content/transport-manager/item-delivery/item-delivery.component";
 import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
+import {ApplicationStatusComponent} from "./main/content/applicant/application-status/application-status.component";
+import {CreateNewRequestComponent} from "./main/content/applicant/create-new-request/create-new-request.component";
 
 const routes: Routes = [
   {
@@ -26,7 +28,17 @@ const routes: Routes = [
       {
         path: 'view_item_delivery',
         component: ViewItemDeliveryComponent
+      },
+      {
+        path: 'application_status',
+        component: ApplicationStatusComponent
+      },
+      {
+        path: 'create_new_request',
+        component: CreateNewRequestComponent
       }
+
+
     ]
   },
 ];

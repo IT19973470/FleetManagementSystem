@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(user));
       if (user !== null && user['accountType'] === 'TM') {
         this.router.navigate(['/main/view_item_delivery'])
-      } else if (user['accountType'] === 'SO') {
+      } else if (user['accountType'] === 'AP') {
+        this.router.navigate(['/main/application_status'])
+      } else if (user['accountType'] === 'APa') {
         this.router.navigate(['/main/view_item_delivery'])
       } else {
         this.logged = false;

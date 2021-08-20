@@ -19,6 +19,11 @@ import { PersonDeliveryComponent } from './main/content/transport-manager/person
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
 import { ViewPersonDeliveryComponent } from './main/content/transport-manager/view-person-delivery/view-person-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import { NavApplicantComponent } from './main/navbar/nav-applicant/nav-applicant.component';
+import { ApplicationStatusComponent } from './main/content/applicant/application-status/application-status.component';
+import { FeedbackComponent } from './main/content/applicant/feedback/feedback.component';
+import { NotificationsComponent } from './main/content/applicant/notifications/notifications.component';
+import { CreateNewRequestComponent } from './main/content/applicant/create-new-request/create-new-request.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { NavTransportManagerComponent } from './main/navbar/nav-transport-manage
     PersonDeliveryComponent,
     ViewItemDeliveryComponent,
     ViewPersonDeliveryComponent,
-    NavTransportManagerComponent
+    NavTransportManagerComponent,
+    NavApplicantComponent,
+    ApplicationStatusComponent,
+    FeedbackComponent,
+    NotificationsComponent,
+    CreateNewRequestComponent
   ],
   imports: [
     BrowserModule,
