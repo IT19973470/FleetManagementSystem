@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/main/view_item_delivery'])
       } else if (user['accountType'] === 'SO') {
         this.router.navigate(['/main/view_item_delivery'])
-      } else {
+      } else if (user['accountType'] === 'DR'){
+
+      }
+      else {
         this.logged = false;
       }
     }, (err) => {

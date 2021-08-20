@@ -19,6 +19,14 @@ import { PersonDeliveryComponent } from './main/content/transport-manager/person
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
 import { ViewPersonDeliveryComponent } from './main/content/transport-manager/view-person-delivery/view-person-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import { NewDriverComponent } from './main/navbar/new-driver/new-driver.component';
+import { DriverRegistrationComponent } from './main/content/Driver/driver-registration/driver-registration.component';
+import { OverTimeComponent } from './main/content/Driver/over-time/over-time.component';
+import { ShiftDetailsComponent } from './main/content/Driver/shift-details/shift-details.component';
+import { FuelUpdateComponent } from './main/content/Driver/fuel-update/fuel-update.component';
+import { NewOverTimeComponent } from './main/content/Driver/over-time/new-over-time/new-over-time.component';
+import { ViewOverTimeComponent } from './main/content/Driver/over-time/view-over-time/view-over-time.component';
+import { DriverAccountComponent } from './main/content/Driver/driver-account/driver-account.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,15 @@ import { NavTransportManagerComponent } from './main/navbar/nav-transport-manage
     PersonDeliveryComponent,
     ViewItemDeliveryComponent,
     ViewPersonDeliveryComponent,
-    NavTransportManagerComponent
+    NavTransportManagerComponent,
+    NewDriverComponent,
+    DriverRegistrationComponent,
+    OverTimeComponent,
+    ShiftDetailsComponent,
+    FuelUpdateComponent,
+    NewOverTimeComponent,
+    ViewOverTimeComponent,
+    DriverAccountComponent
   ],
   imports: [
     BrowserModule,
