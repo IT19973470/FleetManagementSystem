@@ -180,14 +180,16 @@
 
         <div class="row" style="margin-top: 20px">
           <div class="col-12" style="text-align: center">
-            <button class="btn btn-warning" style="font-weight: bold">{{btnText}} Item</button>
+            <button type="button" class="btn btn-warning" style="font-weight: bold;margin-right: 20px"
+                    (click)="setNewItem()">New Item</button>
+            <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-left: 20px">{{btnText}} Item</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 
-  <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 20px">
+  <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
 
     <div style="width: 100%">
 
@@ -209,9 +211,9 @@
           <td>{{item.itemType}}</td>
           <td>{{item.itemQty}}</td>
           <td style="text-align: center">
-            <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
+            <i class="fas fa-pen" style="font-size: 16px" (click)="setItem(item, i)"></i>
           </td>
-          <td style="text-align: center" (click)="deliveryDetail.deliveryItemDetails.splice(i, 1)">
+          <td style="text-align: center" (click)="removeItem(item.itemDetailId,i)">
             <i class="fas fa-times" style="color: red;font-size: 20px"></i>
           </td>
         </tr>
@@ -223,6 +225,13 @@
         No items available
       </div>
 
+    </div>
+  </div>
+
+  <div class=""
+       style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+    <div class="col-12" style="text-align: right">
+      <button type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px" (click)="removeDelivery()">Delete Delivery</button>
     </div>
   </div>
 

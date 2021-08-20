@@ -4,26 +4,26 @@ import lk.fleet.entity.DeliveryItemDetail;
 
 public class DeliveryItemDetailDTO {
 
-    private String deliveryDetailId;
+    private String itemDetailId;
     private String itemName;
     private String itemType;
     private int itemQty;
 
     public DeliveryItemDetailDTO(DeliveryItemDetail deliveryItemDetail) {
         if (deliveryItemDetail != null) {
-            this.deliveryDetailId = deliveryItemDetail.getDeliveryDetailId();
+            this.itemDetailId = deliveryItemDetail.getItemDetailId();
             this.itemName = deliveryItemDetail.getItemName();
             this.itemType = deliveryItemDetail.getItemType();
             this.itemQty = deliveryItemDetail.getItemQty();
         }
     }
 
-    public String getDeliveryDetailId() {
-        return deliveryDetailId;
+    public String getItemDetailId() {
+        return itemDetailId;
     }
 
-    public void setDeliveryDetailId(String deliveryDetailId) {
-        this.deliveryDetailId = deliveryDetailId;
+    public void setItemDetailId(String itemDetailId) {
+        this.itemDetailId = itemDetailId;
     }
 
     public String getItemName() {

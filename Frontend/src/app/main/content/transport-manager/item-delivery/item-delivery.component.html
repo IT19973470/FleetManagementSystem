@@ -173,7 +173,9 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-12" style="text-align: center">
-              <button class="btn btn-warning" style="font-weight: bold">{{btnText}} Item</button>
+              <button type="button" class="btn btn-warning" style="font-weight: bold;margin-right: 20px"
+                      (click)="setNewItem()">New Item</button>
+              <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-left: 20px">{{btnText}} Item</button>
             </div>
           </div>
         </form>
