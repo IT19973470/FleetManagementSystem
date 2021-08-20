@@ -11,7 +11,7 @@ export class NavTransportManagerComponent implements OnInit {
   constructor(private navBarService: NavbarService) { }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('Item Delivery');
+
   }
 
   setTopic(topic){

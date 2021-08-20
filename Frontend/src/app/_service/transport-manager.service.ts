@@ -8,10 +8,20 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 })
 export class TransportManagerService {
 
+  deliveryItem;
+
   constructor(private http: HttpClient) {
   }
 
-  addItemDelivery(deliveryItem): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/delivery/addItemDelivery", deliveryItem);
+  addItemDelivery(deliveryDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/delivery/addItemDelivery", deliveryDetail);
+  }
+
+  updateItemDelivery(deliveryDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
+  }
+
+  getAllItemDeliveries(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getAllItemDeliveries");
   }
 }
