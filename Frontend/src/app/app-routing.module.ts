@@ -15,6 +15,7 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {CreateUserAccountComponent} from "./main/content/general-manager/create-user-account/create-user-account.component";
 import {AvailableTransportsComponent} from "./main/content/applicant/available-transports/available-transports.component";
 import {CreateNewRequestComponent} from "./main/content/applicant/create-new-request/create-new-request.component";
+import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 
 
 const routes: Routes = [
@@ -62,6 +63,10 @@ const routes: Routes = [
       {
         path: 'update_item_delivery',
         component: UpdateItemDeliveryComponent
+      },
+      {
+        path: 'update_passenger_delivery',
+        component: UpdatePassengerDeliveryComponent
       },
       {
         path: 'passenger_delivery',

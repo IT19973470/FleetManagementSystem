@@ -19,6 +19,7 @@ public class DeliveryDTO {
     private boolean deliveryStatus;
 
     private List<DeliveryItemDetailDTO> deliveryItemDetails;
+    private List<DeliveryPassengerDetailDTO> deliveryPassengerDetails;
 
     public DeliveryDTO(Delivery delivery) {
         if (delivery != null) {
@@ -33,11 +34,6 @@ public class DeliveryDTO {
             this.deliveryPersonName = delivery.getDeliveryPersonName();
             this.deliveryStatus = delivery.isDeliveryStatus();
         }
-    }
-
-    public DeliveryDTO(Delivery delivery, List<DeliveryItemDetailDTO> deliveryItemDetails) {
-        this(delivery);
-        this.deliveryItemDetails = deliveryItemDetails;
     }
 
     public String getDeliveryId() {
@@ -126,5 +122,13 @@ public class DeliveryDTO {
 
     public void setDeliveryItemDetails(List<DeliveryItemDetailDTO> deliveryItemDetails) {
         this.deliveryItemDetails = deliveryItemDetails;
+    }
+
+    public List<DeliveryPassengerDetailDTO> getDeliveryPassengerDetails() {
+        return deliveryPassengerDetails;
+    }
+
+    public void setDeliveryPassengerDetails(List<DeliveryPassengerDetailDTO> deliveryPassengerDetails) {
+        this.deliveryPassengerDetails = deliveryPassengerDetails;
     }
 }

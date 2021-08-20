@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class TransportManagerService {
 
   deliveryItem;
+  deliveryPassenger;
 
   constructor(private http: HttpClient) {
   }
@@ -17,13 +18,18 @@ export class TransportManagerService {
     return this.http.post<any>(environment.backend_url + "/delivery/addItemDelivery", deliveryDetail);
   }
 
-  updateItemDelivery(deliveryDetail): Observable<any> {
+  addPassengerDelivery(deliveryDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/delivery/addPassengerDelivery", deliveryDetail);
+  }
+
+  updateDelivery(deliveryDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
   }
 
   deleteDelivery(deliveryDetailId): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/delivery/deleteDelivery/" + deliveryDetailId);
   }
+
 
   addItemToDelivery(deliveryItem): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/delivery/addItemToDelivery", deliveryItem);
@@ -37,7 +43,23 @@ export class TransportManagerService {
     return this.http.delete<any>(environment.backend_url + "/delivery/deleteItemOnDelivery/" + itemDetailId);
   }
 
+  addPassengerToDelivery(deliveryPassenger): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/delivery/addPassengerToDelivery", deliveryPassenger);
+  }
+
+  updatePassengerOnDelivery(deliveryPassenger): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/delivery/updatePassengerOnDelivery/" + deliveryPassenger.passengerDetailId, deliveryPassenger);
+  }
+
+  deletePassengerOnDelivery(itemPassengerId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/delivery/deletePassengerOnDelivery/" + itemPassengerId);
+  }
+
   getAllItemDeliveries(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/delivery/getAllItemDeliveries");
+  }
+
+  getAllPassengerDeliveries(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
   }
 }
