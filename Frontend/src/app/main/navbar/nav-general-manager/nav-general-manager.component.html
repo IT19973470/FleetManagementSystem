@@ -1,0 +1,46 @@
+<p>nav-general-manager works!</p>
+<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/create-user-account"
+    (click)="setTopic('Create User Account')"
+    #createUserAccount="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':createUserAccount.isActive?'#c0050e':''}">
+    Create User Account
+  </div>
+
+  <div
+    routerLink="/main/user-account-list"
+    (click)="setTopic('User Account List')"
+    #userAccountList="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':userAccountList.isActive?'#c0050e':''}">
+    User Account List
+  </div>
+
+  <div
+    routerLink="/main/account-requests"
+    (click)="setTopic('Account Requests')"
+    #accountRequests="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':accountRequests.isActive?'#c0050e':''}">
+    Account Requests
+  </div>
+
+  <div
+    routerLink="/main/transport-requests"
+    (click)="setTopic('Transport Requests')"
+    #transportRequests="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':transportRequests.isActive?'#c0050e':''}">
+    Transport Requests
+  </div>
+
+  <div>
+    Passenger Transport
+  </div>
+  <!--<div style="color: #b56e04">Vehicle</div>-->
+  <!--<div>Driver</div>-->
+</div>
+
