@@ -9,6 +9,8 @@ import {PassengerDeliveryComponent} from "./main/content/transport-manager/passe
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
 
 import {CreateUserAccountComponent} from "./main/content/general-manager/create-user-account/create-user-account.component";
+import {AvailableTransportsComponent} from "./main/content/applicant/available-transports/available-transports.component";
+import {CreateNewRequestComponent} from "./main/content/applicant/create-new-request/create-new-request.component";
 
 
 const routes: Routes = [
@@ -45,7 +47,14 @@ const routes: Routes = [
       {
         path: 'create_user_account',
         component: CreateUserAccountComponent
-
+      },
+      {
+        path: 'available_transports',
+        component: AvailableTransportsComponent
+      },
+      {
+        path: 'create_new_request',
+        component: CreateNewRequestComponent
       }
     ]
   },

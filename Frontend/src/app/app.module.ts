@@ -25,6 +25,12 @@ import { CreateUserAccountComponent } from './main/content/general-manager/creat
 import { UserAccountListComponent } from './main/content/general-manager/user-account-list/user-account-list.component';
 import { AccountRequestsComponent } from './main/content/general-manager/account-requests/account-requests.component';
 import { TransportRequestsComponent } from './main/content/general-manager/transport-requests/transport-requests.component';
+import { NavApplicantComponent } from './main/navbar/nav-applicant/nav-applicant.component';
+import { AvailableTransportsComponent } from './main/content/applicant/available-transports/available-transports.component';
+import { CreateNewRequestComponent } from './main/content/applicant/create-new-request/create-new-request.component';
+import { ApplicationStatusComponent } from './main/content/applicant/application-status/application-status.component';
+import { NotificationsComponent } from './main/content/applicant/notifications/notifications.component';
+import { FeedbackComponent } from './main/content/applicant/feedback/feedback.component';
 
 
 
@@ -51,8 +57,13 @@ import { TransportRequestsComponent } from './main/content/general-manager/trans
     CreateUserAccountComponent,
     UserAccountListComponent,
     AccountRequestsComponent,
-    TransportRequestsComponent
-
+    TransportRequestsComponent,
+    NavApplicantComponent,
+    AvailableTransportsComponent,
+    CreateNewRequestComponent,
+    ApplicationStatusComponent,
+    NotificationsComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
