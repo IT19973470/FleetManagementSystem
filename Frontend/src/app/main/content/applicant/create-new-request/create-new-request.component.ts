@@ -9,14 +9,16 @@ import {NgForm} from "@angular/forms";
 export class CreateNewRequestComponent implements OnInit {
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
   deliveryDetail = {
-    deliveryPassengerName: '',
-    deliveryPassengerNic: '',
-    contactNumber: '',
-    placeFrom: '',
-    companyName: '',
-    deliveryDate: '',
+    empId: '',
+    destination: '',
+    depatureDate: '',
+    mail: '',
+    vehicle: '',
+    reason: '',
     deliveryTime: '',
-    passengers: []
+    passengers: [] ,
+    items:[]
+
   };
 
   passenger;
@@ -54,6 +56,26 @@ export class CreateNewRequestComponent implements OnInit {
       passengerType: ''
     };
   }
+  onSubmitItem() {
+    this.deliveryDetail.passengers.push(this.passenger);
+    this.passenger = this.getNewPassenger();
+    this.passengerForm.resetForm(this.passenger);
+  }
 
+  setItems(passenger) {
+    this.passenger.passengerName = passenger.passengerName;
+    this.passenger.passengerNic = passenger.passengerNic;
+    this.passenger.contactNumber = passenger.contactNumber;
+    this.passenger.passengerType = passenger.passengerType;
+  }
+
+  getNewItems() {
+    return {
+      passengerName: '',
+      passengerNic: '',
+      contactNumber: '',
+      passengerType: ''
+    };
+  }
 
 }

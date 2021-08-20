@@ -12,6 +12,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
 
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   deliveryDetail = {
+    deliveryId: '',
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
@@ -45,28 +46,61 @@ export class UpdateItemDeliveryComponent implements OnInit {
   }
 
   onSubmitItem() {
+    this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
+    // console.log(this.item)
     if (this.btnText === 'Add') {
-      this.deliveryDetail.deliveryItemDetails.push(this.item);
+      this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+        this.deliveryDetail.deliveryItemDetails.push(item);
+      })
     } else if (this.btnText === 'Update') {
-      this.deliveryDetail.deliveryItemDetails[this.tblIndex] = this.item
+      // console.log(this.item)
+      this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
+        this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
+      })
     }
-    this.item = this.getNewItem();
-    this.itemForm.resetForm(this.item);
+    this.setNewItem();
+  }
+
+  removeItem(itemDetailId, i) {
+    this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
+      if (reply) {
+        this.deliveryDetail.deliveryItemDetails.splice(i, 1)
+      }
+    })
+  }
+
+  removeDelivery() {
+    this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
+      if (reply) {
+        this.router.navigate(['/main/view_item_delivery'])
+      }
+    })
   }
 
   setItem(item, i) {
     this.tblIndex = i;
+    this.item.itemDetailId = item.itemDetailId;
     this.item.itemName = item.itemName;
     this.item.itemType = item.itemType;
     this.item.itemQty = item.itemQty;
     this.btnText = 'Update';
   }
 
+  setNewItem() {
+    this.item = this.getNewItem();
+    this.itemForm.resetForm(this.item);
+    this.btnText = 'Add';
+  }
+
   getNewItem() {
     return {
+      itemDetailId: '',
       itemName: '',
       itemType: '',
-      itemQty: 1
+      itemQty: 1,
+      delivery: {
+        deliveryId: ''
+      }
     };
   }
 

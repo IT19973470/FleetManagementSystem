@@ -21,6 +21,22 @@ export class TransportManagerService {
     return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
   }
 
+  deleteDelivery(deliveryDetailId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/delivery/deleteDelivery/" + deliveryDetailId);
+  }
+
+  addItemToDelivery(deliveryItem): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/delivery/addItemToDelivery", deliveryItem);
+  }
+
+  updateItemOnDelivery(deliveryItem): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/delivery/updateItemOnDelivery/" + deliveryItem.itemDetailId, deliveryItem);
+  }
+
+  deleteItemOnDelivery(itemDetailId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/delivery/deleteItemOnDelivery/" + itemDetailId);
+  }
+
   getAllItemDeliveries(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/delivery/getAllItemDeliveries");
   }
