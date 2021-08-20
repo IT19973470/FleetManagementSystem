@@ -4,8 +4,12 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ItemDeliveryComponent} from "./main/content/transport-manager/item-delivery/item-delivery.component";
 import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
+
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
+
+import {CreateUserAccountComponent} from "./main/content/general-manager/create-user-account/create-user-account.component";
+
 
 const routes: Routes = [
   {
@@ -30,12 +34,18 @@ const routes: Routes = [
         component: ViewItemDeliveryComponent
       },
       {
+
         path: 'passenger_delivery',
         component: PassengerDeliveryComponent
       },
       {
         path: 'view_passenger_delivery',
         component: ViewPassengerDeliveryComponent
+      },
+      {
+        path: 'create_user_account',
+        component: CreateUserAccountComponent
+
       }
     ]
   },
