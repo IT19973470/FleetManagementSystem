@@ -31,7 +31,7 @@ public class DeliveryServiceImpl implements DeliveryService {
         delivery.setDeliveryId("Del" + dateTime);
         int count = 0;
         for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
-            deliveryItemDetail.setDeliveryDetailId("DelIt" + ++count + dateTime);
+            deliveryItemDetail.setItemDetailId("DelIt" + ++count + dateTime);
             deliveryItemDetail.setDelivery(delivery);
         }
         deliveryRepository.save(delivery);
@@ -56,11 +56,14 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public boolean deleteDelivery(String deliveryId) {
-        return false;
+        deliveryRepository.deleteById(deliveryId);
+        return true;
     }
 
     @Override
     public DeliveryItemDetailDTO addItemToDelivery(DeliveryItemDetail deliveryItemDetail) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        deliveryItemDetail.setItemDetailId("DelIt" + 0 + dateTime);
         return new DeliveryItemDetailDTO(deliveryItemDetailRepository.save(deliveryItemDetail));
     }
 
