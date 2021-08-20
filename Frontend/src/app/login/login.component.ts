@@ -26,8 +26,14 @@ export class LoginComponent implements OnInit {
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       if (user !== null && user['accountType'] === 'TM') {
+
         this.navBarService.username = user['nameWithInitials'];
         this.router.navigate(['/main/item_delivery']);
+
+        this.router.navigate(['/main/view_item_delivery'])
+      } else if (user['accountType'] === 'GM') {
+        this.router.navigate(['/main/create_user_account'])
+
       } else {
         this.logged = false;
       }
