@@ -3,14 +3,15 @@ package lk.fleet.dto;
 import lk.fleet.entity.Application;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ApplicationDTO {
     private String applicationID;
     private String destination;
     private String vehicleType;
     private boolean approval;
-    private LocalDate depatureDate;
-    private LocalDate arrivaleDate;
+    private LocalDateTime depatureDate;
+    private LocalDateTime arrivaleDate;
     private String reason;
 
     public ApplicationDTO(Application application) {
@@ -59,19 +60,19 @@ public class ApplicationDTO {
         this.approval = approval;
     }
 
-    public LocalDate getDepatureDate() {
+    public LocalDateTime getDepatureDate() {
         return depatureDate;
     }
 
-    public void setDepatureDate(LocalDate depatureDate) {
+    public void setDepatureDate(LocalDateTime depatureDate) {
         this.depatureDate = depatureDate;
     }
 
-    public LocalDate getArrivaleDate() {
+    public LocalDateTime getArrivaleDate() {
         return arrivaleDate;
     }
 
-    public void setArrivaleDate(LocalDate arrivaleDate) {
+    public void setArrivaleDate(LocalDateTime arrivaleDate) {
         this.arrivaleDate = arrivaleDate;
     }
 
