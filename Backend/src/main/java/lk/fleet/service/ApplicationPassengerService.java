@@ -13,10 +13,9 @@ import java.util.List;
 public interface ApplicationPassengerService {
 //    Application addApplication(Application application); //jarawa epa
 //    PassengerApplication addPassengerApplication(PassengerApplication application);
-    PassengerPassengerApplication addpassenerApplicationpassengerPassengerApplicationapplication(PassengerPassengerApplication passengerPassengerApplication);
+    PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication);
     Passenger addPassenger(Passenger passenger);
 //    ApplicationDTO updateApplication(String applicationID, PassengerPassengerApplication passengerPassengerApplication);
-    ApplicationDTO updateApplication(String aplicationID, Application application);
     List<Application> getPassengerApp();
     List<PassengerApplication> getAPassengerApp();
     List<PassengerApplicationDTO> getdto();

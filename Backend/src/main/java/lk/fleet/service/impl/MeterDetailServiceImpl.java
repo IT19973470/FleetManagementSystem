@@ -1,0 +1,43 @@
+package lk.fleet.service.impl;
+
+
+import lk.fleet.dto.MeterDetailDTO;
+import lk.fleet.entity.MeterDetail;
+import lk.fleet.repository.MeterDetailRepository;
+import lk.fleet.service.MeterDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class MeterDetailServiceImpl implements MeterDetailService {
+
+    @Autowired
+    private MeterDetailRepository meterDetailRepository;
+
+    @Override
+    public MeterDetailDTO addMeterDetail(MeterDetail meterDetail) {
+        return new MeterDetailDTO(meterDetailRepository.save(meterDetail));
+    }
+
+    @Override
+    public MeterDetailDTO updateMeterDetail(String meterID, MeterDetail meterDetail) {
+        Optional <MeterDetail> optionalMeterDetail = meterDetailRepository.findById(meterID);
+        if (optionalMeterDetail.isPresent()) {
+            MeterDetail meterDetailObj = optionalMeterDetail.get();
+            meterDetailObj.setInMeter(meterDetail.getInMeter());
+            meterDetailObj.setMileage(meterDetail.getMileage());
+            return new MeterDetailDTO(meterDetailRepository.save(meterDetailObj));
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteMeterDetail(String meterID) {
+        meterDetailRepository.deleteById(meterID);
+        return true;
+    }
+
+
+}

@@ -8,5 +8,6 @@ import java.util.Optional;
 
 //Gayan//
 public interface PassengerPassengerApplicationRepository extends JpaRepository<PassengerPassengerApplication, PassengerPassengerApplicationPK> {
-    
+
+
 }

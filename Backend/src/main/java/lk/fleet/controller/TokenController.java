@@ -19,12 +19,12 @@ public class TokenController {
         return ResponseEntity.ok(tokenService.addToken(token));
     }
 
-    @PutMapping(value = "/updateToken/(tokenID)")
+    @PutMapping(value = "/updateToken/{tokenID}")
     public ResponseEntity updateToken (@PathVariable String tokenID, @RequestBody Token token) {
         return ResponseEntity.ok(tokenService.updateToken(tokenID, token));
     }
 
-    @DeleteMapping(value = "/deleteToken/(tokenID)")
+    @DeleteMapping(value = "/deleteToken/{tokenID}")
     public ResponseEntity deleteToken (@PathVariable String tokenID) {
         return ResponseEntity.ok(tokenService.deleteToken(tokenID));
     }

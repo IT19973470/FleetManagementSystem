@@ -2,6 +2,7 @@ package lk.fleet.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,7 +14,7 @@ public class DeliveryItemDetail {
     private String itemType;
     private int itemQty;
 
-    @OneToOne
+    @ManyToOne
     private Delivery delivery;
 
     public String getDeliveryDetailId() {

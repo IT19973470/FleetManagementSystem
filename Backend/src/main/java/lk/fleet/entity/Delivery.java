@@ -1,10 +1,8 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Delivery {
@@ -18,6 +16,9 @@ public class Delivery {
     private String deliveryPersonNic;
     private String deliveryPersonName;
     private boolean deliveryStatus;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "delivery")
+    private Set<DeliveryItemDetail> deliveryItemDetails;
 
     @ManyToOne
     private SecurityOfficer securityOfficer;
@@ -92,5 +93,13 @@ public class Delivery {
 
     public void setDeliveryStatus(boolean deliveryStatus) {
         this.deliveryStatus = deliveryStatus;
+    }
+
+    public Set<DeliveryItemDetail> getDeliveryItemDetails() {
+        return deliveryItemDetails;
+    }
+
+    public void setDeliveryItemDetails(Set<DeliveryItemDetail> deliveryItemDetails) {
+        this.deliveryItemDetails = deliveryItemDetails;
     }
 }
