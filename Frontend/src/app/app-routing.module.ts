@@ -10,12 +10,7 @@ import {DriverRegistrationComponent} from "./main/content/Driver/driver-registra
 import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
 import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
 import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from "./login/login.component";
-import { MainComponent } from "./main/main.component";
-import { ItemDeliveryComponent } from "./main/content/transport-manager/item-delivery/item-delivery.component";
-import { ViewItemDeliveryComponent } from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
+
 
 import { PassengerDeliveryComponent } from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import { ViewPassengerDeliveryComponent } from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
