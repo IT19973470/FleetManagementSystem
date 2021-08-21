@@ -40,7 +40,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
   onSubmit() {
     // console.log(this.deliveryDetail)
     this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-    this.transportManagerService.updateItemDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+    this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
       this.router.navigate(['/main/view_item_delivery'])
     })
   }
