@@ -7,7 +7,6 @@ import {Subject} from "rxjs";
 export class NavbarService {
 
   navTopic = new Subject<any>();
-  username;
 
   constructor() {
   }

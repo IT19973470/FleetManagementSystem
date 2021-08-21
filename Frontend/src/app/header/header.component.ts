@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     if (this.router.url === '/main/item_delivery') {
       this.navBarService.navTopic.next('Item Delivery');
     }
-    this.username = this.navBarService.username;
+    this.username = JSON.parse(localStorage.getItem('user'))['nameWithInitials']
   }
 
 }
