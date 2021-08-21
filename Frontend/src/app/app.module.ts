@@ -40,6 +40,7 @@ import {ApplicationStatusComponent} from './main/content/applicant/application-s
 import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
 import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
 import { UpdatePassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component';
+import {NavDriverComponent} from "./main/navbar/nav-driver/nav-driver.component";
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { UpdatePassengerDeliveryComponent } from './main/content/transport-manag
     ItemDeliveryComponent,
     ViewItemDeliveryComponent,
     NavTransportManagerComponent,
+    NavDriverComponent,
     DriverRegistrationComponent,
     OverTimeComponent,
     ShiftDetailsComponent,
