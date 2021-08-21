@@ -5,3 +5,5 @@
 <app-nav-general-manager *ngIf="getUser()['accountType']==='GM'"></app-nav-general-manager>
 
 <app-nav-applicant *ngIf="getUser()['accountType']==='AP'" ></app-nav-applicant>
+
+<app-nav-accident-maintenance-manager *ngIf="getUser()['accountType']==='VMC'" ></app-nav-accident-maintenance-manager>
