@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/main/create_user_account'])
       } else if (user['accountType'] === 'AP') {
         this.router.navigate(['/main/available_transports'])
-      } else {
+      } else if (user['accountType'] === 'VMC'){
+        this.router.navigate(['/main/vehicle_accidents'])
+      }
+      else {
         this.logged = false;
       }
     }, (err) => {
