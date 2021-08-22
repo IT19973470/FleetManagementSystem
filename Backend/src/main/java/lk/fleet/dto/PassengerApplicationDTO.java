@@ -4,13 +4,14 @@ import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.PassengerApplication;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PassengerApplicationDTO {
     private String applicationID;
     private String destination;
     private String vehicleType;
     private boolean approval;
-    private LocalDate depatureDate;
+    private LocalDateTime depatureDate;
     private String drivername;
     private String vehicleId;
 
@@ -60,11 +61,11 @@ public class PassengerApplicationDTO {
         this.approval = approval;
     }
 
-    public LocalDate getDepatureDate() {
+    public LocalDateTime getDepatureDate() {
         return depatureDate;
     }
 
-    public void setDepatureDate(LocalDate depatureDate) {
+    public void setDepatureDate(LocalDateTime depatureDate) {
         this.depatureDate = depatureDate;
     }
 

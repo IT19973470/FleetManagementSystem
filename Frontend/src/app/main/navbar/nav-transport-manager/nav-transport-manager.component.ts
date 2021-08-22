@@ -11,9 +11,14 @@ export class NavTransportManagerComponent implements OnInit {
   constructor(private navBarService: NavbarService) { }
 
   ngOnInit(): void {
+
   }
 
   setTopic(topic){
     this.navBarService.navTopic.next(topic);
   }
+
+  // setUsername(username){
+  //   this.navBarService.username.next(username);
+  // }
 }

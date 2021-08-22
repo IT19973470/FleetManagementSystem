@@ -33,8 +33,8 @@ public class ApplicationController {
 //         }
 
     @PostMapping(value ="/newApplication1")
-    public Passenger addPassengerApplication1(@RequestBody Passenger application){
-        return applicationPassengerService.addPassenger(application);
+    public Passenger addPassengerApplication1(@RequestBody Passenger passenger){
+        return applicationPassengerService.addPassenger(passenger);
     }
 
     @PostMapping(value ="/Insertall")
