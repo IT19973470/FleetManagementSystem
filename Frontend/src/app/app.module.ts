@@ -44,6 +44,7 @@ import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update
 import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
 import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
-    VehicleMaintenanceReportComponent
+    VehicleMaintenanceReportComponent,
+    NavSecurityOfficerComponent
   ],
   imports: [
     BrowserModule,
