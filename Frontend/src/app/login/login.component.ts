@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
       if (user !== null && user['accountType'] === 'TM') {
         this.navBarService.username = user['nameWithInitials'];
         this.router.navigate(['/main/item_delivery']);
-      } else {
+      }else if (user['accountType']==='VDM'){
+        this.router.navigate(['/main/vehicle']);
+      }
+      else {
         this.logged = false;
       }
     }, (err) => {
