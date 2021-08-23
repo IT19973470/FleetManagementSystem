@@ -20,6 +20,9 @@ public class Delivery {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "delivery")
     private Set<DeliveryItemDetail> deliveryItemDetails;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "delivery")
+    private Set<DeliveryPassengerDetail> deliveryPassengerDetails;
+
     @ManyToOne
     private SecurityOfficer securityOfficer;
 
@@ -101,5 +104,13 @@ public class Delivery {
 
     public void setDeliveryItemDetails(Set<DeliveryItemDetail> deliveryItemDetails) {
         this.deliveryItemDetails = deliveryItemDetails;
+    }
+
+    public Set<DeliveryPassengerDetail> getDeliveryPassengerDetails() {
+        return deliveryPassengerDetails;
+    }
+
+    public void setDeliveryPassengerDetails(Set<DeliveryPassengerDetail> deliveryPassengerDetails) {
+        this.deliveryPassengerDetails = deliveryPassengerDetails;
     }
 }

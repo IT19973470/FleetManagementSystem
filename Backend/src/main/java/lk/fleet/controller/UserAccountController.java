@@ -46,9 +46,9 @@ public class UserAccountController {
 
 
 
-    @PutMapping(value = "/updateUserAccount/{employeeID}")
-    public ResponseEntity updateUserAccount(@PathVariable String employeeID, @RequestBody UserAccount userAccount){
-        return ResponseEntity.ok(userAccountService.updateUserAccount(employeeID, userAccount));
+    @PutMapping(value = "/updateGeneralManagerUserAccount/{employeeID}")
+    public ResponseEntity updateGeneralManagerUserAccount(@PathVariable String employeeID, @RequestBody UserAccount userAccount){
+        return ResponseEntity.ok(userAccountService.updateGeneralManagerUserAccount(employeeID, userAccount));
     }
 
     @PutMapping(value = "/updateTransportManagerAccount/{transportManagerId}")

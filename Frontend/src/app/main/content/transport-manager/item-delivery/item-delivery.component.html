@@ -1,6 +1,6 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Manage Item Delivery</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Item Delivery</span>
   </div>
 
   <form #deliveryForm="ngForm" (ngSubmit)="deliveryForm.form.valid && onSubmit()" novalidate>
@@ -173,7 +173,9 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-12" style="text-align: center">
-              <button class="btn btn-warning" style="font-weight: bold">{{btnText}} Item</button>
+              <button type="button" class="btn btn-warning" style="font-weight: bold;margin-right: 20px"
+                      (click)="setNewItem()">New Item</button>
+              <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-left: 20px">{{btnText}} Item</button>
             </div>
           </div>
         </form>

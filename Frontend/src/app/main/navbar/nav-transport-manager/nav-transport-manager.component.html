@@ -10,11 +10,18 @@
   </div>
 
   <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_item_delivery"
+    #updateItemDelivery="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
     routerLink="/main/view_item_delivery"
     (click)="setTopic('View Item Deliveries')"
     #viewItemDelivery="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':viewItemDelivery.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':viewItemDelivery.isActive || updateItemDelivery.isActive?'#c0050e':''}">
     View Item Deliveries
   </div>
 
@@ -28,11 +35,18 @@
   </div>
 
   <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_passenger_delivery"
+    #updatePassengerDelivery="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
     routerLink="/main/view_passenger_delivery"
     (click)="setTopic('View Passenger Deliveries')"
     #viewPassengerDelivery="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':viewPassengerDelivery.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':viewPassengerDelivery.isActive || updatePassengerDelivery.isActive?'#c0050e':''}">
     View Passenger Deliveries
   </div>
 

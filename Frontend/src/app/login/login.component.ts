@@ -26,12 +26,20 @@ export class LoginComponent implements OnInit {
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       if (user !== null && user['accountType'] === 'TM') {
-        this.navBarService.username = user['nameWithInitials'];
-        this.router.navigate(['/main/item_delivery']);
-      }else if (user['accountType']==='VDM'){
+        this.router.navigate(['/main/view_item_delivery'])
+      } else if (user['accountType'] === 'VDM') {
         this.router.navigate(['/main/vehicle']);
-      }
-      else {
+      } else if (user['accountType'] === 'SO') {
+        this.router.navigate(['/main/view_item_delivery'])
+      } else if (user['accountType'] === 'DR') {
+        this.router.navigate(['/main/shift_details'])
+      } else if (user['accountType'] === 'GM') {
+        this.router.navigate(['/main/create_user_account'])
+      } else if (user['accountType'] === 'AP') {
+        this.router.navigate(['/main/available_transports'])
+      } else if (user['accountType'] === 'VMC') {
+        this.router.navigate(['/main/vehicle_accidents'])
+      } else {
         this.logged = false;
       }
     }, (err) => {
