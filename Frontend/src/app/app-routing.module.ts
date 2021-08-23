@@ -7,6 +7,7 @@ import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-i
 
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
+import {VehicleComponent} from "./main/content/vehicleDriver-manager/vehicle/vehicle.component";
 
 import {CreateUserAccountComponent} from "./main/content/general-manager/create-user-account/create-user-account.component";
 import {AvailableTransportsComponent} from "./main/content/applicant/available-transports/available-transports.component";
@@ -76,6 +77,28 @@ const routes: Routes = [
         path: 'maintenance_reports',
         component: VehicleMaintenanceReportComponent
       },
+    ]
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      {
+        path: 'vehicle',
+        component: VehicleComponent
+      },
+      {
+        path: 'view_item_delivery',
+        component: ViewItemDeliveryComponent
+      },
+      {
+        path: 'passenger_delivery',
+        component: PassengerDeliveryComponent
+      },
+      {
+        path: 'view_passenger_delivery',
+        component: ViewPassengerDeliveryComponent
+      }
     ]
   },
 ];
