@@ -1,9 +1,7 @@
 package lk.fleet.entity;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class PassengerPassengerApplication {
@@ -18,9 +16,6 @@ public class PassengerPassengerApplication {
     @JoinColumn(name="passengerApplicationID",referencedColumnName = "passengerApplicationID",insertable = false, updatable = false,nullable = false)
     private PassengerApplication passengerApplication;
 
-    public PassengerPassengerApplicationPK getPassengerPassengerApplicationId() {
-        return passengerPassengerApplicationId;
-    }
 
     public void setPassengerPassengerApplicationId(PassengerPassengerApplicationPK passengerPassengerApplicationId) {
         this.passengerPassengerApplicationId = passengerPassengerApplicationId;
@@ -41,4 +36,6 @@ public class PassengerPassengerApplication {
     public void setPassengerApplication(PassengerApplication passengerApplication) {
         this.passengerApplication = passengerApplication;
     }
+
+
 }
