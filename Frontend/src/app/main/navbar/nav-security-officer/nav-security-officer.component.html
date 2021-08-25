@@ -20,7 +20,7 @@
 
   <div
     routerLink="/main/arrival_departure_page"
-    (click)="setTopic('Arrival & Departure Log Page')"
+    (click)="setTopic('Arrival and Departure Log Page')"
     #arrivalDeparturePage="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':arrivalDeparturePage.isActive?'#c0050e':''}">
@@ -38,11 +38,11 @@
 
   <div
     routerLink="/main/update_delivery_status"
-    (click)="setTopic('Item Delivery Details')"
+    (click)="setTopic('Item Delivery Status')"
     #updateDeliveryStatus="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':updateDeliveryStatus.isActive?'#c0050e':''}">
-    Item Delivery Details
+    Item Delivery Status
   </div>
 
   <div>

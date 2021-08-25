@@ -48,6 +48,7 @@ import {DriverAccountComponent} from "./main/content/Driver/driver-account/drive
 import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
 
 import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
+import { TokenComponent } from './main/content/security-officer/token/token.component';
 
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
@@ -97,7 +98,8 @@ import {DatePipe} from "@angular/common";
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
-    NavSecurityOfficerComponent
+    NavSecurityOfficerComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,

@@ -18,4 +18,7 @@ export class NavSecurityOfficerComponent implements OnInit {
     this.navBarService.navTopic.next(topic);
   }
 
+  // setUsername(username){
+  //   this.navBarService.username.next(username);
+  // }
 }
