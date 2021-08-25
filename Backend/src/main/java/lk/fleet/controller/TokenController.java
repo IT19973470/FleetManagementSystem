@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "token")
+@RequestMapping(value = "fleetmanagement/" + "token")
 public class TokenController {
 
     @Autowired

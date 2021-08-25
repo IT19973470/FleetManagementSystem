@@ -16,9 +16,14 @@ import {VehicleAccidentComponent} from "./main/content/accident-maintenance-mana
 import {VehicleMaintenanceComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component";
 import {VehicleAccidentReportComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component";
 import {VehicleMaintenanceReportComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-report/vehicle-maintenance-report.component";
+
 import {ApplicationStatusComponent} from "./main/content/applicant/application-status/application-status.component";
+
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
+
+import {TokenComponent} from "./main/content/security-officer/token/token.component";
+
 
 
 
@@ -91,6 +96,10 @@ const routes: Routes = [
       {
         path: 'maintenance_reports',
         component: VehicleMaintenanceReportComponent
+      },
+      {
+        path: 'create_token',
+        component: TokenComponent
       },
     ]
   },
