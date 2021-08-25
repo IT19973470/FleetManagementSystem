@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -85,7 +85,8 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
-    VehicleMaintenanceReportComponent
+    VehicleMaintenanceReportComponent,
+    NavDriverComponent
   ],
   imports: [
     BrowserModule,

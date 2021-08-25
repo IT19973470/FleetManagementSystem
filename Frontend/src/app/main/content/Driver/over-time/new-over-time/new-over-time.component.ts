@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-over-time.component.css']
 })
 export class NewOverTimeComponent implements OnInit {
+  otDetail = {
+    overTimeID:'',
+    otDate:'',
+    noOfShifts:'',
+    startTime:'',
+    endTime:'',
+    approval:''
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    return false;
+  }
 }

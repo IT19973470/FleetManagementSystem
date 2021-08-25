@@ -5,13 +5,11 @@ import lk.fleet.entity.Driver;
 public class DriverDTO {
     private String driverID;
     private String licenseID;
-    private boolean approval;
     private UserAccountDTO userAccount;
 
-    public DriverDTO(String driverID, String licenseID, boolean approval) {
+    public DriverDTO(String driverID, String licenseID) {
         this.driverID = driverID;
         this.licenseID = licenseID;
-        this.approval = approval;
     }
 
     public DriverDTO(Driver driver) {
@@ -37,14 +35,6 @@ public class DriverDTO {
 
     public void setLicenseID(String lisenseID) {
         this.licenseID = lisenseID;
-    }
-
-    public boolean isApproval() {
-        return approval;
-    }
-
-    public void setApproval(boolean approval) {
-        this.approval = approval;
     }
 
     public UserAccountDTO getUserAccount() {
