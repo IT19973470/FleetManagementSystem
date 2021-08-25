@@ -31,7 +31,9 @@ public interface DeliveryService {
 
     boolean deletePassengerOnDelivery(String deliveryPassengerId);
 
-    List<DeliveryDTO> getAllItemDeliveries();
+    List<DeliveryDTO> getAllDeliveries(String deliveryType);
 
-    List<DeliveryDTO> getAllPassengerDeliveries();
+    List<DeliveryDTO> getAllDeliveriesByDate(String deliveryType, String date);
+
+    List<DeliveryDTO> getAllDeliveriesByCompany(String deliveryType, String company);
 }

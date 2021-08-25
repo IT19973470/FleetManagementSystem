@@ -13,11 +13,13 @@ import {SignupComponent} from './signup/signup.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {ItemDeliveryComponent} from './main/content/transport-manager/item-delivery/item-delivery.component';
-import {ViewItemDeliveryComponent} from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
-import {NavTransportManagerComponent} from './main/navbar/nav-transport-manager/nav-transport-manager.component';
-import {ViewPassengerDeliveryComponent} from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
-import {PassengerDeliveryComponent} from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
+import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
+import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
+import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
+import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
+import { NavVehicleDriverManagerComponent } from './main/navbar/nav-vehicle-driver-manager/nav-vehicle-driver-manager.component';
+import { VehicleComponent } from './main/content/vehicleDriver-manager/vehicle/vehicle.component';
 import {UpdateItemDeliveryComponent} from './main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component';
 import {NavGeneralManagerComponent} from './main/navbar/nav-general-manager/nav-general-manager.component';
 import {CreateUserAccountComponent} from './main/content/general-manager/create-user-account/create-user-account.component';
@@ -44,6 +46,8 @@ import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update
 import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
 import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -68,7 +72,10 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     DriverAccountComponent,
     ViewPassengerDeliveryComponent,
     PassengerDeliveryComponent,
+    NavVehicleDriverManagerComponent,
+    VehicleComponent,
     UpdateItemDeliveryComponent,
+    UpdatePassengerDeliveryComponent,
     NavGeneralManagerComponent,
     CreateUserAccountComponent,
     UserAccountListComponent,
@@ -95,7 +102,7 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

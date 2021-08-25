@@ -2,16 +2,21 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransportManagerService {
 
   deliveryItem;
   deliveryPassenger;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private datePipe: DatePipe) {
+  }
+
+  getCurDate() {
+    return this.datePipe.transform(new Date(), 'yyyy-MM-dd')
   }
 
   addItemDelivery(deliveryDetail): Observable<any> {
@@ -55,11 +60,19 @@ export class TransportManagerService {
     return this.http.delete<any>(environment.backend_url + "/delivery/deletePassengerOnDelivery/" + itemPassengerId);
   }
 
-  getAllItemDeliveries(): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/delivery/getAllItemDeliveries");
+  getAllDeliveries(deliveryTpe): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getAllDeliveries/" + deliveryTpe);
   }
 
-  getAllPassengerDeliveries(): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
+  getAllDeliveriesByDate(deliveryTpe, deliveryDate): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getAllDeliveriesByDate/" + deliveryTpe + "/" + deliveryDate);
   }
+
+  getAllDeliveriesByCompany(deliveryTpe, company): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getAllDeliveriesByCompany/" + deliveryTpe + "/" + company);
+  }
+
+  // getAllPassengerDeliveries(): Observable<any> {
+  //   return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
+  // }
 }

@@ -57,16 +57,16 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Place From :
+            Address :
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="deliveryDetail.placeFrom"
-                   #placeFrom="ngModel"
-                   name="placeFrom" required>
-            <div *ngIf="(placeFrom.touched || deliveryForm.submitted) && placeFrom.errors?.required"
+                   [(ngModel)]="deliveryDetail.address"
+                   #address="ngModel"
+                   name="address" required>
+            <div *ngIf="(address.touched || deliveryForm.submitted) && address.errors?.required"
                  class="validErr">
-              Place From is required
+              Address is required
             </div>
           </div>
         </div>
