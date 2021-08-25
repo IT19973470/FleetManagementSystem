@@ -8,7 +8,7 @@ import java.util.List;
 public class DeliveryDTO {
 
     private String deliveryId;
-    private String placeFrom;
+    private String address;
     private String companyName;
     private String deliveryDate;
     private String deliveryTime;
@@ -16,6 +16,7 @@ public class DeliveryDTO {
     private String contactNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
+    private String deliveryType;
     private boolean deliveryStatus;
 
     private List<DeliveryItemDetailDTO> deliveryItemDetails;
@@ -24,7 +25,7 @@ public class DeliveryDTO {
     public DeliveryDTO(Delivery delivery) {
         if (delivery != null) {
             this.deliveryId = delivery.getDeliveryId();
-            this.placeFrom = delivery.getPlaceFrom();
+            this.address = delivery.getAddress();
             this.companyName = delivery.getCompanyName();
             this.deliveryDate = delivery.getDeliveryDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.deliveryTime = delivery.getDeliveryDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
@@ -33,6 +34,7 @@ public class DeliveryDTO {
             this.deliveryPersonNic = delivery.getDeliveryPersonNic();
             this.deliveryPersonName = delivery.getDeliveryPersonName();
             this.deliveryStatus = delivery.isDeliveryStatus();
+            this.deliveryType = delivery.getDeliveryType();
         }
     }
 
@@ -44,12 +46,12 @@ public class DeliveryDTO {
         this.deliveryId = deliveryId;
     }
 
-    public String getPlaceFrom() {
-        return placeFrom;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPlaceFrom(String placeFrom) {
-        this.placeFrom = placeFrom;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCompanyName() {
@@ -130,5 +132,13 @@ public class DeliveryDTO {
 
     public void setDeliveryPassengerDetails(List<DeliveryPassengerDetailDTO> deliveryPassengerDetails) {
         this.deliveryPassengerDetails = deliveryPassengerDetails;
+    }
+
+    public String getDeliveryType() {
+        return deliveryType;
+    }
+
+    public void setDeliveryType(String deliveryType) {
+        this.deliveryType = deliveryType;
     }
 }
