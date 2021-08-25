@@ -1,13 +1,7 @@
 package lk.fleet.service;
 
-import lk.fleet.dto.BookingManagementClerkDTO;
-import lk.fleet.dto.TransportManagerDTO;
-import lk.fleet.dto.UserAccountDTO;
-import lk.fleet.dto.VehicleDriverManagementClerkDTO;
-import lk.fleet.entity.BookingManagementClerk;
-import lk.fleet.entity.TransportManager;
-import lk.fleet.entity.UserAccount;
-import lk.fleet.entity.VehicleDriverManagementClerk;
+import lk.fleet.dto.*;
+import lk.fleet.entity.*;
 
 public interface UserAccountService {
 
@@ -18,6 +12,8 @@ public interface UserAccountService {
     TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager);
 
     BookingManagementClerkDTO addBookingManagementClerkUserAccount(BookingManagementClerk bookingManagementClerk);
+
+    SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer);
 
     boolean deleteUserAccount(String employeeID);
 
@@ -30,6 +26,8 @@ public interface UserAccountService {
     BookingManagementClerkDTO updateBookingManagementClerkAccount(String bookingManagementClerkId, BookingManagementClerk bookingManagementClerk);
 
     VehicleDriverManagementClerkDTO updateVehicleDiverManagementClerkAccount(String vehicleDriverManagementId, VehicleDriverManagementClerk vehicleDriverManagementClerk);
+
+    SecurityOfficerDTO updateSecurityOfficerAccount(String securityOfficerId, SecurityOfficer securityOfficer);
 
     UserAccountDTO login(UserAccount userAccount);
 

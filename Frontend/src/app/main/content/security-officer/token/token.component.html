@@ -1,0 +1,120 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-12">
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create Token</span>
+  </div>
+
+  <form #tokenForm="ngForm" (ngSubmit)="tokenForm.form.valid && addToken()" novalidate>
+
+    <div style="display: flex;margin-top: 50px">
+      <div style="width: 50%;padding-right: 20px">
+        <div class="row">
+          <div class="col-4">
+            Token ID :
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="text"
+                   [(ngModel)]="tokenDetail.tokenID"
+                   #tokenID="ngModel"
+                   name="tokenID" required>
+            <div *ngIf="(tokenID.touched || tokenForm.submitted) && tokenID.errors?.required"
+                 class="validErr">
+              Token ID is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Departure Date :
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="date"
+                   [(ngModel)]="tokenDetail.departureDate"
+                   #departureDate="ngModel"
+                   name="departureDate" required>
+            <div *ngIf="(departureDate.touched || tokenForm.submitted) && departureDate.errors?.required"
+                 class="validErr">
+              Departure Date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Departure Time :
+          </div>
+          <div class="col-8">
+            <input type="time" class="form-control"
+                   [(ngModel)]="tokenDetail.departureTime"
+                   #departureTime="ngModel"
+                   name="departureTime" required>
+            <div *ngIf="(departureTime.touched || tokenForm.submitted) && departureTime.errors?.required"
+                 class="validErr">
+              Departure Time is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Arrival Date :
+          </div>
+          <div class="col-8">
+            <input type="date" class="form-control"
+                   [(ngModel)]="tokenDetail.arrivalDate"
+                   #arrivalDate="ngModel"
+                   name="arrivalDate" required>
+            <div *ngIf="(arrivalDate.touched || tokenForm.submitted) && arrivalDate.errors?.required"
+                 class="validErr">
+              Arrival Date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Arrival Time :
+          </div>
+          <div class="col-8">
+            <input type="time" class="form-control"
+                   [(ngModel)]="tokenDetail.arrivalTime"
+                   #arrivalTime="ngModel"
+                   name="arrivalTime" required>
+            <div *ngIf="(arrivalTime.touched || tokenForm.submitted) && arrivalTime.errors?.required"
+                 class="validErr">
+              Arrival Time is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Transport Status :
+          </div>
+          <div class="col-8">
+            <select
+              class="form-control"
+              [(ngModel)]="tokenDetail.transportStatus"
+              #transportStatus="ngModel"
+              name="TransportStatus" required>
+              <option value="true">Completed</option>
+              <option value="false">Not Completed</option>
+            </select>
+            <div *ngIf="(transportStatus.touched || tokenForm.submitted) && transportStatus.errors?.required"
+                 class="validErr">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class=""
+         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+      <div class="col-12" style="text-align: right">
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Token</button>
+      </div>
+    </div>
+
+  </form>
+</div>
