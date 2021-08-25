@@ -2,10 +2,7 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.*;
 import lk.fleet.entity.*;
-import lk.fleet.repository.BookingManagementClerkRepository;
-import lk.fleet.repository.TransportManagerRepository;
-import lk.fleet.repository.UserAccountRepository;
-import lk.fleet.repository.VehicleDriverManagementClerkRepository;
+import lk.fleet.repository.*;
 import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +25,9 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Autowired
     private VehicleDriverManagementClerkRepository vehicleDriverManagementClerkRepository;
+
+    @Autowired
+    private SecurityOfficerRepository securityOfficerRepository;
 
     @Override
     public UserAccountDTO addGeneralManagerUserAccount(UserAccount userAccount) {
@@ -74,6 +74,19 @@ public class UserAccountServiceImpl implements UserAccountService {
         vehicleDriverManagementClerkRepository.save(vehicleDriverManagementClerk);
         return new VehicleDriverManagementClerkDTO(vehicleDriverManagementClerk, new UserAccountDTO(vehicleDriverManagementClerk.getUserAccount()));
     }
+
+    @Override
+    public SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer) {
+        LocalDateTime localDateTime = LocalDateTime.now();//current date
+        securityOfficer.setSecurityOfficerID("SO" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+        securityOfficer.getUserAccount().setEmployeeID(securityOfficer.getSecurityOfficerID());
+
+        securityOfficer.getUserAccount().setApproved(true);
+        userAccountRepository.save(securityOfficer.getUserAccount());
+        securityOfficerRepository.save(securityOfficer);
+        return new SecurityOfficerDTO(securityOfficer,new UserAccountDTO(securityOfficer.getUserAccount()));
+    }
+
 
     @Override
     public TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager) {
@@ -130,7 +143,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         return null;
     }
 
-
     @Override
     public UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount) {
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
@@ -145,6 +157,24 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
 
         return null;
+    }
+
+    @Override
+    public SecurityOfficerDTO updateSecurityOfficerAccount(String securityOfficerId, SecurityOfficer securityOfficer) {
+
+        Optional<SecurityOfficer> optionalSecurityOfficer = securityOfficerRepository.findById(securityOfficerId);
+            if (optionalSecurityOfficer.isPresent()) {
+            SecurityOfficer securityOfficerObject = optionalSecurityOfficer.get();
+            securityOfficerObject.getUserAccount().setName(securityOfficer.getUserAccount().getName());
+            securityOfficerObject.getUserAccount().setAddress(securityOfficer.getUserAccount().getAddress());
+            securityOfficerObject.getUserAccount().setContactNo(securityOfficer.getUserAccount().getContactNo());
+            securityOfficerObject.getUserAccount().setEmail(securityOfficer.getUserAccount().getEmail());
+
+
+            userAccountRepository.save(securityOfficerObject.getUserAccount());
+            return new SecurityOfficerDTO(securityOfficerRepository.save(securityOfficerObject));
+        }
+            return null;
     }
 
     @Override
