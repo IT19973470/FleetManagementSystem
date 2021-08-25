@@ -14,8 +14,7 @@ export class CreateNewRequestComponent implements OnInit {
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
 
 
-
-  passengerpassengerApp= {
+  passengerpassengerApp = {
 
     applicationID: '1',
     arrivaleDate: '',
@@ -29,11 +28,11 @@ export class CreateNewRequestComponent implements OnInit {
     }
   }
 
-  Pass={
-    passenger:{
-      passengerId:''
+  Pass = {
+    passenger: {
+      passengerId: ''
     }
-};
+  };
 
   //Passenger.name;
   // x={
@@ -46,7 +45,7 @@ export class CreateNewRequestComponent implements OnInit {
   tblIndex;
 
   constructor(private applicant: ApplicantService, private router: Router) {
-  //  this.Pass.passenger = this.getNewPassenger();
+    //  this.Pass.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
@@ -54,7 +53,7 @@ export class CreateNewRequestComponent implements OnInit {
   }
 
   onSubmit() {
- console.log(this.passengerpassengerApp);
+    console.log(this.passengerpassengerApp);
     this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
       this.router.navigate(['/main/view_item_delivery'])
     })
@@ -63,28 +62,28 @@ export class CreateNewRequestComponent implements OnInit {
   btnText = 'Add';
 
   onSubmitPassenger() {
-   if (this.btnText === 'Add') {
-   this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
-    //this.passengerForm.resetForm();
-   }
-  //   if (this.btnText === 'Add') {
-  //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-  // //   this.applicant.passengers.push(this.passengers);
-  // this.passengers = this.getNewPassenger();
-  //  this.applicantFrom.resetForm(this.passengers);
-   this.setNewPassenger();
+    if (this.btnText === 'Add') {
+      this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+      //this.passengerForm.resetForm();
+    }
+    //   if (this.btnText === 'Add') {
+    //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+    // //   this.applicant.passengers.push(this.passengers);
+    // this.passengers = this.getNewPassenger();
+    //  this.applicantFrom.resetForm(this.passengers);
+    this.setNewPassenger();
   }
 
   setNewPassenger() {
-    this.Pass.passenger = this.getNewPassenger();
+    this.Pass = this.getNewPassenger();
 
     //this.Pass.passenger = this.getNewPassenger();
-    this.passengerForm.resetForm(this.Pass);
+    this.passengerForm.resetForm(this.Pass.passenger);
     this.btnText = 'Add';
 
   }
 
-  setPassenger(passenger,i) {
+  setPassenger(passenger, i) {
     this.tblIndex = i;
     this.Pass.passenger.passengerId = passenger.passengerId;
     this.btnText = 'Update';
@@ -92,9 +91,10 @@ export class CreateNewRequestComponent implements OnInit {
 
   getNewPassenger() {
     return {
-     passengerId: '1',
+      passenger:
+        {passengerId: ''},
     };
- }
+  }
 
 
   // onSubmitPassenger() {
@@ -130,27 +130,26 @@ export class CreateNewRequestComponent implements OnInit {
   //}
 
 
-
- //  onSubmitItem() {
- //    this.deliveryDetail.passengers.push(this.passenger);
- //    this.passenger = this.getNewPassenger();
- //    this.applicantFrom.resetForm(this.passenger);
- //  }
- //
- //  setItems(passenger) {
- //    this.passenger.passengerName = passenger.passengerName;
- //    this.passenger.passengerNic = passenger.passengerNic;
- //    this.passenger.contactNumber = passenger.contactNumber;
- //    this.passenger.passengerType = passenger.passengerType;
- //  }
- //
- //  getNewItems() {
- //    return {
- //      passengerName: '',
- //      passengerNic: '',
- //      contactNumber: '',
- //      passengerType: ''
- //    };
- //  }
+  //  onSubmitItem() {
+  //    this.deliveryDetail.passengers.push(this.passenger);
+  //    this.passenger = this.getNewPassenger();
+  //    this.applicantFrom.resetForm(this.passenger);
+  //  }
+  //
+  //  setItems(passenger) {
+  //    this.passenger.passengerName = passenger.passengerName;
+  //    this.passenger.passengerNic = passenger.passengerNic;
+  //    this.passenger.contactNumber = passenger.contactNumber;
+  //    this.passenger.passengerType = passenger.passengerType;
+  //  }
+  //
+  //  getNewItems() {
+  //    return {
+  //      passengerName: '',
+  //      passengerNic: '',
+  //      contactNumber: '',
+  //      passengerType: ''
+  //    };
+  //  }
 
 }
