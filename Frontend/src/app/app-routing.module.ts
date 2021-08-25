@@ -45,7 +45,15 @@ const routes: Routes = [
       {
         path: 'create_user_account',
         component: CreateUserAccountComponent
-
+      },
+      {
+        path: 'user_account_list',
+        component: CreateUserAccountComponent
+      }
+      ,
+      {
+        path: 'user_account_list',
+        component: CreateUserAccountComponent
       }
     ]
   },

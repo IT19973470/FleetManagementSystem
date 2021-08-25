@@ -42,8 +42,11 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager) {
         LocalDateTime localDateTime = LocalDateTime.now();//current date
-        transportManager.setTransportManagerId("TM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
-        transportManager.getUserAccount().setEmployeeID(transportManager.getTransportManagerId());
+        if(transportManager.getUserAccount().getAccountType().equals("Transport Manager")) {
+            transportManager.setTransportManagerId("TM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+            transportManager.getUserAccount().setEmployeeID(transportManager.getTransportManagerId());
+            transportManager.getUserAccount().setAccountType("TM");
+        }
 
         transportManager.getUserAccount().setApproved(true);
         userAccountRepository.save(transportManager.getUserAccount());
@@ -54,8 +57,10 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public BookingManagementClerkDTO addBookingManagementClerkUserAccount(BookingManagementClerk bookingManagementClerk) {
         LocalDateTime localDateTime = LocalDateTime.now();//current date
-        bookingManagementClerk.setBookingManagementClerkId("BMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
-        bookingManagementClerk.getUserAccount().setEmployeeID(bookingManagementClerk.getBookingManagementClerkId());
+        if(bookingManagementClerk.getUserAccount().getAccountType().equals("Booking Management Clerk")){
+            bookingManagementClerk.setBookingManagementClerkId("BMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+            bookingManagementClerk.getUserAccount().setEmployeeID(bookingManagementClerk.getBookingManagementClerkId());
+        }
 
         bookingManagementClerk.getUserAccount().setApproved(true);
         userAccountRepository.save(bookingManagementClerk.getUserAccount());
@@ -66,8 +71,10 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public VehicleDriverManagementClerkDTO addVehicleDiverManagementClerkUserAccount(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
         LocalDateTime localDateTime = LocalDateTime.now();//current date
-        vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
-        vehicleDriverManagementClerk.getUserAccount().setEmployeeID(vehicleDriverManagementClerk.getVehicleDriverManagementId());
+        if(vehicleDriverManagementClerk.getUserAccount().getAccountType().equals("Vehicle and Driver Management Clerk")) {
+            vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+            vehicleDriverManagementClerk.getUserAccount().setEmployeeID(vehicleDriverManagementClerk.getVehicleDriverManagementId());
+        }
 
         vehicleDriverManagementClerk.getUserAccount().setApproved(true);
         userAccountRepository.save(vehicleDriverManagementClerk.getUserAccount());
