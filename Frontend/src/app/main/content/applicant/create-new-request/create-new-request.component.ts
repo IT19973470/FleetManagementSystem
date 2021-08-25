@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
+import {ApplicantService} from "../../../../_service/applicant.service";
+
 
 @Component({
   selector: 'app-create-new-request',
@@ -7,24 +10,43 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./create-new-request.component.css']
 })
 export class CreateNewRequestComponent implements OnInit {
+  @ViewChild('applicantFrom', {static: true}) public applicantFrom: NgForm;
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
-  deliveryDetail = {
-    empId: '',
-    destination: '',
-    depatureDate: '',
-    mail: '',
-    vehicle: '',
+
+
+
+  passengerpassengerApp= {
+
+    applicationID: '1',
+    arrivaleDate: '',
+    depatureDate: "",
     reason: '',
-    deliveryTime: '',
-    passengers: [] ,
-    items:[]
+    vehicleType: '',
+    destination: '',
+    passengerApplication: {
+      noOfPassengers: '5',
+      passengerPassengerApplications: []
+    }
+  }
 
-  };
+  Pass={
+    passenger:{
+      passengerId:''
+    }
+};
 
-  passenger;
+  //Passenger.name;
+  // x={
+  //   applicationID:'',
+  //
+  //
+  //
+  // };
+  //
+  tblIndex;
 
-  constructor() {
-    this.passenger = this.getNewPassenger();
+  constructor(private applicant: ApplicantService, private router: Router) {
+  //  this.Pass.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
@@ -32,50 +54,103 @@ export class CreateNewRequestComponent implements OnInit {
   }
 
   onSubmit() {
-
+ console.log(this.passengerpassengerApp);
+    this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/view_item_delivery'])
+    })
   }
+
+  btnText = 'Add';
 
   onSubmitPassenger() {
-    this.deliveryDetail.passengers.push(this.passenger);
-    this.passenger = this.getNewPassenger();
-    this.passengerForm.resetForm(this.passenger);
+   if (this.btnText === 'Add') {
+   this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+    //this.passengerForm.resetForm();
+   }
+  //   if (this.btnText === 'Add') {
+  //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+  // //   this.applicant.passengers.push(this.passengers);
+  // this.passengers = this.getNewPassenger();
+  //  this.applicantFrom.resetForm(this.passengers);
+   this.setNewPassenger();
   }
 
-  setPassenger(passenger) {
-    this.passenger.passengerName = passenger.passengerName;
-    this.passenger.passengerNic = passenger.passengerNic;
-    this.passenger.contactNumber = passenger.contactNumber;
-    this.passenger.passengerType = passenger.passengerType;
+  setNewPassenger() {
+    this.Pass.passenger = this.getNewPassenger();
+
+    //this.Pass.passenger = this.getNewPassenger();
+    this.passengerForm.resetForm(this.Pass);
+    this.btnText = 'Add';
+
+  }
+
+  setPassenger(passenger,i) {
+    this.tblIndex = i;
+    this.Pass.passenger.passengerId = passenger.passengerId;
+    this.btnText = 'Update';
   }
 
   getNewPassenger() {
     return {
-      passengerName: '',
-      passengerNic: '',
-      contactNumber: '',
-      passengerType: ''
+     passengerId: '1',
     };
-  }
-  onSubmitItem() {
-    this.deliveryDetail.passengers.push(this.passenger);
-    this.passenger = this.getNewPassenger();
-    this.passengerForm.resetForm(this.passenger);
-  }
+ }
 
-  setItems(passenger) {
-    this.passenger.passengerName = passenger.passengerName;
-    this.passenger.passengerNic = passenger.passengerNic;
-    this.passenger.contactNumber = passenger.contactNumber;
-    this.passenger.passengerType = passenger.passengerType;
-  }
 
-  getNewItems() {
-    return {
-      passengerName: '',
-      passengerNic: '',
-      contactNumber: '',
-      passengerType: ''
-    };
-  }
+  // onSubmitPassenger() {
+  //   if (this.btnText === 'Add') {
+  //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+  //   } else if (this.btnText === 'Update') {
+  //     this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
+  //   }
+  //   this.setNewPassenger();
+  // }
+
+  // setPassenger(passenger,i) {
+  //   this.tblIndex = i;
+  //   this.passenger.passengerName = passenger.passengerName;
+  //   this.passenger.passengerNic = passenger.passengerNic;
+  //   this.passenger.contactNumber = passenger.contactNumber;
+  //   this.passenger.passengerType = passenger.passengerType;
+  // }
+
+  // setNewPassenger() {
+  //   this.passenger = this.getNewPassenger();
+  //   this.passengerForm.resetForm();
+  //   this.btnText = 'Add';
+  // }
+
+  // getNewPassenger() {
+  //   return {
+  //     passengerName: '',
+  //     passengerNic: '',
+  //     contactNumber: '',
+  //     passengerType: ''
+  //   };
+  //}
+
+
+
+ //  onSubmitItem() {
+ //    this.deliveryDetail.passengers.push(this.passenger);
+ //    this.passenger = this.getNewPassenger();
+ //    this.applicantFrom.resetForm(this.passenger);
+ //  }
+ //
+ //  setItems(passenger) {
+ //    this.passenger.passengerName = passenger.passengerName;
+ //    this.passenger.passengerNic = passenger.passengerNic;
+ //    this.passenger.contactNumber = passenger.contactNumber;
+ //    this.passenger.passengerType = passenger.passengerType;
+ //  }
+ //
+ //  getNewItems() {
+ //    return {
+ //      passengerName: '',
+ //      passengerNic: '',
+ //      contactNumber: '',
+ //      passengerType: ''
+ //    };
+ //  }
 
 }

@@ -15,6 +15,7 @@ import {VehicleAccidentComponent} from "./main/content/accident-maintenance-mana
 import {VehicleMaintenanceComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component";
 import {VehicleAccidentReportComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component";
 import {VehicleMaintenanceReportComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-report/vehicle-maintenance-report.component";
+import {ApplicationStatusComponent} from "./main/content/applicant/application-status/application-status.component";
 
 
 const routes: Routes = [
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path: 'available_transports',
         component: AvailableTransportsComponent
+      },
+      {
+        path: 'application_status',
+        component: ApplicationStatusComponent
       },
       {
         path: 'create_new_request',

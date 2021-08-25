@@ -11,20 +11,20 @@
 
   <div
     routerLink="/main/create_new_request"
-    (click)="setTopic('Create New Request')"
+    (click)="setTopic('New Passenger Application')"
     #createNewRequest="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':createNewRequest.isActive?'#c0050e':''}">
-    Create New Request
+    New Passenger Application
   </div>
 
   <div
     routerLink="/main/application_status"
-    (click)="setTopic('Application Status')"
-    #applicationStatus="routerLinkActive"
+    (click)="setTopic('New Item Application')"
+    #ItemApplication="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':applicationStatus.isActive?'#c0050e':''}">
-    Application Status
+    [ngStyle]="{'color':ItemApplication.isActive?'#c0050e':''}">
+    New Item Application
   </div>
 
   <div
