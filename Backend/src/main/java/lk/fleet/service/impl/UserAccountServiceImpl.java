@@ -27,7 +27,11 @@ public class UserAccountServiceImpl implements UserAccountService {
     private VehicleDriverManagementClerkRepository vehicleDriverManagementClerkRepository;
 
     @Autowired
+
     private AccidentMaintenanceManagerRepository accidentMaintenanceManagerRepository;
+
+    private SecurityOfficerRepository securityOfficerRepository;
+
 
     @Override
     public UserAccountDTO addGeneralManagerUserAccount(UserAccount userAccount) {
@@ -85,6 +89,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
+
     public Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager) {
         if(accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
@@ -101,6 +106,19 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
 
+
+
+
+    public SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer) {
+        LocalDateTime localDateTime = LocalDateTime.now();//current date
+        securityOfficer.setSecurityOfficerID("SO" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+        securityOfficer.getUserAccount().setEmployeeID(securityOfficer.getSecurityOfficerID());
+
+        securityOfficer.getUserAccount().setApproved(true);
+        userAccountRepository.save(securityOfficer.getUserAccount());
+        securityOfficerRepository.save(securityOfficer);
+        return new SecurityOfficerDTO(securityOfficer,new UserAccountDTO(securityOfficer.getUserAccount()));
+    }
 
 
     @Override
@@ -158,7 +176,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         return null;
     }
 
-
     @Override
     public UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount) {
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
@@ -173,6 +190,24 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
 
         return null;
+    }
+
+    @Override
+    public SecurityOfficerDTO updateSecurityOfficerAccount(String securityOfficerId, SecurityOfficer securityOfficer) {
+
+        Optional<SecurityOfficer> optionalSecurityOfficer = securityOfficerRepository.findById(securityOfficerId);
+            if (optionalSecurityOfficer.isPresent()) {
+            SecurityOfficer securityOfficerObject = optionalSecurityOfficer.get();
+            securityOfficerObject.getUserAccount().setName(securityOfficer.getUserAccount().getName());
+            securityOfficerObject.getUserAccount().setAddress(securityOfficer.getUserAccount().getAddress());
+            securityOfficerObject.getUserAccount().setContactNo(securityOfficer.getUserAccount().getContactNo());
+            securityOfficerObject.getUserAccount().setEmail(securityOfficer.getUserAccount().getEmail());
+
+
+            userAccountRepository.save(securityOfficerObject.getUserAccount());
+            return new SecurityOfficerDTO(securityOfficerRepository.save(securityOfficerObject));
+        }
+            return null;
     }
 
     @Override

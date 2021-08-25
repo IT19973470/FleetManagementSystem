@@ -36,9 +36,15 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk));
     }
 
+
     @PostMapping(value = "/addAccidentMaintenanceManagerUserAccount")
     public ResponseEntity addAccidentMaintenanceManagerUserAccount(@RequestBody AccidentMaintenanceManager accidentMaintenanceManager) {
         return ResponseEntity.ok(userAccountService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceManager));
+
+    @PostMapping(value = "/addSecurityOfficerUserAccount")
+    public ResponseEntity addSecurityOfficerUserAccount(@RequestBody SecurityOfficer securityOfficer) {
+        return ResponseEntity.ok(userAccountService.addSecurityOfficerUserAccount(securityOfficer));
+
     }
 
     @PostMapping(value = "/login")
@@ -66,6 +72,11 @@ public class UserAccountController {
     @PutMapping(value = "/updateVehicleDiverManagementClerkAccount/{vehicleDriverManagementId}")
     public ResponseEntity updateVehicleDiverManagementClerkAccount(@PathVariable String vehicleDriverManagementId, @RequestBody VehicleDriverManagementClerk vehicleDriverManagementClerk){
         return ResponseEntity.ok(userAccountService.updateVehicleDiverManagementClerkAccount(vehicleDriverManagementId, vehicleDriverManagementClerk));
+    }
+
+    @PutMapping(value = "/updateSecurityOfficerAccount/{securityOfficerId}")
+    public ResponseEntity updateSecurityOfficerAccount(@PathVariable String securityOfficerId, @RequestBody SecurityOfficer securityOfficer){
+        return ResponseEntity.ok(userAccountService.updateSecurityOfficerAccount(securityOfficerId, securityOfficer));
     }
 
 

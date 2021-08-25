@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       } else if (user['accountType'] === 'VDM') {
         this.router.navigate(['/main/vehicle']);
       } else if (user['accountType'] === 'SO') {
-        this.router.navigate(['/main/view_item_delivery'])
+        this.router.navigate(['/main/create_token'])
       } else if (user['accountType'] === 'DR') {
         this.router.navigate(['/main/shift_details'])
       } else if (user['accountType'] === 'GM') {

@@ -1,8 +1,7 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 //Gayan//
 @Entity
@@ -13,6 +12,9 @@ public class ItemApplication {
 
     @OneToOne
     private Application application;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemApplication")
+    private Set<ItemItemApplication> itemItemApplications;
 
     public String getItemApplicationId() {
         return itemApplicationId;
@@ -36,5 +38,13 @@ public class ItemApplication {
 
     public void setApplication(Application application) {
         this.application = application;
+    }
+
+    public Set<ItemItemApplication> getItemItemApplications() {
+        return itemItemApplications;
+    }
+
+    public void setItemItemApplications(Set<ItemItemApplication> itemItemApplications) {
+        this.itemItemApplications = itemItemApplications;
     }
 }

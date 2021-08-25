@@ -1,14 +1,11 @@
-package lk.fleet.entity;
+package lk.fleet.dto;
 
-import javax.persistence.*;
-import java.time.LocalDate;
+import lk.fleet.entity.Application;
+
 import java.time.LocalDateTime;
-import java.util.Set;
 
-//Gayan//
-@Entity
-public class Application {
-    @Id
+public class ItamAppDTO {
+
     private String applicationID;
     private String destination;
     private String vehicleType;
@@ -17,14 +14,20 @@ public class Application {
     private LocalDateTime arrivaleDate;
     private String reason;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
-    private PassengerApplication passengerApplication;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
-    private ItemApplication itemApplication;
+    public ItamAppDTO(Application application) {
+        if(application != null) {
+            this.applicationID=application.getApplicationID();
+            this.destination=application.getDestination();
+            this.vehicleType=application.getVehicleType();
+            this.approval=application.isApproval();
+            this.depatureDate=application.getDepatureDate();
+            this.arrivaleDate=application.getArrivaleDate();
+            this.reason=application.getReason();
+        }
+    }
 
     public String getApplicationID() {
-        return this.applicationID;
+        return applicationID;
     }
 
     public void setApplicationID(String applicationID) {
@@ -34,6 +37,7 @@ public class Application {
     public String getDestination() {
         return destination;
     }
+
     public void setDestination(String destination) {
         this.destination = destination;
     }
@@ -76,21 +80,5 @@ public class Application {
 
     public void setReason(String reason) {
         this.reason = reason;
-    }
-
-    public PassengerApplication getPassengerApplication() {
-        return passengerApplication;
-    }
-
-    public void setPassengerApplication(PassengerApplication passengerApplication) {
-        this.passengerApplication = passengerApplication;
-    }
-
-    public ItemApplication getItemApplication() {
-        return itemApplication;
-    }
-
-    public void setItemApplication(ItemApplication itemApplication) {
-        this.itemApplication = itemApplication;
     }
 }
