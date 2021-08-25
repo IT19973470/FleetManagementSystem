@@ -1,10 +1,7 @@
 package lk.fleet.controller;
 
 
-import lk.fleet.entity.BookingManagementClerk;
-import lk.fleet.entity.TransportManager;
-import lk.fleet.entity.UserAccount;
-import lk.fleet.entity.VehicleDriverManagementClerk;
+import lk.fleet.entity.*;
 import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +36,11 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk));
     }
 
+    @PostMapping(value = "/addAccidentMaintenanceManagerUserAccount")
+    public ResponseEntity addAccidentMaintenanceManagerUserAccount(@RequestBody AccidentMaintenanceManager accidentMaintenanceManager) {
+        return ResponseEntity.ok(userAccountService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceManager));
+    }
+
     @PostMapping(value = "/login")
     public ResponseEntity login(@RequestBody UserAccount userAccount){
         return ResponseEntity.ok(userAccountService.login(userAccount));
@@ -71,4 +73,10 @@ public class UserAccountController {
     public ResponseEntity deleteUserAccount(@PathVariable String employeeID){
         return ResponseEntity.ok(userAccountService.deleteUserAccount(employeeID));
     }
+
+
+//    @GetMapping(value = "/getAllUserAccountRequestsByEmployeeID/{deliveryType}/{date}")
+//    public ResponseEntity getAllDeliveriesByDate(@PathVariable String deliveryType, @PathVariable String date) {
+//        return ResponseEntity.ok(deliveryService.getAllDeliveriesByDate(deliveryType, date));
+//    }
 }

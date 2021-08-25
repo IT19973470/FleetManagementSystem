@@ -13,15 +13,31 @@
             User Account Type :
           </div>
           <div class="col-8">
-          <select class="form-control" #accountType (change)="update($event)">
-              <option value="default">----</option>
+          <select name="accountType" class="form-control" #accountType [(ngModel)]="userAccount.accountType">
+              <option value="">Select type</option>
               <option *ngFor="let type of accountTypes" [value]="type">
                 {{type}}
               </option>
             </select>
-            <p>You selected {{selected}}</p>
+            <p> {{selected}}</p>
             </div>
           </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Employee ID :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="userAccount.employeeID"
+                   #employeeID="ngModel"
+                   name="employeeID" required>
+            <div *ngIf="(employeeID.touched || createUserAccountForm.submitted) && employeeID.errors?.required"
+                 class="validErr">
+              Employee ID is required
+            </div>
+          </div>
+        </div>
 
 
         <div class="row" style="margin-top: 10px">

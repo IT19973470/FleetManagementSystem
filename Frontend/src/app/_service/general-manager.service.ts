@@ -14,4 +14,12 @@ export class GeneralManagerService {
   addTransportManagerUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addTransportManagerUserAccount", userAccount);
   }
+  addBookingManagementClerkUserAccount(userAccount): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/userAccount/addBookingManagementClerkUserAccount", userAccount);
+  }
+
+  addVehicleDiverManagementClerkUserAccount(userAccount): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/userAccount/addVehicleDiverManagementClerkUserAccount", userAccount);
+  }
+
 }

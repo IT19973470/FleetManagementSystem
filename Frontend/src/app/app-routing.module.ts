@@ -19,6 +19,7 @@ import {VehicleMaintenanceReportComponent} from "./main/content/accident-mainten
 import {ApplicationStatusComponent} from "./main/content/applicant/application-status/application-status.component";
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
+import {UserAccountListComponent} from "./main/content/general-manager/user-account-list/user-account-list.component";
 
 
 
@@ -65,14 +66,8 @@ const routes: Routes = [
         component: CreateUserAccountComponent
       },
       {
-
         path: 'user_account_list',
-        component: CreateUserAccountComponent
-      }
-      ,
-      {
-        path: 'user_account_list',
-        component: CreateUserAccountComponent
+        component: UserAccountListComponent
       },
       {
         path: 'available_transports',

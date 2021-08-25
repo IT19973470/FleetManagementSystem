@@ -4,10 +4,7 @@ import lk.fleet.dto.BookingManagementClerkDTO;
 import lk.fleet.dto.TransportManagerDTO;
 import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.dto.VehicleDriverManagementClerkDTO;
-import lk.fleet.entity.BookingManagementClerk;
-import lk.fleet.entity.TransportManager;
-import lk.fleet.entity.UserAccount;
-import lk.fleet.entity.VehicleDriverManagementClerk;
+import lk.fleet.entity.*;
 
 public interface UserAccountService {
 
@@ -33,4 +30,5 @@ public interface UserAccountService {
 
     UserAccountDTO login(UserAccount userAccount);
 
+    Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager);
 }
