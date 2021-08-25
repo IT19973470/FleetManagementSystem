@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 
@@ -17,13 +17,21 @@ export class ViewPassengerDeliveryComponent implements OnInit {
 
   deliveryPassengerDetails = [];
   deliveryPassenger = {
+    deliveryId: '',
+    deliveryPersonName: '',
+    deliveryPersonNic: '',
+    deliveryStatus: false,
     deliveryPassengerDetails: []
   };
+
+  deliveryDate;
+  companyName;
 
   constructor(private transportManagerService: TransportManagerService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.deliveryDate = this.transportManagerService.getCurDate();
     this.getAllPassengerDeliveries();
   }
 
@@ -42,10 +50,23 @@ export class ViewPassengerDeliveryComponent implements OnInit {
   }
 
   getAllPassengerDeliveries() {
-    this.transportManagerService.getAllPassengerDeliveries().subscribe((deliveryPassengerDetails) => {
+    this.transportManagerService.getAllDeliveries('Passenger').subscribe((deliveryPassengerDetails) => {
       this.deliveryPassengerDetails = deliveryPassengerDetails;
       // console.log(this.deliveryItemDetails)
     })
   }
 
+  getAllDeliveriesByDate() {
+    this.transportManagerService.getAllDeliveriesByDate('Item', this.deliveryDate).subscribe((deliveryPassengerDetails) => {
+      this.deliveryPassengerDetails = deliveryPassengerDetails;
+      // console.log(this.deliveryItemDetails)
+    })
+  }
+
+  getAllDeliveriesByCompany() {
+    this.transportManagerService.getAllDeliveriesByCompany('Item', this.companyName).subscribe((deliveryPassengerDetails) => {
+      this.deliveryPassengerDetails = deliveryPassengerDetails;
+      // console.log(this.deliveryItemDetails)
+    })
+  }
 }

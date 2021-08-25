@@ -68,13 +68,19 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryService.deletePassengerOnDelivery(deliveryPassengerId));
     }
 
-    @GetMapping(value = "/getAllItemDeliveries")
-    public ResponseEntity getAllItemDeliveries() {
-        return ResponseEntity.ok(deliveryService.getAllItemDeliveries());
+    @GetMapping(value = "/getAllDeliveries/{deliveryType}")
+    public ResponseEntity getAllDeliveries(@PathVariable String deliveryType) {
+        return ResponseEntity.ok(deliveryService.getAllDeliveries(deliveryType));
     }
 
-    @GetMapping(value = "/getAllPassengerDeliveries")
-    public ResponseEntity getAllPassengerDeliveries() {
-        return ResponseEntity.ok(deliveryService.getAllPassengerDeliveries());
+    @GetMapping(value = "/getAllDeliveriesByDate/{deliveryType}/{date}")
+    public ResponseEntity getAllDeliveriesByDate(@PathVariable String deliveryType, @PathVariable String date) {
+        return ResponseEntity.ok(deliveryService.getAllDeliveriesByDate(deliveryType, date));
     }
+
+    @GetMapping(value = "/getAllDeliveriesByCompany/{deliveryType}/{company}")
+    public ResponseEntity getAllDeliveriesByCompany(@PathVariable String deliveryType, @PathVariable String company) {
+        return ResponseEntity.ok(deliveryService.getAllDeliveriesByCompany(deliveryType, company));
+    }
+
 }

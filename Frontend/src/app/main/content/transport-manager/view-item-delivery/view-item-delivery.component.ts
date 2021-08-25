@@ -18,13 +18,21 @@ export class ViewItemDeliveryComponent implements OnInit {
 
   deliveryItemDetails = [];
   deliveryItem = {
+    deliveryId: '',
+    deliveryPersonName: '',
+    deliveryPersonNic: '',
+    deliveryStatus: false,
     deliveryItemDetails: []
   };
+
+  deliveryDate;
+  companyName;
 
   constructor(private transportManagerService: TransportManagerService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.deliveryDate = this.transportManagerService.getCurDate();
     this.getAllItemDeliveries();
   }
 
@@ -43,9 +51,24 @@ export class ViewItemDeliveryComponent implements OnInit {
   }
 
   getAllItemDeliveries() {
-    this.transportManagerService.getAllItemDeliveries().subscribe((deliveryItemDetails) => {
+    this.transportManagerService.getAllDeliveries('Item').subscribe((deliveryItemDetails) => {
       this.deliveryItemDetails = deliveryItemDetails;
       // console.log(this.deliveryItemDetails)
     })
   }
+
+  getAllDeliveriesByDate() {
+    this.transportManagerService.getAllDeliveriesByDate('Item', this.deliveryDate).subscribe((deliveryItemDetails) => {
+      this.deliveryItemDetails = deliveryItemDetails;
+      // console.log(this.deliveryItemDetails)
+    })
+  }
+
+  getAllDeliveriesByCompany() {
+    this.transportManagerService.getAllDeliveriesByCompany('Item', this.companyName).subscribe((deliveryItemDetails) => {
+      this.deliveryItemDetails = deliveryItemDetails;
+      // console.log(this.deliveryItemDetails)
+    })
+  }
+
 }
