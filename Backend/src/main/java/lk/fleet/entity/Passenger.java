@@ -1,9 +1,8 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 //Gayan//
 @Entity
@@ -29,4 +28,5 @@ public class Passenger {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
+
 }

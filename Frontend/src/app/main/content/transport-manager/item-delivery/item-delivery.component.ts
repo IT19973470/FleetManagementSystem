@@ -16,7 +16,7 @@ export class ItemDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
-    placeFrom: '',
+    address: '',
     companyName: '',
     deliveryDate: '',
     deliveryTime: '',
@@ -49,8 +49,7 @@ export class ItemDeliveryComponent implements OnInit {
     } else if (this.btnText === 'Update') {
       this.deliveryDetail.deliveryItemDetails[this.tblIndex] = this.item
     }
-    this.item = this.getNewItem();
-    this.itemForm.resetForm(this.item);
+    this.setNewItem();
   }
 
   setItem(item, i) {
@@ -59,6 +58,12 @@ export class ItemDeliveryComponent implements OnInit {
     this.item.itemType = item.itemType;
     this.item.itemQty = item.itemQty;
     this.btnText = 'Update';
+  }
+
+  setNewItem() {
+    this.item = this.getNewItem();
+    this.itemForm.resetForm(this.item);
+    this.btnText = 'Add';
   }
 
   getNewItem() {

@@ -9,16 +9,20 @@ public class Delivery {
 
     @Id
     private String deliveryId;
-    private String placeFrom;
+    private String address;
     private String companyName;
     private LocalDateTime deliveryDateTime;
     private String contactNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
+    private String deliveryType;
     private boolean deliveryStatus;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "delivery")
     private Set<DeliveryItemDetail> deliveryItemDetails;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "delivery")
+    private Set<DeliveryPassengerDetail> deliveryPassengerDetails;
 
     @ManyToOne
     private SecurityOfficer securityOfficer;
@@ -31,12 +35,12 @@ public class Delivery {
         this.deliveryId = deliveryId;
     }
 
-    public String getPlaceFrom() {
-        return placeFrom;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPlaceFrom(String placeFrom) {
-        this.placeFrom = placeFrom;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCompanyName() {
@@ -101,5 +105,21 @@ public class Delivery {
 
     public void setDeliveryItemDetails(Set<DeliveryItemDetail> deliveryItemDetails) {
         this.deliveryItemDetails = deliveryItemDetails;
+    }
+
+    public Set<DeliveryPassengerDetail> getDeliveryPassengerDetails() {
+        return deliveryPassengerDetails;
+    }
+
+    public void setDeliveryPassengerDetails(Set<DeliveryPassengerDetail> deliveryPassengerDetails) {
+        this.deliveryPassengerDetails = deliveryPassengerDetails;
+    }
+
+    public String getDeliveryType() {
+        return deliveryType;
+    }
+
+    public void setDeliveryType(String deliveryType) {
+        this.deliveryType = deliveryType;
     }
 }

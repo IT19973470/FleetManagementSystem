@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {TransportManagerService} from "../../../../_service/transport-manager.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-passenger-delivery',
@@ -10,19 +12,22 @@ export class PassengerDeliveryComponent implements OnInit {
 
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
   deliveryDetail = {
-    deliveryPassengerName: '',
-    deliveryPassengerNic: '',
+    deliveryPersonName: '',
+    deliveryPersonNic: '',
     contactNumber: '',
-    placeFrom: '',
+    address: '',
     companyName: '',
     deliveryDate: '',
     deliveryTime: '',
-    passengers: []
+    deliveryDateTime: '',
+    deliveryPassengerDetails: []
   };
 
   passenger;
+  btnText = 'Add';
+  tblIndex;
 
-  constructor() {
+  constructor(private transportManagerService: TransportManagerService, private router: Router) {
     this.passenger = this.getNewPassenger();
   }
 
@@ -31,20 +36,33 @@ export class PassengerDeliveryComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTime
+    this.transportManagerService.addPassengerDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/view_passenger_delivery'])
+    })
   }
 
   onSubmitPassenger() {
-    this.deliveryDetail.passengers.push(this.passenger);
-    this.passenger = this.getNewPassenger();
-    this.passengerForm.resetForm(this.passenger);
+    if (this.btnText === 'Add') {
+      this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+    } else if (this.btnText === 'Update') {
+      this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
+    }
+    this.setNewPassenger();
   }
 
-  setPassenger(passenger) {
+  setPassenger(passenger,i) {
+    this.tblIndex = i;
     this.passenger.passengerName = passenger.passengerName;
     this.passenger.passengerNic = passenger.passengerNic;
     this.passenger.contactNumber = passenger.contactNumber;
     this.passenger.passengerType = passenger.passengerType;
+  }
+
+  setNewPassenger() {
+    this.passenger = this.getNewPassenger();
+    this.passengerForm.resetForm();
+    this.btnText = 'Add';
   }
 
   getNewPassenger() {

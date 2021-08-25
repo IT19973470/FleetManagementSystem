@@ -14,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="application")
+@RequestMapping(value="fleetmanagement/"+"application")
 public class ApplicationController {
     @Autowired
     private ApplicationPassengerService applicationPassengerService;
@@ -23,18 +23,23 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-//    @PostMapping(value ="/newApplication")   // jarawa epa
-//    public Application addApplication(@RequestBody Application application) {
-//        return applicationService.addApplication(application);
-//    }
+    @PostMapping(value ="/newapplication")   // jarawa epa
+    public ApplicationDTO addApplication(@RequestBody Application application) {
+        return applicationPassengerService.addApplication(application);
+    }
 //        @PostMapping(value ="/newApplication")
 //        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
 //             return applicationService.addPassengerApplication(application);
 //         }
+    @PostMapping(value ="/addPassengers")
+
+    public PassengerPassengerApplication addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
+        return applicationPassengerService.addPassengerpassenger(passengerPassengerApplication);
+    }
 
     @PostMapping(value ="/newApplication1")
-    public Passenger addPassengerApplication1(@RequestBody Passenger application){
-        return applicationPassengerService.addPassenger(application);
+    public Passenger addPassengerApplication1(@RequestBody Passenger passenger){
+        return applicationPassengerService.addPassenger(passenger);
     }
 
     @PostMapping(value ="/Insertall")
@@ -56,7 +61,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationService.updateApplication(applicationID, application));
     }
     @GetMapping(value = "/getApplication")
-    public List<Application> getPassengerApp(){
+    public List<ApplicationDTO> getPassengerApp(){
         return applicationPassengerService.getPassengerApp();
     }
     @GetMapping(value = "/getPassengerApplication")

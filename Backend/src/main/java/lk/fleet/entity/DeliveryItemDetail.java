@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 public class DeliveryItemDetail {
 
     @Id
-    private String deliveryDetailId;
+    private String itemDetailId;
     private String itemName;
     private String itemType;
     private int itemQty;
@@ -17,12 +17,12 @@ public class DeliveryItemDetail {
     @ManyToOne
     private Delivery delivery;
 
-    public String getDeliveryDetailId() {
-        return deliveryDetailId;
+    public String getItemDetailId() {
+        return itemDetailId;
     }
 
-    public void setDeliveryDetailId(String deliveryDetailId) {
-        this.deliveryDetailId = deliveryDetailId;
+    public void setItemDetailId(String itemDetailId) {
+        this.itemDetailId = itemDetailId;
     }
 
     public String getItemName() {

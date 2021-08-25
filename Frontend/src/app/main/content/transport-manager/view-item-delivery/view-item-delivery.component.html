@@ -1,36 +1,56 @@
-<div class="row" style="display: flex;justify-content: center">
-  <div class="col-11" style="margin-top: 40px">
+<div class="row">
+  <div class="col-12">
 
-    <table class="table table-striped">
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+
+    <span style="font-weight: bold">Search by :</span>
+    <span style="margin-left: 20px">Deliveries for</span>
+    <input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">
+      Search
+    </button>
+
+    <span style="font-weight: bold;margin-left: 50px">Search by company : </span>
+    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="companyName">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByCompany()">
+      Search
+    </button>
+
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllItemDeliveries()">
+      All deliveries
+    </button>
+
+    <table class="table table-striped" style="margin-top: 40px">
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Delivery Person Name</th>
-        <th scope="col">Delivery Person Nic</th>
-        <th scope="col">Contact Number</th>
+        <th scope="col">Company</th>
+        <th scope="col">Address</th>
+        <th scope="col" width="10%">Contact</th>
+        <th scope="col" width="10%">Delivery Date</th>
+        <th scope="col" width="10%">Delivery Time</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
+        <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let deliveryItem of deliveryItemDetails; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{deliveryItem.companyName}}</td>
+        <td>{{deliveryItem.address}}</td>
+        <td>{{deliveryItem.contactNumber}}</td>
+        <td>{{deliveryItem.deliveryDate}}</td>
+        <td>{{deliveryItem.deliveryTime}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" (click)="isTrueOrFalse(true)"></i>
+          <i class="fas fa-search" style="cursor: pointer" (click)="setItem(deliveryItem)"></i>
         </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+        <td style="text-align: center">
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -43,11 +63,42 @@
   <div style="">
     <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
       <div style="min-width: 1390px;">
-        <i class="fas fa-times" style="cursor: pointer" (click)="isTrueOrFalse(false)"></i>
+        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
       </div>
 
       <div class="">
 
+        <div>
+          <span style="font-weight: bold">Delivery ID : </span>
+          <span style="margin-left: 10px">{{deliveryItem.deliveryId}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Delivery person : </span>
+          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonName}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Delivery person's NIC : </span>
+          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>
+        </div>
+
+        <table class="table table-striped" style="margin-top: 20px">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Item Type</th>
+            <th scope="col">Quantity</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of deliveryItem.deliveryItemDetails; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.itemName}}</td>
+            <td>{{item.itemType}}</td>
+            <td>{{item.itemQty}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>

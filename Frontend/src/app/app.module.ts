@@ -16,18 +16,38 @@ import {HttpClientModule} from "@angular/common/http";
 import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
 import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
 import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
-
 import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
 import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
-
-import { NavGeneralManagerComponent } from './main/navbar/nav-general-manager/nav-general-manager.component';
-import { CreateUserAccountComponent } from './main/content/general-manager/create-user-account/create-user-account.component';
-import { UserAccountListComponent } from './main/content/general-manager/user-account-list/user-account-list.component';
-import { AccountRequestsComponent } from './main/content/general-manager/account-requests/account-requests.component';
-import { TransportRequestsComponent } from './main/content/general-manager/transport-requests/transport-requests.component';
-
-
-
+import { NavVehicleDriverManagerComponent } from './main/navbar/nav-vehicle-driver-manager/nav-vehicle-driver-manager.component';
+import { VehicleComponent } from './main/content/vehicleDriver-manager/vehicle/vehicle.component';
+import {UpdateItemDeliveryComponent} from './main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component';
+import {NavGeneralManagerComponent} from './main/navbar/nav-general-manager/nav-general-manager.component';
+import {CreateUserAccountComponent} from './main/content/general-manager/create-user-account/create-user-account.component';
+import {UserAccountListComponent} from './main/content/general-manager/user-account-list/user-account-list.component';
+import {AccountRequestsComponent} from './main/content/general-manager/account-requests/account-requests.component';
+import {TransportRequestsComponent} from './main/content/general-manager/transport-requests/transport-requests.component';
+import {NavApplicantComponent} from './main/navbar/nav-applicant/nav-applicant.component';
+import {AvailableTransportsComponent} from './main/content/applicant/available-transports/available-transports.component';
+import {CreateNewRequestComponent} from './main/content/applicant/create-new-request/create-new-request.component';
+import {ApplicationStatusComponent} from './main/content/applicant/application-status/application-status.component';
+import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
+import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
+import {NavAccidentMaintenanceManagerComponent} from './main/navbar/nav-accident-maintenance-manager/nav-accident-maintenance-manager.component';
+//import { VehcleAccdentComponent } from './vehcle-accdent/vehcle-accdent.component';
+import {VehicleAccidentComponent} from './main/content/accident-maintenance-manager/vehicle-accident/vehicle-accident.component';
+import {VehicleMaintenanceComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component';
+import {VehicleAccidentReportComponent} from './main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component';
+import {VehicleMaintenanceReportComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance-report/vehicle-maintenance-report.component';
+import {NavDriverComponent} from "./main/navbar/nav-driver/nav-driver.component";
+import {DriverRegistrationComponent} from "./main/content/Driver/driver-registration/driver-registration.component";
+import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
+import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
+import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
+import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
+import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -41,18 +61,38 @@ import { TransportRequestsComponent } from './main/content/general-manager/trans
     SignupComponent,
     ItemDeliveryComponent,
     ViewItemDeliveryComponent,
-
     NavTransportManagerComponent,
+    NavDriverComponent,
+    DriverRegistrationComponent,
+    OverTimeComponent,
+    ShiftDetailsComponent,
+    FuelUpdateComponent,
+    NewOverTimeComponent,
+    ViewOverTimeComponent,
+    DriverAccountComponent,
     ViewPassengerDeliveryComponent,
     PassengerDeliveryComponent,
-
-    NavTransportManagerComponent,
+    NavVehicleDriverManagerComponent,
+    VehicleComponent,
+    UpdateItemDeliveryComponent,
+    UpdatePassengerDeliveryComponent,
     NavGeneralManagerComponent,
     CreateUserAccountComponent,
     UserAccountListComponent,
     AccountRequestsComponent,
-    TransportRequestsComponent
-
+    TransportRequestsComponent,
+    NavApplicantComponent,
+    AvailableTransportsComponent,
+    CreateNewRequestComponent,
+    ApplicationStatusComponent,
+    NotificationsComponent,
+    FeedbackComponent,
+    NavAccidentMaintenanceManagerComponent,
+    //VehcleAccdentComponent,
+    VehicleAccidentComponent,
+    VehicleMaintenanceComponent,
+    VehicleAccidentReportComponent,
+    VehicleMaintenanceReportComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +101,7 @@ import { TransportRequestsComponent } from './main/content/general-manager/trans
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

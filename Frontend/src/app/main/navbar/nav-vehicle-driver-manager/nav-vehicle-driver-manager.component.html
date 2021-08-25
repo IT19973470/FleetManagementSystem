@@ -1,0 +1,45 @@
+
+<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/vehicle"
+    (click)="setTopic('Vehicle')"
+    #vehicle="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':vehicle.isActive?'#c0050e':''}">
+    Vehicle
+  </div>
+
+  <div
+    routerLink="/main/view_item_delivery"
+    (click)="setTopic('View Item Deliveries')"
+    #viewItemDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewItemDelivery.isActive?'#c0050e':''}">
+    View Item Deliveries
+  </div>
+
+  <div
+    routerLink="/main/passenger_delivery"
+    (click)="setTopic('Passenger Delivery')"
+    #PassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':PassengerDelivery.isActive?'#c0050e':''}">
+    Passenger Delivery
+  </div>
+
+  <div
+    routerLink="/main/view_passenger_delivery"
+    (click)="setTopic('View Passenger Deliveries')"
+    #viewPassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewPassengerDelivery.isActive?'#c0050e':''}">
+    View Passenger Deliveries
+  </div>
+
+  <div>
+    Passenger Transport
+  </div>
+  <!--<div style="color: #b56e04">Vehicle</div>-->
+  <!--<div>Driver</div>-->
+</div>
