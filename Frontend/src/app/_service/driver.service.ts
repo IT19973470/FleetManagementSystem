@@ -11,8 +11,8 @@ export class DriverService {
   constructor(private http: HttpClient) {
   }
 
-  Register(driverDetail): Observable<any>{
-    return this.http.post<any>(environment.backend_url + "addDriver", driverDetail)
+  addDriver(driverDetail): Observable<any>{
+    return this.http.post<any>(environment.backend_url + "/driverAccount/addDriver", driverDetail)
   }
 
 }

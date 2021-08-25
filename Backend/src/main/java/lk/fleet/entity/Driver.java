@@ -14,7 +14,6 @@ public class Driver {
     private UserAccount userAccount;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private VehicleDriverManagementClerk vehicleDriverManagementClerk;
 
     public VehicleDriverManagementClerk getVehicleDriverManagementClerk() {

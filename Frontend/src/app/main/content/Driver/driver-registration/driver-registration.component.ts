@@ -12,37 +12,39 @@ export class DriverRegistrationComponent implements OnInit {
 
   @ViewChild('driverRegistrationForm', {static: true}) public driverRegistrationForm: NgForm;
   driverDetail = {
-    employeeID:'',
-    accountType:'',
-    nic:'',
-    dob:'',
-    name:'',
-    address:'',
-    contactNo:'',
-    email:'',
-    registeredDate:'',
-    nameWithInitials:'',
-    password:'',
-    lisenseID:'',
-    driverDetails:[]
+    employeeID: '',
+    accountType: 'DR',
+    nic: '',
+    dob: '',
+    name: '',
+    address: '',
+    contactNo: '',
+    email: '',
+    registeredDate: '',
+    nameWithInitials: '',
+    password: '',
+    lisenseID: ''
   };
 
-  constructor(private driverService:DriverService) {
+  constructor(private driverService: DriverService, private router: Router) {
+  }
+
+  Register() {
 
   }
 
-  // Register(){
-  //   this.driverService.Register(this.driverDetail).subscribe(){
-  //     this.driverDetail.push(driverDetail);
-  //     this.
-  //   }
-  // }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    return false;
+    console.log(this.driverDetail);
+    let driver = {
+      userAccount: this.driverDetail
+    }
+    this.driverService.addDriver(driver).subscribe((driverDetail) => {
+      this.router.navigate(['main/driver_account'])
+    })
   }
 }
 

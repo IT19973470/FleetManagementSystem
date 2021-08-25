@@ -96,6 +96,26 @@ const routes: Routes = [
         path: 'maintenance_reports',
         component: VehicleMaintenanceReportComponent
       },
+      {
+        path: 'driver_account',
+        component: DriverAccountComponent
+      },
+      {
+        path: 'driver_registration',
+        component: DriverRegistrationComponent
+      },
+      {
+        path: 'fuel_update',
+        component: FuelUpdateComponent
+      },
+      {
+        path: 'over_time',
+        component: OverTimeComponent
+      },
+      {
+        path: 'shift_details',
+        component: ShiftDetailsComponent
+      }
     ]
   },
   {
