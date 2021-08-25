@@ -16,6 +16,8 @@ import {VehicleAccidentComponent} from "./main/content/accident-maintenance-mana
 import {VehicleMaintenanceComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component";
 import {VehicleAccidentReportComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component";
 import {VehicleMaintenanceReportComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-report/vehicle-maintenance-report.component";
+import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
+import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 
 
 const routes: Routes = [
@@ -41,13 +43,20 @@ const routes: Routes = [
         component: ViewItemDeliveryComponent
       },
       {
-
         path: 'passenger_delivery',
         component: PassengerDeliveryComponent
       },
       {
         path: 'view_passenger_delivery',
         component: ViewPassengerDeliveryComponent
+      },
+      {
+        path: 'update_item_delivery',
+        component: UpdateItemDeliveryComponent
+      },
+      {
+        path: 'update_passenger_delivery',
+        component: UpdatePassengerDeliveryComponent
       },
       {
         path: 'create_user_account',
@@ -63,11 +72,11 @@ const routes: Routes = [
       },
       {
         path: 'view_accidents',
-        component:VehicleAccidentComponent
+        component: VehicleAccidentComponent
       },
       {
         path: 'view_maintenance',
-        component:VehicleMaintenanceComponent
+        component: VehicleMaintenanceComponent
       },
       {
         path: 'accident_report',

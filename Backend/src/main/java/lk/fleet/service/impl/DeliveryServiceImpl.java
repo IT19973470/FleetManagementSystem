@@ -14,9 +14,13 @@ import lk.fleet.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +37,8 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDTO addItemDelivery(Delivery delivery) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        delivery.setDeliveryId("Del" + dateTime);
+        delivery.setDeliveryId("IDel" + dateTime);
+        delivery.setDeliveryType("Item");
         int count = 0;
         for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
             deliveryItemDetail.setItemDetailId("DelIt" + ++count + dateTime);
@@ -45,7 +50,8 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDTO addPassengerDelivery(Delivery delivery) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        delivery.setDeliveryId("Del" + dateTime);
+        delivery.setDeliveryId("PDel" + dateTime);
+        delivery.setDeliveryType("Passenger");
         int count = 0;
         for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
             deliveryPassengerDetail.setPassengerDetailId("DelPa" + ++count + dateTime);
@@ -62,7 +68,7 @@ public class DeliveryServiceImpl implements DeliveryService {
             deliveryObj.setDeliveryPersonName(delivery.getDeliveryPersonName());
             deliveryObj.setDeliveryPersonNic(delivery.getDeliveryPersonNic());
             deliveryObj.setContactNumber(delivery.getContactNumber());
-            deliveryObj.setPlaceFrom(delivery.getPlaceFrom());
+            deliveryObj.setAddress(delivery.getAddress());
             deliveryObj.setCompanyName(delivery.getCompanyName());
             deliveryObj.setDeliveryDateTime(delivery.getDeliveryDateTime());
             return new DeliveryDTO(deliveryRepository.save(deliveryObj));
@@ -130,34 +136,47 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public List<DeliveryDTO> getAllItemDeliveries() {
-        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc();
-        List<DeliveryDTO> deliveryDTOS = new ArrayList<>();
-        for (Delivery delivery : deliveries) {
-            List<DeliveryItemDetailDTO> deliveryItemDetailDTOS = new ArrayList<>();
-            for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
-                deliveryItemDetailDTOS.add(new DeliveryItemDetailDTO(deliveryItemDetail));
-            }
-            DeliveryDTO deliveryDTO = new DeliveryDTO(delivery);
-            deliveryDTO.setDeliveryItemDetails(deliveryItemDetailDTOS);
-            deliveryDTOS.add(deliveryDTO);
-        }
-
-        return deliveryDTOS;
+    public List<DeliveryDTO> getAllDeliveries(String deliveryType) {
+        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc(deliveryType);
+        return setDeliveryDTOs(deliveries, deliveryType);
     }
 
     @Override
-    public List<DeliveryDTO> getAllPassengerDeliveries() {
-        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc();
+    public List<DeliveryDTO> getAllDeliveriesByDate(String deliveryType, String date) {
+        try {
+            List<Delivery> deliveries = deliveryRepository.getAllDeliveriesByDate(deliveryType, new SimpleDateFormat("yyyy-MM-dd").parse(date));
+            return setDeliveryDTOs(deliveries, deliveryType);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<DeliveryDTO> getAllDeliveriesByCompany(String deliveryType, String company) {
+        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesByCompany(deliveryType, company);
+        return setDeliveryDTOs(deliveries, deliveryType);
+    }
+
+    private List<DeliveryDTO> setDeliveryDTOs(List<Delivery> deliveries, String deliveryType) {
         List<DeliveryDTO> deliveryDTOS = new ArrayList<>();
         for (Delivery delivery : deliveries) {
-            List<DeliveryPassengerDetailDTO> deliveryPassengerDetailDTOS = new ArrayList<>();
-            for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
-                deliveryPassengerDetailDTOS.add(new DeliveryPassengerDetailDTO(deliveryPassengerDetail));
-            }
             DeliveryDTO deliveryDTO = new DeliveryDTO(delivery);
-            deliveryDTO.setDeliveryPassengerDetails(deliveryPassengerDetailDTOS);
-            deliveryDTOS.add(deliveryDTO);
+            if (deliveryType.equals("Item")) {
+                List<DeliveryItemDetailDTO> deliveryItemDetailDTOS = new ArrayList<>();
+                for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
+                    deliveryItemDetailDTOS.add(new DeliveryItemDetailDTO(deliveryItemDetail));
+                }
+                deliveryDTO.setDeliveryItemDetails(deliveryItemDetailDTOS);
+                deliveryDTOS.add(deliveryDTO);
+            } else if (deliveryType.equals("Passenger")) {
+                List<DeliveryPassengerDetailDTO> deliveryPassengerDetailDTOS = new ArrayList<>();
+                for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
+                    deliveryPassengerDetailDTOS.add(new DeliveryPassengerDetailDTO(deliveryPassengerDetail));
+                }
+                deliveryDTO.setDeliveryPassengerDetails(deliveryPassengerDetailDTOS);
+                deliveryDTOS.add(deliveryDTO);
+            }
         }
 
         return deliveryDTOS;

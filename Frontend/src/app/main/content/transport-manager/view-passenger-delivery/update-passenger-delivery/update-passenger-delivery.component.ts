@@ -16,7 +16,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
-    placeFrom: '',
+    address: '',
     companyName: '',
     deliveryDate: '',
     deliveryTime: '',

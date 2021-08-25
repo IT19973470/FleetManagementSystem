@@ -46,6 +46,8 @@ import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update
 import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
 import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     NavVehicleDriverManagerComponent,
     VehicleComponent,
     UpdateItemDeliveryComponent,
+    UpdatePassengerDeliveryComponent,
     NavGeneralManagerComponent,
     CreateUserAccountComponent,
     UserAccountListComponent,
@@ -98,7 +101,7 @@ import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-t
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
