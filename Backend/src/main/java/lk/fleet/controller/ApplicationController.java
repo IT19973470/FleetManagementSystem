@@ -1,6 +1,7 @@
 package lk.fleet.controller;
 
 import lk.fleet.dto.ApplicationDTO;
+import lk.fleet.dto.ItamAppDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.ApplicationItemService;
@@ -32,9 +33,13 @@ public class ApplicationController {
 //             return applicationService.addPassengerApplication(application);
 //         }
     @PostMapping(value ="/addPassengers")
-
     public PassengerPassengerApplication addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
         return applicationPassengerService.addPassengerpassenger(passengerPassengerApplication);
+    }
+
+    @PostMapping(value ="/Addtem")
+    public ItamAppDTO addItem(@RequestBody Application application) {
+        return applicationItemService.addItemApplication(application);
     }
 
     @PostMapping(value ="/newApplication1")

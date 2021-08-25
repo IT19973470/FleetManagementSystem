@@ -1,15 +1,16 @@
 package lk.fleet.service.impl;
 
+
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.PassengerApplicationDTO;
-import lk.fleet.entity.Application;
-import lk.fleet.entity.ItemItemApplication;
-import lk.fleet.entity.ItemItemApplicationPK;
+import lk.fleet.dto.ItamAppDTO;
+import lk.fleet.entity.*;
 import lk.fleet.repository.*;
 import lk.fleet.service.ApplicationItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,24 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
         return itemItemApplicationRepository.save(itemItemApplication);
     }
 
+    public ItamAppDTO addItemApplication(Application application){
 
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        application.setApplicationID("App" + dateTime);
+
+        ItemApplication itemApplication =application.getItemApplication();
+        itemApplication.setItemApplicationId("PassApp" + dateTime);
+        itemApplication.setApplication(application);
+
+        int count=0;
+        for(ItemItemApplication itemItemApplication: application.getItemApplication().getItemItemApplications()){
+            itemRepository.save(itemItemApplication.getItem());
+            itemItemApplication.setItemItemApplicationId(new ItemItemApplicationPK(itemItemApplication.getItem().getItemID(),application.getItemApplication().getItemApplicationId()));
+
+        }
+
+        return    new ItamAppDTO(applicationRepository.save(application));
+    }
 
 
 
