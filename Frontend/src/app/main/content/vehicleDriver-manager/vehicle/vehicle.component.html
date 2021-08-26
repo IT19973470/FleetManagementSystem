@@ -2,7 +2,7 @@
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Manage Vehicle Details</span>
   </div>
-  <form #vehicleForm="ngForm" (ngSubmit)="vehicleForm.form.valid && onSubmit()" novalidate>
+  <form #vehicleForm="ngForm" (ngSubmit)="vehicleForm.form.valid && OnSubmitVehicle()" novalidate>
     <div style="display: flex;margin-top: 50px">
       <div style="width: 50%;padding-right: 20px">
         <div class="row">
@@ -192,7 +192,7 @@
         <td>{{vehicle.vehicleType}}</td>
         <td>{{vehicle.model}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
+          <i class="fas fa-search" style="font-size: 16px" (click)="setVehicle(vehicle)"></i>
         </td>
         <td style="text-align: center" (click)="vehicleDetail.vehicleVehicleDetails.splice(i, 1)">
           <i class="fas fa-times" style="color: red;font-size: 20px"></i>
