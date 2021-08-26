@@ -1,5 +1,7 @@
 package lk.fleet.service.impl;
 import lk.fleet.dto.ApplicationDTO;
+import lk.fleet.dto.DeliveryDTO;
+import lk.fleet.dto.PassengerAppDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.*;
 import lk.fleet.repository.*;
@@ -7,6 +9,8 @@ import lk.fleet.service.ApplicationPassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,13 +30,51 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     @Autowired
     private BookingApplicationRepository bookingApplicationRepository;
 
-//    @Override
-//    public Application addApplication(Application application) {
-//        PassengerApplication passengerApplication=new PassengerApplication();
-//        passengerApplication.setPassengerApplicationID(application.getApplicationID());
-//        passengerApplicationRepository.save(passengerApplication);
-//           return    applicationRepository.save(application); //Jarawa epaa
-//    }
+    @Override
+    public ApplicationDTO addApplication(Application application) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        application.setApplicationID("App" + dateTime);
+
+        PassengerApplication passengerApplication =application.getPassengerApplication();
+        passengerApplication.setPassengerApplicationID("PassApp" + dateTime);
+        passengerApplication.setApplication(application);
+
+        int count=0;
+        for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
+          passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
+
+
+        }
+
+//        application.getPassengerApplication().setPassengerApplicationID("Pass" + 0 + dateTime);
+//        PassengerApplication passengerApplication = application.getPassengerApplication();
+//
+////           PassengerApplication passengerApplication=new PassengerApplication();
+//          passengerApplication.setPassengerApplicationID(application.getApplicationID());
+////          passengerApplicationRepository.save(passengerApplication);
+////           passengerApplication.setApplication(application);
+////        application.getPassengerApplications()(application.getApplicationID());
+////        passengerApplicationRepository.save(passengerApplication);
+
+           return   new ApplicationDTO(applicationRepository.save(application)); //Jarawa epaa
+    }
+
+
+
+    public PassengerAppDTO addPassApp(PassengerApplication passengerApplication){
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        passengerApplication.setPassengerApplicationID("DelPa" + 0 + dateTime);
+
+
+        return new PassengerAppDTO(passengerApplicationRepository.save(passengerApplication));
+    }
+
+
+    @Override
+    public PassengerPassengerApplication addPassengerpassenger(PassengerPassengerApplication passengerPassengerApplication) {
+       // passengerPassengerApplication.setPassengerPassengerApplicationId(passengerPassengerApplication.getPassengerPassengerApplicationId());
+        return passengerPassengerApplicationRepository.save(passengerPassengerApplication);
+    }
 //
 //    @Override
 //    public PassengerApplication addPassengerApplication(PassengerApplication passengerApplication) {
@@ -40,6 +82,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 //            applicationRepository.save(passengerApplication.getApplication());
 //        return passengerApplicationRepository.save(passengerApplication);
 //    }
+
 
     @Override
     public Passenger addPassenger(Passenger passenger) {
@@ -51,20 +94,30 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
     @Override
     public PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication) {
-
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         applicationRepository.save(passengerPassengerApplication.getPassengerApplication().getApplication());
-        passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID(passengerPassengerApplication.getPassengerApplication().getApplication().getApplicationID());
+        passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID("Pass" + 0 + dateTime);
         passengerApplicationRepository.save(passengerPassengerApplication.getPassengerApplication());
         passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
 
+//        int count = 0;
+//        for (Passenger passenger : passengerPassengerApplication.getPassengers()) {
+//            passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getPassengerApplicationID(),passenger.getPassengerId()));
+//            passengerPassengerApplication.setPassenger(passenger);
+//        }
 
         return passengerPassengerApplicationRepository.save(passengerPassengerApplication);
     }
 
     @Override
-    public List<Application> getPassengerApp() {
+    public List<ApplicationDTO> getPassengerApp() {
 
-        return applicationRepository.findAll();
+        List<ApplicationDTO> applicationDTOS =new ArrayList<>();
+        List<Application> applications =applicationRepository.findAll();
+        for(Application application: applications){
+            applicationDTOS.add(new ApplicationDTO(application));
+        }
+        return applicationDTOS;
     }
 
     @Override

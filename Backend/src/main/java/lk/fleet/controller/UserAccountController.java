@@ -1,10 +1,7 @@
 package lk.fleet.controller;
 
 
-import lk.fleet.entity.BookingManagementClerk;
-import lk.fleet.entity.TransportManager;
-import lk.fleet.entity.UserAccount;
-import lk.fleet.entity.VehicleDriverManagementClerk;
+import lk.fleet.entity.*;
 import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +36,11 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk));
     }
 
+    @PostMapping(value = "/addSecurityOfficerUserAccount")
+    public ResponseEntity addSecurityOfficerUserAccount(@RequestBody SecurityOfficer securityOfficer) {
+        return ResponseEntity.ok(userAccountService.addSecurityOfficerUserAccount(securityOfficer));
+    }
+
     @PostMapping(value = "/login")
     public ResponseEntity login(@RequestBody UserAccount userAccount){
         return ResponseEntity.ok(userAccountService.login(userAccount));
@@ -64,6 +66,11 @@ public class UserAccountController {
     @PutMapping(value = "/updateVehicleDiverManagementClerkAccount/{vehicleDriverManagementId}")
     public ResponseEntity updateVehicleDiverManagementClerkAccount(@PathVariable String vehicleDriverManagementId, @RequestBody VehicleDriverManagementClerk vehicleDriverManagementClerk){
         return ResponseEntity.ok(userAccountService.updateVehicleDiverManagementClerkAccount(vehicleDriverManagementId, vehicleDriverManagementClerk));
+    }
+
+    @PutMapping(value = "/updateSecurityOfficerAccount/{securityOfficerId}")
+    public ResponseEntity updateSecurityOfficerAccount(@PathVariable String securityOfficerId, @RequestBody SecurityOfficer securityOfficer){
+        return ResponseEntity.ok(userAccountService.updateSecurityOfficerAccount(securityOfficerId, securityOfficer));
     }
 
 
