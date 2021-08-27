@@ -7,25 +7,6 @@
 
     <div style="display: flex;margin-top: 50px">
       <div style="width: 50%;padding-right: 20px">
-        <div class="row">
-          <div class="col-4">
-            Employee ID :
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="passengerpassengerApp.applicationID"
-                   #applicationID="ngModel"
-                   name="deliveryPassengerName" required>
-            <div *ngIf="(applicationID.touched || applicantFrom.submitted) && applicationID.errors?.required"
-                 class="validErr">
-              Employee ID is required
-            </div>
-          </div>
-        </div>
-
-
-
-
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
@@ -154,7 +135,7 @@
                 <div class="col-4" style="padding-right: 50px; padding-top: 10px ">
                   Item Name :
                 </div>
-                <div class="col-7" style="padding-right: 50px; padding-top: 10px " >
+                <div class="col-7" style="padding-top: 10px " >
                   <input type="text" class="form-control" style="margin-left: 0px;  " [(ngModel)]="passenger.passengerType"
                          #passengerType="ngModel"
                          name="passengerType" >

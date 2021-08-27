@@ -23,6 +23,7 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
+import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
 
 
 
@@ -72,6 +73,10 @@ const routes: Routes = [
       {
         path: 'available_transports',
         component: AvailableTransportsComponent
+      },
+      {
+        path: 'update_available_transports',
+        component: UpdateAvailableTransportsComponent
       },
       {
         path: 'application_status',

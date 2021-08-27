@@ -213,25 +213,25 @@
           <thead>
           <tr>
             <th scope="col" width="3%">#</th>
-            <th scope="col">Passenger NIC</th>
-            <th scope="col">Passenger Name</th>
-            <th scope="col">Contact Number</th>
+            <th scope="col">Passenger Emp ID</th>
+<!--            <th scope="col">Passenger Name</th>-->
+<!--            <th scope="col">Contact Number</th>-->
             <th scope="col" width="5%" style="text-align: center">Update</th>
             <th scope="col" width="5%" style="text-align: center">Remove</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let passenger of passengerpassengerApp.passengerApplication.passengerPassengerApplications; let j = index">
+          <tr *ngFor="let Pass of passengerpassengerApp.passengerApplication.passengerPassengerApplications; let j = index">
             <th scope="row">{{j+1}}</th>
             <td>{{Pass.passenger.passengerId}}</td>
 <!--            <td>{{passenger.contactNumber}}</td>-->
 <!--            <td>{{passenger.passengerType}}</td>-->
-<!--            <td style="text-align: center">-->
-<!--              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger)"></i>-->
-<!--            </td>-->
-<!--            <td style="text-align: center" (click)="deliveryDetail.passengers.splice(i, 1)">-->
-<!--              <i class="fas fa-times" style="color: red;font-size: 20px"></i>-->
-<!--            </td>-->
+            <td style="text-align: center">
+              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(Pass.passenger,j)"></i>
+            </td>
+            <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1)">
+              <i class="fas fa-times" style="color: red;font-size: 20px"></i>
+            </td>
           </tr>
           </tbody>
         </table>

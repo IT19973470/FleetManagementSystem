@@ -48,6 +48,10 @@ export class AvailableTransportsComponent implements OnInit {
     })
   }
 
+  goToUpdate(deliveryItem) {
+    this.applicantService.deliveryItem = deliveryItem;
+    this.router.navigate(['/main/update_available_transports'])
+  }
 
 
 }

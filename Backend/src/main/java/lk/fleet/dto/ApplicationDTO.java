@@ -15,8 +15,7 @@ public class ApplicationDTO {
     private LocalDateTime arrivaleDate;
     private String reason;
 
-    private PassengerAppDTO passengerAppDTO;
-
+    private List<PassengerAppDTO> passengerAppDTOS;
     public ApplicationDTO(Application application) {
         if(application != null) {
             this.applicationID=application.getApplicationID();
@@ -29,14 +28,6 @@ public class ApplicationDTO {
         }
     }
 
-
-    public PassengerAppDTO getPassengerAppDTO() {
-        return passengerAppDTO;
-    }
-
-    public void setPassengerAppDTO(PassengerAppDTO passengerAppDTO) {
-        this.passengerAppDTO = passengerAppDTO;
-    }
 
     public String getApplicationID() {
         return applicationID;
@@ -94,5 +85,11 @@ public class ApplicationDTO {
         this.reason = reason;
     }
 
+    public List<PassengerAppDTO> getPassengerAppDTOS() {
+        return passengerAppDTOS;
+    }
 
+    public void setPassengerAppDTOS(List<PassengerAppDTO> passengerAppDTOS) {
+        this.passengerAppDTOS = passengerAppDTOS;
+    }
 }

@@ -9,7 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class ApplicantService {
 
   constructor(private http: HttpClient) { }
-
+  deliveryItem;
   addApp(application): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/application/newapplication", application);
   }
@@ -18,5 +18,11 @@ export class ApplicantService {
   }
   getAllApplication(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/application/getApplication");
+  }
+  updateform(application): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/application/updateApplication/" + application.applicationID, application);
+  }
+  deleteForm(applicationID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/application/deleteApplication/" + applicationID);
   }
 }
