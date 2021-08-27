@@ -8,6 +8,10 @@ import lk.fleet.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +22,9 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public TokenDTO addToken(Token token) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        token.setTokenID("TK" + dateTime);
+        token.getTokenID();
         return new TokenDTO(tokenRepository.save(token));
     }
 
@@ -38,6 +45,22 @@ public class TokenServiceImpl implements TokenService {
         tokenRepository.deleteById(tokenID);
         return true;
     }
+
+    @Override
+    public List<TokenDTO> getAllTokens() {
+        List<Token> tokens = tokenRepository.findAll();
+        List<TokenDTO> tokenDTOS = new ArrayList<>();
+        for (Token token : tokens) {
+            tokenDTOS.add(new TokenDTO(token));
+        }
+        return tokenDTOS;
+    }
+
+//    @Override
+//    public List<TokenDTO> getTokenByID(String tokenID) {
+////        List<Token> tokens = tokenRepository.getTokenByID(tokenID);
+////        return setDeliveryDTOs(deliveries, deliveryType);
+//    }
 
 
 }

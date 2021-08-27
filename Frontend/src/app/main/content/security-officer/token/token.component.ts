@@ -16,7 +16,7 @@ export class TokenComponent implements OnInit {
   booking;
   tokens = [];
   tokenDetail = {
-    tokenID: 'N/A',
+    tokenID: '',
     departureDate: '',
     departureTime: '',
     departureDateTime: '',
@@ -29,13 +29,14 @@ export class TokenComponent implements OnInit {
     },
     securityOfficer: {
       securityOfficerID: ''
-    }
+    },
   };
 
-  btnText = 'Add';
+  token;
+  btnText;
   tblIndex;
 
-  constructor(private securityOfficerService: SecurityOfficerService) {
+  constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class TokenComponent implements OnInit {
     this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
       this.tokens.push(token);
       this.newToken()
+      this.router.navigate(['/main/arrival_departure_page'])
     })
   }
 
