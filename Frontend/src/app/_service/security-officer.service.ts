@@ -24,4 +24,16 @@ export class SecurityOfficerService {
     return this.http.delete<any>(environment.backend_url + "/token/deleteToken/" + tokenDetailId);
   }
 
+  getAllTokens(): Observable<any> {
+      return this.http.get<any>(environment.backend_url + "/token/getAllTokens");
+  }
+
+  getTokenByID(tokenIdSearch): Observable<any> {
+      return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenIdSearch);
+  }
+
+  OnSubmitMeter(meterDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/meter/addMeterDetail", meterDetail);
+  }
+  
 }

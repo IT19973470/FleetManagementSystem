@@ -9,22 +9,6 @@
       <div style="width: 50%;padding-right: 20px">
         <div class="row">
           <div class="col-4">
-            Token ID :
-          </div>
-          <div class="col-8">
-            <input class="form-control" type="text"
-                   [(ngModel)]="tokenDetail.tokenID"
-                   #tokenID="ngModel"
-                   name="tokenID" required>
-            <div *ngIf="(tokenID.touched || tokenForm.submitted) && tokenID.errors?.required"
-                 class="validErr">
-              Token ID is required
-            </div>
-          </div>
-        </div>
-
-        <div class="row" style="margin-top: 10px">
-          <div class="col-4">
             Departure Date :
           </div>
           <div class="col-8">
@@ -112,7 +96,7 @@
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
       <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Token</button>
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">{{btnText}}Add Token</button>
       </div>
     </div>
 

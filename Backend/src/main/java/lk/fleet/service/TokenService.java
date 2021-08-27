@@ -1,7 +1,10 @@
 package lk.fleet.service;
 
 import lk.fleet.dto.TokenDTO;
+import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.Token;
+
+import java.util.List;
 
 public interface TokenService {
 
@@ -11,4 +14,7 @@ public interface TokenService {
 
     boolean deleteToken (String tokenID);
 
+    List<TokenDTO> getAllTokens();
+
+//    List<TokenDTO> getTokenByID(String tokenID);
 }

@@ -25,6 +25,8 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
+import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 
 
 const routes: Routes = [
@@ -100,6 +102,14 @@ const routes: Routes = [
       {
         path: 'create_token',
         component: TokenComponent
+      },
+      {
+        path: 'arrival_departure_page',
+        component: ArrivalDepartureLogPageComponent
+      },
+      {
+        path: 'add_meter_detail',
+        component: MeterDetailComponent
       },
       {
         path: 'vehicle',
