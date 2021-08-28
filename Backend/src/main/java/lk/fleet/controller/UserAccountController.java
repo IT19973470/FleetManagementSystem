@@ -40,7 +40,7 @@ public class UserAccountController {
     @PostMapping(value = "/addAccidentMaintenanceManagerUserAccount")
     public ResponseEntity addAccidentMaintenanceManagerUserAccount(@RequestBody AccidentMaintenanceManager accidentMaintenanceManager) {
         return ResponseEntity.ok(userAccountService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceManager));
-
+    }
     @PostMapping(value = "/addSecurityOfficerUserAccount")
     public ResponseEntity addSecurityOfficerUserAccount(@RequestBody SecurityOfficer securityOfficer) {
         return ResponseEntity.ok(userAccountService.addSecurityOfficerUserAccount(securityOfficer));

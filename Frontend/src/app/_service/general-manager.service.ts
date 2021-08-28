@@ -8,6 +8,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 })
 export class GeneralManagerService {
 
+  userAccount;
+
   constructor(private http: HttpClient) {
 
   }
