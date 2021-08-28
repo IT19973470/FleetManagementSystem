@@ -15,12 +15,12 @@ public class MeterDetailDTO {
 
     public MeterDetailDTO(MeterDetail meterDetail) {
         if(meterDetail != null) {
-            this.meterID = meterDetail.getMeterID();
+            this.meterID = meterDetail.getMeterId();
             this.inMeter = meterDetail.getInMeter();
             this.OutMeter = meterDetail.getOutMeter();
             this.mileage = meterDetail.getMileage();
-            this.updatedDate = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            this.updatedTime = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+//            this.updatedDate = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//            this.updatedTime = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
         }
     }
 

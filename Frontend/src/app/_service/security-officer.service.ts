@@ -32,8 +32,7 @@ export class SecurityOfficerService {
       return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenIdSearch);
   }
 
-  OnSubmitMeter(meterDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/meter/addMeterDetail", meterDetail);
+  addMeterDetail(meterDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/meterDetail/addMeterDetail", meterDetail);
   }
-  
 }
