@@ -52,6 +52,7 @@ import { TokenComponent } from './main/content/security-officer/token/token.comp
 
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
 
 
 @NgModule({
@@ -99,7 +100,8 @@ import {DatePipe} from "@angular/common";
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
     NavSecurityOfficerComponent,
-    TokenComponent
+    TokenComponent,
+    VehicleAccidentViewComponent
   ],
   imports: [
     BrowserModule,

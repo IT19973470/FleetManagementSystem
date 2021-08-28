@@ -1,7 +1,16 @@
 <div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/main/view_accidents"
+    routerLink="/main/vehicle_accident"
+    (click)="setTopic('Add Accidents')"
+    #addAccidents="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':addAccidents.isActive?'#c0050e':''}">
+    Add Accidents
+  </div>
+
+  <div
+    routerLink="/main/vehicle_accident_view"
     (click)="setTopic('View Accidents')"
     #viewAccidents="routerLinkActive"
     routerLinkActive
@@ -36,9 +45,9 @@
     Maintenance Reports
   </div>
 
-  <div>
-    Passenger Transport
-  </div>
+<!--  <div>-->
+<!--    Passenger Transport-->
+<!--  </div>-->
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
 </div>

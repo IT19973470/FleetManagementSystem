@@ -86,6 +86,10 @@ const routes: Routes = [
         component: VehicleAccidentComponent
       },
       {
+        path: 'vehicle_accident',
+        component:VehicleAccidentComponent
+      },
+      {
         path: 'view_maintenance',
         component: VehicleMaintenanceComponent
       },
