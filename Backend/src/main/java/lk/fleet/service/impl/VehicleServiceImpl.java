@@ -1,12 +1,18 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.VehicleDTO;
+import lk.fleet.entity.Delivery;
 import lk.fleet.entity.Vehicle;
 import lk.fleet.repository.VehicleRepository;
 import lk.fleet.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +23,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleDTO addVehicle(Vehicle vehicle) {
+//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+//        vehicle.setVehicleId("Veh" + dateTime);
         return new VehicleDTO(vehicleRepository.save(vehicle));
     }
 
@@ -44,5 +52,15 @@ public class VehicleServiceImpl implements VehicleService {
     public boolean deleteVehicle(String vehicleID) {
         vehicleRepository.deleteById(vehicleID);
         return true;
+    }
+
+    @Override
+    public List<VehicleDTO> getAllVehicles() {
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+        List<VehicleDTO> vehicleDTOS = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            vehicleDTOS.add(new VehicleDTO(vehicle));
+        }
+        return vehicleDTOS;
     }
 }
