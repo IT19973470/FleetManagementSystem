@@ -15,9 +15,9 @@ export class ApplicationStatusComponent implements OnInit {
   @ViewChild('applicationStatus', {static: true}) public applicationStatus: NgForm;
 
 
-  passengerpassengerApp= {
+  passengerpassengerApp = {
 
-    applicationID: '1',
+    applicationID: '',
     arrivaleDate: '',
     depatureDate: "",
     reason: '',
@@ -27,13 +27,31 @@ export class ApplicationStatusComponent implements OnInit {
       noOfPassengers: '5',
       passengerPassengerApplications: []
     }
+  };
+
+  ItemApp= {
+
+
+    applicationID: "",
+    approval: "",
+    arrivaleDate: "",
+    depatureDate: "",
+    reason: "",
+    vehicleType: "",
+    destination: "",
+    itemApplication: {
+      itemItemApplications: []
+    }
   }
 
   Pass={
-    passenger:{
-      passengerId:''
+    item:{
+      itemID:'',
+      itemName:'',
+      qty:''
     }
   };
+
 
   //Passenger.name;
   // x={
@@ -45,8 +63,9 @@ export class ApplicationStatusComponent implements OnInit {
   //
   tblIndex;
 
+
   constructor(private applicant: ApplicantService, private router: Router) {
-    this.Pass.passenger = this.getNewPassenger();
+    //this.Pass = this.getNewPassenger();
   }
 
   ngOnInit(): void {
@@ -54,9 +73,9 @@ export class ApplicationStatusComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.passengerpassengerApp);
-    this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_item_delivery'])
+    console.log(this.ItemApp);
+    this.applicant.addItem(this.ItemApp).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/available_transports'])
     })
   }
 
@@ -64,7 +83,7 @@ export class ApplicationStatusComponent implements OnInit {
 
   onSubmitPassenger() {
     if (this.btnText === 'Add') {
-      this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+      this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
       //this.passengerForm.resetForm();
     }
     //   if (this.btnText === 'Add') {
@@ -76,23 +95,29 @@ export class ApplicationStatusComponent implements OnInit {
   }
 
   setNewPassenger() {
-    this.Pass.passenger = this.getNewPassenger();
+    this.Pass = this.getNewPassenger();
 
     //this.Pass.passenger = this.getNewPassenger();
-    this.passengerForm.resetForm(this.Pass);
+    this.passengerForm.resetForm(this.Pass.item);
     this.btnText = 'Add';
 
   }
 
-  setPassenger(passenger,i) {
+  setPassenger(item,i) {
     this.tblIndex = i;
-    this.Pass.passenger.passengerId = passenger.passengerId;
+    this.Pass.item.itemID = item.itemID;
+    this.Pass.item.itemName=item.itemName;
+    this.Pass.item.qty=item.qty;
     this.btnText = 'Update';
   }
 
   getNewPassenger() {
     return {
-      passengerId: '1',
+      item: {
+        itemID:'',
+        itemName:'',
+        qty:''
+      }
     };
   }
 
@@ -130,29 +155,29 @@ export class ApplicationStatusComponent implements OnInit {
   //}
 
 
-  passenger;
-  deliveryDetail;
-   onSubmitItem() {
-     this.deliveryDetail.passengers.push(this.passenger);
-     this.passenger = this.getNewPassenger();
-     this.applicantFrom.resetForm(this.passenger);
-   }
+  // passenger;
+  // deliveryDetail;
+  //  onSubmitItem() {
+  //    this.deliveryDetail.passengers.push(this.passenger);
+  //    this.passenger = this.getNewPassenger();
+  //    this.applicantFrom.resetForm(this.passenger);
+  //  }
+  //
+  //  setItems(passenger) {
+  //    this.passenger.passengerName = passenger.passengerName;
+  //    this.passenger.passengerNic = passenger.passengerNic;
+  //    this.passenger.contactNumber = passenger.contactNumber;
+  //    this.passenger.passengerType = passenger.passengerType;
+  //  }
 
-   setItems(passenger) {
-     this.passenger.passengerName = passenger.passengerName;
-     this.passenger.passengerNic = passenger.passengerNic;
-     this.passenger.contactNumber = passenger.contactNumber;
-     this.passenger.passengerType = passenger.passengerType;
-   }
-
-   getNewItems() {
-     return {
-       passengerName: '',
-       passengerNic: '',
-       contactNumber: '',
-       passengerType: ''
-     };
-   }
+   // getNewItems() {
+   //   return {
+   //     passengerName: '',
+   //     passengerNic: '',
+   //     contactNumber: '',
+   //     passengerType: ''
+   //   };
+   // }
 
 
 }

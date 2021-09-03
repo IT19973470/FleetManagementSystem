@@ -14,10 +14,10 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="passengerpassengerApp.destination"
+                   [(ngModel)]="ItemApp.destination"
                    #destination="ngModel"
                    name="deliveryPassengerNic" required>
-            <div *ngIf="(destination.touched || applicantFrom.submitted) && destination.errors?.required"
+            <div *ngIf="(destination.touched || applicationStatus.submitted) && destination.errors?.required"
                  class="validErr">
               Destination is required
             </div>
@@ -30,25 +30,25 @@
           </div>
           <div class="col-8">
             <input type="datetime-local" class="form-control"
-                   [(ngModel)]="passengerpassengerApp.depatureDate"
+                   [(ngModel)]="ItemApp.depatureDate"
                    #depatureDate="ngModel"
                    name="deliveryDate" required>
-            <div *ngIf="(depatureDate.touched || applicantFrom.submitted) && depatureDate.errors?.required"
+            <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
-              Depature Date is required
+              Arrival Date is required
             </div>
           </div>
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Depature Date :
+            arrival Date :
           </div>
           <div class="col-8">
             <input type="datetime-local" class="form-control"
-                   [(ngModel)]="passengerpassengerApp.arrivaleDate"
+                   [(ngModel)]="ItemApp.arrivaleDate"
                    #arrivaleDate="ngModel"
                    name="deliveryDate" required>
-            <div *ngIf="(arrivaleDate.touched || applicantFrom.submitted) && arrivaleDate.errors?.required"
+            <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
                  class="validErr">
               Depature Date is required
             </div>
@@ -77,7 +77,7 @@
           </div>
           <div class="col-8">
 
-            <select name="" id="car" class="form-control" [(ngModel)]="passengerpassengerApp.vehicleType"
+            <select name="" id="car" class="form-control" [(ngModel)]="ItemApp.vehicleType"
                     #placeFrom="ngModel"
                     name="placeFrom" required>
               <option value="Three wheel">Three wheel</option>
@@ -85,7 +85,7 @@
               <option value="Car">Car</option>
               <option value="Bus">Bus</option>
             </select>
-            <div *ngIf="(placeFrom.touched || applicantFrom.submitted) && placeFrom.errors?.required"
+            <div *ngIf="(placeFrom.touched || applicationStatus.submitted) && placeFrom.errors?.required"
                  class="validErr">
               Vehicle type is required
             </div>
@@ -98,10 +98,10 @@
           </div>
           <div class="col-8">
             <input type="" class="form-control"
-                   [(ngModel)]="passengerpassengerApp.reason"
+                   [(ngModel)]="ItemApp.reason"
                    #reason="ngModel"
                    name="companyName" required>
-            <div *ngIf="(reason.touched || applicantFrom.submitted) && reason.errors?.required"
+            <div *ngIf="(reason.touched || applicationStatus.submitted) && reason.errors?.required"
                  class="validErr">
               Reason is required
             </div>
@@ -112,7 +112,7 @@
 
       <div style="width: 50%;padding-left: 20px;border-left: 1px solid #dfcda0">
 
-        <form #itemForm="ngForm" (ngSubmit)="itemForm.form.valid && onSubmitItem()" novalidate>
+        <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid && onSubmitPassenger()" novalidate>
           <legend>Add Items:
             <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">
 
@@ -122,22 +122,22 @@
                   Item ID :
                 </div>
                 <div class="col-7" >
-                  <input type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="passenger.passengerType"
-                         #passengerType="ngModel"
+                  <input type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Pass.item.itemID"
+                         #passengerId="ngModel"
                          name="passengerType" >
                 </div>
 
                 <div class="col-1" >
                   <button  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
-                    <i class="fas fa-plus-circle" style="font-size: 30px"></i>
+                    <i class="fas fa-plus-circle"  style="font-size: 30px"  ></i>
                   </button>
                 </div>
                 <div class="col-4" style="padding-right: 50px; padding-top: 10px ">
                   Item Name :
                 </div>
                 <div class="col-7" style="padding-top: 10px " >
-                  <input type="text" class="form-control" style="margin-left: 0px;  " [(ngModel)]="passenger.passengerType"
-                         #passengerType="ngModel"
+                  <input type="text" class="form-control" style="margin-left: 0px;  " [(ngModel)]="Pass.item.itemName"
+                         #passengerName="ngModel"
                          name="passengerType" >
                 </div>
 
@@ -145,7 +145,7 @@
                 Quantity :
                 </div>
                 <div class="col-7" style="padding-left:10px; padding-top: 10px " >
-                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="passenger.passengerType"
+                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="Pass.item.qty"
                          #passengerType="ngModel"
                          name="passengerType" required>
                 </div>
@@ -198,25 +198,25 @@
           <thead>
           <tr>
             <th scope="col" width="3%">#</th>
-            <th scope="col">Passenger NIC</th>
-            <th scope="col">Passenger Name</th>
-            <th scope="col">Contact Number</th>
+            <th scope="col">Item ID</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity</th>
             <th scope="col" width="5%" style="text-align: center">Update</th>
             <th scope="col" width="5%" style="text-align: center">Remove</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let passenger of passengerpassengerApp.passengerApplication.passengerPassengerApplications; let j = index">
+          <tr *ngFor="let Pass of ItemApp.itemApplication.itemItemApplications; let j = index">
             <th scope="row">{{j+1}}</th>
-            <td>{{Pass.passenger.passengerId}}</td>
-            <!--            <td>{{passenger.contactNumber}}</td>-->
-            <!--            <td>{{passenger.passengerType}}</td>-->
-            <!--            <td style="text-align: center">-->
-            <!--              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger)"></i>-->
-            <!--            </td>-->
-            <!--            <td style="text-align: center" (click)="deliveryDetail.passengers.splice(i, 1)">-->
-            <!--              <i class="fas fa-times" style="color: red;font-size: 20px"></i>-->
-            <!--            </td>-->
+            <td>{{Pass.item.itemID}}</td>
+            <td>{{Pass.item.itemName}}</td>
+            <td>{{Pass.item.qty}}</td>
+                        <td style="text-align: center">
+                          <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(Pass.item,j)"></i>
+                        </td>
+                        <td style="text-align: center" (click)="ItemApp.itemApplication.itemItemApplications.splice(j, 1)">
+                          <i class="fas fa-times" style="color: red;font-size: 20px"></i>
+                        </td>
           </tr>
           </tbody>
         </table>

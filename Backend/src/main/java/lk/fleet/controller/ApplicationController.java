@@ -37,7 +37,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
     }
 
-    @PostMapping(value ="/Addtem")
+    @PostMapping(value ="/AddItem")
     public ResponseEntity addItem(@RequestBody Application application) {
         return ResponseEntity.ok(applicationItemService.addItemApplication(application));
     }

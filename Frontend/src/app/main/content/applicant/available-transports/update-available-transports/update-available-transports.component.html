@@ -66,14 +66,15 @@
           <div class="col-8">
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
-                   #deliveryDate="ngModel"
-                   name="deliveryDate" required>
-            <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
+                   #depatureDate1="ngModel"
+                   name="depatureDate" required>
+            <div *ngIf="(depatureDate1.touched || deliveryForm.submitted) && depatureDate1.errors?.required"
                  class="validErr">
               Depature Date is required
             </div>
           </div>
         </div>
+
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
             Arrival Date :
@@ -81,9 +82,9 @@
           <div class="col-8">
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
-                   #deliveryDate="ngModel"
+                   #arrivaleDate1="ngModel"
                    name="deliveryDate" required>
-            <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
+            <div *ngIf="(arrivaleDate1.touched || deliveryForm.submitted) && arrivaleDate1.errors?.required"
                  class="validErr">
               Arrival Date is required
             </div>
@@ -120,63 +121,29 @@
 
     <div style="width: 50%;padding-left: 20px;border-left: 1px solid #dfcda0">
 
-      <form #itemForm="ngForm" (ngSubmit)="itemForm.form.valid && onSubmitItem()" novalidate>
-        <div class="row">
-          <div class="col-3">
-            Item Name :
-          </div>
-          <div class="col-9">
-            <input type="text" class="form-control"
-                   [(ngModel)]="item.itemName"
-                   #itemName="ngModel"
-                   name="itemName" required>
-            <div *ngIf="(itemName.touched || itemForm.submitted) && itemName.errors?.required"
-                 class="validErr">
-              Item Name is required
-            </div>
-          </div>
-        </div>
+        <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid" novalidate>
+          <legend>Add Passengers:
+            <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">
+              <div class="row" style="margin-left:0px;">
+                <div class="col-4">
+                  Passenger ID :
+                </div>
+                <div class="col-7">
+                  <input type="text" class="form-control" style="margin-left: 0px"[(ngModel)]="Pass.passenger.passengerId"
+                         #PassengerId="ngModel"
+                         name="PassengerId" >
+                </div>
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-3">
-            Item Type :
-          </div>
-          <div class="col-9">
-            <input type="text" class="form-control"
-                   [(ngModel)]="item.itemType"
-                   #itemType="ngModel"
-                   name="itemType" required>
-            <div *ngIf="(itemType.touched || itemForm.submitted) && itemType.errors?.required"
-                 class="validErr">
-              Item Type is required
+                <div class="col-1" >
+                  <button  type="submit"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                    <i class="fas fa-plus-circle" style="font-size: 30px"></i>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </legend>
+        </form>
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-3">
-            Item Qty :
-          </div>
-          <div class="col-9">
-            <input type="number" class="form-control"
-                   [(ngModel)]="item.itemQty"
-                   #itemQty="ngModel"
-                   name="itemQty" required min="1">
-            <div *ngIf="(itemQty.touched || itemForm.submitted) && itemQty.errors?.required"
-                 class="validErr">
-              Item Qty is required
-            </div>
-          </div>
-        </div>
-
-        <div class="row" style="margin-top: 20px">
-          <div class="col-12" style="text-align: center">
-            <button type="button" class="btn btn-warning" style="font-weight: bold;margin-right: 20px"
-                    (click)="setNewItem()">New Item</button>
-<!--            <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-left: 20px">{{btnText}} Item</button>-->
-          </div>
-        </div>
-      </form>
     </div>
   </div>
 

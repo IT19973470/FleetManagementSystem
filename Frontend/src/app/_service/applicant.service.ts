@@ -16,6 +16,9 @@ export class ApplicantService {
   addPass(passenger): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/application/newapplication", passenger);
   }
+  addItem(item): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/application/AddItem", item);
+  }
   getAllApplication(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/application/getApplication");
   }
@@ -25,4 +28,5 @@ export class ApplicantService {
   deleteForm(applicationID): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/application/deleteApplication/" + applicationID);
   }
+
 }

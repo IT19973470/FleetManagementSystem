@@ -36,9 +36,9 @@
           <div class="col-8">
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
-                   #depatureDate="ngModel"
+                   #depatureDate1="ngModel"
                    name="deliveryDate" required>
-            <div *ngIf="(depatureDate.touched || applicantFrom.submitted) && depatureDate.errors?.required"
+            <div *ngIf="(depatureDate1.touched || applicantFrom.submitted) && depatureDate1.errors?.required"
                  class="validErr">
               Depature Date is required
             </div>
@@ -46,16 +46,16 @@
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Depature Date :
+             Arrival Date :
           </div>
           <div class="col-8">
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
-                   #arrivaleDate="ngModel"
-                   name="deliveryDate" required>
-            <div *ngIf="(arrivaleDate.touched || applicantFrom.submitted) && arrivaleDate.errors?.required"
+                   #arrivaleDate1="ngModel"
+                   name="arrivalDate" required>
+            <div *ngIf="(arrivaleDate1.touched || applicantFrom.submitted) && arrivaleDate1.errors?.required"
                  class="validErr">
-              Depature Date is required
+              Arrival Date is required
             </div>
           </div>
         </div>
