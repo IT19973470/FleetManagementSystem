@@ -25,12 +25,16 @@ export class HeaderComponent implements OnInit {
     if (this.router.url === '/main/item_delivery') {
       this.navBarService.navTopic.next('Item Delivery');
     }
+
     this.username = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user'))['nameWithInitials'] : ''
   }
 
   accLogout() {
     this.loginService.accLogout();
     this.router.navigate(['/login'])
+
+    this.username = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user'))['nameWithInitials'] : '';
+
   }
 
 }

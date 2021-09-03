@@ -54,6 +54,10 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {DatePipe} from "@angular/common";
 import { UpdateAvailableTransportsComponent } from './main/content/applicant/available-transports/update-available-transports/update-available-transports.component';
 
+import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
+import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
+
+
 
 @NgModule({
   declarations: [
@@ -101,7 +105,10 @@ import { UpdateAvailableTransportsComponent } from './main/content/applicant/ava
     VehicleMaintenanceReportComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
-    UpdateAvailableTransportsComponent
+    UpdateAvailableTransportsComponent,
+    ViewVehiclesComponent,
+    UpdateVehicleComponent
+
   ],
   imports: [
     BrowserModule,
