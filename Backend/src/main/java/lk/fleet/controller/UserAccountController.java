@@ -36,9 +36,15 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk));
     }
 
+
+    @PostMapping(value = "/addAccidentMaintenanceManagerUserAccount")
+    public ResponseEntity addAccidentMaintenanceManagerUserAccount(@RequestBody AccidentMaintenanceManager accidentMaintenanceManager) {
+        return ResponseEntity.ok(userAccountService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceManager));
+    }
     @PostMapping(value = "/addSecurityOfficerUserAccount")
     public ResponseEntity addSecurityOfficerUserAccount(@RequestBody SecurityOfficer securityOfficer) {
         return ResponseEntity.ok(userAccountService.addSecurityOfficerUserAccount(securityOfficer));
+
     }
 
     @PostMapping(value = "/login")
@@ -78,4 +84,15 @@ public class UserAccountController {
     public ResponseEntity deleteUserAccount(@PathVariable String employeeID){
         return ResponseEntity.ok(userAccountService.deleteUserAccount(employeeID));
     }
+
+    @GetMapping(value = "/getUserAccounts")
+    public ResponseEntity getUserAccounts() {
+        return ResponseEntity.ok(userAccountService.getUserAccounts());
+    }
+
+
+//    @GetMapping(value = "/getAllUserAccountRequestsByEmployeeID/{deliveryType}/{date}")
+//    public ResponseEntity getAllDeliveriesByDate(@PathVariable String deliveryType, @PathVariable String date) {
+//        return ResponseEntity.ok(deliveryService.getAllDeliveriesByDate(deliveryType, date));
+//    }
 }
