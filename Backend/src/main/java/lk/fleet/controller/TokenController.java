@@ -29,5 +29,10 @@ public class TokenController {
         return ResponseEntity.ok(tokenService.deleteToken(tokenID));
     }
 
+    @GetMapping(value = "/getAllTokens")
+    public ResponseEntity getAllTokens() {
+        return ResponseEntity.ok(tokenService.getAllTokens());
+    }
+
 
 }
