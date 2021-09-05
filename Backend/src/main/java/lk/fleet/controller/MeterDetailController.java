@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "meterDetail")
+@RequestMapping(value = "fleetmanagement/" + "meterDetail")
 public class MeterDetailController {
 
     @Autowired

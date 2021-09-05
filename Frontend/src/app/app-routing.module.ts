@@ -27,14 +27,12 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
-<<<<<<< Updated upstream
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
-=======
 import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
-
-
->>>>>>> Stashed changes
+import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
+import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
+import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
 
 
 const routes: Routes = [
@@ -131,8 +129,6 @@ const routes: Routes = [
         path: 'create_token',
         component: TokenComponent
       },
-<<<<<<< Updated upstream
-=======
       {
         path: 'View_Over_Time',
         component: ViewOverTimeComponent
@@ -143,7 +139,19 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
->>>>>>> Stashed changes
+
+      {
+        path: 'arrival_departure_page',
+        component: ArrivalDepartureLogPageComponent
+      },
+      {
+        path: 'add_meter_detail',
+        component: MeterDetailComponent
+      },
+      {
+        path: 'update_details',
+        component: UpdateDetailsComponent
+      },
       {
         path: 'vehicle',
         component: VehicleComponent
