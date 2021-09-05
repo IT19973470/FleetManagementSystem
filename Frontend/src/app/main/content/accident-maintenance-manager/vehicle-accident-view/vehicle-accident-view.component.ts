@@ -17,7 +17,7 @@ export class VehicleAccidentViewComponent implements OnInit {
 
   vehicleAccidentDetails = [];
   vehicleAccident = {
-    accidentId: '',
+    vehicleAccidentID: '',
     accidentDate: '',
     accidentTime: '',
     insuranceNo: '',
