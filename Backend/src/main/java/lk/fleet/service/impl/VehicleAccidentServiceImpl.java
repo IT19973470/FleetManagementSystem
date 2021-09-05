@@ -7,6 +7,8 @@ import lk.fleet.service.VehicleAccidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +21,18 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
 
     @Override
     public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        vehicleAccident.setVehicleAccidentID("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
         return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccident));
     }
+
+//    @Override
+//    public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
+//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+//        vehicleAccident.setVehicleAccidentID("VCM" + dateTime);
+//        vehicleAccident.getVehicleAccidentID();
+//        return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccident));
+//    }
 
     @Override
     public VehicleAccidentDTO updateVehicleAccident(String vehicleAccidentID, VehicleAccident vehicleAccident) {
@@ -49,7 +61,5 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         }
         return vehicleAccidentDTOS;
     }
-
-
 
 }

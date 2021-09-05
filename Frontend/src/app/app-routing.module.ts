@@ -30,6 +30,7 @@ import {UpdateUserAccountComponent} from "./main/content/general-manager/user-ac
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
 
 import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
@@ -117,6 +118,10 @@ const routes: Routes = [
         component: VehicleAccidentComponent
       },
       {
+        path: 'vehicle_accident',
+        component:VehicleAccidentComponent
+      },
+      {
         path: 'view_maintenance',
         component: VehicleMaintenanceComponent
       },
@@ -180,8 +185,8 @@ const routes: Routes = [
         component: VehicleComponent
       },
       {
-        path: 'view_vehicles',
-        component: ViewVehiclesComponent
+        path: 'vehicle_accident_view',
+        component: VehicleAccidentViewComponent
       },
       {
         path: 'view_passenger_delivery',
