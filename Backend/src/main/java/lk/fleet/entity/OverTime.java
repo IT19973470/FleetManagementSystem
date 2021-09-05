@@ -8,7 +8,8 @@ import java.time.LocalTime;
 public class OverTime {
 
     @Id
-    private String overTimeID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long overTimeID;
     private LocalDate otDate;
     private int noOfShifts;
     private LocalTime startTime;
@@ -16,7 +17,6 @@ public class OverTime {
     private boolean approval;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Driver driver;
 
     public Driver getDriver() {
@@ -27,11 +27,11 @@ public class OverTime {
         this.driver = driver;
     }
 
-    public String getOverTimeID() {
+    public long getOverTimeID() {
         return overTimeID;
     }
 
-    public void setOverTimeID(String overTimeID) {
+    public void setOverTimeID(long overTimeID) {
         this.overTimeID = overTimeID;
     }
 

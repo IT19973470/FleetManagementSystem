@@ -55,22 +55,6 @@
           </div>
         </div>
 
-<!--        <div class="row" style="margin-top: 10px">-->
-<!--          <div class="col-4">-->
-<!--            Account Type :-->
-<!--          </div>-->
-<!--          <div class="col-8">-->
-<!--            <input type="text" class="form-control"-->
-<!--                   [(ngModel)]="driverDetail.accountType"-->
-<!--                   #accountType="ngModel"-->
-<!--                   name="accountType" required>-->
-<!--            <div *ngIf="(accountType.touched || driverRegistrationForm.submitted) && accountType.errors?.required"-->
-<!--                 class="validErr">-->
-<!--              Account Type is required-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
             Date Of Birth :
@@ -173,7 +157,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.lisenseID"
+                   [(ngModel)]="driverDetail.lisenseid"
                    #lisenseID="ngModel"
                    name="lisenseID" required>
             <div *ngIf="(lisenseID.touched || driverRegistrationForm.submitted) && lisenseID.errors?.required"

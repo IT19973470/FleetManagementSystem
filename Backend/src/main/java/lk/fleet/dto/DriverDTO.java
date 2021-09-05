@@ -4,12 +4,12 @@ import lk.fleet.entity.Driver;
 
 public class DriverDTO {
     private String driverID;
-    private String licenseID;
+    private String lisenseID;
     private UserAccountDTO userAccount;
 
-    public DriverDTO(String driverID, String licenseID) {
+    public DriverDTO(String driverID, String lisenseID) {
         this.driverID = driverID;
-        this.licenseID = licenseID;
+        this.lisenseID = lisenseID;
     }
 
     public DriverDTO(Driver driver) {
@@ -29,12 +29,12 @@ public class DriverDTO {
         this.driverID = driverID;
     }
 
-    public String getLicenseID() {
-        return licenseID;
+    public String getLisenseID() {
+        return lisenseID;
     }
 
     public void setLicenseID(String lisenseID) {
-        this.licenseID = lisenseID;
+        this.lisenseID = lisenseID;
     }
 
     public UserAccountDTO getUserAccount() {

@@ -43,9 +43,8 @@ import {DriverRegistrationComponent} from "./main/content/Driver/driver-registra
 import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
 import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
 import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
-import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
-import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
 import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
 import { TokenComponent } from './main/content/security-officer/token/token.component';
@@ -74,7 +73,6 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     OverTimeComponent,
     ShiftDetailsComponent,
     FuelUpdateComponent,
-    NewOverTimeComponent,
     ViewOverTimeComponent,
     DriverAccountComponent,
     ViewPassengerDeliveryComponent,
@@ -100,7 +98,7 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
-    NavDriverComponent
+    NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
     ViewVehiclesComponent,

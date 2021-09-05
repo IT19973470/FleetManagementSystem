@@ -15,4 +15,8 @@ export class DriverService {
     return this.http.post<any>(environment.backend_url + "/driverAccount/addDriver", driverDetail)
   }
 
+  addOT(addOT): Observable<any>{
+    return this.http.post(environment.backend_url + "/overTime/addOT", addOT)
+  }
+
 }

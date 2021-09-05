@@ -1,53 +1,59 @@
 <div class="row" style="display: flex;justify-content: center">
-  <div class="col-11" style="margin-top: 40px">
+  <div class="col-12">
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">My Account</span>
+  </div>
+  <form #driverAccountForm="ngForm" (ngSubmit)="driverAccountForm.form.valid && onSubmit()" novalidate>
+<div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
+
+  <div style="width: 100%">
 
     <table class="table table-striped">
       <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">employee ID</th>
+        <th scope="col" width="3%">#</th>
         <th scope="col">Name</th>
-        <th scope="col">account Type</th>
-        <th scope="col">NIC</th>
-        <th scope="col">Date Of Birth</th>
+        <th scope="col">ID</th>
+        <th scope="col">NIc</th>
+        <th scope="col">DOB</th>
         <th scope="col">Address</th>
         <th scope="col">Contact Number</th>
         <th scope="col">Email</th>
-        <th scope="col">Registered Date</th>
         <th scope="col">Name With Initials</th>
-        <th scope="col">License ID</th>
+        <th scope="col">Licence ID</th>
         <th scope="col">Password</th>
-        <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
-        <th scope="col" width="5%" style="text-align: center">Delete</th>
+        <th scope="col" width="5%" style="text-align: center">Remove</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let driverDetails of driverDetails; let i = index">
+      <tr *ngFor="let driver of driverDetail.driverDetails; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{driverDetails.employeeID}}</td>
-        <td>{{driverDetails.name}}</td>
-        <td>{{driverDetails.accountType}}</td>
-        <td>{{driverDetails.nic}}</td>
-        <td>{{driverDetails.dob}}</td>
-        <td>{{driverDetails.address}}</td>
-        <td>{{driverDetails.contactNo}}</td>
-        <td>{{driverDetails.email}}</td>
-        <td>{{driverDetails.registeredDate}}</td>
-        <td>{{driverDetails.nameWithInitials}}</td>
-        <td>{{driverDetails.lisenseID}}</td>
-        <td>{{driverDetails.password}}</td>
-
+        <td>{{driver.name}}</td>
+        <td>{{driver.employeeID}}</td>
+        <td>{{driver.nic}}</td>
+        <td>{{driver.dob}}</td>
+        <td>{{driver.address}}</td>
+        <td>{{driver.contactNo}}</td>
+        <td>{{driver.email}}</td>
+        <td>{{driver.registeredDate}}</td>
+        <td>{{driver.nameWithInitials}}</td>
+        <td>{{driver.lisenseid}}</td>
+        <td>{{driver.password}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setDriver(driverDetails)"></i>
+          <i class="fas fa-search" style="font-size: 16px" (click)="setDriver(driver, i)"></i>
         </td>
-        <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="updateDriver(driverDetails)"></i>
+        <td style="text-align: center" (click)="driverDetail.driverDetails.splice(i, 1)">
+          <i class="fas fa-times" style="color: red;font-size: 20px"></i>
         </td>
       </tr>
       </tbody>
     </table>
 
+    <div *ngIf="driverDetail.driverDetails.length===0" class="validErr" style="text-align: center;font-size: 20px">
+      No Details Entered
+    </div>
+
   </div>
 </div>
-
+</form>
+</div>

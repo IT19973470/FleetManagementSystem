@@ -23,16 +23,11 @@ export class DriverRegistrationComponent implements OnInit {
     registeredDate: '',
     nameWithInitials: '',
     password: '',
-    lisenseID: ''
+    lisenseid: ''
   };
 
   constructor(private driverService: DriverService, private router: Router) {
   }
-
-  Register() {
-
-  }
-
 
   ngOnInit(): void {
   }

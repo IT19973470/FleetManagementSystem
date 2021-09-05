@@ -6,14 +6,14 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class OverTimeDTO {
-    private String overTimeID;
+    private long overTimeID;
     private LocalDate otDate;
     private int noOfShifts;
     private LocalTime startTime;
     private LocalTime endTime;
     private boolean approval;
 
-    public OverTimeDTO(String overTimeID, LocalDate otDate, int noOfShifts, LocalTime startTime, LocalTime endTime, boolean approval) {
+    public OverTimeDTO(long overTimeID, LocalDate otDate, int noOfShifts, LocalTime startTime, LocalTime endTime, boolean approval) {
         this.overTimeID = overTimeID;
         this.otDate = otDate;
         this.noOfShifts = noOfShifts;
@@ -26,11 +26,11 @@ public class OverTimeDTO {
 
     }
 
-    public String getOverTimeID() {
+    public long getOverTimeID() {
         return overTimeID;
     }
 
-    public void setOverTimeID(String overTimeID) {
+    public void setOverTimeID(long overTimeID) {
         this.overTimeID = overTimeID;
     }
 
