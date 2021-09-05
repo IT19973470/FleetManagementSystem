@@ -28,7 +28,8 @@ export class HeaderComponent implements OnInit {
       this.navBarService.navTopic.next('Item Delivery');
     }
 
-    this.username = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user'))['nameWithInitials'] : ''
+    this.username = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user'))['nameWithInitials'] : '';
+
   }
 
 
@@ -38,5 +39,4 @@ export class HeaderComponent implements OnInit {
     this.loginService.accLogout();
     this.router.navigate(['/login'])
   }
-
 }

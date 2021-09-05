@@ -12,4 +12,11 @@ export class ViewOverTimeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    return false;
+  }
+
+  otDetails= {
+
+  };
 }

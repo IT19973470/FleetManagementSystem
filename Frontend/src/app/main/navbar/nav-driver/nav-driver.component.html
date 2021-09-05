@@ -29,11 +29,20 @@
 
   <div
     routerLink="/main/over_time"
-    (click)="setTopic('Over Time Details')"
-    #overTime="routerLinkActive"
+    (click)="setTopic('Add OT')"
+    #overTimeRequest="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':overTime.isActive?'#c0050e':''}">
-    Over Time Details
+    [ngStyle]="{'color':overTimeRequest.isActive?'#c0050e':''}">
+    Add OT
+  </div>
+
+  <div
+    routerLink="/main/View_Over_Time"
+    (click)="setTopic('View OT')"
+    #otView="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':otView.isActive?'#c0050e':''}">
+    View OT
   </div>
 
   <div

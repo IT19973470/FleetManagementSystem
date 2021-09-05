@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -43,9 +43,8 @@ import {DriverRegistrationComponent} from "./main/content/Driver/driver-registra
 import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
 import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
 import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
-import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
-import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
 import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
 import { TokenComponent } from './main/content/security-officer/token/token.component';
@@ -82,7 +81,6 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     OverTimeComponent,
     ShiftDetailsComponent,
     FuelUpdateComponent,
-    NewOverTimeComponent,
     ViewOverTimeComponent,
     DriverAccountComponent,
     ViewPassengerDeliveryComponent,
@@ -108,6 +106,7 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
+    NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
     ViewVehiclesComponent,
