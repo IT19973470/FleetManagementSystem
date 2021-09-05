@@ -4,7 +4,11 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ItemDeliveryComponent} from "./main/content/transport-manager/item-delivery/item-delivery.component";
 import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
-
+import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
+import {DriverRegistrationComponent} from "./main/content/Driver/driver-registration/driver-registration.component";
+import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
+import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
+import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
 import {VehicleComponent} from "./main/content/vehicleDriver-manager/vehicle/vehicle.component";
@@ -25,6 +29,7 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
@@ -101,9 +106,40 @@ const routes: Routes = [
         component: VehicleMaintenanceReportComponent
       },
       {
+        path: 'driver_account',
+        component: DriverAccountComponent
+      },
+      {
+        path: 'driver_registration',
+        component: DriverRegistrationComponent
+      },
+      {
+        path: 'fuel_update',
+        component: FuelUpdateComponent
+      },
+      {
+        path: 'over_time',
+        component: OverTimeComponent
+      },
+      {
+        path: 'shift_details',
+        component: ShiftDetailsComponent
+      },
+	    {
         path: 'create_token',
         component: TokenComponent
       },
+      {
+        path: 'View_Over_Time',
+        component: ViewOverTimeComponent
+      }
+    ]
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+
       {
         path: 'arrival_departure_page',
         component: ArrivalDepartureLogPageComponent

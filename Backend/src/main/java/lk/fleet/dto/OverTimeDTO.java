@@ -3,16 +3,19 @@ package lk.fleet.dto;
 import lk.fleet.entity.OverTime;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class OverTimeDTO {
-    private String overTimeID;
+    private long overTimeID;
+    private LocalDate otDate;
     private int noOfShifts;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private boolean approval;
 
-    public OverTimeDTO(String overTimeID, int noOfShifts, LocalDate startTime, LocalDate endTime, boolean approval) {
+    public OverTimeDTO(long overTimeID, LocalDate otDate, int noOfShifts, LocalTime startTime, LocalTime endTime, boolean approval) {
         this.overTimeID = overTimeID;
+        this.otDate = otDate;
         this.noOfShifts = noOfShifts;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -23,11 +26,11 @@ public class OverTimeDTO {
 
     }
 
-    public String getOverTimeID() {
+    public long getOverTimeID() {
         return overTimeID;
     }
 
-    public void setOverTimeID(String overTimeID) {
+    public void setOverTimeID(long overTimeID) {
         this.overTimeID = overTimeID;
     }
 
@@ -39,19 +42,28 @@ public class OverTimeDTO {
         this.noOfShifts = noOfShifts;
     }
 
-    public LocalDate getStartTime() {
+
+    public LocalDate getOtDate() {
+        return otDate;
+    }
+
+    public void setOtDate(LocalDate otDate) {
+        this.otDate = otDate;
+    }
+
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 
