@@ -13,7 +13,6 @@ public class MeterDetail {
     private double inMeter;
     private double outMeter;
     private double mileage;
-    private LocalDateTime updatedDateTime;
 
     @OneToOne
     private Token token;
@@ -58,11 +57,4 @@ public class MeterDetail {
         this.mileage = mileage;
     }
 
-    public LocalDateTime getUpdatedDateTime() {
-        return updatedDateTime;
-    }
-
-    public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
-        this.updatedDateTime = updatedDateTime;
-    }
 }

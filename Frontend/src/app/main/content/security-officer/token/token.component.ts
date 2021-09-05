@@ -11,7 +11,6 @@ import {SecurityOfficerService} from "../../../../_service/security-officer.serv
 })
 export class TokenComponent implements OnInit {
 
-
   @ViewChild('tokenForm', {static: true}) public tokenForm: NgForm;
   booking;
   tokens = [];
@@ -32,6 +31,12 @@ export class TokenComponent implements OnInit {
     },
   };
 
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
+
   token;
   btnText;
   tblIndex;
@@ -40,10 +45,11 @@ export class TokenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getAllTokens();
   }
 
-  addToken() {
+
+  onSubmit() {
     this.tokenDetail.booking = this.booking;
     this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
     this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
@@ -58,7 +64,7 @@ export class TokenComponent implements OnInit {
 
   newToken() {
     this.tokenDetail = {
-      tokenID: 'N/A',
+      tokenID: '',
       departureDate: '',
       departureTime: '',
       departureDateTime: '',
@@ -77,6 +83,21 @@ export class TokenComponent implements OnInit {
 
   getUser() {
     return JSON.parse(localStorage.getItem('user'));
+  }
+
+  goToMeter(tokenDetail) {
+    this.securityOfficerService.token = tokenDetail;
+    this.router.navigate(['/main/add_meter_detail'])
+  }
+
+  getAllTokens() {
+    this.securityOfficerService.getAllTokens().subscribe((tokens) => {
+      this.tokens = tokens;
+    })
+  }
+
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
   }
 
   // onSubmit() {
@@ -109,7 +130,4 @@ export class TokenComponent implements OnInit {
   //     transportStatus:'',
   //   };
   // }
-  onSubmit() {
-    return true;
-  }
 }

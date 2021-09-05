@@ -33,6 +33,8 @@ public class TokenServiceImpl implements TokenService {
         Optional <Token> optionalToken = tokenRepository.findById(tokenID);
         if (optionalToken.isPresent()) {
             Token tokenObj = optionalToken.get();
+            tokenObj.setTokenID(token.getTokenID());
+            tokenObj.setDepartureDateTime(token.getDepartureDateTime());
             tokenObj.setArrivalDateTime(token.getArrivalDateTime());
             tokenObj.setTransportStatus(token.isTransportStatus());
             return new TokenDTO(tokenRepository.save(tokenObj));
@@ -46,6 +48,8 @@ public class TokenServiceImpl implements TokenService {
         return true;
     }
 
+
+
     @Override
     public List<TokenDTO> getAllTokens() {
         List<Token> tokens = tokenRepository.findAll();
@@ -55,12 +59,5 @@ public class TokenServiceImpl implements TokenService {
         }
         return tokenDTOS;
     }
-
-//    @Override
-//    public List<TokenDTO> getTokenByID(String tokenID) {
-////        List<Token> tokens = tokenRepository.getTokenByID(tokenID);
-////        return setDeliveryDTOs(deliveries, deliveryType);
-//    }
-
 
 }

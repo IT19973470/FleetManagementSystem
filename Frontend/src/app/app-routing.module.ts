@@ -27,6 +27,7 @@ import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-v
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
+import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
 
 
 const routes: Routes = [
@@ -110,6 +111,10 @@ const routes: Routes = [
       {
         path: 'add_meter_detail',
         component: MeterDetailComponent
+      },
+      {
+        path: 'update_details',
+        component: UpdateDetailsComponent
       },
       {
         path: 'vehicle',
