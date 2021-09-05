@@ -8,6 +8,8 @@ import lk.fleet.service.MeterDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -18,6 +20,9 @@ public class MeterDetailServiceImpl implements MeterDetailService {
 
     @Override
     public MeterDetailDTO addMeterDetail(MeterDetail meterDetail) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        meterDetail.setMeterId("MTR" + dateTime);
+        meterDetail.getMeterId();
         return new MeterDetailDTO(meterDetailRepository.save(meterDetail));
     }
 

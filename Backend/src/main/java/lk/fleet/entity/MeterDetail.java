@@ -9,11 +9,10 @@ import java.time.LocalDateTime;
 public class MeterDetail {
 
     @Id
-    private String meterID;
+    private String meterId;
     private double inMeter;
-    private double OutMeter;
+    private double outMeter;
     private double mileage;
-    private LocalDateTime updatedDateTime;
 
     @OneToOne
     private Token token;
@@ -26,12 +25,12 @@ public class MeterDetail {
         this.token = token;
     }
 
-    public String getMeterID() {
-        return meterID;
+    public String getMeterId() {
+        return meterId;
     }
 
-    public void setMeterID(String meterID) {
-        this.meterID = meterID;
+    public void setMeterId(String meterId) {
+        this.meterId = meterId;
     }
 
     public double getInMeter() {
@@ -43,11 +42,11 @@ public class MeterDetail {
     }
 
     public double getOutMeter() {
-        return OutMeter;
+        return outMeter;
     }
 
     public void setOutMeter(double outMeter) {
-        OutMeter = outMeter;
+        this.outMeter = outMeter;
     }
 
     public double getMileage() {
@@ -58,11 +57,4 @@ public class MeterDetail {
         this.mileage = mileage;
     }
 
-    public LocalDateTime getUpdatedDateTime() {
-        return updatedDateTime;
-    }
-
-    public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
-        this.updatedDateTime = updatedDateTime;
-    }
 }
