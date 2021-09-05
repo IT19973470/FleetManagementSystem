@@ -9,44 +9,49 @@ import {Router} from "@angular/router";
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
+
   @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
   vehicleDetail = {
     vehicleId: '',
     vehicleType: '',
-    vehicleModel: '',
+    model: '',
     noOfSeats: '',
     initialMeter: '',
     serviceMeter: '',
     fuelBalance: '',
     fuelConsumption: '',
-    occupied:'',
-    fuelType:'',
-    vehicleVehicleDetails: []
+    occupied: '',
+    fuelType: ''
   };
 
   vehicle: any;
-  btnText: any;
-  tblIndex
 
-
-
-  constructor(private vehicleDriverManagerService:VehicleDriverManagerService, private router: Router) {
-
-
-    this.vehicle=this.getNewVehicle();
+  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
+    this.vehicle = this.getNewVehicle();
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    return false;
+  OnSubmitVehicle() {
+    // console.log(this.vehicleDetail)
+    this.vehicleDriverManagerService.addVehicle(this.vehicleDetail).subscribe((vehicle) => {
+      this.router.navigate(['/main/view_vehicles'])
+    })
   }
 
-  setItem(item: any, i: number) {
-
-  }
   getNewVehicle() {
-
+    return {
+      vehicleId: '',
+      vehicleType: '',
+      model: '',
+      noOfSeats: '',
+      initialMeter: '',
+      serviceMeter: '',
+      fuelBalance: '',
+      fuelType: '',
+      fuelConsumption: '',
+      occupied: ''
+    };
   }
 }
