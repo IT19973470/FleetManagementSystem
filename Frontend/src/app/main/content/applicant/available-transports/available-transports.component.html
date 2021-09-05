@@ -12,6 +12,7 @@
         <th scope="col">Depature Date</th>
         <th scope="col">Arricval Date</th>
         <th scope="col">Reason</th>
+        <th scope="col" width="5%" style="text-align: center">Type</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
@@ -27,7 +28,12 @@
         <td>{{deliveryItem.arrivaleDate}}</td>
         <td>{{deliveryItem.reason}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setItem(deliveryItem)"></i>
+          <i *ngIf="deliveryItem.type=='P'||deliveryItem.type=='IP'" class="fas fa-user"></i>
+          <i *ngIf="deliveryItem.type=='I'||deliveryItem.type=='IP'" class="fas fa-truck" style="padding-left: 10px"></i>
+          <i *ngIf="deliveryItem.type==null" class="fas fa-spinner" style="padding-left: 10px"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer" (click)="setItem(deliveryItem,i)"></i>
         </td>
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>

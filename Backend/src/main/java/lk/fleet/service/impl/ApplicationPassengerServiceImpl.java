@@ -1,6 +1,5 @@
 package lk.fleet.service.impl;
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.PassengerAppDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.*;
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ApplicationPassengerServiceImpl implements ApplicationPassengerService {
@@ -134,8 +132,22 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         List<ApplicationDTO> applicationDTOS =new ArrayList<>();
         List<Application> applications =applicationRepository.findAll();
         for(Application application: applications){
-            applicationDTOS.add(new ApplicationDTO(application));
-        }
+            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+            applicationDTO.setPassengerApp(new PassengerAppDTO(application.getPassengerApplication()));
+            applicationDTOS.add(applicationDTO);
+//            PassengerAppDTO passengerAppDTO = new PassengerAppDTO(application.getPassengerApplication());
+//            passengerAppDTO.setPassengerApplicationID(application.getApplicationID());
+//            passengerAppDTO1.add(new PassengerAppDTO(application));
+        //    applicationDTOS.(bookDTO);
+           // bookDTO.setPassengerApplicationID(application.getPassengerApplication().getPassengerApplicationID());
+           // bookDTOList.add(bookDTO);
+     //       passengerAppDTOS.add(application.getPassengerApplication());
+//            for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()) {
+//                passengerAppDTOS.add(passengerPassengerApplication);
+//            }
+            }
+
+
         return applicationDTOS;
     }
 

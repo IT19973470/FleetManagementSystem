@@ -22,6 +22,7 @@ export class CreateNewRequestComponent implements OnInit {
     reason: '',
     vehicleType: '',
     destination: '',
+    type:'P',
     passengerApplication: {
       noOfPassengers: '5',
       passengerPassengerApplications: []

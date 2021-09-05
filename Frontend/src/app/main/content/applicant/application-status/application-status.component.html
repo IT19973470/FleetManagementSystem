@@ -12,7 +12,7 @@
           <div class="col-4">
             Destination :
           </div>
-          <div class="col-8">
+          <div  class="col-8">
             <input type="text" class="form-control"
                    [(ngModel)]="ItemApp.destination"
                    #destination="ngModel"
@@ -35,22 +35,22 @@
                    name="deliveryDate" required>
             <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
-              Arrival Date is required
+              Depature Date is required
             </div>
           </div>
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            arrival Date :
+            Arrival Date :
           </div>
           <div class="col-8">
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="ItemApp.arrivaleDate"
                    #arrivaleDate="ngModel"
-                   name="deliveryDate" required>
+                   name="deliveryDate1" required>
             <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
                  class="validErr">
-              Depature Date is required
+              Arrival Date is required
             </div>
           </div>
         </div>
@@ -122,23 +122,27 @@
                   Item ID :
                 </div>
                 <div class="col-7" >
-                  <input type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Pass.item.itemID"
+                  <input   type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Pass.item.itemID"
                          #passengerId="ngModel"
-                         name="passengerType" >
+                         name="passengerId" >
                 </div>
 
                 <div class="col-1" >
-                  <button  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                  <button *ngIf="user" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
                     <i class="fas fa-plus-circle"  style="font-size: 30px"  ></i>
                   </button>
+                  <button *ngIf="item"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                    <i  class="fas fa-pen" style="cursor: pointer"  ></i>
+                  </button>
                 </div>
+
                 <div class="col-4" style="padding-right: 50px; padding-top: 10px ">
                   Item Name :
                 </div>
                 <div class="col-7" style="padding-top: 10px " >
                   <input type="text" class="form-control" style="margin-left: 0px;  " [(ngModel)]="Pass.item.itemName"
                          #passengerName="ngModel"
-                         name="passengerType" >
+                         name="passengerName" >
                 </div>
 
                 <div class="col-4" style="padding-right: 50px; padding-top: 10px">
@@ -146,8 +150,8 @@
                 </div>
                 <div class="col-7" style="padding-left:10px; padding-top: 10px " >
                   <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="Pass.item.qty"
-                         #passengerType="ngModel"
-                         name="passengerType" required>
+                         #Qty="ngModel"
+                         name="passengerQty" required>
                 </div>
               </div>
             </div>

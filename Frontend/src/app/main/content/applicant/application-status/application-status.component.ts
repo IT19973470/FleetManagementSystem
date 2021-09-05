@@ -15,22 +15,7 @@ export class ApplicationStatusComponent implements OnInit {
   @ViewChild('applicationStatus', {static: true}) public applicationStatus: NgForm;
 
 
-  passengerpassengerApp = {
-
-    applicationID: '',
-    arrivaleDate: '',
-    depatureDate: "",
-    reason: '',
-    vehicleType: '',
-    destination: '',
-    passengerApplication: {
-      noOfPassengers: '5',
-      passengerPassengerApplications: []
-    }
-  };
-
   ItemApp= {
-
 
     applicationID: "",
     approval: "",
@@ -39,6 +24,7 @@ export class ApplicationStatusComponent implements OnInit {
     reason: "",
     vehicleType: "",
     destination: "",
+    type:'I',
     itemApplication: {
       itemItemApplications: []
     }
@@ -62,7 +48,8 @@ export class ApplicationStatusComponent implements OnInit {
   // };
   //
   tblIndex;
-
+  user:boolean=true;
+  item:boolean=false;
 
   constructor(private applicant: ApplicantService, private router: Router) {
     //this.Pass = this.getNewPassenger();
@@ -78,13 +65,16 @@ export class ApplicationStatusComponent implements OnInit {
       this.router.navigate(['/main/available_transports'])
     })
   }
-
-  btnText = 'Add';
+x:boolean=false;
+  btnText = '';
 
   onSubmitPassenger() {
-    if (this.btnText === 'Add') {
+    if (this.user == true) {
       this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
       //this.passengerForm.resetForm();
+    }
+    else if(this.item==true){
+      this.ItemApp.itemApplication.itemItemApplications[this.tblIndex] = this.Pass
     }
     //   if (this.btnText === 'Add') {
     //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
@@ -96,11 +86,9 @@ export class ApplicationStatusComponent implements OnInit {
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
-
-    //this.Pass.passenger = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.item);
-    this.btnText = 'Add';
-
+    this.user=true;
+    this.item=false;
   }
 
   setPassenger(item,i) {
@@ -109,6 +97,8 @@ export class ApplicationStatusComponent implements OnInit {
     this.Pass.item.itemName=item.itemName;
     this.Pass.item.qty=item.qty;
     this.btnText = 'Update';
+    this.item=true;
+    this.user=false;
   }
 
   getNewPassenger() {
