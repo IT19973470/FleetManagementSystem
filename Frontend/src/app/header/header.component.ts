@@ -12,8 +12,11 @@ export class HeaderComponent implements OnInit {
 
   topic;
   username;
+  constructor(private loginService: LoginService, private navBarService: NavbarService, private router: Router) {
 
-  constructor(private loginService: LoginService,private navBarService: NavbarService, private router: Router) {
+
+
+
     if (this.router.url !== '/login') {
       navBarService.navTopic.subscribe((topic) => {
         this.topic = topic;
@@ -37,4 +40,5 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  
 }

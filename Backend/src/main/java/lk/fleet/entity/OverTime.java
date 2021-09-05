@@ -2,20 +2,21 @@ package lk.fleet.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
+import java.time.LocalTime;
 
 @Entity
 public class OverTime {
 
     @Id
-    private String overTimeID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long overTimeID;
+    private LocalDate otDate;
     private int noOfShifts;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private boolean approval;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Driver driver;
 
     public Driver getDriver() {
@@ -26,27 +27,35 @@ public class OverTime {
         this.driver = driver;
     }
 
-    public String getOverTimeID() {
+    public long getOverTimeID() {
         return overTimeID;
     }
 
-    public void setOverTimeID(String overTimeID) {
+    public void setOverTimeID(long overTimeID) {
         this.overTimeID = overTimeID;
     }
 
-    public LocalDate getStartTime() {
+    public LocalDate getOtDate() {
+        return otDate;
+    }
+
+    public void setOtDate(LocalDate otDate) {
+        this.otDate = otDate;
+    }
+
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 
