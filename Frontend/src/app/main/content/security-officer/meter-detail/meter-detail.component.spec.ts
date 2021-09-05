@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewOverTimeComponent } from './new-over-time.component';
+import { MeterDetailComponent } from './meter-detail.component';
 
-describe('NewOverTimeComponent', () => {
-  let component: NewOverTimeComponent;
-  let fixture: ComponentFixture<NewOverTimeComponent>;
+describe('MeterDetailComponent', () => {
+  let component: MeterDetailComponent;
+  let fixture: ComponentFixture<MeterDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewOverTimeComponent ]
+      declarations: [ MeterDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewOverTimeComponent);
+    fixture = TestBed.createComponent(MeterDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -35,7 +35,7 @@
           <div class="alignLeft"
                *ngIf="username!==undefined && username!==''"
                style="padding-top: 5px;padding-right: 10px;font-weight: bold;color: #794903;font-size: 16px;cursor: pointer"
-               routerLink="/login">
+               (click)="accLogout()">
             Logout
           </div>
           <div class="alignLeft" style="margin-left: 10px">

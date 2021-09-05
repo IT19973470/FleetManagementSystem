@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -43,9 +43,8 @@ import {DriverRegistrationComponent} from "./main/content/Driver/driver-registra
 import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
 import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
 import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
-import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
-import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
 import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
 import { TokenComponent } from './main/content/security-officer/token/token.component';
@@ -57,6 +56,14 @@ import { VehicleAccidentViewComponent } from './main/content/accident-maintenanc
 
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
+
+import { ArrivalDepartureLogPageComponent } from './main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component';
+import { MeterDetailComponent } from './main/content/security-officer/meter-detail/meter-detail.component';
+import { UpdateDetailsComponent } from './main/content/security-officer/update-details/update-details.component';
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
+
+import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+
 
 
 
@@ -78,7 +85,6 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     OverTimeComponent,
     ShiftDetailsComponent,
     FuelUpdateComponent,
-    NewOverTimeComponent,
     ViewOverTimeComponent,
     DriverAccountComponent,
     ViewPassengerDeliveryComponent,
@@ -103,11 +109,17 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
+    NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
     VehicleAccidentViewComponent,
     ViewVehiclesComponent,
-    UpdateVehicleComponent
+    UpdateVehicleComponent,
+    ArrivalDepartureLogPageComponent,
+    MeterDetailComponent,
+    UpdateDetailsComponent,
+    //ViewApprovedTripDetailsComponent
+    UpdateUserAccountComponent
 
   ],
   imports: [

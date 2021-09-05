@@ -1,7 +1,16 @@
 package lk.fleet.service;
 
+
+import lk.fleet.dto.BookingManagementClerkDTO;
+import lk.fleet.dto.TransportManagerDTO;
+import lk.fleet.dto.UserAccountDTO;
+import lk.fleet.dto.VehicleDriverManagementClerkDTO;
+
 import lk.fleet.dto.*;
+
 import lk.fleet.entity.*;
+
+import java.util.List;
 
 public interface UserAccountService {
 
@@ -31,4 +40,9 @@ public interface UserAccountService {
 
     UserAccountDTO login(UserAccount userAccount);
 
+    Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager);
+
+    List<UserAccountDTO> getUserAccounts();
+
+//    UserAccountDTO getAllUserAccounts(String accountType);
 }

@@ -40,7 +40,12 @@ export class LoginComponent implements OnInit {
       } else if (user['accountType'] === 'VMC'){
         this.router.navigate(['/main/vehicle_accident'])
       }
-      else {
+      else if (user['accountType'] === 'VMC') {
+        this.router.navigate(['/main/vehicle_accidents'])
+      }else if(user['accountType'] === 'BMC'){
+        this.router.navigate(['/main/'])
+      } else {
+
         this.logged = false;
       }
     }, (err) => {

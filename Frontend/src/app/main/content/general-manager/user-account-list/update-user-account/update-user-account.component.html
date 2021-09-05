@@ -1,6 +1,6 @@
 <div class="row"  style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create User Account</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update User Account</span>
   </div>
 
   <form #createUserAccountForm="ngForm" (ngSubmit)="createUserAccountForm.form.valid && onSubmit()" novalidate>
@@ -13,15 +13,17 @@
             User Account Type :
           </div>
           <div class="col-8">
-          <select name="accountType" class="form-control" #accountType [(ngModel)]="userAccount.accountType">
+            <select name="accountType" class="form-control"
+                    [(ngModel)]="userAccount.accountType"
+                    #accountType ="ngModel">
               <option value="">Select type</option>
-              <option *ngFor="let type of accountTypes" [value]="type">
-                {{type}}
+              <option *ngFor="let type of accountTypes" [value]="type.accType">
+                {{type.accTypename}}
               </option>
             </select>
             <p> {{selected}}</p>
-            </div>
           </div>
+        </div>
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
@@ -42,7 +44,7 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-           Name :
+            Name :
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
@@ -51,7 +53,7 @@
                    name="name" required>
             <div *ngIf="(name.touched || createUserAccountForm.submitted) && name.errors?.required"
                  class="validErr">
-             Name is required
+              Name is required
             </div>
           </div>
         </div>
@@ -170,35 +172,22 @@
           </div>
         </div>
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-4">
-            Password :
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="userAccount.password"
-                   #password="ngModel"
-                   name="password" required>
-            <div *ngIf="(password.touched || createUserAccountForm.submitted) && password.errors?.required"
-                 class="validErr">
-              Password is required
-            </div>
-          </div>
-        </div>
+
 
         <br>
 
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Create Account</button>
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="setUserAccount(userAccount, tblIndex)">{{btnText}} Update Account</button>
           </div>
         </div>
 
       </div>
     </div>
 
-</form>
+  </form>
 
 </div>
+
 
