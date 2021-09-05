@@ -17,17 +17,8 @@ export class VehicleAccidentComponent implements OnInit {
     accidentTime: '',
     insuranceNo: '',
     insuranceStatus: '',
-    // driverVehicle: {
-    //   driverID: '',
-    //   vehicleId: '',
-    // },
-    // accidentMaintenanceManager: {
-    //   employeeID: ''
-    // }
-  };
+   };
   accidentDate: boolean;
-
-
 
   constructor(private accident: VehicleAccidentService, private router: Router) { }
 
@@ -36,8 +27,8 @@ export class VehicleAccidentComponent implements OnInit {
 
   addAccident() {
     console.log(this.accidentDetail);
-    this.accident.addAccident(this.accidentDetail).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports'])
+    this.accident.addAccident(this.accidentDetail).subscribe((accidentDetail) => {
+      this.router.navigate(['/main/vehicle_accident_view'])
     })
   }
 

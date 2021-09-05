@@ -25,6 +25,7 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
 
 
 const routes: Routes = [
@@ -110,8 +111,8 @@ const routes: Routes = [
         component: VehicleComponent
       },
       {
-        path: 'view_vehicles',
-        component: ViewVehiclesComponent
+        path: 'vehicle_accident_view',
+        component: VehicleAccidentViewComponent
       },
       {
         path: 'update_vehicle',

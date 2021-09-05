@@ -33,7 +33,7 @@ import {ApplicationStatusComponent} from './main/content/applicant/application-s
 import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
 import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
 import {NavAccidentMaintenanceManagerComponent} from './main/navbar/nav-accident-maintenance-manager/nav-accident-maintenance-manager.component';
-//import { VehcleAccdentComponent } from './vehcle-accdent/vehcle-accdent.component';
+
 import {VehicleAccidentComponent} from './main/content/accident-maintenance-manager/vehicle-accident/vehicle-accident.component';
 import {VehicleMaintenanceComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component';
 import {VehicleAccidentReportComponent} from './main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component';
@@ -99,7 +99,6 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     NotificationsComponent,
     FeedbackComponent,
     NavAccidentMaintenanceManagerComponent,
-    //VehcleAccdentComponent,
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,

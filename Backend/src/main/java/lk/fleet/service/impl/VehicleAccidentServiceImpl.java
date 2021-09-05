@@ -1,6 +1,5 @@
 package lk.fleet.service.impl;
 
-
 import lk.fleet.dto.VehicleAccidentDTO;
 import lk.fleet.entity.VehicleAccident;
 import lk.fleet.repository.VehicleAccidentRepository;
@@ -23,9 +22,17 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
     @Override
     public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        vehicleAccident.setVehicleAccidentID("VCM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+        vehicleAccident.setVehicleAccidentID("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
         return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccident));
     }
+
+//    @Override
+//    public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
+//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+//        vehicleAccident.setVehicleAccidentID("VCM" + dateTime);
+//        vehicleAccident.getVehicleAccidentID();
+//        return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccident));
+//    }
 
     @Override
     public VehicleAccidentDTO updateVehicleAccident(String vehicleAccidentID, VehicleAccident vehicleAccident) {

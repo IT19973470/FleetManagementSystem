@@ -16,5 +16,9 @@ export class VehicleAccidentService {
   addAccident(accident): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/accident/addVehicleAccident", accident);
   }
-  addPass
+
+  getVehicleAccidents(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/accident/getVehicleAccidents");
+  }
+
 }

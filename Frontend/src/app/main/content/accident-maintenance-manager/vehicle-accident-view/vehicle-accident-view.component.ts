@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {VehicleAccidentService} from "../../../../_service/vehicle-accident.service";
 
@@ -16,11 +15,6 @@ export class VehicleAccidentViewComponent implements OnInit {
     foundItem: ''
   };
 
-  constructor(private accident: VehicleAccidentService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
-
   vehicleAccidentDetails = [];
   vehicleAccident = {
     accidentId: '',
@@ -30,17 +24,30 @@ export class VehicleAccidentViewComponent implements OnInit {
     insuranceStatus: false,
   };
 
-  setItem(deliveryItem) {
-    this.vehicleAccident = deliveryItem;
+  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.getVehicleAccidents();
+  }
+
+  setItem(vehicleAccident) {
+    this.vehicleAccident = vehicleAccident;
     this.isTrueOrFalse(true);
   }
 
-  goToUpdate(deliveryItem) {
-    this.accident.deliveryItem = deliveryItem;
-    this.router.navigate(['/main/update_item_delivery'])
+  getVehicleAccidents() {
+    this.vehicleAccidentService.getVehicleAccidents().subscribe((vehicleAccidentDetails) => {
+      this.vehicleAccidentDetails = vehicleAccidentDetails;
+    })
   }
 
-  isTrueOrFalse(reply) {
+    // goToUpdate(deliveryItem) {
+    //   this.accident.deliveryItem = deliveryItem;
+    //   this.router.navigate(['/main/update_item_delivery'])
+    // }
+
+  private isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }
 }
