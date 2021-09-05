@@ -11,7 +11,7 @@ export class NavVehicleDriverManagerComponent implements OnInit {
   constructor(private navBarService: NavbarService) { }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('Vehicle');
+    // this.navBarService.navTopic.next('Vehicle');
   }
 
   setTopic(topic){

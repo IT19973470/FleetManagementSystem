@@ -23,8 +23,8 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
-
-
+import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
+import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 
 
 const routes: Routes = [
@@ -105,30 +105,20 @@ const routes: Routes = [
         path: 'create_token',
         component: TokenComponent
       },
-    ]
-  },
-  {
-    path: 'main',
-    component: MainComponent,
-    children: [
       {
         path: 'vehicle',
         component: VehicleComponent
       },
       {
-        path: 'view_item_delivery',
-        component: ViewItemDeliveryComponent
+        path: 'view_vehicles',
+        component: ViewVehiclesComponent
       },
       {
-        path: 'passenger_delivery',
-        component: PassengerDeliveryComponent
-      },
-      {
-        path: 'view_passenger_delivery',
-        component: ViewPassengerDeliveryComponent
+        path: 'update_vehicle',
+        component: UpdateVehicleComponent
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
