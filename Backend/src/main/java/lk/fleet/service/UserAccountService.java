@@ -10,6 +10,8 @@ import lk.fleet.dto.*;
 
 import lk.fleet.entity.*;
 
+import java.util.List;
+
 public interface UserAccountService {
 
     UserAccountDTO addGeneralManagerUserAccount(UserAccount userAccount);
@@ -39,4 +41,8 @@ public interface UserAccountService {
     UserAccountDTO login(UserAccount userAccount);
 
     Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager);
+
+    List<UserAccountDTO> getUserAccounts();
+
+//    UserAccountDTO getAllUserAccounts(String accountType);
 }

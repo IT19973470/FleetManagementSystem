@@ -6,17 +6,18 @@
 
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
-    <label>User Account List</label>
+    <label><h1><b>User Account List</b></h1></label>
 
 
     <table class="table table-striped" style="margin-top: 40px">
       <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Employee ID</th>
-        <th scope="col">Type</th>
+        <th scope="col" width="10%">#</th>
+        <th scope="col" width="10%">Employee ID</th>
+        <th scope="col" width="10%">Type</th>
         <th scope="col" width="10%">Name</th>
         <th scope="col" width="10%">NIC</th>
+        <th scope="col" width="10%">Contact No</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
@@ -26,20 +27,21 @@
         <th scope="row">{{i+1}}</th>
         <td>{{userAccount.employeeID}}</td>
         <td>{{userAccount.accountType}}</td>
-        <td>{{userAccount.nic}}</td>
         <td>{{userAccount.name}}</td>
-        <td>{{userAccount.dob}}</td>
-        <td>{{userAccount.address}}</td>
+        <td>{{userAccount.nic}}</td>
+
+<!--        <td>{{userAccount.dob}}</td>-->
+<!--        <td>{{userAccount.address}}</td>-->
         <td>{{userAccount.contactNo}}</td>
-        <td>{{userAccount.email}}</td>
-        <td>{{userAccount.registeredDate}}</td>
-        <td>{{userAccount.nameWithInitials}}</td>
+<!--        <td>{{userAccount.email}}</td>-->
+<!--        <td>{{userAccount.registeredDate}}</td>-->
+<!--        <td>{{userAccount.nameWithInitials}}</td>-->
 
         <td style="text-align: center">
           <i class="fas fa-search" style="cursor: pointer" (click)="setUserAccount(userAccount)"></i>
         </td>
         <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(userAccount)"></i>
         </td>
       </tr>
       </tbody>

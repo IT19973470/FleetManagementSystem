@@ -33,9 +33,7 @@ export class CreateUserAccountComponent implements OnInit {
     "Booking Management Clerk",
     "Vehicle and Driver Management Clerk",
     "Accident and Maintenance Clerk",
-    "Security Officer",
-    "Driver",
-    "Applicant"
+    "Security Officer"
   ]
   selected = ""
 
@@ -59,7 +57,7 @@ export class CreateUserAccountComponent implements OnInit {
       let transportManager = {
         userAccount: this.userAccount
       }
-      console.log(transportManager)
+     // console.log(transportManager)
       this.generalManagerService.addTransportManagerUserAccount(transportManager).subscribe((userAccount) => {
         this.router.navigate(['/main/user_account_list'])
       })
@@ -71,15 +69,36 @@ export class CreateUserAccountComponent implements OnInit {
       this.generalManagerService.addBookingManagementClerkUserAccount(bookingManagementClerk).subscribe((userAccount) =>{
         this.router.navigate(['/main/user_account_list'])
       })
-    }else if (this.userAccount.accountType === 'Vehicle and Driver Management Clerk'){
+    }
+    else if(this.userAccount.accountType === 'Vehicle and Driver Management Clerk'){
       let vehicleDriverManagementClerk = {
         userAccount: this.userAccount
       }
-
       this.generalManagerService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk).subscribe((userAccount) =>{
         this.router.navigate(['/main/user_account_list'])
       })
     }
+    else if (this.userAccount.accountType === 'Accident and Maintenance Clerk'){
+      let accidentMaintenanceClerk = {
+        userAccount: this.userAccount
+      }
+
+      this.generalManagerService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceClerk).subscribe((userAccount) =>{
+        this.router.navigate(['/main/user_account_list'])
+      })
+    }
+    else if (this.userAccount.accountType === 'Security Officer'){
+      let securityOfficer = {
+        userAccount: this.userAccount
+      }
+
+      this.generalManagerService.addSecurityOfficerUserAccount(securityOfficer).subscribe((userAccount) =>{
+        this.router.navigate(['/main/user_account_list'])
+      })
+    }
+
+
+
     // this.generalManagerService.addTransportManagerUserAccount(this.userAccount).subscribe((userAccount) =>{
     //   if(userAccount == null){
     //     this.userAccount.userAccountDetails.push(userAccount);

@@ -37,21 +37,31 @@ export class UserAccountListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUserAccounts();
   }
+
 
   setUserAccount(userAccount) {
     this.userAccount = userAccount;
     this.isTrueOrFalse(true);
   }
 
-  goToUpdate(deliveryItem) {
-    this.generalManagerService.userAccount = this.userAccount;
-    this.router.navigate(['/main/update_user_account'])
+  goToUpdate(userAccount) {
+    this.generalManagerService.userAccount = userAccount;
+    this.router.navigate(['/main/update_user_account']);
+    console.log(userAccount);
   }
 
 
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
+  }
+
+  getUserAccounts() {
+    this.generalManagerService.getUserAccounts().subscribe((userAccountDetails) => {
+      this.userAccountDetails = userAccountDetails;
+      // console.log(this.vehicles)
+    })
   }
 
 

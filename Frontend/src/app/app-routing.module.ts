@@ -22,13 +22,18 @@ import {ApplicationStatusComponent} from "./main/content/applicant/application-s
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 import {UserAccountListComponent} from "./main/content/general-manager/user-account-list/user-account-list.component";
-
+import {UpdateUserAccountComponent} from "./main/content/general-manager/user-account-list/update-user-account/update-user-account.component";
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
+
+import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
+import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+
 
 
 const routes: Routes = [
@@ -76,6 +81,18 @@ const routes: Routes = [
       {
         path: 'user_account_list',
         component: UserAccountListComponent
+      },
+      {
+        path: 'update_user_account',
+        component: UpdateUserAccountComponent
+      },
+      {
+        path: 'account_requests',
+        component: AccountRequestsComponent
+      },
+      {
+        path: 'transport_requests',
+        component: TransportRequestsComponent
       },
       {
         path: 'available_transports',

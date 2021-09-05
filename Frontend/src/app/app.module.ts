@@ -54,10 +54,14 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {DatePipe} from "@angular/common";
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
+
 import { ArrivalDepartureLogPageComponent } from './main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component';
 import { MeterDetailComponent } from './main/content/security-officer/meter-detail/meter-detail.component';
 import { UpdateDetailsComponent } from './main/content/security-officer/update-details/update-details.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
+
+import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+
 
 
 @NgModule({
@@ -112,6 +116,7 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
+    UpdateUserAccountComponent
   ],
   imports: [
     BrowserModule,
