@@ -33,7 +33,8 @@ export class CreateUserAccountComponent implements OnInit {
     "Booking Management Clerk",
     "Vehicle and Driver Management Clerk",
     "Accident and Maintenance Clerk",
-    "Security Officer"
+    "Security Officer",
+    "General Manager"
   ]
   selected = ""
 
