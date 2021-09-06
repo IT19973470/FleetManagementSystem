@@ -3,7 +3,7 @@
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create New Request</span>
   </div>
 
-  <form #applicationStatus="ngForm" (ngSubmit)="applicationStatus.form.valid && onSubmit()" novalidate>
+  <form #applicationStatus="ngForm"  (ngSubmit)="applicationStatus.form.valid && onSubmit()" novalidate >
 
     <div style="display: flex;margin-top: 50px">
       <div style="width: 50%;padding-right: 20px">
@@ -113,7 +113,7 @@
       <div style="width: 50%;padding-left: 20px;border-left: 1px solid #dfcda0">
 
         <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid && onSubmitPassenger()" novalidate>
-          <legend>Add Items:
+          <legend>Add Passengers:
             <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">
 
               <div class="row" style="margin-left:0px;">
@@ -122,9 +122,14 @@
                   Employee ID :
                 </div>
                 <div class="col-7" >
-                  <input type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Pass.passenger.passengerId"
+                  <input type="text" class="form-control"
+                         [(ngModel)]="Pass.passenger.passengerId"
                          #passengerId="ngModel"
-                         name="passengerType" >
+                         name="passengerType" required>
+                  <div *ngIf="(errorP==true)"
+                       class="validErr">
+                    Passenger ID is Not valid
+                  </div>
                 </div>
 
                 <div class="col-1" >
@@ -134,12 +139,11 @@
                   <div class="col-8" style="padding-top: 10px " >
                     <button type="button"  style="font-weight: bold;background-color: Transparent;border: none; margin-right: 20px"><i class="fas fa-user-plus"></i>
                       <br/>
-                     <label style="font-size: 10px">New Account</label>
+                      <label style="font-size: 10px; color: blue"><u>New Account</u></label>
                     </button>
                   </div>
                 </div>
-                <div class="col-4" style="padding-right: 50px; padding-top: 10px ">
-
+                <div class="col-9" style="padding-right: 50px; padding-top: 10px ">
                 </div>
               </div>
             </div>
@@ -191,18 +195,18 @@
           <tr>
             <th scope="col" width="3%">#</th>
             <th scope="col">Passsenger ID</th>
-            <th scope="col" width="5%" style="text-align: center">Update</th>
+            <th scope="col">Passsenger Name</th>
+            <th scope="col">Contact Number</th>
             <th scope="col" width="5%" style="text-align: center">Remove</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let Pass of passengerpassengerApp.passengerApplication.passengerPassengerApplications; let j = index">
+          <tr *ngFor="let Pass of zz; let j = index">
             <th scope="row">{{j+1}}</th>
-            <td>{{Pass.passenger.passengerId}}</td>
-            <td style="text-align: center">
-              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(Pass.item,j)"></i>
-            </td>
-            <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1)">
+            <td>{{Pass.passengerId}}</td>
+            <td>{{Pass.passengerName}}</td>
+            <td>{{Pass.contactNumber}}</td>
+            <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1);zz.splice(j, 1)">
               <i class="fas fa-times" style="color: red;font-size: 20px"></i>
             </td>
           </tr>

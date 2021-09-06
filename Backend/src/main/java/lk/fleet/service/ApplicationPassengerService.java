@@ -2,6 +2,7 @@ package lk.fleet.service;
 
 import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
+import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.Application;
 import lk.fleet.entity.Passenger;
 import lk.fleet.entity.PassengerApplication;
@@ -21,4 +22,5 @@ public interface ApplicationPassengerService {
     List<ApplicationDTO> getPassengerApp();
     List<PassengerApplication> getAPassengerApp();
     List<PassengerApplicationDTO> getdto();
+    List<PassengerDTO> getPassengers();
 }

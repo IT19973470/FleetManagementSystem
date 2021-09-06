@@ -39,6 +39,7 @@ export class CreateNewRequestComponent implements OnInit {
       passengerId: ''
     }
   };
+
 // Item ={
 //   item:{
 //     itemID:'',
@@ -55,15 +56,23 @@ export class CreateNewRequestComponent implements OnInit {
   // };
   //
   tblIndex;
-
+  PassengerDB=[];
+  Pp=[];
+   y=0;
   constructor(private applicant: ApplicantService, private router: Router) {
     //  this.Pass.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
-
+    this.getAllIPassengers()
   }
 
+  getAllIPassengers(){
+    this.applicant.getAllPassengers().subscribe((deliveryItemDetails) => {
+      this.PassengerDB = deliveryItemDetails;
+      this.y=deliveryItemDetails.length;
+    })
+  }
   onSubmit() {
     console.log(this.passengerpassengerApp);
     this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
@@ -72,13 +81,26 @@ export class CreateNewRequestComponent implements OnInit {
   }
 
   btnText = 'Add';
-
+  errorP:boolean=false;
+  z;
+  zz=[];
   onSubmitPassenger() {
-    if (this.btnText === 'Add') {
-      this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+    for( let  x=0; x<=this.y;x++) {
+       this.z = this.PassengerDB[x];
+      if (this.Pass.passenger.passengerId===this.z.passengerId) {
+        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+        this.zz.push(this.z);
+        this.setNewPassenger();
+        this.errorP=false;
+        break;
+    }
+
+      else{
+        this.errorP=true;
+      }
 
     }
-    this.setNewPassenger();
+
   }
 
   setNewPassenger() {

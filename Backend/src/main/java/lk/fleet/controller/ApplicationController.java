@@ -3,6 +3,7 @@ package lk.fleet.controller;
 import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.dto.ItamAppDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
+import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.ApplicationItemService;
 import lk.fleet.service.ApplicationPassengerService;
@@ -36,6 +37,12 @@ public class ApplicationController {
     public ResponseEntity addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
         return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
     }
+
+    @GetMapping(value = "/getPassengers")
+    public List<PassengerDTO> getPassengers(){
+        return applicationPassengerService.getPassengers();
+    }
+
 
     @PostMapping(value ="/AddItem")
     public ResponseEntity addItem(@RequestBody Application application) {

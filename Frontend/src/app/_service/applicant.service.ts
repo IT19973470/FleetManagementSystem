@@ -22,6 +22,9 @@ export class ApplicantService {
   getAllApplication(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/application/getApplication");
   }
+  getAllPassengers(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getPassengers");
+  }
   updateform(application): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/application/updateApplication/" + application.applicationID, application);
   }
