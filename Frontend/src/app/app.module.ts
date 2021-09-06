@@ -64,6 +64,7 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+import { UpdateDriverComponent } from './update-driver/update-driver.component';
 
 
 
@@ -121,8 +122,9 @@ import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/up
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
     UpdateUserAccountComponent,
-    UpdateOverTimeComponent
-    UpdateUserAccountComponent
+    UpdateOverTimeComponent,
+    UpdateUserAccountComponent,
+    UpdateDriverComponent
   ],
   imports: [
     BrowserModule,

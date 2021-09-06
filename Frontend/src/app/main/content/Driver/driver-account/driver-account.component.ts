@@ -38,7 +38,7 @@ export class DriverAccountComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getDrivers();
+    this.getDriver();
   }
 
   onSubmit() {
@@ -52,17 +52,21 @@ export class DriverAccountComponent implements OnInit {
 
   goToUpdate(driverDetails) {
     this.driverService.driver = this.driver;
-    this.router.navigate(['/main/update_user_account']);
+    this.router.navigate(['/main/update_over_time']);
   }
 
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }
 
-  getDrivers() {
-    this.driverService.getDriver().subscribe((driver) => {
+  getDriver() {
+    this.driverService.getDriver(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((driver) => {
       this.driverDetails = driver;
       console.log(this.driverDetails);
     });
+  }
+
+  deleteDriver(driverDetails: []) {
+
   }
 }

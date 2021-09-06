@@ -10,15 +10,6 @@
   </div>
 
   <div
-    routerLink="/main/driver_registration"
-    (click)="setTopic('Registration Form')"
-    #driverRegistration="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':driverRegistration.isActive?'#c0050e':''}">
-    Registration Form
-  </div>
-
-  <div
     routerLink="/main/fuel_update"
     (click)="setTopic('Update Fuel Balance')"
     #fuelUpdate="routerLinkActive"
