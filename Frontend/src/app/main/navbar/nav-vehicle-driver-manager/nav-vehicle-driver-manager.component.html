@@ -33,13 +33,19 @@
     [ngStyle]="{'color':PassengerDelivery.isActive?'#c0050e':''}">
     Vip Members
   </div>
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_vipmember"
+    #updateVipmember="routerLinkActive"
+    routerLinkActive>
+  </div>
 
   <div
     routerLink="/main/view_vipmembers"
     (click)="setTopic('View Vip Members')"
     #viewVipMembers="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':viewVipMembers.isActive || updateVehicle.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':viewVipMembers.isActive || updateVipmember.isActive?'#c0050e':''}">
     View Vip Members
   </div>
 

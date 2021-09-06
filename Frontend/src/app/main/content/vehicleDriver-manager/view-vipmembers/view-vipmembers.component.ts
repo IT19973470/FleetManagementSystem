@@ -42,7 +42,7 @@ export class ViewVipmembersComponent implements OnInit {
   }
   goToUpdate(vipmember) {
     this.vehicleDriverManagerService.vipmember = vipmember;
-    this.router.navigate(['/main/update_vehicle'])
+    this.router.navigate(['/main/update_vipmember'])
   }
 
   isTrueOrFalse(reply) {

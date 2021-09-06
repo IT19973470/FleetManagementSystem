@@ -42,6 +42,7 @@ import {UpdateDetailsComponent} from "./main/content/security-officer/update-det
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+import {UpdateVipmemberComponent} from "./main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component";
 
 
 const routes: Routes = [
@@ -204,6 +205,14 @@ const routes: Routes = [
       {
         path: 'view_vipmembers',
         component: ViewVipmembersComponent
+      },
+      {
+        path: 'view_vehicles',
+        component: ViewVehiclesComponent
+      },
+      {
+        path: 'update_vipmember',
+        component: UpdateVipmemberComponent
       }
     ]
   }
