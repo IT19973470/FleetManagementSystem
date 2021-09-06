@@ -145,6 +145,19 @@ public class UserAccountServiceImpl implements UserAccountService {
         return true;
     }
 
+    @Override
+    public UserAccountDTO getUserAccountByID(String employeeID) {
+        UserAccountDTO userAccountDTO = userAccountRepository.getUserAccountByID(employeeID);
+        return userAccountDTO;
+    }
+
+//    @Override
+//    public List<DeliveryDTO> getAllDeliveries(String deliveryType) {
+//        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc(deliveryType);
+//        return setDeliveryDTOs(deliveries, deliveryType);
+//    }
+//
+
 
     @Override
     public List<UserAccountDTO> getUserAccounts() {

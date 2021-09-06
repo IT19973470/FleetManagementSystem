@@ -61,6 +61,23 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    public DeliveryDTO addPassengerItemDelivery(Delivery delivery) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        delivery.setDeliveryId("PIDel" + dateTime);
+        delivery.setDeliveryType("PassengerItem");
+        int countItem = 0, countPassenger = 0;
+        for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
+            deliveryPassengerDetail.setPassengerDetailId("DelPa" + ++countPassenger + dateTime);
+            deliveryPassengerDetail.setDelivery(delivery);
+        }
+        for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
+            deliveryItemDetail.setItemDetailId("DelIt" + ++countItem + dateTime);
+            deliveryItemDetail.setDelivery(delivery);
+        }
+        return new DeliveryDTO(deliveryRepository.save(delivery));
+    }
+
+    @Override
     public DeliveryDTO updateDelivery(String deliveryId, Delivery delivery) {
         Optional<Delivery> optionalDelivery = deliveryRepository.findById(deliveryId);
         if (optionalDelivery.isPresent()) {
@@ -175,6 +192,18 @@ public class DeliveryServiceImpl implements DeliveryService {
                     deliveryPassengerDetailDTOS.add(new DeliveryPassengerDetailDTO(deliveryPassengerDetail));
                 }
                 deliveryDTO.setDeliveryPassengerDetails(deliveryPassengerDetailDTOS);
+                deliveryDTOS.add(deliveryDTO);
+            } else if (deliveryType.equals("PassengerItem")) {
+                List<DeliveryPassengerDetailDTO> deliveryPassengerDetailDTOS = new ArrayList<>();
+                List<DeliveryItemDetailDTO> deliveryItemDetailDTOS = new ArrayList<>();
+                for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
+                    deliveryPassengerDetailDTOS.add(new DeliveryPassengerDetailDTO(deliveryPassengerDetail));
+                }
+                deliveryDTO.setDeliveryPassengerDetails(deliveryPassengerDetailDTOS);
+                for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
+                    deliveryItemDetailDTOS.add(new DeliveryItemDetailDTO(deliveryItemDetail));
+                }
+                deliveryDTO.setDeliveryItemDetails(deliveryItemDetailDTOS);
                 deliveryDTOS.add(deliveryDTO);
             }
         }

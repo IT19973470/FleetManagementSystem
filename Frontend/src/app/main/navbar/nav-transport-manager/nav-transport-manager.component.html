@@ -50,6 +50,31 @@
     View Passenger Deliveries
   </div>
 
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_item_passenger_delivery"
+    #updateItemPassengerDelivery="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/item_passenger_delivery"
+    (click)="setTopic('Passenger Item Delivery')"
+    #itemPassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':itemPassengerDelivery.isActive?'#c0050e':''}">
+    Passenger Item Delivery
+  </div>
+
+  <div
+    routerLink="/main/view_item_passenger_delivery"
+    (click)="setTopic('View Passenger Item Deliveries')"
+    #viewItemPassengerDelivery="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewItemPassengerDelivery.isActive || updateItemPassengerDelivery.isActive?'#c0050e':''}">
+    View Passenger Item  Deliveries
+  </div>
+
   <div>
     Passenger Transport
   </div>
