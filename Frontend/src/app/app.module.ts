@@ -48,6 +48,12 @@ import {DriverAccountComponent} from "./main/content/Driver/driver-account/drive
 import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+import { BookingsComponent } from './main/content/booking_management_clerk/bookings/bookings.component';
+import { ViewBookingsComponent } from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
+import { UpdateBookingsComponent } from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
+import { ShiftComponent } from './main/content/booking_management_clerk/shift/shift.component';
+import { UpdateShiftComponent } from './main/content/booking_management_clerk/update-shift/update-shift.component';
+import { ViewShiftComponent } from './main/content/booking_management_clerk/view-shift/view-shift.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +98,13 @@ import {DatePipe} from "@angular/common";
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
-    VehicleMaintenanceReportComponent
+    VehicleMaintenanceReportComponent,
+    BookingsComponent,
+    ViewBookingsComponent,
+    UpdateBookingsComponent,
+    ShiftComponent,
+    UpdateShiftComponent,
+    ViewShiftComponent
   ],
   imports: [
     BrowserModule,
