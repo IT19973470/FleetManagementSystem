@@ -54,6 +54,9 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {DatePipe} from "@angular/common";
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
+import { VipmemberComponent } from './main/content/vehicleDriver-manager/vipmember/vipmember.component';
+import { ViewVipmembersComponent } from './main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component';
+import { UpdateVipmemberComponent } from './main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component';
 
 
 @NgModule({
@@ -103,7 +106,10 @@ import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/upd
     NavSecurityOfficerComponent,
     TokenComponent,
     ViewVehiclesComponent,
-    UpdateVehicleComponent
+    UpdateVehicleComponent,
+    VipmemberComponent,
+    ViewVipmembersComponent,
+    UpdateVipmemberComponent
   ],
   imports: [
     BrowserModule,

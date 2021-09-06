@@ -25,6 +25,8 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
+import {ViewVipmembersComponent} from "./main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component";
 
 
 const routes: Routes = [
@@ -112,6 +114,14 @@ const routes: Routes = [
       {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
+      },
+      {
+        path: 'vipmember',
+        component: VipmemberComponent
+      },
+      {
+        path: 'view_vipmembers',
+        component: ViewVipmembersComponent
       }
     ]
   }
