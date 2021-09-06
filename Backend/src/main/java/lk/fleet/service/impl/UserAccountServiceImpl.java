@@ -90,6 +90,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         return new VehicleDriverManagementClerkDTO(vehicleDriverManagementClerk, new UserAccountDTO(vehicleDriverManagementClerk.getUserAccount()));
     }
 
+
+
     @Override
 
     public Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager) {
@@ -120,93 +122,21 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
 
-    @Override
-    public TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager) {
 
-        Optional<TransportManager> optionalTransportManager = transportManagerRepository.findById(transportManagerId);
-        if (optionalTransportManager.isPresent()) {
-            TransportManager transportManagerObject = optionalTransportManager.get();
-            transportManagerObject.getUserAccount().setName(transportManager.getUserAccount().getName());
-            transportManagerObject.getUserAccount().setAddress(transportManager.getUserAccount().getAddress());
-            transportManagerObject.getUserAccount().setContactNo(transportManager.getUserAccount().getContactNo());
-            transportManagerObject.getUserAccount().setEmail(transportManager.getUserAccount().getEmail());
+    public UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount) {
 
-
-            userAccountRepository.save(transportManagerObject.getUserAccount());
-            return new TransportManagerDTO(transportManagerRepository.save(transportManagerObject));
-        }
-        return null;
-    }
-
-    @Override
-    public BookingManagementClerkDTO updateBookingManagementClerkAccount(String bookingManagementClerkId, BookingManagementClerk bookingManagementClerk) {
-
-        Optional<BookingManagementClerk> optionalBookingManagementClerk = bookingManagementClerkRepository.findById(bookingManagementClerkId);
-        if (optionalBookingManagementClerk.isPresent()) {
-            BookingManagementClerk bookingManagementClerkObject = optionalBookingManagementClerk.get();
-            bookingManagementClerkObject.getUserAccount().setName(bookingManagementClerk.getUserAccount().getName());
-            bookingManagementClerkObject.getUserAccount().setAddress(bookingManagementClerk.getUserAccount().getAddress());
-            bookingManagementClerkObject.getUserAccount().setContactNo(bookingManagementClerk.getUserAccount().getContactNo());
-            bookingManagementClerkObject.getUserAccount().setEmail(bookingManagementClerk.getUserAccount().getEmail());
-
-
-            userAccountRepository.save(bookingManagementClerkObject.getUserAccount());
-            return new BookingManagementClerkDTO(bookingManagementClerkRepository.save(bookingManagementClerkObject));
-        }
-        return null;
-    }
-
-    @Override
-    public VehicleDriverManagementClerkDTO updateVehicleDiverManagementClerkAccount(String vehicleDriverManagementId, VehicleDriverManagementClerk vehicleDriverManagementClerk) {
-
-        Optional<VehicleDriverManagementClerk> optionalVehicleDriverManagementClerk = vehicleDriverManagementClerkRepository.findById(vehicleDriverManagementId);
-        if (optionalVehicleDriverManagementClerk.isPresent()) {
-            VehicleDriverManagementClerk vehicleDriverManagementClerkObject = optionalVehicleDriverManagementClerk.get();
-            vehicleDriverManagementClerkObject.getUserAccount().setName(vehicleDriverManagementClerk.getUserAccount().getName());
-            vehicleDriverManagementClerkObject.getUserAccount().setAddress(vehicleDriverManagementClerk.getUserAccount().getAddress());
-            vehicleDriverManagementClerkObject.getUserAccount().setContactNo(vehicleDriverManagementClerk.getUserAccount().getContactNo());
-            vehicleDriverManagementClerkObject.getUserAccount().setEmail(vehicleDriverManagementClerk.getUserAccount().getEmail());
-
-
-            userAccountRepository.save(vehicleDriverManagementClerkObject.getUserAccount());
-            return new VehicleDriverManagementClerkDTO(vehicleDriverManagementClerkRepository.save(vehicleDriverManagementClerkObject));
-        }
-
-        return null;
-    }
-
-    @Override
-    public UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount) {
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
         if (optionalUserAccount.isPresent()) {
-            UserAccount userAccountObj = optionalUserAccount.get();
-            userAccountObj.setName(userAccount.getName());
-            userAccountObj.setAddress(userAccount.getAddress());
-            userAccountObj.setContactNo(userAccount.getContactNo());
-            userAccountObj.setEmail(userAccount.getEmail());
+            UserAccount userAccountObject = optionalUserAccount.get();
+            userAccountObject.setName(userAccount.getName());
+            userAccountObject.setAddress(userAccount.getAddress());
+            userAccountObject.setContactNo(userAccount.getContactNo());
+            userAccountObject.setEmail(userAccount.getEmail());
+            userAccountObject.setNameWithInitials(userAccount.getNameWithInitials());
 
-            return new UserAccountDTO(userAccountRepository.save(userAccountObj));
+            return new UserAccountDTO(userAccountRepository.save(userAccountObject));
         }
-
         return null;
-    }
-
-    @Override
-    public SecurityOfficerDTO updateSecurityOfficerAccount(String securityOfficerId, SecurityOfficer securityOfficer) {
-
-        Optional<SecurityOfficer> optionalSecurityOfficer = securityOfficerRepository.findById(securityOfficerId);
-            if (optionalSecurityOfficer.isPresent()) {
-            SecurityOfficer securityOfficerObject = optionalSecurityOfficer.get();
-            securityOfficerObject.getUserAccount().setName(securityOfficer.getUserAccount().getName());
-            securityOfficerObject.getUserAccount().setAddress(securityOfficer.getUserAccount().getAddress());
-            securityOfficerObject.getUserAccount().setContactNo(securityOfficer.getUserAccount().getContactNo());
-            securityOfficerObject.getUserAccount().setEmail(securityOfficer.getUserAccount().getEmail());
-
-
-            userAccountRepository.save(securityOfficerObject.getUserAccount());
-            return new SecurityOfficerDTO(securityOfficerRepository.save(securityOfficerObject));
-        }
-            return null;
     }
 
     @Override
@@ -228,6 +158,105 @@ public class UserAccountServiceImpl implements UserAccountService {
         return userAccountDTOS;
     }
 
+    @Override
+    public UserAccountDTO login(UserAccount userAccount) {
+        UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
+        return new UserAccountDTO(userAccountObj);
+    }
+
+
+
+//    @Override
+//    public TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager) {
+//
+//        Optional<TransportManager> optionalTransportManager = transportManagerRepository.findById(transportManagerId);
+//        if (optionalTransportManager.isPresent()) {
+//            TransportManager transportManagerObject = optionalTransportManager.get();
+//            transportManagerObject.getUserAccount().setName(transportManager.getUserAccount().getName());
+//            transportManagerObject.getUserAccount().setAddress(transportManager.getUserAccount().getAddress());
+//            transportManagerObject.getUserAccount().setContactNo(transportManager.getUserAccount().getContactNo());
+//            transportManagerObject.getUserAccount().setEmail(transportManager.getUserAccount().getEmail());
+//
+//
+//            userAccountRepository.save(transportManagerObject.getUserAccount());
+//            return new TransportManagerDTO(transportManagerRepository.save(transportManagerObject));
+//        }
+//        return null;
+//    }
+
+//    @Override
+//    public BookingManagementClerkDTO updateBookingManagementClerkAccount(String bookingManagementClerkId, BookingManagementClerk bookingManagementClerk) {
+//
+//        Optional<BookingManagementClerk> optionalBookingManagementClerk = bookingManagementClerkRepository.findById(bookingManagementClerkId);
+//        if (optionalBookingManagementClerk.isPresent()) {
+//            BookingManagementClerk bookingManagementClerkObject = optionalBookingManagementClerk.get();
+//            bookingManagementClerkObject.getUserAccount().setName(bookingManagementClerk.getUserAccount().getName());
+//            bookingManagementClerkObject.getUserAccount().setAddress(bookingManagementClerk.getUserAccount().getAddress());
+//            bookingManagementClerkObject.getUserAccount().setContactNo(bookingManagementClerk.getUserAccount().getContactNo());
+//            bookingManagementClerkObject.getUserAccount().setEmail(bookingManagementClerk.getUserAccount().getEmail());
+//
+//
+//            userAccountRepository.save(bookingManagementClerkObject.getUserAccount());
+//            return new BookingManagementClerkDTO(bookingManagementClerkRepository.save(bookingManagementClerkObject));
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public VehicleDriverManagementClerkDTO updateVehicleDiverManagementClerkAccount(String vehicleDriverManagementId, VehicleDriverManagementClerk vehicleDriverManagementClerk) {
+//
+//        Optional<VehicleDriverManagementClerk> optionalVehicleDriverManagementClerk = vehicleDriverManagementClerkRepository.findById(vehicleDriverManagementId);
+//        if (optionalVehicleDriverManagementClerk.isPresent()) {
+//            VehicleDriverManagementClerk vehicleDriverManagementClerkObject = optionalVehicleDriverManagementClerk.get();
+//            vehicleDriverManagementClerkObject.getUserAccount().setName(vehicleDriverManagementClerk.getUserAccount().getName());
+//            vehicleDriverManagementClerkObject.getUserAccount().setAddress(vehicleDriverManagementClerk.getUserAccount().getAddress());
+//            vehicleDriverManagementClerkObject.getUserAccount().setContactNo(vehicleDriverManagementClerk.getUserAccount().getContactNo());
+//            vehicleDriverManagementClerkObject.getUserAccount().setEmail(vehicleDriverManagementClerk.getUserAccount().getEmail());
+//
+//
+//            userAccountRepository.save(vehicleDriverManagementClerkObject.getUserAccount());
+//            return new VehicleDriverManagementClerkDTO(vehicleDriverManagementClerkRepository.save(vehicleDriverManagementClerkObject));
+//        }
+//
+//        return null;
+//    }
+//
+//    @Override
+//    public UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount) {
+//        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
+//        if (optionalUserAccount.isPresent()) {
+//            UserAccount userAccountObj = optionalUserAccount.get();
+//            userAccountObj.setName(userAccount.getName());
+//            userAccountObj.setAddress(userAccount.getAddress());
+//            userAccountObj.setContactNo(userAccount.getContactNo());
+//            userAccountObj.setEmail(userAccount.getEmail());
+//
+//            return new UserAccountDTO(userAccountRepository.save(userAccountObj));
+//        }
+//
+//        return null;
+//    }
+//
+//    @Override
+//    public SecurityOfficerDTO updateSecurityOfficerAccount(String securityOfficerId, SecurityOfficer securityOfficer) {
+//
+//        Optional<SecurityOfficer> optionalSecurityOfficer = securityOfficerRepository.findById(securityOfficerId);
+//            if (optionalSecurityOfficer.isPresent()) {
+//            SecurityOfficer securityOfficerObject = optionalSecurityOfficer.get();
+//            securityOfficerObject.getUserAccount().setName(securityOfficer.getUserAccount().getName());
+//            securityOfficerObject.getUserAccount().setAddress(securityOfficer.getUserAccount().getAddress());
+//            securityOfficerObject.getUserAccount().setContactNo(securityOfficer.getUserAccount().getContactNo());
+//            securityOfficerObject.getUserAccount().setEmail(securityOfficer.getUserAccount().getEmail());
+//
+//
+//            userAccountRepository.save(securityOfficerObject.getUserAccount());
+//            return new SecurityOfficerDTO(securityOfficerRepository.save(securityOfficerObject));
+//        }
+//            return null;
+//    }
+
+
+
 //    @Override
 //    public List<VehicleAccidentDTO> getVehicleAccidents() {
 //        List<VehicleAccident> vehicleAccidents = vehicleAccidentRepository.findAll();
@@ -237,13 +266,5 @@ public class UserAccountServiceImpl implements UserAccountService {
 //        }
 //        return vehicleAccidentDTOS;
 //    }
-
-
-    @Override
-    public UserAccountDTO login(UserAccount userAccount) {
-        UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
-        return new UserAccountDTO(userAccountObj);
-    }
-
 
 }

@@ -33,7 +33,7 @@ import {ApplicationStatusComponent} from './main/content/applicant/application-s
 import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
 import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
 import {NavAccidentMaintenanceManagerComponent} from './main/navbar/nav-accident-maintenance-manager/nav-accident-maintenance-manager.component';
-//import { VehcleAccdentComponent } from './vehcle-accdent/vehcle-accdent.component';
+
 import {VehicleAccidentComponent} from './main/content/accident-maintenance-manager/vehicle-accident/vehicle-accident.component';
 import {VehicleMaintenanceComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component';
 import {VehicleAccidentReportComponent} from './main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component';
@@ -51,6 +51,9 @@ import { TokenComponent } from './main/content/security-officer/token/token.comp
 
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+
+import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
+
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
 
@@ -61,6 +64,7 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+
 
 
 
@@ -102,7 +106,6 @@ import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/up
     NotificationsComponent,
     FeedbackComponent,
     NavAccidentMaintenanceManagerComponent,
-    //VehcleAccdentComponent,
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
@@ -110,6 +113,7 @@ import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/up
     NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
+    VehicleAccidentViewComponent,
     ViewVehiclesComponent,
     UpdateVehicleComponent,
     ArrivalDepartureLogPageComponent,
@@ -118,6 +122,7 @@ import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/up
     //ViewApprovedTripDetailsComponent
     UpdateUserAccountComponent,
     UpdateOverTimeComponent
+    UpdateUserAccountComponent
   ],
   imports: [
     BrowserModule,

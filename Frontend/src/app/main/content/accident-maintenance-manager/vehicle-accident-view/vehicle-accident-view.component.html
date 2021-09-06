@@ -1,0 +1,36 @@
+<table class="table table-striped" style="margin-top: 40px">
+  <thead>
+  <tr>
+    <th scope="col" width="10%">#</th>
+    <th scope="col" width="10%">Accident ID</th>
+    <th scope="col" width="10%">Accident Date</th>
+    <th scope="col" width="10%">Accident Time</th>
+    <th scope="col" width="10%">Insurance No</th>
+    <th scope="col" width="10%">Insurance Status</th>
+    <th scope="col" width="10%" style="text-align: center">View</th>
+    <th scope="col" width="10%" style="text-align: center">Update</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let vehicleAccident of vehicleAccidentDetails; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td>{{vehicleAccident.vehicleAccidentID}}</td>
+    <td>{{vehicleAccident.accidentDate}}</td>
+    <td>{{vehicleAccident.accidentTime}}</td>
+    <td>{{vehicleAccident.insuranceNo}}</td>
+    <td>{{vehicleAccident.insuranceStatus}}</td>
+
+    <td style="text-align: center">
+      <i class="fas fa-search" style="cursor: pointer" (click)="setItem(vehicleAccident)"></i>
+    </td>
+
+<!--    <td style="text-align: center">-->
+<!--      <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
+<!--    </td>-->
+  </tr>
+  </tbody>
+</table>
+
+
+
