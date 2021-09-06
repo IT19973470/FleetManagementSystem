@@ -30,16 +30,22 @@ export class LoginComponent implements OnInit {
       } else if (user['accountType'] === 'VDM') {
         this.router.navigate(['/main/vehicle']);
       } else if (user['accountType'] === 'SO') {
-        this.router.navigate(['/main/view_item_delivery'])
+        this.router.navigate(['/main/create_token'])
       } else if (user['accountType'] === 'DR') {
         this.router.navigate(['/main/shift_details'])
       } else if (user['accountType'] === 'GM') {
         this.router.navigate(['/main/create_user_account'])
       } else if (user['accountType'] === 'AP') {
         this.router.navigate(['/main/available_transports'])
-      } else if (user['accountType'] === 'VMC') {
+      } else if (user['accountType'] === 'VMC'){
+        this.router.navigate(['/main/vehicle_accident'])
+      }
+      else if (user['accountType'] === 'VMC') {
         this.router.navigate(['/main/vehicle_accidents'])
+      }else if(user['accountType'] === 'BMC'){
+        this.router.navigate(['/main/'])
       } else {
+
         this.logged = false;
       }
     }, (err) => {

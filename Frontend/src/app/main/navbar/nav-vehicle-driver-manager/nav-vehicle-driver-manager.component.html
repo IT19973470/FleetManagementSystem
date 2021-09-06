@@ -1,4 +1,3 @@
-
 <div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
 
   <div
@@ -11,12 +10,19 @@
   </div>
 
   <div
-    routerLink="/main/view_item_delivery"
-    (click)="setTopic('View Item Deliveries')"
-    #viewItemDelivery="routerLinkActive"
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_vehicle"
+    #updateVehicle="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_vehicles"
+    (click)="setTopic('View Vehicles')"
+    #viewVehicles="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':viewItemDelivery.isActive?'#c0050e':''}">
-    View Item Deliveries
+    [ngStyle]="{'color':viewVehicles.isActive || updateVehicle.isActive?'#c0050e':''}">
+    View Vehicles
   </div>
 
   <div

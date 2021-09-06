@@ -11,12 +11,13 @@ import java.util.List;
 
 
 public interface ApplicationPassengerService {
-//   Application addApplication(Application application); //jarawa epa
+    ApplicationDTO addApplication(Application application); //jarawa epa
+    PassengerPassengerApplication addPassengerpassenger(PassengerPassengerApplication passengerPassengerApplication);
 //    PassengerApplication addPassengerApplication(PassengerApplication application);
     PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication);
     Passenger addPassenger(Passenger passenger);
 //    ApplicationDTO updateApplication(String applicationID, PassengerPassengerApplication passengerPassengerApplication);
-    List<Application> getPassengerApp();
+    List<ApplicationDTO> getPassengerApp();
     List<PassengerApplication> getAPassengerApp();
     List<PassengerApplicationDTO> getdto();
 }

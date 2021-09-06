@@ -11,4 +11,6 @@ public interface DriverService {
     Object updateDriver(String driverID, Driver driver);
 
     boolean deleteDriver(String driverID);
+
+    Object getDriver();
 }

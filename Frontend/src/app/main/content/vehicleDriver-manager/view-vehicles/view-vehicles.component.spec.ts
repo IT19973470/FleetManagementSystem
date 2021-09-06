@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewOverTimeComponent } from './new-over-time.component';
+import { ViewVehiclesComponent } from './view-vehicles.component';
 
-describe('NewOverTimeComponent', () => {
-  let component: NewOverTimeComponent;
-  let fixture: ComponentFixture<NewOverTimeComponent>;
+describe('ViewVehiclesComponent', () => {
+  let component: ViewVehiclesComponent;
+  let fixture: ComponentFixture<ViewVehiclesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewOverTimeComponent ]
+      declarations: [ ViewVehiclesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewOverTimeComponent);
+    fixture = TestBed.createComponent(ViewVehiclesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

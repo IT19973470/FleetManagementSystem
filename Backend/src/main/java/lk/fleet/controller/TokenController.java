@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "token")
+@RequestMapping(value = "fleetmanagement/" + "token")
 public class TokenController {
 
     @Autowired
@@ -27,6 +27,11 @@ public class TokenController {
     @DeleteMapping(value = "/deleteToken/{tokenID}")
     public ResponseEntity deleteToken (@PathVariable String tokenID) {
         return ResponseEntity.ok(tokenService.deleteToken(tokenID));
+    }
+
+    @GetMapping(value = "/getAllTokens")
+    public ResponseEntity getAllTokens() {
+        return ResponseEntity.ok(tokenService.getAllTokens());
     }
 
 

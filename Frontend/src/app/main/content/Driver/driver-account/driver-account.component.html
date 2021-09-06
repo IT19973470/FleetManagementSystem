@@ -1,1 +1,55 @@
-<p>driver-account works!</p>
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>My Account</b></h1></label>
+
+
+    <table class="table table-striped" style="margin-top: 40px">
+      <thead>
+      <tr>
+        <th scope="col" width="10%">#</th>
+        <th scope="col" width="10%">Driver ID</th>
+        <th scope="col" width="10%">Name</th>
+        <th scope="col" width="10%">NIC</th>
+        <th scope="col" width="10%">DOB</th>
+        <th scope="col" width="10%">Address</th>
+        <th scope="col" width="10%">Contact No</th>
+        <th scope="col" width="10%">Email</th>
+        <th scope="col" width="10%">Registered Date</th>
+        <th scope="col" width="10%">Name with Initials</th>
+        <th scope="col" width="10%">License ID</th>
+        <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let driver of driverDetails; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{driver.driverID}}</td>
+        <td>{{driver.name}}</td>
+        <td>{{driver.nic}}</td>
+        <td>{{driver.dob}}</td>
+        <td>{{driver.address}}</td>
+        <td>{{driver.contactNo}}</td>
+        <td>{{driver.email}}</td>
+        <td>{{driver.registeredDate}}</td>
+        <td>{{driver.nameWithInitials}}</td>
+        <td>{{driver.licenseId}}</td>
+
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer" (click)="setDriver(driverDetails)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(driverDetails)"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

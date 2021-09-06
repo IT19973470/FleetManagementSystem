@@ -1,9 +1,9 @@
 package lk.fleet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 //Gayan//
 @Entity
@@ -17,6 +17,11 @@ public class Application {
     private LocalDateTime arrivaleDate;
     private String reason;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
+    private PassengerApplication passengerApplication;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
+    private ItemApplication itemApplication;
 
     public String getApplicationID() {
         return this.applicationID;
@@ -29,7 +34,6 @@ public class Application {
     public String getDestination() {
         return destination;
     }
-
     public void setDestination(String destination) {
         this.destination = destination;
     }
@@ -74,6 +78,19 @@ public class Application {
         this.reason = reason;
     }
 
+    public PassengerApplication getPassengerApplication() {
+        return passengerApplication;
+    }
 
+    public void setPassengerApplication(PassengerApplication passengerApplication) {
+        this.passengerApplication = passengerApplication;
+    }
 
+    public ItemApplication getItemApplication() {
+        return itemApplication;
+    }
+
+    public void setItemApplication(ItemApplication itemApplication) {
+        this.itemApplication = itemApplication;
+    }
 }

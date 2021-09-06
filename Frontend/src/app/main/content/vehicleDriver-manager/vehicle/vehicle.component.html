@@ -1,13 +1,13 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Manage Vehicle Details</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Vehicle Details</span>
   </div>
-  <form #vehicleForm="ngForm" (ngSubmit)="vehicleForm.form.valid && onSubmit()" novalidate>
-    <div style="display: flex;margin-top: 50px">
+  <form #vehicleForm="ngForm" (ngSubmit)="vehicleForm.form.valid && OnSubmitVehicle()" novalidate>
+    <div style="display: flex;margin-top: 30px">
       <div style="width: 50%;padding-right: 20px">
         <div class="row">
           <div class="col-4">
-            Vehicle Id :
+            Vehicle Number :
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
@@ -16,7 +16,7 @@
                    name="vehicleId" required>
             <div *ngIf="(vehicleId.touched || vehicleForm.submitted) && vehicleId.errors?.required"
                  class="validErr">
-              Vehicle Id is required
+              Vehicle Number is required
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
                    name="vehicleType" required>
             <div *ngIf="(vehicleType.touched || vehicleForm.submitted) && vehicleType.errors?.required"
                  class="validErr">
-              Delivery Person NIC is required
+              Vehicle Type is required
             </div>
           </div>
         </div>
@@ -41,12 +41,12 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.vehicleModel"
+                   [(ngModel)]="vehicleDetail.model"
                    #vehicleModel="ngModel"
                    name="vehicleModel" required>
             <div *ngIf="(vehicleModel.touched || vehicleForm.submitted) && vehicleModel.errors?.required"
                  class="validErr">
-              Contact Number is required
+              Vehicle Model is required
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
             No of seats :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="vehicleDetail.noOfSeats"
                    #noOfSeats="ngModel"
                    name="noofseats" required>
@@ -70,13 +70,13 @@
             Initial Meter :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="vehicleDetail.initialMeter"
                    #initialMeter="ngModel"
                    name="initialMeter" required>
             <div *ngIf="(initialMeter.touched || vehicleForm.submitted) && initialMeter.errors?.required"
                  class="validErr">
-              Initail Meter Reading is required
+              Initial Meter Reading is required
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
             Service Meter:
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="vehicleDetail.serviceMeter"
                    #serviceMeter="ngModel"
                    name="serviceMeter" required>
@@ -100,7 +100,7 @@
             Fuel Balance :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="vehicleDetail.fuelBalance"
                    #fuelBalance="ngModel"
                    name="fuelBalance" required>
@@ -110,120 +110,57 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row" style="margin-top: 10px">
-        <div class="col-4">
-          Fuel Consumption :
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Fuel Consumption :
+          </div>
+          <div class="col-8">
+            <input type="number" class="form-control"
+                   [(ngModel)]="vehicleDetail.fuelConsumption"
+                   #fuelConsumption="ngModel"
+                   name="fuelConsumption" required>
+            <div *ngIf="(fuelConsumption.touched || vehicleForm.submitted) && fuelConsumption.errors?.required"
+                 class="validErr">
+              Fuel Consumption is required
+            </div>
+          </div>
         </div>
-        <div class="col-8">
-          <input type="text" class="form-control"
-                 [(ngModel)]="vehicleDetail.fuelConsumption"
-                 #fuelConsumption="ngModel"
-                 name="fuelConsumption" required>
-          <div *ngIf="(fuelConsumption.touched || vehicleForm.submitted) && fuelConsumption.errors?.required"
-               class="validErr">
-            Delivery Time is required
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Occupied :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="vehicleDetail.occupied"
+                   #occupied="ngModel"
+                   name="occupied" required>
+            <div *ngIf="(occupied.touched || vehicleForm.submitted) && occupied.errors?.required"
+                 class="validErr">
+              Occupied is required
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Fuel Type :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="vehicleDetail.fuelType"
+                   #fuelType="ngModel"
+                   name="fuelType" required>
+            <div *ngIf="(fuelType.touched || vehicleForm.submitted) && fuelType.errors?.required"
+                 class="validErr">
+              Fuel Type is required
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: 10px">
-      <div class="col-4">
-        Occupied :
-      </div>
-      <div class="col-8">
-        <input type="text" class="form-control"
-               [(ngModel)]="vehicleDetail.occupied"
-               #occupied="ngModel"
-               name="occupied" required>
-        <div *ngIf="(occupied.touched || vehicleForm.submitted) && occupied.errors?.required"
-             class="validErr">
-          Occupied is required
-        </div>
-      </div>
-    </div>
-
-<div class="row" style="margin-top: 10px">
-  <div class="col-4">
-    Fuel Type :
-  </div>
-  <div class="col-8">
-    <input type="text" class="form-control"
-           [(ngModel)]="vehicleDetail.fuelType"
-           #fuelType="ngModel"
-           name="fuelType" required>
-    <div *ngIf="(fuelType.touched || vehicleForm.submitted) && fuelType.errors?.required"
-         class="validErr">
-      Fuel Type is required
-    </div>
-  </div>
-</div>
-    <div class="row" style="margin-top: 20px">
+    <div class="row" style="margin-top: 40px;margin-bottom: 40px">
       <div class="col-12" style="text-align: center">
-        <button class="btn btn-warning" style="font-weight: bold">{{btnText}} Vehicle</button>
+        <button type="submit" class="btn btn-warning" style="font-weight: bold">Add Vehicle</button>
       </div>
     </div>
   </form>
 </div>
-
-
-<div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
-
-  <div style="width: 100%">
-
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col" width="3%">#</th>
-        <th scope="col">Vehicle Id</th>
-        <th scope="col">Vehicle Type</th>
-        <th scope="col"> Model</th>
-        <th scope="col">Seats</th>
-        <th scope="col">Item Type</th>
-        <th scope="col" width="6%">Quantity</th>
-        <th scope="col" width="5%" style="text-align: center">Update</th>
-        <th scope="col" width="5%" style="text-align: center">Remove</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of vehicleDetail.vehicleVehicleDetails; let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{vehicle.vehicleId}}</td>
-        <td>{{vehicle.vehicleType}}</td>
-        <td>{{vehicle.model}}</td>
-        <td style="text-align: center">
-          <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
-        </td>
-        <td style="text-align: center" (click)="vehicleDetail.vehicleVehicleDetails.splice(i, 1)">
-          <i class="fas fa-times" style="color: red;font-size: 20px"></i>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <div *ngIf="vehicleDetail.vehicleVehicleDetails.length===0" class="validErr" style="text-align: center;font-size: 20px">
-      No items available
-    </div>
-
-  </div>
-</div>
-
-<div class=""
-     style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-  <div class="col-12" style="text-align: right">
-    <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Vehicle</button>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -29,4 +29,9 @@ public class OverTimeController {
     public ResponseEntity deleteOT(@PathVariable String overTimeID){
         return ResponseEntity.ok(overTimeService.deleteOT(overTimeID));
     }
+
+    @GetMapping(value = "/getOT")
+    public ResponseEntity getOT() {
+        return ResponseEntity.ok(overTimeService.getOT());
+    }
 }
