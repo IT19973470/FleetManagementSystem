@@ -25,7 +25,7 @@ public class OverTimeServiceImpl implements OverTimeService{
     }
 
     @Override
-    public Object updateOT(String overTimeID, OverTime overTime) {
+    public OverTimeDTO updateOT(String overTimeID, OverTime overTime) {
         Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
         if (optionalOverTime.isPresent()){
             OverTime overTime1 = optionalOverTime.get();

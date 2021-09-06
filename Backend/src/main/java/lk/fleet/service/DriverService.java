@@ -1,5 +1,6 @@
 package lk.fleet.service;
 
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.entity.Driver;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface DriverService {
 
     boolean deleteDriver(String driverID);
 
-    Object getDriver();
+    List<DriverDTO> getDrivers();
 }

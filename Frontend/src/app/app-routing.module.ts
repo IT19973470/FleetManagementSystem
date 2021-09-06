@@ -39,7 +39,7 @@ import {UpdateDetailsComponent} from "./main/content/security-officer/update-det
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
-import {UpdateOverTimeComponent} from "./update-over-time/update-over-time.component";
+import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
 
 
 
@@ -154,7 +154,7 @@ const routes: Routes = [
         component: TokenComponent
       },
       {
-        path: 'View_Over_Time',
+        path: 'view_over_time',
         component: ViewOverTimeComponent
       },
       {

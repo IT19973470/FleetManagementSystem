@@ -13,7 +13,7 @@
           </div>
           <div class="col-8">
             <input type="date" class="form-control"
-                   [(ngModel)]="addOT.otDate"
+                   [(ngModel)]="OT.otDate"
                    #otDate="ngModel"
                    name="otDate" required>
             <div *ngIf="(otDate.touched || otForm.submitted) && otDate.errors?.required"
@@ -29,7 +29,7 @@
           </div>
           <div class="col-8">
             <input type="time" class="form-control"
-                   [(ngModel)]="addOT.startTime"
+                   [(ngModel)]="OT.startTime"
                    #startTime="ngModel"
                    name="startTime" required>
             <div *ngIf="(startTime.touched || otForm.submitted) && startTime.errors?.required"
@@ -45,7 +45,7 @@
           </div>
           <div class="col-8">
             <input type="time" class="form-control"
-                   [(ngModel)]="addOT.endTime"
+                   [(ngModel)]="OT.endTime"
                    #endTime="ngModel"
                    name="endTime" required>
             <div *ngIf="(endTime.touched || otForm.submitted) && endTime.errors?.required"
@@ -61,7 +61,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="addOT.noOfShifts"
+                   [(ngModel)]="OT.noOfShifts"
                    #noOfShifts="ngModel"
                    name="noOfShifts" required>
             <div *ngIf="(noOfShifts.touched || otForm.submitted) && noOfShifts.errors?.required"

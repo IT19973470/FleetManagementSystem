@@ -12,18 +12,20 @@ export class DriverRegistrationComponent implements OnInit {
 
   @ViewChild('driverRegistrationForm', {static: true}) public driverRegistrationForm: NgForm;
   driverDetail = {
-    employeeID: '',
-    accountType: 'DR',
-    nic: '',
-    dob: '',
-    name: '',
-    address: '',
-    contactNo: '',
-    email: '',
-    registeredDate: '',
-    nameWithInitials: '',
-    password: '',
-    lisenseid: ''
+    lisenseID: '',
+    userAccount: {
+      employeeID: '',
+      accountType: 'DR',
+      nic: '',
+      dob: '',
+      name: '',
+      address: '',
+      contactNo: '',
+      email: '',
+      registeredDate: '',
+      nameWithInitials: '',
+      password: '',
+    }
   };
 
   constructor(private driverService: DriverService, private router: Router) {
@@ -34,10 +36,7 @@ export class DriverRegistrationComponent implements OnInit {
 
   onSubmit() {
     console.log(this.driverDetail);
-    let driver = {
-      userAccount: this.driverDetail
-    }
-    this.driverService.addDriver(driver).subscribe((driverDetail) => {
+    this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
       this.router.navigate(['main/driver_account'])
     })
   }

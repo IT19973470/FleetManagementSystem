@@ -38,7 +38,7 @@ export class DriverAccountComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getDriver();
+    this.getDrivers();
   }
 
   onSubmit() {
@@ -59,9 +59,10 @@ export class DriverAccountComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  getDriver() {
+  getDrivers() {
     this.driverService.getDriver().subscribe((driver) => {
       this.driverDetails = driver;
+      console.log(this.driverDetails);
     });
   }
 }
