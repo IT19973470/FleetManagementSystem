@@ -18,16 +18,17 @@ export class VehicleAccidentComponent implements OnInit {
     insuranceNo: '',
     insuranceStatus: '',
   };
-  accidentDate: boolean;
 
-  constructor(private accident: VehicleAccidentService, private router: Router) { }
+  accident: any;
+
+  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   addAccident() {
     console.log(this.accidentDetail);
-    this.accident.addAccident(this.accidentDetail).subscribe((accidentDetail) => {
+    this.vehicleAccidentService.addAccident(this.accidentDetail).subscribe((accident) => {
       this.router.navigate(['/main/vehicle_accident_view'])
     })
   }

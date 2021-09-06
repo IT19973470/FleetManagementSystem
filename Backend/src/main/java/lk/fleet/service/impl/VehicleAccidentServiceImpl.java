@@ -39,6 +39,9 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         Optional<VehicleAccident> optionalVehicleAccident = vehicleAccidentRepository.findById(vehicleAccidentID);
         if (optionalVehicleAccident.isPresent()) {
             VehicleAccident vehicleAccidentObj = optionalVehicleAccident.get();
+            vehicleAccidentObj.setVehicleAccidentID(vehicleAccident.getVehicleAccidentID());
+            vehicleAccidentObj.setAccidentDate(vehicleAccident.getAccidentDate());
+            vehicleAccidentObj.setAccidentTime(vehicleAccident.getAccidentTime());
             vehicleAccidentObj.setInsuranceStatus(vehicleAccident.isInsuranceStatus());
             vehicleAccidentObj.setInsuranceNo(vehicleAccident.getInsuranceNo());
             return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccidentObj));

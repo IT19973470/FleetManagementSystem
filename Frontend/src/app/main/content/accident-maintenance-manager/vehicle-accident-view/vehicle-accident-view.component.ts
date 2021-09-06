@@ -42,8 +42,8 @@ export class VehicleAccidentViewComponent implements OnInit {
     })
   }
 
-  goToUpdate(accidentDetail) {
-    this.vehicleAccidentService.accidentDetail = accidentDetail;
+  goToUpdate(accident) {
+    this.vehicleAccidentService.accident = accident;
     this.router.navigate(['/main/update_accident_details'])
   }
 

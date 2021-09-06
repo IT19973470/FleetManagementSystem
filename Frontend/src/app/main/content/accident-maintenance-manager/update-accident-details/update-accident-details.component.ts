@@ -20,15 +20,15 @@ export class UpdateAccidentDetailsComponent implements OnInit {
     insuranceStatus: '',
   };
 
-  constructor(private accident: VehicleAccidentService, private router: Router) { }
+  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) { }
 
   ngOnInit(): void {
-    this.accidentDetail = this.accident.accidentDetail;
+    this.accidentDetail = this.vehicleAccidentService.accident;
   }
 
   addAccident() {
     console.log(this.accidentDetail);
-    this.accident. updateVehicleAccident(this.accidentDetail).subscribe((accidentDetail) => {
+    this.vehicleAccidentService. updateVehicleAccident(this.accidentDetail).subscribe((accident) => {
       this.router.navigate(['/main/vehicle_accident_view'])
     })
   }
