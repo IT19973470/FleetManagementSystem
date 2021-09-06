@@ -69,6 +69,9 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
+import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
+import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
 
 
 
@@ -131,7 +134,10 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    ItemPassengerDeliveryComponent,
+    ViewItemPassengerDeliveryComponent,
+    UpdateItemPassengerDeliveryComponent
   ],
   imports: [
     BrowserModule,

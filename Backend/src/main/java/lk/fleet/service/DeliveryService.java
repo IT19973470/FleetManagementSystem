@@ -36,4 +36,6 @@ public interface DeliveryService {
     List<DeliveryDTO> getAllDeliveriesByDate(String deliveryType, String date);
 
     List<DeliveryDTO> getAllDeliveriesByCompany(String deliveryType, String company);
+
+    DeliveryDTO addPassengerItemDelivery(Delivery delivery);
 }

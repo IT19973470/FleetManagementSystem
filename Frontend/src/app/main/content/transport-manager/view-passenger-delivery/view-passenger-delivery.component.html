@@ -18,7 +18,7 @@
       </button>
 
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllPassengerDeliveries()">
-        All deliveries
+        All Deliveries
       </button>
     </div>
 
@@ -31,7 +31,7 @@
         <th scope="col" width="10%">Contact</th>
         <th scope="col" width="10%">Delivery Date</th>
         <th scope="col" width="10%">Delivery Time</th>
-        <th scope="col" width="5%" style="text-align: center">View</th>
+        <th scope="col" width="8%" style="text-align: center">View More</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
       </thead>
@@ -77,6 +77,10 @@
         <div>
           <span style="font-weight: bold">Delivery person's NIC : </span>
           <span style="margin-left: 10px">{{deliveryPassenger.deliveryPersonNic}}</span>
+        </div>
+
+        <div style="margin-top: 20px;font-weight: bold;font-size: 20px">
+          Delivery Passengers
         </div>
 
         <table class="table table-striped" style="margin-top: 20px">
