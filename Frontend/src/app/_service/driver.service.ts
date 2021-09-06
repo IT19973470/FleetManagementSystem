@@ -9,6 +9,7 @@ import {environment} from '../../environments/environment';
 export class DriverService {
 
   ot;
+  driver;
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +24,10 @@ export class DriverService {
 
   getOT(): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/overTime/getOT');
+  }
+
+  getDriver(): Observable<any>{
+    return this.http.get<any>(environment.backend_url + '/driverAccount/getDriver');
   }
 
 }

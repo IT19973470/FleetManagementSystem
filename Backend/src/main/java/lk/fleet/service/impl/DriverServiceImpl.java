@@ -1,12 +1,17 @@
 package lk.fleet.service.impl;
 
 import lk.fleet.dto.DriverDTO;
+import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.entity.Driver;
+import lk.fleet.entity.OverTime;
 import lk.fleet.repository.DriverRepository;
 import lk.fleet.repository.UserAccountRepository;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -51,5 +56,17 @@ public class DriverServiceImpl implements DriverService {
         driverRepository.deleteById(driverID);
         return true;
     }
+
+    @Override
+    public Object getDriver() {
+            List<Driver> drivers = driverRepository.findAll();
+            List<DriverDTO> driverDTOS = new ArrayList<>();
+
+            for(Driver driver : drivers){
+                driverDTOS.add(new DriverDTO(driver));
+            }
+
+            return driverDTOS;
+        }
 
 }
