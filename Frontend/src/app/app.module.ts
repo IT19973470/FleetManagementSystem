@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -33,7 +33,7 @@ import {ApplicationStatusComponent} from './main/content/applicant/application-s
 import {NotificationsComponent} from './main/content/applicant/notifications/notifications.component';
 import {FeedbackComponent} from './main/content/applicant/feedback/feedback.component';
 import {NavAccidentMaintenanceManagerComponent} from './main/navbar/nav-accident-maintenance-manager/nav-accident-maintenance-manager.component';
-//import { VehcleAccdentComponent } from './vehcle-accdent/vehcle-accdent.component';
+
 import {VehicleAccidentComponent} from './main/content/accident-maintenance-manager/vehicle-accident/vehicle-accident.component';
 import {VehicleMaintenanceComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component';
 import {VehicleAccidentReportComponent} from './main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component';
@@ -43,20 +43,31 @@ import {DriverRegistrationComponent} from "./main/content/Driver/driver-registra
 import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
 import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
 import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
-import {NewOverTimeComponent} from "./main/content/Driver/over-time/new-over-time/new-over-time.component";
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
-import {ViewOverTimeComponent} from "./main/content/Driver/over-time/view-over-time/view-over-time.component";
+import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
 import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
 import { TokenComponent } from './main/content/security-officer/token/token.component';
 
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+
+import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
+
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
 import { VipmemberComponent } from './main/content/vehicleDriver-manager/vipmember/vipmember.component';
 import { ViewVipmembersComponent } from './main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component';
 import { UpdateVipmemberComponent } from './main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component';
+
+import { ArrivalDepartureLogPageComponent } from './main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component';
+import { MeterDetailComponent } from './main/content/security-officer/meter-detail/meter-detail.component';
+import { UpdateDetailsComponent } from './main/content/security-officer/update-details/update-details.component';
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
+
+import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+
+
 
 
 @NgModule({
@@ -77,7 +88,6 @@ import { UpdateVipmemberComponent } from './main/content/vehicleDriver-manager/u
     OverTimeComponent,
     ShiftDetailsComponent,
     FuelUpdateComponent,
-    NewOverTimeComponent,
     ViewOverTimeComponent,
     DriverAccountComponent,
     ViewPassengerDeliveryComponent,
@@ -98,18 +108,24 @@ import { UpdateVipmemberComponent } from './main/content/vehicleDriver-manager/u
     NotificationsComponent,
     FeedbackComponent,
     NavAccidentMaintenanceManagerComponent,
-    //VehcleAccdentComponent,
     VehicleAccidentComponent,
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
+    NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
+    VehicleAccidentViewComponent,
     ViewVehiclesComponent,
     UpdateVehicleComponent,
     VipmemberComponent,
     ViewVipmembersComponent,
-    UpdateVipmemberComponent
+    UpdateVipmemberComponent,
+    ArrivalDepartureLogPageComponent,
+    MeterDetailComponent,
+    UpdateDetailsComponent,
+    //ViewApprovedTripDetailsComponent
+    UpdateUserAccountComponent
   ],
   imports: [
     BrowserModule,

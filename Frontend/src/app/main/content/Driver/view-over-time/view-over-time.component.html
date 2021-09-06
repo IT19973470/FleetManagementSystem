@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>User Account List</b></h1></label>
+
+
+    <table class="table table-striped" style="margin-top: 40px">
+      <thead>
+      <tr>
+        <th scope="col" width="10%">#</th>
+        <th scope="col" width="10%">OT ID</th>
+        <th scope="col" width="10%">Date</th>
+        <th scope="col" width="10%">Start Time</th>
+        <th scope="col" width="10%">End Time</th>
+        <th scope="col" width="10%">No of Shifts</th>
+        <th scope="col" width="10%">Approval</th>
+        <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ots of otDetails; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{ots.overTimeID}}</td>
+        <td>{{ots.otDate}}</td>
+        <td>{{ots.startTime}}</td>
+        <td>{{ots.endTime}}</td>
+        <td>{{ots.noOfShifts}}</td>
+        <td>{{ots.approval}}</td>
+
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer" (click)="setOT(otDetails)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(otDetails)"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

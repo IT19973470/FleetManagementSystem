@@ -1,14 +1,16 @@
 package lk.fleet.service.impl;
 
-//import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
-import lk.fleet.entity.Driver;
+import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.OverTime;
+import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
 import lk.fleet.service.OverTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,5 +43,17 @@ public class OverTimeServiceImpl implements OverTimeService{
     public boolean deleteOT(String overTimeID) {
         overTimeRepository.deleteById(overTimeID);
         return true;
+    }
+
+    @Override
+    public Object getOT() {
+        List<OverTime> overTimes = overTimeRepository.findAll();
+        List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
+
+        for(OverTime overTime : overTimes){
+            overTimeDTOS.add(new OverTimeDTO(overTime));
+        }
+
+        return overTimeDTOS;
     }
 }

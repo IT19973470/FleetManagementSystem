@@ -24,7 +24,7 @@
     #arrivalDeparturePage="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':arrivalDeparturePage.isActive?'#c0050e':''}">
-    Arrival and Departure Log Page
+    Arrivals and Departures
   </div>
 
   <div
@@ -45,9 +45,23 @@
     Item Delivery Status
   </div>
 
-  <div>
-    Passenger Transport
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/add_meter_detail"
+    #addMeterDetail="routerLinkActive"
+    routerLinkActive>
   </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_details"
+    #updateDetail="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+<!--  <div>-->
+<!--    Passenger Transport-->
+<!--  </div>-->
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
 </div>
