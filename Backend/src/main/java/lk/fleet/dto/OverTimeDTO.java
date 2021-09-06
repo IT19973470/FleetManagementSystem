@@ -13,17 +13,13 @@ public class OverTimeDTO {
     private LocalTime endTime;
     private boolean approval;
 
-    public OverTimeDTO(long overTimeID, LocalDate otDate, int noOfShifts, LocalTime startTime, LocalTime endTime, boolean approval) {
-        this.overTimeID = overTimeID;
-        this.otDate = otDate;
-        this.noOfShifts = noOfShifts;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.approval = approval;
-    }
-
     public OverTimeDTO(OverTime overTime) {
-
+            this.overTimeID = overTime.getOverTimeID();
+            this.otDate = overTime.getOtDate();
+            this.noOfShifts = overTime.getNoOfShifts();
+            this.startTime = overTime.getStartTime();
+            this.endTime = overTime.getEndTime();
+            this.approval = overTime.isApproval();
     }
 
     public long getOverTimeID() {

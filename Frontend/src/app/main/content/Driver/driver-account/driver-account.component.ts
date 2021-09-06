@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {TransportManagerService} from "../../../../_service/transport-manager.service";
-import {Router} from "@angular/router";
+import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
+import {DriverService} from '../../../../_service/driver.service';
 
 @Component({
   selector: 'app-driver-account',
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class DriverAccountComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
-  driverDetail = {
+  driver = {
     employeeID: '',
     accountType: '',
     nic: '',
@@ -22,25 +22,46 @@ export class DriverAccountComponent implements OnInit {
     registeredDate: '',
     nameWithInitials: '',
     password: '',
-    lisenseid: '',
-    driverDetails: []
+    lisenseid: ''
   };
-  tblIndex;
-  driver;
-  btnText;
+  driverDetails: [];
 
-  ngOnInit(): void {
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundUser: ''
+  };
+
+  constructor(private driverService: DriverService, private router: Router) {
+
   }
 
-  setDriver(driver, i) {
-    this.tblIndex  = i;
-    this.driver.name = driver.name;
-    this.btnText = 'Update';
+
+  ngOnInit(): void {
+    this.getDriver();
   }
 
   onSubmit() {
-    if(this.btnText === 'Update'){
-      this.driverDetail.driverDetails[this.tblIndex] = this.driver
-    }
+    return false;
+  }
+
+  setDriver(driverDetails) {
+    this.driver = driverDetails;
+    this.isTrueOrFalse(true);
+  }
+
+  goToUpdate(driverDetails) {
+    this.driverService.driver = this.driver;
+    this.router.navigate(['/main/update_user_account']);
+  }
+
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
+  }
+
+  getDriver() {
+    this.driverService.getDriver().subscribe((driver) => {
+      this.driverDetails = driver;
+    });
   }
 }

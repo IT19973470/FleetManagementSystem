@@ -13,9 +13,7 @@ export class HeaderComponent implements OnInit {
   topic;
   username;
 
-
   constructor(private loginService: LoginService, private navBarService: NavbarService, private router: Router) {
-
     if (this.router.url !== '/login') {
       navBarService.navTopic.subscribe((topic) => {
         this.topic = topic;
@@ -27,12 +25,9 @@ export class HeaderComponent implements OnInit {
     if (this.router.url === '/main/item_delivery') {
       this.navBarService.navTopic.next('Item Delivery');
     }
-
     this.username = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user'))['nameWithInitials'] : '';
 
   }
-
-
 
 
   accLogout() {
