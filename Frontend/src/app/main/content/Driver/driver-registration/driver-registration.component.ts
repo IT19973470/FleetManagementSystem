@@ -37,7 +37,7 @@ export class DriverRegistrationComponent implements OnInit {
   onSubmit() {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['main/driver_account'])
+      this.router.navigate(['/login'])
     })
   }
 }
