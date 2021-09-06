@@ -30,6 +30,7 @@ export class MeterDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.token = this.securityOfficerService.tokenDetail;
   }
 
   addMeterDetail() {
@@ -37,7 +38,7 @@ export class MeterDetailComponent implements OnInit {
     this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
       this.meters.push(meter);
       this.newMeter();
-      this.router.navigate(['/main/add_meter_detail'])
+      this.router.navigate(['/main/arrival_departure_page'])
     })
   }
 

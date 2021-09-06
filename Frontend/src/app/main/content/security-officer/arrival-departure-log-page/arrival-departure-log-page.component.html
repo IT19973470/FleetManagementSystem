@@ -14,7 +14,7 @@
     </button>
 
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllTokens()">
-      All Tokens
+      Incomplete Trips
     </button><br><br>
 
     <div style="width: 100%">
@@ -45,9 +45,18 @@
           <td style="text-align: center">
             <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(tokenDetail)"></i>
           </td>
-          <td style="text-align: center" >
-            <i class="fas fa-trash" style="cursor: pointer"  (click)="removeToken()" ></i>
+          <td *ngIf="tokenDetail.meterDetail.meterID===null" style="text-align: center" >
+            <i class="fas fa-trash" style="cursor: pointer"  (click)="removeToken(tokenDetail.tokenID,i)" ></i>
           </td>
+          <td *ngIf="tokenDetail.meterDetail.meterID!==null" style="text-align: center" >
+            <i class="fas fa-trash" style="cursor: pointer;color: gray"></i>
+          </td>
+<!--          <td *ngIf="tokenDetail.meterDetail.meterID!==null" style="text-align: center" >-->
+<!--            <i class="fas fa-trash" style="cursor: pointer"  (click)="removeToken(tokenDetail.tokenID,i)" ></i>-->
+<!--          </td>-->
+<!--          <td *ngIf="tokenDetail.meterDetail.meterID===null" style="text-align: center" >-->
+<!--            <i class="fas fa-trash" style="cursor: pointer;color: gray"></i>-->
+<!--          </td>-->
         </tr>
         </tbody>
       </table>
