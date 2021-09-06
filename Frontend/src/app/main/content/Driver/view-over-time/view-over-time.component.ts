@@ -45,7 +45,7 @@ export class ViewOverTimeComponent implements OnInit {
 
   goToUpdate(otDetails) {
     this.driverService.ot = this.ot;
-    this.router.navigate(['/main/update_user_account']);
+    this.router.navigate(['/main/update_over_time']);
   }
 
   isTrueOrFalse(reply) {
