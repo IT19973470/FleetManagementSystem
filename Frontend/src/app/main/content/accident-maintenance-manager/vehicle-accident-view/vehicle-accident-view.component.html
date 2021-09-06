@@ -7,7 +7,6 @@
     <th scope="col" width="10%">Accident Time</th>
     <th scope="col" width="10%">Insurance No</th>
     <th scope="col" width="10%">Insurance Status</th>
-    <th scope="col" width="10%" style="text-align: center">View</th>
     <th scope="col" width="10%" style="text-align: center">Update</th>
   </tr>
   </thead>
@@ -22,15 +21,9 @@
     <td>{{vehicleAccident.insuranceStatus}}</td>
 
     <td style="text-align: center">
-      <i class="fas fa-search" style="cursor: pointer" (click)="setItem(vehicleAccident)"></i>
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicleAccident)"></i>
     </td>
 
-<!--    <td style="text-align: center">-->
-<!--      <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
-<!--    </td>-->
   </tr>
   </tbody>
 </table>
-
-
-

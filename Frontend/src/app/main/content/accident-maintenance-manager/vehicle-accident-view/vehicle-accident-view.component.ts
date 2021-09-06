@@ -42,10 +42,10 @@ export class VehicleAccidentViewComponent implements OnInit {
     })
   }
 
-    // goToUpdate(deliveryItem) {
-    //   this.accident.deliveryItem = deliveryItem;
-    //   this.router.navigate(['/main/update_item_delivery'])
-    // }
+  goToUpdate(accidentDetail) {
+    this.vehicleAccidentService.accidentDetail = accidentDetail;
+    this.router.navigate(['/main/update_accident_details'])
+  }
 
   private isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;

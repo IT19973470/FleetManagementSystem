@@ -40,6 +40,7 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         if (optionalVehicleAccident.isPresent()) {
             VehicleAccident vehicleAccidentObj = optionalVehicleAccident.get();
             vehicleAccidentObj.setInsuranceStatus(vehicleAccident.isInsuranceStatus());
+            vehicleAccidentObj.setInsuranceNo(vehicleAccident.getInsuranceNo());
             return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccidentObj));
         }
         return null;
@@ -61,5 +62,6 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         }
         return vehicleAccidentDTOS;
     }
+
 
 }

@@ -40,6 +40,7 @@ import {UpdateDetailsComponent} from "./main/content/security-officer/update-det
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
 
 
 
@@ -195,6 +196,10 @@ const routes: Routes = [
       {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
+      },
+      {
+        path: 'update_accident_details',
+        component: UpdateAccidentDetailsComponent
       }
     ]
   }

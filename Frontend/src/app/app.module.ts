@@ -63,6 +63,8 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+import { UpdateAccidentDetailsComponent } from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
+
 
 
 
@@ -119,7 +121,9 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    UpdateAccidentDetailsComponent
+
 
   ],
   imports: [

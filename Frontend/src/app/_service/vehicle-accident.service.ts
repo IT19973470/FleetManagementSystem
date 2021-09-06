@@ -8,8 +8,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class VehicleAccidentService {
 
-  deliveryItem;
-  deliveryPassenger;
+  accidentDetail;
+
 
   constructor(private http: HttpClient) { }
 
@@ -21,4 +21,7 @@ export class VehicleAccidentService {
     return this.http.get<any>(environment.backend_url + "/accident/getVehicleAccidents");
   }
 
+  updateVehicleAccident(accidentDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/accident/updateVehicleAccident/" + accidentDetail.vehicleAccidentID, accidentDetail);
+  }
 }
