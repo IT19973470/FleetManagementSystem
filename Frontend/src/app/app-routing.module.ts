@@ -40,7 +40,11 @@ import {UpdateDetailsComponent} from "./main/content/security-officer/update-det
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+
+import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
+
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+
 
 
 
@@ -101,6 +105,10 @@ const routes: Routes = [
       {
         path: 'transport_requests',
         component: TransportRequestsComponent
+      },
+      {
+        path: 'tv-program',
+        component: TvProgramComponent
       },
       {
         path: 'available_transports',
