@@ -34,7 +34,7 @@ public class DriverController {
 
     @GetMapping(value = "/getDriver")
     public ResponseEntity getDriver() {
-        return ResponseEntity.ok(driverService.getDriver());
+        return ResponseEntity.ok(driverService.getDrivers());
     }
 
 }

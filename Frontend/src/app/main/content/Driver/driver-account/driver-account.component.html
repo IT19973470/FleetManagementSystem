@@ -31,15 +31,15 @@
       <tr *ngFor="let driver of driverDetails; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{driver.driverID}}</td>
-        <td>{{driver.name}}</td>
-        <td>{{driver.nic}}</td>
-        <td>{{driver.dob}}</td>
-        <td>{{driver.address}}</td>
-        <td>{{driver.contactNo}}</td>
-        <td>{{driver.email}}</td>
-        <td>{{driver.registeredDate}}</td>
-        <td>{{driver.nameWithInitials}}</td>
-        <td>{{driver.licenseId}}</td>
+        <td>{{driver.userAccount.name}}</td>
+        <td>{{driver.userAccount.nic}}</td>
+        <td>{{driver.userAccount.dob}}</td>
+        <td>{{driver.userAccount.address}}</td>
+        <td>{{driver.userAccount.contactNo}}</td>
+        <td>{{driver.userAccount.email}}</td>
+        <td>{{driver.userAccount.registeredDate}}</td>
+        <td>{{driver.userAccount.nameWithInitials}}</td>
+        <td>{{driver.lisenseID}}</td>
 
         <td style="text-align: center">
           <i class="fas fa-search" style="cursor: pointer" (click)="setDriver(driverDetails)"></i>

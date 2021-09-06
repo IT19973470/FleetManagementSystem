@@ -73,6 +73,11 @@ import { ItemPassengerDeliveryComponent } from './main/content/transport-manager
 import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
 import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
 
+import { TvProgramComponent } from './main/content/general-manager/tv-program/tv-program.component';
+
+import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+
+
 
 
 
@@ -137,8 +142,12 @@ import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-m
     UpdateUserAccountComponent,
     ItemPassengerDeliveryComponent,
     ViewItemPassengerDeliveryComponent,
-    UpdateItemPassengerDeliveryComponent
+    UpdateItemPassengerDeliveryComponent,
+    TvProgramComponent,
+    UpdateOverTimeComponent,
+    UpdateUserAccountComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

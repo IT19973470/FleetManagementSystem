@@ -2,6 +2,7 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
+import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.repository.DriverRepository;
@@ -24,16 +25,16 @@ public class DriverServiceImpl implements DriverService {
     private UserAccountRepository userAccountRepository;
 
     @Override
-    public Object addDriver(Driver driver) {
+    public DriverDTO addDriver(Driver driver) {
         driver.setDriverID(driver.getUserAccount().getEmployeeID());
         userAccountRepository.save(driver.getUserAccount());
-        return driverRepository.save(driver);
+        return new DriverDTO(driverRepository.save(driver),new UserAccountDTO(driver.getUserAccount()));
     }
 
     @Override
     public Object updateDriver(String driverID, Driver driver) {
         Optional<Driver> optionalDriver = driverRepository.findById(driverID);
-        if (optionalDriver.isPresent()){
+        if (optionalDriver.isPresent()) {
             Driver driver1 = optionalDriver.get();
             driver1.getUserAccount().setName(driver.getUserAccount().getName());
             driver1.getUserAccount().setAddress(driver.getUserAccount().getAddress());
@@ -58,15 +59,15 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public Object getDriver() {
-            List<Driver> drivers = driverRepository.findAll();
-            List<DriverDTO> driverDTOS = new ArrayList<>();
+    public List<DriverDTO> getDrivers() {
+        List<Driver> drivers = driverRepository.findAll();
+        List<DriverDTO> driverDTOS = new ArrayList<>();
 
-            for(Driver driver : drivers){
-                driverDTOS.add(new DriverDTO(driver));
-            }
-
-            return driverDTOS;
+        for (Driver driver : drivers) {
+            driverDTOS.add(new DriverDTO(driver, new UserAccountDTO(driver.getUserAccount())));
         }
+
+        return driverDTOS;
+    }
 
 }

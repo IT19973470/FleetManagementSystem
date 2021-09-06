@@ -13,7 +13,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.name"
+                   [(ngModel)]="driverDetail.userAccount.name"
                    #name="ngModel"
                    name="name" required>
             <div *ngIf="(name.touched || driverRegistrationForm.submitted) && name.errors?.required"
@@ -29,7 +29,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.employeeID"
+                   [(ngModel)]="driverDetail.userAccount.employeeID"
                    #employeeID="ngModel"
                    name="employeeID" required>
             <div *ngIf="(employeeID.touched || driverRegistrationForm.submitted) && employeeID.errors?.required"
@@ -45,7 +45,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.nic"
+                   [(ngModel)]="driverDetail.userAccount.nic"
                    #nic="ngModel"
                    name="nic" required>
             <div *ngIf="(nic.touched || driverRegistrationForm.submitted) && nic.errors?.required"
@@ -61,7 +61,7 @@
           </div>
           <div class="col-8">
             <input type="date" class="form-control"
-                   [(ngModel)]="driverDetail.dob"
+                   [(ngModel)]="driverDetail.userAccount.dob"
                    #dob="ngModel"
                    name="dob" required>
             <div *ngIf="(dob.touched || driverRegistrationForm.submitted) && dob.errors?.required"
@@ -77,7 +77,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.address"
+                   [(ngModel)]="driverDetail.userAccount.address"
                    #address="ngModel"
                    name="address" required>
             <div *ngIf="(address.touched || driverRegistrationForm.submitted) && address.errors?.required"
@@ -93,7 +93,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.contactNo"
+                   [(ngModel)]="driverDetail.userAccount.contactNo"
                    #contactNo="ngModel"
                    name="contactNo" required>
             <div *ngIf="(contactNo.touched || driverRegistrationForm.submitted) && contactNo.errors?.required"
@@ -109,7 +109,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.email"
+                   [(ngModel)]="driverDetail.userAccount.email"
                    #email="ngModel"
                    name="email" required>
             <div *ngIf="(email.touched || driverRegistrationForm.submitted) && email.errors?.required"
@@ -125,7 +125,7 @@
           </div>
           <div class="col-8">
             <input type="date" class="form-control"
-                   [(ngModel)]="driverDetail.registeredDate"
+                   [(ngModel)]="driverDetail.userAccount.registeredDate"
                    #registeredDate="ngModel"
                    name="registeredDate" required>
             <div *ngIf="(registeredDate.touched || driverRegistrationForm.submitted) && registeredDate.errors?.required"
@@ -141,7 +141,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.nameWithInitials"
+                   [(ngModel)]="driverDetail.userAccount.nameWithInitials"
                    #nameWithInitials="ngModel"
                    name="nameWithInitials" required>
             <div *ngIf="(nameWithInitials.touched || driverRegistrationForm.submitted) && nameWithInitials.errors?.required"
@@ -157,7 +157,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.lisenseid"
+                   [(ngModel)]="driverDetail.lisenseID"
                    #lisenseID="ngModel"
                    name="lisenseID" required>
             <div *ngIf="(lisenseID.touched || driverRegistrationForm.submitted) && lisenseID.errors?.required"
@@ -173,7 +173,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.password"
+                   [(ngModel)]="driverDetail.userAccount.password"
                    #password="ngModel"
                    name="password" required>
             <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"

@@ -32,6 +32,8 @@ export class UserAccountListComponent implements OnInit {
     userAccountDetails: []
   };
 
+  employeeID;
+
   constructor(private generalManagerService: GeneralManagerService, private router: Router) {
 
   }
@@ -59,6 +61,13 @@ export class UserAccountListComponent implements OnInit {
 
   getUserAccounts() {
     this.generalManagerService.getUserAccounts().subscribe((userAccountDetails) => {
+      this.userAccountDetails = userAccountDetails;
+      // console.log(this.vehicles)
+    })
+  }
+
+  getUserAccountByID() {
+    this.generalManagerService.getUserAccountByID(this.employeeID).subscribe((userAccountDetails) => {
       this.userAccountDetails = userAccountDetails;
       // console.log(this.vehicles)
     })
