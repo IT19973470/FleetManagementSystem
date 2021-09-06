@@ -26,8 +26,8 @@ export class SecurityOfficerService {
     return this.http.put<any>(environment.backend_url + "/token/updateToken/" + tokenDetail.tokenID, tokenDetail);
   }
 
-  deleteToken(tokenDetailId): Observable<any> {
-    return this.http.delete<any>(environment.backend_url + "/token/deleteToken/" + tokenDetailId);
+  deleteToken(tokenDetailID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/token/deleteToken/" + tokenDetailID);
   }
 
   getAllTokens(): Observable<any> {

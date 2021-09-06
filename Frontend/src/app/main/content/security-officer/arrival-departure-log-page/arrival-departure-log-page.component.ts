@@ -63,6 +63,14 @@ export class ArrivalDepartureLogPageComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
+  removeToken() {
+    this.securityOfficerService.deleteToken(this.tokenDetail.tokenID).subscribe((reply) => {
+      if (reply) {
+        this.router.navigate(['/main/arrival_departure_page'])
+      }
+    })
+  }
+
   getAllTokens() {
     this.securityOfficerService.getAllTokens().subscribe((tokens) => {
       this.tokens = tokens;

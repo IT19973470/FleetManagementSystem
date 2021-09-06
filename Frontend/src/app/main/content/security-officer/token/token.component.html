@@ -48,10 +48,10 @@
                    [(ngModel)]="tokenDetail.arrivalDate"
                    #arrivalDate="ngModel"
                    name="arrivalDate" required>
-            <div *ngIf="(arrivalDate.touched || tokenForm.submitted) && arrivalDate.errors?.required"
-                 class="validErr">
-              Arrival Date is required
-            </div>
+<!--            <div *ngIf="(arrivalDate.touched || tokenForm.submitted) && arrivalDate.errors?.required"-->
+<!--                 class="validErr">-->
+<!--              Arrival Date is required-->
+<!--            </div>-->
           </div>
         </div>
 
@@ -64,10 +64,10 @@
                    [(ngModel)]="tokenDetail.arrivalTime"
                    #arrivalTime="ngModel"
                    name="arrivalTime" required>
-            <div *ngIf="(arrivalTime.touched || tokenForm.submitted) && arrivalTime.errors?.required"
-                 class="validErr">
-              Arrival Time is required
-            </div>
+<!--            <div *ngIf="(arrivalTime.touched || tokenForm.submitted) && arrivalTime.errors?.required"-->
+<!--                 class="validErr">-->
+<!--              Arrival Time is required-->
+<!--            </div>-->
           </div>
         </div>
 
@@ -86,6 +86,7 @@
             </select>
             <div *ngIf="(transportStatus.touched || tokenForm.submitted) && transportStatus.errors?.required"
                  class="validErr">
+              Transport Status is required
             </div>
           </div>
         </div>
