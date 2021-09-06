@@ -1,60 +1,47 @@
-<!--<div class="row" style="display: flex;justify-content: center">-->
-<!--  <div class="col-12">-->
-<!--    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">My Account</span>-->
-<!--  </div>-->
-<!--  <form #otForm="ngForm" (ngSubmit)="otForm.form.valid && onSubmit()" novalidate>-->
-<!--    <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">-->
+<div class="row">
+  <div class="col-12">
 
-<!--      <div style="width: 100%">-->
+  </div>
+</div>
 
-<!--        <table class="table table-striped">-->
-<!--          <thead>-->
-<!--          <tr>-->
-<!--            <th scope="col" width="3%">#</th>-->
-<!--            <th scope="col">Name</th>-->
-<!--            <th scope="col">ID</th>-->
-<!--            <th scope="col">NIc</th>-->
-<!--            <th scope="col">DOB</th>-->
-<!--            <th scope="col">Address</th>-->
-<!--            <th scope="col">Contact Number</th>-->
-<!--            <th scope="col">Email</th>-->
-<!--            <th scope="col">Name With Initials</th>-->
-<!--            <th scope="col">Licence ID</th>-->
-<!--            <th scope="col">Password</th>-->
-<!--            <th scope="col" width="5%" style="text-align: center">Update</th>-->
-<!--            <th scope="col" width="5%" style="text-align: center">Remove</th>-->
-<!--          </tr>-->
-<!--          </thead>-->
-<!--          <tbody>-->
-<!--          <tr *ngFor="let driver of otForm.otDetails; let i = index">-->
-<!--            <th scope="row">{{i+1}}</th>-->
-<!--            <td>{{driver.name}}</td>-->
-<!--            <td>{{driver.employeeID}}</td>-->
-<!--            <td>{{driver.nic}}</td>-->
-<!--            <td>{{driver.dob}}</td>-->
-<!--            <td>{{driver.address}}</td>-->
-<!--            <td>{{driver.contactNo}}</td>-->
-<!--            <td>{{driver.email}}</td>-->
-<!--            <td>{{driver.registeredDate}}</td>-->
-<!--            <td>{{driver.nameWithInitials}}</td>-->
-<!--            <td>{{driver.lisenseid}}</td>-->
-<!--            <td>{{driver.password}}</td>-->
-<!--            <td style="text-align: center">-->
-<!--              <i class="fas fa-search" style="font-size: 16px" (click)="setDriver(driver, i)"></i>-->
-<!--            </td>-->
-<!--            <td style="text-align: center" (click)="driverDetail.driverDetails.splice(i, 1)">-->
-<!--              <i class="fas fa-times" style="color: red;font-size: 20px"></i>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--          </tbody>-->
-<!--        </table>-->
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>User Account List</b></h1></label>
 
-<!--        <div *ngIf="driverDetail.driverDetails.length===0" class="validErr" style="text-align: center;font-size: 20px">-->
-<!--          No Details Entered-->
-<!--        </div>-->
 
-<!--      </div>-->
-<!--    </div>-->
-<!--  </form>-->
-<!--</div>-->
+    <table class="table table-striped" style="margin-top: 40px">
+      <thead>
+      <tr>
+        <th scope="col" width="10%">#</th>
+        <th scope="col" width="10%">OT ID</th>
+        <th scope="col" width="10%">Date</th>
+        <th scope="col" width="10%">Start Time</th>
+        <th scope="col" width="10%">End Time</th>
+        <th scope="col" width="10%">No of Shifts</th>
+        <th scope="col" width="10%">Approval</th>
+        <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ots of otDetails; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{ots.overTimeID}}</td>
+        <td>{{ots.otDate}}</td>
+        <td>{{ots.startTime}}</td>
+        <td>{{ots.endTime}}</td>
+        <td>{{ots.noOfShifts}}</td>
+        <td>{{ots.approval}}</td>
 
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer" (click)="setOT(otDetails)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(otDetails)"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -8,4 +8,6 @@ public interface OverTimeService {
     Object updateOT(String overTimeID, OverTime overTime);
 
     boolean deleteOT(String overTimeID);
+
+    Object getOT();
 }

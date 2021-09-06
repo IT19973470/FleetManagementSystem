@@ -22,25 +22,19 @@ export class DriverAccountComponent implements OnInit {
     registeredDate: '',
     nameWithInitials: '',
     password: '',
-    lisenseid: '',
-    driverDetails: []
+    lisenseid: ''
   };
-  tblIndex;
-  driver;
-  btnText;
+  driverDetails: [];
 
   ngOnInit(): void {
   }
 
-  setDriver(driver, i) {
-    this.tblIndex  = i;
-    this.driver.name = driver.name;
-    this.btnText = 'Update';
+
+  setDriver(driverDetails: []) {
+    
   }
 
-  onSubmit() {
-    if(this.btnText === 'Update'){
-      this.driverDetail.driverDetails[this.tblIndex] = this.driver
-    }
+  goToUpdate(driverDetails: []) {
+    
   }
 }
