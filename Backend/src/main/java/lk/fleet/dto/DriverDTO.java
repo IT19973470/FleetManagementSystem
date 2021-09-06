@@ -1,6 +1,7 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Driver;
+import lk.fleet.entity.OverTime;
 
 public class DriverDTO {
     private String driverID;
@@ -13,7 +14,8 @@ public class DriverDTO {
     }
 
     public DriverDTO(Driver driver) {
-
+        this.driverID = driver.getDriverID();
+        this.lisenseID = driver.getLisenseID();
     }
 
     public DriverDTO(Driver driver, UserAccountDTO userAccountDTO){

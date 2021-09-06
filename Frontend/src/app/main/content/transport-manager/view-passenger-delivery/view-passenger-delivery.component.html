@@ -1,22 +1,26 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
-    <span style="font-weight: bold">Search by :</span>
-    <span style="margin-left: 20px">Deliveries for</span>
-    <input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">
-      Search
-    </button>
+    <div>
+      <span style="font-weight: bold">Search by :</span>
+      <span style="margin-left: 20px">Deliveries for</span>
+      <input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">
+        Search
+      </button>
+    </div>
 
-    <span style="font-weight: bold;margin-left: 50px">Search by company : </span>
-    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="companyName">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByCompany()">
-      Search
-    </button>
+    <div style="margin-top: 20px">
+      <span style="font-weight: bold;margin-left: 0px">Search by company : </span>
+      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="companyName">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByCompany()">
+        Search
+      </button>
 
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllPassengerDeliveries()">
-      All deliveries
-    </button>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllPassengerDeliveries()">
+        All deliveries
+      </button>
+    </div>
 
     <table class="table table-striped" style="margin-top: 40px">
       <thead>

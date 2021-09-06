@@ -17,6 +17,5 @@ export class LoginService {
   accLogout() {
     // this.navBarService.logged = false;
     localStorage.clear();
-
   }
 }

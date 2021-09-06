@@ -12,7 +12,6 @@ export class UpdateUserAccountComponent implements OnInit {
 
   @ViewChild('createUserAccountForm', {static: true}) public createUserAccountForm: NgForm;
 
-
   userAccount = {
     employeeID: '',
     accountType: '',
@@ -48,12 +47,17 @@ export class UpdateUserAccountComponent implements OnInit {
       accType: "SO",
       accTypename: "Security Officer"
     }
+    ,
+    {
+      accType: "GM",
+      accTypename: "General Manager"
+    }
   ]
   selected = ""
-
-  account;
-  btnText = ' ';
-  tblIndex;
+  //
+  // account;
+  // btnText = ' ';
+  // tblIndex;
 
   constructor(private generalManagerService: GeneralManagerService, private router: Router) {
     this.userAccount = this.getUserAccount();
@@ -61,28 +65,25 @@ export class UpdateUserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.userAccount = this.generalManagerService.userAccount;
-
-    console.log(this.userAccount);
   }
 
   onSubmit() {
-    if (this.btnText === 'Update') {
-      this.userAccount.employeeID = this.userAccount.employeeID;
-      this.generalManagerService.updateTransportManagerAccount(this.userAccount).subscribe((userAccount) => {
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
+    console.log(this.userAccount)
+
+    this.generalManagerService.updateUserAccount(this.userAccount).subscribe((userAccount) => {
+      this.router.navigate(['/main/user_account_list'])
+    })
   }
 
-  setUserAccount(userAccount, i) {
-    this.tblIndex = 1;
-    this.userAccount.email = userAccount.email;
-    this.userAccount.name = userAccount.name;
-    this.userAccount.address = userAccount.address;
-    this.userAccount.contactNo = userAccount.contactNo;
-    this.btnText = 'Update';
-  }
-
+  // setUserAccount(userAccount, i) {
+  //   this.tblIndex = 1;
+  //   this.userAccount.email = userAccount.email;
+  //   this.userAccount.name = userAccount.name;
+  //   this.userAccount.address = userAccount.address;
+  //   this.userAccount.contactNo = userAccount.contactNo;
+  //   this.btnText = 'Update';
+  // }
+  //
   getUserAccount() {
     return {
       employeeID: '',
