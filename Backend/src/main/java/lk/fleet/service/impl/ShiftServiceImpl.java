@@ -39,4 +39,9 @@ public class ShiftServiceImpl implements ShiftService {
         shiftRepository.deleteById(shiftId);
         return true;
     }
+
+    @Override
+    public Object getShift() {
+        return null;
+    }
 }

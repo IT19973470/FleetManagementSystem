@@ -9,6 +9,8 @@ import {environment} from '../../environments/environment';
 export class DriverService {
 
   ot;
+  driver;
+  shiftDetails;
 
   constructor(private http: HttpClient) {
   }
@@ -25,4 +27,15 @@ export class DriverService {
     return this.http.get<any>(environment.backend_url + '/overTime/getOT');
   }
 
+  getDriver(): Observable<any>{
+    return this.http.get<any>(environment.backend_url + '/driverAccount/getDriver');
+  }
+
+  updateOT(ot): Observable<any> {
+    return this.http.put<any>(environment.backend_url + '/overTime/updateOT/' + ot.overTimeID, ot);
+  }
+
+  getShift(): Observable<any>{
+    return this.http.get(environment.backend_url + '/shift/getShift');
+  }
 }

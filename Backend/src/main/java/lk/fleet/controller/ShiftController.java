@@ -30,4 +30,9 @@ public class ShiftController {
     public ResponseEntity deleteShift(@PathVariable String shiftId){
         return ResponseEntity.ok(shiftService.deleteShift(shiftId));
     }
+
+    @GetMapping(value = "/getShift")
+    public ResponseEntity getShift() {
+        return ResponseEntity.ok(shiftService.getShift());
+    }
 }

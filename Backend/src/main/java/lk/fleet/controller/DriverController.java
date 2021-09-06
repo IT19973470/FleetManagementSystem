@@ -32,4 +32,9 @@ public class DriverController {
         return ResponseEntity.ok(driverService.deleteDriver(driverID));
     }
 
+    @GetMapping(value = "/getDriver")
+    public ResponseEntity getDriver() {
+        return ResponseEntity.ok(driverService.getDrivers());
+    }
+
 }
