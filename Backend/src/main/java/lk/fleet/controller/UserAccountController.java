@@ -66,6 +66,10 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.getUserAccounts());
     }
 
+    @GetMapping(value = "/getUserAccountByID/{employeeID}")
+    public ResponseEntity getUserAccountByID(@PathVariable String employeeID) {
+        return ResponseEntity.ok(userAccountService.getUserAccountByID(employeeID));
+    }
 
 //    @PutMapping(value = "/updateGeneralManagerUserAccount/{employeeID}")
 //    public ResponseEntity updateGeneralManagerUserAccount(@PathVariable String employeeID, @RequestBody UserAccount userAccount){
