@@ -28,6 +28,11 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryService.addPassengerDelivery(delivery));
     }
 
+    @PostMapping(value = "/addPassengerItemDelivery")
+    public ResponseEntity addPassengerItemDelivery(@RequestBody Delivery delivery) {
+        return ResponseEntity.ok(deliveryService.addPassengerItemDelivery(delivery));
+    }
+
     @PutMapping(value = "/updateDelivery/{deliveryId}")
     public ResponseEntity updateDelivery(@PathVariable String deliveryId, @RequestBody Delivery delivery) {
         return ResponseEntity.ok(deliveryService.updateDelivery(deliveryId, delivery));

@@ -23,7 +23,7 @@
         Search
       </button>
 
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllItemDeliveries()">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllPassengerItemDeliveries()">
         All Deliveries
       </button>
     </div>
@@ -42,18 +42,18 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let deliveryItem of deliveryItemDetails; let i = index">
+      <tr *ngFor="let deliveryPassengerItem of deliveryPassengerItemDetails; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{deliveryItem.companyName}}</td>
-        <td>{{deliveryItem.address}}</td>
-        <td>{{deliveryItem.contactNumber}}</td>
-        <td>{{deliveryItem.deliveryDate}}</td>
-        <td>{{deliveryItem.deliveryTime}}</td>
+        <td>{{deliveryPassengerItem.companyName}}</td>
+        <td>{{deliveryPassengerItem.address}}</td>
+        <td>{{deliveryPassengerItem.contactNumber}}</td>
+        <td>{{deliveryPassengerItem.deliveryDate}}</td>
+        <td>{{deliveryPassengerItem.deliveryTime}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setItem(deliveryItem)"></i>
+          <i class="fas fa-search" style="cursor: pointer" (click)="setPassengerItem(deliveryPassengerItem)"></i>
         </td>
         <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryPassengerItem)"></i>
         </td>
       </tr>
       </tbody>
@@ -74,16 +74,41 @@
 
         <div>
           <span style="font-weight: bold">Delivery ID : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryId}}</span>
+          <span style="margin-left: 10px">{{deliveryPassengerItem.deliveryId}}</span>
         </div>
         <div>
           <span style="font-weight: bold">Delivery person : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonName}}</span>
+          <span style="margin-left: 10px">{{deliveryPassengerItem.deliveryPersonName}}</span>
         </div>
         <div>
           <span style="font-weight: bold">Delivery person's NIC : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>
+          <span style="margin-left: 10px">{{deliveryPassengerItem.deliveryPersonNic}}</span>
         </div>
+
+        <div style="margin-top: 20px;font-weight: bold;font-size: 20px">
+          Delivery Passengers
+        </div>
+
+        <table class="table table-striped" style="margin-top: 20px">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Passenger Name</th>
+            <th scope="col">Passenger NIC</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Passenger Type</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let passenger of deliveryPassengerItem.deliveryPassengerDetails; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{passenger.passengerName}}</td>
+            <td>{{passenger.passengerNic}}</td>
+            <td>{{passenger.contactNumber}}</td>
+            <td>{{passenger.passengerType}}</td>
+          </tr>
+          </tbody>
+        </table>
 
         <div style="margin-top: 20px;font-weight: bold;font-size: 20px">
           Delivery Items
@@ -99,7 +124,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of deliveryItem.deliveryItemDetails; let i = index">
+          <tr *ngFor="let item of deliveryPassengerItem.deliveryItemDetails; let i = index">
             <th scope="row">{{i+1}}</th>
             <td>{{item.itemName}}</td>
             <td>{{item.itemType}}</td>

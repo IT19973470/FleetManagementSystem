@@ -27,6 +27,10 @@ export class TransportManagerService {
     return this.http.post<any>(environment.backend_url + "/delivery/addPassengerDelivery", deliveryDetail);
   }
 
+  addPassengerItemDelivery(deliveryDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/delivery/addPassengerItemDelivery", deliveryDetail);
+  }
+
   updateDelivery(deliveryDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
   }
