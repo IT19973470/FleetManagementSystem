@@ -26,6 +26,19 @@ export class UpdateDetailsComponent implements OnInit {
     tokens: []
   };
 
+  meters = [];
+  meterDetail = {
+    meterId: '',
+    outMeter: '',
+    inMeter: '',
+    mileage: '',
+    token: {
+      tokenID: ''
+    },
+  };
+
+  btnText;
+  meter: any;
   token;
 
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
@@ -41,6 +54,13 @@ export class UpdateDetailsComponent implements OnInit {
     this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTimeActual;
     this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTimeActual;
     this.securityOfficerService.updateToken(this.tokenDetail).subscribe((tokenDetail) => {
+      this.router.navigate(['/main/arrival_departure_page'])
+    })
+  }
+
+  addMeterDetail() {
+    this.meterDetail.token = this.token;
+    this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
       this.router.navigate(['/main/arrival_departure_page'])
     })
   }

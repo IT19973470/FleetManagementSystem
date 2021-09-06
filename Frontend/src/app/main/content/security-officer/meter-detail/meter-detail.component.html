@@ -1,14 +1,15 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
+    <br>
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Meter Details</span>
   </div>
 
   <form #meterForm="ngForm" (ngSubmit)="meterForm.form.valid && addMeterDetail()" novalidate>
 
-    <div style="display: flex;margin-top: 50px">
+    <div style="display: flex;margin-top: 50px; margin-left: 300px">
       <div style="width: 50%;padding-right: 20px">
         <div class="row">
-          <div class="col-4">
+          <div class="col-4" style="font-size: medium">
             Out Meter :
           </div>
           <div class="col-8">
@@ -24,7 +25,7 @@
         </div>
 
         <div class="row" style="margin-top: 10px">
-          <div class="col-4">
+          <div class="col-4" style="font-size: medium">
             In Meter :
           </div>
           <div class="col-8">
@@ -40,7 +41,7 @@
         </div>
 
         <div class="row" style="margin-top: 10px">
-          <div class="col-4">
+          <div class="col-4" style="font-size: medium">
             Mileage :
           </div>
           <div class="col-8">
@@ -60,7 +61,7 @@
 
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-      <div class="col-12" style="text-align: right">
+      <div class="col-12" style="text-align: center">
         <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">{{btnText}}Add Meter Details</button>
       </div>
     </div>
