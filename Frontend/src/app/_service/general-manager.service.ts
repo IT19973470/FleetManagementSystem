@@ -36,8 +36,8 @@ export class GeneralManagerService {
     return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccounts");
   }
 
-  updateTransportManagerAccount(userAccount): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/userAccount/updateTransportManagerAccount/" + userAccount.employeeID, userAccount);
+  updateUserAccount(userAccount): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + userAccount.employeeID, userAccount);
   }
 
 }
