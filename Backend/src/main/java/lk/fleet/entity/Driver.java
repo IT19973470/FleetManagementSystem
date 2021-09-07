@@ -13,16 +13,16 @@ public class Driver {
     @OneToOne
     private UserAccount userAccount;
 
-    @ManyToOne
-    private VehicleDriverManagementClerk vehicleDriverManagementClerk;
+//    @ManyToOne
+//    private VehicleDriverManagementClerk vehicleDriverManagementClerk;
 
-    public VehicleDriverManagementClerk getVehicleDriverManagementClerk() {
-        return vehicleDriverManagementClerk;
-    }
+//    public VehicleDriverManagementClerk getVehicleDriverManagementClerk() {
+//        return vehicleDriverManagementClerk;
+//    }
 
-    public void setVehicleDriverManagementClerk(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
-        this.vehicleDriverManagementClerk = vehicleDriverManagementClerk;
-    }
+//    public void setVehicleDriverManagementClerk(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
+//        this.vehicleDriverManagementClerk = vehicleDriverManagementClerk;
+//    }
 
     public String getDriverID() {
         return driverID;

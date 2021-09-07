@@ -9,7 +9,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class GeneralManagerService {
 
   userAccount;
-
+  tvProgram;
+  deliveryItem;
   constructor(private http: HttpClient) {
 
   }
@@ -40,4 +41,34 @@ export class GeneralManagerService {
     return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + userAccount.employeeID, userAccount);
   }
 
+  getUserAccountByID(employeeID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccountByID/" + employeeID);
+  }
+
+
+
+  addTVProgram(tvProgram): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/tvProgram/addTVProgram", tvProgram);
+  }
+
+  getTvProgram(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/tvProgram/getTvProgram");
+  }
+
+  updateTVProgram(tvProgram): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + tvProgram.programID, tvProgram);
+  }
+
+  deleteTVProgram(programID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/tvProgram/deleteTVProgram/" + programID);
+  }
+
+
+  getAllApplication(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApplication");
+  }
+
+
+
 }
+

@@ -16,6 +16,7 @@ public class Application {
     private LocalDateTime depatureDate;
     private LocalDateTime arrivaleDate;
     private String reason;
+    private String type;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
     private PassengerApplication passengerApplication;
@@ -84,6 +85,14 @@ public class Application {
 
     public void setPassengerApplication(PassengerApplication passengerApplication) {
         this.passengerApplication = passengerApplication;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public ItemApplication getItemApplication() {

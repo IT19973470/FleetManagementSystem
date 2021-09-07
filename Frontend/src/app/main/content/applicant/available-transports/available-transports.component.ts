@@ -20,6 +20,10 @@ export class AvailableTransportsComponent implements OnInit {
     deliveryItemDetails: []
   };
 
+  user:boolean=true;
+  item:boolean=true;
+  tblIndex;
+
   constructor(private applicantService: ApplicantService, private router: Router) {
   }
 
@@ -27,7 +31,8 @@ export class AvailableTransportsComponent implements OnInit {
     this.getAllItemDeliveries();
   }
 
-  setItem(deliveryItem) {
+  setItem(deliveryItem,i) {
+    this.tblIndex = i;
     this.deliveryItem = deliveryItem;
     this.isTrueOrFalse(true);
   }
@@ -44,10 +49,15 @@ export class AvailableTransportsComponent implements OnInit {
   getAllItemDeliveries() {
     this.applicantService.getAllApplication().subscribe((deliveryItemDetails) => {
       this.deliveryItemDetails = deliveryItemDetails;
+     // if(this.deliveryItemDetails.applicationID)
       // console.log(this.deliveryItemDetails)
     })
   }
 
+  goToUpdate(deliveryItem) {
+    this.applicantService.deliveryItem = deliveryItem;
+    this.router.navigate(['/main/update_available_transports'])
+  }
 
 
 }
