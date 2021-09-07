@@ -18,11 +18,15 @@ export class VehicleAccidentViewComponent implements OnInit {
   vehicleAccidentDetails = [];
   vehicleAccident = {
     vehicleAccidentID: '',
+    vehicleID: '',
+    driverID: '',
     accidentDate: '',
     accidentTime: '',
     insuranceNo: '',
     insuranceStatus: false,
   };
+
+  tokenIdSearch;
 
   constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
   }
@@ -39,8 +43,10 @@ export class VehicleAccidentViewComponent implements OnInit {
   getVehicleAccidents() {
     this.vehicleAccidentService.getVehicleAccidents().subscribe((vehicleAccidentDetails) => {
       this.vehicleAccidentDetails = vehicleAccidentDetails;
+      console.log(this.vehicleAccident)
     })
   }
+
 
   goToUpdate(accident) {
     this.vehicleAccidentService.accident = accident;

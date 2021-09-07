@@ -13,6 +13,8 @@ public class VehicleAccidentDTO {
     private String accidentTimeActual;
     private String insuranceNo;
     private boolean insuranceStatus;
+    private String vehicleID;
+    private  String driverID;
 
     public VehicleAccidentDTO(VehicleAccident vehicleAccident){
         if(vehicleAccident != null){
@@ -22,6 +24,9 @@ public class VehicleAccidentDTO {
             this.accidentTimeActual = vehicleAccident.getAccidentTime().format(DateTimeFormatter.ofPattern("HH:mm"));
             this.insuranceNo = vehicleAccident.getInsuranceNo();
             this.insuranceStatus = vehicleAccident.isInsuranceStatus();
+            this.vehicleID=vehicleAccident.getDriverVehicle().getVehicle().getVehicleId();
+            this.driverID=vehicleAccident.getDriverVehicle().getDriver().getDriverID();
+
         }
     }
 
@@ -31,6 +36,22 @@ public class VehicleAccidentDTO {
 
     public void setVehicleAccidentID(String vehicleAccidentID) {
         this.vehicleAccidentID = vehicleAccidentID;
+    }
+
+    public String getDriverID() {
+        return driverID;
+    }
+
+    public void setDriverID(String driverID) {
+        this.driverID = driverID;
+    }
+
+    public String getVehicleID() {
+        return vehicleID;
+    }
+
+    public void setVehicleID(String vehicleID) {
+        this.vehicleID = vehicleID;
     }
 
     public String getAccidentDate() {

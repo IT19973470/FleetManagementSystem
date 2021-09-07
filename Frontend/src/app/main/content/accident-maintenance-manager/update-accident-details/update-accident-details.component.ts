@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class UpdateAccidentDetailsComponent implements OnInit {
 
-  @ViewChild('accidentDetailsForm', {static:true}) public accidentDetailsForm: NgForm;
+  @ViewChild('accidentDetailsForm', {static: true}) public accidentDetailsForm: NgForm;
   accidentDetail = {
     vehicleAccidentID: '1',
     accidentDate: '',
@@ -20,7 +20,8 @@ export class UpdateAccidentDetailsComponent implements OnInit {
     insuranceStatus: '',
   };
 
-  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) { }
+  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.accidentDetail = this.vehicleAccidentService.accident;
@@ -28,7 +29,8 @@ export class UpdateAccidentDetailsComponent implements OnInit {
 
   addAccident() {
     console.log(this.accidentDetail);
-    this.vehicleAccidentService. updateVehicleAccident(this.accidentDetail).subscribe((accident) => {
+    this.accidentDetail.accidentTime = this.accidentDetail.accidentTimeActual;
+    this.vehicleAccidentService.updateVehicleAccident(this.accidentDetail).subscribe((accident) => {
       this.router.navigate(['/main/vehicle_accident_view'])
     })
   }

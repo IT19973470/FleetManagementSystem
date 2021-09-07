@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
@@ -8,10 +8,10 @@ import {HttpClient} from "@angular/common/http";
 })
 export class VehicleAccidentService {
 
-
   accident;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   addAccident(accidentDetail): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/accident/addVehicleAccident", accidentDetail);
@@ -23,5 +23,13 @@ export class VehicleAccidentService {
 
   updateVehicleAccident(accidentDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/accident/updateVehicleAccident/" + accidentDetail.vehicleAccidentID, accidentDetail);
+  }
+
+  chkVehicle(vehicleId): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/accident/chkVehicle/" + vehicleId);
+  }
+
+  chkDriver(vehicleId, driverId): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/accident/chkDriver/" + vehicleId + '/' + driverId);
   }
 }
