@@ -74,10 +74,9 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 
+import { UpdateAccidentDetailsComponent } from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
 
-import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
-
-import { UpdateOverTimeComponent } from './update-over-time/update-over-time.component';
+// import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 
 import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
 import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
@@ -87,6 +86,7 @@ import { TvProgramComponent } from './main/content/general-manager/tv-program/tv
 
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
 import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
+
 
 
 
@@ -159,7 +159,8 @@ import { UpdateDriverComponent } from './main/content/Driver/driver-account/upda
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
     UpdateUserAccountComponent,
-    VehiclePoolComponent,
+    UpdateAccidentDetailsComponent,
+    // VehiclePoolComponent,
     UpdateOverTimeComponent,
     UpdateUserAccountComponent,
     UpdateDriverComponent,

@@ -19,6 +19,13 @@
   </div>
 
   <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_accident_details"
+    #updateAccidentDetails="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
     routerLink="/main/view_maintenance"
     (click)="setTopic('View Maintenance')"
     #viewMaintenance="routerLinkActive"

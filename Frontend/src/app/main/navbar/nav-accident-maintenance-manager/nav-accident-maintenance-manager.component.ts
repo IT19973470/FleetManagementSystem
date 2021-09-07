@@ -11,7 +11,7 @@ export class NavAccidentMaintenanceManagerComponent implements OnInit {
   constructor(private navBarService: NavbarService) { }
 
   ngOnInit(): void {
-    this.navBarService.navTopic.next('View Accidents');
+    // this.navBarService.navTopic.next('View Accidents');
   }
 
   setTopic(topic){
