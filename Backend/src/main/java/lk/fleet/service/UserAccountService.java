@@ -34,7 +34,9 @@ public interface UserAccountService {
 
     boolean deleteUserAccount(String employeeID);
 
-    UserAccountDTO getUserAccountByID(String employeeID);
+    List<UserAccountDTO> getUserAccountByID(String employeeID);
+
+    List<ApplicationDTO> getTransportApplication();
 
     //UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);
     //TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager);

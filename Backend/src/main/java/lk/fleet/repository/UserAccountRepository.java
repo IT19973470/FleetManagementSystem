@@ -13,7 +13,7 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, String
     UserAccount findAllByEmailAndPasswordAndApproved(String email, String password, boolean approved);
 
     @Query(value = "from UserAccount where employeeID=?1 ")
-    UserAccountDTO getUserAccountByID(String employeeID);
+    UserAccount getUserAccountByID(String employeeID);
     //
 //    @Query(value = "from UserAccount where accountType=?1 order by registeredDate asc")
 //    List<UserAccount> getAllUserAccountDesc(String accountType);
