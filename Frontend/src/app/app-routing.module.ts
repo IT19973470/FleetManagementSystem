@@ -47,6 +47,7 @@ import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-man
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
 
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
 
 
 const routes: Routes = [
@@ -210,6 +211,10 @@ const routes: Routes = [
       {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
+      },
+      {
+        path: 'update_driver',
+        component: UpdateDriverComponent
       }
     ]
   }

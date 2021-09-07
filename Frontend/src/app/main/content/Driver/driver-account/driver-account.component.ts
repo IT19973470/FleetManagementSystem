@@ -52,7 +52,7 @@ export class DriverAccountComponent implements OnInit {
 
   goToUpdate(driverDetails) {
     this.driverService.driver = this.driver;
-    this.router.navigate(['/main/update_over_time']);
+    this.router.navigate(['/main/update_driver']);
   }
 
   isTrueOrFalse(reply) {
