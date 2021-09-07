@@ -14,9 +14,9 @@
           <div class="col-8">
             <input type="date" class="form-control"
                    [(ngModel)]="OT.otDate"
-                   #otDate="ngModel"
+                   #OtDate="ngModel"
                    name="otDate" required>
-            <div *ngIf="(otDate.touched || otForm.submitted) && otDate.errors?.required"
+            <div *ngIf="(OtDate.touched || otForm.submitted) && OtDate.errors?.required"
                  class="validErr">
               OverTime Date is required
             </div>

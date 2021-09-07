@@ -28,6 +28,7 @@ export class UpdateDriverComponent implements OnInit {
   };
 
   constructor(private driverService: DriverService, private router: Router) {
+    this.driverDetail = this.getDriver();
   }
 
   ngOnInit(): void {
@@ -40,4 +41,21 @@ export class UpdateDriverComponent implements OnInit {
     })
   }
 
-}
+  private getDriver() {
+    return {
+      lisenseID: '',
+      userAccount: {
+        employeeID: '',
+        accountType: 'DR',
+        nic: '',
+        dob: '',
+        name: '',
+        address: '',
+        contactNo: '',
+        email: '',
+        registeredDate: '',
+        nameWithInitials: '',
+        password: '',
+      }
+  };
+}}

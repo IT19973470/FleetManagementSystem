@@ -38,6 +38,7 @@ export class DriverAccountComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.getDriver();
   }
 

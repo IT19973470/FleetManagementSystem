@@ -42,6 +42,7 @@ export class ViewOverTimeComponent implements OnInit {
   goToUpdate(otDetails) {
     this.driverService.ot = otDetails;
     this.router.navigate(['/main/update_over_time']);
+    console.log(otDetails);
   }
 
   isTrueOrFalse(reply) {
