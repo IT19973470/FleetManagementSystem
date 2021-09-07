@@ -17,24 +17,21 @@ export class UpdateDetailsComponent implements OnInit {
     departureDate: '',
     departureTime: '',
     departureDateTime: '',
-    departureTimeActual:'',
+    departureTimeActual: '',
     arrivalDate: '',
     arrivalTime: '',
     arrivalDateTime: '',
-    arrivalTimeActual:'',
+    arrivalTimeActual: '',
     transportStatus: '',
     tokens: []
   };
 
-  meters = [];
   meterDetail = {
     meterId: '',
-    outMeter: '',
-    inMeter: '',
-    mileage: '',
-    token: {
-      tokenID: ''
-    },
+    outMeter: 0,
+    inMeter: 0,
+    mileage: 0,
+    meters: []
   };
 
   btnText;
@@ -46,6 +43,9 @@ export class UpdateDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tokenDetail = this.securityOfficerService.tokenDetail;
+    this.meterDetail = this.securityOfficerService.tokenDetail.meterDetail;
+    this.chkMeter()
+    // console.log(this.tokenDetail)
   }
 
   onSubmit() {
@@ -54,15 +54,20 @@ export class UpdateDetailsComponent implements OnInit {
     this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTimeActual;
     this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTimeActual;
     this.securityOfficerService.updateToken(this.tokenDetail).subscribe((tokenDetail) => {
-      this.router.navigate(['/main/arrival_departure_page'])
+      this.router.navigate(['/main/update_details'])
     })
   }
 
   addMeterDetail() {
-    this.meterDetail.token = this.token;
-    this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
+    this.securityOfficerService.updateMeterDetail(this.meterDetail).subscribe((meterDetail) => {
       this.router.navigate(['/main/arrival_departure_page'])
     })
   }
 
+  chkMeter() {
+    if (this.meterDetail.inMeter < this.meterDetail.outMeter) {
+      this.meterDetail.inMeter = this.meterDetail.outMeter;
+    }
+    this.meterDetail.mileage = this.meterDetail.inMeter - this.meterDetail.outMeter
+  }
 }

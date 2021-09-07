@@ -16,8 +16,8 @@ export class MeterDetailComponent implements OnInit {
   meterDetail = {
     meterId: '',
     outMeter: '',
-    inMeter: 'N/A',
-    mileage: 'N/A',
+    inMeter: '',
+    mileage: '',
     token: {
       tokenID: ''
     },

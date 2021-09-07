@@ -11,6 +11,8 @@ export class SecurityOfficerService {
 
   token;
   tokenDetail;
+  meter;
+  meterDetail;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
@@ -34,11 +36,16 @@ export class SecurityOfficerService {
       return this.http.get<any>(environment.backend_url + "/token/getAllTokens");
   }
 
-  getTokenByID(tokenIdSearch): Observable<any> {
-      return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenIdSearch);
+  getTokenByID(tokenID): Observable<any> {
+      return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenID);
   }
 
   addMeterDetail(meterDetail): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/meterDetail/addMeterDetail", meterDetail);
   }
+
+  updateMeterDetail(meterDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/meterDetail/updateMeterDetail/" + meterDetail.meterId, meterDetail);
+  }
+
 }

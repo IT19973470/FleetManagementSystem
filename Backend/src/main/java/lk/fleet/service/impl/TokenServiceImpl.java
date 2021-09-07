@@ -3,6 +3,7 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.MeterDetailDTO;
 import lk.fleet.dto.TokenDTO;
+import lk.fleet.entity.Delivery;
 import lk.fleet.entity.Token;
 import lk.fleet.repository.TokenRepository;
 import lk.fleet.service.TokenService;
@@ -59,5 +60,11 @@ public class TokenServiceImpl implements TokenService {
         }
         return tokenDTOS;
     }
+
+//    @Override
+//    public List<TokenDTO> getTokenByID(String tokenID) {
+//        List<Token> tokens = tokenRepository.getTokenByID(tokenID);
+//        return set(deliveries, deliveryType);
+//    }
 
 }

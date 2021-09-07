@@ -15,7 +15,7 @@
             <input class="form-control" type="date"
                    [(ngModel)]="tokenDetail.departureDate"
                    #departureDate="ngModel"
-                   name="departureDate" disabled>
+                   name="departureDate" readonly>
             <div *ngIf="(departureDate.touched || tokenForm.submitted) && departureDate.errors?.required"
                  class="validErr">
               Departure Date is required
@@ -30,7 +30,7 @@
             <input type="time" class="form-control"
                    [(ngModel)]="tokenDetail.departureTimeActual"
                    #departureTime="ngModel"
-                   name="departureTime" disabled>
+                   name="departureTime" readonly>
             <div *ngIf="(departureTime.touched || tokenForm.submitted) && departureTime.errors?.required"
                  class="validErr">
               Departure Time is required
@@ -88,7 +88,7 @@
         </div>
           <div class="row" style="margin-top: 40px;margin-bottom: 40px; margin-left: 40px">
             <div class="col-12" style="text-align: center">
-              <button type="submit" class="btn btn-success" style="font-weight: bold">Update Token</button>
+              <button type="submit" class="btn btn-primary" style="font-weight: bold">Update Token</button>
             </div>
           </div>
         </form>
@@ -107,7 +107,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="meterDetail.meterId"
                        #meterId="ngModel"
-                       name="meterId" disabled>
+                       name="meterId" readonly>
                 <div *ngIf="(meterId.touched || meterForm.submitted) && meterId.errors?.required"
                      class="validErr">
                 </div>
@@ -118,10 +118,10 @@
                 Out Meter :
               </div>
               <div class="col-8">
-                <input class="form-control" type="text"
+                <input class="form-control" type="number"
                        [(ngModel)]="meterDetail.outMeter"
                        #outMeter="ngModel"
-                       name="outMeter" disabled>
+                       name="outMeter" readonly>
                 <div *ngIf="(outMeter.touched || meterForm.submitted) && outMeter.errors?.required"
                      class="validErr">
                   Out Meter is required
@@ -134,8 +134,10 @@
                 In Meter :
               </div>
               <div class="col-8">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="meterDetail.inMeter"
+                       min="{{meterDetail.outMeter}}"
+                       (input)="chkMeter()"
                        #inMeter="ngModel"
                        name="inMeter" required>
                 <div *ngIf="(inMeter.touched || meterForm.submitted) && inMeter.errors?.required"
@@ -150,10 +152,10 @@
                 Mileage :
               </div>
               <div class="col-8">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="meterDetail.mileage"
                        #mileage="ngModel"
-                       name="mileage" required>
+                       name="mileage" required readonly>
                 <div *ngIf="(mileage.touched || meterForm.submitted) && mileage.errors?.required"
                      class="validErr">
                   Mileage is required
@@ -166,7 +168,7 @@
 
         <div class="row" style="margin-top: 40px;margin-bottom: 40px">
           <div class="col-12" style="text-align: center">
-            <button type="submit" class="btn btn-success" style="font-weight: bold">Update Meter Details</button>
+            <button type="submit" class="btn btn-primary" style="font-weight: bold">Update Meter Details</button>
           </div>
         </div>
         </form>

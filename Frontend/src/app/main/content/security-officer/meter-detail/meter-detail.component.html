@@ -13,7 +13,7 @@
             Out Meter :
           </div>
           <div class="col-8">
-            <input class="form-control" type="text"
+            <input class="form-control" type="number"
                    [(ngModel)]="meterDetail.outMeter"
                    #outMeter="ngModel"
                    name="outMeter" required>
@@ -29,10 +29,10 @@
             In Meter :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="meterDetail.inMeter"
                    #inMeter="ngModel"
-                   name="inMeter" >
+                   name="inMeter" disabled>
 <!--            <div *ngIf="(departureTime.touched || tokenForm.submitted) && departureTime.errors?.required"-->
 <!--                 class="validErr">-->
 <!--              Departure Time is required-->
@@ -45,10 +45,10 @@
             Mileage :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="meterDetail.mileage"
                    #mileage="ngModel"
-                   name="mileage">
+                   name="mileage" disabled>
 <!--            <div *ngIf="(arrivalDate.touched || tokenForm.submitted) && arrivalDate.errors?.required"-->
 <!--                 class="validErr">-->
 <!--              Arrival Date is required-->
