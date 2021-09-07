@@ -39,6 +39,7 @@ import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
 import {NotificationsComponent} from "./main/content/applicant/notifications/notifications.component";
+import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.component";
 
 
 
@@ -143,14 +144,15 @@ const routes: Routes = [
       {
         path: 'View_Over_Time',
         component: ViewOverTimeComponent
-      }
-    ]
-  },
-  {
-    path: 'main',
-    component: MainComponent,
-    children: [
-
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent
+      },
       {
         path: 'arrival_departure_page',
         component: ArrivalDepartureLogPageComponent
@@ -175,10 +177,6 @@ const routes: Routes = [
         path: 'update_vehicle',
         component: UpdateVehicleComponent
       },
-      {
-        path: 'notifications',
-        component: NotificationsComponent
-      }
     ]
   }
 ];
