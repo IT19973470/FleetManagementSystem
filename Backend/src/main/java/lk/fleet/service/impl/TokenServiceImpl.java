@@ -53,7 +53,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public List<TokenDTO> getAllTokens() {
-        List<Token> tokens = tokenRepository.findAll();
+        List<Token> tokens = tokenRepository.getNotCompletedTokens();
         List<TokenDTO> tokenDTOS = new ArrayList<>();
         for (Token token : tokens) {
             tokenDTOS.add(new TokenDTO(token, new MeterDetailDTO(token.getMeterDetail())));
