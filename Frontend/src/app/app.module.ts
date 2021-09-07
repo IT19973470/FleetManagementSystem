@@ -80,8 +80,10 @@ import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-m
 import { TvProgramComponent } from './main/content/general-manager/tv-program/tv-program.component';
 
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
-import { UpdateDriverComponent } from './update-driver/update-driver.component';
+
 import { NavBookingManagerComponent } from './main/navbar/nav-booking-manager/nav-booking-manager.component';
+
+import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
 
 
 
@@ -154,9 +156,6 @@ import { NavBookingManagerComponent } from './main/navbar/nav-booking-manager/na
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
-
-
-
     UpdateUserAccountComponent,
     UpdateOverTimeComponent,
     UpdateUserAccountComponent,

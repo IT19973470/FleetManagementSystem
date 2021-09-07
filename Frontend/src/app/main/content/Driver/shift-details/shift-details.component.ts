@@ -15,6 +15,7 @@ export class ShiftDetailsComponent implements OnInit {
   };
 
   shiftDetails: [];
+  driverID;
 
   constructor(private driverService: DriverService, private router: Router) {
 
@@ -49,5 +50,12 @@ export class ShiftDetailsComponent implements OnInit {
     });
   }
 
+//
+  geDriverByID() {
 
+  }
+
+  getAllDrivers() {
+
+  }
 }
