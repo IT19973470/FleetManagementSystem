@@ -11,6 +11,7 @@ import {NgForm} from "@angular/forms";
 })
 export class UpdateAvailableTransportsComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
+  @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
   deliveryDetail = {
     deliveryId: '',
     deliveryPersonName: '',
@@ -46,6 +47,13 @@ export class UpdateAvailableTransportsComponent implements OnInit {
   item;
   btnText = 'Add';
   tblIndex;
+  PassengerDB=[];
+  Pp=[];
+  y=0;
+  errorP:boolean=false;
+  z;
+  zz=[];
+
 
   constructor(private applicantService: ApplicantService, private router: Router) {
    // this.item = this.getNewItem();
@@ -62,6 +70,47 @@ export class UpdateAvailableTransportsComponent implements OnInit {
       this.router.navigate(['/main/available_transports'])
     })
   }
+
+
+  onSubmitPassenger() {
+    for( let  x=0; x<=this.y;x++) {
+      this.z = this.PassengerDB[x];
+      if (this.Pass.passenger.passengerId===this.z.passengerId) {
+        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+        this.zz.push(this.z);
+        this.setNewPassenger();
+        this.errorP=false;
+        break;
+      }
+
+      else{
+        this.errorP=true;
+      }
+
+    }
+
+  }
+
+  setNewPassenger() {
+    this.Pass = this.getNewPassenger();
+    this.passengerForm.resetForm(this.Pass.passenger);
+    this.btnText = 'Add';
+
+  }
+
+  setPassenger(passenger, i) {
+    this.tblIndex = i;
+    this.Pass.passenger.passengerId = passenger.passengerId;
+    this.btnText = 'Update';
+  }
+
+  getNewPassenger() {
+    return {
+      passenger:
+        {passengerId: ''},
+    };
+  }
+
 
   onSubmitItem() {
     // this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
@@ -95,14 +144,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     })
   }
 
-  setItem(item, i) {
-    this.tblIndex = i;
-    this.item.itemDetailId = item.itemDetailId;
-    this.item.itemName = item.itemName;
-    this.item.itemType = item.itemType;
-    this.item.itemQty = item.itemQty;
-    this.btnText = 'Update';
-  }
+
   //
   setNewItem() {
     // this.item = this.getNewItem();
@@ -110,15 +152,5 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     // this.btnText = 'Add';
   }
   //
-  getNewItem() {
-    return {
-      itemDetailId: '',
-      itemName: '',
-      itemType: '',
-      itemQty: 1,
-      delivery: {
-        deliveryId: ''
-      }
-    };
-  }
+
 }
