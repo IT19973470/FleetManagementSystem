@@ -129,7 +129,7 @@ const routes: Routes = [
         component: TransportRequestsComponent
       },
       {
-        path: 'tv-program',
+        path: 'tv_program',
         component: TvProgramComponent
       },
       {
