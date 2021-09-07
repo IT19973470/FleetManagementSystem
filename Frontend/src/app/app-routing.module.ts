@@ -28,6 +28,11 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {UserAccountListComponent} from "./main/content/general-manager/user-account-list/user-account-list.component";
 import {UpdateUserAccountComponent} from "./main/content/general-manager/user-account-list/update-user-account/update-user-account.component";
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
+
+import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
+
+
+
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
@@ -37,6 +42,9 @@ import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-o
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
+import {NotificationsComponent} from "./main/content/applicant/notifications/notifications.component";
+import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.component";
+
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
@@ -128,6 +136,10 @@ const routes: Routes = [
         component: AvailableTransportsComponent
       },
       {
+        path: 'update_available_transports',
+        component: UpdateAvailableTransportsComponent
+      },
+      {
         path: 'application_status',
         component: ApplicationStatusComponent
       },
@@ -184,8 +196,19 @@ const routes: Routes = [
         component: ViewOverTimeComponent
       },
       {
+
+        path: 'notifications',
+        component: NotificationsComponent
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent
+      },
+      {
+
         path: 'update_over_time',
         component: UpdateOverTimeComponent
+
       },
       {
         path: 'arrival_departure_page',
@@ -210,7 +233,7 @@ const routes: Routes = [
       {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
-      }
+      },
     ]
   }
 ];

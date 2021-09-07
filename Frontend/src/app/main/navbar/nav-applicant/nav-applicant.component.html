@@ -30,19 +30,19 @@
   <div
     routerLink="/main/notifications"
     (click)="setTopic('Notifications')"
-    #notifications="routerLinkActive"
+    #notificationsapplcant="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':notifications.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':notificationsapplcant.isActive?'#c0050e':''}">
     Notifications
   </div>
 
   <div
     routerLink="/main/feedback"
-    (click)="setTopic('Feedback')"
+    (click)="setTopic('Reports')"
     #feedback="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':feedback.isActive?'#c0050e':''}">
-    Feedback
+    Reports
   </div>
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
