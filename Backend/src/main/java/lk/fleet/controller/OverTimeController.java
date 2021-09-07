@@ -34,4 +34,9 @@ public class OverTimeController {
     public ResponseEntity getOT() {
         return ResponseEntity.ok(overTimeService.getOT());
     }
+
+    @GetMapping(value = "/getOTbyID/{overTimeID}")
+    public ResponseEntity getOverTimeByID(@PathVariable long overTimeID) {
+        return ResponseEntity.ok(overTimeService.getOverTimeByID(overTimeID));
+    }
 }

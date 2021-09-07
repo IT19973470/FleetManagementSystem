@@ -38,4 +38,12 @@ export class DriverService {
   getShift(): Observable<any> {
     return this.http.get(environment.backend_url + '/shift/getShift');
   }
+
+  deleteOT(otID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/overTime/deleteOT/" + otID);
+  }
+
+  getMyOT(driverID):Observable<any>{
+    return this.http.get<any>(environment.backend_url + '/overTime/getOTbyID/' + driverID);
+  }
 }

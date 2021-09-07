@@ -22,7 +22,8 @@ export class ViewOverTimeComponent implements OnInit {
     noOfShifts: '',
     startTime: '',
     endTime: '',
-    approval: ''
+    approval: '',
+    driver_driverid:''
   };
 
   constructor(private driverService: DriverService, private router: Router) {
@@ -32,6 +33,7 @@ export class ViewOverTimeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOT();
+    this.getMyOT();
   }
 
   setOT(otDetails) {
@@ -55,5 +57,20 @@ export class ViewOverTimeComponent implements OnInit {
     });
   }
 
+  deleteOT() {
+    this.driverService.deleteOT(this.ot.overTimeID).subscribe((reply) => {
+      if(reply){
+        this.router.navigate(['/main/over_time'])
+      }
+      }
+    )
+  }
+
+  getMyOT() {
+    this.driverService.getMyOT(JSON.parse(localStorage.getItem('user'))['driver_driverid']).subscribe((myOT) => {
+      this.ot = myOT;
+      console.log(this.otDetails);
+    });
+  }
 }
 
