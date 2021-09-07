@@ -9,4 +9,6 @@ public interface ShiftService {
     ShiftDTO updateShift(String shiftId, Shift shift);
 
     boolean deleteShift(String shiftId);
+
+    Object getShift();
 }

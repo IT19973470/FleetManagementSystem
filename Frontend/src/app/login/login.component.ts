@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       if (user !== null && user['accountType'] === 'TM') {
-        this.router.navigate(['/main/view_item_delivery'])
+        this.router.navigate(['/main/item_delivery'])
       } else if (user['accountType'] === 'VDM') {
         this.router.navigate(['/main/vehicle']);
       } else if (user['accountType'] === 'SO') {
@@ -37,9 +37,15 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/main/create_user_account'])
       } else if (user['accountType'] === 'AP') {
         this.router.navigate(['/main/available_transports'])
-      } else if (user['accountType'] === 'VMC') {
+      } else if (user['accountType'] === 'VMC'){
+        this.router.navigate(['/main/vehicle_accident'])
+      }
+      else if (user['accountType'] === 'VMC') {
         this.router.navigate(['/main/vehicle_accidents'])
+      }else if(user['accountType'] === 'BMC'){
+        this.router.navigate(['/main/'])
       } else {
+
         this.logged = false;
       }
     }, (err) => {

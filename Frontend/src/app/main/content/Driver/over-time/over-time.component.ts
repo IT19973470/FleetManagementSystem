@@ -25,7 +25,7 @@ export class OverTimeComponent implements OnInit {
   onSubmit() {
     console.log(this.addOT);
     this.driverService.addOT(this.addOT).subscribe((addOT)=>{
-      this.router.navigate(['main/View_Over_Time'])
+      this.router.navigate(['main/View_Over_Time']);
     })
   }
 
