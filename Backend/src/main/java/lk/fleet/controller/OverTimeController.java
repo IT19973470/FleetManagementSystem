@@ -21,12 +21,12 @@ public class OverTimeController {
     }
 
     @PutMapping(value = "/updateOT/{overTimeID}")
-    public ResponseEntity updateOT(@PathVariable String overTimeID, @RequestBody OverTime overTime){
+    public ResponseEntity updateOT(@PathVariable long overTimeID, @RequestBody OverTime overTime){
         return ResponseEntity.ok(overTimeService.updateOT(overTimeID,overTime));
     }
 
     @DeleteMapping(value = "/deleteOT/{overTimeID}")
-    public ResponseEntity deleteOT(@PathVariable String overTimeID){
+    public ResponseEntity deleteOT(@PathVariable long overTimeID){
         return ResponseEntity.ok(overTimeService.deleteOT(overTimeID));
     }
 

@@ -6,9 +6,9 @@ import lk.fleet.entity.OverTime;
 public interface OverTimeService {
     Object addOT(OverTime overTime);
 
-    OverTimeDTO updateOT(String overTimeID, OverTime overTime);
+    OverTimeDTO updateOT(long overTimeID, OverTime overTime);
 
-    boolean deleteOT(String overTimeID);
+    boolean deleteOT(long overTimeID);
 
     Object getOT();
 }
