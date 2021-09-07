@@ -20,7 +20,7 @@
   </div>
 
   <div
-    routerLink="/main/account-requests"
+    routerLink="/main/account_requests"
     (click)="setTopic('Account Requests')"
     #accountRequests="routerLinkActive"
     routerLinkActive
@@ -29,12 +29,30 @@
   </div>
 
   <div
-    routerLink="/main/transport-requests"
+    routerLink="/main/transport_requests"
     (click)="setTopic('Transport Requests')"
     #transportRequests="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':transportRequests.isActive?'#c0050e':''}">
     Transport Requests
+  </div>
+
+  <div
+    routerLink="/main/tv_program"
+    (click)="setTopic('TV Program')"
+    #tvProgram="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':tvProgram.isActive?'#c0050e':''}">
+    TV Program
+  </div>
+
+  <div
+    routerLink="/main/notifications"
+    (click)="setTopic('Notifications')"
+    #notifications="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':notifications.isActive?'#c0050e':''}">
+    Notifications
   </div>
 
 

@@ -3,6 +3,7 @@ package lk.fleet.controller;
 import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.dto.ItamAppDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
+import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.ApplicationItemService;
 import lk.fleet.service.ApplicationPassengerService;
@@ -25,36 +26,42 @@ public class ApplicationController {
     private ApplicationService applicationService;
 
     @PostMapping(value ="/newapplication")   // jarawa epa
-    public ApplicationDTO addApplication(@RequestBody Application application) {
-        return applicationPassengerService.addApplication(application);
+    public ResponseEntity addApplication(@RequestBody Application application) {
+        return ResponseEntity.ok(applicationPassengerService.addApplication(application));
     }
 //        @PostMapping(value ="/newApplication")
 //        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
 //             return applicationService.addPassengerApplication(application);
 //         }
     @PostMapping(value ="/addPassengers")
-    public PassengerPassengerApplication addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
-        return applicationPassengerService.addPassengerpassenger(passengerPassengerApplication);
+    public ResponseEntity addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
+        return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
     }
 
-    @PostMapping(value ="/Addtem")
-    public ItamAppDTO addItem(@RequestBody Application application) {
-        return applicationItemService.addItemApplication(application);
+    @GetMapping(value = "/getPassengers")
+    public List<PassengerDTO> getPassengers(){
+        return applicationPassengerService.getPassengers();
+    }
+
+
+    @PostMapping(value ="/AddItem")
+    public ResponseEntity addItem(@RequestBody Application application) {
+        return ResponseEntity.ok(applicationItemService.addItemApplication(application));
     }
 
     @PostMapping(value ="/newApplication1")
-    public Passenger addPassengerApplication1(@RequestBody Passenger passenger){
-        return applicationPassengerService.addPassenger(passenger);
+    public ResponseEntity addPassengerApplication1(@RequestBody Passenger passenger){
+        return ResponseEntity.ok(applicationPassengerService.addPassenger(passenger));
     }
 
     @PostMapping(value ="/Insertall")
-    public PassengerPassengerApplication addPassengerPassengerApplication(@RequestBody PassengerPassengerApplication passengerPassengerApplication){
-        return applicationPassengerService.addPassengerPassengerApplication(passengerPassengerApplication);
+    public ResponseEntity addPassengerPassengerApplication(@RequestBody PassengerPassengerApplication passengerPassengerApplication){
+        return ResponseEntity.ok(applicationPassengerService.addPassengerPassengerApplication(passengerPassengerApplication));
     }
 
     @PostMapping(value ="/InserItall")
-    public ItemItemApplication addItemItemApplication(@RequestBody ItemItemApplication itemApplication){
-        return applicationItemService.addItemItemApplication(itemApplication);
+    public ResponseEntity addItemItemApplication(@RequestBody ItemItemApplication itemApplication){
+        return ResponseEntity.ok(applicationItemService.addItemItemApplication(itemApplication));
     }
     @DeleteMapping(value = "/deleteApplication/{applicationID}")
     public ResponseEntity deleteBooking(@PathVariable String applicationID){
@@ -65,6 +72,14 @@ public class ApplicationController {
     public ResponseEntity<ApplicationDTO> updateApplication(@PathVariable String applicationID, @RequestBody Application application){
         return ResponseEntity.ok(applicationService.updateApplication(applicationID, application));
     }
+
+//    @PutMapping(value = "/updatePassengerPassenger/{applicationID}")
+//    public ResponseEntity PassengerPassengerApplication(@PathVariable String applicationID, @RequestBody  PassengerPassengerApplication passengerPassengerApplication){
+//        return ResponseEntity.ok(applicationPassengerService.UpdatePassengerApp(applicationID, passengerPassengerApplication));
+//    }
+
+
+
     @GetMapping(value = "/getApplication")
     public List<ApplicationDTO> getPassengerApp(){
         return applicationPassengerService.getPassengerApp();
