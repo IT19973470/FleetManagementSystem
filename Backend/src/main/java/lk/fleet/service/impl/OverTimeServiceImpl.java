@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OverTimeServiceImpl implements OverTimeService{
+public class OverTimeServiceImpl implements OverTimeService {
 
     @Autowired
     private OverTimeRepository overTimeRepository;
@@ -29,7 +29,7 @@ public class OverTimeServiceImpl implements OverTimeService{
     @Override
     public OverTimeDTO updateOT(long overTimeID, OverTime overTime) {
         Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
-        if (optionalOverTime.isPresent()){
+        if (optionalOverTime.isPresent()) {
             OverTime overTime1 = optionalOverTime.get();
             overTime1.setOtDate(overTime.getOtDate());
             overTime1.setNoOfShifts(overTime.getNoOfShifts());
@@ -53,7 +53,7 @@ public class OverTimeServiceImpl implements OverTimeService{
         List<OverTime> overTimes = overTimeRepository.findAll();
         List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
 
-        for(OverTime overTime : overTimes){
+        for (OverTime overTime : overTimes) {
             overTimeDTOS.add(new OverTimeDTO(overTime));
         }
 
@@ -61,13 +61,9 @@ public class OverTimeServiceImpl implements OverTimeService{
     }
 
     @Override
-    public OverTimeDTO getOverTimeByID(long overTimeID) {
-        Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
-        if (optionalOverTime.isPresent()) {
-            OverTime overTime = optionalOverTime.get();
-            return new OverTimeDTO(overTime);
-        }
-        return null;
+    public OverTimeDTO getOverTimeByID(String driverId) {
+        OverTime overTimeNow = overTimeRepository.getOverTimeNow(driverId);
+        return new OverTimeDTO(overTimeNow);
     }
 
 }

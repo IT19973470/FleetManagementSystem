@@ -8,4 +8,7 @@ public interface OverTimeRepository extends JpaRepository<OverTime, Long> {
 
 //    OverTime getOverTimeByOverTimeID(String overTimeID);
 
+    @Query(value = "from OverTime where driver.driverID=?1 and otDate=curdate()")
+    OverTime getOverTimeNow(String driverId);
+
 }
