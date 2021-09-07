@@ -15,6 +15,9 @@ public class Token {
     @OneToOne
     private Booking booking;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "token")
+    private MeterDetail meterDetail;
+
     @ManyToOne
     private SecurityOfficer securityOfficer;
 
@@ -66,4 +69,11 @@ public class Token {
         this.transportStatus = transportStatus;
     }
 
+    public MeterDetail getMeterDetail() {
+        return meterDetail;
+    }
+
+    public void setMeterDetail(MeterDetail meterDetail) {
+        this.meterDetail = meterDetail;
+    }
 }
