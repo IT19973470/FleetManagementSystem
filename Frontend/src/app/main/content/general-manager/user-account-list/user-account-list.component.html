@@ -1,12 +1,21 @@
-<div class="row">
+<div class="row"  style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
   <div class="col-12">
-
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">User Account List</span>
   </div>
-</div>
 
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
-    <label><h1><b>User Account List</b></h1></label>
+
+
+    <span style="font-weight: bold;margin-left: 50px">Search by EmployeeID : </span>
+    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="employeeID">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getUserAccountByID()">
+      Search
+    </button>
+
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getUserAccounts()">
+      All User Accounts
+    </button>
 
 
     <table class="table table-striped" style="margin-top: 40px">
@@ -101,39 +110,44 @@
           <span style="margin-left: 10px">{{userAccount.nameWithInitials}}</span>
         </div>
 
+        <div style="min-width: 1390px;">
+          <button align="right" style="cursor: pointer;margin-right: 10px"  (click)="isTrueOrFalse(false)">Close</button>
+<!--          <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>-->
+        </div>
 
-        <table class="table table-striped" style="margin-top: 20px">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Employee ID</th>
-            <th scope="col">Type</th>
-            <th scope="col">NIC</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date of Birth</th>
-            <th scope="col">Address</th>
-            <th scope="col">Contact Number</th>
-            <th scope="col">Email</th>
-            <th scope="col">Registered Date</th>
-            <th scope="col">Name With Initials</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let user of userAccount.userAccountDetails; let i = index">
-            <th scope="row">{{i+1}}</th>
-            <td>{{user.employeeID}}</td>
-            <td>{{user.accountType}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.dob}}</td>
-            <td>{{user.address}}</td>
-            <td>{{user.contactNo}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.registeredDate}}</td>
-            <td>{{user.nameWithInitialsa}}</td>
 
-          </tr>
-          </tbody>
-        </table>
+<!--        <table class="table table-striped" style="margin-top: 20px">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">Employee ID</th>-->
+<!--            <th scope="col">Type</th>-->
+<!--            <th scope="col">NIC</th>-->
+<!--            <th scope="col">Name</th>-->
+<!--            <th scope="col">Date of Birth</th>-->
+<!--            <th scope="col">Address</th>-->
+<!--            <th scope="col">Contact Number</th>-->
+<!--            <th scope="col">Email</th>-->
+<!--            <th scope="col">Registered Date</th>-->
+<!--            <th scope="col">Name With Initials</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let user of userAccount.userAccountDetails; let i = index">-->
+<!--            <th scope="row">{{i+1}}</th>-->
+<!--            <td>{{user.employeeID}}</td>-->
+<!--            <td>{{user.accountType}}</td>-->
+<!--            <td>{{user.name}}</td>-->
+<!--            <td>{{user.dob}}</td>-->
+<!--            <td>{{user.address}}</td>-->
+<!--            <td>{{user.contactNo}}</td>-->
+<!--            <td>{{user.email}}</td>-->
+<!--            <td>{{user.registeredDate}}</td>-->
+<!--            <td>{{user.nameWithInitialsa}}</td>-->
+
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
       </div>
 
     </div>
@@ -143,3 +157,4 @@
 
 
 
+</div>

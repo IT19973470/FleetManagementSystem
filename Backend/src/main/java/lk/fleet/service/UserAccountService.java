@@ -34,6 +34,8 @@ public interface UserAccountService {
 
     boolean deleteUserAccount(String employeeID);
 
+    UserAccountDTO getUserAccountByID(String employeeID);
+
     //UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);
     //TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager);
     //BookingManagementClerkDTO updateBookingManagementClerkAccount(String bookingManagementClerkId, BookingManagementClerk bookingManagementClerk);//

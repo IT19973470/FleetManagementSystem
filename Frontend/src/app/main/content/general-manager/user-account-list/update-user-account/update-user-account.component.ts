@@ -23,7 +23,7 @@ export class UpdateUserAccountComponent implements OnInit {
     email: '',
     registeredDate: '',
     nameWithInitials: '',
-    password: '',
+    password: ''
   };
 
   accountTypes = [
@@ -96,7 +96,7 @@ export class UpdateUserAccountComponent implements OnInit {
       email: '',
       registeredDate: '',
       nameWithInitials: '',
-      password: '',
+      password: ''
 
     };
   }
