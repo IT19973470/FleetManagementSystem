@@ -35,8 +35,8 @@ public class OverTimeController {
         return ResponseEntity.ok(overTimeService.getOT());
     }
 
-    @GetMapping(value = "/getOTbyID/{overTimeID}")
-    public ResponseEntity getOverTimeByID(@PathVariable long overTimeID) {
-        return ResponseEntity.ok(overTimeService.getOverTimeByID(overTimeID));
+    @GetMapping(value = "/getOTbyID/{driverId}")
+    public ResponseEntity getOverTimeByID(@PathVariable String driverId) {
+        return ResponseEntity.ok(overTimeService.getOverTimeByID(driverId));
     }
 }
