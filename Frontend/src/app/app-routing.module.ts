@@ -28,6 +28,10 @@ import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view
 import {UserAccountListComponent} from "./main/content/general-manager/user-account-list/user-account-list.component";
 import {UpdateUserAccountComponent} from "./main/content/general-manager/user-account-list/update-user-account/update-user-account.component";
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
+
+import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
+
+
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
@@ -39,10 +43,23 @@ import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-o
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
+import {NotificationsComponent} from "./main/content/applicant/notifications/notifications.component";
+import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.component";
+
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+
 import {UpdateVipmemberComponent} from "./main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component";
+
+import {ItemPassengerDeliveryComponent} from "./main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component";
+import {ViewItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component";
+import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component";
+
+import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
+
+import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
 
 
 const routes: Routes = [
@@ -84,6 +101,18 @@ const routes: Routes = [
         component: UpdatePassengerDeliveryComponent
       },
       {
+        path: 'item_passenger_delivery',
+        component: ItemPassengerDeliveryComponent
+      },
+      {
+        path: 'update_item_passenger_delivery',
+        component: UpdateItemPassengerDeliveryComponent
+      },
+      {
+        path: 'view_item_passenger_delivery',
+        component: ViewItemPassengerDeliveryComponent
+      },
+      {
         path: 'create_user_account',
         component: CreateUserAccountComponent
       },
@@ -104,8 +133,16 @@ const routes: Routes = [
         component: TransportRequestsComponent
       },
       {
+        path: 'tv-program',
+        component: TvProgramComponent
+      },
+      {
         path: 'available_transports',
         component: AvailableTransportsComponent
+      },
+      {
+        path: 'update_available_transports',
+        component: UpdateAvailableTransportsComponent
       },
       {
         path: 'application_status',
@@ -121,7 +158,7 @@ const routes: Routes = [
       },
       {
         path: 'vehicle_accident',
-        component:VehicleAccidentComponent
+        component: VehicleAccidentComponent
       },
       {
         path: 'view_maintenance',
@@ -155,21 +192,27 @@ const routes: Routes = [
         path: 'shift_details',
         component: ShiftDetailsComponent
       },
-	    {
+      {
         path: 'create_token',
         component: TokenComponent
       },
       {
-        path: 'View_Over_Time',
+        path: 'view_over_time',
         component: ViewOverTimeComponent
-      }
-    ]
-  },
-  {
-    path: 'main',
-    component: MainComponent,
-    children: [
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent
+      },
+      {
+        path: 'update_over_time',
+        component: UpdateOverTimeComponent
 
+      },
       {
         path: 'arrival_departure_page',
         component: ArrivalDepartureLogPageComponent
@@ -191,10 +234,6 @@ const routes: Routes = [
         component: VehicleAccidentViewComponent
       },
       {
-        path: 'view_passenger_delivery',
-        component: ViewPassengerDeliveryComponent
-      },
-      {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
       },
@@ -213,6 +252,10 @@ const routes: Routes = [
       {
         path: 'update_vipmember',
         component: UpdateVipmemberComponent
+      },
+      {
+        path: 'update_driver',
+        component: UpdateDriverComponent
       }
     ]
   }

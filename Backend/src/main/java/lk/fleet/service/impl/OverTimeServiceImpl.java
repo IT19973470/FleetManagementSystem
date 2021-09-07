@@ -1,7 +1,9 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.dto.UserAccountDTO;
+import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
@@ -25,10 +27,11 @@ public class OverTimeServiceImpl implements OverTimeService{
     }
 
     @Override
-    public Object updateOT(String overTimeID, OverTime overTime) {
+    public OverTimeDTO updateOT(long overTimeID, OverTime overTime) {
         Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
         if (optionalOverTime.isPresent()){
             OverTime overTime1 = optionalOverTime.get();
+            overTime1.setOtDate(overTime.getOtDate());
             overTime1.setNoOfShifts(overTime.getNoOfShifts());
             overTime1.setStartTime(overTime.getStartTime());
             overTime1.setEndTime(overTime.getEndTime());
@@ -40,7 +43,7 @@ public class OverTimeServiceImpl implements OverTimeService{
     }
 
     @Override
-    public boolean deleteOT(String overTimeID) {
+    public boolean deleteOT(long overTimeID) {
         overTimeRepository.deleteById(overTimeID);
         return true;
     }
@@ -56,4 +59,15 @@ public class OverTimeServiceImpl implements OverTimeService{
 
         return overTimeDTOS;
     }
+
+    @Override
+    public OverTimeDTO getOverTimeByID(long overTimeID) {
+        Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
+        if (optionalOverTime.isPresent()) {
+            OverTime overTime = optionalOverTime.get();
+            return new OverTimeDTO(overTime);
+        }
+        return null;
+    }
+
 }

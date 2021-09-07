@@ -7,6 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountRequestsComponent implements OnInit {
 
+  userAccountDetails = [];
+
+  userAccount = {
+    employeeID: '',
+    accountType: '',
+    nic: '',
+    dob: '',
+    name: '',
+    address: '',
+    contactNo: '',
+    email: '',
+    registeredDate: '',
+    nameWithInitials: '',
+    password: ''
+
+  };
+
   constructor() { }
 
   ngOnInit(): void {

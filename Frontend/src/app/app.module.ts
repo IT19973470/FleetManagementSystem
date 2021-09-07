@@ -52,7 +52,17 @@ import { TokenComponent } from './main/content/security-officer/token/token.comp
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
 
+import { UpdateAvailableTransportsComponent } from './main/content/applicant/available-transports/update-available-transports/update-available-transports.component';
+
+import { BookingsComponent } from './main/content/booking_management_clerk/bookings/bookings.component';
+import { ViewBookingsComponent } from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
+import { UpdateBookingsComponent } from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
+import { ShiftComponent } from './main/content/booking_management_clerk/shift/shift.component';
+import { UpdateShiftComponent } from './main/content/booking_management_clerk/update-shift/update-shift.component';
+import { ViewShiftComponent } from './main/content/booking_management_clerk/view-shift/view-shift.component';
+
 import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
+
 
 import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
 import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
@@ -66,6 +76,16 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
+import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
+import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
+
+import { TvProgramComponent } from './main/content/general-manager/tv-program/tv-program.component';
+
+import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
+
+
 
 
 
@@ -112,11 +132,25 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     VehicleMaintenanceComponent,
     VehicleAccidentReportComponent,
     VehicleMaintenanceReportComponent,
+    BookingsComponent,
+    ViewBookingsComponent,
+    UpdateBookingsComponent,
+    ShiftComponent,
+    UpdateShiftComponent,
+    ViewShiftComponent,
     NavDriverComponent,
     NavSecurityOfficerComponent,
     TokenComponent,
+
+    UpdateAvailableTransportsComponent,
+
     VehicleAccidentViewComponent,
+
     ViewVehiclesComponent,
+
+    UpdateVehicleComponent,
+
+
     UpdateVehicleComponent,
     VipmemberComponent,
     ViewVipmembersComponent,
@@ -125,8 +159,18 @@ import { UpdateUserAccountComponent } from './main/content/general-manager/user-
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
+    UpdateUserAccountComponent,
+    UpdateOverTimeComponent,
+    UpdateUserAccountComponent,
+    UpdateDriverComponent,
+    ItemPassengerDeliveryComponent,
+    ViewItemPassengerDeliveryComponent,
+    UpdateItemPassengerDeliveryComponent,
+    TvProgramComponent,
+    UpdateOverTimeComponent,
     UpdateUserAccountComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

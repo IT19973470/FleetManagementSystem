@@ -7,22 +7,26 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
-    <span style="font-weight: bold">Search by :</span>
-    <span style="margin-left: 20px">Deliveries for</span>
-    <input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">
-      Search
-    </button>
+    <div>
+      <span style="font-weight: bold">Search by :</span>
+      <span style="margin-left: 20px">Deliveries for</span>
+      <input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">
+        Search
+      </button>
+    </div>
 
-    <span style="font-weight: bold;margin-left: 50px">Search by company : </span>
-    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="companyName">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByCompany()">
-      Search
-    </button>
+    <div style="margin-top: 20px">
+      <span style="font-weight: bold;margin-left: 0px">Search by company : </span>
+      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="companyName">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByCompany()">
+        Search
+      </button>
 
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllItemDeliveries()">
-      All deliveries
-    </button>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllItemDeliveries()">
+        All Deliveries
+      </button>
+    </div>
 
     <table class="table table-striped" style="margin-top: 40px">
       <thead>
@@ -30,10 +34,10 @@
         <th scope="col">#</th>
         <th scope="col">Company</th>
         <th scope="col">Address</th>
-        <th scope="col" width="10%">Contact</th>
+        <th scope="col" width="10%">Contact No</th>
         <th scope="col" width="10%">Delivery Date</th>
         <th scope="col" width="10%">Delivery Time</th>
-        <th scope="col" width="5%" style="text-align: center">View</th>
+        <th scope="col" width="8%" style="text-align: center">View More</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
       </thead>
@@ -79,6 +83,10 @@
         <div>
           <span style="font-weight: bold">Delivery person's NIC : </span>
           <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>
+        </div>
+
+        <div style="margin-top: 20px;font-weight: bold;font-size: 20px">
+          Delivery Items
         </div>
 
         <table class="table table-striped" style="margin-top: 20px">
