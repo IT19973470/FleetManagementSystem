@@ -1,0 +1,28 @@
+<div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/shift"
+    (click)="setTopic('Driver Shift')"
+    #shift="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':shift.isActive?'#c0050e':''}">
+    Driver Shift
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_shift"
+    #updateShift="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_shifts"
+    (click)="setTopic('View Driver Shifts')"
+    #viewDriverShifts="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewDriverShifts.isActive || updateShift.isActive?'#c0050e':''}">
+    View Driver Shifts
+  </div>
+
+</div>

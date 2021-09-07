@@ -58,7 +58,7 @@ import { BookingsComponent } from './main/content/booking_management_clerk/booki
 import { ViewBookingsComponent } from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
 import { UpdateBookingsComponent } from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
 import { ShiftComponent } from './main/content/booking_management_clerk/shift/shift.component';
-import { UpdateShiftComponent } from './main/content/booking_management_clerk/update-shift/update-shift.component';
+import { UpdateShiftComponent } from './main/content/booking_management_clerk/view-shift/update-shift/update-shift.component';
 import { ViewShiftComponent } from './main/content/booking_management_clerk/view-shift/view-shift.component';
 
 import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
@@ -81,6 +81,7 @@ import { TvProgramComponent } from './main/content/general-manager/tv-program/tv
 
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
 import { UpdateDriverComponent } from './update-driver/update-driver.component';
+import { NavBookingManagerComponent } from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 
 
 
@@ -165,7 +166,8 @@ import { UpdateDriverComponent } from './update-driver/update-driver.component';
     UpdateItemPassengerDeliveryComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    NavBookingManagerComponent
 
   ],
 
