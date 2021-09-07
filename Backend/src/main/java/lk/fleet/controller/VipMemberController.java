@@ -28,4 +28,10 @@ public class VipMemberController {
     public ResponseEntity getAllVipMembers() {
         return ResponseEntity.ok(vipMemberService.getAllVipMembers());
     }
+
+    @DeleteMapping(value = "/deleteVipMember/{vipMemberId}")
+    public ResponseEntity deleteVipMember(@PathVariable String vipMemberId) {
+        return ResponseEntity.ok(vipMemberService.deleteVipMember(vipMemberId));
+    }
+
 }

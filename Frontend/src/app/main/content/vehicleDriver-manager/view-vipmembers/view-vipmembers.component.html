@@ -26,8 +26,10 @@
         <th scope="col">Last Name</th>
         <th scope="col" width="10%">Contact Number</th>
         <th scope="col" width="10%">Address</th>
+        <th scope="col" width="10%">Position</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
       </tr>
       </thead>
       <tbody>
@@ -38,11 +40,15 @@
         <td>{{vipmember.lastName}}</td>
         <td>{{vipmember.contactNumber}}</td>
         <td>{{vipmember.address}}</td>
+        <td>{{vipmember.position}}</td>
         <td style="text-align: center">
           <i class="fas fa-search" style="cursor: pointer" (click)="setVipMember(vipmember)"></i>
         </td>
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vipmember)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-trash" style="cursor: pointer" (click)="goToUpdate(vipmember)"></i>
         </td>
       </tr>
       </tbody>

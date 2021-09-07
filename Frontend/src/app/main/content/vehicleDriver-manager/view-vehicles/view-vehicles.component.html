@@ -28,6 +28,7 @@
         <th scope="col" width="10%">Fuel Type</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
       </tr>
       </thead>
       <tbody>
@@ -43,6 +44,9 @@
         </td>
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicle)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-trash" style="cursor: pointer" (click)="goToUpdate(vehicle)"></i>
         </td>
       </tr>
       </tbody>

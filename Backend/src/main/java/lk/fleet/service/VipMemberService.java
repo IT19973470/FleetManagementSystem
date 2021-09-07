@@ -15,6 +15,8 @@ public interface VipMemberService {
 
     VipMemberDTO updateVipMember(String vipMemberId, VipMember vipMember);
 
+    boolean deleteVipMember(String vipMemberId);
+
 
     List<VipMemberDTO> getAllVipMembers();
 

@@ -38,6 +38,13 @@ export class UpdateVehicleComponent implements OnInit {
       this.router.navigate(['/main/view_vehicles'])
     })
   }
+  removeVehicle() {
+    this.vehicleDriverManagerService.deleteVehicle(this.vehicleDetail.vehicleId).subscribe((reply) => {
+      if (reply) {
+        this.router.navigate(['/main/view_vehicles'])
+      }
+    })
+  }
 
   // setNewVehicle() {
   //   this.vehicle = this.getNewVehicle();

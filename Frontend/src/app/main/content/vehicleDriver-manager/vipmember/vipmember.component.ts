@@ -33,7 +33,7 @@ export class VipmemberComponent implements OnInit {
   OnSubmitVipmember() {
     console.log(this.vipmemberDetail)
     this.vehicleDriverManagerService.addVipmember(this.vipmemberDetail).subscribe((vipmember) => {
-      this.router.navigate(['/main/view_vehicles'])
+      this.router.navigate(['/main/view_vipmembers'])
     })
   }
   getNewVipmember() {

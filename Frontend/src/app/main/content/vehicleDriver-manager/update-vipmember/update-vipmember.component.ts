@@ -38,7 +38,14 @@ export class UpdateVipmemberComponent implements OnInit {
     // })
     console.log(this.vipmemberDetail)
     this.vehicleDriverManagerService.updateVipMember(this.vipmemberDetail).subscribe((vipmember) => {
-      this.router.navigate(['/main/view_vipmember'])
+      this.router.navigate(['/main/view_vipmembers'])
+    })
+  }
+  removeVipMember() {
+    this.vehicleDriverManagerService.deleteVipMember(this.vipmemberDetail.vipMemberId).subscribe((reply) => {
+      if (reply) {
+        this.router.navigate(['/main/view_vipmembers'])
+      }
     })
   }
   // getNewVipmember() {

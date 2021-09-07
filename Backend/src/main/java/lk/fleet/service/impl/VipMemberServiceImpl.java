@@ -58,5 +58,10 @@ public class VipMemberServiceImpl implements VipMemberService {
         }
         return vipMemberDTOS;
     }
+    @Override
+    public boolean deleteVipMember(String vipMemberId) {
+        vipMemberRepository.deleteById(vipMemberId);
+        return true;
+    }
 
 }
