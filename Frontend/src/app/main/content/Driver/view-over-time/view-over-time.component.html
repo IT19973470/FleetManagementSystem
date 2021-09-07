@@ -19,8 +19,8 @@
         <th scope="col" width="10%">End Time</th>
         <th scope="col" width="10%">No of Shifts</th>
         <th scope="col" width="10%">Approval</th>
-        <th scope="col" width="5%" style="text-align: center">Update</th>
-        <th scope="col" width="5%" style="text-align: center">Delete</th>
+<!--        <th scope="col" width="5%" style="text-align: center">Update</th>-->
+<!--        <th scope="col" width="5%" style="text-align: center">Delete</th>-->
       </tr>
       </thead>
       <tbody>
@@ -33,12 +33,12 @@
         <td>{{ots.noOfShifts}}</td>
         <td>{{ots.approval}}</td>
 
-        <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(ots)"></i>
-        </td>
-        <td style="text-align: center">
-          <i class="fas fa-trash" style="cursor: pointer" (click)="setOT(ots)"></i>
-        </td>
+<!--        <td style="text-align: center">-->
+<!--          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(ots)"></i>-->
+<!--        </td>-->
+<!--        <td style="text-align: center">-->
+<!--          <i class="fas fa-trash" style="cursor: pointer" (click)="deleteOT(ots)"></i>-->
+<!--        </td>-->
 
       </tr>
       </tbody>
@@ -46,3 +46,58 @@
 
   </div>
 </div>
+
+
+
+
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>OT Details</b></h1></label>
+
+
+    <table class="table table-striped" style="margin-top: 40px" >
+      <tbody *ngIf="ot">
+      <tr>
+        <td>Overtime ID</td>
+        <td>{{ot.overTimeID}}</td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>{{ot.otDate}}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{{ot.startTime}}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{{ot.endTime}}</td>
+      </tr>
+      <tr>
+        <td>No of Shifts</td>
+        <td>{{ot.noOfShifts}}</td>
+      </tr>
+      <tr>
+        <td>Approval</td>
+        <td>{{ot.approval}}</td>
+      </tr>
+      <tr style="text-align: left">
+<!--        <td><i class="fas fa-search" style="cursor: pointer" (click)="setOT(otDetails)"></i></td>-->
+        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(otDetails)"></i></td>
+        <td><i class="fas fa-trash" style="cursor: pointer" (click)="deleteOT(otDetails)"></i> </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+
+

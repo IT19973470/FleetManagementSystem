@@ -1,7 +1,9 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.dto.UserAccountDTO;
+import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
@@ -57,4 +59,15 @@ public class OverTimeServiceImpl implements OverTimeService{
 
         return overTimeDTOS;
     }
+
+    @Override
+    public OverTimeDTO getOverTimeByID(long overTimeID) {
+        Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
+        if (optionalOverTime.isPresent()) {
+            OverTime overTime = optionalOverTime.get();
+            return new OverTimeDTO(overTime);
+        }
+        return null;
+    }
+
 }
