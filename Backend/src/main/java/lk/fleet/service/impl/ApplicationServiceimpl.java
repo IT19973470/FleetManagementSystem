@@ -47,7 +47,6 @@ public class ApplicationServiceimpl implements ApplicationService {
     @Override
     public boolean deleteApplication(String aplicationID) {
 
-        passengerApplicationRepository.deleteById(aplicationID);
         applicationRepository.deleteById(aplicationID);
         return true;
     }
