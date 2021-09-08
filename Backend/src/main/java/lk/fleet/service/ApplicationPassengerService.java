@@ -23,4 +23,7 @@ public interface ApplicationPassengerService {
     List<PassengerApplication> getAPassengerApp();
     List<PassengerApplicationDTO> getdto();
     List<PassengerDTO> getPassengers();
+    PassengerPassengerApplication passengerApplication( String passengerApplicationID ,String passengerID);
+    ApplicationDTO getPassengerApp(String ID);
+    boolean deletePassengerApp(String passengerApplicationID,String passengerID);
 }
