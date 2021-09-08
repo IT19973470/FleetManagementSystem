@@ -11,18 +11,21 @@ import {DriverService} from '../../../../_service/driver.service';
 export class DriverAccountComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   driver = {
-    employeeID: '',
-    accountType: '',
-    nic: '',
-    dob: '',
-    name: '',
-    address: '',
-    contactNo: '',
-    email: '',
-    registeredDate: '',
-    nameWithInitials: '',
-    password: '',
-    lisenseid: ''
+    driverID: '',
+    userAccount: {
+      employeeID: '',
+      accountType: '',
+      nic: '',
+      dob: '',
+      name: '',
+      address: '',
+      contactNo: '',
+      email: '',
+      registeredDate: '',
+      nameWithInitials: '',
+      password: '',
+    },
+    lisenseID: ''
   };
   driverDetails: [];
 
@@ -38,7 +41,8 @@ export class DriverAccountComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getDrivers();
+
+    this.getDriver();
   }
 
   onSubmit() {
@@ -52,17 +56,21 @@ export class DriverAccountComponent implements OnInit {
 
   goToUpdate(driverDetails) {
     this.driverService.driver = this.driver;
-    this.router.navigate(['/main/update_user_account']);
+    this.router.navigate(['/main/update_driver']);
   }
 
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }
 
-  getDrivers() {
-    this.driverService.getDriver().subscribe((driver) => {
-      this.driverDetails = driver;
+  getDriver() {
+    this.driverService.getDriver(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((driver) => {
+      this.driver = driver;
       console.log(this.driverDetails);
     });
+  }
+
+  deleteDriver(driverDetails: []) {
+
   }
 }

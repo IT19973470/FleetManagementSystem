@@ -25,6 +25,7 @@ export class DriverRegistrationComponent implements OnInit {
       registeredDate: '',
       nameWithInitials: '',
       password: '',
+      vehicle_driver_management_clerk_vehicle_driver_management_id: 'EM001'
     }
   };
 
@@ -37,7 +38,7 @@ export class DriverRegistrationComponent implements OnInit {
   onSubmit() {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['main/driver_account'])
+      this.router.navigate(['/login'])
     })
   }
 }

@@ -33,7 +33,7 @@ export class TransportManagerService {
   }
 
   updateDelivery(deliveryDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
+    return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryItem, deliveryDetail);
   }
 
   deleteDelivery(deliveryDetailId): Observable<any> {

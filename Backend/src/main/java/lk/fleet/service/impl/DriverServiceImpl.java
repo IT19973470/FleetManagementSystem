@@ -28,7 +28,7 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO addDriver(Driver driver) {
         driver.setDriverID(driver.getUserAccount().getEmployeeID());
         userAccountRepository.save(driver.getUserAccount());
-        return new DriverDTO(driverRepository.save(driver),new UserAccountDTO(driver.getUserAccount()));
+        return new DriverDTO(driverRepository.save(driver), new UserAccountDTO(driver.getUserAccount()));
     }
 
     @Override
@@ -59,15 +59,13 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public List<DriverDTO> getDrivers() {
-        List<Driver> drivers = driverRepository.findAll();
-        List<DriverDTO> driverDTOS = new ArrayList<>();
-
-        for (Driver driver : drivers) {
-            driverDTOS.add(new DriverDTO(driver, new UserAccountDTO(driver.getUserAccount())));
+    public DriverDTO getDriver(String driverId) {
+        Optional<Driver> driverOptional = driverRepository.findById(driverId);
+        if (driverOptional.isPresent()) {
+            Driver driver = driverOptional.get();
+            return new DriverDTO(driver, new UserAccountDTO(driver.getUserAccount()));
         }
-
-        return driverDTOS;
+        return null;
     }
 
 }

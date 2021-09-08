@@ -1,11 +1,14 @@
 package lk.fleet.controller;
 
 
+import lk.fleet.dto.TVProgramDTO;
 import lk.fleet.entity.TVProgram;
 import lk.fleet.service.TVProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -29,4 +32,10 @@ public class TVProgramController {
     public ResponseEntity deleteTVProgram(@PathVariable String programID){
         return ResponseEntity.ok(tvProgramService.deleteTVProgram(programID));
     }
+    @GetMapping(value = "/getTvProgram")
+    public List<TVProgramDTO> getTvProgram(){
+        return tvProgramService.getTvProgram();
+    }
+
+
 }

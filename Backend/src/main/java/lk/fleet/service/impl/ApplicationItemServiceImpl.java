@@ -47,7 +47,7 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
         application.setApplicationID("App" + dateTime);
 
         ItemApplication itemApplication =application.getItemApplication();
-        itemApplication.setItemApplicationId("PassApp" + dateTime);
+        itemApplication.setItemApplicationId("ItemApp" + dateTime);
         itemApplication.setApplication(application);
 
         int count=0;

@@ -13,5 +13,5 @@ public interface DriverService {
 
     boolean deleteDriver(String driverID);
 
-    List<DriverDTO> getDrivers();
+    DriverDTO getDriver(String driverId);
 }

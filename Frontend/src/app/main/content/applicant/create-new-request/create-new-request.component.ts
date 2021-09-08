@@ -16,16 +16,22 @@ export class CreateNewRequestComponent implements OnInit {
 
   passengerpassengerApp = {
 
-    applicationID: '1',
+    applicationID: '',
     arrivaleDate: '',
     depatureDate: "",
     reason: '',
     vehicleType: '',
     destination: '',
+    type: 'P',
     passengerApplication: {
-      noOfPassengers: '5',
+      noOfPassengers: '1',
       passengerPassengerApplications: []
-    }
+    },
+    // itemApplication:{
+    //   itemItemApplications: [
+    //
+    //   ]
+    // }
   }
 
   Pass = {
@@ -33,7 +39,23 @@ export class CreateNewRequestComponent implements OnInit {
       passengerId: ''
     }
   };
+  tblIndex;
+  PassengerDB = []; //DB Passenger
+  ViewPassenger = [];//View Passenger
+  y = 0; //DB Passenger size
+  z = 0; //Array size
 
+  errorP =2; //
+  passengerOBJ; //Array Object
+
+
+// Item ={
+//   item:{
+//     itemID:'',
+//     itemName:'',
+//     qty:''
+//   }
+// }
   //Passenger.name;
   // x={
   //   applicationID:'',
@@ -42,51 +64,62 @@ export class CreateNewRequestComponent implements OnInit {
   //
   // };
   //
-  tblIndex;
 
   constructor(private applicant: ApplicantService, private router: Router) {
     //  this.Pass.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
+    this.errorP = 2;
+    this.getAllIPassengers()
+  }
 
+  getAllIPassengers() {
+    this.applicant.getAllPassengers().subscribe((deliveryItemDetails) => {
+      this.PassengerDB = deliveryItemDetails;
+      this.y = deliveryItemDetails.length;
+    })
   }
 
   onSubmit() {
     console.log(this.passengerpassengerApp);
+    // this.passengerpassengerApp.passengerApplication.noOfPassengers=this.z
     this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_item_delivery'])
+      this.router.navigate(['/main/available_transports'])
     })
   }
 
-  btnText = 'Add';
+  chkPassengerId() {
+    if (this.Pass.passenger.passengerId != '') {
+    }
+  }
 
   onSubmitPassenger() {
-    if (this.btnText === 'Add') {
-      this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
-      //this.passengerForm.resetForm();
+    for (let x = 0; x <= this.y; x++) {
+      this.passengerOBJ = this.PassengerDB[x];
+      if (this.Pass.passenger.passengerId === this.passengerOBJ.passengerId) {
+        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+        this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
+        this.ViewPassenger.push(this.passengerOBJ);
+        this.errorP = 0;
+        break;
+      } else {
+        this.errorP = 1;
+      }
     }
-    //   if (this.btnText === 'Add') {
-    //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-    // //   this.applicant.passengers.push(this.passengers);
-    // this.passengers = this.getNewPassenger();
-    //  this.applicantFrom.resetForm(this.passengers);
     this.setNewPassenger();
   }
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
-
-    //this.Pass.passenger = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.passenger);
-    this.btnText = 'Add';
 
   }
 
   setPassenger(passenger, i) {
     this.tblIndex = i;
     this.Pass.passenger.passengerId = passenger.passengerId;
-    this.btnText = 'Update';
+
   }
 
   getNewPassenger() {
@@ -95,61 +128,5 @@ export class CreateNewRequestComponent implements OnInit {
         {passengerId: ''},
     };
   }
-
-
-  // onSubmitPassenger() {
-  //   if (this.btnText === 'Add') {
-  //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-  //   } else if (this.btnText === 'Update') {
-  //     this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
-  //   }
-  //   this.setNewPassenger();
-  // }
-
-  // setPassenger(passenger,i) {
-  //   this.tblIndex = i;
-  //   this.passenger.passengerName = passenger.passengerName;
-  //   this.passenger.passengerNic = passenger.passengerNic;
-  //   this.passenger.contactNumber = passenger.contactNumber;
-  //   this.passenger.passengerType = passenger.passengerType;
-  // }
-
-  // setNewPassenger() {
-  //   this.passenger = this.getNewPassenger();
-  //   this.passengerForm.resetForm();
-  //   this.btnText = 'Add';
-  // }
-
-  // getNewPassenger() {
-  //   return {
-  //     passengerName: '',
-  //     passengerNic: '',
-  //     contactNumber: '',
-  //     passengerType: ''
-  //   };
-  //}
-
-
-  //  onSubmitItem() {
-  //    this.deliveryDetail.passengers.push(this.passenger);
-  //    this.passenger = this.getNewPassenger();
-  //    this.applicantFrom.resetForm(this.passenger);
-  //  }
-  //
-  //  setItems(passenger) {
-  //    this.passenger.passengerName = passenger.passengerName;
-  //    this.passenger.passengerNic = passenger.passengerNic;
-  //    this.passenger.contactNumber = passenger.contactNumber;
-  //    this.passenger.passengerType = passenger.passengerType;
-  //  }
-  //
-  //  getNewItems() {
-  //    return {
-  //      passengerName: '',
-  //      passengerNic: '',
-  //      contactNumber: '',
-  //      passengerType: ''
-  //    };
-  //  }
 
 }

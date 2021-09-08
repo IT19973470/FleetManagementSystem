@@ -1,6 +1,8 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Application;
+import lk.fleet.entity.PassengerApplication;
+import lk.fleet.entity.PassengerPassengerApplication;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,8 +16,9 @@ public class ApplicationDTO {
     private LocalDateTime depatureDate;
     private LocalDateTime arrivaleDate;
     private String reason;
+    private String type;
 
-    private PassengerAppDTO passengerAppDTO;
+    private PassengerAppDTO passengerApp;
 
     public ApplicationDTO(Application application) {
         if(application != null) {
@@ -26,16 +29,26 @@ public class ApplicationDTO {
             this.depatureDate=application.getDepatureDate();
             this.arrivaleDate=application.getArrivaleDate();
             this.reason=application.getReason();
+            this.type=application.getType();
+
         }
     }
 
 
-    public PassengerAppDTO getPassengerAppDTO() {
-        return passengerAppDTO;
+    public PassengerAppDTO getPassengerApp() {
+        return passengerApp;
     }
 
-    public void setPassengerAppDTO(PassengerAppDTO passengerAppDTO) {
-        this.passengerAppDTO = passengerAppDTO;
+    public void setPassengerApp(PassengerAppDTO passengerApp) {
+        this.passengerApp = passengerApp;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getApplicationID() {
@@ -93,6 +106,5 @@ public class ApplicationDTO {
     public void setReason(String reason) {
         this.reason = reason;
     }
-
 
 }
