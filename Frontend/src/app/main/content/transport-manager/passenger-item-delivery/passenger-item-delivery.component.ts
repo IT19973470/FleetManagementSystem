@@ -5,11 +5,11 @@ import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 
 @Component({
-  selector: 'app-item-passenger-delivery',
-  templateUrl: './item-passenger-delivery.component.html',
-  styleUrls: ['./item-passenger-delivery.component.css']
+  selector: 'app-passenger-item-delivery',
+  templateUrl: './passenger-item-delivery.component.html',
+  styleUrls: ['./passenger-item-delivery.component.css']
 })
-export class ItemPassengerDeliveryComponent implements OnInit {
+export class PassengerItemDeliveryComponent implements OnInit {
 
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;

@@ -3,6 +3,7 @@ import {NavbarService} from "../../../../_service/navbar.service";
 import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-item-delivery',
@@ -28,7 +29,7 @@ export class ItemDeliveryComponent implements OnInit {
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
     this.item = this.getNewItem();
   }
 
@@ -44,12 +45,37 @@ export class ItemDeliveryComponent implements OnInit {
   }
 
   onSubmitItem() {
-    if (this.btnText === 'Add') {
+    if (this.deliveryDetail.deliveryItemDetails.length === 0) {
       this.deliveryDetail.deliveryItemDetails.push(this.item);
-    } else if (this.btnText === 'Update') {
-      this.deliveryDetail.deliveryItemDetails[this.tblIndex] = this.item
+      this.notifierService.notify("success", "Item added successfully");
+      this.setNewItem();
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
+        if (this.btnText === 'Update' && i === this.tblIndex) {
+          continue;
+        }
+        let item = this.deliveryDetail.deliveryItemDetails[i];
+        if (
+          (item.itemName !== '' && item.itemName === this.item.itemName)
+        ) {
+          count++;
+        }
+        if (item.itemName === this.item.itemName) {
+          this.notifierService.notify("error", "Duplicate Item Name found");
+          break;
+        }
+      }
+      if (this.btnText === 'Add' && count === 0) {
+        this.deliveryDetail.deliveryItemDetails.push(this.item);
+        this.notifierService.notify("success", "Item added successfully");
+        this.setNewItem();
+      } else if (this.btnText === 'Update' && count === 0) {
+        this.deliveryDetail.deliveryItemDetails[this.tblIndex] = this.item
+        this.notifierService.notify("success", "Item updated successfully");
+        this.setNewItem();
+      }
     }
-    this.setNewItem();
   }
 
   setItem(item, i) {

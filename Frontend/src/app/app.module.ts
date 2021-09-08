@@ -68,14 +68,14 @@ import {UpdateDetailsComponent} from './main/content/security-officer/update-det
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
 import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
-import {ItemPassengerDeliveryComponent} from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
-import {ViewItemPassengerDeliveryComponent} from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
-import {UpdateItemPassengerDeliveryComponent} from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
 
 import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 
 import {UpdateOverTimeComponent} from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
+import { ViewPassengerItemDeliveryComponent } from './main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component';
+import { UpdatePassengerItemDeliveryComponent } from './main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component';
+import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -179,12 +179,12 @@ const customNotifierOptions: NotifierOptions = {
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
     UpdateUserAccountComponent,
-    ItemPassengerDeliveryComponent,
-    ViewItemPassengerDeliveryComponent,
-    UpdateItemPassengerDeliveryComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    PassengerItemDeliveryComponent,
+    ViewPassengerItemDeliveryComponent,
+    UpdatePassengerItemDeliveryComponent
   ],
 
   imports: [

@@ -40,13 +40,13 @@ import {UpdateDetailsComponent} from "./main/content/security-officer/update-det
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
-import {ItemPassengerDeliveryComponent} from "./main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component";
-import {ViewItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component";
-import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component";
 
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
 
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
+import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
+import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
 
 
 const routes: Routes = [
@@ -88,16 +88,16 @@ const routes: Routes = [
         component: UpdatePassengerDeliveryComponent
       },
       {
-        path: 'item_passenger_delivery',
-        component: ItemPassengerDeliveryComponent
+        path: 'passenger_item_delivery',
+        component: PassengerItemDeliveryComponent
       },
       {
-        path: 'update_item_passenger_delivery',
-        component: UpdateItemPassengerDeliveryComponent
+        path: 'update_passenger_item_delivery',
+        component: UpdatePassengerItemDeliveryComponent
       },
       {
-        path: 'view_item_passenger_delivery',
-        component: ViewItemPassengerDeliveryComponent
+        path: 'view_passenger_item_delivery',
+        component: ViewPassengerItemDeliveryComponent
       },
       {
         path: 'create_user_account',
