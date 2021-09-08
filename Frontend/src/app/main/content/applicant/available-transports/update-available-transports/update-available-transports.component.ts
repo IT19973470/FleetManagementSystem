@@ -33,8 +33,9 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     reason: '',
     vehicleType: '',
     destination: '',
-    passengerApplication: {
+    passengerApp: {
       noOfPassengers: '5',
+      passengerApplicationID:'',
       passengerPassengerApplications: []
     }
   }
@@ -44,16 +45,16 @@ export class UpdateAvailableTransportsComponent implements OnInit {
       passengerId: ''
     }
   };
-  item;
-  btnText = 'Add';
-  tblIndex;
-  PassengerDB=[];
-  Pp=[];
-  y=0;
-  errorP:boolean=false;
-  z;
-  zz=[];
 
+  tblIndex;
+  DBPass;
+  PassengerDB = []; //DB Passenger
+  ViewPassenger;//View Passenger
+  y = 0; //DB Passenger size
+  z = 0; //Array size
+
+  errorP =2; //
+  passengerOBJ; //Array Object
 
   constructor(private applicantService: ApplicantService, private router: Router) {
    // this.item = this.getNewItem();
@@ -61,6 +62,17 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.passengerpassengerApp = this.applicantService.deliveryItem;
+    this.getAllIPassengers()
+  }
+
+  getAllIPassengers() {
+    this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
+      this.PassengerDB = deliveryItemDetails;
+      this.DBPass=this.PassengerDB;
+      this.ViewPassenger=this.DBPass.passengerApp.passengerPassengerApplications;
+      console.log(this.PassengerDB);
+      this.y = deliveryItemDetails.length;
+    })
   }
 
   onSubmit() {
@@ -73,35 +85,45 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
 
   onSubmitPassenger() {
-    for( let  x=0; x<=this.y;x++) {
-      this.z = this.PassengerDB[x];
-      if (this.Pass.passenger.passengerId===this.z.passengerId) {
-        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
-        this.zz.push(this.z);
-        this.setNewPassenger();
-        this.errorP=false;
-        break;
-      }
 
-      else{
-        this.errorP=true;
-      }
+    console.log(this.passengerpassengerApp.applicationID);
+    console.log(this.Pass.passenger.passengerId);
+      this.applicantService.AddPassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,this.Pass.passenger.passengerId).subscribe((deliveryDetail) => {
+        this.ngOnInit();
+      })
 
-    }
+
+    // for (let x = 0; x <= this.y; x++) {
+    //   this.passengerOBJ = this.PassengerDB[x];
+    //
+    //   if (this.Pass.passenger.passengerId === this.passengerOBJ.passengerId) {
+    //     this.z = this.passengerpassengerApp.passengerApp.passengerPassengerApplications.length;
+    //     this.ViewPassenger.push(this.passengerOBJ);
+    //     this.errorP = 0;
+    //     break;
+    //   } else {
+    //     this.errorP = 1;
+    //   }
+    // }
+    this.setNewPassenger();
+  }
+
+  removePassenger(i,passengerId){
+    this.applicantService.deletePassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,passengerId).subscribe((deliveryDetail) => {
+      this.ngOnInit();
+    })
 
   }
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.passenger);
-    this.btnText = 'Add';
-
   }
 
   setPassenger(passenger, i) {
     this.tblIndex = i;
     this.Pass.passenger.passengerId = passenger.passengerId;
-    this.btnText = 'Update';
+
   }
 
   getNewPassenger() {
@@ -137,11 +159,8 @@ export class UpdateAvailableTransportsComponent implements OnInit {
    }
   //
   removeDelivery() {
-    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((reply) => {
-      if (reply) {
-        this.router.navigate(['/main/available_transports'])
-      }
-    })
+    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe()
+    this.router.navigate(['/main/available_transports']);
   }
 
 

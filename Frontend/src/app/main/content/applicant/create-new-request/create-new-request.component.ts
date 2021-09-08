@@ -45,7 +45,7 @@ export class CreateNewRequestComponent implements OnInit {
   y = 0; //DB Passenger size
   z = 0; //Array size
 
-  errorP: boolean = false; //
+  errorP =2; //
   passengerOBJ; //Array Object
 
 
@@ -70,6 +70,7 @@ export class CreateNewRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.errorP = 2;
     this.getAllIPassengers()
   }
 
@@ -89,8 +90,7 @@ export class CreateNewRequestComponent implements OnInit {
   }
 
   chkPassengerId() {
-    if (this.Pass.passenger.passengerId === '') {
-      this.errorP = false;
+    if (this.Pass.passenger.passengerId != '') {
     }
   }
 
@@ -101,15 +101,13 @@ export class CreateNewRequestComponent implements OnInit {
         this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
         this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
         this.ViewPassenger.push(this.passengerOBJ);
-        this.setNewPassenger();
-        this.errorP = false;
+        this.errorP = 0;
         break;
       } else {
-        this.errorP = true;
+        this.errorP = 1;
       }
-
     }
-
+    this.setNewPassenger();
   }
 
   setNewPassenger() {

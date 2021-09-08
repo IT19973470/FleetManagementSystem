@@ -71,6 +71,7 @@ x:boolean=false;
         let a=this.ItemApp.itemApplication.itemItemApplications[x];
         if(a.item.itemID==check.item.itemID){
            this.flag=0;
+           break;
         }
         else {
           this.flag=1;

@@ -127,9 +127,13 @@
                          #passengerId="ngModel"
                          (keyup)="chkPassengerId()"
                          name="passengerType" required>
-                  <div *ngIf="(errorP==true)"
-                       class="validErr">
-                    Passenger ID is Not valid
+                  <div *ngIf="(errorP==1)"
+                       class="validErr" style="color:red">
+                    Passenger ID is Not Found
+                  </div>
+                  <div *ngIf="(errorP==0)"
+                       class="validErr" style="color:green">
+                    Passenger ID Found
                   </div>
                 </div>
 
