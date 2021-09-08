@@ -5,15 +5,15 @@ import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 
 @Component({
-  selector: 'app-update-passenger-delivery',
-  templateUrl: './update-passenger-delivery.component.html',
-  styleUrls: ['./update-passenger-delivery.component.css']
+  selector: 'app-update-passenger-item-delivery',
+  templateUrl: './update-passenger-item-delivery.component.html',
+  styleUrls: ['./update-passenger-item-delivery.component.css']
 })
-export class UpdatePassengerDeliveryComponent implements OnInit {
+export class UpdatePassengerItemDeliveryComponent implements OnInit {
 
+  @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
   deliveryDetail = {
-    deliveryId: '',
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
@@ -21,33 +21,77 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     companyName: '',
     deliveryDate: '',
     deliveryTime: '',
-    deliveryTimeActual: '',
     deliveryDateTime: '',
+    deliveryTimeActual:'',
+    deliveryItemDetails: [],
     deliveryPassengerDetails: []
   };
 
-  passenger;
-  btnText = 'Add';
-  tblIndex;
+  item;
+  btnTextItem = 'Add';
+  tblIndexItem;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
+  passenger;
+  btnTextPassenger = 'Add';
+  tblIndexPassenger;
+
+  constructor(private transportManagerService: TransportManagerService, private router: Router, private notifierService: NotifierService) {
+    this.item = this.getNewItem();
     this.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
-    this.deliveryDetail = this.transportManagerService.deliveryPassenger;
+    this.deliveryDetail = this.transportManagerService.deliveryPassengerItem;
   }
 
   onSubmit() {
-    // console.log(this.deliveryDetail)
     this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
     this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_passenger_delivery'])
+      this.router.navigate(['/main/view_passenger_item_delivery'])
     })
   }
 
+  onSubmitItem() {
+    if (this.deliveryDetail.deliveryItemDetails.length === 0) {
+      this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+        this.deliveryDetail.deliveryItemDetails.push(item);
+        this.notifierService.notify("success", "Item added successfully");
+        this.setNewItem();
+      })
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
+        if (this.btnTextItem === 'Update' && i === this.tblIndexItem) {
+          continue;
+        }
+        let item = this.deliveryDetail.deliveryItemDetails[i];
+        if (
+          (item.itemName !== '' && item.itemName === this.item.itemName)
+        ) {
+          count++;
+        }
+        if (item.itemName === this.item.itemName) {
+          this.notifierService.notify("error", "Duplicate Item Name found");
+          break;
+        }
+      }
+      if (this.btnTextItem === 'Add' && count === 0) {
+        this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+          this.deliveryDetail.deliveryItemDetails.push(item);
+          this.notifierService.notify("success", "Item added successfully");
+          this.setNewItem();
+        })
+      } else if (this.btnTextItem === 'Update' && count === 0) {
+        this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
+          this.deliveryDetail.deliveryItemDetails[this.tblIndexItem] = item
+          this.notifierService.notify("success", "Item updated successfully");
+          this.setNewItem();
+        })
+      }
+    }
+  }
+
   onSubmitPassenger() {
-    this.passenger.delivery.deliveryId = this.deliveryDetail.deliveryId;
     if (this.deliveryDetail.deliveryPassengerDetails.length === 0) {
       this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
         this.deliveryDetail.deliveryPassengerDetails.push(passenger);
@@ -57,7 +101,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     } else {
       let count = 0;
       for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
-        if (this.btnText === 'Update' && i === this.tblIndex) {
+        if (this.btnTextPassenger === 'Update' && i === this.tblIndexPassenger) {
           continue;
         }
         let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
@@ -78,65 +122,57 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
           break;
         }
       }
-      if (this.btnText === 'Add' && count === 0) {
+      if (this.btnTextPassenger === 'Add' && count === 0) {
         this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
           this.deliveryDetail.deliveryPassengerDetails.push(passenger);
           this.notifierService.notify("success", "Passenger added successfully");
           this.setNewPassenger();
         })
-      } else if (this.btnText === 'Update' && count === 0) {
+      } else if (this.btnTextPassenger === 'Update' && count === 0) {
         this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
-          this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
+          this.deliveryDetail.deliveryPassengerDetails[this.tblIndexPassenger] = passenger
           this.notifierService.notify("success", "Passenger updated successfully");
           this.setNewPassenger();
         })
       }
     }
-
-    // // console.log(this.item)
-    // if (this.btnText === 'Add') {
-    //   this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
-    //     this.deliveryDetail.deliveryPassengerDetails.push(passenger);
-    //   })
-    // } else if (this.btnText === 'Update') {
-    //   // console.log(this.item)
-    //   this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
-    //     this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
-    //   })
-    // }
-    // this.setNewPassenger();
   }
 
-  removePassenger(passengerDetailId, i) {
-    this.transportManagerService.deletePassengerOnDelivery(passengerDetailId).subscribe((reply) => {
-      if (reply) {
-        this.deliveryDetail.deliveryPassengerDetails.splice(i, 1)
-      }
-    })
-  }
-
-  removeDelivery() {
-    this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
-      if (reply) {
-        this.router.navigate(['/main/view_passenger_delivery'])
-      }
-    })
+  setItem(item, i) {
+    this.tblIndexItem = i;
+    this.item.itemName = item.itemName;
+    this.item.itemType = item.itemType;
+    this.item.itemQty = item.itemQty;
+    this.btnTextItem = 'Update';
   }
 
   setPassenger(passenger, i) {
-    this.tblIndex = i;
-    this.passenger.passengerDetailId = passenger.passengerDetailId;
+    this.tblIndexPassenger = i;
     this.passenger.passengerName = passenger.passengerName;
     this.passenger.passengerNic = passenger.passengerNic;
     this.passenger.contactNumber = passenger.contactNumber;
     this.passenger.passengerType = passenger.passengerType;
-    this.btnText = 'Update';
+    this.btnTextPassenger = 'Update';
+  }
+
+  setNewItem() {
+    this.item = this.getNewItem();
+    this.itemForm.resetForm(this.item);
+    this.btnTextItem = 'Add';
   }
 
   setNewPassenger() {
     this.passenger = this.getNewPassenger();
     this.passengerForm.resetForm();
-    this.btnText = 'Add';
+    this.btnTextPassenger = 'Add';
+  }
+
+  getNewItem() {
+    return {
+      itemName: '',
+      itemType: '',
+      itemQty: 1
+    };
   }
 
   getNewPassenger() {
@@ -144,12 +180,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
       passengerName: '',
       passengerNic: '',
       contactNumber: '',
-      passengerType: '',
-      delivery: {
-        deliveryId: ''
-      }
+      passengerType: ''
     };
   }
-
-
 }

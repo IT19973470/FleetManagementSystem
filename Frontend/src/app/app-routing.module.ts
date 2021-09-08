@@ -12,7 +12,6 @@ import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-d
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
 import {VehicleComponent} from "./main/content/vehicleDriver-manager/vehicle/vehicle.component";
-
 import {CreateUserAccountComponent} from "./main/content/general-manager/create-user-account/create-user-account.component";
 import {AvailableTransportsComponent} from "./main/content/applicant/available-transports/available-transports.component";
 import {CreateNewRequestComponent} from "./main/content/applicant/create-new-request/create-new-request.component";
@@ -20,45 +19,30 @@ import {VehicleAccidentComponent} from "./main/content/accident-maintenance-mana
 import {VehicleMaintenanceComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance/vehicle-maintenance.component";
 import {VehicleAccidentReportComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-report/vehicle-accident-report.component";
 import {VehicleMaintenanceReportComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-report/vehicle-maintenance-report.component";
-
 import {ApplicationStatusComponent} from "./main/content/applicant/application-status/application-status.component";
-
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {UpdateItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component";
 import {UserAccountListComponent} from "./main/content/general-manager/user-account-list/user-account-list.component";
 import {UpdateUserAccountComponent} from "./main/content/general-manager/user-account-list/update-user-account/update-user-account.component";
 import {TokenComponent} from "./main/content/security-officer/token/token.component";
-
 import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
-
-
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
-
 import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
-
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
 import {NotificationsComponent} from "./main/content/applicant/notifications/notifications.component";
 import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.component";
-
-
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
-
-
 import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
-
-
-import {ItemPassengerDeliveryComponent} from "./main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component";
-import {ViewItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component";
-import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component";
-
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
-
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
+import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
+import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
 
 
@@ -101,16 +85,16 @@ const routes: Routes = [
         component: UpdatePassengerDeliveryComponent
       },
       {
-        path: 'item_passenger_delivery',
-        component: ItemPassengerDeliveryComponent
+        path: 'passenger_item_delivery',
+        component: PassengerItemDeliveryComponent
       },
       {
-        path: 'update_item_passenger_delivery',
-        component: UpdateItemPassengerDeliveryComponent
+        path: 'update_passenger_item_delivery',
+        component: UpdatePassengerItemDeliveryComponent
       },
       {
-        path: 'view_item_passenger_delivery',
-        component: ViewItemPassengerDeliveryComponent
+        path: 'view_passenger_item_delivery',
+        component: ViewPassengerItemDeliveryComponent
       },
       {
         path: 'create_user_account',
