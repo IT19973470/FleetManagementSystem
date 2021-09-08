@@ -32,7 +32,6 @@ import {TokenComponent} from "./main/content/security-officer/token/token.compon
 import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
 
 
-
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
@@ -48,6 +47,11 @@ import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.comp
 
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+
+
+import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
+
+
 import {ItemPassengerDeliveryComponent} from "./main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component";
 import {ViewItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component";
 import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component";
@@ -55,6 +59,7 @@ import {UpdateItemPassengerDeliveryComponent} from "./main/content/transport-man
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
 
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
 
 
 const routes: Routes = [
@@ -128,7 +133,7 @@ const routes: Routes = [
         component: TransportRequestsComponent
       },
       {
-        path: 'tv-program',
+        path: 'tv_program',
         component: TvProgramComponent
       },
       {
@@ -234,6 +239,14 @@ const routes: Routes = [
         path: 'update_vehicle',
         component: UpdateVehicleComponent
       },
+      {
+        path: 'update_accident_details',
+        component: UpdateAccidentDetailsComponent
+      },
+      {
+        path: 'update_driver',
+        component: UpdateDriverComponent
+      }
     ]
   }
 ];

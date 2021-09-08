@@ -11,18 +11,21 @@ import {DriverService} from '../../../../_service/driver.service';
 export class DriverAccountComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   driver = {
-    employeeID: '',
-    accountType: '',
-    nic: '',
-    dob: '',
-    name: '',
-    address: '',
-    contactNo: '',
-    email: '',
-    registeredDate: '',
-    nameWithInitials: '',
-    password: '',
-    lisenseid: ''
+    driverID: '',
+    userAccount: {
+      employeeID: '',
+      accountType: '',
+      nic: '',
+      dob: '',
+      name: '',
+      address: '',
+      contactNo: '',
+      email: '',
+      registeredDate: '',
+      nameWithInitials: '',
+      password: '',
+    },
+    lisenseID: ''
   };
   driverDetails: [];
 
@@ -38,6 +41,7 @@ export class DriverAccountComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.getDriver();
   }
 
@@ -52,7 +56,7 @@ export class DriverAccountComponent implements OnInit {
 
   goToUpdate(driverDetails) {
     this.driverService.driver = this.driver;
-    this.router.navigate(['/main/update_over_time']);
+    this.router.navigate(['/main/update_driver']);
   }
 
   isTrueOrFalse(reply) {
@@ -61,7 +65,7 @@ export class DriverAccountComponent implements OnInit {
 
   getDriver() {
     this.driverService.getDriver(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((driver) => {
-      this.driverDetails = driver;
+      this.driver = driver;
       console.log(this.driverDetails);
     });
   }

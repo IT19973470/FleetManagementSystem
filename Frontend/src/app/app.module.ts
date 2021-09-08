@@ -73,6 +73,11 @@ import { UpdateDetailsComponent } from './main/content/security-officer/update-d
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
 import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+
+import { UpdateAccidentDetailsComponent } from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
+
+// import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
+
 import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
 import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
 import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
@@ -80,7 +85,7 @@ import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-m
 import { TvProgramComponent } from './main/content/general-manager/tv-program/tv-program.component';
 
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
-import { UpdateDriverComponent } from './update-driver/update-driver.component';
+import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
 
 
 
@@ -153,10 +158,9 @@ import { UpdateDriverComponent } from './update-driver/update-driver.component';
     MeterDetailComponent,
     UpdateDetailsComponent,
     //ViewApprovedTripDetailsComponent
-
-
-
     UpdateUserAccountComponent,
+    UpdateAccidentDetailsComponent,
+    // VehiclePoolComponent,
     UpdateOverTimeComponent,
     UpdateUserAccountComponent,
     UpdateDriverComponent,

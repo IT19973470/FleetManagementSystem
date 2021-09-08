@@ -1,36 +1,58 @@
-<table class="table table-striped" style="margin-top: 40px">
-  <thead>
-  <tr>
-    <th scope="col" width="10%">#</th>
-    <th scope="col" width="10%">Accident ID</th>
-    <th scope="col" width="10%">Accident Date</th>
-    <th scope="col" width="10%">Accident Time</th>
-    <th scope="col" width="10%">Insurance No</th>
-    <th scope="col" width="10%">Insurance Status</th>
-    <th scope="col" width="10%" style="text-align: center">View</th>
-    <th scope="col" width="10%" style="text-align: center">Update</th>
-  </tr>
-  </thead>
+<div class="row">
+  <div class="col-12">
 
-  <tbody>
-  <tr *ngFor="let vehicleAccident of vehicleAccidentDetails; let i = index">
-    <th scope="row">{{i+1}}</th>
-    <td>{{vehicleAccident.vehicleAccidentID}}</td>
-    <td>{{vehicleAccident.accidentDate}}</td>
-    <td>{{vehicleAccident.accidentTime}}</td>
-    <td>{{vehicleAccident.insuranceNo}}</td>
-    <td>{{vehicleAccident.insuranceStatus}}</td>
+  </div>
+</div>
 
-    <td style="text-align: center">
-      <i class="fas fa-search" style="cursor: pointer" (click)="setItem(vehicleAccident)"></i>
-    </td>
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
 
-<!--    <td style="text-align: center">-->
-<!--      <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
-<!--    </td>-->
-  </tr>
-  </tbody>
-</table>
+    <span style="font-weight: bold;margin-left: 50px">Search by Vehicle ID : </span>
+    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="goToUpdate(vehicleAccident)">
+      Search
+    </button>
 
+    <div style="width: 100%">
 
+      <table class="table table-striped" style="margin-top: 40px">
+        <thead>
+        <tr>
+          <th scope="col" width="10%">#</th>
+          <th scope="col" width="10%">Accident ID</th>
+          <th scope="col" width="10%">Vehicle ID</th>
+          <th scope="col" width="10%">Driver ID</th>
+          <th scope="col" width="10%">Accident Date</th>
+          <th scope="col" width="10%">Accident Time</th>
+          <th scope="col" width="10%">Insurance No</th>
+          <th scope="col" width="10%">Insurance Status</th>
+          <th scope="col" width="10%" style="text-align: center">Update</th>
+          <th scope="col" width="10%" style="text-align: center">Delete</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr *ngFor="let vehicleAccident of vehicleAccidentDetails; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{vehicleAccident.vehicleAccidentID}}</td>
+          <td>{{vehicleAccident.vehicleID}}</td>
+          <td>{{vehicleAccident.driverID}}</td>
+          <td>{{vehicleAccident.accidentDate}}</td>
+          <td>{{vehicleAccident.accidentTime}}</td>
+          <td>{{vehicleAccident.insuranceNo}}</td>
+          <td>{{vehicleAccident.insuranceStatus}}</td>
+
+          <td style="text-align: center">
+                <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicleAccident)"></i>
+          </td>
+
+          <td style="text-align: center" >
+            <i class="fas fa-trash" style="cursor: pointer"  (click)="goToUpdate(vehicleAccident)" ></i>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

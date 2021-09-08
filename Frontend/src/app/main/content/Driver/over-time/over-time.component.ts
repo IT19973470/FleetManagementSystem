@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DriverService} from "../../../../_service/driver.service";
 import {Router} from "@angular/router";
 
@@ -10,22 +10,27 @@ import {Router} from "@angular/router";
 export class OverTimeComponent implements OnInit {
 
   addOT = {
-    overTimeID:'',
-    otDate:'',
-    noOfShifts:'',
-    startTime:'',
-    endTime:''
+    overTimeID: '',
+    otDate: '',
+    noOfShifts: '',
+    startTime: '',
+    endTime: '',
+    driver: {
+      driverID: ''
+    }
   };
 
-  constructor(private driverService: DriverService, private router: Router) { }
+  constructor(private driverService: DriverService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     console.log(this.addOT);
-    this.driverService.addOT(this.addOT).subscribe((addOT)=>{
-      this.router.navigate(['main/View_Over_Time']);
+    this.addOT.driver.driverID = JSON.parse(localStorage.getItem('user'))['employeeID']
+    this.driverService.addOT(this.addOT).subscribe((addOT) => {
+      this.router.navigate(['main/view_over_time']);
     })
   }
 

@@ -1,15 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {DriverService} from "../../../../../_service/driver.service";
 import {Router} from "@angular/router";
-import {DriverService} from "../../../../_service/driver.service";
 
 @Component({
-  selector: 'app-driver-registration',
-  templateUrl: './driver-registration.component.html',
-  styleUrls: ['./driver-registration.component.css']
+  selector: 'app-update-driver',
+  templateUrl: './update-driver.component.html',
+  styleUrls: ['./update-driver.component.css']
 })
-export class DriverRegistrationComponent implements OnInit {
-
+export class UpdateDriverComponent implements OnInit {
   @ViewChild('driverRegistrationForm', {static: true}) public driverRegistrationForm: NgForm;
   driverDetail = {
     lisenseID: '',
@@ -25,21 +24,39 @@ export class DriverRegistrationComponent implements OnInit {
       registeredDate: '',
       nameWithInitials: '',
       password: '',
-      vehicle_driver_management_clerk_vehicle_driver_management_id: 'EM001'
     }
   };
 
   constructor(private driverService: DriverService, private router: Router) {
+    this.driverDetail = this.getDriver();
   }
 
   ngOnInit(): void {
+    this.driverDetail =this.driverService.driver;
   }
 
   onSubmit() {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['/login'])
+      this.router.navigate(['main/driver_account'])
     })
   }
-}
 
+  getDriver() {
+    return {
+      lisenseID: '',
+      userAccount: {
+        employeeID: '',
+        accountType: 'DR',
+        nic: '',
+        dob: '',
+        name: '',
+        address: '',
+        contactNo: '',
+        email: '',
+        registeredDate: '',
+        nameWithInitials: '',
+        password: '',
+      }
+  };
+}}

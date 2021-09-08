@@ -2,7 +2,9 @@ package lk.fleet.service.impl;
 
 
 import lk.fleet.dto.MeterDetailDTO;
+import lk.fleet.dto.TokenDTO;
 import lk.fleet.entity.MeterDetail;
+import lk.fleet.entity.Token;
 import lk.fleet.repository.MeterDetailRepository;
 import lk.fleet.service.MeterDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,12 @@ public class MeterDetailServiceImpl implements MeterDetailService {
     }
 
     @Override
-    public MeterDetailDTO updateMeterDetail(String meterID, MeterDetail meterDetail) {
-        Optional <MeterDetail> optionalMeterDetail = meterDetailRepository.findById(meterID);
+    public MeterDetailDTO updateMeterDetail(String meterId, MeterDetail meterDetail) {
+        Optional <MeterDetail> optionalMeterDetail = meterDetailRepository.findById(meterId);
         if (optionalMeterDetail.isPresent()) {
             MeterDetail meterDetailObj = optionalMeterDetail.get();
+            meterDetailObj.setMeterId(meterDetail.getMeterId());
+            meterDetailObj.setOutMeter(meterDetail.getOutMeter());
             meterDetailObj.setInMeter(meterDetail.getInMeter());
             meterDetailObj.setMileage(meterDetail.getMileage());
             return new MeterDetailDTO(meterDetailRepository.save(meterDetailObj));
@@ -39,8 +43,8 @@ public class MeterDetailServiceImpl implements MeterDetailService {
     }
 
     @Override
-    public boolean deleteMeterDetail(String meterID) {
-        meterDetailRepository.deleteById(meterID);
+    public boolean deleteMeterDetail(String meterId) {
+        meterDetailRepository.deleteById(meterId);
         return true;
     }
 
