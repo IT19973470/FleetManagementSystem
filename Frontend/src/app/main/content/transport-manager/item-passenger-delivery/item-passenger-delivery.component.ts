@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-item-passenger-delivery',
@@ -33,7 +34,7 @@ export class ItemPassengerDeliveryComponent implements OnInit {
   btnTextPassenger = 'Add';
   tblIndexPassenger;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router, private notifierService: NotifierService) {
     this.item = this.getNewItem();
     this.passenger = this.getNewPassenger();
   }
@@ -50,21 +51,78 @@ export class ItemPassengerDeliveryComponent implements OnInit {
   }
 
   onSubmitItem() {
-    if (this.btnTextItem === 'Add') {
+    if (this.deliveryDetail.deliveryItemDetails.length === 0) {
       this.deliveryDetail.deliveryItemDetails.push(this.item);
-    } else if (this.btnTextItem === 'Update') {
-      this.deliveryDetail.deliveryItemDetails[this.tblIndexItem] = this.item
+      this.notifierService.notify("success", "Item added successfully");
+      this.setNewItem();
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
+        if (this.btnTextItem === 'Update' && i === this.tblIndexItem) {
+          continue;
+        }
+        let item = this.deliveryDetail.deliveryItemDetails[i];
+        if (
+          (item.itemName !== '' && item.itemName === this.item.itemName)
+        ) {
+          count++;
+        }
+        if (item.itemName === this.item.itemName) {
+          this.notifierService.notify("error", "Duplicate Item Name found");
+          break;
+        }
+      }
+      if (this.btnTextItem === 'Add' && count === 0) {
+        this.deliveryDetail.deliveryItemDetails.push(this.item);
+        this.notifierService.notify("success", "Item added successfully");
+        this.setNewItem();
+      } else if (this.btnTextItem === 'Update' && count === 0) {
+        this.deliveryDetail.deliveryItemDetails[this.tblIndexItem] = this.item
+        this.notifierService.notify("success", "Item updated successfully");
+        this.setNewItem();
+      }
     }
-    this.setNewItem();
   }
 
   onSubmitPassenger() {
-    if (this.btnTextPassenger === 'Add') {
+    if (this.deliveryDetail.deliveryPassengerDetails.length === 0) {
       this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-    } else if (this.btnTextPassenger === 'Update') {
-      this.deliveryDetail.deliveryPassengerDetails[this.tblIndexPassenger] = this.passenger
+      this.notifierService.notify("success", "Passenger added successfully");
+      this.setNewPassenger();
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
+        if (this.btnTextPassenger === 'Update' && i === this.tblIndexPassenger) {
+          continue;
+        }
+        let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
+        if (
+          (passenger.passengerNic !== '' && passenger.passengerNic === this.passenger.passengerNic) ||
+          (passenger.contactNumber !== '' && passenger.contactNumber === this.passenger.contactNumber)
+        ) {
+          count++;
+        }
+        if (passenger.passengerNic === this.passenger.passengerNic && passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate NIC and Contact No found");
+          break;
+        } else if (passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate Contact No found");
+          break;
+        } else if (passenger.passengerNic === this.passenger.passengerNic) {
+          this.notifierService.notify("error", "Duplicate NIC found");
+          break;
+        }
+      }
+      if (this.btnTextPassenger === 'Add' && count === 0) {
+        this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+        this.notifierService.notify("success", "Passenger added successfully");
+        this.setNewPassenger();
+      } else if (this.btnTextPassenger === 'Update' && count === 0) {
+        this.deliveryDetail.deliveryPassengerDetails[this.tblIndexPassenger] = this.passenger
+        this.notifierService.notify("success", "Passenger updated successfully");
+        this.setNewPassenger();
+      }
     }
-    this.setNewPassenger();
   }
 
   setItem(item, i) {
@@ -81,6 +139,7 @@ export class ItemPassengerDeliveryComponent implements OnInit {
     this.passenger.passengerNic = passenger.passengerNic;
     this.passenger.contactNumber = passenger.contactNumber;
     this.passenger.passengerType = passenger.passengerType;
+    this.btnTextPassenger = 'Update';
   }
 
   setNewItem() {

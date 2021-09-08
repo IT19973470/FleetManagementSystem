@@ -1,6 +1,5 @@
-
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -13,13 +12,13 @@ import {SignupComponent} from './signup/signup.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { ItemDeliveryComponent } from './main/content/transport-manager/item-delivery/item-delivery.component';
-import { ViewItemDeliveryComponent } from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
-import { NavTransportManagerComponent } from './main/navbar/nav-transport-manager/nav-transport-manager.component';
-import { ViewPassengerDeliveryComponent } from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
-import { PassengerDeliveryComponent } from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
-import { NavVehicleDriverManagerComponent } from './main/navbar/nav-vehicle-driver-manager/nav-vehicle-driver-manager.component';
-import { VehicleComponent } from './main/content/vehicleDriver-manager/vehicle/vehicle.component';
+import {ItemDeliveryComponent} from './main/content/transport-manager/item-delivery/item-delivery.component';
+import {ViewItemDeliveryComponent} from './main/content/transport-manager/view-item-delivery/view-item-delivery.component';
+import {NavTransportManagerComponent} from './main/navbar/nav-transport-manager/nav-transport-manager.component';
+import {ViewPassengerDeliveryComponent} from './main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component';
+import {PassengerDeliveryComponent} from './main/content/transport-manager/passenger-delivery/passenger-delivery.component';
+import {NavVehicleDriverManagerComponent} from './main/navbar/nav-vehicle-driver-manager/nav-vehicle-driver-manager.component';
+import {VehicleComponent} from './main/content/vehicleDriver-manager/vehicle/vehicle.component';
 import {UpdateItemDeliveryComponent} from './main/content/transport-manager/view-item-delivery/update-item-delivery/update-item-delivery.component';
 import {NavGeneralManagerComponent} from './main/navbar/nav-general-manager/nav-general-manager.component';
 import {CreateUserAccountComponent} from './main/content/general-manager/create-user-account/create-user-account.component';
@@ -46,39 +45,79 @@ import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update
 import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
 import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
 
-import { NavSecurityOfficerComponent } from './main/navbar/nav-security-officer/nav-security-officer.component';
-import { TokenComponent } from './main/content/security-officer/token/token.component';
+import {NavSecurityOfficerComponent} from './main/navbar/nav-security-officer/nav-security-officer.component';
+import {TokenComponent} from './main/content/security-officer/token/token.component';
 
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
-import { BookingsComponent } from './main/content/booking_management_clerk/bookings/bookings.component';
-import { ViewBookingsComponent } from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
-import { UpdateBookingsComponent } from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
-import { ShiftComponent } from './main/content/booking_management_clerk/shift/shift.component';
-import { UpdateShiftComponent } from './main/content/booking_management_clerk/update-shift/update-shift.component';
-import { ViewShiftComponent } from './main/content/booking_management_clerk/view-shift/view-shift.component';
+import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
+import {ViewBookingsComponent} from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
+import {UpdateBookingsComponent} from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
+import {ShiftComponent} from './main/content/booking_management_clerk/shift/shift.component';
+import {UpdateShiftComponent} from './main/content/booking_management_clerk/update-shift/update-shift.component';
+import {ViewShiftComponent} from './main/content/booking_management_clerk/view-shift/view-shift.component';
 
-import { VehicleAccidentViewComponent } from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
+import {VehicleAccidentViewComponent} from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
 
-import { ViewVehiclesComponent } from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
-import { UpdateVehicleComponent } from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
+import {ViewVehiclesComponent} from './main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component';
+import {UpdateVehicleComponent} from './main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component';
 
-import { ArrivalDepartureLogPageComponent } from './main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component';
-import { MeterDetailComponent } from './main/content/security-officer/meter-detail/meter-detail.component';
-import { UpdateDetailsComponent } from './main/content/security-officer/update-details/update-details.component';
+import {ArrivalDepartureLogPageComponent} from './main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component';
+import {MeterDetailComponent} from './main/content/security-officer/meter-detail/meter-detail.component';
+import {UpdateDetailsComponent} from './main/content/security-officer/update-details/update-details.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 
-import { UpdateUserAccountComponent } from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
-import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
-import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
-import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
+import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
+import {ItemPassengerDeliveryComponent} from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
+import {ViewItemPassengerDeliveryComponent} from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
+import {UpdateItemPassengerDeliveryComponent} from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
 
-import { TvProgramComponent } from './main/content/general-manager/tv-program/tv-program.component';
+import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 
-import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+import {UpdateOverTimeComponent} from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+import {NotifierModule, NotifierOptions} from "angular-notifier";
 
 
-
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: "middle",
+      distance: 5
+    },
+    vertical: {
+      position: "top",
+      distance: 10,
+      gap: 10
+    }
+  },
+  theme: "material",
+  behaviour: {
+    autoHide: 5000,
+    onClick: false,
+    onMouseover: "pauseAutoHide",
+    showDismissButton: false,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: "slide",
+      speed: 300,
+      easing: "ease"
+    },
+    hide: {
+      preset: "fade",
+      speed: 300,
+      easing: "ease",
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: "ease"
+    },
+    overlap: 150
+  }
+};
 
 
 @NgModule({
@@ -147,13 +186,14 @@ import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/up
     UpdateOverTimeComponent,
     UpdateUserAccountComponent
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
