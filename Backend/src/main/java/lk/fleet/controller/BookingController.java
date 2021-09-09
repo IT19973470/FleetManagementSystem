@@ -38,7 +38,7 @@ public class BookingController {
     @GetMapping(value = "/getAllBookings")
     public ResponseEntity getAllBookings() {
         return ResponseEntity.ok(bookingService.getAllBookings());
-
+    }
 //    @GetMapping(value = "/getBookings")
 //    public ResponseEntity getBookings() {
 //        return ResponseEntity.ok(bookingService.getBookings());

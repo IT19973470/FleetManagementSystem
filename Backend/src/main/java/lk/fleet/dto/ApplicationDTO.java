@@ -39,22 +39,6 @@ public class ApplicationDTO {
         }
     }
 
-    public PassengerAppDTO getPassengerApp() {
-        return passengerApp;
-    }
-
-    public void setPassengerApp(PassengerAppDTO passengerApp) {
-        this.passengerApp = passengerApp;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getApplicationID() {
         return applicationID;
     }
