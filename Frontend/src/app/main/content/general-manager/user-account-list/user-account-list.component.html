@@ -24,7 +24,8 @@
         <th scope="col" width="10%">#</th>
         <th scope="col" width="10%">Employee ID</th>
         <th scope="col" width="10%">Type</th>
-        <th scope="col" width="10%">Name</th>
+        <th scope="col" width="12%">Name</th>
+        <th scope="col" width="12%">Name With Initials</th>
         <th scope="col" width="10%">NIC</th>
         <th scope="col" width="10%">Contact No</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
@@ -37,6 +38,7 @@
         <td>{{userAccount.employeeID}}</td>
         <td>{{userAccount.accountType}}</td>
         <td>{{userAccount.name}}</td>
+        <td>{{userAccount.nameWithInitials}}</td>
         <td>{{userAccount.nic}}</td>
 
 <!--        <td>{{userAccount.dob}}</td>-->
@@ -86,6 +88,10 @@
           <span style="margin-left: 10px">{{userAccount.name}}</span>
         </div>
         <div>
+          <span style="font-weight: bold">Name With Initials: </span>
+          <span style="margin-left: 10px">{{userAccount.nameWithInitials}}</span>
+        </div>
+        <div>
           <span style="font-weight: bold">Date of Birth : </span>
           <span style="margin-left: 10px">{{userAccount.dob}}</span>
         </div>
@@ -105,10 +111,7 @@
           <span style="font-weight: bold">Registered Date : </span>
           <span style="margin-left: 10px">{{userAccount.registeredDate}}</span>
         </div>
-        <div>
-          <span style="font-weight: bold">Name With Initials: </span>
-          <span style="margin-left: 10px">{{userAccount.nameWithInitials}}</span>
-        </div>
+
 
         <div style="min-width: 1390px;">
           <button align="right" style="cursor: pointer;margin-right: 10px"  (click)="isTrueOrFalse(false)">Close</button>

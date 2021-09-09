@@ -37,5 +37,7 @@ public class PassengerPassengerApplication {
         this.passengerApplication = passengerApplication;
     }
 
-
+    public PassengerPassengerApplicationPK getPassengerPassengerApplicationId() {
+        return passengerPassengerApplicationId;
+    }
 }

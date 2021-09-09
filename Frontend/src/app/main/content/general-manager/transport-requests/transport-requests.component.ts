@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GeneralManagerService} from "../../../../_service/general-manager.service";
 import {Router} from "@angular/router";
 
@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./transport-requests.component.css']
 })
 export class TransportRequestsComponent implements OnInit {
-
 
 
   isModalTable = {
@@ -22,11 +21,12 @@ export class TransportRequestsComponent implements OnInit {
     deliveryItemDetails: []
   };
 
-  user:boolean=true;
-  item:boolean=true;
+  user: boolean = true;
+  item: boolean = true;
   tblIndex;
 
   employeeID;
+  selectedTransport;
 
   constructor(private generalManagerService: GeneralManagerService, private router: Router) {
 
@@ -37,34 +37,41 @@ export class TransportRequestsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getAllItemDeliveries();
+    this.getTransports();
   }
 
-  setItem(deliveryItem,i) {
+  setItem(deliveryItem, i) {
     this.tblIndex = i;
     this.deliveryItem = deliveryItem;
     this.isTrueOrFalse(true);
   }
 
-  // goToUpdate(deliveryItem) {
-  //   this.transportManagerService.deliveryItem = deliveryItem;
-  //   this.router.navigate(['/main/update_item_delivery'])
-  // }
 
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }
 
-  getAllItemDeliveries() {
-    this.generalManagerService.getAllApplication().subscribe((deliveryItemDetails) => {
+  getTransports() {
+    this.generalManagerService.getTransportApplication().subscribe((deliveryItemDetails) => {
       this.deliveryItemDetails = deliveryItemDetails;
       // if(this.deliveryItemDetails.applicationID)
-      // console.log(this.deliveryItemDetails)
+      console.log(this.deliveryItemDetails)
     })
   }
 
-  goToUpdate(deliveryItem) {
-    this.generalManagerService.deliveryItem = deliveryItem;
-    this.router.navigate(['/main/update_available_transports'])
+  setTransport(userAccount) {
+    this.selectedTransport = userAccount;
+    this.isTrueOrFalse(true);
   }
+
+  approveTransport(approval) {
+    this.generalManagerService.approveTransport(this.selectedTransport.applicationID, approval).subscribe((transport) => {
+      this.selectedTransport.approved = transport.approved;
+    })
+  }
+
+  // goToUpdate(deliveryItem) {
+  //   this.generalManagerService.deliveryItem = deliveryItem;
+  //   this.router.navigate(['/main/update_available_transports'])
+  // }
 }

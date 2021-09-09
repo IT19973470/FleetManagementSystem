@@ -45,7 +45,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
         }
 
-           return   new ApplicationDTO(applicationRepository.save(application)); //Jarawa epaa
+           return   new ApplicationDTO(applicationRepository.save(application));
     }
 
 //    public ApplicationDTO addApplicationItemPass(Application application) {
