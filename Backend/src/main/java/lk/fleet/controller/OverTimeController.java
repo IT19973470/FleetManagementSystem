@@ -1,6 +1,5 @@
 package lk.fleet.controller;
 
-import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.service.OverTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
