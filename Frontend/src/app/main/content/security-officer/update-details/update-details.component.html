@@ -78,7 +78,7 @@
               #transportStatus="ngModel"
               name="TransportStatus" required>
               <option value="true">Completed</option>
-              <option value="false">Not Completed</option>
+              <option value="false" disabled>Not Completed</option>
             </select>
             <div *ngIf="(transportStatus.touched || tokenForm.submitted) && transportStatus.errors?.required"
                  class="validErr">

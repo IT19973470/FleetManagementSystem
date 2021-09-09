@@ -1,15 +1,6 @@
 <div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/main/create_token"
-    (click)="setTopic('Create Token')"
-    #createToken="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':createToken.isActive?'#c0050e':''}">
-    Create Token
-  </div>
-
-  <div
     routerLink="/main/view_approved_trip_details"
     (click)="setTopic('View Approved Trip Details')"
     #viewApprovedTripDetails="routerLinkActive"
@@ -19,12 +10,30 @@
   </div>
 
   <div
+    routerLink="/main/create_token"
+    (click)="setTopic('Create Token')"
+    #createToken="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':createToken.isActive?'#c0050e':''}">
+    Create Token
+  </div>
+
+  <div
     routerLink="/main/arrival_departure_page"
-    (click)="setTopic('Arrival and Departure Log Page')"
+    (click)="setTopic('Daily Arrivals and Departures Page')"
     #arrivalDeparturePage="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':arrivalDeparturePage.isActive?'#c0050e':''}">
-    Arrivals and Departures
+    Daily Arrivals & Departures
+  </div>
+
+  <div
+    routerLink="/main/completed_trips"
+    (click)="setTopic('Completed Trips')"
+    #completedTrips="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':completedTrips.isActive?'#c0050e':''}">
+    View Completed Trips
   </div>
 
   <div
@@ -38,11 +47,11 @@
 
   <div
     routerLink="/main/update_delivery_status"
-    (click)="setTopic('Item Delivery Status')"
+    (click)="setTopic('Delivery Status')"
     #updateDeliveryStatus="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':updateDeliveryStatus.isActive?'#c0050e':''}">
-    Item Delivery Status
+    Delivery Status
   </div>
 
   <div

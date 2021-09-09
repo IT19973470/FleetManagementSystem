@@ -11,6 +11,7 @@ export class TransportManagerService {
 
   deliveryItem;
   deliveryPassenger;
+  deliveryPassengerItem;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }

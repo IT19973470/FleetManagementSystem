@@ -13,5 +13,5 @@ public interface OverTimeService {
 
     Object getOT();
 
-    OverTimeDTO getOverTimeByID(long overTimeID);
+    OverTimeDTO getOverTimeByID(String driverId);
 }
