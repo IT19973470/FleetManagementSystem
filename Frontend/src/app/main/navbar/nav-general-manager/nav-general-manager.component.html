@@ -46,6 +46,15 @@
     TV Program
   </div>
 
+  <div
+    routerLink="/main/notifications"
+    (click)="setTopic('Notifications')"
+    #notifications="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':notifications.isActive?'#c0050e':''}">
+    Notifications
+  </div>
+
 
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->

@@ -7,6 +7,8 @@ import lk.fleet.service.TVProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,4 +39,14 @@ public class TVProgramServiceImpl implements TVProgramService {
         tvProgramRepository.deleteById(programID);
         return true;
     }
+
+    public List<TVProgramDTO> getTvProgram() {
+        List<TVProgramDTO> tvProgramDTOS =new ArrayList<>();
+        List<TVProgram> tvPrograms =tvProgramRepository.findAll();
+        for(TVProgram tvProgram: tvPrograms){
+            tvProgramDTOS.add(new TVProgramDTO(tvProgram));
+        }
+        return tvProgramDTOS;
+    }
+
 }

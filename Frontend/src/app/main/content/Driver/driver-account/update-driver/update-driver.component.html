@@ -167,23 +167,6 @@
           </div>
         </div>
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-4">
-            Password :
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.userAccount.password"
-                   #password="ngModel"
-                   name="password" required>
-            <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"
-                 class="validErr">
-              Password is required
-            </div>
-          </div>
-        </div>
-
-
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">

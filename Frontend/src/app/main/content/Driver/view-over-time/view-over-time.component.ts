@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DriverService} from '../../../../_service/driver.service';
 import {Router} from '@angular/router';
 
@@ -22,7 +22,8 @@ export class ViewOverTimeComponent implements OnInit {
     noOfShifts: '',
     startTime: '',
     endTime: '',
-    approval: ''
+    approval: '',
+    driver_driverid: ''
   };
 
   constructor(private driverService: DriverService, private router: Router) {
@@ -32,6 +33,7 @@ export class ViewOverTimeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOT();
+    this.getMyOT();
   }
 
   setOT(otDetails) {
@@ -42,6 +44,7 @@ export class ViewOverTimeComponent implements OnInit {
   goToUpdate(otDetails) {
     this.driverService.ot = otDetails;
     this.router.navigate(['/main/update_over_time']);
+    console.log(otDetails);
   }
 
   isTrueOrFalse(reply) {
@@ -54,5 +57,20 @@ export class ViewOverTimeComponent implements OnInit {
     });
   }
 
+  deleteOT() {
+    this.driverService.deleteOT(this.ot.overTimeID).subscribe((reply) => {
+        if (reply) {
+          this.router.navigate(['/main/over_time'])
+        }
+      }
+    )
+  }
+
+  getMyOT() {
+    this.driverService.getMyOT(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myOT) => {
+      this.ot = myOT;
+      console.log(this.otDetails);
+    });
+  }
 }
 
