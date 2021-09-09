@@ -40,10 +40,22 @@ import {TransportRequestsComponent} from "./main/content/general-manager/transpo
 import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+
+
+import {BookingsComponent} from "./main/content/booking_management_clerk/bookings/bookings.component";
+import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/update-bookings/update-bookings.component";
+import {ViewBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/view-bookings.component";
+import {ShiftComponent} from "./main/content/booking_management_clerk/shift/shift.component";
+import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
+import {ViewShiftComponent} from "./main/content/booking_management_clerk/view-shift/view-shift.component";
+
+
 import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
 import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
+
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+
 
 
 const routes: Routes = [
@@ -222,6 +234,30 @@ const routes: Routes = [
       {
         path: 'update_vehicle',
         component: UpdateVehicleComponent
+      },
+      {
+        path: 'bookings',
+        component: BookingsComponent
+      },
+      {
+        path: 'update_bookings',
+        component: UpdateBookingsComponent
+      },
+      {
+        path: 'view_bookings',
+        component: ViewBookingsComponent
+      },
+      {
+        path: 'shift',
+        component: ShiftComponent
+      },
+      {
+        path: 'update_shift',
+        component: UpdateShiftComponent
+      },
+      {
+        path: 'view_shifts',
+        component: ViewShiftComponent
       },
       {
         path: 'update_accident_details',

@@ -9,16 +9,16 @@ public class DriverVehicleDTO {
     private DriverVehiclePK driverVehicleID;
     private String qty;
     private String type;
-    private Driver driver;
-    private Vehicle vehicle;
+    private DriverDTO driver;
+    private VehicleDTO vehicle;
 
-    public DriverVehicleDTO(DriverVehicle driverVehicle){
-        if(driverVehicle!=null){
-            this.driverVehicleID=driverVehicle.getDriverVehicleID();
-            this.qty=driverVehicle.getQty();
-            this.type=driverVehicle.getType();
-            this.driver=driverVehicle.getDriver();
-            this.vehicle=driverVehicle.getVehicle();
+    public DriverVehicleDTO(DriverVehicle driverVehicle) {
+        if (driverVehicle != null) {
+            this.driverVehicleID = driverVehicle.getDriverVehicleID();
+            this.qty = driverVehicle.getQty();
+            this.type = driverVehicle.getType();
+            this.driver = new DriverDTO(driverVehicle.getDriver());
+            this.vehicle = new VehicleDTO(driverVehicle.getVehicle());
         }
     }
 
@@ -46,21 +46,19 @@ public class DriverVehicleDTO {
         this.type = type;
     }
 
-    public Driver getDriver() {
+    public DriverDTO getDriver() {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(DriverDTO driver) {
         this.driver = driver;
     }
 
-    public Vehicle getVehicle() {
+    public VehicleDTO getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicle(VehicleDTO vehicle) {
         this.vehicle = vehicle;
     }
-
-
 }
