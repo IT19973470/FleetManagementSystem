@@ -10,6 +10,8 @@ public class BookingDTO {
     private LocalDateTime bookingDateTime;
     private String destination;
     private boolean bookingStatus;
+    private VehicleDTO vehicle;
+    private DriverDTO driver;
 
     public BookingDTO(Booking booking){
         this.bookingId = booking.getBookingId();
@@ -48,5 +50,21 @@ public class BookingDTO {
 
     public void setBookingStatus(boolean bookingStatus) {
         this.bookingStatus = bookingStatus;
+    }
+
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
     }
 }

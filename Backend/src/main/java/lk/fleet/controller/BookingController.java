@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleetmanagement/" + "userAccount")
+@RequestMapping(value = "fleetmanagement/" + "booking")
 public class BookingController {
 
     @Autowired
@@ -27,5 +27,10 @@ public class BookingController {
     @DeleteMapping(value = "/deleteBooking/{bookingId}")
     public ResponseEntity deleteBooking(@PathVariable String bookingId){
         return ResponseEntity.ok(bookingService.deleteBooking(bookingId));
+    }
+
+    @GetMapping(value = "/getAllBookings")
+    public ResponseEntity getAllBookings() {
+        return ResponseEntity.ok(bookingService.getAllBookings());
     }
 }
