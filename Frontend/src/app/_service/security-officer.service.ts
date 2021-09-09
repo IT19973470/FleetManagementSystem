@@ -32,14 +32,6 @@ export class SecurityOfficerService {
     return this.http.delete<any>(environment.backend_url + "/token/deleteToken/" + tokenDetailID);
   }
 
-  getAllTokens(): Observable<any> {
-      return this.http.get<any>(environment.backend_url + "/token/getAllTokens");
-  }
-
-  getTokenByID(tokenID): Observable<any> {
-      return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenID);
-  }
-
   addMeterDetail(meterDetail): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/meterDetail/addMeterDetail", meterDetail);
   }
@@ -48,4 +40,19 @@ export class SecurityOfficerService {
     return this.http.put<any>(environment.backend_url + "/meterDetail/updateMeterDetail/" + meterDetail.meterId, meterDetail);
   }
 
+  getAllTokens(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/token/getAllTokens");
+  }
+
+  getCompletedTokens(): Observable<any> {
+    return this.http.get<any>(environment.backend_url+"/token/getAllCompletedTokens");
+  }
+
+  getTokenByID(tokenID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/token/getTokenByID/" + tokenID);
+  }
+
+  getAllBookings(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getAllBookings");
+  }
 }

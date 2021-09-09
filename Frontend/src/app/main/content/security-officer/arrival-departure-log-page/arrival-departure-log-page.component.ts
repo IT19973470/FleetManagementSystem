@@ -9,12 +9,6 @@ import {Router} from "@angular/router";
 })
 export class ArrivalDepartureLogPageComponent implements OnInit {
 
-  isModalTable = {
-    text: '',
-    openTable: false,
-    foundItem: ''
-  };
-
   booking;
   tokens = [];
   tokenDetail = {
@@ -45,11 +39,6 @@ export class ArrivalDepartureLogPageComponent implements OnInit {
     this.getAllTokens();
   }
 
-  setToken(tokenDetail) {
-    this.tokenDetail = tokenDetail;
-    this.isTrueOrFalse(true);
-  }
-
   goToMeter(tokenDetail) {
     this.securityOfficerService.tokenDetail = tokenDetail;
     this.router.navigate(['/main/add_meter_detail'])
@@ -58,10 +47,6 @@ export class ArrivalDepartureLogPageComponent implements OnInit {
   goToUpdate(tokenDetail) {
     this.securityOfficerService.tokenDetail = tokenDetail;
     this.router.navigate(['/main/update_details'])
-  }
-
-  isTrueOrFalse(reply) {
-    this.isModalTable.openTable = reply;
   }
 
   removeToken(tokenID, tblIndex) {
