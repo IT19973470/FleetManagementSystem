@@ -22,7 +22,7 @@ public interface BookingService {
 
     boolean deleteDriverShift(String shiftId);
 
-    BookingDTO addBooking(Booking booking);
+    Booking addBooking(Booking booking);
 
     BookingDTO updateBooking(String bookingId, Booking booking);
 

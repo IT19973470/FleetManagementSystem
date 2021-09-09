@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Booking</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Booking</span>
   </div>
 </div>
 
@@ -53,6 +53,24 @@
 
             <div class="row" style="margin-top: 10px">
               <div class="col-4">
+                Booking ID :
+              </div>
+              <div class="col-8">
+                <input type="text" class="form-control"
+                       [(ngModel)]="booking.bookingId"
+                       #bookingId="ngModel"
+                       name="bookingId" readonly>
+                <div *ngIf="(bookingId.touched || bookingForm.submitted) && bookingId.errors?.required"
+                     class="validErr">
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
                 Booking Date / Time :
               </div>
               <div class="col-8">
@@ -67,30 +85,37 @@
               </div>
             </div>
 
+            <!--        <div class="row" style="margin-top: 10px">-->
+            <!--          <div class="col-4">-->
+            <!--            Booking Time :-->
+            <!--          </div>-->
+            <!--          <div class="col-8">-->
+            <!--            <input type="time" class="form-control"-->
+            <!--                   [(ngModel)]="booking.bookingTime"-->
+            <!--                   #bookingTime="ngModel"-->
+            <!--                   name="bookingTime" required>-->
+            <!--            <div *ngIf="(bookingTime.touched || bookingForm.submitted) && bookingTime.errors?.required"-->
+            <!--                 class="validErr">-->
+            <!--              Booking Time is required-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--        </div>-->
 
-            <div class="row" style="margin-top: 10px">
-              <div class="col-4">
-                Booking Status :
-              </div>
-              <div class="col-8">
-                <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
-                <!--              <option value="">Select status</option>-->
-                <!--              <option *ngFor="let type of bookingStatuses" [value]="type">-->
-                <!--                {{type}}-->
-                <!--              </option>-->
-                <!--            </select>-->
-                <!--            <p> {{selected}}</p>-->
-                <label>
-                  <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="booking.bookingStatus">
-                  <span style="font-size: 18px"> Active</span>
-                </label>
-                <label style="margin-left: 40px">
-                  <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="booking.bookingStatus">
-                  <span style="font-size: 18px"> Inactive</span>
-                </label>
-              </div>
+            <!--        <div class="row" style="margin-top: 10px">-->
+            <!--          <div class="col-4">-->
+            <!--            Booking Status :-->
+            <!--          </div>-->
+            <!--          <div class="col-8">-->
+            <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
+            <!--              <option value="">Select status</option>-->
+            <!--              <option *ngFor="let type of bookingStatus" [value]="type">-->
+            <!--                {{type}}-->
+            <!--              </option>-->
+            <!--            </select>-->
+            <!--            <p> {{selected}}</p>-->
+            <!--            </div>-->
 
-            </div>
+            <!--          </div>-->
 
 
             <div class="row" style="margin-top: 10px">
@@ -114,9 +139,12 @@
 
 
         <div class=""
-             style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-          <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Booking</button>
+             style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px ;justify-content: flex-end">
+          <div class="" style="text-align: right">
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Update Booking</button>
+          </div>
+          <div class="" style="text-align: right;margin-left: 20px">
+            <button (click)="removeBooking()" type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px">Delete Booking</button>
           </div>
         </div>
 
