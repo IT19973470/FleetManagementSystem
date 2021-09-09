@@ -25,6 +25,7 @@ export class DriverRegistrationComponent implements OnInit {
       registeredDate: '',
       nameWithInitials: '',
       password: '',
+      vehicle_driver_management_clerk_vehicle_driver_management_id: 'EM001'
     }
   };
 

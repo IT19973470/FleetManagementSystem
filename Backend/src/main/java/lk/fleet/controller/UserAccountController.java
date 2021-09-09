@@ -1,10 +1,13 @@
 package lk.fleet.controller;
 
+import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -69,6 +72,11 @@ public class UserAccountController {
     @GetMapping(value = "/getUserAccountByID/{employeeID}")
     public ResponseEntity getUserAccountByID(@PathVariable String employeeID) {
         return ResponseEntity.ok(userAccountService.getUserAccountByID(employeeID));
+    }
+
+    @GetMapping(value = "/getTransportApplication")
+    public List<ApplicationDTO> getTransportApplication(){
+        return userAccountService.getTransportApplication();
     }
 
 //    @PutMapping(value = "/updateGeneralManagerUserAccount/{employeeID}")

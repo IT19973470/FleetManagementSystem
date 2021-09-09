@@ -34,6 +34,7 @@ public class ApplicationDTO {
         }
     }
 
+
     public PassengerAppDTO getPassengerApp() {
         return passengerApp;
     }

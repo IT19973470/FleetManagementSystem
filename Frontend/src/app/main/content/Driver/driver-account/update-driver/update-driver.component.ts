@@ -28,16 +28,35 @@ export class UpdateDriverComponent implements OnInit {
   };
 
   constructor(private driverService: DriverService, private router: Router) {
+    this.driverDetail = this.getDriver();
   }
 
   ngOnInit(): void {
+    this.driverDetail =this.driverService.driver;
   }
 
   onSubmit() {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['/login'])
+      this.router.navigate(['main/driver_account'])
     })
   }
 
-}
+  getDriver() {
+    return {
+      lisenseID: '',
+      userAccount: {
+        employeeID: '',
+        accountType: 'DR',
+        nic: '',
+        dob: '',
+        name: '',
+        address: '',
+        contactNo: '',
+        email: '',
+        registeredDate: '',
+        nameWithInitials: '',
+        password: '',
+      }
+  };
+}}

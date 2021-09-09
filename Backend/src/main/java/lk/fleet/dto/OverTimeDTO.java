@@ -14,12 +14,14 @@ public class OverTimeDTO {
     private boolean approval;
 
     public OverTimeDTO(OverTime overTime) {
+        if (overTime != null) {
             this.overTimeID = overTime.getOverTimeID();
             this.otDate = overTime.getOtDate();
             this.noOfShifts = overTime.getNoOfShifts();
             this.startTime = overTime.getStartTime();
             this.endTime = overTime.getEndTime();
             this.approval = overTime.isApproval();
+        }
     }
 
     public long getOverTimeID() {

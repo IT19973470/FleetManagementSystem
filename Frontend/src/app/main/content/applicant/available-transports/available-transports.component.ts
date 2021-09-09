@@ -56,6 +56,7 @@ export class AvailableTransportsComponent implements OnInit {
 
   goToUpdate(deliveryItem) {
     this.applicantService.deliveryItem = deliveryItem;
+   // console.log(this.applicantService.deliveryItem);
     this.router.navigate(['/main/update_available_transports'])
   }
 
