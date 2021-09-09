@@ -49,6 +49,7 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {DatePipe} from "@angular/common";
 
 
+
 import { UpdateAvailableTransportsComponent } from './main/content/applicant/available-transports/update-available-transports/update-available-transports.component';
 
 import { BookingsComponent } from './main/content/booking_management_clerk/bookings/bookings.component';
@@ -86,11 +87,13 @@ import { UpdateDriverComponent } from './main/content/Driver/driver-account/upda
 
 
 
+
+import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
+
 import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
 import {ViewBookingsComponent} from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
 import {UpdateBookingsComponent} from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
 import {ShiftComponent} from './main/content/booking_management_clerk/shift/shift.component';
-import {UpdateShiftComponent} from './main/content/booking_management_clerk/update-shift/update-shift.component';
 import {ViewShiftComponent} from './main/content/booking_management_clerk/view-shift/view-shift.component';
 import {UpdateAvailableTransportsComponent} from './main/content/applicant/available-transports/update-available-transports/update-available-transports.component';
 import {VehicleAccidentViewComponent} from './main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component';
@@ -110,6 +113,11 @@ import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {ViewPassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component';
 import {UpdatePassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component';
 import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
+import {EmailValidatorDirective} from "./_validator/email-validator.directive";
+import {NicValidatorDirective} from './_validator/nic-validator.directive';
+import {TextValidatorDirective} from './_validator/text-validator.directive';
+import {TelephoneValidatorDirective} from "./_validator/telephone-validator.directive";
+import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -152,7 +160,6 @@ const customNotifierOptions: NotifierOptions = {
     overlap: 150
   }
 };
-
 
 
 @NgModule({
@@ -229,13 +236,14 @@ const customNotifierOptions: NotifierOptions = {
     UpdateDriverComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
-
     UpdateUserAccountComponent,
-    NavBookingManagerComponent
-
-
+    EmailValidatorDirective,
+    NicValidatorDirective,
+    TextValidatorDirective,
+    TelephoneValidatorDirective,
+    UpdateUserAccountComponent,
+    NavBookingManagerComponent,
     UpdateUserAccountComponent
-
   ],
 
   imports: [

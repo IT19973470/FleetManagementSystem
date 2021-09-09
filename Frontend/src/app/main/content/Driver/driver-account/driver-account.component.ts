@@ -70,7 +70,13 @@ export class DriverAccountComponent implements OnInit {
     });
   }
 
-  deleteDriver(driverDetails: []) {
-
+  deleteDriver() {
+    this.driverService.deleteDriver(this.driver.driverID).subscribe((reply) => {
+        if (reply) {
+          this.router.navigate(['/main/over_time'])
+        }
+      }
+    )
   }
+
 }
