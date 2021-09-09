@@ -3,6 +3,7 @@ package lk.fleet.dto;
 import lk.fleet.entity.Booking;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BookingDTO {
 
@@ -13,11 +14,13 @@ public class BookingDTO {
     private VehicleDTO vehicle;
     private DriverDTO driver;
 
-    public BookingDTO(Booking booking){
-        this.bookingId = booking.getBookingId();
-        this.bookingDateTime = booking.getBookingDateTime();
-        this.destination = booking.getDestination();
-        this.bookingStatus = booking.isBookingStatus();
+    public BookingDTO(Booking booking) {
+        if(booking != null) {
+            this.bookingId = booking.getBookingId();
+            this.bookingDateTime =booking.getBookingDateTime();
+            this.destination = booking.getDestination();
+            this.bookingStatus = booking.isBookingStatus();
+        }
     }
 
     public String getBookingId() {

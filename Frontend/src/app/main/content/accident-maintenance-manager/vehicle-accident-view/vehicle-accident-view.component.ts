@@ -18,11 +18,15 @@ export class VehicleAccidentViewComponent implements OnInit {
   vehicleAccidentDetails = [];
   vehicleAccident = {
     vehicleAccidentID: '',
+    vehicleID: '',
+    driverID: '',
     accidentDate: '',
     accidentTime: '',
     insuranceNo: '',
     insuranceStatus: false,
   };
+
+  tokenIdSearch;
 
   constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
   }
@@ -39,13 +43,15 @@ export class VehicleAccidentViewComponent implements OnInit {
   getVehicleAccidents() {
     this.vehicleAccidentService.getVehicleAccidents().subscribe((vehicleAccidentDetails) => {
       this.vehicleAccidentDetails = vehicleAccidentDetails;
+      console.log(this.vehicleAccident)
     })
   }
 
-    // goToUpdate(deliveryItem) {
-    //   this.accident.deliveryItem = deliveryItem;
-    //   this.router.navigate(['/main/update_item_delivery'])
-    // }
+
+  goToUpdate(accident) {
+    this.vehicleAccidentService.accident = accident;
+    this.router.navigate(['/main/update_accident_details'])
+  }
 
   private isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
