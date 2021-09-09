@@ -163,7 +163,7 @@ const routes: Routes = [
       },
       {
         path: 'view_maintenance',
-        component: VehicleMaintenanceComponent
+        component: VehicleMaintenanceViewComponent
       },
       {
         path: 'accident_report',
@@ -251,10 +251,6 @@ const routes: Routes = [
       {
         path: 'vehicle_maintenance',
         component: VehicleMaintenanceComponent
-      },
-      {
-        path: 'view_maintenance',
-        component: VehicleMaintenanceViewComponent
       }
 
     ]
