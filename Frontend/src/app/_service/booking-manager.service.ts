@@ -10,6 +10,7 @@ import {environment} from "../../environments/environment";
 export class BookingManagerService {
 
   shift;
+  booking;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }
@@ -41,4 +42,23 @@ export class BookingManagerService {
   getAllShiftsByDriver(driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverShiftsByDriverId/" + driverId);
   }
+
+
+  addBooking(BookingDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/booking/addBooking", BookingDetail);
+  }
+
+  updateBooking(BookingDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/booking/updateBooking/" + BookingDetail.bookingId, BookingDetail);
+  }
+
+  deleteBooking(bookingId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/booking/deleteBooking/" + bookingId);
+  }
+
+  getAllBookings(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookings");
+  }
+
+
 }

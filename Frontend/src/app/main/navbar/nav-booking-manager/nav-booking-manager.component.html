@@ -25,4 +25,30 @@
     View Driver Shifts
   </div>
 
+
+  <div
+    routerLink="/main/bookings"
+    (click)="setTopic('Bookings')"
+    #bookings="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':bookings.isActive?'#c0050e':''}">
+    Bookings
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_bookings"
+    #updateBookings="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_bookings"
+    (click)="setTopic('View Bookings')"
+    #viewBookings="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewBookings.isActive || updateBookings.isActive?'#c0050e':''}">
+    View Bookings
+  </div>
+
 </div>

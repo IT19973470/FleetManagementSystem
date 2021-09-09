@@ -27,4 +27,6 @@ public interface BookingService {
     BookingDTO updateBooking(String bookingId, Booking booking);
 
     boolean deleteBooking(String bookingId);
+
+    List<BookingDTO> getBookings();
 }

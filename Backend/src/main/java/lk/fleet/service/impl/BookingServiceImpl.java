@@ -29,6 +29,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingDTO addBooking(Booking booking) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+        booking.setBookingId("B" + dateTime);
         return new BookingDTO(bookingRepository.save(booking));
     }
 
@@ -49,6 +51,16 @@ public class BookingServiceImpl implements BookingService {
     public boolean deleteBooking(String bookingId) {
         bookingRepository.deleteById(bookingId);
         return true;
+    }
+
+    @Override
+    public List<BookingDTO> getBookings() {
+        List<BookingDTO> bookingDTOS =new ArrayList<>();
+        List<Booking> bookings = bookingRepository.findAll();
+        for(Booking booking: bookings){
+            bookingDTOS.add(new BookingDTO(booking));
+        }
+        return bookingDTOS;
     }
 
     @Override
