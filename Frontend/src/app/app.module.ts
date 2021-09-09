@@ -86,6 +86,7 @@ import { TvProgramComponent } from './main/content/general-manager/tv-program/tv
 
 import { UpdateOverTimeComponent } from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
 import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
+import { VehicleMaintenanceViewComponent } from './main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component';
 
 
 
@@ -169,7 +170,8 @@ import { UpdateDriverComponent } from './main/content/Driver/driver-account/upda
     UpdateItemPassengerDeliveryComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    VehicleMaintenanceViewComponent
 
   ],
 

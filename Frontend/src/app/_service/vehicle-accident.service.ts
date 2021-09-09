@@ -30,7 +30,7 @@ export class VehicleAccidentService {
   }
 
   getAccidentById(vehicleAccidentID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/accident/getTokenByID/" + vehicleAccidentID);
+    return this.http.get<any>(environment.backend_url + "/accident/getAccidentById/" + vehicleAccidentID);
   }
 
   chkVehicle(vehicleId): Observable<any> {

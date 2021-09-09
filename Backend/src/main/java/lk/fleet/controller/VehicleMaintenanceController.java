@@ -31,4 +31,13 @@ public class VehicleMaintenanceController {
         return ResponseEntity.ok(vehicleMaintenanceService.deleteVehicleMaintenance(maintenanceID));
     }
 
+    @GetMapping(value = "/getVehicleMaintenance")
+    public ResponseEntity getVehicleMaintenance() {
+        return ResponseEntity.ok(vehicleMaintenanceService.getVehicleMaintenance());
+    }
+
+    @GetMapping(value = "/chkVehicle/{vehicleId}")
+    public ResponseEntity chkVehicle(@PathVariable String vehicleId) {
+        return ResponseEntity.ok(vehicleMaintenanceService.chkVehicle(vehicleId));
+    }
 }
