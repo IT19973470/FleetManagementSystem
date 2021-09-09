@@ -56,7 +56,7 @@ import { UpdateAvailableTransportsComponent } from './main/content/applicant/ava
 
 import { BookingsComponent } from './main/content/booking_management_clerk/bookings/bookings.component';
 import { ViewBookingsComponent } from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
-import { UpdateBookingsComponent } from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
+import { UpdateBookingsComponent } from './main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component';
 import { ShiftComponent } from './main/content/booking_management_clerk/shift/shift.component';
 import { UpdateShiftComponent } from './main/content/booking_management_clerk/view-shift/update-shift/update-shift.component';
 import { ViewShiftComponent } from './main/content/booking_management_clerk/view-shift/view-shift.component';

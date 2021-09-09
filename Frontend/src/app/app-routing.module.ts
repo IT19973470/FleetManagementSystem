@@ -56,7 +56,7 @@ import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-p
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
 
 import {BookingsComponent} from "./main/content/booking_management_clerk/bookings/bookings.component";
-import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/update-bookings/update-bookings.component";
+import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
 import {ViewBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/view-bookings.component";
 import {ShiftComponent} from "./main/content/booking_management_clerk/shift/shift.component";
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";

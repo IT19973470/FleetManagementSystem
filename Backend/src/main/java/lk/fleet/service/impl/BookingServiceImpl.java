@@ -28,10 +28,11 @@ public class BookingServiceImpl implements BookingService {
     private ShiftRepository shiftRepository;
 
     @Override
-    public BookingDTO addBooking(Booking booking) {
+    public Booking addBooking(Booking booking) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         booking.setBookingId("B" + dateTime);
-        return new BookingDTO(bookingRepository.save(booking));
+        booking.setBookingManagementClerk(booking.getBookingManagementClerk());
+        return bookingRepository.save(booking);
     }
 
     @Override
@@ -40,12 +41,19 @@ public class BookingServiceImpl implements BookingService {
         Optional<Booking> optionalBooking = bookingRepository.findById(bookingId);
         if (optionalBooking.isPresent()) {
             Booking bookingObject = optionalBooking.get();
+
+            bookingObject.setBookingDateTime(booking.getBookingDateTime());
             bookingObject.setBookingStatus(booking.isBookingStatus());
+            bookingObject.setDestination(booking.getDestination());
 
             return new BookingDTO(bookingRepository.save(bookingObject));
         }
         return null;
     }
+
+
+
+
 
     @Override
     public boolean deleteBooking(String bookingId) {
