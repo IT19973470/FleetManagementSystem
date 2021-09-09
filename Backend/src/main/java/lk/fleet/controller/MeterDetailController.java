@@ -19,14 +19,14 @@ public class MeterDetailController {
         return ResponseEntity.ok(meterDetailService.addMeterDetail(meterDetail));
     }
 
-    @PutMapping(value = "/updateMeterDetail/{meterID}")
-    public ResponseEntity updateMeterDetail (@PathVariable String meterID, @RequestBody MeterDetail meterDetail) {
-        return ResponseEntity.ok(meterDetailService.updateMeterDetail(meterID, meterDetail));
+    @PutMapping(value = "/updateMeterDetail/{meterId}")
+    public ResponseEntity updateMeterDetail (@PathVariable String meterId, @RequestBody MeterDetail meterDetail) {
+        return ResponseEntity.ok(meterDetailService.updateMeterDetail(meterId, meterDetail));
     }
 
-    @DeleteMapping(value = "/deleteMeterDetail/{meterID}")
-    public ResponseEntity deleteMeterDetail (@PathVariable String meterID) {
-        return ResponseEntity.ok(meterDetailService.deleteMeterDetail(meterID));
+    @DeleteMapping(value = "/deleteMeterDetail/{meterId}")
+    public ResponseEntity deleteMeterDetail (@PathVariable String meterId) {
+        return ResponseEntity.ok(meterDetailService.deleteMeterDetail(meterId));
     }
 
 

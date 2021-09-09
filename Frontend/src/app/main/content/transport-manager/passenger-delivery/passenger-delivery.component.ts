@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-passenger-delivery',
@@ -27,7 +28,7 @@ export class PassengerDeliveryComponent implements OnInit {
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
     this.passenger = this.getNewPassenger();
   }
 
@@ -43,12 +44,44 @@ export class PassengerDeliveryComponent implements OnInit {
   }
 
   onSubmitPassenger() {
-    if (this.btnText === 'Add') {
+    if (this.deliveryDetail.deliveryPassengerDetails.length === 0) {
       this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-    } else if (this.btnText === 'Update') {
-      this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
+      this.notifierService.notify("success", "Passenger added successfully");
+      this.setNewPassenger();
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
+        if (this.btnText === 'Update' && i === this.tblIndex) {
+          continue;
+        }
+        let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
+        if (
+          (passenger.passengerNic !== '' && passenger.passengerNic === this.passenger.passengerNic) ||
+          (passenger.contactNumber !== '' && passenger.contactNumber === this.passenger.contactNumber)
+        ) {
+          count++;
+        }
+        if (passenger.passengerNic === this.passenger.passengerNic && passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate NIC and Contact No found");
+          break;
+        } else if (passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate Contact No found");
+          break;
+        } else if (passenger.passengerNic === this.passenger.passengerNic) {
+          this.notifierService.notify("error", "Duplicate NIC found");
+          break;
+        }
+      }
+      if (this.btnText === 'Add' && count === 0) {
+        this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
+        this.notifierService.notify("success", "Passenger added successfully");
+        this.setNewPassenger();
+      } else if (this.btnText === 'Update' && count === 0) {
+        this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
+        this.notifierService.notify("success", "Passenger updated successfully");
+        this.setNewPassenger();
+      }
     }
-    this.setNewPassenger();
   }
 
   setPassenger(passenger,i) {

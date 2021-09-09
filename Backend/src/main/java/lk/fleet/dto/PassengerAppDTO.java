@@ -1,11 +1,17 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.PassengerApplication;
+import lk.fleet.entity.PassengerPassengerApplication;
+
+import java.util.List;
+import java.util.Set;
 
 public class PassengerAppDTO {
 
     private String passengerApplicationID;
     private  int noOfPassengers;
+
+    private List<PassengerPassengerApplicationDTO> passengerPassengerApplications;
 
     public PassengerAppDTO(PassengerApplication passengerApplication) {
         if(passengerApplication != null) {
@@ -13,6 +19,14 @@ public class PassengerAppDTO {
         this.noOfPassengers=passengerApplication.getNoOfPassengers();
 
         }
+    }
+
+    public List<PassengerPassengerApplicationDTO> getPassengerPassengerApplications() {
+        return passengerPassengerApplications;
+    }
+
+    public void setPassengerPassengerApplications(List<PassengerPassengerApplicationDTO> passengerPassengerApplications) {
+        this.passengerPassengerApplications = passengerPassengerApplications;
     }
 
     public String getPassengerApplicationID() {

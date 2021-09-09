@@ -125,10 +125,15 @@
                   <input type="text" class="form-control"
                          [(ngModel)]="Pass.passenger.passengerId"
                          #passengerId="ngModel"
+                         (keyup)="chkPassengerId()"
                          name="passengerType" required>
-                  <div *ngIf="(errorP==true)"
-                       class="validErr">
-                    Passenger ID is Not valid
+                  <div *ngIf="(errorP==1)"
+                       class="validErr" style="color:red">
+                    Passenger ID is Not Found
+                  </div>
+                  <div *ngIf="(errorP==0)"
+                       class="validErr" style="color:green">
+                    Passenger ID Found
                   </div>
                 </div>
 
@@ -201,12 +206,12 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let Pass of zz; let j = index">
+          <tr *ngFor="let Pass of ViewPassenger; let j = index">
             <th scope="row">{{j+1}}</th>
             <td>{{Pass.passengerId}}</td>
             <td>{{Pass.passengerName}}</td>
             <td>{{Pass.contactNumber}}</td>
-            <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1);zz.splice(j, 1)">
+            <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1);ViewPassenger.splice(j, 1)">
               <i class="fas fa-times" style="color: red;font-size: 20px"></i>
             </td>
           </tr>

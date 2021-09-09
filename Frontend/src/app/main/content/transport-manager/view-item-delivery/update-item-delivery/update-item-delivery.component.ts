@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-update-item-delivery',
@@ -29,7 +30,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
     this.item = this.getNewItem();
   }
 
@@ -47,18 +48,57 @@ export class UpdateItemDeliveryComponent implements OnInit {
 
   onSubmitItem() {
     this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
-    // console.log(this.item)
-    if (this.btnText === 'Add') {
+    if (this.deliveryDetail.deliveryItemDetails.length === 0) {
       this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
         this.deliveryDetail.deliveryItemDetails.push(item);
+        this.notifierService.notify("success", "Item added successfully");
+        this.setNewItem();
       })
-    } else if (this.btnText === 'Update') {
-      // console.log(this.item)
-      this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
-        this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
-      })
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
+        if (this.btnText === 'Update' && i === this.tblIndex) {
+          continue;
+        }
+        let item = this.deliveryDetail.deliveryItemDetails[i];
+        if (
+          (item.itemName !== '' && item.itemName === this.item.itemName)
+        ) {
+          count++;
+        }
+        if (item.itemName === this.item.itemName) {
+          this.notifierService.notify("error", "Duplicate Item Name found");
+          break;
+        }
+      }
+      if (this.btnText === 'Add' && count === 0) {
+        this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+          this.deliveryDetail.deliveryItemDetails.push(item);
+          this.notifierService.notify("success", "Item added successfully");
+          this.setNewItem();
+        })
+      } else if (this.btnText === 'Update' && count === 0) {
+        this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
+          this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
+          this.notifierService.notify("success", "Item updated successfully");
+          this.setNewItem();
+        })
+      }
     }
-    this.setNewItem();
+
+    // this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
+    // // console.log(this.item)
+    // if (this.btnText === 'Add') {
+    //   this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+    //     this.deliveryDetail.deliveryItemDetails.push(item);
+    //   })
+    // } else if (this.btnText === 'Update') {
+    //   // console.log(this.item)
+    //   this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
+    //     this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
+    //   })
+    // }
+    // this.setNewItem();
   }
 
   removeItem(itemDetailId, i) {
