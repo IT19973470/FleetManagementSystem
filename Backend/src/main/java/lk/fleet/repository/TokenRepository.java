@@ -11,7 +11,11 @@ public interface TokenRepository extends JpaRepository<Token,String> {
     @Query(value = "from Token where transportStatus=false")
     List<Token> getNotCompletedTokens();
 
-//    @Query(value = "from Token where tokenID=?1 order by transportStatus asc")
-//    List<Token> getTokenByID(String tokenID);
+//arrivaldatetime desc
+    @Query(value = "from Token where transportStatus=true order by departureDateTime desc")
+    List<Token> getAllCompletedTokens();
+
+    @Query(value = "from Token where tokenID=?1")
+    Token getTokenByID(String tokenID);
 
 }
