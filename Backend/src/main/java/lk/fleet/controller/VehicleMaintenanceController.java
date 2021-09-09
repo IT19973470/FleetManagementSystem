@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping (value = "fleet/" + "maintenance")
+@RequestMapping (value = "fleetmanagement/" + "maintenance")
 
 public class VehicleMaintenanceController {
 

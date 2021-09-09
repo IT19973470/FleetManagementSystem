@@ -26,7 +26,7 @@ export class VehicleAccidentViewComponent implements OnInit {
     insuranceStatus: false,
   };
 
-  tokenIdSearch;
+  accidentIdSearch;
 
   constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
   }
@@ -55,5 +55,21 @@ export class VehicleAccidentViewComponent implements OnInit {
 
   private isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
+  }
+
+  removeAccident(vehicleAccidentID, tblIndex) {
+    this.vehicleAccidentService.deleteAccident(vehicleAccidentID).subscribe((reply) => {
+      if (reply) {
+        this.vehicleAccidentDetails.splice(tblIndex, 1);
+        // this.router.navigate(['/main/arrival_departure_page'])
+      }
+    })
+  }
+
+  getAccidentById() {
+    this.vehicleAccidentService.getAccidentById(this.accidentIdSearch).subscribe((vehicleAccidentDetails) => {
+      this.vehicleAccidentDetails = vehicleAccidentDetails;
+      // console.log(this.vehicles)
+    })
   }
 }

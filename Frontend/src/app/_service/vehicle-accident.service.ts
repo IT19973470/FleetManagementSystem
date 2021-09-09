@@ -25,6 +25,14 @@ export class VehicleAccidentService {
     return this.http.put<any>(environment.backend_url + "/accident/updateVehicleAccident/" + accidentDetail.vehicleAccidentID, accidentDetail);
   }
 
+  deleteAccident(vehicleAccidentID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/accident/deleteVehicleAccident/" + vehicleAccidentID);
+  }
+
+  getAccidentById(vehicleAccidentID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/accident/getTokenByID/" + vehicleAccidentID);
+  }
+
   chkVehicle(vehicleId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/accident/chkVehicle/" + vehicleId);
   }
@@ -32,4 +40,6 @@ export class VehicleAccidentService {
   chkDriver(vehicleId, driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/accident/chkDriver/" + vehicleId + '/' + driverId);
   }
+
+
 }
