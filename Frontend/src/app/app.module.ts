@@ -47,6 +47,18 @@ import {NavSecurityOfficerComponent} from './main/navbar/nav-security-officer/na
 import {TokenComponent} from './main/content/security-officer/token/token.component';
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
+import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
+import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
+import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
+import { NavBookingManagerComponent } from './main/navbar/nav-booking-manager/nav-booking-manager.component';
+
+import { UpdateDriverComponent } from './main/content/Driver/driver-account/update-driver/update-driver.component';
+
+
+
+
+
 import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
 import {ViewBookingsComponent} from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
 import {UpdateBookingsComponent} from './main/content/booking_management_clerk/update-bookings/update-bookings.component';
@@ -114,6 +126,7 @@ const customNotifierOptions: NotifierOptions = {
     overlap: 150
   }
 };
+
 
 
 @NgModule({
@@ -190,9 +203,18 @@ const customNotifierOptions: NotifierOptions = {
     UpdateDriverComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
+
     UpdateUserAccountComponent,
     ApplicantRegestrationComponent,
+
+
+    UpdateUserAccountComponent,
+    NavBookingManagerComponent,
+
+
+
     UpdateUserAccountComponent
+
   ],
 
   imports: [

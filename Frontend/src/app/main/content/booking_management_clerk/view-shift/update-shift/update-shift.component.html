@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Driver Shift</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Driver Shift</span>
   </div>
 </div>
 
-<div class="row" style="display: flex;justify-content: center;margin-top: 0px">
+<div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
     <div style="margin-top: 20px">
@@ -28,7 +28,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let driverVehicle of driverVehicles; let i = index">
-        <th scope="row">{{i+1}}</th>
+        <th scope="row">{{i + 1}}</th>
         <td>{{driverVehicle.driverVehicleID.driverID}}</td>
         <td>{{driverVehicle.driver.userAccount.nameWithInitials}}</td>
         <td style="text-align: center">{{driverVehicle.driverVehicleID.vehicleId}}</td>
@@ -103,7 +103,7 @@
           </div>
           <div class="col-8">
             <input type="time" class="form-control"
-                   [(ngModel)]="shift.startingTime"
+                   [(ngModel)]="shift.startingTimeActual"
                    #startingTime="ngModel"
                    name="startingTime" required>
             <div *ngIf="(startingTime.touched || shiftForm.submitted) && startingTime.errors?.required"
@@ -119,7 +119,7 @@
           </div>
           <div class="col-8">
             <input type="time" class="form-control"
-                   [(ngModel)]="shift.endingTime"
+                   [(ngModel)]="shift.endingTimeActual"
                    #endingTime="ngModel"
                    name="endingTime" required>
             <div *ngIf="(endingTime.touched || shiftForm.submitted) && endingTime.errors?.required"
@@ -134,9 +134,15 @@
     </div>
 
     <div class=""
-         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-      <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Driver Shift</button>
+         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px;justify-content: flex-end">
+      <div class="" style="text-align: right">
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Update Driver Shift
+        </button>
+      </div>
+      <div class="" style="text-align: right;margin-left: 20px">
+        <button (click)="removeShift()" type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px">
+          Delete Driver Shift
+        </button>
       </div>
     </div>
 

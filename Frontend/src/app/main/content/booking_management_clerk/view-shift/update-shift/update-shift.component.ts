@@ -1,15 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {TransportManagerService} from "../../../../_service/transport-manager.service";
+import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
-import {BookingManagerService} from "../../../../_service/booking-manager.service";
 
 @Component({
-  selector: 'app-shift',
-  templateUrl: './shift.component.html',
-  styleUrls: ['./shift.component.css']
+  selector: 'app-update-shift',
+  templateUrl: './update-shift.component.html',
+  styleUrls: ['./update-shift.component.css']
 })
-export class ShiftComponent implements OnInit {
+export class UpdateShiftComponent implements OnInit {
 
   @ViewChild('shiftForm', {static: true}) public shiftForm: NgForm;
   driverVehicles = [];
@@ -17,7 +16,9 @@ export class ShiftComponent implements OnInit {
     shiftId: '',
     shiftDate: '',
     startingTime: '',
+    startingTimeActual: '',
     endingTime: '',
+    endingTimeActual: '',
     driverVehicle: {
       driverVehicleID: {
         driverID: '',
@@ -31,6 +32,7 @@ export class ShiftComponent implements OnInit {
 
   deliveryDate;
   driverId;
+
   // selectedDriver;
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
@@ -38,6 +40,7 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit(): void {
     this.shift.shiftDate = this.bookingManagerService.getCurDate();
+    this.shift = this.bookingManagerService.shift;
   }
 
   // setItem(deliveryItem) {
@@ -58,9 +61,20 @@ export class ShiftComponent implements OnInit {
   }
 
   onSubmit() {
-    this.shift.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
-    this.bookingManagerService.addShift(this.shift).subscribe(() => {
+    this.shift.startingTime = this.shift.startingTimeActual;
+    this.shift.endingTime = this.shift.endingTimeActual;
+    this.shift.bookingManagementClerk = {
+      bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+    };
+    this.bookingManagerService.updateShift(this.shift).subscribe(() => {
       this.router.navigate(['/main/view_shifts'])
     })
   }
+
+  removeShift() {
+    this.bookingManagerService.deleteDriverShift(this.shift.shiftId).subscribe(() => {
+      this.router.navigate(['/main/view_shifts'])
+    })
+  }
+
 }
