@@ -32,11 +32,21 @@ public interface UserAccountService {
 
     List<UserAccountDTO> getUserAccounts();
 
+    List<UserAccountDTO> getUserAccountsForApplicants();
+
     boolean deleteUserAccount(String employeeID);
 
     List<UserAccountDTO> getUserAccountByID(String employeeID);
 
     List<ApplicationDTO> getTransportApplication();
+
+    List<PassengerPassengerApplicationDTO> getTransportRequests();
+
+    UserAccountDTO approveUserAccount(String employeeID, boolean approval);
+
+    ApplicationDTO approveTransport(String applicationID, boolean approval);
+
+//    List<PassengerApplicationDTO> getTransport();
 
     //UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);
     //TransportManagerDTO updateTransportManagerAccount(String transportManagerId, TransportManager transportManager);

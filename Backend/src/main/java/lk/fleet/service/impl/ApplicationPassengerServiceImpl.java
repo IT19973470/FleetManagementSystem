@@ -42,7 +42,8 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
           passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
         }
-           return   new ApplicationDTO(applicationRepository.save(application)); //Jarawa epaa
+
+           return   new ApplicationDTO(applicationRepository.save(application));
     }
 
 //    public ApplicationDTO addApplicationItemPass(Application application) {

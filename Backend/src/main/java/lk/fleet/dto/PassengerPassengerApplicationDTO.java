@@ -29,6 +29,27 @@ public class PassengerPassengerApplicationDTO {
         return passengerName;
     }
 
+    public PassengerPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO){
+        this.passengerApplicationID = passengerApplicationDTO.getApplicationID();
+        this.passengerId = passengerApplicationDTO.getApplicationID();
+    }
+
+    public String getPassengerApplicationID() {
+        return passengerApplicationID;
+    }
+
+    public void setPassengerApplicationID(String passengerApplicationID) {
+        this.passengerApplicationID = passengerApplicationID;
+    }
+
+    public String getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(String passengerId) {
+        this.passengerId = passengerId;
+    }
+  
     public void setPassengerName(String passengerName) {
         this.passengerName = passengerName;
     }
