@@ -47,5 +47,6 @@ export class BookingsComponent implements OnInit {
       this.router.navigate(['/main/view_bookings'])
     })
   }
-
 }
+
+
