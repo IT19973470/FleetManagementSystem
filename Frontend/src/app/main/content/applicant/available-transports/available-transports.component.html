@@ -7,26 +7,28 @@
         <th scope="col">#</th>
         <th scope="col">Application ID</th>
         <th scope="col">Destination</th>
-        <th scope="col">Vehicle Type</th>
         <th scope="col">Approval</th>
         <th scope="col">Depature Date</th>
-        <th scope="col">Arricval Date</th>
-        <th scope="col">Reason</th>
+        <th scope="col">Arrival Date</th>
+        <th scope="col">Driver</th>
+        <th scope="col">Driver Number</th>
+        <th scope="col">Vehicle Number</th>
         <th scope="col" width="5%" style="text-align: center">Type</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let deliveryItem of deliveryItemDetails; let i = index">
+      <tr *ngFor="let deliveryItem of mainarray; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{deliveryItem.applicationID}}</td>
         <td>{{deliveryItem.destination}}</td>
-        <td>{{deliveryItem.vehicleType}}</td>
         <td>{{deliveryItem.approval}}</td>
         <td>{{deliveryItem.depatureDate}}</td>
         <td>{{deliveryItem.arrivaleDate}}</td>
-        <td>{{deliveryItem.reason}}</td>
+        <td>{{deliveryItem.drivername}}</td>
+        <td>{{deliveryItem.contactNumber}}</td>
+        <td>{{deliveryItem.vehicleId}}</td>
         <td style="text-align: center">
           <i *ngIf="deliveryItem.type=='P'||deliveryItem.type=='IP'" class="fas fa-user"></i>
           <i *ngIf="deliveryItem.type=='I'||deliveryItem.type=='IP'" class="fas fa-truck" style="padding-left: 10px"></i>

@@ -154,7 +154,9 @@ export class CreateNewRequestComponent implements OnInit {
   getNewPassenger() {
     return {
       passenger:
-        {passengerId: ''},
+        {
+          passengerId: ''
+        },
     };
   }
 

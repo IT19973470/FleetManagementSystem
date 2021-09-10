@@ -59,6 +59,7 @@ import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant
 
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -271,7 +272,9 @@ const routes: Routes = [
       {
         path: 'applicant_regestration',
         component: ApplicantRegestrationComponent
-      }
+      },
+
+
     ]
   }
 ];
