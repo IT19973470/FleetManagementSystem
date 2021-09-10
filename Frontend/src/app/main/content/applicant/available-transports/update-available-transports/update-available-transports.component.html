@@ -134,12 +134,13 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="Pass.passenger.passengerId"
                        #passengerId="ngModel"
+                       (keyup)="chkPassengerId()"
                        name="passengerType" required>
-                <div *ngIf="(errorP==1)"
+                <div *ngIf="(flag===1)"
                      class="validErr" style="color:red">
                   Passenger ID is Not Found
                 </div>
-                <div *ngIf="(errorP==0)"
+                <div *ngIf="(flag===0)"
                      class="validErr" style="color:green">
                   Passenger ID Found
                 </div>

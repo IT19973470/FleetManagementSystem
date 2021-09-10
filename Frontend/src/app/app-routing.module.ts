@@ -55,6 +55,8 @@ import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-man
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
 
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
+
 
 
 
@@ -266,7 +268,13 @@ const routes: Routes = [
       {
         path: 'update_driver',
         component: UpdateDriverComponent
-      }
+      },
+      {
+        path: 'applicant_regestration',
+        component: ApplicantRegestrationComponent
+      },
+
+
     ]
   }
 ];

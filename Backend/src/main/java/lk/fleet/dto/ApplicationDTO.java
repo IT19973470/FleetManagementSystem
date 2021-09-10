@@ -22,6 +22,7 @@ public class ApplicationDTO {
     private String type;
 
     private PassengerAppDTO passengerApp;
+    private PassengerApplicationDTO passengerApplicationDTO;
 
     public ApplicationDTO(Application application) {
         if (application != null) {
@@ -39,6 +40,33 @@ public class ApplicationDTO {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public PassengerApplicationDTO getPassengerApplicationDTO() {
+        return passengerApplicationDTO;
+    }
+
+    public void setPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO) {
+        this.passengerApplicationDTO = passengerApplicationDTO;
+    }
+
+    public PassengerAppDTO getPassengerApp() {
+        return passengerApp;
+    }
+
+    public void setPassengerApp(PassengerAppDTO passengerApp) {
+        this.passengerApp = passengerApp;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+>>>>>>> Stashed changes
     public String getApplicationID() {
         return applicationID;
     }
