@@ -1,11 +1,7 @@
 package lk.fleet.service.impl;
 
-import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
-import lk.fleet.dto.UserAccountDTO;
-import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
-import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
 import lk.fleet.service.OverTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +58,7 @@ public class OverTimeServiceImpl implements OverTimeService {
 
     @Override
     public OverTimeDTO getOverTimeByID(String driverId) {
-        OverTime overTimeNow = overTimeRepository.getOverTimeNow(driverId);
+        OverTime overTimeNow = overTimeRepository.getLastOverTime(driverId).get(0);
         return new OverTimeDTO(overTimeNow);
     }
 

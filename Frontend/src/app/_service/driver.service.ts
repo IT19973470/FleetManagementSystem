@@ -40,10 +40,14 @@ export class DriverService {
   }
 
   deleteOT(otID): Observable<any> {
-    return this.http.delete<any>(environment.backend_url + "/overTime/deleteOT/" + otID);
+    return this.http.delete<any>(environment.backend_url + '/overTime/deleteOT/' + otID);
   }
 
   getMyOT(driverID):Observable<any>{
     return this.http.get<any>(environment.backend_url + '/overTime/getOTbyID/' + driverID);
+  }
+
+  deleteDriver(driverID) {
+    return this.http.delete<any>(environment.backend_url + '/driverAccount/deleteDriver/' + driverID);
   }
 }

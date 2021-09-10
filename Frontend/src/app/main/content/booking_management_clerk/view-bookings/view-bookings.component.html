@@ -5,7 +5,7 @@
 </div>
 
 <div class="row" style="display: flex;justify-content: center">
-  <div class="col-11" style="margin-top: 20px">
+  <div class="col-10" style="margin-top: 20px">
 
     <div style="margin-top: 20px">
 <!--      <span style="font-weight: bold;margin-left: 0px">Search by driver : </span>-->
@@ -24,19 +24,17 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Booking ID</th>
-        <th scope="col">Booking Date</th>
-        <th scope="col" width="15%">Booking Time</th>
+        <th scope="col" >Booking Date & Time</th>
         <th scope="col">Booking Status</th>
-        <th scope="col" width="15%">Destination</th>
-        <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="10%" >Destination</th>
+        <th scope="col" width="10%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let booking of bookings; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{booking.bookingId}}</td>
-        <td>{{booking.bookingDate}}</td>
-        <td>{{booking.bookingTime}}</td>
+        <td>{{booking.bookingDateTime}}</td>
         <td>{{booking.bookingStatus}}</td>
         <td>{{booking.destination}}</td>
         <td style="text-align: center">

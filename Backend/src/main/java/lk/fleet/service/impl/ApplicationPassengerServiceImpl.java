@@ -42,7 +42,9 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
           passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
         }
+
            return   new ApplicationDTO(applicationRepository.save(application)); //Insert
+
     }
 
 //    public ApplicationDTO addApplicationItemPass(Application application) {
