@@ -47,7 +47,7 @@ export class CreateNewRequestComponent implements OnInit {
 
   errorP =2; //
   passengerOBJ; //Array Object
-
+  flag;
 
 // Item ={
 //   item:{
@@ -91,22 +91,51 @@ export class CreateNewRequestComponent implements OnInit {
 
   chkPassengerId() {
     if (this.Pass.passenger.passengerId != '') {
+      this.flag==1;
+      this.errorP=2;
     }
   }
 
+
+  createAccount(){
+    this.router.navigate(['/main/applicant_regestration'])
+  }
   onSubmitPassenger() {
-    for (let x = 0; x <= this.y; x++) {
-      this.passengerOBJ = this.PassengerDB[x];
-      if (this.Pass.passenger.passengerId === this.passengerOBJ.passengerId) {
-        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
-        this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
-        this.ViewPassenger.push(this.passengerOBJ);
-        this.errorP = 0;
+
+    let check=this.Pass;
+    this.flag=1;
+
+
+    for (let x=0; x<=this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length-1; x++)
+    {
+      let a=this.passengerpassengerApp.passengerApplication.passengerPassengerApplications[x];
+      console.log(a);
+      if(a.passenger.passengerId==check.passenger.passengerId){
+        this.flag=0;
         break;
-      } else {
-        this.errorP = 1;
+      }
+      else {
+        this.flag=1;
       }
     }
+    if(this.flag==1)
+    {
+      for (let z = 0; z <= this.y-1; z++) {
+        this.passengerOBJ = this.PassengerDB[z];
+        if (this.Pass.passenger.passengerId === this.passengerOBJ.passengerId) {
+          this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+          this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
+          this.ViewPassenger.push(this.passengerOBJ);
+          this.errorP = 0;
+          break;
+        } else {
+          this.errorP = 1;
+        }
+      }
+    }
+
+
+
     this.setNewPassenger();
   }
 
@@ -125,7 +154,9 @@ export class CreateNewRequestComponent implements OnInit {
   getNewPassenger() {
     return {
       passenger:
-        {passengerId: ''},
+        {
+          passengerId: ''
+        },
     };
   }
 

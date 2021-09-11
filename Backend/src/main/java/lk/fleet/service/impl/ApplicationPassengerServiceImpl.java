@@ -43,7 +43,8 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
           passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
         }
 
-           return   new ApplicationDTO(applicationRepository.save(application));
+           return   new ApplicationDTO(applicationRepository.save(application)); //Insert
+
     }
 
 //    public ApplicationDTO addApplicationItemPass(Application application) {
@@ -90,6 +91,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
     @Override
     public PassengerPassengerApplication addPassengerpassenger(PassengerPassengerApplication passengerPassengerApplication) {
+
         return passengerPassengerApplicationRepository.save(passengerPassengerApplication);
     }
 //
@@ -104,10 +106,20 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     @Override
     public Passenger addPassenger(Passenger passenger) {
         passenger.setPassengerId(passenger.getUserAccount().getEmployeeID());
+
         userAccountRepository.save(passenger.getUserAccount());
 
         return passengerRepository.save(passenger);
     }
+
+
+//    public UserAccount addApplicant(UserAccount userAccount) {
+//        userAccount.setPassenger(userAccount.getPassenger());
+//        userAccount.getPassenger().setPassengerId(userAccount.getEmployeeID());
+//
+//        return userAccountRepository.save(userAccount);
+//    }
+
 
     public List<PassengerDTO> getPassengers() {
         List<PassengerDTO> passengerDTOS =new ArrayList<>();

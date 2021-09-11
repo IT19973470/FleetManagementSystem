@@ -82,7 +82,10 @@ public class ApplicationController {
 //        return ResponseEntity.ok(applicationPassengerService.UpdatePassengerApp(applicationID, passengerPassengerApplication));
 //    }
 
-
+//    @PostMapping(value ="/AddNewApplicant")
+//    public ResponseEntity addPassengerApplication1(@RequestBody UserAccount passenger){
+//        return ResponseEntity.ok(applicationPassengerService.addApplicant(passenger));
+//    }
 
     @GetMapping(value = "/getApplication")
     public List<ApplicationDTO> getPassengerApp(){
