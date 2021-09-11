@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let tokenDetail of tokens; let i = index">
-          <th scope="row"><i class="far fa-list-alt">{{i+1}}</i></th>
+          <th scope="row">{{i+1}}</th>
           <td>{{tokenDetail.tokenID}}</td>
           <td>{{tokenDetail.departureDate}}</td>
           <td>{{tokenDetail.departureTime}}</td>
