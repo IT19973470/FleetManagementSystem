@@ -123,7 +123,6 @@ pass: {
         if(a2.applicationId===a1.applicationID)
          // console.log(a1)
         for( var i = 0; i < arr.length; i++){
-
           if ( arr[i] === a1) {
 
             this.main.push(a1)
