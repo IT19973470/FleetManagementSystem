@@ -48,6 +48,10 @@ public class ApplicationController {
     public ResponseEntity addItem(@RequestBody Application application) {
         return ResponseEntity.ok(applicationItemService.addItemApplication(application));
     }
+    @GetMapping(value ="/AddPassengerApp/{ApplicationID}/{applicationID}")
+    public ResponseEntity passengerApplication(@PathVariable String ApplicationID,@PathVariable String applicationID) {
+        return ResponseEntity.ok(applicationPassengerService.passengerApplication(ApplicationID,applicationID));
+    }
 
     @PostMapping(value ="/newApplication1")
     public ResponseEntity addPassengerApplication1(@RequestBody Passenger passenger){
@@ -84,6 +88,13 @@ public class ApplicationController {
     public List<ApplicationDTO> getPassengerApp(){
         return applicationPassengerService.getPassengerApp();
     }
+
+    @GetMapping(value = "/getApplicationID/{applicationID}")
+    public ApplicationDTO getPassengerApp(@PathVariable String applicationID){
+        return applicationPassengerService.getPassengerApp(applicationID);
+    }
+
+
     @GetMapping(value = "/getPassengerApplication")
     public List<PassengerApplication> getAPassengerApp(){
         return applicationPassengerService.getAPassengerApp();
@@ -97,5 +108,9 @@ public class ApplicationController {
 //    public List<ApplicationDTO> getdto(){
 //        return applicationService.getdto();
 //    }
+        @DeleteMapping(value = "/deletePassengerApp/{ApplicationID}/{applicationID}")
+    public ResponseEntity deleteBooking(@PathVariable String ApplicationID,@PathVariable String applicationID){
+    return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID,applicationID));
+}
 
 }

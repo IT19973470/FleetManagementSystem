@@ -34,10 +34,15 @@ public class TokenController {
         return ResponseEntity.ok(tokenService.getAllTokens());
     }
 
-//    @GetMapping(value = "/getTokenByID/{tokenID}")
-//    public ResponseEntity getTokenByID(@PathVariable String tokenID) {
-//        return ResponseEntity.ok(tokenService.getTokenByID(tokenID));
-//    }
+    @GetMapping(value = "getAllCompletedTokens")
+    public ResponseEntity getCompletedTokens() {
+        return ResponseEntity.ok(tokenService.getCompletedTokens());
+    }
+
+    @GetMapping(value = "/getTokenByID/{tokenID}")
+    public ResponseEntity getTokenByID(@PathVariable String tokenID) {
+        return ResponseEntity.ok(tokenService.getTokenByID(tokenID));
+    }
 
 
 }

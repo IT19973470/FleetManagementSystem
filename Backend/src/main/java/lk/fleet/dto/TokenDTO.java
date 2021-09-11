@@ -21,9 +21,11 @@ public class TokenDTO {
             this.departureDate = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.departureTime = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
             this.departureTimeActual = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-//            this.arrivalDate = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//            this.arrivalTime = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-//            this.arrivalTimeActual = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            if (token.getArrivalDateTime() != null) {
+                this.arrivalDate = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                this.arrivalTime = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+                this.arrivalTimeActual = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            }
             this.transportStatus = token.isTransportStatus();
         }
     }

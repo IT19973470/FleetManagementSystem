@@ -6,6 +6,7 @@ import lk.fleet.entity.PassengerPassengerApplication;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ApplicationDTO {
@@ -13,41 +14,29 @@ public class ApplicationDTO {
     private String destination;
     private String vehicleType;
     private boolean approval;
-    private LocalDateTime depatureDate;
-    private LocalDateTime arrivaleDate;
+    private String depatureDate;
+    private LocalDateTime depatureDateActual;
+    private String arrivaleDate;
+    private LocalDateTime arrivaleDateActual;
     private String reason;
     private String type;
 
     private PassengerAppDTO passengerApp;
 
     public ApplicationDTO(Application application) {
-        if(application != null) {
-            this.applicationID=application.getApplicationID();
-            this.destination=application.getDestination();
-            this.vehicleType=application.getVehicleType();
-            this.approval=application.isApproval();
-            this.depatureDate=application.getDepatureDate();
-            this.arrivaleDate=application.getArrivaleDate();
-            this.reason=application.getReason();
-            this.type=application.getType();
+        if (application != null) {
+            this.applicationID = application.getApplicationID();
+            this.destination = application.getDestination();
+            this.vehicleType = application.getVehicleType();
+            this.approval = application.isApproval();
+            this.depatureDateActual = application.getDepatureDate();
+            this.arrivaleDateActual = application.getArrivaleDate();
+            this.depatureDate = application.getDepatureDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a"));
+            this.arrivaleDate = application.getArrivaleDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a"));
+            this.reason = application.getReason();
+            this.type = application.getType();
 
         }
-    }
-
-    public PassengerAppDTO getPassengerApp() {
-        return passengerApp;
-    }
-
-    public void setPassengerApp(PassengerAppDTO passengerApp) {
-        this.passengerApp = passengerApp;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getApplicationID() {
@@ -82,20 +71,36 @@ public class ApplicationDTO {
         this.approval = approval;
     }
 
-    public LocalDateTime getDepatureDate() {
+    public String getDepatureDate() {
         return depatureDate;
     }
 
-    public void setDepatureDate(LocalDateTime depatureDate) {
+    public void setDepatureDate(String depatureDate) {
         this.depatureDate = depatureDate;
     }
 
-    public LocalDateTime getArrivaleDate() {
+    public LocalDateTime getDepatureDateActual() {
+        return depatureDateActual;
+    }
+
+    public void setDepatureDateActual(LocalDateTime depatureDateActual) {
+        this.depatureDateActual = depatureDateActual;
+    }
+
+    public String getArrivaleDate() {
         return arrivaleDate;
     }
 
-    public void setArrivaleDate(LocalDateTime arrivaleDate) {
+    public void setArrivaleDate(String arrivaleDate) {
         this.arrivaleDate = arrivaleDate;
+    }
+
+    public LocalDateTime getArrivaleDateActual() {
+        return arrivaleDateActual;
+    }
+
+    public void setArrivaleDateActual(LocalDateTime arrivaleDateActual) {
+        this.arrivaleDateActual = arrivaleDateActual;
     }
 
     public String getReason() {
@@ -106,4 +111,19 @@ public class ApplicationDTO {
         this.reason = reason;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public PassengerAppDTO getPassengerApp() {
+        return passengerApp;
+    }
+
+    public void setPassengerApp(PassengerAppDTO passengerApp) {
+        this.passengerApp = passengerApp;
+    }
 }

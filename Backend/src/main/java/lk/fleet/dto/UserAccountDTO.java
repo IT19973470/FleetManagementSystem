@@ -19,11 +19,12 @@ public class UserAccountDTO {
     private String registeredDate;
     private String nameWithInitials;
     private String password;
+    private boolean approved;
     private BookingManagementClerkDTO bookingManagementClerkDTO;
 
 
-    public UserAccountDTO(UserAccount userAccount){
-        if(userAccount != null){
+    public UserAccountDTO(UserAccount userAccount) {
+        if (userAccount != null) {
             this.employeeID = userAccount.getEmployeeID();
             this.accountType = userAccount.getAccountType();
             this.nic = userAccount.getNic();
@@ -34,10 +35,10 @@ public class UserAccountDTO {
             this.email = userAccount.getEmail();
             this.registeredDate = userAccount.getRegisteredDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.nameWithInitials = userAccount.getNameWithInitials();
+            this.approved = userAccount.isApproved();
 //            this.password = userAccount.getPassword();
         }
     }
-
 
 
     public String getEmployeeID() {
@@ -136,5 +137,11 @@ public class UserAccountDTO {
         this.bookingManagementClerkDTO = bookingManagementClerkDTO;
     }
 
+    public boolean isApproved() {
+        return approved;
+    }
 
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
 }
