@@ -8,6 +8,8 @@ import lk.fleet.entity.Shift;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface BookingService {
 
     List<DriverVehicleDTO> getDriverVehicles(String driverId);
@@ -22,11 +24,14 @@ public interface BookingService {
 
     boolean deleteDriverShift(String shiftId);
 
-    BookingDTO addBooking(Booking booking);
+    Booking addBooking(Booking booking);
 
     BookingDTO updateBooking(String bookingId, Booking booking);
 
     boolean deleteBooking(String bookingId);
 
+    List<BookingDTO> getAllBookings();
+
     List<BookingDTO> getBookings();
+
 }

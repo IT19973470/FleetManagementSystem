@@ -4,10 +4,7 @@ import lk.fleet.dto.ApplicationDTO;
 import lk.fleet.dto.BookingApplicationDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.dto.PassengerDTO;
-import lk.fleet.entity.Application;
-import lk.fleet.entity.Passenger;
-import lk.fleet.entity.PassengerApplication;
-import lk.fleet.entity.PassengerPassengerApplication;
+import lk.fleet.entity.*;
 
 import java.util.List;
 
@@ -37,4 +34,5 @@ public interface ApplicationPassengerService {
     ApplicationDTO getPassengerApp(String ID);
 
     boolean deletePassengerApp(String passengerApplicationID, String passengerID);
+
 }

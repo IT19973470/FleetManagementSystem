@@ -45,7 +45,7 @@ export class BookingManagerService {
 
 
   addBooking(BookingDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/booking/addBooking", BookingDetail);
+    return this.http.post<any>(environment.backend_url + "/booking/addBooking" ,BookingDetail);
   }
 
   updateBooking(BookingDetail): Observable<any> {

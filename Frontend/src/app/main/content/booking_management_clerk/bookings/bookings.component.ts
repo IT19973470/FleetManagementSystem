@@ -14,18 +14,24 @@ export class BookingsComponent implements OnInit {
   @ViewChild('bookingForm', {static: true}) public bookingForm: NgForm;
 
   booking = {
-    bookingId: '',
-    bookingDate: '',
-    bookingTime: '',
+    bookingId: '1',
     bookingDateTime: '',
-    destination:'',
-    bookingStatus:'',
+    destination: '',
+    bookingStatus: true,
 
     bookingManagementClerk: {
-      bookingManagementClerkId: ''
+      bookingManagementClerkId: 'BMC123'
     }
   };
+  bookingStatuses = [
+    "Active",
+    "Inactive"
+  ]
+  selected = ""
 
+  update(e) {
+    this.selected = e.target.value
+  }
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
@@ -34,19 +40,13 @@ export class BookingsComponent implements OnInit {
 
   }
 
-  // setItem(deliveryItem) {
-  //   this.deliveryItem = deliveryItem;
-  // }
-
-
-
-
   onSubmit() {
-    this.booking.bookingDateTime = this.booking.bookingDate + 'T' + this.booking.bookingTime
     this.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+    console.log(this.booking);
     this.bookingManagerService.addBooking(this.booking).subscribe(() => {
       this.router.navigate(['/main/view_bookings'])
     })
   }
-
 }
+
+

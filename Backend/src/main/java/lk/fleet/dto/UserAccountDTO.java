@@ -19,6 +19,7 @@ public class UserAccountDTO {
     private String registeredDate;
     private String nameWithInitials;
     private String password;
+    private boolean approved;
     private BookingManagementClerkDTO bookingManagementClerkDTO;
 
 
@@ -34,6 +35,7 @@ public class UserAccountDTO {
             this.email = userAccount.getEmail();
             this.registeredDate = userAccount.getRegisteredDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.nameWithInitials = userAccount.getNameWithInitials();
+            this.approved = userAccount.isApproved();
 //            this.password = userAccount.getPassword();
         }
     }
@@ -135,5 +137,11 @@ public class UserAccountDTO {
         this.bookingManagementClerkDTO = bookingManagementClerkDTO;
     }
 
+    public boolean isApproved() {
+        return approved;
+    }
 
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
 }
