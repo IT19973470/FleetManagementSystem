@@ -1,9 +1,6 @@
 package lk.fleet.controller;
 
-import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.ItamAppDTO;
-import lk.fleet.dto.PassengerApplicationDTO;
-import lk.fleet.dto.PassengerDTO;
+import lk.fleet.dto.*;
 import lk.fleet.entity.*;
 import lk.fleet.service.ApplicationItemService;
 import lk.fleet.service.ApplicationPassengerService;
@@ -103,9 +100,9 @@ public class ApplicationController {
         return applicationPassengerService.getAPassengerApp();
     }
 
-    @GetMapping(value = "/getdto")
-    public List<PassengerApplicationDTO> getdto(){
-        return applicationPassengerService.getdto();
+    @GetMapping(value = "/getBookingApplications")//getdto
+    public List<BookingApplicationDTO> getBookingApplications(){
+        return applicationPassengerService.getBookingApplications();
     }
 //    @GetMapping(value = "/getdto")
 //    public List<ApplicationDTO> getdto(){

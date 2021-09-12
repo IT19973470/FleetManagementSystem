@@ -7,13 +7,13 @@ public class VehicleDriverManagementClerkDTO {
     private String vehicleDriverManagementId;
     private UserAccountDTO userAccount;
 
-    public VehicleDriverManagementClerkDTO(VehicleDriverManagementClerk vehicleDriverManagementClerk){
-        if(vehicleDriverManagementClerk != null) {
+    public VehicleDriverManagementClerkDTO(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
+        if (vehicleDriverManagementClerk != null) {
             this.vehicleDriverManagementId = vehicleDriverManagementClerk.getVehicleDriverManagementId();
         }
     }
 
-    public VehicleDriverManagementClerkDTO(VehicleDriverManagementClerk vehicleDriverManagementClerk, UserAccountDTO userAccount){
+    public VehicleDriverManagementClerkDTO(VehicleDriverManagementClerk vehicleDriverManagementClerk, UserAccountDTO userAccount) {
         this(vehicleDriverManagementClerk);
         this.userAccount = userAccount;
     }

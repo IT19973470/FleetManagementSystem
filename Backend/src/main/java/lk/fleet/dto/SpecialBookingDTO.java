@@ -9,11 +9,13 @@ public class SpecialBookingDTO {
     private double approvedFuelAmount;
     private String description;
 
-    public SpecialBookingDTO(SpecialBooking specialBooking){
-        this.specialBookingId = specialBooking.getSpecialBookingId();
-        this.noOfPassengers = specialBooking.getNoOfPassengers();
-        this.approvedFuelAmount = specialBooking.getApprovedFuelAmount();
-        this.description = specialBooking.getDescription();
+    public SpecialBookingDTO(SpecialBooking specialBooking) {
+        if (specialBooking != null) {
+            this.specialBookingId = specialBooking.getSpecialBookingId();
+            this.noOfPassengers = specialBooking.getNoOfPassengers();
+            this.approvedFuelAmount = specialBooking.getApprovedFuelAmount();
+            this.description = specialBooking.getDescription();
+        }
     }
 
     public String getSpecialBookingId() {

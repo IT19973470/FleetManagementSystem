@@ -8,13 +8,13 @@ public class AccidentMaintenanceManagerDTO {
     private String employeeID;
     private UserAccountDTO userAccount;
 
-    public AccidentMaintenanceManagerDTO(AccidentMaintenanceManager accidentMaintenanceManager){
-        if(accidentMaintenanceManager != null) {
+    public AccidentMaintenanceManagerDTO(AccidentMaintenanceManager accidentMaintenanceManager) {
+        if (accidentMaintenanceManager != null) {
             this.employeeID = accidentMaintenanceManager.getEmployeeID();
         }
     }
 
-    public AccidentMaintenanceManagerDTO(AccidentMaintenanceManager accidentMaintenanceManager, UserAccountDTO userAccount){
+    public AccidentMaintenanceManagerDTO(AccidentMaintenanceManager accidentMaintenanceManager, UserAccountDTO userAccount) {
         this(accidentMaintenanceManager);
         this.userAccount = userAccount;
     }
