@@ -19,13 +19,15 @@ public class ShiftDTO {
 
 
     public ShiftDTO(Shift shift) {
-        this.shiftId = shift.getShiftId();
-        this.shiftDate = shift.getShiftDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        this.startingTime = shift.getStartingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-        this.startingTimeActual = shift.getStartingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-        this.endingTime = shift.getEndingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-        this.endingTimeActual = shift.getEndingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-        this.attendance = shift.isAttendance();
+        if (shift != null) {
+            this.shiftId = shift.getShiftId();
+            this.shiftDate = shift.getShiftDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.startingTime = shift.getStartingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            this.startingTimeActual = shift.getStartingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.endingTime = shift.getEndingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            this.endingTimeActual = shift.getEndingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.attendance = shift.isAttendance();
+        }
 
     }
 

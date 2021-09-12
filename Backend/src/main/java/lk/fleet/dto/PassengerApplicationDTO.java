@@ -1,59 +1,46 @@
 package lk.fleet.dto;
 
-import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.PassengerApplication;
+import lk.fleet.entity.PassengerPassengerApplication;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 public class PassengerApplicationDTO {
-    private String applicationID;
-    private String drivername;
-    private String vehicleId;
-    private  String contactNumber;
 
+    private String passengerApplicationID;
+    private int noOfPassengers;
 
+    private List<PassengerDTO> passengers;
 
-    public PassengerApplicationDTO(BookingApplication bookingApplication) {
-        if (bookingApplication != null) {
-            this.applicationID = bookingApplication.getApplication().getApplicationID();
-            this.drivername = bookingApplication.getBooking().getShift().getDriverVehicle().getDriver().getUserAccount().getName();
-            this.vehicleId = bookingApplication.getBooking().getShift().getDriverVehicle().getVehicle().getVehicleId();
-            this.contactNumber=bookingApplication.getBooking().getShift().getDriverVehicle().getDriver().getUserAccount().getContactNo();
+    public PassengerApplicationDTO(PassengerApplication passengerApplication) {
+        if (passengerApplication != null) {
+            this.passengerApplicationID = passengerApplication.getPassengerApplicationID();
+            this.noOfPassengers = passengerApplication.getNoOfPassengers();
         }
-
     }
 
-    public String getApplicationID() {
-        return applicationID;
+    public List<PassengerDTO> getPassengers() {
+        return passengers;
     }
 
-    public void setApplicationID(String applicationID) {
-        this.applicationID = applicationID;
+    public void setPassengers(List<PassengerDTO> passengers) {
+        this.passengers = passengers;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getPassengerApplicationID() {
+        return passengerApplicationID;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setPassengerApplicationID(String passengerApplicationID) {
+        this.passengerApplicationID = passengerApplicationID;
     }
 
-    public String getDrivername() {
-        return drivername;
+    public int getNoOfPassengers() {
+        return noOfPassengers;
     }
 
-    public void setDrivername(String drivername) {
-        this.drivername = drivername;
+    public void setNoOfPassengers(int noOfPassengers) {
+        this.noOfPassengers = noOfPassengers;
     }
-
-    public String getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
 }

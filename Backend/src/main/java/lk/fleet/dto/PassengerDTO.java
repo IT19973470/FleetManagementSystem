@@ -3,22 +3,19 @@ package lk.fleet.dto;
 import lk.fleet.entity.Passenger;
 
 public class PassengerDTO {
-    String PassengerId;
-    String PassengerName;
-    String ContactNumber;
+    private String PassengerId;
+    private UserAccountDTO userAccount;
 
     public PassengerDTO(Passenger passenger) {
-       this.PassengerId = passenger.getPassengerId();
-       this.PassengerName=passenger.getUserAccount().getName();
-       this.ContactNumber=passenger.getUserAccount().getContactNo();
+        this.PassengerId = passenger.getPassengerId();
     }
 
-    public String getContactNumber() {
-        return ContactNumber;
+    public UserAccountDTO getUserAccount() {
+        return userAccount;
     }
 
-    public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
+    public void setUserAccount(UserAccountDTO userAccount) {
+        this.userAccount = userAccount;
     }
 
     public String getPassengerId() {
@@ -27,13 +24,5 @@ public class PassengerDTO {
 
     public void setPassengerId(String passengerId) {
         PassengerId = passengerId;
-    }
-
-    public String getPassengerName() {
-        return PassengerName;
-    }
-
-    public void setPassengerName(String passengerName) {
-        PassengerName = passengerName;
     }
 }

@@ -11,17 +11,15 @@ public class VipMemberDTO {
     private String address;
     private String position;
 
-    public VipMemberDTO(VipMember vipMember){
-        if (vipMember!=null){
-            this.vipMemberId=vipMember.getVipMemberId();
-            this.firstName=vipMember.getFirstName();
-            this.lastName=vipMember.getLastName();
-            this.contactNumber=vipMember.getContactNumber();
-            this.address=vipMember.getAddress();
-            this.position=vipMember.getPosition();
-
+    public VipMemberDTO(VipMember vipMember) {
+        if (vipMember != null) {
+            this.vipMemberId = vipMember.getVipMemberId();
+            this.firstName = vipMember.getFirstName();
+            this.lastName = vipMember.getLastName();
+            this.contactNumber = vipMember.getContactNumber();
+            this.address = vipMember.getAddress();
+            this.position = vipMember.getPosition();
         }
-
     }
 
     public String getVipMemberId() {

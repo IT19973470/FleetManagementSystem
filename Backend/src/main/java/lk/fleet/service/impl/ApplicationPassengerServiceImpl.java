@@ -1,4 +1,5 @@
 package lk.fleet.service.impl;
+
 import lk.fleet.dto.*;
 import lk.fleet.entity.*;
 import lk.fleet.repository.*;
@@ -10,8 +11,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class ApplicationPassengerServiceImpl implements ApplicationPassengerService {
@@ -34,17 +33,16 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     public ApplicationDTO addApplication(Application application) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         application.setApplicationID("App" + dateTime);
-        PassengerApplication passengerApplication =application.getPassengerApplication();
+        PassengerApplication passengerApplication = application.getPassengerApplication();
         passengerApplication.setPassengerApplicationID("PassApp" + dateTime);
         passengerApplication.setApplication(application);
 
-        int count=0;
-        for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
-          passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
+        int count = 0;
+        for (PassengerPassengerApplication passengerPassengerApplication : application.getPassengerApplication().getPassengerPassengerApplications()) {
+            passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(), passengerPassengerApplication.getPassenger().getPassengerId()));
         }
 
-           return   new ApplicationDTO(applicationRepository.save(application)); //Insert
-
+        return new ApplicationDTO(applicationRepository.save(application));
     }
 
 //    public ApplicationDTO addApplicationItemPass(Application application) {
@@ -122,18 +120,20 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
 
     public List<PassengerDTO> getPassengers() {
-        List<PassengerDTO> passengerDTOS =new ArrayList<>();
-        List<Passenger> passengers =passengerRepo.findAll();
-        for(Passenger passenger: passengers){
-            passengerDTOS.add(new PassengerDTO(passenger));
+        List<PassengerDTO> passengerDTOS = new ArrayList<>();
+        List<Passenger> passengers = passengerRepo.findAll();
+        for (Passenger passenger : passengers) {
+            PassengerDTO passengerDTO = new PassengerDTO(passenger);
+            passengerDTO.setUserAccount(new UserAccountDTO(passenger.getUserAccount()));
+            passengerDTOS.add(passengerDTO);
         }
         return passengerDTOS;
     }
 
 
-    public boolean deletePassengerApp(String passengerApplicationID,String passengerID) {
+    public boolean deletePassengerApp(String passengerApplicationID, String passengerID) {
 
-        passengerPassengerApplicationRepository.deleteById(new PassengerPassengerApplicationPK(passengerApplicationID,passengerID));
+        passengerPassengerApplicationRepository.deleteById(new PassengerPassengerApplicationPK(passengerApplicationID, passengerID));
         return true;
     }
 
@@ -144,7 +144,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         applicationRepository.save(passengerPassengerApplication.getPassengerApplication().getApplication());
         passengerPassengerApplication.getPassengerApplication().setPassengerApplicationID("Pass" + 0 + dateTime);
         passengerApplicationRepository.save(passengerPassengerApplication.getPassengerApplication());
-        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
+        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerPassengerApplication.getPassengerApplication().getPassengerApplicationID(), passengerPassengerApplication.getPassenger().getPassengerId()));
 
 //        int count = 0;
 //        for (Passenger passenger : passengerPassengerApplication.getPassengers()) {
@@ -156,22 +156,21 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     }
 
 
-    public PassengerPassengerApplication passengerApplication( String passengerApplicationID ,String passengerID) {
-         PassengerPassengerApplication passengerPassengerApplication=new PassengerPassengerApplication();
-        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerApplicationID,passengerID));
+    public PassengerPassengerApplication passengerApplication(String passengerApplicationID, String passengerID) {
+        PassengerPassengerApplication passengerPassengerApplication = new PassengerPassengerApplication();
+        passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(passengerApplicationID, passengerID));
         passengerPassengerApplicationRepository.save(passengerPassengerApplication);
         return null;
     }
 
 
-
     public List<ApplicationDTO> getPassengerApp() { //get application
 
-        List<ApplicationDTO> applicationDTOS =new ArrayList<>();
-        List<Application> applications =applicationRepository.findAll();
-        for(Application application: applications){
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
-            applicationDTO.setPassengerApp(new PassengerAppDTO(application.getPassengerApplication()));
+            applicationDTO.setPassengerApp(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
@@ -185,34 +184,34 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
     public ApplicationDTO getPassengerApp(String ID) { //get application
 
-     Application application =applicationRepository.getAapplicationByID(ID);
+        Application application = applicationRepository.getAapplicationByID(ID);
 
-        ApplicationDTO applicationDTOS =new ApplicationDTO(application);
-        PassengerAppDTO passengerApplicationDTO = new PassengerAppDTO(application.getPassengerApplication());
+        ApplicationDTO applicationDTOS = new ApplicationDTO(application);
+        PassengerApplicationDTO passengerApplicationDTO = new PassengerApplicationDTO(application.getPassengerApplication());
 
-       List<PassengerPassengerApplicationDTO> passengerPassengerApplications = new ArrayList<>();
+        List<PassengerDTO> passengerPassengerApplications = new ArrayList<>();
         for (PassengerPassengerApplication passengerPassengerApplication : application.getPassengerApplication().getPassengerPassengerApplications()) {
-            PassengerPassengerApplicationDTO passengerPassengerApplicationDTO=new PassengerPassengerApplicationDTO(passengerPassengerApplication);
+            PassengerDTO passengerPassengerApplicationDTO = new PassengerDTO(passengerPassengerApplication.getPassenger());
+            passengerPassengerApplicationDTO.setUserAccount(new UserAccountDTO(passengerPassengerApplication.getPassenger().getUserAccount()));
             passengerPassengerApplications.add(passengerPassengerApplicationDTO);
         }
-        passengerApplicationDTO.setPassengerPassengerApplications(passengerPassengerApplications);
+        passengerApplicationDTO.setPassengers(passengerPassengerApplications);
         applicationDTOS.setPassengerApp(passengerApplicationDTO);
 
 
-     return applicationDTOS;
+        return applicationDTOS;
     }
 
 
-
     @Override
-    public List<PassengerApplicationDTO> getdto() {
+    public List<BookingApplicationDTO> getBookingApplications() {
         List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
-        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
-        for(BookingApplication bookingApplication: bookingApplications){
-            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
+        List<BookingApplicationDTO> bookingApplicationDTOS = new ArrayList<>();
+        for (BookingApplication bookingApplication : bookingApplications) {
+            bookingApplicationDTOS.add(new BookingApplicationDTO(bookingApplication));
         }
 
-        return passengerApplicationDTOS;
+        return bookingApplicationDTOS;
     }
 
 }
