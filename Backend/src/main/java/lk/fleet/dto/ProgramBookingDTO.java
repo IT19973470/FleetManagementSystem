@@ -6,8 +6,10 @@ public class ProgramBookingDTO {
 
     private String programBookingId;
 
-    public ProgramBookingDTO(ProgramBooking programBooking){
-        this.programBookingId = programBooking.getProgramBookingId();
+    public ProgramBookingDTO(ProgramBooking programBooking) {
+        if (programBooking != null) {
+            this.programBookingId = programBooking.getProgramBookingId();
+        }
     }
 
     public String getProgramBookingId() {

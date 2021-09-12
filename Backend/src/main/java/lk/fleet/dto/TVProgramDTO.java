@@ -13,8 +13,8 @@ public class TVProgramDTO {
     private double transportCost;
     private String producer;
 
-    public TVProgramDTO(TVProgram tvProgram){
-        if(tvProgram != null){
+    public TVProgramDTO(TVProgram tvProgram) {
+        if (tvProgram != null) {
             this.programID = tvProgram.getProgramID();
             this.programName = tvProgram.getProgramName();
             this.startingDate = tvProgram.getStartingDate();

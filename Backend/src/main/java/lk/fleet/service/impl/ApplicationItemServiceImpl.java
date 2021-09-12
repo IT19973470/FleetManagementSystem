@@ -41,7 +41,7 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
         return itemItemApplicationRepository.save(itemItemApplication);
     }
 
-    public ItamAppDTO addItemApplication(Application application){
+    public ApplicationDTO addItemApplication(Application application){
 
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         application.setApplicationID("App" + dateTime);
@@ -57,7 +57,7 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
 
         }
 
-        return    new ItamAppDTO(applicationRepository.save(application));
+        return    new ApplicationDTO(applicationRepository.save(application));
     }
 
 
