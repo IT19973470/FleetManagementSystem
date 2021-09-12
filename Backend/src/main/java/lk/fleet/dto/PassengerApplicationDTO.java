@@ -6,14 +6,14 @@ import lk.fleet.entity.PassengerPassengerApplication;
 import java.util.List;
 import java.util.Set;
 
-public class PassengerAppDTO {
+public class PassengerApplicationDTO {
 
     private String passengerApplicationID;
     private int noOfPassengers;
 
     private List<PassengerDTO> passengers;
 
-    public PassengerAppDTO(PassengerApplication passengerApplication) {
+    public PassengerApplicationDTO(PassengerApplication passengerApplication) {
         if (passengerApplication != null) {
             this.passengerApplicationID = passengerApplication.getPassengerApplicationID();
             this.noOfPassengers = passengerApplication.getNoOfPassengers();
