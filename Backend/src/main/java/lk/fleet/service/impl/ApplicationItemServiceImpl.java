@@ -2,7 +2,6 @@ package lk.fleet.service.impl;
 
 
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.ItamAppDTO;
 import lk.fleet.entity.*;
 import lk.fleet.repository.*;
 import lk.fleet.service.ApplicationItemService;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ApplicationItemServiceImpl implements ApplicationItemService {
