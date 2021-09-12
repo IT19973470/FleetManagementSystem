@@ -4,7 +4,7 @@ import lk.fleet.entity.Application;
 
 import java.time.LocalDateTime;
 
-public class ItamAppDTO {
+public class ItemApplicationDTO {
 
 //    private String applicationID;
 //    private String destination;

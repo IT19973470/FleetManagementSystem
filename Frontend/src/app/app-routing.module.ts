@@ -4,11 +4,11 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ItemDeliveryComponent} from "./main/content/transport-manager/item-delivery/item-delivery.component";
 import {ViewItemDeliveryComponent} from "./main/content/transport-manager/view-item-delivery/view-item-delivery.component";
-import {DriverAccountComponent} from "./main/content/Driver/driver-account/driver-account.component";
-import {DriverRegistrationComponent} from "./main/content/Driver/driver-registration/driver-registration.component";
-import {FuelUpdateComponent} from "./main/content/Driver/fuel-update/fuel-update.component";
-import {OverTimeComponent} from "./main/content/Driver/over-time/over-time.component";
-import {ShiftDetailsComponent} from "./main/content/Driver/shift-details/shift-details.component";
+import {DriverAccountComponent} from "./main/content/driver/driver-account/driver-account.component";
+import {DriverRegistrationComponent} from "./main/content/driver/driver-registration/driver-registration.component";
+import {FuelUpdateComponent} from "./main/content/driver/fuel-update/fuel-update.component";
+import {OverTimeComponent} from "./main/content/driver/over-time/over-time.component";
+import {ShiftDetailsComponent} from "./main/content/driver/shift-details/shift-details.component";
 import {PassengerDeliveryComponent} from "./main/content/transport-manager/passenger-delivery/passenger-delivery.component";
 import {ViewPassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/view-passenger-delivery.component";
 import {VehicleComponent} from "./main/content/vehicleDriver-manager/vehicle/vehicle.component";
@@ -29,7 +29,7 @@ import {UpdateAvailableTransportsComponent} from "./main/content/applicant/avail
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
-import {ViewOverTimeComponent} from "./main/content/Driver/view-over-time/view-over-time.component";
+import {ViewOverTimeComponent} from "./main/content/driver/view-over-time/view-over-time.component";
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
 import {MeterDetailComponent} from "./main/content/security-officer/meter-detail/meter-detail.component";
 import {UpdateDetailsComponent} from "./main/content/security-officer/update-details/update-details.component";
@@ -39,7 +39,7 @@ import {AccountRequestsComponent} from "./main/content/general-manager/account-r
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
 import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
-import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
+import {UpdateOverTimeComponent} from "./main/content/driver/view-over-time/update-over-time/update-over-time.component";
 
 
 import {BookingsComponent} from "./main/content/booking_management_clerk/bookings/bookings.component";
@@ -54,7 +54,7 @@ import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/p
 import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
 
-import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
 
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
