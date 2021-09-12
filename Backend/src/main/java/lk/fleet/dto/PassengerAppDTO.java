@@ -9,24 +9,23 @@ import java.util.Set;
 public class PassengerAppDTO {
 
     private String passengerApplicationID;
-    private  int noOfPassengers;
+    private int noOfPassengers;
 
-    private List<PassengerPassengerApplicationDTO> passengerPassengerApplications;
+    private List<PassengerDTO> passengers;
 
     public PassengerAppDTO(PassengerApplication passengerApplication) {
-        if(passengerApplication != null) {
-        this.passengerApplicationID=passengerApplication.getPassengerApplicationID();
-        this.noOfPassengers=passengerApplication.getNoOfPassengers();
-
+        if (passengerApplication != null) {
+            this.passengerApplicationID = passengerApplication.getPassengerApplicationID();
+            this.noOfPassengers = passengerApplication.getNoOfPassengers();
         }
     }
 
-    public List<PassengerPassengerApplicationDTO> getPassengerPassengerApplications() {
-        return passengerPassengerApplications;
+    public List<PassengerDTO> getPassengers() {
+        return passengers;
     }
 
-    public void setPassengerPassengerApplications(List<PassengerPassengerApplicationDTO> passengerPassengerApplications) {
-        this.passengerPassengerApplications = passengerPassengerApplications;
+    public void setPassengers(List<PassengerDTO> passengers) {
+        this.passengers = passengers;
     }
 
     public String getPassengerApplicationID() {

@@ -21,16 +21,15 @@ public class ApplicationDTO {
     private PassengerAppDTO passengerApp;
 
     public ApplicationDTO(Application application) {
-        if(application != null) {
-            this.applicationID=application.getApplicationID();
-            this.destination=application.getDestination();
-            this.vehicleType=application.getVehicleType();
-            this.approval=application.isApproval();
-            this.depatureDate=application.getDepatureDate();
-            this.arrivaleDate=application.getArrivaleDate();
-            this.reason=application.getReason();
-            this.type=application.getType();
-
+        if (application != null) {
+            this.applicationID = application.getApplicationID();
+            this.destination = application.getDestination();
+            this.vehicleType = application.getVehicleType();
+            this.approval = application.isApproval();
+            this.depatureDate = application.getDepatureDate();
+            this.arrivaleDate = application.getArrivaleDate();
+            this.reason = application.getReason();
+            this.type = application.getType();
         }
     }
 

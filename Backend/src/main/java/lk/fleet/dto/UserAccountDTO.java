@@ -22,8 +22,8 @@ public class UserAccountDTO {
     private BookingManagementClerkDTO bookingManagementClerkDTO;
 
 
-    public UserAccountDTO(UserAccount userAccount){
-        if(userAccount != null){
+    public UserAccountDTO(UserAccount userAccount) {
+        if (userAccount != null) {
             this.employeeID = userAccount.getEmployeeID();
             this.accountType = userAccount.getAccountType();
             this.nic = userAccount.getNic();
@@ -37,7 +37,6 @@ public class UserAccountDTO {
 //            this.password = userAccount.getPassword();
         }
     }
-
 
 
     public String getEmployeeID() {

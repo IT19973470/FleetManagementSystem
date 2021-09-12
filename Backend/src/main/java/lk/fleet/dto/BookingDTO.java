@@ -15,12 +15,14 @@ public class BookingDTO {
     private boolean bookingStatus;
 
     public BookingDTO(Booking booking) {
-        this.bookingId = booking.getBookingId();
-        this.bookingDate = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        this.bookingTime = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-        this.bookingTimeActual = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-        this.destination = booking.getDestination();
-        this.bookingStatus = booking.isBookingStatus();
+        if (booking != null) {
+            this.bookingId = booking.getBookingId();
+            this.bookingDate = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.bookingTime = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            this.bookingTimeActual = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.destination = booking.getDestination();
+            this.bookingStatus = booking.isBookingStatus();
+        }
     }
 
     public String getBookingId() {
