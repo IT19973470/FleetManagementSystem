@@ -68,7 +68,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationItemService.addItemItemApplication(itemApplication));
     }
     @DeleteMapping(value = "/deleteApplication/{applicationID}")
-    public ResponseEntity deleteBooking(@PathVariable String applicationID){
+    public ResponseEntity deleteApplication(@PathVariable String applicationID){
         return ResponseEntity.ok(applicationService.deleteApplication(applicationID));
     }
 

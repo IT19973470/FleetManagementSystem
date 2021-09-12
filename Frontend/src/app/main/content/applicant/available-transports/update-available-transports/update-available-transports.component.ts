@@ -15,18 +15,37 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   passengerpassengerApp = {
 
-    applicationID: '',
-    arrivaleDate: '',
-    depatureDate: "",
-    reason: '',
-    vehicleType: '',
-    destination: '',
+    applicationID: "App20210911113145",
+    approval: false,
+    arrivaleDate: null,
+    arrivaleDateActual: '2021-09-29T11:31:00',
+    depatureDate: null,
+    depatureDateActual: '2018-06-07T00:00',
+    destination: "Jaffna",
+    vehicleType: "Van",
+    reason: "Repair a Ac machine",
     passengerApp: {
       noOfPassengers: '5',
       passengerApplicationID:'',
       passengerPassengerApplications: []
     }
   }
+
+  // applicationID: "App20210911113145"
+  // approval: false
+  // arrivaleDate: "2021-09-29 11:31 AM"
+  // arrivaleDateActual: "2021-09-29T11:31:00"
+  // depatureDate: "2021-09-22 11:31 AM"
+  // depatureDateActual: "2021-09-22T11:31:00"
+  // destination: "Jaffna"
+  // passengerApp: {passengerApplicationID: 'PassApp20210911113145', noOfPassengers: 1, passengerPassengerApplications: Array(3)}
+  // passengerApplicationDTO: null
+  // reason: "Repair"
+  // type: "P"
+  // vehicleType: "Bus"
+  //
+
+
 
   Pass = {
     passenger: {
@@ -50,6 +69,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.passengerpassengerApp = this.applicantService.deliveryItem;
+    console.log(this.applicantService.deliveryItem)
     this.getAllIPassengers()
   }
 

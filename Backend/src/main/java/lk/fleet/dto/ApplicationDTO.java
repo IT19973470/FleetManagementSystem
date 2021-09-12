@@ -40,8 +40,6 @@ public class ApplicationDTO {
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public PassengerApplicationDTO getPassengerApplicationDTO() {
         return passengerApplicationDTO;
     }
@@ -66,7 +64,6 @@ public class ApplicationDTO {
         this.type = type;
     }
 
->>>>>>> Stashed changes
     public String getApplicationID() {
         return applicationID;
     }
@@ -139,19 +136,4 @@ public class ApplicationDTO {
         this.reason = reason;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public PassengerAppDTO getPassengerApp() {
-        return passengerApp;
-    }
-
-    public void setPassengerApp(PassengerAppDTO passengerApp) {
-        this.passengerApp = passengerApp;
-    }
 }
