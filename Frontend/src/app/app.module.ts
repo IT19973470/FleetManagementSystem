@@ -68,7 +68,7 @@ import {ViewApprovedTripDetailsComponent} from './main/content/security-officer/
 import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 import {UpdateAccidentDetailsComponent} from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
-import {UpdateOverTimeComponent} from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
+import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
 import {VehiclePoolComponent} from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 // import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
