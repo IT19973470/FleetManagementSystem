@@ -11,6 +11,7 @@ export class DriverService {
   ot;
   driver;
   shiftDetails;
+  vehicle;
 
   constructor(private http: HttpClient) {
   }
@@ -49,5 +50,17 @@ export class DriverService {
 
   deleteDriver(driverID) {
     return this.http.delete<any>(environment.backend_url + '/driverAccount/deleteDriver/' + driverID);
+  }
+
+  updateVehicle(vehicleDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicle/" + vehicleDetail.vehicleId, vehicleDetail);
+  }
+
+  getAllVehicles(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles");
+  }
+
+  getVehicleByNumber(vehicleNumber): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
   }
 }

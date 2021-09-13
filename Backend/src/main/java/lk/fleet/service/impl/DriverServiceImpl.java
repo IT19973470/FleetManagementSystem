@@ -6,6 +6,7 @@ import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.repository.DriverRepository;
+import lk.fleet.repository.OverTimeRepository;
 import lk.fleet.repository.UserAccountRepository;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     private UserAccountRepository userAccountRepository;
+
+    @Autowired
+    private OverTimeRepository overTimeRepository;
 
     @Override
     public DriverDTO addDriver(Driver driver) {
@@ -55,6 +59,8 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public boolean deleteDriver(String driverID) {
         driverRepository.deleteById(driverID);
+        userAccountRepository.deleteById(driverID);
+//        overTimeRepository.deleteById(driverID);
         return true;
     }
 

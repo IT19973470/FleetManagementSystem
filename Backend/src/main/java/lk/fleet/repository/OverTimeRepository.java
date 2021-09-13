@@ -12,5 +12,4 @@ public interface OverTimeRepository extends JpaRepository<OverTime, Long> {
 
     @Query(value = "from OverTime where driver.driverID=?1 order by otDate desc")
     List<OverTime> getLastOverTime(String driverId);
-
 }
