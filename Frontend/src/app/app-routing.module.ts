@@ -55,6 +55,8 @@ import {UpdateDriverComponent} from "./main/content/driver/driver-account/update
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component";
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
+import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
+import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 
 
 
@@ -223,6 +225,22 @@ const routes: Routes = [
       {
         path: 'update_details',
         component: UpdateDetailsComponent
+      },
+      {
+        path: 'update_vehicle_pool',
+        component: VehiclePoolComponent
+      },
+      {
+        path: 'completed_trips',
+        component: CompletedTripsComponent
+      },
+      {
+        path: 'view_approved_trip_details',
+        component: ViewApprovedTripDetailsComponent
+      },
+      {
+        path: 'update_delivery_status',
+        component: DeliveryStatusComponent
       },
       {
         path: 'vehicle',

@@ -47,11 +47,9 @@ import {NavSecurityOfficerComponent} from './main/navbar/nav-security-officer/na
 import {TokenComponent} from './main/content/security-officer/token/token.component';
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
-//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
 //import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
 //import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
 //import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
-//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
 import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 import {UpdateDriverComponent} from './main/content/driver/driver-account/update-driver/update-driver.component';
 import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
@@ -69,8 +67,6 @@ import {ViewApprovedTripDetailsComponent} from './main/content/security-officer/
 import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 import {UpdateAccidentDetailsComponent} from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
-//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
-// import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 import {ApplicantRegestrationComponent} from './applicant-regestration/applicant-regestration.component';
 import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
@@ -84,6 +80,8 @@ import {TelephoneValidatorDirective} from "./_validator/telephone-validator.dire
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
+import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
+import { DeliveryStatusComponent } from './main/content/security-officer/delivery-status/delivery-status.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -186,7 +184,7 @@ const customNotifierOptions: NotifierOptions = {
     ArrivalDepartureLogPageComponent,
     MeterDetailComponent,
     UpdateDetailsComponent,
-    //ViewApprovedTripDetailsComponent
+    ViewApprovedTripDetailsComponent,
     UpdateUserAccountComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
@@ -195,7 +193,6 @@ const customNotifierOptions: NotifierOptions = {
     ViewPassengerItemDeliveryComponent,
     UpdatePassengerItemDeliveryComponent,
     UpdateAccidentDetailsComponent,
-    // VehiclePoolComponent,
     UpdateOverTimeComponent,
     UpdateUserAccountComponent,
     UpdateDriverComponent,
@@ -212,9 +209,10 @@ const customNotifierOptions: NotifierOptions = {
     UpdateUserAccountComponent,
     NavBookingManagerComponent,
     CompletedTripsComponent,
+    UpdateUserAccountComponent,
+    UpdateUserAccountComponent,
+    VehiclePoolComponent,
     DeliveryStatusComponent,
-    UpdateUserAccountComponent,
-    UpdateUserAccountComponent,
   ],
 
   imports: [

@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-token',
@@ -19,9 +20,6 @@ export class TokenComponent implements OnInit {
     departureDate: '',
     departureTime: '',
     departureDateTime: '',
-    // arrivalDate: '',
-    // arrivalTime: '',
-    // arrivalDateTime: '',
     transportStatus: '',
     booking: {
       bookingId: ''
@@ -31,17 +29,10 @@ export class TokenComponent implements OnInit {
     },
   };
 
-  isModalTable = {
-    text: '',
-    openTable: false,
-    foundItem: ''
-  };
-
   token;
-  btnText;
-  tblIndex;
+  btnText = 'Add';
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
+  constructor(private securityOfficerService: SecurityOfficerService, private router: Router,private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
@@ -49,17 +40,33 @@ export class TokenComponent implements OnInit {
   }
 
 
+  // onSubmit() {
+  //   this.tokenDetail.booking = this.booking;
+  //   this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
+  //   this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
+  //   //console.log(this.tokenDetail)
+  //   this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
+  //     this.tokens.push(token);
+  //     this.newToken()
+  //     this.router.navigate(['/main/arrival_departure_page'])
+  //   })
+  // }
+
   onSubmit() {
-    this.tokenDetail.booking = this.booking;
-    this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
-    this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
-    //this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTime;
-    console.log(this.tokenDetail)
-    this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
-      this.tokens.push(token);
-      this.newToken()
-      this.router.navigate(['/main/arrival_departure_page'])
-    })
+      this.tokenDetail.booking = this.booking;
+      this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
+      this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
+      this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
+        let count = 0;
+        if (this.btnText === 'Add' && count === 0) {
+          this.tokens.push(token);
+          this.notifierService.notify("success", "Token added successfully");
+          this.newToken()
+          this.router.navigate(['/main/arrival_departure_page'])
+        }
+        else
+          this.notifierService.notify("error", "Token cannot be added!!");
+      })
   }
 
   newToken() {
@@ -68,9 +75,6 @@ export class TokenComponent implements OnInit {
       departureDate: '',
       departureTime: '',
       departureDateTime: '',
-      // arrivalDate: '',
-      // arrivalTime: '',
-      // arrivalDateTime: '',
       transportStatus: '',
       booking: {
         bookingId: ''
@@ -95,10 +99,5 @@ export class TokenComponent implements OnInit {
       this.tokens = tokens;
     })
   }
-
-  isTrueOrFalse(reply) {
-    this.isModalTable.openTable = reply;
-  }
-
 
 }

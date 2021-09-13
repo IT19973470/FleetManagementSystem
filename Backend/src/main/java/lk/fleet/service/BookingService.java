@@ -34,4 +34,5 @@ public interface BookingService {
 
     List<BookingDTO> getBookings();
 
+    List<BookingDTO> getBookingByDestination(String destination);
 }
