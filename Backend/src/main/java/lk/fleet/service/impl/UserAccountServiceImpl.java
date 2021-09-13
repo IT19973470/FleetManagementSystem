@@ -163,7 +163,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setPassengerApp(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
