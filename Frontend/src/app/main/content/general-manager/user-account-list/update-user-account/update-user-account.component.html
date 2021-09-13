@@ -33,7 +33,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="userAccount.employeeID"
                    #employeeID="ngModel"
-                   name="employeeID" readonly>
+                   name="employeeID" required>
             <div *ngIf="(employeeID.touched || createUserAccountForm.submitted) && employeeID.errors?.required"
                  class="validErr">
               Employee ID is required
