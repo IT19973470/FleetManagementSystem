@@ -25,7 +25,7 @@ public class TokenServiceImpl implements TokenService {
     public TokenDTO addToken(Token token) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         token.setTokenID("TK" + dateTime);
-        token.getTokenID();
+//        token.getTokenID();
         return new TokenDTO(tokenRepository.save(token));
     }
 

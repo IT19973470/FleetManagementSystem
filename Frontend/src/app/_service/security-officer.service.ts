@@ -14,6 +14,7 @@ export class SecurityOfficerService {
   meter;
   meterDetail;
   vehicle;
+  booking;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
 

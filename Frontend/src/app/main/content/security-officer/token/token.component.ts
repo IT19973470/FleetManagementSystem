@@ -32,11 +32,12 @@ export class TokenComponent implements OnInit {
   token;
   btnText = 'Add';
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router,private notifierService: NotifierService) {
+  constructor(private securityOfficerService: SecurityOfficerService, private router: Router, private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
     this.getAllTokens();
+    this.booking = this.securityOfficerService.booking;
   }
 
 
@@ -53,20 +54,18 @@ export class TokenComponent implements OnInit {
   // }
 
   onSubmit() {
-      this.tokenDetail.booking = this.booking;
-      this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
-      this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
-      this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
-        let count = 0;
-        if (this.btnText === 'Add' && count === 0) {
-          this.tokens.push(token);
-          this.notifierService.notify("success", "Token added successfully");
-          this.newToken()
-          this.router.navigate(['/main/arrival_departure_page'])
-        }
-        else
-          this.notifierService.notify("error", "Token cannot be added!!");
-      })
+    this.tokenDetail.booking = this.booking;
+    this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
+    this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
+    this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
+      if (this.btnText === 'Add') {
+        this.tokens.push(token);
+        this.notifierService.notify("success", "Token added successfully");
+        this.newToken()
+        this.router.navigate(['/main/arrival_departure_page'])
+      } else
+        this.notifierService.notify("error", "Token cannot be added!!");
+    })
   }
 
   newToken() {
