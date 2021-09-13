@@ -17,6 +17,7 @@ public class DriverVehicle {
     @JoinColumn(name = "vehicleId", referencedColumnName = "vehicleId", insertable = false, updatable = false, nullable = false)
     private Vehicle vehicle;
 
+
     public DriverVehiclePK getDriverVehicleID() {
         return driverVehicleID;
     }

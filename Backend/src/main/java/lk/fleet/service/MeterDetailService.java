@@ -7,8 +7,8 @@ public interface MeterDetailService {
 
     MeterDetailDTO addMeterDetail (MeterDetail meterDetail);
 
-    MeterDetailDTO updateMeterDetail (String meterID, MeterDetail meterDetail);
+    MeterDetailDTO updateMeterDetail (String meterId, MeterDetail meterDetail);
 
-    boolean deleteMeterDetail (String meterID);
+    boolean deleteMeterDetail (String meterId);
 
 }

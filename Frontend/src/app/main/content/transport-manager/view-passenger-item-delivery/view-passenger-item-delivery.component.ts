@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-view-item-passenger-delivery',
-  templateUrl: './view-item-passenger-delivery.component.html',
-  styleUrls: ['./view-item-passenger-delivery.component.css']
+  selector: 'app-view-passenger-item-delivery',
+  templateUrl: './view-passenger-item-delivery.component.html',
+  styleUrls: ['./view-passenger-item-delivery.component.css']
 })
-export class ViewItemPassengerDeliveryComponent implements OnInit {
+export class ViewPassengerItemDeliveryComponent implements OnInit {
 
   isModalTable = {
     text: '',
@@ -66,8 +66,8 @@ export class ViewItemPassengerDeliveryComponent implements OnInit {
     this.isTrueOrFalse(true);
   }
 
-  goToUpdate(deliveryItem) {
-    this.transportManagerService.deliveryItem = deliveryItem;
-    this.router.navigate(['/main/update_item_passenger_delivery'])
+  goToUpdate(deliveryPassengerItem) {
+    this.transportManagerService.deliveryPassengerItem = deliveryPassengerItem;
+    this.router.navigate(['/main/update_passenger_item_delivery'])
   }
 }

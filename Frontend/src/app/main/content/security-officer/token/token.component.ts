@@ -19,9 +19,9 @@ export class TokenComponent implements OnInit {
     departureDate: '',
     departureTime: '',
     departureDateTime: '',
-    arrivalDate: '',
-    arrivalTime: '',
-    arrivalDateTime: '',
+    // arrivalDate: '',
+    // arrivalTime: '',
+    // arrivalDateTime: '',
     transportStatus: '',
     booking: {
       bookingId: ''
@@ -53,7 +53,7 @@ export class TokenComponent implements OnInit {
     this.tokenDetail.booking = this.booking;
     this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
     this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
-    this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTime;
+    //this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTime;
     console.log(this.tokenDetail)
     this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
       this.tokens.push(token);
@@ -68,9 +68,9 @@ export class TokenComponent implements OnInit {
       departureDate: '',
       departureTime: '',
       departureDateTime: '',
-      arrivalDate: '',
-      arrivalTime: '',
-      arrivalDateTime: '',
+      // arrivalDate: '',
+      // arrivalTime: '',
+      // arrivalDateTime: '',
       transportStatus: '',
       booking: {
         bookingId: ''
@@ -100,34 +100,5 @@ export class TokenComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  // onSubmit() {
-  //   if (this.btnText === 'Add') {
-  //     this.tokenDetail.push(this.token);
-  //   } else if (this.btnText === 'Update') {
-  //     this.tokenDetail.tokenDetails[this.tblIndex] = this.token
-  //   }
-  //   this.setNewToken();
-  // }
 
-  // setToken(token, i) {
-  //   this.tblIndex = i;
-  //   this.token. = item.itemName;
-  //   this.item.itemType = item.itemType;
-  //   this.item.itemQty = item.itemQty;
-  //   this.btnText = 'Update';
-  // }
-
-  // private setNewToken() {
-  //   this.token = this.getNewToken();
-  //   this.tokenForm.resetForm(this.token);
-  //   this.btnText = 'Add';
-  // }
-  //
-  // private getNewToken() {
-  //   return {
-  //     departureDateTime: '',
-  //     arrivalDateTime: '',
-  //     transportStatus:'',
-  //   };
-  // }
 }

@@ -13,18 +13,24 @@ public class TokenDTO {
     private String arrivalTime;
     private String arrivalTimeActual;
     private boolean transportStatus;
+    private MeterDetailDTO meterDetail;
 
     public TokenDTO(Token token) {
-        if(token != null) {
+        if (token != null) {
             this.tokenID = token.getTokenID();
             this.departureDate = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.departureTime = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
             this.departureTimeActual = token.getDepartureDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-            this.arrivalDate = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            this.arrivalTime = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-            this.arrivalTimeActual = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+//            this.arrivalDate = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//            this.arrivalTime = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+//            this.arrivalTimeActual = token.getArrivalDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
             this.transportStatus = token.isTransportStatus();
         }
+    }
+
+    public TokenDTO(Token token, MeterDetailDTO meterDetail) {
+        this(token);
+        this.meterDetail = meterDetail;
     }
 
     public String getTokenID() {
@@ -89,5 +95,13 @@ public class TokenDTO {
 
     public void setArrivalTimeActual(String arrivalTimeActual) {
         this.arrivalTimeActual = arrivalTimeActual;
+    }
+
+    public MeterDetailDTO getMeterDetail() {
+        return meterDetail;
+    }
+
+    public void setMeterDetail(MeterDetailDTO meterDetail) {
+        this.meterDetail = meterDetail;
     }
 }

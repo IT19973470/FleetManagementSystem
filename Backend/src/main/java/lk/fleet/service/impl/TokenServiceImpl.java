@@ -1,7 +1,9 @@
 package lk.fleet.service.impl;
 
 
+import lk.fleet.dto.MeterDetailDTO;
 import lk.fleet.dto.TokenDTO;
+import lk.fleet.entity.Delivery;
 import lk.fleet.entity.Token;
 import lk.fleet.repository.TokenRepository;
 import lk.fleet.service.TokenService;
@@ -30,7 +32,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public TokenDTO updateToken(String tokenID, Token token) {
-        Optional <Token> optionalToken = tokenRepository.findById(tokenID);
+        Optional<Token> optionalToken = tokenRepository.findById(tokenID);
         if (optionalToken.isPresent()) {
             Token tokenObj = optionalToken.get();
             tokenObj.setTokenID(token.getTokenID());
@@ -49,15 +51,20 @@ public class TokenServiceImpl implements TokenService {
     }
 
 
-
     @Override
     public List<TokenDTO> getAllTokens() {
-        List<Token> tokens = tokenRepository.findAll();
+        List<Token> tokens = tokenRepository.getNotCompletedTokens();
         List<TokenDTO> tokenDTOS = new ArrayList<>();
         for (Token token : tokens) {
-            tokenDTOS.add(new TokenDTO(token));
+            tokenDTOS.add(new TokenDTO(token, new MeterDetailDTO(token.getMeterDetail())));
         }
         return tokenDTOS;
     }
+
+//    @Override
+//    public List<TokenDTO> getTokenByID(String tokenID) {
+//        List<Token> tokens = tokenRepository.getTokenByID(tokenID);
+//        return set(deliveries, deliveryType);
+//    }
 
 }
