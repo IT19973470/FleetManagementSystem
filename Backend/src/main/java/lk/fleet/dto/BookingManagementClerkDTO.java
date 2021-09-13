@@ -7,13 +7,13 @@ public class BookingManagementClerkDTO {
     private UserAccountDTO userAccount;
 
 
-    public BookingManagementClerkDTO(BookingManagementClerk bookingManagementClerk){
-        if(bookingManagementClerk != null) {
+    public BookingManagementClerkDTO(BookingManagementClerk bookingManagementClerk) {
+        if (bookingManagementClerk != null) {
             this.bookingManagementClerkId = bookingManagementClerk.getBookingManagementClerkId();
         }
     }
 
-    public BookingManagementClerkDTO(BookingManagementClerk bookingManagementClerk, UserAccountDTO userAccount){
+    public BookingManagementClerkDTO(BookingManagementClerk bookingManagementClerk, UserAccountDTO userAccount) {
         this(bookingManagementClerk);
         this.userAccount = userAccount;
     }

@@ -39,8 +39,8 @@ export class ApplicationStatusComponent implements OnInit {
   };
 
   tblIndex;
-  user:boolean=true;
-  item:boolean=false;
+  plus:boolean=true; //plus button
+  pen:boolean=false;//pen button
 
 
   constructor(private applicant: ApplicantService, private router: Router) {
@@ -57,11 +57,11 @@ export class ApplicationStatusComponent implements OnInit {
       this.router.navigate(['/main/available_transports'])
     })
   }
-x:boolean=false;
+
   btnText = '';
   flag;
   onSubmitPassenger() {
-    if (this.user == true) {
+    if (this.plus == true) {
      let check=this.Pass;
       this.flag=1;
 
@@ -69,6 +69,7 @@ x:boolean=false;
       for (let x=0; x<=this.ItemApp.itemApplication.itemItemApplications.length-1; x++)
       {
         let a=this.ItemApp.itemApplication.itemItemApplications[x];
+        console.log(a);
         if(a.item.itemID==check.item.itemID){
            this.flag=0;
            break;
@@ -85,7 +86,7 @@ x:boolean=false;
 
       //this.passengerForm.resetForm();
     }
-    else if(this.item==true){
+    else if(this.pen==true){
       this.ItemApp.itemApplication.itemItemApplications[this.tblIndex] = this.Pass
     }
 
@@ -95,8 +96,8 @@ x:boolean=false;
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.item);
-    this.user=true;
-    this.item=false;
+    this.plus=true;
+    this.pen=false;
   }
 
   chkPassengerId() {
@@ -111,8 +112,8 @@ x:boolean=false;
     this.Pass.item.itemName=item.itemName;
     this.Pass.item.qty=item.qty;
     this.btnText = 'Update';
-    this.item=true;
-    this.user=false;
+    this.pen=true;
+    this.plus=false;
   }
 
   getNewPassenger() {

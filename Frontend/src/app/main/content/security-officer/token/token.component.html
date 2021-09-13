@@ -49,7 +49,6 @@
               [(ngModel)]="tokenDetail.transportStatus"
               #transportStatus="ngModel"
               name="TransportStatus" required>
-              <option value="true">Completed</option>
               <option value="false">Not Completed</option>
             </select>
             <div *ngIf="(transportStatus.touched || tokenForm.submitted) && transportStatus.errors?.required"

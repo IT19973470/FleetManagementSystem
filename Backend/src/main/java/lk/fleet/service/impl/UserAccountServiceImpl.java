@@ -7,8 +7,6 @@ import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +34,8 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Autowired
     private ApplicationRepository applicationRepository;
+
+    @Autowired BookingApplicationRepository bookingApplicationRepository;
 
 
     @Override
@@ -149,43 +149,83 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public List<UserAccountDTO> getUserAccountByID(String employeeID) {
         UserAccount userAccountByID = userAccountRepository.getUserAccountByID(employeeID);
-        List<UserAccountDTO> userAccountDTOS=new ArrayList<>();
+        List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
         userAccountDTOS.add(new UserAccountDTO(userAccountByID));
         return userAccountDTOS;
     }
-
-//    @Override
-//    public List<ApplicationDTO> getTransportApplication() {
-//        return null;
-//    }
 
 
     @Override
     public List<ApplicationDTO> getTransportApplication() {
 
-        List<ApplicationDTO> applicationDTOS =new ArrayList<>();
-        List<Application> applications =applicationRepository.findAll();
-        for(Application application: applications){
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
-            applicationDTO.setPassengerApp(new PassengerAppDTO(application.getPassengerApplication()));
+
+            applicationDTO.setPassengerApp(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
         return applicationDTOS;
     }
 
+    @Override
+    public List<PassengerPassengerApplicationDTO> getTransportRequests() {
+        return null;
+    }
+
+    @Override
+    public UserAccountDTO approveUserAccount(String employeeID, boolean approval) {
+        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
+        if (optionalUserAccount.isPresent()) {
+            UserAccount userAccountObj = optionalUserAccount.get();
+            userAccountObj.setApproved(approval);
+            return new UserAccountDTO(userAccountRepository.save(userAccountObj));
+        }
+        return null;
+    }
+
+    @Override
+    public ApplicationDTO approveTransport(String applicationID, boolean approval) {
+        Optional<Application> optionalApplication = applicationRepository.findById(applicationID);
+        if (optionalApplication.isPresent()) {
+            Application applicationObj = optionalApplication.get();
+            applicationObj.setApproval(approval);
+            return new ApplicationDTO(applicationRepository.save(applicationObj));
+        }
+
+        return null;
+    }
+
 
 //    @Override
-//    public List<DeliveryDTO> getAllDeliveries(String deliveryType) {
-//        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc(deliveryType);
-//        return setDeliveryDTOs(deliveries, deliveryType);
-//    }
+//    public List<PassengerApplicationDTO> getTransport() {
+//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
+//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
+//        for(BookingApplication bookingApplication: bookingApplications){
+//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
+//        }
 //
+//        return passengerApplicationDTOS;
+//    }
 
 
     @Override
     public List<UserAccountDTO> getUserAccounts() {
         List<UserAccount> userAccounts = userAccountRepository.findAll();
+        List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
+
+        for (UserAccount userAccount : userAccounts) {
+            userAccountDTOS.add(new UserAccountDTO(userAccount));
+        }
+
+        return userAccountDTOS;
+    }
+
+    @Override
+    public List<UserAccountDTO> getUserAccountsForApplicants() {
+        List<UserAccount> userAccounts = userAccountRepository.getUserAccountsForApplicants();
         List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
 
         for (UserAccount userAccount : userAccounts) {

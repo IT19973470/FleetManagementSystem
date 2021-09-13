@@ -12,7 +12,7 @@ public class VipBookingDTO {
     private String purpose;
     private boolean approval;
 
-    public VipBookingDTO(VipBooking vipBooking){
+    public VipBookingDTO(VipBooking vipBooking) {
         this.vipBookingId = vipBooking.getVipBookingId();
         this.approvedFuelAmount = vipBooking.getApprovedFuelAmount();
         this.timePeriod = vipBooking.getTimePeriod();

@@ -24,6 +24,17 @@ public class Application {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
     private ItemApplication itemApplication;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "application")
+    private BookingApplication bookingApplication;
+
+    public BookingApplication getBookingApplication() {
+        return bookingApplication;
+    }
+
+    public void setBookingApplication(BookingApplication bookingApplication) {
+        this.bookingApplication = bookingApplication;
+    }
+
     public String getApplicationID() {
         return this.applicationID;
     }
