@@ -1,13 +1,9 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Application;
-import lk.fleet.entity.PassengerApplication;
-import lk.fleet.entity.PassengerPassengerApplication;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class ApplicationDTO {
     private String applicationID;
@@ -21,7 +17,8 @@ public class ApplicationDTO {
     private String reason;
     private String type;
 
-    private PassengerAppDTO passengerApp;
+    private PassengerApplicationDTO passengerApp;
+    private PassengerApplicationDTO passengerApplicationDTO;
 
     public ApplicationDTO(Application application) {
         if (application != null) {
@@ -35,7 +32,6 @@ public class ApplicationDTO {
             this.arrivaleDate = application.getArrivaleDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a"));
             this.reason = application.getReason();
             this.type = application.getType();
-
         }
     }
 
@@ -119,11 +115,19 @@ public class ApplicationDTO {
         this.type = type;
     }
 
-    public PassengerAppDTO getPassengerApp() {
+    public PassengerApplicationDTO getPassengerApp() {
         return passengerApp;
     }
 
-    public void setPassengerApp(PassengerAppDTO passengerApp) {
+    public void setPassengerApp(PassengerApplicationDTO passengerApp) {
         this.passengerApp = passengerApp;
+    }
+
+    public PassengerApplicationDTO getPassengerApplicationDTO() {
+        return passengerApplicationDTO;
+    }
+
+    public void setPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO) {
+        this.passengerApplicationDTO = passengerApplicationDTO;
     }
 }

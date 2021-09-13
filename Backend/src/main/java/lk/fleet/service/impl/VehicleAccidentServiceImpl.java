@@ -1,6 +1,8 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.VehicleAccidentDTO;
+import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.DriverVehicle;
 import lk.fleet.entity.DriverVehiclePK;
 import lk.fleet.entity.Vehicle;
@@ -63,7 +65,10 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
         List<VehicleAccident> vehicleAccidents = vehicleAccidentRepository.findAll();
         List<VehicleAccidentDTO> vehicleAccidentDTOS = new ArrayList<>();
         for (VehicleAccident vehicleAccident : vehicleAccidents) {
-            vehicleAccidentDTOS.add(new VehicleAccidentDTO(vehicleAccident));
+            VehicleAccidentDTO vehicleAccidentDTO = new VehicleAccidentDTO(vehicleAccident);
+            vehicleAccidentDTO.setDriver(new DriverDTO(vehicleAccident.getDriverVehicle().getDriver()));
+            vehicleAccidentDTO.setVehicle(new VehicleDTO(vehicleAccident.getDriverVehicle().getVehicle()));
+            vehicleAccidentDTOS.add(vehicleAccidentDTO);
         }
         return vehicleAccidentDTOS;
     }
@@ -75,8 +80,8 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
     }
 
     @Override
-    public boolean chkDriver(String vehicleId,String driverId) {
-        Optional<DriverVehicle> optionalVehicle = driverVehicleRepository.findById(new DriverVehiclePK(driverId,vehicleId));
+    public boolean chkDriver(String vehicleId, String driverId) {
+        Optional<DriverVehicle> optionalVehicle = driverVehicleRepository.findById(new DriverVehiclePK(driverId, vehicleId));
         return optionalVehicle.isPresent();
     }
 
