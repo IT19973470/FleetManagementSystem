@@ -29,6 +29,7 @@ public class InitDB {
             userAccount.setNic("956742089V");
             userAccount.setRegisteredDate(LocalDate.now());
             userAccount.setPassword("admin");
+            userAccount.setApproved(true);
             userAccountRepository.save(userAccount);
         }
     }
