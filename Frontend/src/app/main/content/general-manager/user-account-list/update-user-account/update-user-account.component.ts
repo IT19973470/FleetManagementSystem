@@ -36,11 +36,11 @@ export class UpdateUserAccountComponent implements OnInit {
       accTypename: "Booking Management Clerk"
     },
     {
-      accType: "VMC",
+      accType: "VDM",
       accTypename: "Vehicle and Driver Management Clerk"
     },
     {
-      accType: "AMC",
+      accType: "VMC",
       accTypename: "Accident and Maintenance Clerk"
     },
     {
