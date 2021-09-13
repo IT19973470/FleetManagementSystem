@@ -13,20 +13,17 @@ public class VehicleAccidentDTO {
     private String accidentTimeActual;
     private String insuranceNo;
     private boolean insuranceStatus;
-    private String vehicleID;
-    private  String driverID;
+    private DriverDTO driver;
+    private VehicleDTO vehicle;
 
-    public VehicleAccidentDTO(VehicleAccident vehicleAccident){
-        if(vehicleAccident != null){
+    public VehicleAccidentDTO(VehicleAccident vehicleAccident) {
+        if (vehicleAccident != null) {
             this.vehicleAccidentID = vehicleAccident.getVehicleAccidentID();
             this.accidentDate = vehicleAccident.getAccidentDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             this.accidentTime = vehicleAccident.getAccidentTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
             this.accidentTimeActual = vehicleAccident.getAccidentTime().format(DateTimeFormatter.ofPattern("HH:mm"));
             this.insuranceNo = vehicleAccident.getInsuranceNo();
             this.insuranceStatus = vehicleAccident.isInsuranceStatus();
-            this.vehicleID=vehicleAccident.getDriverVehicle().getVehicle().getVehicleId();
-            this.driverID=vehicleAccident.getDriverVehicle().getDriver().getDriverID();
-
         }
     }
 
@@ -38,20 +35,20 @@ public class VehicleAccidentDTO {
         this.vehicleAccidentID = vehicleAccidentID;
     }
 
-    public String getDriverID() {
-        return driverID;
+    public DriverDTO getDriver() {
+        return driver;
     }
 
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
     }
 
-    public String getVehicleID() {
-        return vehicleID;
+    public VehicleDTO getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleID(String vehicleID) {
-        this.vehicleID = vehicleID;
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getAccidentDate() {
@@ -93,4 +90,5 @@ public class VehicleAccidentDTO {
     public void setInsuranceStatus(boolean insuranceStatus) {
         this.insuranceStatus = insuranceStatus;
     }
+
 }

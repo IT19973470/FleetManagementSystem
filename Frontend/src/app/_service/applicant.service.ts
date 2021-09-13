@@ -40,6 +40,11 @@ export class ApplicantService {
   deletePassengerApp(ApplicationID,applicationID): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/application/deletePassengerApp/" +ApplicationID+"/"+applicationID);
   }
-
+  RegisterApplicant(application): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/application/newApplication1", application);
+  }
+  getDriverVehicle(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getdto");
+  }
 
 }

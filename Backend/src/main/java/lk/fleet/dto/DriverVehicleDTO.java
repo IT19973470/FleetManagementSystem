@@ -17,8 +17,6 @@ public class DriverVehicleDTO {
             this.driverVehicleID = driverVehicle.getDriverVehicleID();
             this.qty = driverVehicle.getQty();
             this.type = driverVehicle.getType();
-            this.driver = new DriverDTO(driverVehicle.getDriver());
-            this.vehicle = new VehicleDTO(driverVehicle.getVehicle());
         }
     }
 
