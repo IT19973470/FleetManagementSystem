@@ -37,6 +37,11 @@ public class SpecialBookingController {
     public ResponseEntity deleteSpecialBooking(@PathVariable String specialBookingId){
         return ResponseEntity.ok(specialBookingService.deleteSpecialBooking(specialBookingId));
     }
+
+    @GetMapping(value = "/getSpecialBookingBySpecialBookingId/{specialBookingId}")
+    public ResponseEntity getSpecialBookingBySpecialBookingId(@PathVariable String specialBookingId) {
+        return ResponseEntity.ok(specialBookingService.getSpecialBookingBySpecialBookingId(specialBookingId));
+    }
 //    @PutMapping(value = "/updateBooking/{bookingId}")
 //    public ResponseEntity updateBooking(@PathVariable String bookingId, @RequestBody Booking booking){
 //        return ResponseEntity.ok(bookingService.updateBooking(bookingId, booking));

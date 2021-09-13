@@ -1,8 +1,10 @@
 package lk.fleet.service.impl;
 
 import lk.fleet.dto.BookingDTO;
+import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.SpecialBookingDTO;
 import lk.fleet.entity.Booking;
+import lk.fleet.entity.Driver;
 import lk.fleet.entity.SpecialBooking;
 import lk.fleet.repository.BookingRepository;
 import lk.fleet.repository.SpecialBookingRepository;
@@ -41,16 +43,21 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
 
         Optional<SpecialBooking> optionalSpecialBooking = specialBookingRepository.findById(specialBookingId);
         if (optionalSpecialBooking.isPresent()) {
-            SpecialBooking specialBooking1 = optionalSpecialBooking.get();
+            SpecialBooking specialBookingObj = optionalSpecialBooking.get();
 
-            specialBooking.setDescription(specialBooking.getDescription());
-            specialBooking.setNoOfPassengers(specialBooking.getNoOfPassengers());
-            specialBooking.setApprovedFuelAmount(specialBooking.getApprovedFuelAmount());
+            specialBookingObj.getBooking().setBookingDateTime(specialBooking.getBooking().getBookingDateTime());
+            specialBookingObj.getBooking().setBookingStatus(specialBooking.getBooking().isBookingStatus());
+            specialBookingObj.getBooking().setDestination(specialBooking.getBooking().getDestination());
+            specialBookingObj.setDescription(specialBooking.getDescription());
+            specialBookingObj.setNoOfPassengers(specialBooking.getNoOfPassengers());
+            specialBookingObj.setApprovedFuelAmount(specialBooking.getApprovedFuelAmount());
 
-            return new SpecialBookingDTO(specialBookingRepository.save(specialBooking1));
+            bookingRepository.save(specialBookingObj.getBooking());
+            return new SpecialBookingDTO(specialBookingRepository.save(specialBookingObj));
         }
         return null;
     }
+
 
     @Override
     public boolean deleteSpecialBooking(String specialBookingId) {
@@ -63,8 +70,20 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
         List<SpecialBookingDTO> specialBookingDTOS = new ArrayList<>();
         List<SpecialBooking> specialBookings = specialBookingRepository.findAll();
         for (SpecialBooking specialBooking : specialBookings) {
-            specialBookingDTOS.add(new SpecialBookingDTO(specialBooking));
+            SpecialBookingDTO specialBookingDTO = new SpecialBookingDTO(specialBooking);
+            specialBookingDTO.setBooking(new BookingDTO(specialBooking.getBooking()));
+            specialBookingDTOS.add(specialBookingDTO);
         }
+        return specialBookingDTOS;
+    }
+
+    @Override
+    public List<SpecialBookingDTO> getSpecialBookingBySpecialBookingId(String specialBookingId) {
+        SpecialBooking specialBookingByID = specialBookingRepository.getSpecialBookingBySpecialBookingId(specialBookingId);
+        List<SpecialBookingDTO> specialBookingDTOS = new ArrayList<>();
+        SpecialBookingDTO specialBookingDTO = new SpecialBookingDTO(specialBookingByID);
+        specialBookingDTO.setBooking(new BookingDTO(specialBookingByID.getBooking()));
+        specialBookingDTOS.add(specialBookingDTO);
         return specialBookingDTOS;
     }
 

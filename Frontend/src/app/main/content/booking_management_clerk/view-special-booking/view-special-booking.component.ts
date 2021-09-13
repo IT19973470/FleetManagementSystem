@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 
@@ -31,21 +31,21 @@ export class ViewSpecialBookingComponent implements OnInit {
   }
 
   goToUpdate(booking) {
-    this.bookingManagerService.booking = booking;
+    this.bookingManagerService.specialBooking = booking;
     this.router.navigate(['/main/update_special_booking'])
   }
 
   getAllSpecialBooking() {
     this.bookingManagerService.getAllSpecialBooking().subscribe((specialBooking) => {
       this.specialBooking = specialBooking;
-      console.log(specialBooking)
+      // console.log(specialBooking)
     })
   }
 
-  getSpecialBookingBySpecialBookingId(){
+  getSpecialBookingBySpecialBookingId() {
     this.bookingManagerService.getSpecialBookingBySpecialBookingId(this.specialBookingId).subscribe((specialBooking) => {
-      this.specialBooking=specialBooking;
-
+      this.specialBooking = specialBooking;
+      // console.log(specialBooking)
 
     })
   }

@@ -73,7 +73,7 @@ export class BookingManagerService {
     return this.http.post<any>(environment.backend_url + "/specialBooking/addSpecialBooking" ,SpecialBookingDetail);
   }
   updateSpecialBooking(SpecialBookingDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/specialBooking/updateSpecialBooking/" + SpecialBookingDetail.bookingId, SpecialBookingDetail);
+    return this.http.put<any>(environment.backend_url + "/specialBooking/updateSpecialBooking/" + SpecialBookingDetail.specialBookingId, SpecialBookingDetail);
   }
 
   deleteSpecialBooking(specialBookingId): Observable<any> {
@@ -81,7 +81,7 @@ export class BookingManagerService {
   }
 
   getAllSpecialBooking(): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/specialBooking/getAllSpecialBooking");
+    return this.http.get<any>(environment.backend_url + "/specialBooking/getSpecialBooking");
   }
 
   addVipBooking(BookingDetail): Observable<any> {
@@ -92,7 +92,7 @@ export class BookingManagerService {
   }
 
   getSpecialBookingBySpecialBookingId(specialBookingId: any) {
-    return this.http.get<any>(environment.backend_url + "/booking/getSpecialBookingBySpecialBookingId/" + specialBookingId);
+    return this.http.get<any>(environment.backend_url + "/specialBooking/getSpecialBookingBySpecialBookingId/" + specialBookingId);
   }
 
 

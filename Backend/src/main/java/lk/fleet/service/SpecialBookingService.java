@@ -15,4 +15,5 @@ public interface SpecialBookingService {
 
     SpecialBookingDTO updateSpecialBooking(String specialBookingId, SpecialBooking specialBooking);
 
+    List<SpecialBookingDTO> getSpecialBookingBySpecialBookingId(String specialBookingId);
 }

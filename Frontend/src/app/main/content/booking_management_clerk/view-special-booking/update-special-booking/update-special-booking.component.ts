@@ -11,20 +11,24 @@ export class UpdateSpecialBookingComponent implements OnInit {
 
 
   specialBooking = {
-    bookingId: '',
-    bookingDate:'',
-    bookingTime:'',
-    bookingTimeActual:'',
-    bookingDateTime: '',
-    destination:'',
-    bookingStatus:'',
-    approvedFuelAmount:'',
-    description:'',
-    noOfPassengers:'',
-
+    approvedFuelAmount: '',
+    description: '',
+    noOfPassengers: '',
     bookingManagementClerk: {
       bookingManagementClerkId: ''
-    }
+    },
+    booking: {
+      bookingId: '',
+      bookingDate: '',
+      bookingTime: '',
+      bookingTimeActual: '',
+      bookingDateTime: '',
+      destination: '',
+      bookingStatus: '',
+  },
+
+
+
   };
 
   selected = ""
@@ -37,25 +41,25 @@ export class UpdateSpecialBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.specialBooking.bookingDateTime = this.bookingManagerService.getCurDate();
+    this.specialBooking.booking.bookingDateTime = this.bookingManagerService.getCurDate();
     this.specialBooking = this.bookingManagerService.specialBooking;
 
   }
 
   onSubmit() {
-    this.specialBooking.bookingDateTime= this.specialBooking.bookingDate + 'T' + this.specialBooking.bookingTimeActual
+    this.specialBooking.booking.bookingDateTime= this.specialBooking.booking.bookingDate + 'T' + this.specialBooking.booking.bookingTimeActual
 
     this.specialBooking.bookingManagementClerk= {
       bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
     };
     console.log(this.specialBooking);
-    this.bookingManagerService.updateBooking(this.specialBooking).subscribe(() => {
+    this.bookingManagerService.updateSpecialBooking(this.specialBooking).subscribe(() => {
       this.router.navigate(['/main/view_special_booking'])
     })
   }
 
   removeSpecialBooking() {
-    this.bookingManagerService.deleteSpecialBooking(this.specialBooking.bookingId).subscribe(() => {
+    this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
       this.router.navigate(['/main/view_special_booking'])
     })
   }

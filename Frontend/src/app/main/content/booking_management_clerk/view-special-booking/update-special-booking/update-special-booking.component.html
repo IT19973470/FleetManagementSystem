@@ -57,7 +57,7 @@
               </div>
               <div class="col-8">
                 <input type="text" class="form-control"
-                       [(ngModel)]="specialBooking.bookingId"
+                       [(ngModel)]="specialBooking.booking.bookingId"
                        #bookingId="ngModel"
                        name="bookingId" readonly>
                 <div *ngIf="(bookingId.touched || specialBookingForm.submitted) && bookingId.errors?.required"
@@ -75,7 +75,7 @@
               </div>
               <div class="col-8">
                 <input type="date" class="form-control"
-                       [(ngModel)]="specialBooking.bookingDate"
+                       [(ngModel)]="specialBooking.booking.bookingDate"
                        #bookingDate="ngModel"
                        name="bookingDate" required>
                 <div *ngIf="(bookingDate.touched ||specialBookingForm.submitted) && bookingDate.errors?.required"
@@ -94,7 +94,7 @@
               </div>
               <div class="col-8">
                 <input type="time" class="form-control"
-                       [(ngModel)]="specialBooking.bookingTimeActual"
+                       [(ngModel)]="specialBooking.booking.bookingTimeActual"
                        #bookingTime="ngModel"
                        name="bookingTime" required>
                 <div *ngIf="(bookingTime.touched || specialBookingForm.submitted) && bookingTime.errors?.required"
@@ -119,11 +119,11 @@
                 <!--            </select>-->
                 <!--            <p> {{selected}}</p>-->
                 <label>
-                  <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="specialBooking.bookingStatus">
+                  <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="specialBooking.booking.bookingStatus">
                   <span style="font-size: 18px"> Active</span>
                 </label>
                 <label style="margin-left: 40px">
-                  <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="specialBooking.bookingStatus">
+                  <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="specialBooking.booking.bookingStatus">
                   <span style="font-size: 18px"> Inactive</span>
                 </label>
               </div>
@@ -137,7 +137,7 @@
               </div>
               <div class="col-8">
                 <input type="text" class="form-control"
-                       [(ngModel)]="specialBooking.destination"
+                       [(ngModel)]="specialBooking.booking.destination"
                        #destination="ngModel"
                        name="destination" required>
                 <div *ngIf="(destination.touched || specialBookingForm.submitted) && destination.errors?.required"
