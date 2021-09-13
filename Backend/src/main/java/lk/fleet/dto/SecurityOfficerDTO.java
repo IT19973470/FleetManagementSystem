@@ -14,7 +14,6 @@ public class SecurityOfficerDTO {
     }
 
 
-
     public SecurityOfficerDTO(SecurityOfficer securityOfficer, UserAccountDTO userAccount) {
         this(securityOfficer);
         this.userAccount = userAccount;

@@ -42,6 +42,12 @@ public class BookingController {
     public ResponseEntity deleteBooking(@PathVariable String bookingId){
         return ResponseEntity.ok(bookingService.deleteBooking(bookingId));
     }
+
+
+    @GetMapping(value = "/getAllBookings")
+    public ResponseEntity getAllBookings() {
+        return ResponseEntity.ok(bookingService.getAllBookings());
+    }
 //    @GetMapping(value = "/getBookings")
 //    public ResponseEntity getBookings() {
 //        return ResponseEntity.ok(bookingService.getBookings());
@@ -92,5 +98,6 @@ public class BookingController {
     @GetMapping(value = "/getDriverShiftsByDriverId/{driverId}")
     public ResponseEntity getDriverShiftsByDriverId(@PathVariable String driverId) {
         return ResponseEntity.ok(bookingService.getDriverShiftsByDriverId(driverId));
+
     }
 }

@@ -1,87 +1,46 @@
 package lk.fleet.dto;
 
-import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.PassengerApplication;
+import lk.fleet.entity.PassengerPassengerApplication;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 public class PassengerApplicationDTO {
-    private String applicationID;
-    private String destination;
-    private String vehicleType;
-    private boolean approval;
-    private LocalDateTime depatureDate;
-    private String drivername;
-    private String vehicleId;
 
+    private String passengerApplicationID;
+    private int noOfPassengers;
 
-    public PassengerApplicationDTO(BookingApplication bookingApplication) {
-        if(bookingApplication != null) {
-         this.applicationID=bookingApplication.getApplication().getApplicationID();
-         this.vehicleType=bookingApplication.getApplication().getVehicleType();
-         this.destination=bookingApplication.getApplication().getDestination();
-         this.depatureDate=bookingApplication.getApplication().getDepatureDate();
-         this.approval=bookingApplication.getApplication().isApproval();
-         this.drivername=bookingApplication.getBooking().getShift().getDriverVehicle().getDriver().getUserAccount().getName();
-         this.vehicleId=bookingApplication.getBooking().getShift().getDriverVehicle().getVehicle().getVehicleId();
+    private List<PassengerDTO> passengers;
+
+    public PassengerApplicationDTO(PassengerApplication passengerApplication) {
+        if (passengerApplication != null) {
+            this.passengerApplicationID = passengerApplication.getPassengerApplicationID();
+            this.noOfPassengers = passengerApplication.getNoOfPassengers();
         }
-
-    }
-    public String getApplicationID() {
-        return applicationID;
     }
 
-    public void setApplicationID(String applicationID) {
-        this.applicationID = applicationID;
+    public List<PassengerDTO> getPassengers() {
+        return passengers;
     }
 
-    public String getDestination() {
-        return destination;
+    public void setPassengers(List<PassengerDTO> passengers) {
+        this.passengers = passengers;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public String getPassengerApplicationID() {
+        return passengerApplicationID;
     }
 
-
-    public String getVehicleType() {
-        return vehicleType;
+    public void setPassengerApplicationID(String passengerApplicationID) {
+        this.passengerApplicationID = passengerApplicationID;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public int getNoOfPassengers() {
+        return noOfPassengers;
     }
 
-    public boolean isApproval() {
-        return approval;
-    }
-
-    public void setApproval(boolean approval) {
-        this.approval = approval;
-    }
-
-    public LocalDateTime getDepatureDate() {
-        return depatureDate;
-    }
-
-    public void setDepatureDate(LocalDateTime depatureDate) {
-        this.depatureDate = depatureDate;
-    }
-
-    public String getDrivername() {
-        return drivername;
-    }
-
-    public void setDrivername(String drivername) {
-        this.drivername = drivername;
-    }
-
-    public String getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setNoOfPassengers(int noOfPassengers) {
+        this.noOfPassengers = noOfPassengers;
     }
 }

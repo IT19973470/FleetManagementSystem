@@ -8,17 +8,14 @@ public class DriverDTO {
     private String lisenseID;
     private UserAccountDTO userAccount;
 
-    public DriverDTO(String driverID, String lisenseID) {
-        this.driverID = driverID;
-        this.lisenseID = lisenseID;
-    }
-
     public DriverDTO(Driver driver) {
-        this.driverID = driver.getDriverID();
-        this.lisenseID = driver.getLisenseID();
+        if (driver != null) {
+            this.driverID = driver.getDriverID();
+            this.lisenseID = driver.getLisenseID();
+        }
     }
 
-    public DriverDTO(Driver driver, UserAccountDTO userAccountDTO){
+    public DriverDTO(Driver driver, UserAccountDTO userAccountDTO) {
         this(driver);
         this.userAccount = userAccountDTO;
     }

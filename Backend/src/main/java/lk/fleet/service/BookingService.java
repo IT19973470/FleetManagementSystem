@@ -11,6 +11,8 @@ import lk.fleet.entity.VipBooking;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface BookingService {
 
     List<DriverVehicleDTO> getDriverVehicles(String driverId);
@@ -31,7 +33,10 @@ public interface BookingService {
 
     boolean deleteBooking(String bookingId);
 
+    List<BookingDTO> getAllBookings();
+
     List<BookingDTO> getBookings();
+
 
     List<BookingDTO> getBookingsByBookingId(String bookingId);
 
@@ -40,4 +45,6 @@ public interface BookingService {
 
 
     //List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId);
+
+
 }

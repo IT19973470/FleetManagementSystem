@@ -12,7 +12,7 @@ public class MeterDetailDTO {
 
 
     public MeterDetailDTO(MeterDetail meterDetail) {
-        if(meterDetail != null) {
+        if (meterDetail != null) {
             this.meterId = meterDetail.getMeterId();
             this.inMeter = meterDetail.getInMeter();
             this.OutMeter = meterDetail.getOutMeter();

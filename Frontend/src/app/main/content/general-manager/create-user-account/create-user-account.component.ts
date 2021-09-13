@@ -98,14 +98,6 @@ export class CreateUserAccountComponent implements OnInit {
       })
     }
 
-
-
-    // this.generalManagerService.addTransportManagerUserAccount(this.userAccount).subscribe((userAccount) =>{
-    //   if(userAccount == null){
-    //     this.userAccount.userAccountDetails.push(userAccount);
-    //   }
-    // })
-
   }
 
 

@@ -8,36 +8,39 @@
   <div class="col-11" style="margin-top: 20px">
 
     <span style="font-weight: bold;margin-left: 50px">Search by Token ID : </span>
-    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
+    <input type="search" placeholder="Enter TokenID.." style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByID()">
       Search
     </button>
 
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllTokens()">
-      Incomplete Trips
+      All Incomplete Trips
     </button><br><br><br>
 
     <div style="width: 100%">
 
       <table class="table table-striped">
-        <thead>
+        <thead  style="text-align: center">
         <tr>
           <th scope="col" width="5%">#</th>
           <th scope="col" width="20%">Token ID</th>
           <th scope="col">Departure Date</th>
           <th scope="col">Departure Time</th>
           <th scope="col">Transport Status</th>
-          <th scope="col" width="9%" style="text-align: center">Action</th>
-          <th scope="col" width="9%" style="text-align: center">Delete</th>
+          <th scope="col" width="10%" >Action</th>
+          <th scope="col" width="10%" >Delete</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody  style="text-align: center">
         <tr *ngFor="let tokenDetail of tokens; let i = index">
           <th scope="row">{{i+1}}</th>
           <td>{{tokenDetail.tokenID}}</td>
           <td>{{tokenDetail.departureDate}}</td>
           <td>{{tokenDetail.departureTime}}</td>
-          <td>{{tokenDetail.transportStatus}}</td>
+          <td *ngIf="tokenDetail.transportStatus===false">
+            <i class="fas fa-hourglass-end fa-lg"></i>
+          </td>
+<!--          <td>{{tokenDetail.transportStatus}}</td>-->
 
           <td *ngIf="tokenDetail.meterDetail.meterId===null" style="text-align: center">
             <i class="fas fa-tachometer-alt fa-lg" style="cursor: pointer" title="Add Meter" (click)="goToMeter(tokenDetail)"></i>

@@ -12,6 +12,7 @@ public class SpecialBookingDTO {
     private BookingDTO booking;
 
 
+
     public SpecialBookingDTO(SpecialBooking specialBooking){
         if(specialBooking != null) {
             this.specialBookingId=specialBooking.getSpecialBookingId();
@@ -23,7 +24,16 @@ public class SpecialBookingDTO {
     public SpecialBookingDTO(SpecialBooking specialBooking, BookingDTO booking) {
             this(specialBooking);
             this.booking = booking;
-    }
+	}
+   // public SpecialBookingDTO(SpecialBooking specialBooking) {
+       // if (specialBooking != null) {
+           // this.specialBookingId = specialBooking.getSpecialBookingId();
+           // this.noOfPassengers = specialBooking.getNoOfPassengers();
+           // this.approvedFuelAmount = specialBooking.getApprovedFuelAmount();
+           // this.description = specialBooking.getDescription();
+       // }
+
+   // }
 
 
     public String getSpecialBookingId() {

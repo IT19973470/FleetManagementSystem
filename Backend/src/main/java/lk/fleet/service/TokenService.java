@@ -15,5 +15,9 @@ public interface TokenService {
 
     List<TokenDTO> getAllTokens();
 
-//    List<TokenDTO> getTokenByID(String tokenID);
+    List<TokenDTO> getCompletedTokens();
+
+    List<TokenDTO> getTokenByID(String tokenID);
+
+
 }

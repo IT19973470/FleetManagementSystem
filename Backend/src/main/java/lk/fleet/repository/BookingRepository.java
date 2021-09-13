@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface BookingRepository extends JpaRepository<Booking, String> {
 
     @Query(value = "from Booking order by bookingDateTime desc")
