@@ -5,4 +5,3 @@ import lk.fleet.entity.PassengerPassengerApplication;
 public class PassengerPassengerApplicationDTO {
 
 }
-
