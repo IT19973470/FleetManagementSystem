@@ -18,6 +18,5 @@ public interface VehicleMaintenanceService {
 
     List<VehicleMaintenanceDTO> getVehicleMaintenance();
 
-    //List<VehicleMaintenanceDTO> getVehicleMaintenance();
 }
 

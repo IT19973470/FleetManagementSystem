@@ -40,9 +40,11 @@ public class VehicleMaintenanceServiceImpl implements VehicleMaintenanceService 
         Optional<VehicleMaintenance> optionalVehicleMaintenance = vehicleMaintenanceRepository.findById(maintenanceID);
         if(optionalVehicleMaintenance.isPresent()){
             VehicleMaintenance vehicleMaintenanceObj = optionalVehicleMaintenance.get();
-            vehicleMaintenanceObj.setMaintenanceStatus(vehicleMaintenance.isMaintenanceStatus());
-            vehicleMaintenanceObj.setCompanyName(vehicleMaintenance.getCompanyName());
+            vehicleMaintenanceObj.setMaintenanceID(vehicleMaintenance.getMaintenanceID());
+            vehicleMaintenanceObj.setMaintenanceDate(vehicleMaintenance.getMaintenanceDate());
             vehicleMaintenanceObj.setMaintenanceType(vehicleMaintenance.getMaintenanceType());
+            vehicleMaintenanceObj.setCompanyName(vehicleMaintenance.getCompanyName());
+            vehicleMaintenanceObj.setMaintenanceStatus(vehicleMaintenance.isMaintenanceStatus());
             return new VehicleMaintenanceDTO(vehicleMaintenanceRepository.save(vehicleMaintenanceObj));
         }
         return null;

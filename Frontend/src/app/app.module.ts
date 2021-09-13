@@ -76,6 +76,7 @@ import {TextValidatorDirective} from './_validator/text-validator.directive';
 import {TelephoneValidatorDirective} from "./_validator/telephone-validator.directive";
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
+import { UpdateMaintenanceDetailsComponent } from './main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -201,7 +202,8 @@ const customNotifierOptions: NotifierOptions = {
     TelephoneValidatorDirective,
     UpdateUserAccountComponent,
     NavBookingManagerComponent,
-    UpdateUserAccountComponent
+    UpdateUserAccountComponent,
+    UpdateMaintenanceDetailsComponent
   ],
 
   imports: [

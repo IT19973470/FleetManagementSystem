@@ -1,5 +1,6 @@
 package lk.fleet.dto;
 
+import lk.fleet.entity.DriverVehicle;
 import lk.fleet.entity.VehicleMaintenance;
 import java.time.format.DateTimeFormatter;
 
@@ -10,6 +11,8 @@ public class VehicleMaintenanceDTO {
     private String maintenanceType;
     private String companyName;
     private boolean maintenanceStatus;
+    //private String vehicleID;
+
 
     public VehicleMaintenanceDTO(VehicleMaintenance vehicleMaintenance) {
         if (vehicleMaintenance != null) {
@@ -18,6 +21,7 @@ public class VehicleMaintenanceDTO {
             this.maintenanceType = vehicleMaintenance.getMaintenanceType();
             this.companyName = vehicleMaintenance.getCompanyName();
             this.maintenanceStatus = vehicleMaintenance.isMaintenanceStatus();
+            //this.vehicleID=vehicleMaintenance.getDriverVehicle().getVehicle().getVehicleId();
         }
     }
 
@@ -60,4 +64,8 @@ public class VehicleMaintenanceDTO {
     public void setMaintenanceStatus(boolean maintenanceStatus) {
         this.maintenanceStatus = maintenanceStatus;
     }
+
+
+
+
 }

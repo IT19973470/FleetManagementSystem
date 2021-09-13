@@ -9,12 +9,6 @@ import {VehicleAccidentService} from "../../../../_service/vehicle-accident.serv
 })
 export class VehicleAccidentViewComponent implements OnInit {
 
-  isModalTable = {
-    text: '',
-    openTable: false,
-    foundItem: ''
-  };
-
   vehicleAccidentDetails = [];
   vehicleAccident = {
     vehicleAccidentID: '',
@@ -35,15 +29,10 @@ export class VehicleAccidentViewComponent implements OnInit {
     this.getVehicleAccidents();
   }
 
-  setItem(vehicleAccident) {
-    this.vehicleAccident = vehicleAccident;
-    this.isTrueOrFalse(true);
-  }
-
   getVehicleAccidents() {
     this.vehicleAccidentService.getVehicleAccidents().subscribe((vehicleAccidentDetails) => {
       this.vehicleAccidentDetails = vehicleAccidentDetails;
-      console.log(this.vehicleAccident)
+      //console.log(this.vehicleAccident)
     })
   }
 
@@ -51,10 +40,6 @@ export class VehicleAccidentViewComponent implements OnInit {
   goToUpdate(accident) {
     this.vehicleAccidentService.accident = accident;
     this.router.navigate(['/main/update_accident_details'])
-  }
-
-  private isTrueOrFalse(reply) {
-    this.isModalTable.openTable = reply;
   }
 
   removeAccident(vehicleAccidentID, tblIndex) {

@@ -18,13 +18,13 @@
       <table class="table table-striped" style="margin-top: 40px">
         <thead>
         <tr>
-          <th scope="col" width="10%">#</th>
+          <th scope="col" width="5%">#</th>
           <th scope="col" width="10%">Maintenance ID</th>
-          <th scope="col" width="10%">Vehicle ID</th>
-          <th scope="col" width="10%">Maintenance Type</th>
-          <th scope="col" width="10%">Maintenance Date</th>
-          <th scope="col" width="10%">Company Name</th>
-          <th scope="col" width="10%">Maintenance Status</th>
+          <th scope="col" width="8%">Vehicle ID</th>
+          <th scope="col" width="13%">Maintenance Type</th>
+          <th scope="col" width="13%">Maintenance Date</th>
+          <th scope="col" width="13%">Company Name</th>
+          <th scope="col" width="13%">Maintenance Status</th>
           <th scope="col" width="10%" style="text-align: center">Update</th>
           <th scope="col" width="10%" style="text-align: center">Delete</th>
         </tr>
@@ -33,19 +33,19 @@
         <tbody>
         <tr *ngFor="let vehicleMaintenance of vehicleMaintenanceDetails; let i = index">
           <th scope="row">{{i+1}}</th>
-          <td>{{vehicleMaintenance.vehicleMaintenanceID}}</td>
+          <td>{{vehicleMaintenance.maintenanceID}}</td>
           <td>{{vehicleMaintenance.vehicleID}}</td>
           <td>{{vehicleMaintenance.maintenanceType}}</td>
           <td>{{vehicleMaintenance.maintenanceDate}}</td>
           <td>{{vehicleMaintenance.companyName}}</td>
           <td>{{vehicleMaintenance.maintenanceStatus}}</td>
 
-<!--          <td style="text-align: center">-->
-<!--            <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicleAccident)"></i>-->
-<!--          </td>-->
+          <td style="text-align: center">
+            <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicleMaintenance)"></i>
+          </td>
 
 <!--          <td style="text-align: center" >-->
-<!--            <i class="fas fa-trash" style="cursor: pointer"  (click)="removeAccident(vehicleAccident.vehicleAccidentID,i)" ></i>-->
+<!--            <i class="fas fa-trash" style="cursor: pointer"  (click)="goToUpdate(vehicleMaintenance.vehicleMaintenanceID,i)" ></i>-->
 <!--          </td>-->
 
         </tr>

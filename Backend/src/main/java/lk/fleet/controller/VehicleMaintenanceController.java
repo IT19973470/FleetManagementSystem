@@ -40,4 +40,5 @@ public class VehicleMaintenanceController {
     public ResponseEntity chkVehicle(@PathVariable String vehicleId) {
         return ResponseEntity.ok(vehicleMaintenanceService.chkVehicle(vehicleId));
     }
+
 }

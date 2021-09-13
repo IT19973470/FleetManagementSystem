@@ -13,13 +13,15 @@ export class VehicleMaintenanceViewComponent implements OnInit {
 
   vehicleMaintenanceDetails = [];
   vehicleMaintenance = {
-    vehicleMaintenanceID: '',
+    maintenanceID: '',
     vehicleID: '',
-    maintenanceType: '',
     maintenanceDate: '',
+    maintenanceType: '',
     companyName: '',
     maintenanceStatus: false,
   };
+
+  maintenanceIdSearch;
 
   constructor(private vehicleMaintenanceService: VehicleMaintenanceService, private router: Router) { }
 
@@ -32,5 +34,17 @@ export class VehicleMaintenanceViewComponent implements OnInit {
       this.vehicleMaintenanceDetails = vehicleMaintenanceDetails;
       //console.log(this.vehicleAccident)
     })
+  }
+
+  // getMaintenanceById() {
+  //   this.vehicleMaintenanceService.getMaintenanceById(this.maintenanceIdSearch).subscribe((vehicleMaintenanceDetails) => {
+  //     this.vehicleMaintenanceDetails = vehicleMaintenanceDetails;
+  //     // console.log(this.vehicles)
+  //   })
+  // }
+
+  goToUpdate(maintenance) {
+    this.vehicleMaintenanceService.maintenance = maintenance;
+    this.router.navigate(['/main/update_maintenance_details'])
   }
 }
