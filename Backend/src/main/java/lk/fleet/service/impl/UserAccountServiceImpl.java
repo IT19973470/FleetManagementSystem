@@ -84,7 +84,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         if (vehicleDriverManagementClerk.getUserAccount().getAccountType().equals("Vehicle and Driver Management Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             vehicleDriverManagementClerk.setVehicleDriverManagementId(vehicleDriverManagementClerk.getUserAccount().getEmployeeID());
-            vehicleDriverManagementClerk.getUserAccount().setAccountType("VMC");
+            vehicleDriverManagementClerk.getUserAccount().setAccountType("VDM");
         }
 
         vehicleDriverManagementClerk.getUserAccount().setApproved(true);
@@ -100,7 +100,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         if (accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             accidentMaintenanceManager.setEmployeeID(accidentMaintenanceManager.getUserAccount().getEmployeeID());
-            accidentMaintenanceManager.getUserAccount().setAccountType("AMC");
+            accidentMaintenanceManager.getUserAccount().setAccountType("VMC");
         }
 
         accidentMaintenanceManager.getUserAccount().setApproved(true);
