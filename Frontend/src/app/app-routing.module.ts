@@ -63,7 +63,6 @@ import {VipBookingComponent} from "./main/content/booking_management_clerk/vip-b
 import {UpdateVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component";
 import {ViewVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component";
 
-import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
 
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";

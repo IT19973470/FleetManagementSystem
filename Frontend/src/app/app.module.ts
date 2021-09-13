@@ -49,7 +49,6 @@ import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager
 import {DatePipe} from "@angular/common";
 
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
-import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 
 
 
@@ -231,7 +230,7 @@ const customNotifierOptions: NotifierOptions = {
     UpdateSpecialBookingComponent,
     VipBookingComponent,
     ViewVipBookingComponent,
-    UpdateVipBookingComponent
+    UpdateVipBookingComponent,
 
     CompletedTripsComponent,
     DeliveryStatusComponent,

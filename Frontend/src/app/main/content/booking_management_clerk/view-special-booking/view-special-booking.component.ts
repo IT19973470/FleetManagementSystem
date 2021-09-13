@@ -26,7 +26,7 @@ export class ViewSpecialBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllBookings();
+    this.getAllSpecialBooking();
   }
 
   goToUpdate(booking) {
@@ -34,8 +34,8 @@ export class ViewSpecialBookingComponent implements OnInit {
     this.router.navigate(['/main/update_special_booking'])
   }
 
-  getAllBookings() {
-    this.bookingManagerService.getAllBookings().subscribe((specialBooking) => {
+  getAllSpecialBooking() {
+    this.bookingManagerService.getAllSpecialBooking().subscribe((specialBooking) => {
       this.specialBooking = specialBooking;
       console.log(specialBooking)
     })
