@@ -18,21 +18,7 @@ export class AvailableTransportsComponent implements OnInit {
     foundItem: ''
   };
 
-  passengerpassengerApp = {
-    pass: {
-      applicationID: '',
-      arrivaleDate: '',
-      depatureDate: "",
-      reason: '',
-      vehicleType: '',
-      destination: '',
-      type: 'P',
-      passengerApplication: {
-        noOfPassengers: '1',
-        passengerPassengerApplications: []
-      }
-    }
-  }
+
 
 
   application = [];
