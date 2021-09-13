@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DriverService} from "../../../../_service/driver.service";
-import {Router} from "@angular/router";
+import {DriverService} from '../../../../_service/driver.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shift-details',
@@ -14,8 +14,10 @@ export class ShiftDetailsComponent implements OnInit {
     foundUser: ''
   };
 
-  shiftDetails: [];
-  driverID;
+  shiftDetails={
+  driver_driverid: ''
+  };
+  shift: any;
 
   constructor(private driverService: DriverService, private router: Router) {
 
@@ -23,7 +25,7 @@ export class ShiftDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getShift();
+    // this.getShift();
   }
 
   onSubmit() {
@@ -35,8 +37,8 @@ export class ShiftDetailsComponent implements OnInit {
     this.isTrueOrFalse(true);
   }
 
-  goToUpdate(otDetails) {
-    this.driverService.ot = this.shiftDetails;
+  goToUpdate(shiftDetails) {
+    this.driverService.shift = this.shiftDetails;
     this.router.navigate(['/main/update_over_time']);
   }
 
@@ -44,18 +46,9 @@ export class ShiftDetailsComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  getShift() {
-    this.driverService.getShift().subscribe((shift) => {
-      this.shiftDetails = shift;
-    });
-  }
-
-//
-  geDriverByID() {
-
-  }
-
-  getAllDrivers() {
-
-  }
+  // getShift() {
+  //   this.driverService.getShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((shift) => {
+  //     this.shiftDetails = shift;
+  //   });
+  // }
 }
