@@ -184,10 +184,10 @@
       <tbody>
       <tr *ngFor="let Pass of ViewPassenger; let j = index">
         <th scope="row">{{j+1}}</th>
-        <td>{{Pass.passengerId}}</td>
-        <td>{{Pass.passengerName}}</td>
-        <td>{{Pass.contactNumber}}</td>
-        <td style="text-align: center" (click)="removePassenger(j,Pass.passengerId)">
+        <td>{{Pass.passenger.passengerId}}</td>
+        <td>{{Pass.passenger.userAccount.name}}</td>
+        <td>{{Pass.passenger.userAccount.contactNo}}</td>
+        <td style="text-align: center" (click)="removePassenger(j,Pass.passenger.passengerId)">
           <i class="fas fa-times" style="color: red;font-size: 20px"></i>
         </td>
       </tr>

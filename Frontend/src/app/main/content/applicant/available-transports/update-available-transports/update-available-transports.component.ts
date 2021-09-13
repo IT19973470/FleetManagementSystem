@@ -15,17 +15,17 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   passengerpassengerApp = {
 
-    applicationID: "App20210911113145",
+    applicationID: "",
     approval: false,
     arrivaleDate: null,
-    arrivaleDateActual: '2021-09-29T11:31:00',
+    arrivaleDateActual: '',
     depatureDate: null,
-    depatureDateActual: '2018-06-07T00:00',
-    destination: "Jaffna",
-    vehicleType: "Van",
-    reason: "Repair a Ac machine",
+    depatureDateActual: '',
+    destination: "",
+    vehicleType: "",
+    reason: "",
     passengerApp: {
-      noOfPassengers: '5',
+      noOfPassengers: '',
       passengerApplicationID:'',
       passengerPassengerApplications: []
     }
@@ -78,7 +78,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
       this.DBPass=this.PassengerDB;
-      this.ViewPassenger=this.DBPass.passengerApp.passengerPassengerApplications;
+      this.ViewPassenger=this.DBPass.passengerApplicationDTO.passengerPassengerApplications;
       console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
     })
@@ -130,9 +130,9 @@ export class UpdateAvailableTransportsComponent implements OnInit {
   }
 
   removeDelivery() {
-    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe()
-    this.router.navigate(['/main/available_transports']);
+    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/available_transports']);
+    })
   }
-
 
 }

@@ -1,6 +1,9 @@
 package lk.fleet.controller;
 
-import lk.fleet.dto.*;
+import lk.fleet.dto.ApplicationDTO;
+import lk.fleet.dto.BookingApplicationDTO;
+import lk.fleet.dto.PassengerApplicationDTO;
+import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.ApplicationItemService;
 import lk.fleet.service.ApplicationPassengerService;
@@ -26,7 +29,7 @@ public class ApplicationController {
     public ResponseEntity addApplication(@RequestBody Application application) {
         return ResponseEntity.ok(applicationPassengerService.addApplication(application));
     }
-//        @PostMapping(value ="/newApplication")
+    //        @PostMapping(value ="/newApplication")
 //        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
 //             return applicationService.addPassengerApplication(application);
 //         }
@@ -65,7 +68,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationItemService.addItemItemApplication(itemApplication));
     }
     @DeleteMapping(value = "/deleteApplication/{applicationID}")
-    public ResponseEntity deleteApplication(@PathVariable String applicationID){
+    public ResponseEntity deleteBooking(@PathVariable String applicationID){
         return ResponseEntity.ok(applicationService.deleteApplication(applicationID));
     }
 
@@ -100,17 +103,19 @@ public class ApplicationController {
         return applicationPassengerService.getAPassengerApp();
     }
 
-    @GetMapping(value = "/getBookingApplications")//getdto
-    public List<BookingApplicationDTO> getBookingApplications(){
-        return applicationPassengerService.getBookingApplications();
+    @GetMapping(value = "/getdto")
+    public  List<BookingApplicationDTO> gatPassengerAppData(){
+        return applicationPassengerService.gatPassengerAppData();
     }
-//    @GetMapping(value = "/getdto")
+    //    @GetMapping(value = "/getdto")
 //    public List<ApplicationDTO> getdto(){
 //        return applicationService.getdto();
 //    }
-        @DeleteMapping(value = "/deletePassengerApp/{ApplicationID}/{applicationID}")
+
+
+    @DeleteMapping(value = "/deletePassengerApp/{ApplicationID}/{applicationID}")
     public ResponseEntity deleteBooking(@PathVariable String ApplicationID,@PathVariable String applicationID){
-    return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID,applicationID));
-}
+        return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID,applicationID));
+    }
 
 }
