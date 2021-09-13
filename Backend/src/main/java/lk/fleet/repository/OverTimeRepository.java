@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface OverTimeRepository extends JpaRepository<OverTime, Long> {
 
-//    OverTime getOverTimeByOverTimeID(String overTimeID);
-
     @Query(value = "from OverTime where driver.driverID=?1 order by otDate desc")
     List<OverTime> getLastOverTime(String driverId);
+
+    @Query(value = "from OverTime order by otDate desc")
+    List<OverTime> getAllLastOverTimes();
 }

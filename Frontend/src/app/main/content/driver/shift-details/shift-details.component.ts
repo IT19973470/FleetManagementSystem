@@ -14,10 +14,16 @@ export class ShiftDetailsComponent implements OnInit {
     foundUser: ''
   };
 
-  shiftDetails={
-  driver_driverid: ''
+  shiftDetails = [];
+
+  shift = {
+    shift_id: '',
+    attendance: '',
+    ending_time: '',
+    shift_date: '',
+    starting_time: '',
+    driver_driverid: ''
   };
-  shift: any;
 
   constructor(private driverService: DriverService, private router: Router) {
 
@@ -25,30 +31,28 @@ export class ShiftDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.getShift();
+    this.getMyShift();
   }
 
-  onSubmit() {
-    return false;
-  }
-
-  setShift(shiftDetails) {
-    this.shiftDetails = shiftDetails;
+  setOT(shiftDetails) {
+    this.shift = shiftDetails;
     this.isTrueOrFalse(true);
   }
 
   goToUpdate(shiftDetails) {
-    this.driverService.shift = this.shiftDetails;
+    this.driverService.shift = shiftDetails;
     this.router.navigate(['/main/update_over_time']);
+    console.log(shiftDetails);
   }
 
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }
 
-  // getShift() {
-  //   this.driverService.getShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((shift) => {
-  //     this.shiftDetails = shift;
-  //   });
-  // }
+  getMyShift() {
+    this.driverService.getMyOT(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
+      this.shift = myShift;
+      console.log(this.shiftDetails);
+    });
+  }
 }

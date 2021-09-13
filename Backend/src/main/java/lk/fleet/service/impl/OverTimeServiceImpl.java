@@ -45,12 +45,19 @@ public class OverTimeServiceImpl implements OverTimeService {
     }
 
     @Override
-    public Object getOT() {
-        List<OverTime> overTimes = overTimeRepository.findAll();
+    public List<OverTimeDTO> getOT() {
+        List<OverTime> overTimes = overTimeRepository.getAllLastOverTimes();
         List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
 
-        for (OverTime overTime : overTimes) {
-            overTimeDTOS.add(new OverTimeDTO(overTime));
+        int count = 0;
+        if (overTimes.size() < 10) {
+            count = overTimes.size();
+        } else {
+            count = 10;
+        }
+
+        for (int i = 0; i < count; i++) {
+            overTimeDTOS.add(new OverTimeDTO(overTimes.get(i)));
         }
 
         return overTimeDTOS;
