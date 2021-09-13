@@ -17,11 +17,13 @@ public class BookingDTO {
     private DriverDTO driver;
 
     public BookingDTO(Booking booking) {
-        if(booking != null) {
+        if (booking != null) {
             this.bookingId = booking.getBookingId();
-            this.bookingDate = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            this.bookingTime = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
-            this.bookingTimeActual = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            if (booking.getBookingDateTime() != null) {
+                this.bookingDate = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                this.bookingTime = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+                this.bookingTimeActual = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            }
             this.destination = booking.getDestination();
             this.bookingStatus = booking.isBookingStatus();
         }

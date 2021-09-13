@@ -25,15 +25,6 @@ public class SpecialBookingDTO {
             this(specialBooking);
             this.booking = booking;
 	}
-   // public SpecialBookingDTO(SpecialBooking specialBooking) {
-       // if (specialBooking != null) {
-           // this.specialBookingId = specialBooking.getSpecialBookingId();
-           // this.noOfPassengers = specialBooking.getNoOfPassengers();
-           // this.approvedFuelAmount = specialBooking.getApprovedFuelAmount();
-           // this.description = specialBooking.getDescription();
-       // }
-
-   // }
 
 
     public String getSpecialBookingId() {

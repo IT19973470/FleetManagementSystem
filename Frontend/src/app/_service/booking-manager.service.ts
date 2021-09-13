@@ -90,4 +90,10 @@ export class BookingManagerService {
   getAllVipBooking(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vipBooking/getAllVipBooking");
   }
+
+  getSpecialBookingBySpecialBookingId(specialBookingId: any) {
+    return this.http.get<any>(environment.backend_url + "/booking/getSpecialBookingBySpecialBookingId/" + specialBookingId);
+  }
+
+
 }

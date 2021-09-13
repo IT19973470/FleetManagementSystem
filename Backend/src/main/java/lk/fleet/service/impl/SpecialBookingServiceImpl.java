@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,8 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
     private BookingRepository bookingRepository;
 
     @Override
-    public SpecialBookingDTO addSpecialBooking(SpecialBooking specialBooking){
+    public SpecialBookingDTO addSpecialBooking(SpecialBooking specialBooking) {
+        specialBooking.getBooking().setBookingId("Book" + specialBooking.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
         specialBooking.setSpecialBookingId((specialBooking.getBooking().getBookingId()));
         bookingRepository.save(specialBooking.getBooking());
         return new SpecialBookingDTO(specialBookingRepository.save(specialBooking), new BookingDTO(specialBooking.getBooking()));
@@ -49,6 +51,7 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
         }
         return null;
     }
+
     @Override
     public boolean deleteSpecialBooking(String specialBookingId) {
         specialBookingRepository.deleteById(specialBookingId);
@@ -57,9 +60,9 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
 
     @Override
     public List<SpecialBookingDTO> getSpecialBooking() {
-        List<SpecialBookingDTO> specialBookingDTOS =new ArrayList<>();
+        List<SpecialBookingDTO> specialBookingDTOS = new ArrayList<>();
         List<SpecialBooking> specialBookings = specialBookingRepository.findAll();
-        for(SpecialBooking specialBooking: specialBookings){
+        for (SpecialBooking specialBooking : specialBookings) {
             specialBookingDTOS.add(new SpecialBookingDTO(specialBooking));
         }
         return specialBookingDTOS;

@@ -13,17 +13,18 @@ export class SpecialBookingComponent implements OnInit {
   @ViewChild('specialBookingForm', {static: true}) public specialBookingForm: NgForm;
 
   specialBooking = {
-      bookingId: '1',
+    booking: {
+      bookingId: '',
       bookingDateTime: '',
       destination: '',
       bookingStatus: true,
-      description: '',
-      noOfPassengers:'',
-      approvedFuelAmount:'',
       bookingManagementClerk: {
-        bookingManagementClerkId: 'BMC123'
+        bookingManagementClerkId: ''
+      }
     },
-
+    description: '',
+    noOfPassengers: '',
+    approvedFuelAmount: ''
   };
   // bookingStatuses = [
   //   "Active",
@@ -44,7 +45,7 @@ export class SpecialBookingComponent implements OnInit {
   }
 
   onSubmit() {
-    this.specialBooking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+    this.specialBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
     console.log(this.specialBooking);
     this.bookingManagerService.addSpecialBooking(this.specialBooking).subscribe(() => {
       this.router.navigate(['/main/view_special_booking'])

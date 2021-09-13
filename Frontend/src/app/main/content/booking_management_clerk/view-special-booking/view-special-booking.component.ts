@@ -10,16 +10,17 @@ import {Router} from "@angular/router";
 export class ViewSpecialBookingComponent implements OnInit {
 
   specialBooking = [];
-   booking ={
-     bookingId: '1',
-     bookingDateTime: '',
-     destination: '',
-     bookingStatus: '',
-     bookings : []
-  };
+  //  booking ={
+  //    bookingId: '1',
+  //    bookingDateTime: '',
+  //    destination: '',
+  //    bookingStatus: '',
+  //    bookings : []
+  // };
 
   bookingId;
   bookingManagementClerkId;
+  specialBookingId;
 
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
@@ -41,19 +42,13 @@ export class ViewSpecialBookingComponent implements OnInit {
     })
   }
 
-  getBookingsByBookingId(){
-    this.bookingManagerService.getBookingsByBookingId(this.bookingId).subscribe((specialBooking) => {
+  getSpecialBookingBySpecialBookingId(){
+    this.bookingManagerService.getSpecialBookingBySpecialBookingId(this.specialBookingId).subscribe((specialBooking) => {
       this.specialBooking=specialBooking;
 
 
     })
   }
 
-
-  getBookingsByBookingManagementClerkId() {
-    this.bookingManagerService.getBookingsByBookingManagementClerkId(this.bookingManagementClerkId).subscribe((specialBooking) => {
-      this.specialBooking=specialBooking;
-    })
-  }
 
 }

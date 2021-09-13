@@ -8,22 +8,23 @@
   <div class="col-10" style="margin-top: 20px">
 
     <div style="margin-top: 20px">
-<!--      <span style="font-weight: bold;margin-left: 0px">Search by Booking ID : </span>-->
-<!--      <input type="text" style="margin-left: 112px;width: 300px;height: 37px" [(ngModel)]="bookingId">-->
-<!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingsByBookingId()">-->
-<!--        Search-->
-<!--      </button>-->
-<!--    </div>-->
-<!--    <div style="margin-top: 20px">-->
+      <span style="font-weight: bold;margin-left: 0px">Search by Special Booking ID : </span>
+      <input type="text" style="margin-left: 112px;width: 300px;height: 37px" [(ngModel)]="bookingId">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getSpecialBookingBySpecialBookingId()">
+        Search
+      </button>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 10px" (click)="getAllSpecialBooking()">
+        All Special Bookings
+      </button>
+    </div>
+    <div style="margin-top: 20px">
 <!--      <span style="font-weight: bold;margin-left: 0px">Search by Booking Management ID : </span>-->
 <!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="bookingManagementClerkId">-->
 <!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingsByBookingManagementClerkId()">-->
 <!--        Search-->
 <!--      </button>-->
 
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllSpecialBooking()">
-        All Bookings
-      </button>
+
     </div>
 
     <table class="table table-striped" style="margin-top: 40px">
@@ -44,11 +45,11 @@
       <tbody>
       <tr *ngFor="let specialBooking of specialBooking; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{specialBooking.bookingId}}</td>
-        <td>{{specialBooking.bookingDate}}</td>
-        <td>{{specialBooking.bookingTime}}</td>
-        <td>{{specialBooking.bookingStatus}}</td>
-        <td>{{specialBooking.destination}}</td>
+        <td>{{specialBooking.booking.bookingId}}</td>
+        <td>{{specialBooking.booking.bookingDate}}</td>
+        <td>{{specialBooking.booking.bookingTime}}</td>
+        <td>{{specialBooking.booking.bookingStatus}}</td>
+        <td>{{specialBooking.booking.destination}}</td>
         <td>{{specialBooking.description}}</td>
         <td>{{specialBooking.noOfPassengers}}</td>
         <td>{{specialBooking.approvedFuelAmount}}</td>

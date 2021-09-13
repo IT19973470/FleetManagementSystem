@@ -14,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleetmanagement/" + "specialbooking")
+@RequestMapping(value = "fleetmanagement/" + "specialBooking")
 public class SpecialBookingController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class SpecialBookingController {
     }
 
     @PutMapping(value = "/updateSpecialBooking/{SpecialBookingId}")
-    public ResponseEntity updateBooking(@PathVariable String SpecialBookingId, @RequestBody SpecialBooking specialBooking){
+    public ResponseEntity updateSpecialBooking(@PathVariable String SpecialBookingId, @RequestBody SpecialBooking specialBooking){
         return ResponseEntity.ok(specialBookingService.updateSpecialBooking(SpecialBookingId, specialBooking));
     }
     @DeleteMapping(value = "/deleteSpecialBooking/{specialBookingId}")
