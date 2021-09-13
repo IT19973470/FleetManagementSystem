@@ -4,6 +4,7 @@ import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Shift;
+import lk.fleet.entity.SpecialBooking;
 import lk.fleet.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,14 @@ public class BookingController {
     public ResponseEntity addBooking(@RequestBody Booking booking){
         return ResponseEntity.ok(bookingService.addBooking(booking));
     }
+//    @PostMapping(value = "/addSpecialBooking")
+//    public ResponseEntity addSpecialBooking(@RequestBody SpecialBooking specialBooking){
+//        return ResponseEntity.ok(bookingService.addSpecialBooking(specialBooking));
+//    }
+//    @PostMapping(value = "/addVipBooking")
+//    public ResponseEntity addVipBooking(@RequestBody SpecialBooking specialBooking){
+//        return ResponseEntity.ok(bookingService.addVipBooking(vipBooking));
+//    }
 
     @PutMapping(value = "/updateBooking/{bookingId}")
     public ResponseEntity updateBooking(@PathVariable String bookingId, @RequestBody Booking booking){
@@ -38,10 +47,21 @@ public class BookingController {
 //        return ResponseEntity.ok(bookingService.getBookings());
 //    }
 
+
     @GetMapping(value = "/getBookings")
     public List<BookingDTO> getBookings(){
         return bookingService.getBookings();
     }
+
+    @GetMapping(value = "/getBookingsByBookingId/{bookingId}")
+    public ResponseEntity getBookingsByBookingId(@PathVariable String bookingId) {
+        return ResponseEntity.ok(bookingService.getBookingsByBookingId(bookingId));
+    }
+
+//    @GetMapping(value = "/getBookingsByBookingManagementClerkId/{bookingManagementClerkId}")
+//    public ResponseEntity getBookingsByBookingManagementClerkId(@PathVariable String bookingManagementClerkId) {
+//        return ResponseEntity.ok(bookingService.getBookingsByBookingManagementClerkId(bookingManagementClerkId));
+//    }
 
 
     @PostMapping(value = "/addDriverShift")

@@ -3,12 +3,11 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-view-bookings',
-  templateUrl: './view-bookings.component.html',
-  styleUrls: ['./view-bookings.component.css']
+  selector: 'app-view-vip-booking',
+  templateUrl: './view-vip-booking.component.html',
+  styleUrls: ['./view-vip-booking.component.css']
 })
-export class ViewBookingsComponent implements OnInit {
-
+export class ViewVipBookingComponent implements OnInit {
 
   bookings = [];
   //  booking ={
@@ -54,6 +53,7 @@ export class ViewBookingsComponent implements OnInit {
   getBookingsByBookingManagementClerkId() {
     this.bookingManagerService.getBookingsByBookingManagementClerkId(this.bookingManagementClerkId).subscribe((bookings) => {
       this.bookings=bookings;
-  })
-}
+    })
+  }
+
 }

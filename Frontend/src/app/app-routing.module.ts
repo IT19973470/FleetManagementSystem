@@ -55,6 +55,12 @@ import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-man
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
 
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+import {SpecialBookingComponent} from "./main/content/booking_management_clerk/special-booking/special-booking.component";
+import {UpdateSpecialBookingComponent} from "./main/content/booking_management_clerk/view-special-booking/update-special-booking/update-special-booking.component";
+import {ViewSpecialBookingComponent} from "./main/content/booking_management_clerk/view-special-booking/view-special-booking.component";
+import {VipBookingComponent} from "./main/content/booking_management_clerk/vip-booking/vip-booking.component";
+import {UpdateVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component";
+import {ViewVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component";
 
 
 
@@ -246,6 +252,30 @@ const routes: Routes = [
       {
         path: 'view_bookings',
         component: ViewBookingsComponent
+      },
+      {
+        path: 'special_booking',
+        component: SpecialBookingComponent
+      },
+      {
+        path: 'update_special_booking',
+        component: UpdateSpecialBookingComponent
+      },
+      {
+        path: 'view_special_booking',
+        component: ViewSpecialBookingComponent
+      },
+      {
+        path: 'vip_booking',
+        component: VipBookingComponent
+      },
+      {
+        path: 'update_vip_booking',
+        component: UpdateVipBookingComponent
+      },
+      {
+        path: 'view_vip_booking',
+        component: ViewVipBookingComponent
       },
       {
         path: 'shift',

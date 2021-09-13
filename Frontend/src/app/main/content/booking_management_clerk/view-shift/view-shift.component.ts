@@ -11,13 +11,13 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 export class ViewShiftComponent implements OnInit {
 
   shifts = [];
-  deliveryItem = {
-    deliveryId: '',
-    deliveryPersonName: '',
-    deliveryPersonNic: '',
-    deliveryStatus: false,
-    deliveryItemDetails: []
-  };
+  // deliveryItem = {
+  //   deliveryId: '',
+  //   deliveryPersonName: '',
+  //   deliveryPersonNic: '',
+  //   deliveryStatus: false,
+  //   deliveryItemDetails: []
+  // };
 
   driverId;
 

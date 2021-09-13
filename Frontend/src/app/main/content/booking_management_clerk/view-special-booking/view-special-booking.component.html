@@ -34,22 +34,26 @@
         <th scope="col" >Booking Date</th>
         <th scope="col" >Booking Time</th>
         <th scope="col">Booking Status</th>
-
-
         <th scope="col" width="10%" >Destination</th>
+        <th scope="col">Description</th>
+        <th scope="col">Number of Passengers</th>
+        <th scope="col">Approved fuel Amount</th>
         <th scope="col" width="10%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let booking of bookings; let i = index">
+      <tr *ngFor="let specialBooking of specialBooking; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{booking.bookingId}}</td>
-        <td>{{booking.bookingDate}}</td>
-        <td>{{booking.bookingTime}}</td>
-        <td>{{booking.bookingStatus}}</td>
-        <td>{{booking.destination}}</td>
+        <td>{{specialBooking.bookingId}}</td>
+        <td>{{specialBooking.bookingDate}}</td>
+        <td>{{specialBooking.bookingTime}}</td>
+        <td>{{specialBooking.bookingStatus}}</td>
+        <td>{{specialBooking.destination}}</td>
+        <td>{{specialBooking.description}}</td>
+        <td>{{specialBooking.noOfPassengers}}</td>
+        <td>{{specialBooking.approvedFuelAmount}}</td>
         <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(booking)"></i>
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(specialBooking)"></i>
         </td>
       </tr>
       </tbody>

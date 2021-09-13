@@ -3,8 +3,11 @@ package lk.fleet.service;
 import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.DriverVehicleDTO;
 import lk.fleet.dto.ShiftDTO;
+import lk.fleet.dto.SpecialBookingDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Shift;
+import lk.fleet.entity.SpecialBooking;
+import lk.fleet.entity.VipBooking;
 
 import java.util.List;
 
@@ -29,4 +32,12 @@ public interface BookingService {
     boolean deleteBooking(String bookingId);
 
     List<BookingDTO> getBookings();
+
+    List<BookingDTO> getBookingsByBookingId(String bookingId);
+
+
+    //VipBooking addVipBooking(VipBooking vipBooking);
+
+
+    //List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId);
 }

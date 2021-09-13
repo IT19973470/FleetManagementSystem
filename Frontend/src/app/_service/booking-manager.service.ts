@@ -11,6 +11,7 @@ export class BookingManagerService {
 
   shift;
   booking;
+  specialBooking;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }
@@ -59,6 +60,34 @@ export class BookingManagerService {
   getAllBookings(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getBookings");
   }
+  getBookingsByBookingId(bookingId): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookingsByBookingId/" + bookingId);
+  }
 
 
+  getBookingsByBookingManagementClerkId(bookingManagementClerkId: any) {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookingsByBookingManagementClerkId/" + bookingManagementClerkId);
+  }
+
+  addSpecialBooking(SpecialBookingDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/specialBooking/addSpecialBooking" ,SpecialBookingDetail);
+  }
+  updateSpecialBooking(SpecialBookingDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/specialBooking/updateSpecialBooking/" + SpecialBookingDetail.bookingId, SpecialBookingDetail);
+  }
+
+  deleteSpecialBooking(specialBookingId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/specialBooking/deleteSpecialBooking/" + specialBookingId);
+  }
+
+  getAllSpecialBooking(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/specialBooking/getAllSpecialBooking");
+  }
+
+  addVipBooking(BookingDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/booking/addVipBooking" ,BookingDetail);
+  }
+  getAllVipBooking(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vipBooking/getAllVipBooking");
+  }
 }

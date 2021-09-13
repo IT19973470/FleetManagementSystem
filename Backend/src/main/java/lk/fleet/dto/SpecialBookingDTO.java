@@ -1,5 +1,6 @@
 package lk.fleet.dto;
 
+import lk.fleet.entity.Booking;
 import lk.fleet.entity.SpecialBooking;
 
 public class SpecialBookingDTO {
@@ -8,13 +9,22 @@ public class SpecialBookingDTO {
     private int noOfPassengers;
     private double approvedFuelAmount;
     private String description;
+    private BookingDTO booking;
+
 
     public SpecialBookingDTO(SpecialBooking specialBooking){
-        this.specialBookingId = specialBooking.getSpecialBookingId();
-        this.noOfPassengers = specialBooking.getNoOfPassengers();
-        this.approvedFuelAmount = specialBooking.getApprovedFuelAmount();
-        this.description = specialBooking.getDescription();
+        if(specialBooking != null) {
+            this.specialBookingId=specialBooking.getSpecialBookingId();
+            this.noOfPassengers=specialBooking.getNoOfPassengers();
+            this.approvedFuelAmount=specialBooking.getApprovedFuelAmount();
+            this.description=specialBooking.getDescription();
+        }
     }
+    public SpecialBookingDTO(SpecialBooking specialBooking, BookingDTO booking) {
+            this(specialBooking);
+            this.booking = booking;
+    }
+
 
     public String getSpecialBookingId() {
         return specialBookingId;
@@ -46,5 +56,13 @@ public class SpecialBookingDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public BookingDTO getBooking() {
+        return booking;
+    }
+
+    public void setBooking(BookingDTO booking) {
+        this.booking = booking;
     }
 }

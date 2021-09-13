@@ -11,4 +11,10 @@ public interface BookingRepository extends JpaRepository<Booking, String> {
 
     @Query(value = "from Booking order by bookingDateTime desc")
     List<Booking> getBookings();
+
+    @Query(value = "from Booking where bookingId=?1 order by bookingDateTime desc")
+    Booking getBookingsByBookingId(String bookingId);
+
+    @Query(value = "from Booking where bookingManagementClerk.bookingManagementClerkId=?1 order by bookingDateTime desc")
+    Booking getBookingsByBookingManagementClerkId(String bookingManagementClerkId);
 }

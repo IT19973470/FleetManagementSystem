@@ -2,10 +2,7 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.*;
 import lk.fleet.entity.*;
-import lk.fleet.repository.BookingRepository;
-import lk.fleet.repository.DriverVehicleRepository;
-import lk.fleet.repository.ShiftRepository;
-import lk.fleet.repository.UserAccountRepository;
+import lk.fleet.repository.*;
 import lk.fleet.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +32,7 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.save(booking);
     }
 
+
     @Override
     public BookingDTO updateBooking(String bookingId, Booking booking) {
 
@@ -52,9 +50,6 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-
-
-
     @Override
     public boolean deleteBooking(String bookingId) {
         bookingRepository.deleteById(bookingId);
@@ -70,6 +65,22 @@ public class BookingServiceImpl implements BookingService {
         }
         return bookingDTOS;
     }
+
+
+    @Override
+    public List<BookingDTO> getBookingsByBookingId(String bookingId){
+        Booking bookingByID=bookingRepository.getBookingsByBookingId(bookingId);
+        List<BookingDTO> bookingDTOS=new ArrayList<>();
+        bookingDTOS.add(new BookingDTO(bookingByID));
+        return bookingDTOS;
+    }
+//    @Override
+//    public List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId) {
+//        Booking bookingsByBookingManagementClerkId = bookingRepository.getBookingsByBookingManagementClerkId(bookingManagementClerkId);
+//        List<BookingDTO> bookingDTOS = new ArrayList<>();
+//        bookingDTOS.add(new BookingDTO(bookingsByBookingManagementClerkId));
+//        return bookingDTOS;
+//    }
 
     @Override
     public List<DriverVehicleDTO> getDriverVehicles(String driverId) {
