@@ -21,6 +21,4 @@ public class PassengerPassengerApplicationDTO {
         this.passenger = passenger;
     }
 
-
 }
-

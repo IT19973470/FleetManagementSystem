@@ -64,6 +64,7 @@ public class BookingServiceImpl implements BookingService {
         return true;
     }
 
+    //securityOfficer
     @Override
     public List<BookingDTO> getAllBookings() {
         List<Booking> bookings = bookingRepository.findAll();
@@ -84,6 +85,15 @@ public class BookingServiceImpl implements BookingService {
         for(Booking booking: bookings){
             bookingDTOS.add(new BookingDTO(booking));
         }
+        return bookingDTOS;
+    }
+
+    //securityOfficer
+    @Override
+    public List<BookingDTO> getBookingByDestination(String destination) {
+        Booking bookingByDestination = bookingRepository.getBookingByDestination(destination);
+        List<BookingDTO> bookingDTOS=new ArrayList<>();
+        bookingDTOS.add(new BookingDTO(bookingByDestination));
         return bookingDTOS;
     }
 

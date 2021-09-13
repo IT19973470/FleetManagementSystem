@@ -48,20 +48,15 @@ import {ViewBookingsComponent} from "./main/content/booking_management_clerk/vie
 import {ShiftComponent} from "./main/content/booking_management_clerk/shift/shift.component";
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 import {ViewShiftComponent} from "./main/content/booking_management_clerk/view-shift/view-shift.component";
-
-
 import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
 import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
-
 import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
-
-import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component";
-import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
-
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
+import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
+import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 
 
 

@@ -80,4 +80,11 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getDriverShiftsByDriverId(driverId));
 
     }
+
+    //security officer
+    @GetMapping(value = "/getBookingByDestination/{destination}")
+    public ResponseEntity getBookingByDestination(@PathVariable String destination) {
+        return ResponseEntity.ok(bookingService.getBookingByDestination(destination));
+    }
+
 }
