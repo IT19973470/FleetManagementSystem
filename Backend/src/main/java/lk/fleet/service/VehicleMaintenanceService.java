@@ -18,5 +18,6 @@ public interface VehicleMaintenanceService {
 
     List<VehicleMaintenanceDTO> getVehicleMaintenance();
 
+    List<VehicleMaintenanceDTO> getMaintenanceById(String vehicleID);
 }
 

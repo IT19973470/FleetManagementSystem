@@ -87,9 +87,12 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
 
     @Override
     public List<VehicleAccidentDTO> getAccidentById(String vehicleID) {
-        VehicleAccident AccidentById = vehicleAccidentRepository.getAccidentById(vehicleID);
+        VehicleAccident vehicleAccident = vehicleAccidentRepository.getAccidentById(vehicleID);
         List<VehicleAccidentDTO> vehicleAccidentDTOS=new ArrayList<>();
-        vehicleAccidentDTOS.add(new VehicleAccidentDTO(AccidentById));
+        VehicleAccidentDTO vehicleAccidentDTO = new VehicleAccidentDTO(vehicleAccident);
+        vehicleAccidentDTO.setDriver(new DriverDTO(vehicleAccident.getDriverVehicle().getDriver()));
+        vehicleAccidentDTO.setVehicle(new VehicleDTO(vehicleAccident.getDriverVehicle().getVehicle()));
+        vehicleAccidentDTOS.add(vehicleAccidentDTO);
         return vehicleAccidentDTOS;
     }
 

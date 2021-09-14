@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface VehicleMaintenanceRepository extends JpaRepository<VehicleMaintenance, String> {
 
-    @Query(value = "from VehicleAccident where driverVehicle.vehicle.vehicleId=?1")
+    @Query(value = "from VehicleMaintenance where vehicle.vehicleId=?1")
     VehicleMaintenance getMaintenanceById(String vehicleID);
 }

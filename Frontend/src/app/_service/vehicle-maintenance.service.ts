@@ -38,7 +38,7 @@ export class VehicleMaintenanceService {
 
   //get maintenance ID
   getMaintenanceById(vehicleAccidentID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/maintenance/getAccidentById/" + vehicleAccidentID);
+    return this.http.get<any>(environment.backend_url + "/maintenance/getMaintenanceById/" + vehicleAccidentID);
   }
 
 

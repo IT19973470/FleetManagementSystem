@@ -70,16 +70,19 @@ public class VehicleMaintenanceServiceImpl implements VehicleMaintenanceService 
     }
 
     @Override
+    public List<VehicleMaintenanceDTO> getMaintenanceById(String vehicleID) {
+        VehicleMaintenance vehicleMaintenance = vehicleMaintenanceRepository.getMaintenanceById(vehicleID);
+        List<VehicleMaintenanceDTO> vehicleMaintenanceDTOS = new ArrayList<>();
+        VehicleMaintenanceDTO vehicleMaintenanceDTO = new VehicleMaintenanceDTO(vehicleMaintenance);
+        vehicleMaintenanceDTO.setVehicle(new VehicleDTO(vehicleMaintenance.getVehicle()));
+        vehicleMaintenanceDTOS.add(vehicleMaintenanceDTO);
+        return vehicleMaintenanceDTOS;
+    }
+
+    @Override
     public boolean chkVehicle(String vehicleId) {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
         return optionalVehicle.isPresent();
     }
 
-//    @Override
-//    public List<VehicleMaintenanceDTO> getMaintenanceById(String vehicleID) {
-//       VehicleMaintenance MaintenanceById = vehicleAccidentRepository.getAccidentById(vehicleID);
-//        List<VehicleAccidentDTO> vehicleAccidentDTOS=new ArrayList<>();
-//        vehicleAccidentDTOS.add(new VehicleAccidentDTO(MaintenanceById));
-//        return vehicleAccidentDTOS;
-//    }
 }

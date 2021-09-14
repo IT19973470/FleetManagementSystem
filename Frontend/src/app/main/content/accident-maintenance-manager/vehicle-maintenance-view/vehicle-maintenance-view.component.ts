@@ -36,6 +36,10 @@ export class VehicleMaintenanceViewComponent implements OnInit {
     })
   }
 
+  goToUpdate(maintenance) {
+    this.vehicleMaintenanceService.maintenance = maintenance;
+    this.router.navigate(['/main/update_maintenance_details'])
+  }
 
   removeMaintenance(maintenanceID, tblIndex) {
     this.vehicleMaintenanceService.deleteVehicleMaintenance(maintenanceID).subscribe((reply) => {
@@ -46,15 +50,10 @@ export class VehicleMaintenanceViewComponent implements OnInit {
     })
   }
 
-  // getMaintenanceById() {
-  //   this.vehicleMaintenanceService.getMaintenanceById(this.maintenanceIdSearch).subscribe((vehicleMaintenanceDetails) => {
-  //     this.vehicleMaintenanceDetails = vehicleMaintenanceDetails;
-  //     // console.log(this.vehicles)
-  //   })
-  // }
-
-  goToUpdate(maintenance) {
-    this.vehicleMaintenanceService.maintenance = maintenance;
-    this.router.navigate(['/main/update_maintenance_details'])
+  getMaintenanceById() {
+    this.vehicleMaintenanceService.getMaintenanceById(this.maintenanceIdSearch).subscribe((vehicleMaintenanceDetails) => {
+      this.vehicleMaintenanceDetails = vehicleMaintenanceDetails;
+    })
   }
+
 }
