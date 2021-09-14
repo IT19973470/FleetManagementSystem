@@ -25,6 +25,18 @@
     routerLinkActive>
   </div>
 
+
+
+
+  <div
+    routerLink="/main/vehicle_maintenance"
+    (click)="setTopic('Add Maintenance')"
+    #addMaintenance="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':addMaintenance.isActive?'#c0050e':''}">
+    Add Maintenance
+  </div>
+
   <div
     routerLink="/main/view_maintenance"
     (click)="setTopic('View Maintenance')"
@@ -33,6 +45,9 @@
     [ngStyle]="{'color':viewMaintenance.isActive?'#c0050e':''}">
     View Maintenance
   </div>
+
+
+
 
   <div
     routerLink="/main/accident_report"
@@ -52,10 +67,5 @@
     Maintenance Reports
   </div>
 
-<!--  <div>-->
-<!--    Passenger Transport-->
-<!--  </div>-->
-  <!--<div style="color: #b56e04">Vehicle</div>-->
-  <!--<div>Driver</div>-->
 </div>
 

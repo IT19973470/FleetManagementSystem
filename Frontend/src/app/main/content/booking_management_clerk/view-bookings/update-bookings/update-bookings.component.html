@@ -71,41 +71,46 @@
 
             <div class="row" style="margin-top: 10px">
               <div class="col-4">
-                Booking Date / Time :
+                Booking Date :
               </div>
               <div class="col-8">
-                <input type="datetime-local" class="form-control"
-                       [(ngModel)]="booking.bookingDateTime"
-                       #bookingDateTime="ngModel"
-                       name="bookingDateTime" required>
-                <div *ngIf="(bookingDateTime.touched || bookingForm.submitted) && bookingDateTime.errors?.required"
+                <input type="date" class="form-control"
+                       [(ngModel)]="booking.bookingDate"
+                       #bookingDate="ngModel"
+                       name="bookingDate" required>
+                <div *ngIf="(bookingDate.touched || bookingForm.submitted) && bookingDate.errors?.required"
                      class="validErr">
                   Booking Date is required
                 </div>
               </div>
             </div>
 
-            <!--        <div class="row" style="margin-top: 10px">-->
-            <!--          <div class="col-4">-->
-            <!--            Booking Time :-->
-            <!--          </div>-->
-            <!--          <div class="col-8">-->
-            <!--            <input type="time" class="form-control"-->
-            <!--                   [(ngModel)]="booking.bookingTime"-->
-            <!--                   #bookingTime="ngModel"-->
-            <!--                   name="bookingTime" required>-->
-            <!--            <div *ngIf="(bookingTime.touched || bookingForm.submitted) && bookingTime.errors?.required"-->
-            <!--                 class="validErr">-->
-            <!--              Booking Time is required-->
-            <!--            </div>-->
-            <!--          </div>-->
-            <!--        </div>-->
 
-            <!--        <div class="row" style="margin-top: 10px">-->
-            <!--          <div class="col-4">-->
-            <!--            Booking Status :-->
-            <!--          </div>-->
-            <!--          <div class="col-8">-->
+
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
+                Booking Time :
+              </div>
+              <div class="col-8">
+                <input type="time" class="form-control"
+                       [(ngModel)]="booking.bookingTimeActual"
+                       #bookingTime="ngModel"
+                       name="bookingTime" required>
+                <div *ngIf="(bookingTime.touched || bookingForm.submitted) && bookingTime.errors?.required"
+                     class="validErr">
+                  Booking Time is required
+                </div>
+              </div>
+            </div>
+
+
+
+                    <div class="row" style="margin-top: 10px">
+                      <div class="col-4">
+                        Booking Status :
+                      </div>
+                      <div class="col-8">
             <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
             <!--              <option value="">Select status</option>-->
             <!--              <option *ngFor="let type of bookingStatus" [value]="type">-->
@@ -113,9 +118,17 @@
             <!--              </option>-->
             <!--            </select>-->
             <!--            <p> {{selected}}</p>-->
-            <!--            </div>-->
+                        <label>
+                          <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="booking.bookingStatus">
+                          <span style="font-size: 18px"> Active</span>
+                        </label>
+                        <label style="margin-left: 40px">
+                          <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="booking.bookingStatus">
+                          <span style="font-size: 18px"> Inactive</span>
+                        </label>
+                        </div>
 
-            <!--          </div>-->
+                      </div>
 
 
             <div class="row" style="margin-top: 10px">

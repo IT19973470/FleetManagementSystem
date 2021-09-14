@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-manager.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-manager.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-fuel-update',
@@ -29,6 +29,9 @@ export class FuelUpdateComponent implements OnInit {
   };
 
   vehicleNumber;
+  currentFuelDetail = {
+    fuelBalance: ''
+  };
 
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
   }
@@ -43,8 +46,8 @@ export class FuelUpdateComponent implements OnInit {
   }
 
   goToUpdate(vehicle) {
-    this.vehicleDriverManagerService.vehicle = vehicle;
-    this.router.navigate(['/main/update_vehicle'])
+    this.currentFuelDetail.fuelBalance = vehicle.fuelBalance;
+    this.isTrueOrFalse(true);
   }
 
   isTrueOrFalse(reply) {
@@ -65,4 +68,10 @@ export class FuelUpdateComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    // this.driverService.updateFuel(this.currentFuelDetail).subscribe((currentFuelDetail) => {
+    //   this.router.navigate(['/login'])
+    // })
+    return null;
+  }
 }
