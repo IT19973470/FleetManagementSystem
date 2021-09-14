@@ -48,6 +48,7 @@ import {TokenComponent} from './main/content/security-officer/token/token.compon
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
 
+
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
 
 
@@ -57,6 +58,11 @@ import {DatePipe} from "@angular/common";
 //import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
 //import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
+
+import {VipmemberComponent} from './main/content/vehicleDriver-manager/vipmember/vipmember.component';
+import {ViewVipmembersComponent} from './main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component';
+import {UpdateVipmemberComponent} from './main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component';
+
 import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 import {UpdateDriverComponent} from './main/content/driver/driver-account/update-driver/update-driver.component';
 
@@ -75,11 +81,11 @@ import {ViewApprovedTripDetailsComponent} from './main/content/security-officer/
 import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 import {UpdateAccidentDetailsComponent} from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
+import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
 import {VehiclePoolComponent} from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 // import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 import {ApplicantRegestrationComponent} from './applicant-regestration/applicant-regestration.component';
-import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {ViewPassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component';
 import {UpdatePassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component';
@@ -100,7 +106,9 @@ import { UpdateVipBookingComponent } from './main/content/booking_management_cle
 
 
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
-import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
+import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
+import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
+import {AlertBoxComponent} from "./alert-box/alert-box.component";
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -143,7 +151,6 @@ const customNotifierOptions: NotifierOptions = {
     overlap: 150
   }
 };
-
 
 @NgModule({
   declarations: [
@@ -201,19 +208,30 @@ const customNotifierOptions: NotifierOptions = {
     ViewVehiclesComponent,
     UpdateVehicleComponent,
     UpdateVehicleComponent,
+    VipmemberComponent,
+    ViewVipmembersComponent,
+    UpdateVipmemberComponent,
     ArrivalDepartureLogPageComponent,
     MeterDetailComponent,
     UpdateDetailsComponent,
     ViewApprovedTripDetailsComponent,
+    UpdateUserAccountComponent,
+    TvProgramComponent,
+    UpdateOverTimeComponent,
+    UpdateUserAccountComponent,
     PassengerItemDeliveryComponent,
     ViewPassengerItemDeliveryComponent,
     UpdatePassengerItemDeliveryComponent,
     UpdateAccidentDetailsComponent,
     VehiclePoolComponent,
+//     VehiclePoolComponent,
+    UpdateOverTimeComponent,
+    UpdateOverTimeComponent,
     UpdateUserAccountComponent,
     UpdateDriverComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
+    UpdateUserAccountComponent,
     UpdateUserAccountComponent,
     ApplicantRegestrationComponent,
     UpdateUserAccountComponent,
@@ -222,6 +240,7 @@ const customNotifierOptions: NotifierOptions = {
     NicValidatorDirective,
     TextValidatorDirective,
     TelephoneValidatorDirective,
+    UpdateUserAccountComponent,
     NavBookingManagerComponent,
 
     UpdateUserAccountComponent,
@@ -233,9 +252,15 @@ const customNotifierOptions: NotifierOptions = {
     UpdateVipBookingComponent,
 
     CompletedTripsComponent,
+    UpdateUserAccountComponent,
+    UpdateUserAccountComponent,
+
+
+
+    VehiclePoolComponent,
     DeliveryStatusComponent,
-    UpdateUserAccountComponent,
-    UpdateUserAccountComponent,
+    VehicleNumberValidatorDirective,
+    AlertBoxComponent
 
   ],
 
@@ -250,5 +275,6 @@ const customNotifierOptions: NotifierOptions = {
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

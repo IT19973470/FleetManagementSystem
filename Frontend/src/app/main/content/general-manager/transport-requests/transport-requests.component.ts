@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class TransportRequestsComponent implements OnInit {
 
+   transportDetails = [];
 
   isModalTable = {
     text: '',
@@ -16,16 +17,16 @@ export class TransportRequestsComponent implements OnInit {
     foundItem: ''
   };
 
-  deliveryItemDetails = [];
-  deliveryItem = {
-    deliveryItemDetails: []
-  };
+  // deliveryItemDetails = [];
+  // deliveryItem = {
+  //   deliveryItemDetails: []
+  // };
 
   user: boolean = true;
   item: boolean = true;
   tblIndex;
 
-  employeeID;
+  applicationID;
   selectedTransport;
 
   constructor(private generalManagerService: GeneralManagerService, private router: Router) {
@@ -40,11 +41,11 @@ export class TransportRequestsComponent implements OnInit {
     this.getTransports();
   }
 
-  setItem(deliveryItem, i) {
-    this.tblIndex = i;
-    this.deliveryItem = deliveryItem;
-    this.isTrueOrFalse(true);
-  }
+  // setItem(deliveryItem, i) {
+  //   this.tblIndex = i;
+  //   this.deliveryItem = deliveryItem;
+  //   this.isTrueOrFalse(true);
+  // }
 
 
   isTrueOrFalse(reply) {
@@ -52,21 +53,36 @@ export class TransportRequestsComponent implements OnInit {
   }
 
   getTransports() {
-    this.generalManagerService.getTransportApplication().subscribe((deliveryItemDetails) => {
-      this.deliveryItemDetails = deliveryItemDetails;
+    this.generalManagerService.getTransportApplication().subscribe((transportDetails) => {
+      this.transportDetails = transportDetails;
       // if(this.deliveryItemDetails.applicationID)
-      console.log(this.deliveryItemDetails)
+      console.log(this.transportDetails)
     })
   }
 
-  setTransport(userAccount) {
-    this.selectedTransport = userAccount;
+  setTransport(transport) {
+    this.selectedTransport = transport;
     this.isTrueOrFalse(true);
   }
 
+  getTransportByID() {
+    this.generalManagerService.getTransportByID(this.applicationID).subscribe((transportDetails) => {
+      this.transportDetails = transportDetails;
+      // console.log(this.vehicles)
+    })
+  }
+
+  getAllTransports() {
+    this.generalManagerService.getTransportApplication().subscribe((transportDetails) => {
+      this.transportDetails = transportDetails;
+      // console.log(this.vehicles)
+    })
+  }
+
+
   approveTransport(approval) {
     this.generalManagerService.approveTransport(this.selectedTransport.applicationID, approval).subscribe((transport) => {
-      this.selectedTransport.approved = transport.approved;
+      this.selectedTransport.approval = transport.approval;
     })
   }
 

@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {DriverService} from "../_service/driver.service";
 import {Router} from "@angular/router";
 import {ApplicantService} from "../_service/applicant.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-applicant-regestration',
   templateUrl: './applicant-regestration.component.html',
   styleUrls: ['./applicant-regestration.component.css']
 })
+/** @title Form field with prefix & suffix */
+
 export class ApplicantRegestrationComponent implements OnInit {
 
 App={
@@ -34,6 +37,9 @@ App={
     foundUser: ''
   };
 
+  btn:boolean=true;
+  type="text";
+
   constructor(private applicant: ApplicantService, private router: Router) {
 
   }
@@ -51,6 +57,16 @@ App={
     })
     return false;
   }
+
+  hide(){
+this.type="password"
+    this.btn=false
+  }
+  show(){
+    this.type="text"
+    this.btn=true
+  }
+
 
 
 

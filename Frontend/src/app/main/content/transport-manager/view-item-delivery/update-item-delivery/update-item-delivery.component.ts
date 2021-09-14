@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-item-delivery',
@@ -17,6 +18,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
+    vehicleNumber: '',
     address: '',
     companyName: '',
     deliveryDate: '',
@@ -26,11 +28,22 @@ export class UpdateItemDeliveryComponent implements OnInit {
     deliveryItemDetails: []
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   item;
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
+  constructor(
+    private transportManagerService: TransportManagerService,
+    private router: Router,
+    private notifierService: NotifierService,
+    private alertService: AlertBoxService
+  ) {
     this.item = this.getNewItem();
   }
 
@@ -39,51 +52,73 @@ export class UpdateItemDeliveryComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.deliveryDetail)
-    this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-    this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_item_delivery'])
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this delivery?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
+        this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+          console.log(deliveryDetail)
+          let deliveryItemDetails = this.deliveryDetail.deliveryItemDetails
+          this.deliveryDetail = deliveryDetail;
+          this.deliveryDetail.deliveryItemDetails = deliveryItemDetails;
+          this.notifierService.notify("success", "Delivery updated successfully");
+          // this.router.navigate(['/main/view_item_delivery'])
+        }, (err) => {
+          this.notifierService.notify("error", "Delivery failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
   onSubmitItem() {
     this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
-    if (this.deliveryDetail.deliveryItemDetails.length === 0) {
-      this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
-        this.deliveryDetail.deliveryItemDetails.push(item);
-        this.notifierService.notify("success", "Item added successfully");
-        this.setNewItem();
+    let count = 0;
+    for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
+      if (this.btnText === 'Update' && i === this.tblIndex) {
+        continue;
+      }
+      let item = this.deliveryDetail.deliveryItemDetails[i];
+      if (
+        (item.itemName !== '' && item.itemName === this.item.itemName)
+      ) {
+        count++;
+      }
+      if (item.itemName === this.item.itemName) {
+        this.notifierService.notify("error", "Duplicate Item Name found");
+        break;
+      }
+    }
+    if (this.btnText === 'Add' && count === 0) {
+      this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to add this item?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
+          this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
+            this.deliveryDetail.deliveryItemDetails.push(item);
+            this.notifierService.notify("success", "Item added successfully");
+            this.setNewItem();
+          })
+        }
+        this.alertBox.alert = false;
       })
-    } else {
-      let count = 0;
-      for (let i = this.deliveryDetail.deliveryItemDetails.length - 1; i >= 0; i--) {
-        if (this.btnText === 'Update' && i === this.tblIndex) {
-          continue;
+    } else if (this.btnText === 'Update' && count === 0) {
+      this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to update this item?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
+          this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
+            this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
+            this.notifierService.notify("success", "Item updated successfully");
+            this.setNewItem();
+          })
         }
-        let item = this.deliveryDetail.deliveryItemDetails[i];
-        if (
-          (item.itemName !== '' && item.itemName === this.item.itemName)
-        ) {
-          count++;
-        }
-        if (item.itemName === this.item.itemName) {
-          this.notifierService.notify("error", "Duplicate Item Name found");
-          break;
-        }
-      }
-      if (this.btnText === 'Add' && count === 0) {
-        this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
-          this.deliveryDetail.deliveryItemDetails.push(item);
-          this.notifierService.notify("success", "Item added successfully");
-          this.setNewItem();
-        })
-      } else if (this.btnText === 'Update' && count === 0) {
-        this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
-          this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
-          this.notifierService.notify("success", "Item updated successfully");
-          this.setNewItem();
-        })
-      }
+        this.alertBox.alert = false;
+      })
     }
 
     // this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
@@ -102,18 +137,34 @@ export class UpdateItemDeliveryComponent implements OnInit {
   }
 
   removeItem(itemDetailId, i) {
-    this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this item?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.deliveryDetail.deliveryItemDetails.splice(i, 1)
+        this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
+          if (reply) {
+            this.deliveryDetail.deliveryItemDetails.splice(i, 1)
+          }
+        })
       }
+      this.alertBox.alert = false;
     })
   }
 
   removeDelivery() {
-    this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this delivery?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.router.navigate(['/main/view_item_delivery'])
+        this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
+          if (reply) {
+            this.router.navigate(['/main/view_item_delivery'])
+          }
+        })
       }
+      this.alertBox.alert = false;
     })
   }
 

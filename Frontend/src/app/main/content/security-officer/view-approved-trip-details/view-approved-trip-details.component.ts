@@ -17,6 +17,8 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
     bookingStatus: false,
   };
 
+  bookingDestination;
+
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
 
@@ -28,6 +30,12 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
     this.securityOfficerService.getAllBookings().subscribe((bookings) => {
       this.bookings = bookings;
       //console.log(this.bookings)
+    })
+  }
+
+  getBookingByDestination() {
+    this.securityOfficerService.getBookingByDestination(this.bookingDestination).subscribe((bookings) => {
+      this.bookings = bookings;
     })
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 
@@ -20,6 +20,7 @@ export class ViewPassengerItemDeliveryComponent implements OnInit {
     deliveryId: '',
     deliveryPersonName: '',
     deliveryPersonNic: '',
+    vehicleNumber: '',
     deliveryStatus: false,
     deliveryItemDetails: [],
     deliveryPassengerDetails: []

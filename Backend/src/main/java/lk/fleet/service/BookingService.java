@@ -32,6 +32,7 @@ public interface BookingService {
     List<BookingDTO> getBookings();
 
 
+
     List<BookingDTO> getBookingsByBookingId(String bookingId);
 
     List<ShiftDTO> getDriverShiftsByVehicleType(String vehicleType);
@@ -42,5 +43,8 @@ public interface BookingService {
 
     //List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId);
 
+
+
+    List<BookingDTO> getBookingByDestination(String destination);
 
 }

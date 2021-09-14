@@ -78,12 +78,16 @@
           <span style="font-weight: bold">Delivery person's NIC : </span>
           <span style="margin-left: 10px">{{deliveryPassenger.deliveryPersonNic}}</span>
         </div>
+        <div>
+          <span style="font-weight: bold">Vehicle Number : </span>
+          <span style="margin-left: 10px">{{deliveryPassenger.vehicleNumber!=undefined?deliveryPassenger.vehicleNumber:'N/A'}}</span>
+        </div>
 
-        <div style="margin-top: 20px;font-weight: bold;font-size: 20px">
+        <div style="margin-top: 30px;font-weight: bold;font-size: 24px">
           Delivery Passengers
         </div>
 
-        <table class="table table-striped" style="margin-top: 20px">
+        <table class="table table-striped" style="margin-top: 10px">
           <thead>
           <tr>
             <th scope="col">#</th>
