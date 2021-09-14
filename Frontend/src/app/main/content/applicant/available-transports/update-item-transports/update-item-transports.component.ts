@@ -1,15 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TransportManagerService} from "../../../../../_service/transport-manager.service";
-import {Router} from "@angular/router";
-import {ApplicantService} from "../../../../../_service/applicant.service";
 import {NgForm} from "@angular/forms";
+import {ApplicantService} from "../../../../../_service/applicant.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-update-available-transports',
-  templateUrl: './update-available-transports.component.html',
-  styleUrls: ['./update-available-transports.component.css']
+  selector: 'app-update-item-transports',
+  templateUrl: './update-item-transports.component.html',
+  styleUrls: ['./update-item-transports.component.css']
 })
-export class UpdateAvailableTransportsComponent implements OnInit {
+export class UpdateItemTransportsComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
 
@@ -28,6 +27,10 @@ export class UpdateAvailableTransportsComponent implements OnInit {
       noOfPassengers: '',
       passengerApplicationID:'',
       passengerPassengerApplications: []
+    },
+    itemApp: {
+      noOfItems: '',
+      itemApplicationID:'',
     }
   }
 
@@ -47,13 +50,18 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
 
 
-  Pass = {
-    passenger: {
-      passengerId: ''
+  Pass={
+    item:{
+      itemID:'',
+      itemName:'',
+      qty:''
     }
   };
 
+
   tblIndex;
+  plus:boolean=true; //plus button
+  pen:boolean=false;//pen button
   DBPass;
   PassengerDB = []; //DB Passenger
   ViewPassenger;//View Passenger
@@ -64,13 +72,13 @@ export class UpdateAvailableTransportsComponent implements OnInit {
   passengerOBJ; //Array Object
 
   constructor(private applicantService: ApplicantService, private router: Router) {
-   // this.item = this.getNewItem();
+    // this.item = this.getNewItem();
   }
 
   viewUpdete:boolean;
   ngOnInit(): void {
     this.passengerpassengerApp = this.applicantService.deliveryItem;
-    console.log(this.applicantService.deliveryItem.bookingApplicationId)
+    console.log(this.applicantService.deliveryItem)
     if(this.applicantService.deliveryItem.bookingApplicationId==="null")
       this.viewUpdete=true
     else
@@ -80,57 +88,72 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   flag;
   getAllIPassengers() {
-    this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
+    this.applicantService.GetItemApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
       this.DBPass=this.PassengerDB;
-      this.ViewPassenger=this.DBPass.passengerApplicationDTO.passengerPassengerApplications;
-     // console.log(this.PassengerDB);
+      this.ViewPassenger=this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
+      // console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
     })
   }
 
   onSubmit() {
     // console.log(this.passengerpassengerApp)
-     this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+    this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
       this.router.navigate(['/main/available_transports'])
     })
   }
 
 
   onSubmitPassenger() {
-  //  console.log(this.passengerpassengerApp.applicationID);
-  //  console.log(this.Pass.passenger.passengerId);
-      this.applicantService.AddPassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,this.Pass.passenger.passengerId).subscribe((deliveryDetail) =>
-      {
-        this.ngOnInit();
-        this.flag=0;
-        this.setNewPassenger();
-      })
+    //  console.log(this.passengerpassengerApp.applicationID);
+     console.log(this.Pass.item);
+
     this.flag=1;
+
+    if (this.plus == true) {
+      this.applicantService.AddItemApp(this.passengerpassengerApp.itemApp.itemApplicationID,this.Pass.item.itemID,this.Pass.item).subscribe((deliveryDetail) => {
+        this.getAllIPassengers()
+      })
+
+    }
+  else if(this.pen==true){
+      this.applicantService.updateItem(this.Pass.item).subscribe((deliveryDetail) => {
+        this.getAllIPassengers()
+      })
+      this.plus=true;
+      this.pen=false;
+    }
+
+    this.setNewPassenger();
+
+
   }
 
   chkPassengerId() {
-    if (this.Pass.passenger.passengerId != '') {
-    //  console.log(this.Pass.passenger.passengerId)
+    if (this.Pass.item.itemID != '') {
+      //  console.log(this.Pass.passenger.passengerId)
       this.flag=2;
     }
   }
 
-  removePassenger(i,passengerId){
-    this.applicantService.deletePassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,passengerId).subscribe((deliveryDetail) => {
+  removePassenger(i,itemId){
+    this.applicantService.deleteItemApp(this.passengerpassengerApp.itemApp.itemApplicationID,itemId).subscribe((deliveryDetail) => {
       this.ngOnInit();
     })
   }
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
-    this.passengerForm.resetForm(this.Pass.passenger);
+    this.passengerForm.resetForm(this.Pass.item);
   }
 
   getNewPassenger() {
     return {
-      passenger:
-        {passengerId: ''},
+      item:
+        { itemID:'',
+          itemName:'',
+          qty:''},
     };
   }
 
@@ -140,4 +163,12 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     })
   }
 
+  setPassenger(item,j){
+    this.tblIndex = j;
+    this.Pass.item.itemID = item.itemID;
+    this.Pass.item.itemName=item.itemName;
+    this.Pass.item.qty=item.qty;
+    this.pen=true;
+    this.plus=false;
+  }
 }

@@ -52,6 +52,10 @@ public class ApplicationController {
     public ResponseEntity passengerApplication(@PathVariable String ApplicationID,@PathVariable String applicationID) {
         return ResponseEntity.ok(applicationPassengerService.passengerApplication(ApplicationID,applicationID));
     }
+    @PostMapping(value ="/AddItemApp/{applicationID}/{itemID}")
+    public ResponseEntity itemApplication(@PathVariable String applicationID,@PathVariable String itemID,@RequestBody Item item) {
+        return ResponseEntity.ok(applicationPassengerService.itemApplication(itemID,applicationID,item));
+    }
 
     @PostMapping(value ="/newApplication1")
     public ResponseEntity addPassengerApplication1(@RequestBody Passenger passenger){
@@ -97,6 +101,10 @@ public class ApplicationController {
         return applicationPassengerService.getPassengerApp(applicationID);
     }
 
+    @GetMapping(value = "/getAItempplicationID/{applicationID}")
+    public ApplicationDTO getItemApp(@PathVariable String applicationID){
+        return applicationPassengerService.getItemApp(applicationID);
+    }
 
     @GetMapping(value = "/getPassengerApplication")
     public List<PassengerApplication> getAPassengerApp(){
@@ -116,6 +124,14 @@ public class ApplicationController {
     @DeleteMapping(value = "/deletePassengerApp/{ApplicationID}/{applicationID}")
     public ResponseEntity deleteBooking(@PathVariable String ApplicationID,@PathVariable String applicationID){
         return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID,applicationID));
+    }
+    @DeleteMapping(value = "/deleteItemApp/{ApplicationID}/{itemID}")
+    public ResponseEntity deleteItemApp(@PathVariable String ApplicationID,@PathVariable String itemID) {
+        return ResponseEntity.ok(applicationPassengerService.deleteItemApp(ApplicationID ,itemID));
+    }
+    @PutMapping(value = "/updateItem/{applicationID}")
+    public ResponseEntity<Item> updateItem(@PathVariable String applicationID, @RequestBody Item item){
+        return ResponseEntity.ok(applicationPassengerService.updateItem(applicationID, item));
     }
 
 }

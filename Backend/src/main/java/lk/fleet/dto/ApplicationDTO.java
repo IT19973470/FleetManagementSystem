@@ -18,8 +18,8 @@ public class ApplicationDTO {
     private String type;
 
 
-    private PassengerApplicationDTO passengerApplicationDTO;
-    private ItemApplicationDTO itemApplicationDTO;
+    private PassengerApplicationDTO passengerApplication;
+    private ItemApplicationDTO itemApplication;
 
     public ApplicationDTO(Application application) {
         if (application != null) {
@@ -37,11 +37,11 @@ public class ApplicationDTO {
     }
 
     public ItemApplicationDTO getItemApplicationDTO() {
-        return itemApplicationDTO;
+        return itemApplication;
     }
 
     public void setItemApplicationDTO(ItemApplicationDTO itemApplicationDTO) {
-        this.itemApplicationDTO = itemApplicationDTO;
+        this.itemApplication = itemApplicationDTO;
     }
 
     public String getApplicationID() {
@@ -125,10 +125,10 @@ public class ApplicationDTO {
     }
 
     public PassengerApplicationDTO getPassengerApplicationDTO() {
-        return passengerApplicationDTO;
+        return passengerApplication;
     }
 
     public void setPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO) {
-        this.passengerApplicationDTO = passengerApplicationDTO;
+        this.passengerApplication = passengerApplicationDTO;
     }
 }

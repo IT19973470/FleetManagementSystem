@@ -57,6 +57,7 @@ import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
+import {UpdateItemTransportsComponent} from "./main/content/applicant/available-transports/update-item-transports/update-item-transports.component";
 
 
 
@@ -290,7 +291,10 @@ const routes: Routes = [
         path: 'applicant_regestration',
         component: ApplicantRegestrationComponent
       },
-
+      {
+        path: 'update_item_transports',
+        component: UpdateItemTransportsComponent
+      },
 
     ]
   }
