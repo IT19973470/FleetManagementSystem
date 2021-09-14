@@ -14,21 +14,25 @@ export class VehicleNumberValidatorDirective implements Validator {
   //   if (event.keyCode == KeyCodes.RIGHT)
   //     this.counter++;
   // }
+  preVal;
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    let VEHICLE_REGEX1 = /^[0-9]{2}[-][0-9]{4}$/; // Regular Expression 1
-    let VEHICLE_REGEX2 = /^[0-9]{3}[-][0-9]{4}$/; // Regular Expression 2
-    let VEHICLE_REGEX3 = /^[A-Z]{2}[-][0-9]{4}$/; // Regular Expression 3
-    let VEHICLE_REGEX4 = /^[A-Z]{3}[ ][0-9]{4}$/; // Regular Expression 3
-    // let TXT_UPPER = /^[a-z]+[- ][0-9]+$/;
+    let VEHICLE_REGEX1 = /^[0-9]{2}[-][0-9]{4}$|^[0-9]{3}[-][0-9]{4}$/; // Regular Expression 1
+    let VEHICLE_REGEX3 = /^[A-Z]{2}[-][0-9]{4}$|^[A-Z]{3}[ ][0-9]{4}$/; // Regular Expression 3
 
     if (control.value != undefined) {
-      if (control.value.length == 0 || VEHICLE_REGEX1.test(control.value) || VEHICLE_REGEX2.test(control.value)) {
+      if (control.value.length == 0 || VEHICLE_REGEX1.test(control.value)) {
         return null;
-      } else if (control.value.length == 0 || VEHICLE_REGEX3.test(control.value) || VEHICLE_REGEX4.test(control.value)) {
-        // control.setValue(control.value.toUpperCase());
+      } else if (control.value.length == 0 || VEHICLE_REGEX3.test(control.value)) {
         return null;
       }
+
+      if (this.preVal != control.value) {
+        this.preVal = control.value.toUpperCase();
+        control.setValue(control.value.toUpperCase());
+      }
+    } else {
+      return null;
     }
 
     return {'vehicleNumberInvalid': true};

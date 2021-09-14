@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Passenger Item Delivery</span>
@@ -59,6 +60,23 @@
             <div *ngIf="(contactNumber.dirty) && contactNumber.errors?.telephoneInvalid"
                  class="validErr">
               Invalid Contact Number
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Vehicle Number (Opt.) :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.vehicleNumber"
+                   #vehicleNumber="ngModel"
+                   name="vehicleNumber" appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
+            <div *ngIf="(vehicleNumber.dirty) && vehicleNumber.errors?.vehicleNumberInvalid"
+                 class="validErr">
+              Invalid Vehicle Number
             </div>
           </div>
         </div>
@@ -355,7 +373,10 @@
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
       <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Delivery</button>
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px"
+                [disabled]="deliveryDetail.deliveryItemDetails.length===0 && deliveryDetail.deliveryPassengerDetails.length===0">
+          Add Delivery
+        </button>
       </div>
     </div>
   </form>

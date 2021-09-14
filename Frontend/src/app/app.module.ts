@@ -84,7 +84,8 @@ import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
-import { VehicleNumberValidatorDirective } from './_validator/vehicle-number-validator.directive';
+import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
+import {AlertBoxComponent} from "./alert-box/alert-box.component";
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -222,7 +223,8 @@ const customNotifierOptions: NotifierOptions = {
     UpdateUserAccountComponent,
     VehiclePoolComponent,
     DeliveryStatusComponent,
-    VehicleNumberValidatorDirective
+    VehicleNumberValidatorDirective,
+    AlertBoxComponent
   ],
 
   imports: [

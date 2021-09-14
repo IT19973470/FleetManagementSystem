@@ -28,7 +28,6 @@ import {TokenComponent} from "./main/content/security-officer/token/token.compon
 import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
-import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
 import {ViewVipmembersComponent} from "./main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
 import {ViewOverTimeComponent} from "./main/content/driver/view-over-time/view-over-time.component";
@@ -58,6 +57,7 @@ import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
+import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
