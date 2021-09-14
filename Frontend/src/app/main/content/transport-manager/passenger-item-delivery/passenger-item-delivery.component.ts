@@ -200,4 +200,8 @@ export class PassengerItemDeliveryComponent implements OnInit {
       passengerType: ''
     };
   }
+
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }

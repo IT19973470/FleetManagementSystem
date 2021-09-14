@@ -120,6 +120,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryDate"
                    #deliveryDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
                  class="validErr">
@@ -180,7 +181,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="item.itemType"
                    #itemType="ngModel"
-                   name="itemType" required>
+                   name="itemType" required appTextValidator>
             <div *ngIf="(itemType.touched || itemForm.submitted) && itemType.errors?.required"
                  class="validErr">
               Item Type is required
