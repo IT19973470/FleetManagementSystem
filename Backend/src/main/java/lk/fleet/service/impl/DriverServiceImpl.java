@@ -25,9 +25,6 @@ public class DriverServiceImpl implements DriverService {
     @Autowired
     private UserAccountRepository userAccountRepository;
 
-    @Autowired
-    private OverTimeRepository overTimeRepository;
-
     @Override
     public DriverDTO addDriver(Driver driver) {
         driver.setDriverID(driver.getUserAccount().getEmployeeID());

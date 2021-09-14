@@ -48,6 +48,6 @@ export class DriverService {
   }
 
   getMyShift(driverID):Observable<any>{
-    return this.http.get<any>(environment.backend_url + '' + driverID);
+    return this.http.get<any>(environment.backend_url + '/shift/getShiftbyDriverID/' + driverID);
   }
 }
