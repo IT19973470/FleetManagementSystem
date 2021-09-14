@@ -8,10 +8,10 @@
   <div class="col-11" style="margin-top: 20px">
 
     <span style="font-weight: bold;margin-left: 50px">Search by vip member id : </span>
-<!--    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="vipMemberId">-->
-<!--    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getVipMemberByNumber()">-->
-<!--      Search-->
-<!--    </button>-->
+    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="vipMemberId">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getVipMemberByNumber()">
+      Search
+    </button>
 
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllVipMembers()">
       All vip members
@@ -27,7 +27,7 @@
         <th scope="col" width="10%">Contact Number</th>
         <th scope="col" width="10%">Address</th>
         <th scope="col" width="10%">Position</th>
-        <th scope="col" width="5%" style="text-align: center">View</th>
+<!--        <th scope="col" width="5%" style="text-align: center">View</th>-->
         <th scope="col" width="5%" style="text-align: center">Update</th>
         <th scope="col" width="5%" style="text-align: center">Delete</th>
       </tr>
@@ -41,9 +41,9 @@
         <td>{{vipmember.contactNumber}}</td>
         <td>{{vipmember.address}}</td>
         <td>{{vipmember.position}}</td>
-        <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setVipMember(vipmember)"></i>
-        </td>
+<!--        <td style="text-align: center">-->
+<!--          <i class="fas fa-search" style="cursor: pointer" (click)="setVipMember(vipmember)"></i>-->
+<!--        </td>-->
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vipmember)"></i>
         </td>

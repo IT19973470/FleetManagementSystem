@@ -60,6 +60,7 @@ import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-p
 
 import {UpdateOverTimeComponent} from "./main/content/Driver/view-over-time/update-over-time/update-over-time.component";
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+// import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 
 const routes: Routes = [

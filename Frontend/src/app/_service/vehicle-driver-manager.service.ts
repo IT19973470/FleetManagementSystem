@@ -50,4 +50,7 @@ export class VehicleDriverManagerService {
   // getVehicleByNumber(vehicleNumber): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/vipmeber/getVehicleByNumber/" + vehicleNumber);
   // }
+  // getDriver():Observable<any> {
+  //   return this.http.get<any>(environment.backend_url + "/vipMember/getDriver");
+  // }
 }

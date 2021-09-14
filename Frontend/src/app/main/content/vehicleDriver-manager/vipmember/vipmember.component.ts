@@ -46,4 +46,14 @@ export class VipmemberComponent implements OnInit {
       position:''
     };
   }
+
+
+
+
+
+
+
+
+
+
 }

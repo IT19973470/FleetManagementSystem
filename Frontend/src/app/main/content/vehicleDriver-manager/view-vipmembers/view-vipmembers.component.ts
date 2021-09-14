@@ -62,8 +62,10 @@ export class ViewVipmembersComponent implements OnInit {
   //     // console.log(this.vehicles)
   //   })
   vipmembers: any;
+  vipMemberId: any;
 
 
+  getVipMemberByNumber() {
 
-
+  }
 }

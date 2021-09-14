@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class UpdateVehicleComponent implements OnInit {
 
-  @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
+  // @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
   vehicleDetail = {
     vehicleId: '',
     vehicleType: '',
