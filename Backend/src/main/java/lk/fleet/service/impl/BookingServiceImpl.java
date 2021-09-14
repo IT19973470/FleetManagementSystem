@@ -6,10 +6,7 @@ import lk.fleet.dto.*;
 // import lk.fleet.entity.Token;
 // import lk.fleet.entity.UserAccount;
 import lk.fleet.entity.*;
-import lk.fleet.repository.BookingRepository;
-import lk.fleet.repository.DriverVehicleRepository;
-import lk.fleet.repository.ShiftRepository;
-import lk.fleet.repository.UserAccountRepository;
+import lk.fleet.repository.*;
 import lk.fleet.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,8 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private BookingRepository bookingRepository;
     @Autowired
+    private BookingApplicationRepository bookingApplicationRepository;
+    @Autowired
     private DriverVehicleRepository driverVehicleRepository;
     @Autowired
     private ShiftRepository shiftRepository;
@@ -37,6 +36,19 @@ public class BookingServiceImpl implements BookingService {
         booking.setBookingManagementClerk(booking.getBookingManagementClerk());
         return bookingRepository.save(booking);
     }
+
+
+//    @Override
+//    public BookingApplicationDTO addBooking(BookingApplication bookingApplication) {
+//        bookingApplication.getBooking().setBookingId("B" + bookingApplication.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+//        bookingApplication.setBookingApplicationId((bookingApplication.getBooking().getBookingId()));
+//        bookingRepository.save(bookingApplication.getBooking());
+//        bookingApplicationRepository.save(bookingApplication);
+//        return new BookingApplicationDTO(bookingApplication, new BookingDTO(bookingApplication.getBooking()));
+//    }
+
+
+
 
     @Override
     public BookingDTO updateBooking(String bookingId, Booking booking) {
@@ -55,15 +67,13 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-
-
-
     @Override
     public boolean deleteBooking(String bookingId) {
         bookingRepository.deleteById(bookingId);
         return true;
     }
 
+    //securityOfficer
     @Override
     public List<BookingDTO> getAllBookings() {
         List<Booking> bookings = bookingRepository.findAll();
@@ -86,6 +96,33 @@ public class BookingServiceImpl implements BookingService {
         }
         return bookingDTOS;
     }
+
+
+
+    @Override
+    public List<BookingDTO> getBookingsByBookingId(String bookingId){
+        Booking bookingByID=bookingRepository.getBookingsByBookingId(bookingId);
+        List<BookingDTO> bookingDTOS=new ArrayList<>();
+        bookingDTOS.add(new BookingDTO(bookingByID));
+        return bookingDTOS;
+    }
+//    @Override
+//    public List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId) {
+//        Booking bookingsByBookingManagementClerkId = bookingRepository.getBookingsByBookingManagementClerkId(bookingManagementClerkId);
+//        List<BookingDTO> bookingDTOS = new ArrayList<>();
+//        bookingDTOS.add(new BookingDTO(bookingsByBookingManagementClerkId));
+//        return bookingDTOS;
+//    }
+
+    //securityOfficer
+    @Override
+    public List<BookingDTO> getBookingByDestination(String destination) {
+        Booking bookingByDestination = bookingRepository.getBookingByDestination(destination);
+        List<BookingDTO> bookingDTOS=new ArrayList<>();
+        bookingDTOS.add(new BookingDTO(bookingByDestination));
+        return bookingDTOS;
+    }
+
 
     @Override
     public List<DriverVehicleDTO> getDriverVehicles(String driverId) {
@@ -159,6 +196,20 @@ public class BookingServiceImpl implements BookingService {
         List<Shift> driverShiftsByDriverId = shiftRepository.getDriverShiftsByDriverId(driverId);
         List<ShiftDTO> shiftDTOS = new ArrayList<>();
         for (Shift driverShift : driverShiftsByDriverId) {
+            ShiftDTO shiftDTO = new ShiftDTO(driverShift);
+            DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverShift.getDriverVehicle());
+            driverVehicleDTO.setVehicle(new VehicleDTO(driverShift.getDriverVehicle().getVehicle()));
+            driverVehicleDTO.setDriver(new DriverDTO(driverShift.getDriverVehicle().getDriver(), new UserAccountDTO(driverShift.getDriverVehicle().getDriver().getUserAccount())));
+            shiftDTO.setDriverVehicle(driverVehicleDTO);
+            shiftDTOS.add(shiftDTO);
+        }
+        return shiftDTOS;
+    }
+    @Override
+    public List<ShiftDTO> getDriverShiftsByVehicleType(String vehicleType) {
+        List<Shift> driverShiftsByVehicleType= shiftRepository.getDriverShiftsByVehicleType(vehicleType);
+        List<ShiftDTO> shiftDTOS = new ArrayList<>();
+        for (Shift driverShift : driverShiftsByVehicleType) {
             ShiftDTO shiftDTO = new ShiftDTO(driverShift);
             DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverShift.getDriverVehicle());
             driverVehicleDTO.setVehicle(new VehicleDTO(driverShift.getDriverVehicle().getVehicle()));

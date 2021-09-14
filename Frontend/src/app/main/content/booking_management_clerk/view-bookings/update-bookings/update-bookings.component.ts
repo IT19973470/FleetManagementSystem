@@ -12,18 +12,18 @@ export class UpdateBookingsComponent implements OnInit {
 
   booking = {
     bookingId: '',
+    bookingDate:'',
+    bookingTime:'',
+    bookingTimeActual:'',
     bookingDateTime: '',
     destination:'',
     bookingStatus:'',
 
     bookingManagementClerk: {
-      bookingManagementClerkId: 'BMC123'
+      bookingManagementClerkId: ''
     }
   };
-  bookingStatus = [
-    "Active",
-    "Inactive"
-  ]
+
   selected = ""
 
   update(e) {
@@ -40,6 +40,8 @@ export class UpdateBookingsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.booking.bookingDateTime= this.booking.bookingDate + 'T' + this.booking.bookingTimeActual
+
     this.booking.bookingManagementClerk= {
       bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
     };

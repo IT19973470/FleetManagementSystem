@@ -73,7 +73,7 @@ export class DriverAccountComponent implements OnInit {
   deleteDriver() {
     this.driverService.deleteDriver(this.driver.driverID).subscribe((reply) => {
         if (reply) {
-          this.router.navigate(['/main/over_time'])
+          this.router.navigate(['/main/driver_registration'])
         }
       }
     )

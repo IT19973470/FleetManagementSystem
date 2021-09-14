@@ -46,6 +46,10 @@ public interface UserAccountService {
 
     ApplicationDTO approveTransport(String applicationID, boolean approval);
 
+    List<ApplicationDTO> getTransportByID(String applicationID);
+
+    List<ApplicationDTO> getAllTransports();
+
 //    List<PassengerApplicationDTO> getTransport();
 
     //UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);

@@ -11,16 +11,16 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 export class ViewShiftComponent implements OnInit {
 
   shifts = [];
-  deliveryItem = {
-    deliveryId: '',
-    deliveryPersonName: '',
-    deliveryPersonNic: '',
-    deliveryStatus: false,
-    deliveryItemDetails: []
-  };
+  // deliveryItem = {
+  //   deliveryId: '',
+  //   deliveryPersonName: '',
+  //   deliveryPersonNic: '',
+  //   deliveryStatus: false,
+  //   deliveryItemDetails: []
+  // };
 
   driverId;
-
+  vehicleType;
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
 
@@ -42,6 +42,12 @@ export class ViewShiftComponent implements OnInit {
 
   getAllShiftsByDriver() {
     this.bookingManagerService.getAllShiftsByDriver(this.driverId).subscribe((shifts) => {
+      this.shifts = shifts;
+    })
+  }
+
+  getAllShiftsByVehicle() {
+    this.bookingManagerService.getAllShiftsByVehicle(this.vehicleType).subscribe((shifts) => {
       this.shifts = shifts;
     })
   }

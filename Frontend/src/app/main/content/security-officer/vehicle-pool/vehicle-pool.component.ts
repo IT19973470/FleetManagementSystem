@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-manager.service";
 import {Router} from "@angular/router";
+import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 
 @Component({
   selector: 'app-vehicle-pool',
@@ -23,62 +23,40 @@ export class VehiclePoolComponent implements OnInit {
     fuelType: ''
   };
 
-  //update vehicle object
-  // vehicleDetail = {
-  //   vehicleId: '',
-  //   vehicleType: '',
-  //   model: '',
-  //   noOfSeats: '',
-  //   initialMeter: '',
-  //   serviceMeter: '',
-  //   fuelBalance: '',
-  //   fuelConsumption: '',
-  //   occupied: '',
-  //   fuelType: ''
-  // };
+  vehicleDetail = {
+    vehicleId: '',
+    vehicleType: '',
+    model: '',
+    noOfSeats: '',
+    initialMeter: '',
+    serviceMeter: '',
+    fuelBalance: '',
+    fuelConsumption: '',
+    occupied: '',
+    fuelType: ''
+  };
 
   vehicleNumber;
 
-  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
+  constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.vehicles = this.vehicleDriverManagerService.vehicle;
+    this.vehicles = this.securityOfficerService.vehicle;
+    this.vehicleDetail = this.securityOfficerService.vehicle;
     this.getAllVehicles();
   }
 
-  setVehicle(vehicle) {
-    this.vehicle = vehicle;
-    this.isTrueOrFalse(true);
-  }
-
-  goToUpdate(vehicle) {
-    this.vehicleDriverManagerService.vehicle = vehicle;
-    this.router.navigate(['/main/update_vehicle'])
-  }
-
-  //update vehicle method
-  // OnSubmitVehicle() {
-  //   console.log(this.vehicleDetail)
-  //   this.vehicleDriverManagerService.updateVehicle(this.vehicleDetail).subscribe((vehicle) => {
-  //     this.router.navigate(['/main/view_vehicles'])  //update_vehicle_pool
-  //   })
-  // }
-
-  isTrueOrFalse(reply) {
-  }
-
-  getAllVehicles() {
-    this.vehicleDriverManagerService.getAllVehicles().subscribe((vehicles) => {
-      this.vehicles = vehicles;
-      // console.log(this.vehicles)
+  updateVehicleStatus() {
+    console.log(this.vehicleDetail)
+    this.securityOfficerService.updateVehicle(this.vehicleDetail).subscribe((vehicle) => {
+      this.router.navigate(['/main/update_vehicle_pool'])
     })
   }
 
-  getVehicleByNumber() {
-    this.vehicleDriverManagerService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
+  getAllVehicles() {
+    this.securityOfficerService.getAllVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
-      // console.log(this.vehicles)
     })
   }
 
