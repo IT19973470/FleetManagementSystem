@@ -17,6 +17,7 @@ export class ItemDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
+    vehicleNumber: '',
     address: '',
     companyName: '',
     deliveryDate: '',
@@ -29,7 +30,7 @@ export class ItemDeliveryComponent implements OnInit {
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router, private notifierService: NotifierService) {
     this.item = this.getNewItem();
   }
 

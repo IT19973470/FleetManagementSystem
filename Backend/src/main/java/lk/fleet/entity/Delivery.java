@@ -13,6 +13,7 @@ public class Delivery {
     private String companyName;
     private LocalDateTime deliveryDateTime;
     private String contactNumber;
+    private String vehicleNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
     private String deliveryType;
@@ -121,5 +122,13 @@ public class Delivery {
 
     public void setDeliveryType(String deliveryType) {
         this.deliveryType = deliveryType;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 }
