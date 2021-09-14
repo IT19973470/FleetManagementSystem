@@ -121,6 +121,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryDate"
                    #deliveryDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
                  class="validErr">

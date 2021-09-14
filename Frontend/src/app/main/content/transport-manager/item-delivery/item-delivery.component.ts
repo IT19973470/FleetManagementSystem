@@ -129,4 +129,8 @@ export class ItemDeliveryComponent implements OnInit {
       itemQty: 1
     };
   }
+
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }
