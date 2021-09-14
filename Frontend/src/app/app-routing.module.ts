@@ -66,6 +66,7 @@ import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant
 import {UpdateMaintenanceDetailsComponent} from "./main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
+import {TransportApplicationsComponent} from "./main/content/transport-manager/transport-applications/transport-applications.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -117,6 +118,10 @@ const routes: Routes = [
       {
         path: 'view_passenger_item_delivery',
         component: ViewPassengerItemDeliveryComponent
+      },
+      {
+        path: 'passenger_transport',
+        component: TransportApplicationsComponent
       },
       {
         path: 'create_user_account',
@@ -217,7 +222,6 @@ const routes: Routes = [
       {
         path: 'update_over_time',
         component: UpdateOverTimeComponent
-
       },
       {
         path: 'arrival_departure_page',
