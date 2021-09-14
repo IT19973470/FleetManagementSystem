@@ -18,6 +18,8 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, String
 
     @Query(value = "from UserAccount where accountType='AP'")
     List<UserAccount> getUserAccountsForApplicants();
+
+
     //
 //    @Query(value = "from UserAccount where accountType=?1 order by registeredDate asc")
 //    List<UserAccount> getAllUserAccountDesc(String accountType);

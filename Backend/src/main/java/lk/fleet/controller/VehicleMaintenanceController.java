@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping (value = "fleet/" + "maintenance")
+@RequestMapping (value = "fleetmanagement/" + "maintenance")
 
 public class VehicleMaintenanceController {
 
@@ -29,6 +29,22 @@ public class VehicleMaintenanceController {
     @DeleteMapping(value = "/deleteVehicleMaintenance/{maintenanceID}")
     public ResponseEntity deleteVehicleMaintenance(@PathVariable String maintenanceID) {
         return ResponseEntity.ok(vehicleMaintenanceService.deleteVehicleMaintenance(maintenanceID));
+    }
+
+    //view
+    @GetMapping(value = "/getVehicleMaintenance")
+    public ResponseEntity getVehicleMaintenance() {
+        return ResponseEntity.ok(vehicleMaintenanceService.getVehicleMaintenance());
+    }
+
+    @GetMapping(value = "/getMaintenanceById/{vehicleID}")
+    public ResponseEntity getMaintenanceById(@PathVariable String vehicleID) {
+        return ResponseEntity.ok(vehicleMaintenanceService.getMaintenanceById(vehicleID));
+    }
+
+    @GetMapping(value = "/chkVehicle/{vehicleId}")
+    public ResponseEntity chkVehicle(@PathVariable String vehicleId) {
+        return ResponseEntity.ok(vehicleMaintenanceService.chkVehicle(vehicleId));
     }
 
 }

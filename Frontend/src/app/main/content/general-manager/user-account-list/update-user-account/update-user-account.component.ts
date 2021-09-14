@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {GeneralManagerService} from "../../../../../_service/general-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-user-account',
@@ -54,12 +56,18 @@ export class UpdateUserAccountComponent implements OnInit {
     }
   ]
   selected = ""
-  //
-  // account;
-  // btnText = ' ';
-  // tblIndex;
 
-  constructor(private generalManagerService: GeneralManagerService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private generalManagerService: GeneralManagerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService
+  ) {
     this.userAccount = this.getUserAccount();
   }
 
@@ -68,11 +76,20 @@ export class UpdateUserAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userAccount)
-
-    this.generalManagerService.updateUserAccount(this.userAccount).subscribe((userAccount) => {
-      this.router.navigate(['/main/user_account_list'])
+    //console.log(this.userAccount)
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update user account?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.generalManagerService.updateUserAccount(this.userAccount).subscribe((userAccount) => {
+          this.notifierService.notify("success", "Account updated successfully");
+          this.router.navigate(['/main/user_account_list'])
+        })
+      }
+      this.alertBox.alert = false;
     })
+
   }
 
   // setUserAccount(userAccount, i) {
