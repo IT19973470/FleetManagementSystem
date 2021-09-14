@@ -1,7 +1,7 @@
 package lk.fleet.controller;
 
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.ItamAppDTO;
+import lk.fleet.dto.BookingApplicationDTO;
 import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.*;
@@ -29,7 +29,7 @@ public class ApplicationController {
     public ResponseEntity addApplication(@RequestBody Application application) {
         return ResponseEntity.ok(applicationPassengerService.addApplication(application));
     }
-//        @PostMapping(value ="/newApplication")
+    //        @PostMapping(value ="/newApplication")
 //        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
 //             return applicationService.addPassengerApplication(application);
 //         }
@@ -47,6 +47,10 @@ public class ApplicationController {
     @PostMapping(value ="/AddItem")
     public ResponseEntity addItem(@RequestBody Application application) {
         return ResponseEntity.ok(applicationItemService.addItemApplication(application));
+    }
+    @GetMapping(value ="/AddPassengerApp/{ApplicationID}/{applicationID}")
+    public ResponseEntity passengerApplication(@PathVariable String ApplicationID,@PathVariable String applicationID) {
+        return ResponseEntity.ok(applicationPassengerService.passengerApplication(ApplicationID,applicationID));
     }
 
     @PostMapping(value ="/newApplication1")
@@ -78,24 +82,40 @@ public class ApplicationController {
 //        return ResponseEntity.ok(applicationPassengerService.UpdatePassengerApp(applicationID, passengerPassengerApplication));
 //    }
 
-
+//    @PostMapping(value ="/AddNewApplicant")
+//    public ResponseEntity addPassengerApplication1(@RequestBody UserAccount passenger){
+//        return ResponseEntity.ok(applicationPassengerService.addApplicant(passenger));
+//    }
 
     @GetMapping(value = "/getApplication")
     public List<ApplicationDTO> getPassengerApp(){
         return applicationPassengerService.getPassengerApp();
     }
+
+    @GetMapping(value = "/getApplicationID/{applicationID}")
+    public ApplicationDTO getPassengerApp(@PathVariable String applicationID){
+        return applicationPassengerService.getPassengerApp(applicationID);
+    }
+
+
     @GetMapping(value = "/getPassengerApplication")
     public List<PassengerApplication> getAPassengerApp(){
         return applicationPassengerService.getAPassengerApp();
     }
 
     @GetMapping(value = "/getdto")
-    public List<PassengerApplicationDTO> getdto(){
-        return applicationPassengerService.getdto();
+    public  List<BookingApplicationDTO> gatPassengerAppData(){
+        return applicationPassengerService.gatPassengerAppData();
     }
-//    @GetMapping(value = "/getdto")
+    //    @GetMapping(value = "/getdto")
 //    public List<ApplicationDTO> getdto(){
 //        return applicationService.getdto();
 //    }
+
+
+    @DeleteMapping(value = "/deletePassengerApp/{ApplicationID}/{applicationID}")
+    public ResponseEntity deleteBooking(@PathVariable String ApplicationID,@PathVariable String applicationID){
+        return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID,applicationID));
+    }
 
 }

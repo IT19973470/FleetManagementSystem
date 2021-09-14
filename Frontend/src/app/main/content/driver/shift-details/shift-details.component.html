@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>Shift Details</b></h1></label>
+
+
+    <table class="table table-striped" style="margin-top: 40px" >
+      <tbody *ngIf="shift">
+      <tr>
+        <td>Shift ID</td>
+        <td>{{shift.shift_id}}</td>
+      </tr>
+      <tr>
+        <td>Shift Date</td>
+        <td>{{shift.shift_date}}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{{shift.starting_time}}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{{shift.ending_time}}</td>
+      </tr>
+      <tr style="text-align: left">
+        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

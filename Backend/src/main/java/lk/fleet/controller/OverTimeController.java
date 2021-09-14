@@ -1,6 +1,5 @@
 package lk.fleet.controller;
 
-import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
 import lk.fleet.service.OverTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,8 @@ public class OverTimeController {
         return ResponseEntity.ok(overTimeService.getOT());
     }
 
-    @GetMapping(value = "/getOTbyID/{overTimeID}")
-    public ResponseEntity getOverTimeByID(@PathVariable long overTimeID) {
-        return ResponseEntity.ok(overTimeService.getOverTimeByID(overTimeID));
+    @GetMapping(value = "/getOTbyID/{driverId}")
+    public ResponseEntity getOverTimeByID(@PathVariable String driverId) {
+        return ResponseEntity.ok(overTimeService.getOverTimeByID(driverId));
     }
 }

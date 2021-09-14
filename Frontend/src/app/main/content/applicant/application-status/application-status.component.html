@@ -124,14 +124,19 @@
                 <div class="col-7" >
                   <input   type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Pass.item.itemID"
                          #passengerId="ngModel"
+                           (keyup)="chkPassengerId()"
                          name="passengerId" >
+                  <div *ngIf="(flag==0)"
+                       class="validErr">
+                    Item Id is duplicated
+                  </div>
                 </div>
 
                 <div class="col-1" >
-                  <button *ngIf="user" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                  <button *ngIf="plus" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
                     <i class="fas fa-plus-circle"  style="font-size: 30px"  ></i>
                   </button>
-                  <button *ngIf="item"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                  <button *ngIf="pen"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
                     <i  class="fas fa-pen" style="cursor: pointer"  ></i>
                   </button>
                 </div>
@@ -159,37 +164,6 @@
           </legend>
 
         </form>
-<!--        <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid && onSubmitPassenger()" novalidate>-->
-<!--          <legend>Add Passengers:-->
-<!--            <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">-->
-<!--              <div class="row" style="margin-left:0px;">-->
-<!--                <div class="col-4">-->
-<!--                  Item ID:-->
-<!--                </div>-->
-<!--                <div class="col-7">-->
-<!--                  <input type="text" class="form-control" style="margin-left: 0px"[(ngModel)]="Pass.passenger.passengerId"-->
-<!--                         #PassengerId="ngModel"-->
-<!--                         name="PassengerId" >-->
-<!--                </div>-->
-
-<!--                                <div class="col-2"  style="padding-right: 0px">-->
-<!--                                  Quantity :-->
-<!--                                </div>-->
-<!--                                <div class="col-6" style="padding-left:40px; " >-->
-<!--                                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="Pass.passenger.passengerId"-->
-<!--                                         #passengerType="ngModel"-->
-<!--                                         name="passengerType" required>-->
-<!--                                </div>-->
-
-<!--                <div class="col-1" >-->
-<!--                  <button  type="submit"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >-->
-<!--                    <i class="fas fa-plus-circle" style="font-size: 30px"></i>-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </legend>-->
-<!--        </form>-->
 
 
       </div>

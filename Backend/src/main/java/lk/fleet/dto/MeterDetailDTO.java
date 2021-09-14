@@ -5,31 +5,27 @@ import lk.fleet.entity.MeterDetail;
 import java.time.format.DateTimeFormatter;
 
 public class MeterDetailDTO {
-    private String meterID;
+    private String meterId;
     private double inMeter;
     private double OutMeter;
     private double mileage;
-    private String updatedDate;
-    private String updatedTime;
 
 
     public MeterDetailDTO(MeterDetail meterDetail) {
-        if(meterDetail != null) {
-            this.meterID = meterDetail.getMeterId();
+        if (meterDetail != null) {
+            this.meterId = meterDetail.getMeterId();
             this.inMeter = meterDetail.getInMeter();
             this.OutMeter = meterDetail.getOutMeter();
             this.mileage = meterDetail.getMileage();
-//            this.updatedDate = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//            this.updatedTime = meterDetail.getUpdatedDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
         }
     }
 
-    public String getMeterID() {
-        return meterID;
+    public String getMeterId() {
+        return meterId;
     }
 
-    public void setMeterID(String meterID) {
-        this.meterID = meterID;
+    public void setMeterId(String meterId) {
+        this.meterId = meterId;
     }
 
     public double getInMeter() {
@@ -56,19 +52,4 @@ public class MeterDetailDTO {
         this.mileage = mileage;
     }
 
-    public String getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(String updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public String getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(String updatedTime) {
-        this.updatedTime = updatedTime;
-    }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApplicantService} from "../../../../_service/applicant.service";
+import {NotifierService} from "angular-notifier";
 
 
 @Component({
@@ -22,9 +23,9 @@ export class CreateNewRequestComponent implements OnInit {
     reason: '',
     vehicleType: '',
     destination: '',
-    type:'P',
+    type: 'P',
     passengerApplication: {
-      noOfPassengers: '5',
+      noOfPassengers: '1',
       passengerPassengerApplications: []
     },
     // itemApplication:{
@@ -39,6 +40,15 @@ export class CreateNewRequestComponent implements OnInit {
       passengerId: ''
     }
   };
+  tblIndex;
+  PassengerDB = []; //DB Passenger
+  ViewPassenger = [];//View Passenger
+  y = 0; //DB Passenger size
+  z = 0; //Array size
+
+  errorP =2; //
+  passengerOBJ; //Array Object
+  flag;
 
 // Item ={
 //   item:{
@@ -55,100 +65,98 @@ export class CreateNewRequestComponent implements OnInit {
   //
   // };
   //
-  tblIndex;
-  PassengerDB=[];
-  Pp=[];
-   y=0;
-  constructor(private applicant: ApplicantService, private router: Router) {
+
+  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService) {
     //  this.Pass.passenger = this.getNewPassenger();
   }
 
   ngOnInit(): void {
+    this.errorP = 2;
     this.getAllIPassengers()
   }
 
-  getAllIPassengers(){
+  getAllIPassengers() {
     this.applicant.getAllPassengers().subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
-      this.y=deliveryItemDetails.length;
+      this.y = deliveryItemDetails.length;
     })
   }
+
   onSubmit() {
     console.log(this.passengerpassengerApp);
+    // this.passengerpassengerApp.passengerApplication.noOfPassengers=this.z
     this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
       this.router.navigate(['/main/available_transports'])
     })
   }
 
-  btnText = 'Add';
-  errorP:boolean=false;
-  z;
-  zz=[];
+  chkPassengerId() {
+    if (this.Pass.passenger.passengerId != '') {
+      this.flag==1;
+      this.errorP=2;
+    }
+  }
+
+
+  createAccount(){
+    this.router.navigate(['/main/applicant_regestration'])
+  }
   onSubmitPassenger() {
-    for( let  x=0; x<=this.y;x++) {
-       this.z = this.PassengerDB[x];
-      if (this.Pass.passenger.passengerId===this.z.passengerId) {
-        this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
-        this.zz.push(this.z);
-        this.setNewPassenger();
-        this.errorP=false;
+    let check=this.Pass;
+    this.flag=1;
+    for (let x=0; x<=this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length-1; x++)
+    {
+      let a=this.passengerpassengerApp.passengerApplication.passengerPassengerApplications[x];
+      console.log(a);
+      if(a.passenger.passengerId==check.passenger.passengerId){
+        this.flag=0;
+        this.notifierService.notify("error", " Passenger ID is Duplicated");
         break;
-    }
-
-      else{
-        this.errorP=true;
       }
-
+      else {
+        this.flag=1;
+      }
     }
-
+    if(this.flag==1)
+    {
+      for (let z = 0; z <= this.y-1; z++) {
+        this.passengerOBJ = this.PassengerDB[z];
+        if (this.Pass.passenger.passengerId === this.passengerOBJ.passengerId) {
+          this.notifierService.notify("success", "Passenger Added successfully");
+          this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
+          this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
+          this.ViewPassenger.push(this.passengerOBJ);
+          this.errorP = 0;
+          break;
+        } else {
+          this.errorP = 1;
+        }
+      }
+      if(this.errorP==1)
+        this.notifierService.notify("error", "Passenger not found");
+    }
+    this.setNewPassenger();
   }
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.passenger);
-    this.btnText = 'Add';
 
   }
 
   setPassenger(passenger, i) {
     this.tblIndex = i;
     this.Pass.passenger.passengerId = passenger.passengerId;
-    this.btnText = 'Update';
+
   }
 
   getNewPassenger() {
     return {
       passenger:
-        {passengerId: ''},
+        {
+          passengerId: ''
+        },
     };
   }
-
-
-   // onSubmitItem() {
-   //   this.passengerpassengerApp.itemApplication.itemItemApplications.push(this.Item);
-   //   this.setNewItem();
-   // }
-
-  // setNewItem(){
-  //   this.Item = this.getNewItems();
-  //   this.i.resetForm(this.Item.item);
-  //   this.btnText = 'Add'
-  // }
-  //  setItems(items) {
-  //    this.tblIndex = i;
-  //    this.Item.passenger.passengerId = passenger.passengerId;
-  //    this.btnText = 'Update';
-  //  }
-
-   // getNewItems() {
-   //   return {
-   //     item:
-   //       { itemID: '',
-   //         itemName:'',
-   //         qty:''
-   //       },
-   //
-   //   };
-   // }
 
 }

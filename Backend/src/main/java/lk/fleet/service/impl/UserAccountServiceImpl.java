@@ -7,8 +7,6 @@ import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,11 +32,16 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     private SecurityOfficerRepository securityOfficerRepository;
 
+    @Autowired
+    private ApplicationRepository applicationRepository;
+
+    @Autowired BookingApplicationRepository bookingApplicationRepository;
+
 
     @Override
     public UserAccountDTO addGeneralManagerUserAccount(UserAccount userAccount) {
-       // LocalDateTime localDateTime = LocalDateTime.now();//current date
-      //  userAccount.setEmployeeID("GM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+        // LocalDateTime localDateTime = LocalDateTime.now();//current date
+        //  userAccount.setEmployeeID("GM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
 
         userAccount.setApproved(true);
         return new UserAccountDTO(userAccountRepository.save(userAccount));
@@ -47,8 +50,8 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager) {
-       // LocalDateTime localDateTime = LocalDateTime.now();//current date
-        if(transportManager.getUserAccount().getAccountType().equals("Transport Manager")) {
+        // LocalDateTime localDateTime = LocalDateTime.now();//current date
+        if (transportManager.getUserAccount().getAccountType().equals("Transport Manager")) {
             //transportManager.setTransportManagerId("TM" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             transportManager.setTransportManagerId(transportManager.getUserAccount().getEmployeeID());
             transportManager.getUserAccount().setAccountType("TM");
@@ -57,13 +60,13 @@ public class UserAccountServiceImpl implements UserAccountService {
         transportManager.getUserAccount().setApproved(true);
         userAccountRepository.save(transportManager.getUserAccount());
         transportManagerRepository.save(transportManager);
-        return new TransportManagerDTO(transportManager,new UserAccountDTO(transportManager.getUserAccount()));
+        return new TransportManagerDTO(transportManager, new UserAccountDTO(transportManager.getUserAccount()));
     }
 
     @Override
     public BookingManagementClerkDTO addBookingManagementClerkUserAccount(BookingManagementClerk bookingManagementClerk) {
-       // LocalDateTime localDateTime = LocalDateTime.now();//current date
-        if(bookingManagementClerk.getUserAccount().getAccountType().equals("Booking Management Clerk")){
+        // LocalDateTime localDateTime = LocalDateTime.now();//current date
+        if (bookingManagementClerk.getUserAccount().getAccountType().equals("Booking Management Clerk")) {
             //bookingManagementClerk.setBookingManagementClerkId("BMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             bookingManagementClerk.setBookingManagementClerkId(bookingManagementClerk.getUserAccount().getEmployeeID());
             bookingManagementClerk.getUserAccount().setAccountType("BMC");
@@ -77,11 +80,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public VehicleDriverManagementClerkDTO addVehicleDiverManagementClerkUserAccount(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
-       // LocalDateTime localDateTime = LocalDateTime.now();//current date
-        if(vehicleDriverManagementClerk.getUserAccount().getAccountType().equals("Vehicle and Driver Management Clerk")) {
-           // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
+        // LocalDateTime localDateTime = LocalDateTime.now();//current date
+        if (vehicleDriverManagementClerk.getUserAccount().getAccountType().equals("Vehicle and Driver Management Clerk")) {
+            // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             vehicleDriverManagementClerk.setVehicleDriverManagementId(vehicleDriverManagementClerk.getUserAccount().getEmployeeID());
-            vehicleDriverManagementClerk.getUserAccount().setAccountType("VMC");
+            vehicleDriverManagementClerk.getUserAccount().setAccountType("VDM");
         }
 
         vehicleDriverManagementClerk.getUserAccount().setApproved(true);
@@ -91,14 +94,13 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
 
-
     @Override
 
     public Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager) {
-        if(accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
+        if (accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
             accidentMaintenanceManager.setEmployeeID(accidentMaintenanceManager.getUserAccount().getEmployeeID());
-            accidentMaintenanceManager.getUserAccount().setAccountType("AMC");
+            accidentMaintenanceManager.getUserAccount().setAccountType("VMC");
         }
 
         accidentMaintenanceManager.getUserAccount().setApproved(true);
@@ -110,7 +112,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     public SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer) {
-        if(securityOfficer.getUserAccount().getAccountType().equals("Security Officer")) {
+        if (securityOfficer.getUserAccount().getAccountType().equals("Security Officer")) {
             securityOfficer.setSecurityOfficerID(securityOfficer.getUserAccount().getEmployeeID());
             securityOfficer.getUserAccount().setAccountType("SO");
         }
@@ -118,9 +120,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         securityOfficer.getUserAccount().setApproved(true);
         userAccountRepository.save(securityOfficer.getUserAccount());
         securityOfficerRepository.save(securityOfficer);
-        return new SecurityOfficerDTO(securityOfficer,new UserAccountDTO(securityOfficer.getUserAccount()));
+        return new SecurityOfficerDTO(securityOfficer, new UserAccountDTO(securityOfficer.getUserAccount()));
     }
-
 
 
     public UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount) {
@@ -146,17 +147,68 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public UserAccountDTO getUserAccountByID(String employeeID) {
-        UserAccountDTO userAccountDTO = userAccountRepository.getUserAccountByID(employeeID);
-        return userAccountDTO;
+    public List<UserAccountDTO> getUserAccountByID(String employeeID) {
+        UserAccount userAccountByID = userAccountRepository.getUserAccountByID(employeeID);
+        List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
+        userAccountDTOS.add(new UserAccountDTO(userAccountByID));
+        return userAccountDTOS;
     }
 
+
+    @Override
+    public List<ApplicationDTO> getTransportApplication() {
+
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
+            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+
+            applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTOS.add(applicationDTO);
+        }
+
+        return applicationDTOS;
+    }
+
+    @Override
+    public List<PassengerPassengerApplicationDTO> getTransportRequests() {
+        return null;
+    }
+
+    @Override
+    public UserAccountDTO approveUserAccount(String employeeID, boolean approval) {
+        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
+        if (optionalUserAccount.isPresent()) {
+            UserAccount userAccountObj = optionalUserAccount.get();
+            userAccountObj.setApproved(approval);
+            return new UserAccountDTO(userAccountRepository.save(userAccountObj));
+        }
+        return null;
+    }
+
+    @Override
+    public ApplicationDTO approveTransport(String applicationID, boolean approval) {
+        Optional<Application> optionalApplication = applicationRepository.findById(applicationID);
+        if (optionalApplication.isPresent()) {
+            Application applicationObj = optionalApplication.get();
+            applicationObj.setApproval(approval);
+            return new ApplicationDTO(applicationRepository.save(applicationObj));
+        }
+
+        return null;
+    }
+
+
 //    @Override
-//    public List<DeliveryDTO> getAllDeliveries(String deliveryType) {
-//        List<Delivery> deliveries = deliveryRepository.getAllDeliveriesDesc(deliveryType);
-//        return setDeliveryDTOs(deliveries, deliveryType);
-//    }
+//    public List<PassengerApplicationDTO> getTransport() {
+//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
+//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
+//        for(BookingApplication bookingApplication: bookingApplications){
+//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
+//        }
 //
+//        return passengerApplicationDTOS;
+//    }
 
 
     @Override
@@ -164,7 +216,19 @@ public class UserAccountServiceImpl implements UserAccountService {
         List<UserAccount> userAccounts = userAccountRepository.findAll();
         List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
 
-        for(UserAccount userAccount : userAccounts){
+        for (UserAccount userAccount : userAccounts) {
+            userAccountDTOS.add(new UserAccountDTO(userAccount));
+        }
+
+        return userAccountDTOS;
+    }
+
+    @Override
+    public List<UserAccountDTO> getUserAccountsForApplicants() {
+        List<UserAccount> userAccounts = userAccountRepository.getUserAccountsForApplicants();
+        List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
+
+        for (UserAccount userAccount : userAccounts) {
             userAccountDTOS.add(new UserAccountDTO(userAccount));
         }
 
@@ -176,7 +240,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
         return new UserAccountDTO(userAccountObj);
     }
-
 
 
 //    @Override
@@ -267,7 +330,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 //        }
 //            return null;
 //    }
-
 
 
 //    @Override

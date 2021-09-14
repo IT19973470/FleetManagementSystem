@@ -11,41 +11,57 @@ import {NgForm} from "@angular/forms";
 })
 export class UpdateAvailableTransportsComponent implements OnInit {
   @ViewChild('itemForm', {static: true}) public itemForm: NgForm;
-  deliveryDetail = {
-    deliveryId: '',
-    deliveryPersonName: '',
-    deliveryPersonNic: '',
-    contactNumber: '',
-    address: '',
-    companyName: '',
-    deliveryDate: '',
-    deliveryTime: '',
-    deliveryTimeActual: '',
-    deliveryDateTime: '',
-    deliveryItemDetails: []
-  };
+  @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
+
   passengerpassengerApp = {
 
-    applicationID: '',
-    arrivaleDate: '',
-    depatureDate: "",
-    reason: '',
-    vehicleType: '',
-    destination: '',
-    passengerApplication: {
-      noOfPassengers: '5',
+    applicationID: "",
+    approval: false,
+    arrivaleDate: null,
+    arrivaleDateActual: '',
+    depatureDate: null,
+    depatureDateActual: '',
+    destination: "",
+    vehicleType: "",
+    reason: "",
+    passengerApp: {
+      noOfPassengers: '',
+      passengerApplicationID:'',
       passengerPassengerApplications: []
     }
   }
+
+  // applicationID: "App20210911113145"
+  // approval: false
+  // arrivaleDate: "2021-09-29 11:31 AM"
+  // arrivaleDateActual: "2021-09-29T11:31:00"
+  // depatureDate: "2021-09-22 11:31 AM"
+  // depatureDateActual: "2021-09-22T11:31:00"
+  // destination: "Jaffna"
+  // passengerApp: {passengerApplicationID: 'PassApp20210911113145', noOfPassengers: 1, passengerPassengerApplications: Array(3)}
+  // passengerApplicationDTO: null
+  // reason: "Repair"
+  // type: "P"
+  // vehicleType: "Bus"
+  //
+
+
 
   Pass = {
     passenger: {
       passengerId: ''
     }
   };
-  item;
-  btnText = 'Add';
+
   tblIndex;
+  DBPass;
+  PassengerDB = []; //DB Passenger
+  ViewPassenger;//View Passenger
+  y = 0; //DB Passenger size
+  z = 0; //Array size
+
+  errorP =2; //
+  passengerOBJ; //Array Object
 
   constructor(private applicantService: ApplicantService, private router: Router) {
    // this.item = this.getNewItem();
@@ -53,72 +69,70 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.passengerpassengerApp = this.applicantService.deliveryItem;
+    console.log(this.applicantService.deliveryItem)
+    this.getAllIPassengers()
+  }
+
+  flag;
+  getAllIPassengers() {
+    this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
+      this.PassengerDB = deliveryItemDetails;
+      this.DBPass=this.PassengerDB;
+      this.ViewPassenger=this.DBPass.passengerApplicationDTO.passengerPassengerApplications;
+      console.log(this.PassengerDB);
+      this.y = deliveryItemDetails.length;
+    })
   }
 
   onSubmit() {
      console.log(this.passengerpassengerApp)
-   // this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-      this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+     this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
       this.router.navigate(['/main/available_transports'])
     })
   }
 
-  onSubmitItem() {
-    // this.item.delivery.deliveryId = this.deliveryDetail.deliveryId;
-    // // console.log(this.item)
-    // if (this.btnText === 'Add') {
-    //   this.transportManagerService.addItemToDelivery(this.item).subscribe((item) => {
-    //     this.deliveryDetail.deliveryItemDetails.push(item);
-    //   })
-  //   } else if (this.btnText === 'Update') {
-  //     // console.log(this.item)
-  //     this.transportManagerService.updateItemOnDelivery(this.item).subscribe((item) => {
-  //       this.deliveryDetail.deliveryItemDetails[this.tblIndex] = item
-  //     })
-  //   }
-  //   this.setNewItem();
+
+  onSubmitPassenger() {
+    console.log(this.passengerpassengerApp.applicationID);
+    console.log(this.Pass.passenger.passengerId);
+      this.applicantService.AddPassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,this.Pass.passenger.passengerId).subscribe((deliveryDetail) =>
+      {
+        this.ngOnInit();
+        this.flag=0;
+        this.setNewPassenger();
+      })
+    this.flag=1;
   }
-  //
-  removeItem(itemDetailId, i) {
-    // this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
-    //   if (reply) {
-    //     this.deliveryDetail.deliveryItemDetails.splice(i, 1)
-    //   }
-    // })
-   }
-  //
-  removeDelivery() {
-    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((reply) => {
-      if (reply) {
-        this.router.navigate(['/main/available_transports'])
-      }
+
+  chkPassengerId() {
+    if (this.Pass.passenger.passengerId != '') {
+      console.log(this.Pass.passenger.passengerId)
+      this.flag=2;
+    }
+  }
+
+  removePassenger(i,passengerId){
+    this.applicantService.deletePassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,passengerId).subscribe((deliveryDetail) => {
+      this.ngOnInit();
     })
   }
 
-  setItem(item, i) {
-    this.tblIndex = i;
-    this.item.itemDetailId = item.itemDetailId;
-    this.item.itemName = item.itemName;
-    this.item.itemType = item.itemType;
-    this.item.itemQty = item.itemQty;
-    this.btnText = 'Update';
+  setNewPassenger() {
+    this.Pass = this.getNewPassenger();
+    this.passengerForm.resetForm(this.Pass.passenger);
   }
-  //
-  setNewItem() {
-    // this.item = this.getNewItem();
-    // this.itemForm.resetForm(this.item);
-    // this.btnText = 'Add';
-  }
-  //
-  getNewItem() {
+
+  getNewPassenger() {
     return {
-      itemDetailId: '',
-      itemName: '',
-      itemType: '',
-      itemQty: 1,
-      delivery: {
-        deliveryId: ''
-      }
+      passenger:
+        {passengerId: ''},
     };
   }
+
+  removeDelivery() {
+    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/available_transports']);
+    })
+  }
+
 }

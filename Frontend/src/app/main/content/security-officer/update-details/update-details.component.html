@@ -1,11 +1,12 @@
-<div class="row" style="display: flex;justify-content: center">
-  <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Details</span>
+<div class="row" style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
+  <div class="col-12" style="text-align: center">
+    <br>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Token and Meter Details</span>
   </div>
 
-  <form #tokenForm="ngForm" (ngSubmit)="tokenForm.form.valid && onSubmit()" novalidate>
     <div style="display: flex;margin-top: 50px">
-      <div style="width: 60%;padding-right: 20px">
+      <div style="width: 50%;padding-right: 20px">
+        <form #tokenForm="ngForm" (ngSubmit)="tokenForm.form.valid && onSubmit()" novalidate>
         <div class="row">
           <div class="col-4">
             Departure Date :
@@ -14,7 +15,7 @@
             <input class="form-control" type="date"
                    [(ngModel)]="tokenDetail.departureDate"
                    #departureDate="ngModel"
-                   name="departureDate" required>
+                   name="departureDate" readonly>
             <div *ngIf="(departureDate.touched || tokenForm.submitted) && departureDate.errors?.required"
                  class="validErr">
               Departure Date is required
@@ -29,7 +30,7 @@
             <input type="time" class="form-control"
                    [(ngModel)]="tokenDetail.departureTimeActual"
                    #departureTime="ngModel"
-                   name="departureTime" required>
+                   name="departureTime" readonly>
             <div *ngIf="(departureTime.touched || tokenForm.submitted) && departureTime.errors?.required"
                  class="validErr">
               Departure Time is required
@@ -77,22 +78,113 @@
               #transportStatus="ngModel"
               name="TransportStatus" required>
               <option value="true">Completed</option>
-              <option value="false">Not Completed</option>
+              <option value="false" disabled>Not Completed</option>
             </select>
             <div *ngIf="(transportStatus.touched || tokenForm.submitted) && transportStatus.errors?.required"
                  class="validErr">
+              Transport Status is required
             </div>
           </div>
         </div>
+          <div class="row" style="margin-top: 40px;margin-bottom: 40px; margin-left: 40px">
+            <div class="col-12" style="text-align: center">
+              <button type="submit" class="btn btn-primary" style="font-weight: bold">{{btnTextToken}}</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
-    <div class="row" style="margin-top: 40px;margin-bottom: 40px">
-      <div class="col-12" style="text-align: center">
-        <button type="submit" class="btn btn-success" style="font-weight: bold">Update Token</button>
+
+      <div style="width: 50%;padding-left: 30px;border-left: 1px solid #dfcda0">
+        <form #meterForm="ngForm" (ngSubmit)="meterForm.form.valid && addMeterDetail()" novalidate>
+
+        <div style="margin-top: 50px">
+          <div style="padding-right: 20px">
+            <div class="row">
+              <div class="col-4">
+                MeterID :
+              </div>
+              <div class="col-8">
+                <input type="text" class="form-control"
+                       [(ngModel)]="meterDetail.meterId"
+                       #meterId="ngModel"
+                       name="meterId" readonly>
+                <div *ngIf="(meterId.touched || meterForm.submitted) && meterId.errors?.required"
+                     class="validErr">
+                </div>
+              </div>
+            </div>
+            <div class="row"  style="margin-top: 10px">
+              <div class="col-4">
+                Out Meter :
+              </div>
+              <div class="col-8">
+                <input class="form-control" type="number"
+                       [(ngModel)]="meterDetail.outMeter"
+                       #outMeter="ngModel"
+                       name="outMeter" readonly>
+                <div *ngIf="(outMeter.touched || meterForm.submitted) && outMeter.errors?.required"
+                     class="validErr">
+                  Out Meter is required
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
+                In Meter :
+              </div>
+              <div class="col-8">
+                <input type="number" class="form-control"
+                       [(ngModel)]="meterDetail.inMeter"
+                       min="{{meterDetail.outMeter}}"
+                       (input)="chkMeter()"
+                       #inMeter="ngModel"
+                       name="inMeter" required>
+                <div class="validErr" *ngIf="meterDetail.inMeter < meterDetail.outMeter" style="color: red">
+                  InMeter Should be grater than OutMeter
+                </div>
+                <div class="validErr" *ngIf="meterDetail.inMeter > meterDetail.outMeter" style="color: green">
+                  InMeter value is okay
+                </div>
+<!--                <div *ngIf="(inMeter.touched || meterForm.submitted) && inMeter.errors?.required"-->
+<!--                     class="validErr">-->
+<!--                  In meter is required-->
+<!--                </div>-->
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
+                Mileage :
+              </div>
+              <div class="col-8">
+                <input type="number" class="form-control"
+                       [(ngModel)]="meterDetail.mileage"
+                       #mileage="ngModel"
+                       name="mileage" required readonly>
+                <div *ngIf="(mileage.touched || meterForm.submitted) && mileage.errors?.required"
+                     class="validErr">
+                  Mileage is required
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 40px;margin-bottom: 40px">
+          <div class="col-12" style="text-align: center">
+            <button type="submit" class="btn btn-primary" style="font-weight: bold">{{btnTextMeter}}</button>
+          </div>
+        </div>
+        </form>
       </div>
-    </div>
-  </form>
+  </div>
+  <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
+  </div>
 </div>
+
+
 
 
 

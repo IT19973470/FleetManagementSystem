@@ -15,7 +15,7 @@
           <div class="col-8">
             <select name="accountType" class="form-control"
                     [(ngModel)]="userAccount.accountType"
-                    #accountType ="ngModel">
+                    #accountType ="ngModel" readonly>
               <option value="">Select type</option>
               <option *ngFor="let type of accountTypes" [value]="type.accType">
                 {{type.accTypename}}
@@ -82,7 +82,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="userAccount.nic"
                    #nic="ngModel"
-                   name="nic" required>
+                   name="nic" readonly>
             <div *ngIf="(nic.touched || createUserAccountForm.submitted) && nic.errors?.required"
                  class="validErr">
               NIC is required
@@ -98,7 +98,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="userAccount.dob"
                    #dob="ngModel"
-                   name="dob" required>
+                   name="dob" readonly>
             <div *ngIf="(dob.touched || createUserAccountForm.submitted) && dob.errors?.required"
                  class="validErr">
               Date od birth is required
@@ -162,7 +162,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="userAccount.registeredDate"
                    #registeredDate="ngModel"
-                   name="registeredDate" required>
+                   name="registeredDate" readonly>
             <div *ngIf="(registeredDate.touched || createUserAccountForm.submitted) && registeredDate.errors?.required"
                  class="validErr">
               Registered Date is required

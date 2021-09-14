@@ -35,4 +35,9 @@ public class ShiftController {
     public ResponseEntity getShift() {
         return ResponseEntity.ok(shiftService.getShift());
     }
+//
+//    @GetMapping(value = "/getShiftbyDriverID/{driverId}")
+//    public ResponseEntity getShiftByDriverID(@PathVariable String driverId) {
+//        return ResponseEntity.ok(shiftService.getShiftByDriverID(driverId));
+//    }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
@@ -9,13 +9,17 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class GeneralManagerService {
 
   userAccount;
+  tvProgram;
+  deliveryItem;
 
   constructor(private http: HttpClient) {
 
   }
+
   addTransportManagerUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addTransportManagerUserAccount", userAccount);
   }
+
   addBookingManagementClerkUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addBookingManagementClerkUserAccount", userAccount);
   }
@@ -24,11 +28,11 @@ export class GeneralManagerService {
     return this.http.post<any>(environment.backend_url + "/userAccount/addVehicleDiverManagementClerkUserAccount", userAccount);
   }
 
-  addAccidentMaintenanceManagerUserAccount(userAccount): Observable<any>{
+  addAccidentMaintenanceManagerUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addAccidentMaintenanceManagerUserAccount", userAccount);
   }
 
-  addSecurityOfficerUserAccount(userAccount): Observable<any>{
+  addSecurityOfficerUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addSecurityOfficerUserAccount", userAccount);
   }
 
@@ -36,12 +40,54 @@ export class GeneralManagerService {
     return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccounts");
   }
 
+  getUserAccountsForApplicants(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccountsForApplicants");
+  }
+
+  approveUserAccount(employeeId, approval): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
+  }
+
+  approveTransport(applicationId, approval): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/approveTransport/" + applicationId + "/" + approval);
+  }
+
   updateUserAccount(userAccount): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + userAccount.employeeID, userAccount);
   }
 
   getUserAccountByID(employeeID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + employeeID);
+    return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccountByID/" + employeeID);
   }
 
+
+  addTVProgram(tvProgram): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/tvProgram/addTVProgram", tvProgram);
+  }
+
+  getTvProgram(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/tvProgram/getTvProgram");
+  }
+
+  updateTVProgram(tvProgram): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + tvProgram.programID, tvProgram);
+  }
+
+  deleteTVProgram(programID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/tvProgram/deleteTVProgram/" + programID);
+  }
+
+
+  getAllApplication(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApplication");
+  }
+
+  getTransportApplication(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getTransportApplication");
+  }
+
+
+
+
 }
+

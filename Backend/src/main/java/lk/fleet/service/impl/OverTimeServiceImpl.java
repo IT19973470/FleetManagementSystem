@@ -1,11 +1,7 @@
 package lk.fleet.service.impl;
 
-import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.OverTimeDTO;
-import lk.fleet.dto.UserAccountDTO;
-import lk.fleet.entity.Driver;
 import lk.fleet.entity.OverTime;
-import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
 import lk.fleet.service.OverTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OverTimeServiceImpl implements OverTimeService{
+public class OverTimeServiceImpl implements OverTimeService {
 
     @Autowired
     private OverTimeRepository overTimeRepository;
@@ -29,7 +25,7 @@ public class OverTimeServiceImpl implements OverTimeService{
     @Override
     public OverTimeDTO updateOT(long overTimeID, OverTime overTime) {
         Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
-        if (optionalOverTime.isPresent()){
+        if (optionalOverTime.isPresent()) {
             OverTime overTime1 = optionalOverTime.get();
             overTime1.setOtDate(overTime.getOtDate());
             overTime1.setNoOfShifts(overTime.getNoOfShifts());
@@ -49,25 +45,28 @@ public class OverTimeServiceImpl implements OverTimeService{
     }
 
     @Override
-    public Object getOT() {
-        List<OverTime> overTimes = overTimeRepository.findAll();
+    public List<OverTimeDTO> getOT() {
+        List<OverTime> overTimes = overTimeRepository.getAllLastOverTimes();
         List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
 
-        for(OverTime overTime : overTimes){
-            overTimeDTOS.add(new OverTimeDTO(overTime));
+        int count = 0;
+        if (overTimes.size() < 10) {
+            count = overTimes.size();
+        } else {
+            count = 10;
+        }
+
+        for (int i = 0; i < count; i++) {
+            overTimeDTOS.add(new OverTimeDTO(overTimes.get(i)));
         }
 
         return overTimeDTOS;
     }
 
     @Override
-    public OverTimeDTO getOverTimeByID(long overTimeID) {
-        Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
-        if (optionalOverTime.isPresent()) {
-            OverTime overTime = optionalOverTime.get();
-            return new OverTimeDTO(overTime);
-        }
-        return null;
+    public OverTimeDTO getOverTimeByID(String driverId) {
+        OverTime overTimeNow = overTimeRepository.getLastOverTime(driverId).get(0);
+        return new OverTimeDTO(overTimeNow);
     }
 
 }

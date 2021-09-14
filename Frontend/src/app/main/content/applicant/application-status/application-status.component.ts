@@ -38,18 +38,10 @@ export class ApplicationStatusComponent implements OnInit {
     }
   };
 
-
-  //Passenger.name;
-  // x={
-  //   applicationID:'',
-  //
-  //
-  //
-  // };
-  //
   tblIndex;
-  user:boolean=true;
-  item:boolean=false;
+  plus:boolean=true; //plus button
+  pen:boolean=false;//pen button
+
 
   constructor(private applicant: ApplicantService, private router: Router) {
     //this.Pass = this.getNewPassenger();
@@ -65,30 +57,53 @@ export class ApplicationStatusComponent implements OnInit {
       this.router.navigate(['/main/available_transports'])
     })
   }
-x:boolean=false;
-  btnText = '';
 
+  btnText = '';
+  flag;
   onSubmitPassenger() {
-    if (this.user == true) {
-      this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
+    if (this.plus == true) {
+     let check=this.Pass;
+      this.flag=1;
+
+      console.log(check);
+      for (let x=0; x<=this.ItemApp.itemApplication.itemItemApplications.length-1; x++)
+      {
+        let a=this.ItemApp.itemApplication.itemItemApplications[x];
+        console.log(a);
+        if(a.item.itemID==check.item.itemID){
+           this.flag=0;
+           break;
+        }
+        else {
+          this.flag=1;
+        }
+
+      }
+      if(this.flag==1)
+      {
+        this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
+      }
+
       //this.passengerForm.resetForm();
     }
-    else if(this.item==true){
+    else if(this.pen==true){
       this.ItemApp.itemApplication.itemItemApplications[this.tblIndex] = this.Pass
     }
-    //   if (this.btnText === 'Add') {
-    //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-    // //   this.applicant.passengers.push(this.passengers);
-    // this.passengers = this.getNewPassenger();
-    //  this.applicantFrom.resetForm(this.passengers);
+
     this.setNewPassenger();
   }
 
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.item);
-    this.user=true;
-    this.item=false;
+    this.plus=true;
+    this.pen=false;
+  }
+
+  chkPassengerId() {
+    if (this.Pass.item.itemID != '') {
+       this.flag = 1;
+    }
   }
 
   setPassenger(item,i) {
@@ -97,8 +112,8 @@ x:boolean=false;
     this.Pass.item.itemName=item.itemName;
     this.Pass.item.qty=item.qty;
     this.btnText = 'Update';
-    this.item=true;
-    this.user=false;
+    this.pen=true;
+    this.plus=false;
   }
 
   getNewPassenger() {
@@ -110,64 +125,6 @@ x:boolean=false;
       }
     };
   }
-
-
-  // onSubmitPassenger() {
-  //   if (this.btnText === 'Add') {
-  //     this.deliveryDetail.deliveryPassengerDetails.push(this.passenger);
-  //   } else if (this.btnText === 'Update') {
-  //     this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = this.passenger
-  //   }
-  //   this.setNewPassenger();
-  // }
-
-  // setPassenger(passenger,i) {
-  //   this.tblIndex = i;
-  //   this.passenger.passengerName = passenger.passengerName;
-  //   this.passenger.passengerNic = passenger.passengerNic;
-  //   this.passenger.contactNumber = passenger.contactNumber;
-  //   this.passenger.passengerType = passenger.passengerType;
-  // }
-
-  // setNewPassenger() {
-  //   this.passenger = this.getNewPassenger();
-  //   this.passengerForm.resetForm();
-  //   this.btnText = 'Add';
-  // }
-
-  // getNewPassenger() {
-  //   return {
-  //     passengerName: '',
-  //     passengerNic: '',
-  //     contactNumber: '',
-  //     passengerType: ''
-  //   };
-  //}
-
-
-  // passenger;
-  // deliveryDetail;
-  //  onSubmitItem() {
-  //    this.deliveryDetail.passengers.push(this.passenger);
-  //    this.passenger = this.getNewPassenger();
-  //    this.applicantFrom.resetForm(this.passenger);
-  //  }
-  //
-  //  setItems(passenger) {
-  //    this.passenger.passengerName = passenger.passengerName;
-  //    this.passenger.passengerNic = passenger.passengerNic;
-  //    this.passenger.contactNumber = passenger.contactNumber;
-  //    this.passenger.passengerType = passenger.passengerType;
-  //  }
-
-   // getNewItems() {
-   //   return {
-   //     passengerName: '',
-   //     passengerNic: '',
-   //     contactNumber: '',
-   //     passengerType: ''
-   //   };
-   // }
 
 
 }

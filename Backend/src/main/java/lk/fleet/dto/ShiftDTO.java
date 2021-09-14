@@ -4,22 +4,30 @@ import lk.fleet.entity.Shift;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class ShiftDTO {
 
     private String shiftId;
-    private LocalDate shiftDate;
-    private LocalTime startingTime;
-    private LocalTime endingTime;
+    private String shiftDate;
+    private String startingTime;
+    private String startingTimeActual;
+    private String endingTime;
+    private String endingTimeActual;
     private boolean attendance;
+    private DriverVehicleDTO driverVehicle;
 
 
-    public ShiftDTO(Shift shift){
-        this.shiftId = shift.getShiftId();
-        this.shiftDate = shift.getShiftDate();
-        this.endingTime = shift.getEndingTime();
-        this.endingTime = shift.getEndingTime();
-        this.attendance = shift.isAttendance();
+    public ShiftDTO(Shift shift) {
+        if (shift != null) {
+            this.shiftId = shift.getShiftId();
+            this.shiftDate = shift.getShiftDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.startingTime = shift.getStartingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            this.startingTimeActual = shift.getStartingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.endingTime = shift.getEndingTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            this.endingTimeActual = shift.getEndingTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.attendance = shift.isAttendance();
+        }
 
     }
 
@@ -31,28 +39,44 @@ public class ShiftDTO {
         this.shiftId = shiftId;
     }
 
-    public LocalDate getShiftDate() {
+    public String getShiftDate() {
         return shiftDate;
     }
 
-    public void setShiftDate(LocalDate shiftDate) {
+    public void setShiftDate(String shiftDate) {
         this.shiftDate = shiftDate;
     }
 
-    public LocalTime getStartingTime() {
+    public String getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(LocalTime startingTime) {
+    public void setStartingTime(String startingTime) {
         this.startingTime = startingTime;
     }
 
-    public LocalTime getEndingTime() {
+    public String getStartingTimeActual() {
+        return startingTimeActual;
+    }
+
+    public void setStartingTimeActual(String startingTimeActual) {
+        this.startingTimeActual = startingTimeActual;
+    }
+
+    public String getEndingTime() {
         return endingTime;
     }
 
-    public void setEndingTime(LocalTime endingTime) {
+    public void setEndingTime(String endingTime) {
         this.endingTime = endingTime;
+    }
+
+    public String getEndingTimeActual() {
+        return endingTimeActual;
+    }
+
+    public void setEndingTimeActual(String endingTimeActual) {
+        this.endingTimeActual = endingTimeActual;
     }
 
     public boolean isAttendance() {
@@ -63,5 +87,11 @@ public class ShiftDTO {
         this.attendance = attendance;
     }
 
+    public DriverVehicleDTO getDriverVehicle() {
+        return driverVehicle;
+    }
 
+    public void setDriverVehicle(DriverVehicleDTO driverVehicle) {
+        this.driverVehicle = driverVehicle;
+    }
 }

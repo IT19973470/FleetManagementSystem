@@ -1,7 +1,9 @@
 package lk.fleet.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.sql.SQLOutput;
 import java.time.LocalDate;
 

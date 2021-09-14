@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-update-passenger-delivery',
@@ -29,7 +30,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
     this.passenger = this.getNewPassenger();
   }
 
@@ -47,18 +48,63 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
 
   onSubmitPassenger() {
     this.passenger.delivery.deliveryId = this.deliveryDetail.deliveryId;
-    // console.log(this.item)
-    if (this.btnText === 'Add') {
+    if (this.deliveryDetail.deliveryPassengerDetails.length === 0) {
       this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
         this.deliveryDetail.deliveryPassengerDetails.push(passenger);
+        this.notifierService.notify("success", "Passenger added successfully");
+        this.setNewPassenger();
       })
-    } else if (this.btnText === 'Update') {
-      // console.log(this.item)
-      this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
-        this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
-      })
+    } else {
+      let count = 0;
+      for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
+        if (this.btnText === 'Update' && i === this.tblIndex) {
+          continue;
+        }
+        let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
+        if (
+          (passenger.passengerNic !== '' && passenger.passengerNic === this.passenger.passengerNic) ||
+          (passenger.contactNumber !== '' && passenger.contactNumber === this.passenger.contactNumber)
+        ) {
+          count++;
+        }
+        if (passenger.passengerNic === this.passenger.passengerNic && passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate NIC and Contact No found");
+          break;
+        } else if (passenger.contactNumber === this.passenger.contactNumber) {
+          this.notifierService.notify("error", "Duplicate Contact No found");
+          break;
+        } else if (passenger.passengerNic === this.passenger.passengerNic) {
+          this.notifierService.notify("error", "Duplicate NIC found");
+          break;
+        }
+      }
+      if (this.btnText === 'Add' && count === 0) {
+        this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
+          this.deliveryDetail.deliveryPassengerDetails.push(passenger);
+          this.notifierService.notify("success", "Passenger added successfully");
+          this.setNewPassenger();
+        })
+      } else if (this.btnText === 'Update' && count === 0) {
+        this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
+          this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
+          this.notifierService.notify("success", "Passenger updated successfully");
+          this.setNewPassenger();
+        })
+      }
     }
-    this.setNewPassenger();
+
+    // // console.log(this.item)
+    // if (this.btnText === 'Add') {
+    //   this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
+    //     this.deliveryDetail.deliveryPassengerDetails.push(passenger);
+    //   })
+    // } else if (this.btnText === 'Update') {
+    //   // console.log(this.item)
+    //   this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
+    //     this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
+    //   })
+    // }
+    // this.setNewPassenger();
   }
 
   removePassenger(passengerDetailId, i) {
