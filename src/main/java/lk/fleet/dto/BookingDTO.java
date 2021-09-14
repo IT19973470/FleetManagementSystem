@@ -1,6 +1,7 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Booking;
+import lk.fleet.entity.Token;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,6 +14,7 @@ public class BookingDTO {
     private boolean bookingStatus;
     private VehicleDTO vehicle;
     private DriverDTO driver;
+    //private TokenDTO tokenDetail;
 
     public BookingDTO(Booking booking) {
         if(booking != null) {
@@ -22,6 +24,11 @@ public class BookingDTO {
             this.bookingStatus = booking.isBookingStatus();
         }
     }
+
+//    public BookingDTO(Booking booking, TokenDTO tokenDetail) {
+//        this(booking);
+//        this.tokenDetail = tokenDetail;
+//    }
 
     public String getBookingId() {
         return bookingId;
