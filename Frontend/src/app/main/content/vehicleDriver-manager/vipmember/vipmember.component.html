@@ -28,7 +28,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.firstName"
                    #firstName="ngModel"
-                   name="firstName" required>
+                   name="firstName" required appTextValidator>
             <div *ngIf="(firstName.touched || vipmemberForm.submitted) && firstName.errors?.required"
                  class="validErr">
               First Name is required
@@ -43,7 +43,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.lastName"
                    #lastName="ngModel"
-                   name="lastName" required>
+                   name="lastName" required appTextValidator>
             <div *ngIf="(lastName.touched || vipmemberForm.submitted) && lastName.errors?.required"
                  class="validErr">
               Last Name is required
@@ -68,10 +68,14 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.contactNumber"
                    #contactNumber="ngModel"
-                   name="noofseats" required>
+                   name="contactNumber" required appTelephoneValidator>
             <div *ngIf="(contactNumber.touched || vipmemberForm.submitted) && contactNumber.errors?.required"
                  class="validErr">
-              Contact Number are required
+              Contact Number is required
+            </div>
+            <div *ngIf="(contactNumber.dirty) && contactNumber.errors?.telephoneInvalid"
+                 class="validErr">
+              Invalid Contact Number
             </div>
           </div>
         </div>
