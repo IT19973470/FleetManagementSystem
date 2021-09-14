@@ -11,7 +11,8 @@ public class PassengerApplicationDTO {
     private String passengerApplicationID;
     private int noOfPassengers;
 
-    private List<PassengerDTO> passengers;
+    private List<PassengerPassengerApplicationDTO> passengerPassengerApplications;
+
 
     public PassengerApplicationDTO(PassengerApplication passengerApplication) {
         if (passengerApplication != null) {
@@ -20,12 +21,12 @@ public class PassengerApplicationDTO {
         }
     }
 
-    public List<PassengerDTO> getPassengers() {
-        return passengers;
+    public List<PassengerPassengerApplicationDTO> getPassengerPassengerApplications() {
+        return passengerPassengerApplications;
     }
 
-    public void setPassengers(List<PassengerDTO> passengers) {
-        this.passengers = passengers;
+    public void setPassengerPassengerApplications(List<PassengerPassengerApplicationDTO> passengerPassengerApplications) {
+        this.passengerPassengerApplications = passengerPassengerApplications;
     }
 
     public String getPassengerApplicationID() {

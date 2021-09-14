@@ -1,7 +1,9 @@
 package lk.fleet.service.impl;
 
 
+import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.dto.ShiftDTO;
+import lk.fleet.entity.OverTime;
 import lk.fleet.entity.Shift;
 import lk.fleet.repository.ShiftRepository;
 import lk.fleet.service.ShiftService;
@@ -44,4 +46,10 @@ public class ShiftServiceImpl implements ShiftService {
     public Object getShift() {
         return null;
     }
+
+//    @Override
+//    public ShiftDTO getShiftByDriverID(String driverId) {
+//        Shift shift = shiftRepository.getLastShift(driverId).get(0);
+//        return new ShiftDTO(shift);
+//    }
 }

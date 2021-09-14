@@ -22,9 +22,10 @@
       <tr>
         <th scope="col" width="5%">#</th>
         <th scope="col" width="20%">Vehicle Number</th>
-        <th scope="col" width="20%">Vehicle Type</th>
+        <th scope="col" width="10%">Vehicle Type</th>
         <th scope="col" width="10%">Fuel Type</th>
-        <th scope="col" width="20%" style="text-align: center">Update Fuel Balance</th>
+        <th scope="col" width="10%">Fuel Balance</th>
+        <th scope="col" width="10%" style="text-align: left">Update Fuel Balance</th>
       </tr>
       </thead>
       <tbody>
@@ -33,8 +34,9 @@
         <td>{{vehicle.vehicleId}}</td>
         <td>{{vehicle.vehicleType}}</td>
         <td>{{vehicle.fuelType}}</td>
+        <td>{{vehicle.fuelBalance}}</td>
         <td>
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicle)"></i>
+          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicle) "></i>
         </td>
       </tr>
       </tbody>
