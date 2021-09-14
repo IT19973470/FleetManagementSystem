@@ -105,8 +105,6 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getDriverShiftsByVehicleType(vehicleType));
 
     }
-}
-
 
     //security officer
     @GetMapping(value = "/getBookingByDestination/{destination}")
