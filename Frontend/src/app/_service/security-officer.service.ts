@@ -66,8 +66,8 @@ export class SecurityOfficerService {
     return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles")
   }
 
-  updateVehicle(vehicleDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicle/" + vehicleDetail.vehicleId, vehicleDetail);
+  updateVehicleAvailability(vehicleDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicleAvailability/" + vehicleDetail.vehicleId, vehicleDetail);
   }
 
 }

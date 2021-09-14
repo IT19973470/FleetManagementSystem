@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 
@@ -19,20 +19,7 @@ export class VehiclePoolComponent implements OnInit {
     serviceMeter: '',
     fuelBalance: '',
     fuelConsumption: '',
-    occupied: '',
-    fuelType: ''
-  };
-
-  vehicleDetail = {
-    vehicleId: '',
-    vehicleType: '',
-    model: '',
-    noOfSeats: '',
-    initialMeter: '',
-    serviceMeter: '',
-    fuelBalance: '',
-    fuelConsumption: '',
-    occupied: '',
+    occupied: true,
     fuelType: ''
   };
 
@@ -42,15 +29,14 @@ export class VehiclePoolComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.vehicles = this.securityOfficerService.vehicle;
-    this.vehicleDetail = this.securityOfficerService.vehicle;
     this.getAllVehicles();
   }
 
-  updateVehicleStatus() {
-    console.log(this.vehicleDetail)
-    this.securityOfficerService.updateVehicle(this.vehicleDetail).subscribe((vehicle) => {
-      this.router.navigate(['/main/update_vehicle_pool'])
+  updateVehicleStatus(vehicle) {
+    vehicle.occupied = !vehicle.occupied;
+    this.securityOfficerService.updateVehicleAvailability(vehicle).subscribe((vehicleObj) => {
+      vehicle.occupied = vehicleObj.occupied;
+      // this.router.navigate(['/main/update_vehicle_pool'])
     })
   }
 
