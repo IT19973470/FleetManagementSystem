@@ -14,24 +14,23 @@ export class VipBookingComponent implements OnInit {
   @ViewChild('bookingForm', {static: true}) public bookingForm: NgForm;
 
   vipBooking = {
-    bookingId: '1',
-    bookingDateTime: '',
-    destination: '',
-    bookingStatus: true,
+    booking: {
+      bookingId: '1',
+      bookingDateTime: '',
+      destination: '',
+      bookingStatus: true,
+      bookingManagementClerk: {
+        bookingManagementClerkId: 'BMC123'
+      }
+    },
     purpose: '',
-    timePeriod:'',
-    approvedFuelAmount:'',
-    approval:true,
-
-    bookingManagementClerk: {
-      bookingManagementClerkId: 'BMC123'
-    }
+    timePeriod: '',
+    approvedFuelAmount: '',
+    approval: true,
   };
-  // bookingStatuses = [
-  //   "Active",
-  //   "Inactive"
-  // ]
+
   selected = ""
+
 
   update(e) {
     this.selected = e.target.value
@@ -45,11 +44,11 @@ export class VipBookingComponent implements OnInit {
   }
 
   onSubmit() {
-    this.vipBooking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
-    console.log(this.vipBooking);
-    this.bookingManagerService.addBooking(this.vipBooking).subscribe(() => {
-      this.router.navigate(['/main/view_bookings'])
-    })
-  }
+    this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
+    this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
+      this.router.navigate(['/main/view_vip_booking'])
+    })
+    console.log(this.vipBooking);
+  }
 }

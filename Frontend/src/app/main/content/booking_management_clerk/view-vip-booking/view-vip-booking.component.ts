@@ -9,51 +9,40 @@ import {Router} from "@angular/router";
 })
 export class ViewVipBookingComponent implements OnInit {
 
-  bookings = [];
-  //  booking ={
-  //    bookingId: '1',
-  //    bookingDateTime: '',
-  //    destination: '',
-  //    bookingStatus: '',
-  //    bookings : []
-  // };
+
+  vipBooking = [];
 
   bookingId;
   bookingManagementClerkId;
+  vipBookingId;
 
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getAllBookings();
+    this.getAllVipBooking();
   }
 
   goToUpdate(booking) {
-    this.bookingManagerService.booking = booking;
-    this.router.navigate(['/main/update_bookings'])
+    this.bookingManagerService.vipBooking = booking;
+    this.router.navigate(['/main/update_vip_booking'])
   }
 
-  getAllBookings() {
-    this.bookingManagerService.getAllBookings().subscribe((bookings) => {
-      this.bookings = bookings;
-      console.log(bookings)
+  getAllVipBooking() {
+    this.bookingManagerService.getAllVipBooking().subscribe((vipBooking) => {
+      this.vipBooking = vipBooking;
+      // console.log(specialBooking)
     })
   }
 
-  getBookingsByBookingId(){
-    this.bookingManagerService.getBookingsByBookingId(this.bookingId).subscribe((bookings) => {
-      this.bookings=bookings;
-
+  getVipBookingByVipBookingId() {
+    this.bookingManagerService.getVipBookingByVipBookingId(this.vipBookingId).subscribe((vipBooking) => {
+      this.vipBooking = vipBooking;
+      console.log(vipBooking)
 
     })
   }
 
-
-  getBookingsByBookingManagementClerkId() {
-    this.bookingManagerService.getBookingsByBookingManagementClerkId(this.bookingManagementClerkId).subscribe((bookings) => {
-      this.bookings=bookings;
-    })
-  }
 
 }
