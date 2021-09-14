@@ -51,7 +51,7 @@ import {ViewShiftComponent} from "./main/content/booking_management_clerk/view-s
 import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
 import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
-import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
 import {VehicleMaintenanceViewComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component";
 import {SpecialBookingComponent} from "./main/content/booking_management_clerk/special-booking/special-booking.component";
 import {UpdateSpecialBookingComponent} from "./main/content/booking_management_clerk/view-special-booking/update-special-booking/update-special-booking.component";
