@@ -31,7 +31,7 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
 
     @Override
     public SpecialBookingDTO addSpecialBooking(SpecialBooking specialBooking) {
-        specialBooking.getBooking().setBookingId("Book" + specialBooking.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        specialBooking.getBooking().setBookingId("B" + specialBooking.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
         specialBooking.setSpecialBookingId((specialBooking.getBooking().getBookingId()));
         bookingRepository.save(specialBooking.getBooking());
         return new SpecialBookingDTO(specialBookingRepository.save(specialBooking), new BookingDTO(specialBooking.getBooking()));
@@ -62,6 +62,7 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
     @Override
     public boolean deleteSpecialBooking(String specialBookingId) {
         specialBookingRepository.deleteById(specialBookingId);
+        bookingRepository.deleteById(specialBookingId);
         return true;
     }
 

@@ -45,7 +45,7 @@ export class ViewSpecialBookingComponent implements OnInit {
   getSpecialBookingBySpecialBookingId() {
     this.bookingManagerService.getSpecialBookingBySpecialBookingId(this.specialBookingId).subscribe((specialBooking) => {
       this.specialBooking = specialBooking;
-      // console.log(specialBooking)
+       console.log(specialBooking)
 
     })
   }

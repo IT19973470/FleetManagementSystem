@@ -8,9 +8,16 @@
   <div class="col-11" style="margin-top: 20px">
 
     <div style="margin-top: 20px">
-      <span style="font-weight: bold;margin-left: 0px">Search by driver : </span>
+      <span style="font-weight: bold;margin-left: 0px">Search by driver ID: </span>
       <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="driverId">
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByDriver()">
+        Search
+      </button>
+    </div>
+    <div style="margin-top: 20px">
+      <span style="font-weight: bold;margin-left: 0px">Search by vehicle type: </span>
+      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="vehicleType">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByVehicle()">
         Search
       </button>
 
@@ -23,6 +30,7 @@
       <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Shift ID</th>
         <th scope="col">Driver ID</th>
         <th scope="col">Driver</th>
         <th scope="col" width="10%">Vehicle No</th>
@@ -36,6 +44,7 @@
       <tbody>
       <tr *ngFor="let shift of shifts; let i = index">
         <th scope="row">{{i+1}}</th>
+        <td>{{shift.shiftId}}</td>
         <td>{{shift.driverVehicle.driver.driverID}}</td>
         <td>{{shift.driverVehicle.driver.userAccount.nameWithInitials}}</td>
         <td>{{shift.driverVehicle.vehicle.vehicleId}}</td>

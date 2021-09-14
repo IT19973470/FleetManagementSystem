@@ -43,6 +43,10 @@ export class BookingManagerService {
   getAllShiftsByDriver(driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverShiftsByDriverId/" + driverId);
   }
+  getAllShiftsByVehicle(vehicleType): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getDriverShiftsByVehicleType/" + vehicleType);
+  }
+
 
 
   addBooking(BookingDetail): Observable<any> {

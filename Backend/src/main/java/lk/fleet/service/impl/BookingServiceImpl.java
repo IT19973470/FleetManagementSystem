@@ -23,6 +23,8 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private BookingRepository bookingRepository;
     @Autowired
+    private BookingApplicationRepository bookingApplicationRepository;
+    @Autowired
     private DriverVehicleRepository driverVehicleRepository;
     @Autowired
     private ShiftRepository shiftRepository;
@@ -34,6 +36,18 @@ public class BookingServiceImpl implements BookingService {
         booking.setBookingManagementClerk(booking.getBookingManagementClerk());
         return bookingRepository.save(booking);
     }
+
+
+//    @Override
+//    public BookingApplicationDTO addBooking(BookingApplication bookingApplication) {
+//        bookingApplication.getBooking().setBookingId("B" + bookingApplication.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+//        bookingApplication.setBookingApplicationId((bookingApplication.getBooking().getBookingId()));
+//        bookingRepository.save(bookingApplication.getBooking());
+//        bookingApplicationRepository.save(bookingApplication);
+//        return new BookingApplicationDTO(bookingApplication, new BookingDTO(bookingApplication.getBooking()));
+//    }
+
+
 
 
     @Override
@@ -170,6 +184,20 @@ public class BookingServiceImpl implements BookingService {
         List<Shift> driverShiftsByDriverId = shiftRepository.getDriverShiftsByDriverId(driverId);
         List<ShiftDTO> shiftDTOS = new ArrayList<>();
         for (Shift driverShift : driverShiftsByDriverId) {
+            ShiftDTO shiftDTO = new ShiftDTO(driverShift);
+            DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverShift.getDriverVehicle());
+            driverVehicleDTO.setVehicle(new VehicleDTO(driverShift.getDriverVehicle().getVehicle()));
+            driverVehicleDTO.setDriver(new DriverDTO(driverShift.getDriverVehicle().getDriver(), new UserAccountDTO(driverShift.getDriverVehicle().getDriver().getUserAccount())));
+            shiftDTO.setDriverVehicle(driverVehicleDTO);
+            shiftDTOS.add(shiftDTO);
+        }
+        return shiftDTOS;
+    }
+    @Override
+    public List<ShiftDTO> getDriverShiftsByVehicleType(String vehicleType) {
+        List<Shift> driverShiftsByVehicleType= shiftRepository.getDriverShiftsByVehicleType(vehicleType);
+        List<ShiftDTO> shiftDTOS = new ArrayList<>();
+        for (Shift driverShift : driverShiftsByVehicleType) {
             ShiftDTO shiftDTO = new ShiftDTO(driverShift);
             DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverShift.getDriverVehicle());
             driverVehicleDTO.setVehicle(new VehicleDTO(driverShift.getDriverVehicle().getVehicle()));

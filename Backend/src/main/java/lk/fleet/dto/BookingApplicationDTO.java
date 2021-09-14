@@ -1,6 +1,7 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.BookingApplication;
+import lk.fleet.entity.BookingManagementClerk;
 
 public class BookingApplicationDTO {
 
@@ -14,6 +15,12 @@ public class BookingApplicationDTO {
         if (bookingApplication != null) {
             this.bookingApplicationId = bookingApplication.getBookingApplicationId();
         }
+    }
+
+
+    public BookingApplicationDTO(BookingApplication bookingApplication, BookingDTO booking) {
+        this(bookingApplication);
+        this.booking = booking;
     }
 
     public String getBookingApplicationId() {

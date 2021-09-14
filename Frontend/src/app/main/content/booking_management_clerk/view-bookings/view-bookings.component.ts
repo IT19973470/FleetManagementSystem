@@ -30,6 +30,8 @@ export class ViewBookingsComponent implements OnInit {
     this.getAllBookings();
   }
 
+
+
   goToUpdate(booking) {
     this.bookingManagerService.booking = booking;
     this.router.navigate(['/main/update_bookings'])

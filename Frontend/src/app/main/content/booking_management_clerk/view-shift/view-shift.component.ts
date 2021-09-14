@@ -20,7 +20,7 @@ export class ViewShiftComponent implements OnInit {
   // };
 
   driverId;
-
+  vehicleType;
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
 
@@ -42,6 +42,12 @@ export class ViewShiftComponent implements OnInit {
 
   getAllShiftsByDriver() {
     this.bookingManagerService.getAllShiftsByDriver(this.driverId).subscribe((shifts) => {
+      this.shifts = shifts;
+    })
+  }
+
+  getAllShiftsByVehicle() {
+    this.bookingManagerService.getAllShiftsByVehicle(this.vehicleType).subscribe((shifts) => {
       this.shifts = shifts;
     })
   }

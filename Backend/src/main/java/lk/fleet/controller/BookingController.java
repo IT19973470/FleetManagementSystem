@@ -3,6 +3,7 @@ package lk.fleet.controller;
 import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.Booking;
+import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.Shift;
 import lk.fleet.entity.SpecialBooking;
 import lk.fleet.service.BookingService;
@@ -24,14 +25,11 @@ public class BookingController {
     public ResponseEntity addBooking(@RequestBody Booking booking){
         return ResponseEntity.ok(bookingService.addBooking(booking));
     }
-//    @PostMapping(value = "/addSpecialBooking")
-//    public ResponseEntity addSpecialBooking(@RequestBody SpecialBooking specialBooking){
-//        return ResponseEntity.ok(bookingService.addSpecialBooking(specialBooking));
+//    @PostMapping(value = "/addBooking")
+//    public ResponseEntity addBooking(@RequestBody BookingApplication bookingApplication){
+//        return ResponseEntity.ok(bookingService.addBooking(bookingApplication));
 //    }
-//    @PostMapping(value = "/addVipBooking")
-//    public ResponseEntity addVipBooking(@RequestBody SpecialBooking specialBooking){
-//        return ResponseEntity.ok(bookingService.addVipBooking(vipBooking));
-//    }
+
 
     @PutMapping(value = "/updateBooking/{bookingId}")
     public ResponseEntity updateBooking(@PathVariable String bookingId, @RequestBody Booking booking){
@@ -99,6 +97,11 @@ public class BookingController {
     @GetMapping(value = "/getDriverShiftsByDriverId/{driverId}")
     public ResponseEntity getDriverShiftsByDriverId(@PathVariable String driverId) {
         return ResponseEntity.ok(bookingService.getDriverShiftsByDriverId(driverId));
+
+    }
+    @GetMapping(value = "/getDriverShiftsByVehicleType/{vehicleType}")
+    public ResponseEntity getDriverShiftsByVehicleId(@PathVariable String vehicleType) {
+        return ResponseEntity.ok(bookingService.getDriverShiftsByVehicleType(vehicleType));
 
     }
 }
