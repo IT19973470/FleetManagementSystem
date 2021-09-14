@@ -198,18 +198,28 @@ public class UserAccountServiceImpl implements UserAccountService {
         return null;
     }
 
+    @Override
+    public List<ApplicationDTO> getTransportByID(String applicationID) {
+       Application applicationByID = applicationRepository.getAapplicationByID(applicationID);
 
-//    @Override
-//    public List<PassengerApplicationDTO> getTransport() {
-//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
-//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
-//        for(BookingApplication bookingApplication: bookingApplications){
-//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
-//        }
-//
-//        return passengerApplicationDTOS;
-//    }
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
+        applicationDTO.setPassengerApp(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTOS.add(applicationDTO);
+        return applicationDTOS;
+    }
 
+
+    @Override
+    public List<ApplicationDTO> getAllTransports() {
+        List<Application> applications = applicationRepository.findAll();
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+
+        for(Application application: applications){
+            applicationDTOS.add(new ApplicationDTO(application));
+        }
+        return applicationDTOS;
+    }
 
     @Override
     public List<UserAccountDTO> getUserAccounts() {
@@ -240,6 +250,17 @@ public class UserAccountServiceImpl implements UserAccountService {
         UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
         return new UserAccountDTO(userAccountObj);
     }
+
+//    @Override
+//    public List<PassengerApplicationDTO> getTransport() {
+//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
+//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
+//        for(BookingApplication bookingApplication: bookingApplications){
+//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
+//        }
+//
+//        return passengerApplicationDTOS;
+//    }
 
 
 //    @Override
