@@ -204,7 +204,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
         ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
-        applicationDTO.setPassengerApp(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
         applicationDTOS.add(applicationDTO);
         return applicationDTOS;
     }

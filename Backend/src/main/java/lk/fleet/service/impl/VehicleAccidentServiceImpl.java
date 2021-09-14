@@ -30,23 +30,6 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-//    @Override
-//    public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
-//        LocalDateTime localDateTime = LocalDateTime.now();
-//        vehicleAccident.setVehicleAccidentID("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
-//        return new VehicleAccidentDTO(vehicleAccidentRepository.save(vehicleAccident));
-//    }
-
-//    @Override
-//    public DriverVehicle addAccident(DriverVehicle driverVehicle) {
-////        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-////        driverVehicle.getVehicleAccident().setVehicleAccidentID("VCM" + dateTime);
-////        driverVehicle.setVehicleAccident(driverVehicle.getVehicleAccident());
-//////        vehicleAccident.getDriverVehicle().setVehicle(vehicleAccident.getDriverVehicle().getVehicle());
-//////        vehicleAccident.getDriverVehicle().setDriver(vehicleAccident.getDriverVehicle().getDriver());
-//////        vehicleAccident.setDriverVehicle(new DriverVehiclePK(vehicleAccident.getDriverVehicle().getDriver().getDriverID(),vehicleAccident.getDriverVehicle().getVehicle().getVehicleId()));
-//       return  driverVehicleRepository.save(driverVehicle);
-//    }
 
     @Override
     public VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident) {
@@ -100,6 +83,17 @@ public class VehicleAccidentServiceImpl implements VehicleAccidentService {
     public boolean chkDriver(String vehicleId, String driverId) {
         Optional<DriverVehicle> optionalVehicle = driverVehicleRepository.findById(new DriverVehiclePK(driverId, vehicleId));
         return optionalVehicle.isPresent();
+    }
+
+    @Override
+    public List<VehicleAccidentDTO> getAccidentById(String vehicleID) {
+        VehicleAccident vehicleAccident = vehicleAccidentRepository.getAccidentById(vehicleID);
+        List<VehicleAccidentDTO> vehicleAccidentDTOS=new ArrayList<>();
+        VehicleAccidentDTO vehicleAccidentDTO = new VehicleAccidentDTO(vehicleAccident);
+        vehicleAccidentDTO.setDriver(new DriverDTO(vehicleAccident.getDriverVehicle().getDriver()));
+        vehicleAccidentDTO.setVehicle(new VehicleDTO(vehicleAccident.getDriverVehicle().getVehicle()));
+        vehicleAccidentDTOS.add(vehicleAccidentDTO);
+        return vehicleAccidentDTOS;
     }
 
 }
