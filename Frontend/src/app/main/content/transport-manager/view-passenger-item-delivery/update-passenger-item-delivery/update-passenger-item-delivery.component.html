@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Passenger Item Delivery</span>
@@ -297,7 +298,7 @@
           <td style="text-align: center">
             <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger,i)"></i>
           </td>
-          <td style="text-align: center" (click)="deliveryDetail.deliveryPassengerDetails.splice(i, 1)">
+          <td style="text-align: center" (click)="removePassenger(passenger.passengerDetailId,i)">
             <i class="fas fa-times" style="color: red;font-size: 20px"></i>
           </td>
         </tr>
@@ -336,7 +337,7 @@
           <td style="text-align: center">
             <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
           </td>
-          <td style="text-align: center" (click)="deliveryDetail.deliveryItemDetails.splice(i, 1)">
+          <td style="text-align: center" (click)="removeItem(item.itemDetailId,i)">
             <i class="fas fa-times" style="color: red;font-size: 20px"></i>
           </td>
         </tr>
@@ -348,6 +349,15 @@
         No items available
       </div>
 
+    </div>
+  </div>
+
+  <div class=""
+       style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+    <div class="col-12" style="text-align: right">
+      <button type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px" (click)="removeDelivery()">
+        Delete Delivery
+      </button>
     </div>
   </div>
 </div>

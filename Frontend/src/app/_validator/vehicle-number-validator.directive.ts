@@ -31,6 +31,8 @@ export class VehicleNumberValidatorDirective implements Validator {
         this.preVal = control.value.toUpperCase();
         control.setValue(control.value.toUpperCase());
       }
+    } else {
+      return null;
     }
 
     return {'vehicleNumberInvalid': true};

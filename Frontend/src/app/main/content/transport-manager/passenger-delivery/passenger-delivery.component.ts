@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-passenger-delivery',
@@ -11,6 +12,7 @@ import {NotifierService} from "angular-notifier";
 })
 export class PassengerDeliveryComponent implements OnInit {
 
+  @ViewChild('deliveryForm', {static: true}) public deliveryForm: NgForm;
   @ViewChild('passengerForm', {static: true}) public passengerForm: NgForm;
   deliveryDetail = {
     deliveryPersonName: '',
@@ -25,11 +27,22 @@ export class PassengerDeliveryComponent implements OnInit {
     deliveryPassengerDetails: []
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   passenger;
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
+  constructor(
+    private transportManagerService: TransportManagerService,
+    private router: Router,
+    private notifierService: NotifierService,
+    private alertService: AlertBoxService
+  ) {
     this.passenger = this.getNewPassenger();
   }
 
@@ -38,9 +51,21 @@ export class PassengerDeliveryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTime
-    this.transportManagerService.addPassengerDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_passenger_delivery'])
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this delivery?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTime
+        this.transportManagerService.addPassengerDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+          this.setNewForm();
+          this.notifierService.notify("success", "Delivery added successfully");
+          // this.router.navigate(['/main/view_passenger_delivery'])
+        }, (err) => {
+          this.notifierService.notify("error", "Delivery failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
@@ -85,7 +110,7 @@ export class PassengerDeliveryComponent implements OnInit {
     }
   }
 
-  setPassenger(passenger,i) {
+  setPassenger(passenger, i) {
     this.tblIndex = i;
     this.passenger.passengerName = passenger.passengerName;
     this.passenger.passengerNic = passenger.passengerNic;
@@ -97,6 +122,10 @@ export class PassengerDeliveryComponent implements OnInit {
     this.passenger = this.getNewPassenger();
     this.passengerForm.resetForm();
     this.btnText = 'Add';
+  }
+
+  setNewForm() {
+    this.deliveryForm.resetForm();
   }
 
   getNewPassenger() {
