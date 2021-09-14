@@ -77,18 +77,17 @@ export class UpdateDetailsComponent implements OnInit {
 
   addMeterDetail() {
     this.securityOfficerService.updateMeterDetail(this.meterDetail).subscribe((meterDetail) => {
-      let count = 0;
-      if (this.btnTextMeter === 'Update Meter Details' && count === 0 && meterDetail.inMeter > meterDetail.outMeter) {
+      if (this.btnTextMeter === 'Update Meter Details' && meterDetail.inMeter > meterDetail.outMeter) {
         this.notifierService.notify("success", "Meter Detail updated successfully");
         this.router.navigate(['/main/completed_trips'])
-      } else this.notifierService.notify("error", "Meter Detail cannot be updated!!");
+      } if(meterDetail.inMeter <= meterDetail.outMeter)
+        this.notifierService.notify("error", "Meter Detail cannot be updated!!!");
     })
   }
 
   chkMeter() {
-    if (this.meterDetail.inMeter < this.meterDetail.outMeter) {
-      this.meterDetail.inMeter = this.meterDetail.outMeter;
+    if (this.meterDetail.inMeter > this.meterDetail.outMeter) {
+      this.meterDetail.mileage = this.meterDetail.inMeter - this.meterDetail.outMeter
     }
-    this.meterDetail.mileage = this.meterDetail.inMeter - this.meterDetail.outMeter
   }
 }
