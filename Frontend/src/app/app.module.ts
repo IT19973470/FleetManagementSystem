@@ -94,6 +94,7 @@ import {CompletedTripsComponent} from "./main/content/security-officer/completed
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
+import { TransportApplicationsComponent } from './main/content/transport-manager/transport-applications/transport-applications.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -249,7 +250,8 @@ const customNotifierOptions: NotifierOptions = {
     VehiclePoolComponent,
     DeliveryStatusComponent,
     VehicleNumberValidatorDirective,
-    AlertBoxComponent
+    AlertBoxComponent,
+    TransportApplicationsComponent
   ],
 
   imports: [
