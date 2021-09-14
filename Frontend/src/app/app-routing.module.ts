@@ -28,6 +28,8 @@ import {TokenComponent} from "./main/content/security-officer/token/token.compon
 import {UpdateAvailableTransportsComponent} from "./main/content/applicant/available-transports/update-available-transports/update-available-transports.component";
 import {ViewVehiclesComponent} from "./main/content/vehicleDriver-manager/view-vehicles/view-vehicles.component";
 import {UpdateVehicleComponent} from "./main/content/vehicleDriver-manager/update-vehicle/update-vehicle.component";
+import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
+import {ViewVipmembersComponent} from "./main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component";
 import {VehicleAccidentViewComponent} from "./main/content/accident-maintenance-manager/vehicle-accident-view/vehicle-accident-view.component";
 import {ViewOverTimeComponent} from "./main/content/driver/view-over-time/view-over-time.component";
 import {ArrivalDepartureLogPageComponent} from "./main/content/security-officer/arrival-departure-log-page/arrival-departure-log-page.component";
@@ -37,11 +39,10 @@ import {NotificationsComponent} from "./main/content/applicant/notifications/not
 import {FeedbackComponent} from "./main/content/applicant/feedback/feedback.component";
 import {AccountRequestsComponent} from "./main/content/general-manager/account-requests/account-requests.component";
 import {TransportRequestsComponent} from "./main/content/general-manager/transport-requests/transport-requests.component";
+import {UpdateVipmemberComponent} from "./main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component";
 import {UpdateAccidentDetailsComponent} from "./main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component";
 import {TvProgramComponent} from "./main/content/general-manager/tv-program/tv-program.component";
 import {UpdateOverTimeComponent} from "./main/content/driver/view-over-time/update-over-time/update-over-time.component";
-
-
 import {BookingsComponent} from "./main/content/booking_management_clerk/bookings/bookings.component";
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
 import {ViewBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/view-bookings.component";
@@ -57,9 +58,7 @@ import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
-
-
-
+// import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
   {
@@ -200,7 +199,6 @@ const routes: Routes = [
         component: ViewOverTimeComponent
       },
       {
-
         path: 'notifications',
         component: NotificationsComponent
       },
@@ -209,7 +207,6 @@ const routes: Routes = [
         component: FeedbackComponent
       },
       {
-
         path: 'update_over_time',
         component: UpdateOverTimeComponent
 
@@ -255,6 +252,22 @@ const routes: Routes = [
         component: UpdateVehicleComponent
       },
       {
+        path: 'vipmember',
+        component: VipmemberComponent
+      },
+      {
+        path: 'view_vipmembers',
+        component: ViewVipmembersComponent
+      },
+      {
+        path: 'view_vehicles',
+        component: ViewVehiclesComponent
+      },
+      {
+        path: 'update_vipmember',
+        component: UpdateVipmemberComponent
+      },
+      {
         path: 'bookings',
         component: BookingsComponent
       },
@@ -289,9 +302,7 @@ const routes: Routes = [
       {
         path: 'applicant_regestration',
         component: ApplicantRegestrationComponent
-      },
-
-
+      }
     ]
   }
 ];

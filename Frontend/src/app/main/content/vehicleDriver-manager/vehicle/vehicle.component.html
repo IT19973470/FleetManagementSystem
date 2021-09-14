@@ -13,10 +13,15 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vehicleDetail.vehicleId"
                    #vehicleId="ngModel"
-                   name="vehicleId" required>
+                   name="vehicleId" required appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
             <div *ngIf="(vehicleId.touched || vehicleForm.submitted) && vehicleId.errors?.required"
                  class="validErr">
               Vehicle Number is required
+            </div>
+            <div *ngIf="(vehicleId.dirty) && vehicleId.errors?.vehicleNumberInvalid"
+                 class="validErr">
+              Invalid Vehicle Number
             </div>
           </div>
         </div>
@@ -25,10 +30,19 @@
             Vehicle Type :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.vehicleType"
-                   #vehicleType="ngModel"
-                   name="vehicleType" required>
+            <select class="form-control" [(ngModel)]="vehicleDetail.vehicleType"
+                    #vehicleType="ngModel"
+                    name="vehicleType" required>
+              <option value="">Select Type</option>
+              <option value="Three wheel">Three wheel</option>
+              <option value="Van">Van</option>
+              <option value="Car">Car</option>
+              <option value="Bus">Bus</option>
+            </select>
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="vehicleDetail.vehicleType"-->
+<!--                   #vehicleType="ngModel"-->
+<!--                   name="vehicleType" required>-->
             <div *ngIf="(vehicleType.touched || vehicleForm.submitted) && vehicleType.errors?.required"
                  class="validErr">
               Vehicle Type is required
@@ -40,10 +54,18 @@
             Vehicle Model :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.model"
-                   #vehicleModel="ngModel"
-                   name="vehicleModel" required>
+            <select class="form-control" [(ngModel)]="vehicleDetail.model"
+                    #vehicleModel="ngModel"
+                    name="vehicleModel" required>
+              <option value="">Select Model</option>
+              <option value="Passenger">Passenger</option>
+              <option value="Carrier">Carrier</option>
+              <option value="News">News</option>
+            </select>
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="vehicleDetail.model"-->
+<!--                   #vehicleModel="ngModel"-->
+<!--                   name="vehicleModel" required>-->
             <div *ngIf="(vehicleModel.touched || vehicleForm.submitted) && vehicleModel.errors?.required"
                  class="validErr">
               Vehicle Model is required
@@ -130,10 +152,18 @@
             Occupied :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.occupied"
-                   #occupied="ngModel"
-                   name="occupied" required>
+            <select name="" id="true" class="form-control" [(ngModel)]="vehicleDetail.occupied"
+                    #occupied="ngModel"
+                    name="occupied" required>
+
+              <option value="False">False</option>
+              <option value="True">True</option>
+
+            </select>
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="vehicleDetail.occupied"-->
+<!--                   #occupied="ngModel"-->
+<!--                   name="occupied" required>-->
             <div *ngIf="(occupied.touched || vehicleForm.submitted) && occupied.errors?.required"
                  class="validErr">
               Occupied is required
@@ -145,10 +175,18 @@
             Fuel Type :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.fuelType"
-                   #fuelType="ngModel"
-                   name="fuelType" required>
+            <select name="" id="petrol" class="form-control" [(ngModel)]="vehicleDetail.fuelType"
+                    #fuelType="ngModel"
+                    name="fuelType" required>
+
+              <option value="Diesel">Diesel</option>
+              <option value="Petrol">Petrol</option>
+
+            </select>
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="vehicleDetail.fuelType"-->
+<!--                   #fuelType="ngModel"-->
+<!--                   name="fuelType" required>-->
             <div *ngIf="(fuelType.touched || vehicleForm.submitted) && fuelType.errors?.required"
                  class="validErr">
               Fuel Type is required

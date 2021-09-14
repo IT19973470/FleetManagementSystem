@@ -47,10 +47,9 @@ import {NavSecurityOfficerComponent} from './main/navbar/nav-security-officer/na
 import {TokenComponent} from './main/content/security-officer/token/token.component';
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
-//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
-//import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
-//import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
-//import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
+import {VipmemberComponent} from './main/content/vehicleDriver-manager/vipmember/vipmember.component';
+import {ViewVipmembersComponent} from './main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component';
+import {UpdateVipmemberComponent} from './main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component';
 import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 import {UpdateDriverComponent} from './main/content/driver/driver-account/update-driver/update-driver.component';
 import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
@@ -85,6 +84,7 @@ import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
+import { VehicleNumberValidatorDirective } from './_validator/vehicle-number-validator.directive';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -126,7 +126,6 @@ const customNotifierOptions: NotifierOptions = {
     overlap: 150
   }
 };
-
 
 @NgModule({
   declarations: [
@@ -184,6 +183,9 @@ const customNotifierOptions: NotifierOptions = {
     ViewVehiclesComponent,
     UpdateVehicleComponent,
     UpdateVehicleComponent,
+    VipmemberComponent,
+    ViewVipmembersComponent,
+    UpdateVipmemberComponent,
     ArrivalDepartureLogPageComponent,
     MeterDetailComponent,
     UpdateDetailsComponent,
@@ -205,6 +207,7 @@ const customNotifierOptions: NotifierOptions = {
     TvProgramComponent,
     UpdateOverTimeComponent,
     UpdateUserAccountComponent,
+    UpdateUserAccountComponent,
     ApplicantRegestrationComponent,
     UpdateUserAccountComponent,
     NavBookingManagerComponent,
@@ -219,6 +222,7 @@ const customNotifierOptions: NotifierOptions = {
     UpdateUserAccountComponent,
     VehiclePoolComponent,
     DeliveryStatusComponent,
+    VehicleNumberValidatorDirective
   ],
 
   imports: [
@@ -232,5 +236,6 @@ const customNotifierOptions: NotifierOptions = {
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

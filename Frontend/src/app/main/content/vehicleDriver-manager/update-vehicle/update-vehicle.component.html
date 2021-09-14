@@ -25,6 +25,14 @@
             Vehicle Type :
           </div>
           <div class="col-8">
+<!--            <select name="" id="car" class="form-control" [(ngModel)]="vehicleDetail.vehicleType"-->
+<!--                    #vehicleType="ngModel"-->
+<!--                    name="vehicleType" required>-->
+<!--              <option value="Three wheel">Three wheel</option>-->
+<!--              <option value="Van">Van</option>-->
+<!--              <option value="Car">Car</option>-->
+<!--              <option value="Bus">Bus</option>-->
+<!--            </select>-->
             <input type="text" class="form-control"
                    [(ngModel)]="vehicleDetail.vehicleType"
                    #vehicleType="ngModel"
@@ -121,7 +129,7 @@
                    name="fuelConsumption" required>
             <div *ngIf="(fuelConsumption.touched || vehicleForm.submitted) && fuelConsumption.errors?.required"
                  class="validErr">
-              Delivery Time is required
+              Fuel Consumption is required
             </div>
           </div>
         </div>
@@ -130,8 +138,16 @@
             Occupied :
           </div>
           <div class="col-8">
+<!--            <select name="" id="true" class="form-control" [(ngModel)]="vehicleDetail.occupied"-->
+<!--                    #occupied="ngModel"-->
+<!--                    name="occupied" required>-->
+
+<!--              <option value="False">False</option>-->
+<!--              <option value="True">True</option>-->
+
+<!--            </select>-->
             <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.occupied"
+                  [(ngModel)]="vehicleDetail.occupied"
                    #occupied="ngModel"
                    name="occupied" required>
             <div *ngIf="(occupied.touched || vehicleForm.submitted) && occupied.errors?.required"
@@ -145,10 +161,18 @@
             Fuel Type :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="vehicleDetail.fuelType"
+<!--            <select name="" id="petrol" class="form-control" [(ngModel)]="vehicleDetail.fuelType"-->
+<!--                    #fuelType="ngModel"-->
+<!--                    name="fuelType" required>-->
+
+<!--              <option value="Diesel">Diesel</option>-->
+<!--              <option value="Petrol">Petrol</option>-->
+
+<!--            </select>-->
+           <input type="text" class="form-control"
+                  [(ngModel)]="vehicleDetail.fuelType"
                    #fuelType="ngModel"
-                   name="fuelType" required>
+                  name="fuelType" required>
             <div *ngIf="(fuelType.touched || vehicleForm.submitted) && fuelType.errors?.required"
                  class="validErr">
               Fuel Type is required
@@ -160,6 +184,12 @@
     <div class="row" style="margin-top: 40px;margin-bottom: 40px">
       <div class="col-12" style="text-align: center">
         <button type="submit" class="btn btn-warning" style="font-weight: bold">Update Vehicle</button>
+      </div>
+    </div>
+<!--    <div class="col-12" style="text-align: center">-->
+    <div class="row" style="margin-top: 40px;margin-bottom: 40px">
+      <div class="col-12" style="text-align: right">
+       <button type="submit" class="btn btn-warning" style="font-weight: bold"(click)="removeVehicle()" >Delete Vehicle</button>
       </div>
     </div>
   </form>
