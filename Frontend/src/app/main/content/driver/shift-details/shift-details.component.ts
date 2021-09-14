@@ -17,11 +17,11 @@ export class ShiftDetailsComponent implements OnInit {
   shiftDetails = [];
 
   shift = {
-    shift_id: '',
+    shiftId: '',
     attendance: '',
-    ending_time: '',
-    shift_date: '',
-    starting_time: '',
+    endingTime: '',
+    shiftDate: '',
+    startingTime: '',
     driver_driverid: ''
   };
 
@@ -41,8 +41,7 @@ export class ShiftDetailsComponent implements OnInit {
 
   goToUpdate(shiftDetails) {
     this.driverService.shift = shiftDetails;
-    this.router.navigate(['/main/update_over_time']);
-    console.log(shiftDetails);
+    this.isTrueOrFalse(true);
   }
 
   isTrueOrFalse(reply) {
@@ -50,9 +49,9 @@ export class ShiftDetailsComponent implements OnInit {
   }
 
   getMyShift() {
-    this.driverService.getMyOT(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
+    this.driverService.getMyShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
       this.shift = myShift;
-      console.log(this.shiftDetails);
+      console.log(this.shift);
     });
   }
 }
