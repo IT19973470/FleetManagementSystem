@@ -163,7 +163,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
@@ -204,7 +204,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
         ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
-        applicationDTO.setPassengerApp(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTO.setPassengerApplication(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
         applicationDTOS.add(applicationDTO);
         return applicationDTOS;
     }
