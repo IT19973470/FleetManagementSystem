@@ -47,11 +47,25 @@ import {NavSecurityOfficerComponent} from './main/navbar/nav-security-officer/na
 import {TokenComponent} from './main/content/security-officer/token/token.component';
 import {UpdatePassengerDeliveryComponent} from "./main/content/transport-manager/view-passenger-delivery/update-passenger-delivery/update-passenger-delivery.component";
 import {DatePipe} from "@angular/common";
+
+
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
+
+
+
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
+//import { ItemPassengerDeliveryComponent } from './main/content/transport-manager/item-passenger-delivery/item-passenger-delivery.component';
+//import { ViewItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/view-item-passenger-delivery.component';
+//import { UpdateItemPassengerDeliveryComponent } from './main/content/transport-manager/view-item-passenger-delivery/update-item-passenger-delivery/update-item-passenger-delivery.component';
+//import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-td-trip-details.component';
+
 import {VipmemberComponent} from './main/content/vehicleDriver-manager/vipmember/vipmember.component';
 import {ViewVipmembersComponent} from './main/content/vehicleDriver-manager/view-vipmembers/view-vipmembers.component';
 import {UpdateVipmemberComponent} from './main/content/vehicleDriver-manager/update-vipmember/update-vipmember.component';
+
 import {NavBookingManagerComponent} from './main/navbar/nav-booking-manager/nav-booking-manager.component';
 import {UpdateDriverComponent} from './main/content/driver/driver-account/update-driver/update-driver.component';
+
 import {BookingsComponent} from './main/content/booking_management_clerk/bookings/bookings.component';
 import {ViewBookingsComponent} from './main/content/booking_management_clerk/view-bookings/view-bookings.component';
 import {ShiftComponent} from './main/content/booking_management_clerk/shift/shift.component';
@@ -82,10 +96,20 @@ import {TextValidatorDirective} from './_validator/text-validator.directive';
 import {TelephoneValidatorDirective} from "./_validator/telephone-validator.directive";
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
+
+import { SpecialBookingComponent } from './main/content/booking_management_clerk/special-booking/special-booking.component';
+import { ViewSpecialBookingComponent } from './main/content/booking_management_clerk/view-special-booking/view-special-booking.component';
+import { UpdateSpecialBookingComponent } from './main/content/booking_management_clerk/view-special-booking/update-special-booking/update-special-booking.component';
+import { VipBookingComponent } from './main/content/booking_management_clerk/vip-booking/vip-booking.component';
+import { ViewVipBookingComponent } from './main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component';
+import { UpdateVipBookingComponent } from './main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component';
+
+
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -218,13 +242,26 @@ const customNotifierOptions: NotifierOptions = {
     TelephoneValidatorDirective,
     UpdateUserAccountComponent,
     NavBookingManagerComponent,
+
+    UpdateUserAccountComponent,
+    SpecialBookingComponent,
+    ViewSpecialBookingComponent,
+    UpdateSpecialBookingComponent,
+    VipBookingComponent,
+    ViewVipBookingComponent,
+    UpdateVipBookingComponent,
+
     CompletedTripsComponent,
     UpdateUserAccountComponent,
     UpdateUserAccountComponent,
+
+
+
     VehiclePoolComponent,
     DeliveryStatusComponent,
     VehicleNumberValidatorDirective,
     AlertBoxComponent
+
   ],
 
   imports: [
