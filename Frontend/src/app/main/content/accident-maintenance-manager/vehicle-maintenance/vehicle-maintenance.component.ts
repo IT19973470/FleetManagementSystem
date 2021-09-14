@@ -14,11 +14,8 @@ export class VehicleMaintenanceComponent implements OnInit {
   @ViewChild('maintenanceDetailsForm', {static: true}) public maintenanceDetailsForm: NgForm;
   maintenanceDetail = {
     vehicleMaintenanceID: '1',
-    driverVehicle: {
-      driverVehicleID: {
-        //driverID: '',
-        vehicleId: ''
-      }
+    vehicle: {
+      vehicleId: ''
     },
     maintenanceType: '',
     maintenanceDate: '',
@@ -42,13 +39,13 @@ export class VehicleMaintenanceComponent implements OnInit {
     console.log(this.maintenanceDetail);
     this.maintenanceDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
     this.vehicleMaintenanceService.addMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
-      this.router.navigate(['/main/vehicle_maintenance_view'])
+      this.router.navigate(['/main/view_maintenance'])
     })
   }
 
   chkVehicle() {
-    if (this.maintenanceDetail.driverVehicle.driverVehicleID.vehicleId !== '') {
-      this.vehicleMaintenanceService.chkVehicle(this.maintenanceDetail.driverVehicle.driverVehicleID.vehicleId).subscribe((vehicle) => {
+    if (this.maintenanceDetail.vehicle.vehicleId !== '') {
+      this.vehicleMaintenanceService.chkVehicle(this.maintenanceDetail.vehicle.vehicleId).subscribe((vehicle) => {
         if (vehicle) {
           this.vehicleIsPresent = 1;
         } else {

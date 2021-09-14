@@ -13,6 +13,7 @@ public class VehicleMaintenanceDTO {
     private String companyName;
     private boolean maintenanceStatus;
     //private String vehicleID;
+    private VehicleDTO vehicle;
 
 
     public VehicleMaintenanceDTO(VehicleMaintenance vehicleMaintenance) {
@@ -67,6 +68,11 @@ public class VehicleMaintenanceDTO {
     }
 
 
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
 
-
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
 }

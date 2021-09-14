@@ -58,7 +58,7 @@ import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manag
 import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
 import {VehicleMaintenanceViewComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component";
 
-import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
+
 
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
@@ -66,6 +66,7 @@ import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
+import {UpdateMaintenanceDetailsComponent} from "./main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component";
 
 
 
@@ -305,9 +306,11 @@ const routes: Routes = [
 
         path: 'applicant_regestration',
         component: ApplicantRegestrationComponent
+      },
+      {
+        path: 'update_maintenance_details',
+        component: UpdateMaintenanceDetailsComponent
       }
-
-
 
     ]
   }

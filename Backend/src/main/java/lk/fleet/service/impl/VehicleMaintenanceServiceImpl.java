@@ -1,6 +1,7 @@
 package lk.fleet.service.impl;
 
 import lk.fleet.dto.VehicleAccidentDTO;
+import lk.fleet.dto.VehicleDTO;
 import lk.fleet.dto.VehicleMaintenanceDTO;
 import lk.fleet.entity.Vehicle;
 import lk.fleet.entity.VehicleAccident;
@@ -38,7 +39,7 @@ public class VehicleMaintenanceServiceImpl implements VehicleMaintenanceService 
     @Override
     public VehicleMaintenanceDTO updateVehicleMaintenance(String maintenanceID, VehicleMaintenance vehicleMaintenance) {
         Optional<VehicleMaintenance> optionalVehicleMaintenance = vehicleMaintenanceRepository.findById(maintenanceID);
-        if(optionalVehicleMaintenance.isPresent()){
+        if (optionalVehicleMaintenance.isPresent()) {
             VehicleMaintenance vehicleMaintenanceObj = optionalVehicleMaintenance.get();
             vehicleMaintenanceObj.setMaintenanceID(vehicleMaintenance.getMaintenanceID());
             vehicleMaintenanceObj.setMaintenanceDate(vehicleMaintenance.getMaintenanceDate());
@@ -61,7 +62,9 @@ public class VehicleMaintenanceServiceImpl implements VehicleMaintenanceService 
         List<VehicleMaintenance> vehicleMaintenances = vehicleMaintenanceRepository.findAll();
         List<VehicleMaintenanceDTO> vehicleMaintenanceDTOS = new ArrayList<>();
         for (VehicleMaintenance vehicleMaintenance : vehicleMaintenances) {
-            vehicleMaintenanceDTOS.add(new VehicleMaintenanceDTO(vehicleMaintenance));
+            VehicleMaintenanceDTO vehicleMaintenanceDTO = new VehicleMaintenanceDTO(vehicleMaintenance);
+            vehicleMaintenanceDTO.setVehicle(new VehicleDTO(vehicleMaintenance.getVehicle()));
+            vehicleMaintenanceDTOS.add(vehicleMaintenanceDTO);
         }
         return vehicleMaintenanceDTOS;
     }
@@ -71,4 +74,12 @@ public class VehicleMaintenanceServiceImpl implements VehicleMaintenanceService 
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
         return optionalVehicle.isPresent();
     }
+
+//    @Override
+//    public List<VehicleMaintenanceDTO> getMaintenanceById(String vehicleID) {
+//       VehicleMaintenance MaintenanceById = vehicleAccidentRepository.getAccidentById(vehicleID);
+//        List<VehicleAccidentDTO> vehicleAccidentDTOS=new ArrayList<>();
+//        vehicleAccidentDTOS.add(new VehicleAccidentDTO(MaintenanceById));
+//        return vehicleAccidentDTOS;
+//    }
 }

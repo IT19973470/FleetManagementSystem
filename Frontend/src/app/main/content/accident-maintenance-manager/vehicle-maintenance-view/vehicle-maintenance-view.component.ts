@@ -32,7 +32,17 @@ export class VehicleMaintenanceViewComponent implements OnInit {
   getVehicleMaintenance() {
     this.vehicleMaintenanceService.getVehicleMaintenance().subscribe((vehicleMaintenanceDetails) => {
       this.vehicleMaintenanceDetails = vehicleMaintenanceDetails;
-      //console.log(this.vehicleAccident)
+      // console.log(this.vehicleMaintenanceDetails)
+    })
+  }
+
+
+  removeMaintenance(maintenanceID, tblIndex) {
+    this.vehicleMaintenanceService.deleteVehicleMaintenance(maintenanceID).subscribe((reply) => {
+      if (reply) {
+        this.vehicleMaintenanceDetails.splice(tblIndex, 1);
+        // this.router.navigate(['/main/arrival_departure_page'])
+      }
     })
   }
 

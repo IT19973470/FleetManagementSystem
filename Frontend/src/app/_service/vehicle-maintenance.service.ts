@@ -28,12 +28,17 @@ export class VehicleMaintenanceService {
 
   //update
   updateVehicleMaintenance(maintenanceDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/maintenance/updateVehicleMaintenance/" + maintenanceDetail.vehicleMaintenanceID, maintenanceDetail);
+    return this.http.put<any>(environment.backend_url + "/maintenance/updateVehicleMaintenance/" + maintenanceDetail.maintenanceID, maintenanceDetail);
+  }
+
+  //delete
+  deleteVehicleMaintenance(vehicleMaintenanceID): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/maintenance/deleteVehicleMaintenance/" +vehicleMaintenanceID);
   }
 
   //get maintenance ID
   getMaintenanceById(vehicleAccidentID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/maintenancet/getAccidentById/" + vehicleAccidentID);
+    return this.http.get<any>(environment.backend_url + "/maintenance/getAccidentById/" + vehicleAccidentID);
   }
 
 

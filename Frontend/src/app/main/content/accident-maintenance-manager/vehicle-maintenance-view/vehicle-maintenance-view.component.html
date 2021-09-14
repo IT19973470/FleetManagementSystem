@@ -34,7 +34,7 @@
         <tr *ngFor="let vehicleMaintenance of vehicleMaintenanceDetails; let i = index">
           <th scope="row">{{i+1}}</th>
           <td>{{vehicleMaintenance.maintenanceID}}</td>
-          <td>{{vehicleMaintenance.vehicleID}}</td>
+          <td>{{vehicleMaintenance.vehicle.vehicleId}}</td>
           <td>{{vehicleMaintenance.maintenanceType}}</td>
           <td>{{vehicleMaintenance.maintenanceDate}}</td>
           <td>{{vehicleMaintenance.companyName}}</td>
@@ -44,9 +44,9 @@
             <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicleMaintenance)"></i>
           </td>
 
-<!--          <td style="text-align: center" >-->
-<!--            <i class="fas fa-trash" style="cursor: pointer"  (click)="goToUpdate(vehicleMaintenance.vehicleMaintenanceID,i)" ></i>-->
-<!--          </td>-->
+          <td style="text-align: center" >
+            <i class="fas fa-trash" style="cursor: pointer"  (click)="removeMaintenance(vehicleMaintenance.maintenanceID,i)" ></i>
+          </td>
 
         </tr>
         </tbody>

@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {VehicleMaintenanceService} from "../../../../_service/vehicle-maintenance.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-maintenance-details',
@@ -10,24 +12,27 @@ export class UpdateMaintenanceDetailsComponent implements OnInit {
 
   @ViewChild('maintenanceDetailsForm', {static: true}) public maintenanceDetailsForm: NgForm;
   maintenanceDetail = {
-    vehicleID: '',
+    vehicle: {
+      vehicleId: '',
+    },
     vehicleMaintenanceID: '1',
     maintenanceDate: '',
     maintenanceType: '',
     maintenanceStatus: '',
   };
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private vehicleMaintenanceService: VehicleMaintenanceService, private router: Router) {
   }
 
-  // addMaintenance() {
-  //   console.log(this.maintenanceDetail);
-  //   this.maintenanceDetail.accidentTime = this.maintenanceDetail.accidentTimeActual;
-  //   this.vehicleMaintenanceService.updateVehicleMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
-  //     this.router.navigate(['/main/vehicle_accident_view'])
-  //   })
-  // }
+  ngOnInit(): void {
+    this.maintenanceDetail = this.vehicleMaintenanceService.maintenance;
+    console.log(this.maintenanceDetail)
+  }
+
+  addMaintenance() {
+    this.vehicleMaintenanceService.updateVehicleMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
+      this.router.navigate(['/main/view_maintenance'])
+    })
+  }
 
 }

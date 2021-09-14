@@ -46,7 +46,7 @@ export class VehicleAccidentViewComponent implements OnInit {
     this.vehicleAccidentService.deleteAccident(vehicleAccidentID).subscribe((reply) => {
       if (reply) {
         this.vehicleAccidentDetails.splice(tblIndex, 1);
-        // this.router.navigate(['/main/arrival_departure_page'])
+
       }
     })
   }

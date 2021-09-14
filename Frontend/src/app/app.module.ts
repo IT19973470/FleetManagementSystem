@@ -74,13 +74,13 @@ import {UpdateAccidentDetailsComponent} from './main/content/accident-maintenanc
 
 import {VehicleMaintenanceViewComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component';
 import {UpdateOverTimeComponent} from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
-import {UpdateDriverComponent} from './main/content/Driver/driver-account/update-driver/update-driver.component';
+
 
 import {VehiclePoolComponent} from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 // import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 import {ApplicantRegestrationComponent} from './applicant-regestration/applicant-regestration.component';
-import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
+
 
 import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {ViewPassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component';
@@ -206,16 +206,16 @@ const customNotifierOptions: NotifierOptions = {
     UpdatePassengerItemDeliveryComponent,
     UpdateAccidentDetailsComponent,
     VehiclePoolComponent,
-    UpdateUserAccountComponent,
+   // UpdateUserAccountComponent,
     UpdateDriverComponent,
     TvProgramComponent,
     UpdateOverTimeComponent,
-    UpdateUserAccountComponent,
+   // UpdateUserAccountComponent,
 
     VehicleMaintenanceViewComponent,
 
     ApplicantRegestrationComponent,
-    UpdateUserAccountComponent,
+    //UpdateUserAccountComponent,
     NavBookingManagerComponent,
 
     EmailValidatorDirective,
@@ -229,8 +229,8 @@ const customNotifierOptions: NotifierOptions = {
 
     CompletedTripsComponent,
     DeliveryStatusComponent,
-    UpdateUserAccountComponent,
-    UpdateUserAccountComponent,
+    //UpdateUserAccountComponent,
+    //UpdateUserAccountComponent,
 
   ],
 

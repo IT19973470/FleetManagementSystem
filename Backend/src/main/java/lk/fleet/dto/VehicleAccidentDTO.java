@@ -24,6 +24,7 @@ public class VehicleAccidentDTO {
             this.accidentTimeActual = vehicleAccident.getAccidentTime().format(DateTimeFormatter.ofPattern("HH:mm"));
             this.insuranceNo = vehicleAccident.getInsuranceNo();
             this.insuranceStatus = vehicleAccident.isInsuranceStatus();
+            
         }
     }
 
