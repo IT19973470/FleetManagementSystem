@@ -3,7 +3,9 @@ package lk.fleet.controller;
 import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.PassengerDTO;
 import lk.fleet.entity.Booking;
+import lk.fleet.entity.BookingApplication;
 import lk.fleet.entity.Shift;
+import lk.fleet.entity.SpecialBooking;
 import lk.fleet.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,11 @@ public class BookingController {
     public ResponseEntity addBooking(@RequestBody Booking booking){
         return ResponseEntity.ok(bookingService.addBooking(booking));
     }
+//    @PostMapping(value = "/addBooking")
+//    public ResponseEntity addBooking(@RequestBody BookingApplication bookingApplication){
+//        return ResponseEntity.ok(bookingService.addBooking(bookingApplication));
+//    }
+
 
     @PutMapping(value = "/updateBooking/{bookingId}")
     public ResponseEntity updateBooking(@PathVariable String bookingId, @RequestBody Booking booking){
@@ -39,15 +46,27 @@ public class BookingController {
     public ResponseEntity getAllBookings() {
         return ResponseEntity.ok(bookingService.getAllBookings());
     }
+
 //    @GetMapping(value = "/getBookings")
 //    public ResponseEntity getBookings() {
 //        return ResponseEntity.ok(bookingService.getBookings());
 //    }
 
+
     @GetMapping(value = "/getBookings")
     public List<BookingDTO> getBookings(){
         return bookingService.getBookings();
     }
+
+    @GetMapping(value = "/getBookingsByBookingId/{bookingId}")
+    public ResponseEntity getBookingsByBookingId(@PathVariable String bookingId) {
+        return ResponseEntity.ok(bookingService.getBookingsByBookingId(bookingId));
+    }
+
+//    @GetMapping(value = "/getBookingsByBookingManagementClerkId/{bookingManagementClerkId}")
+//    public ResponseEntity getBookingsByBookingManagementClerkId(@PathVariable String bookingManagementClerkId) {
+//        return ResponseEntity.ok(bookingService.getBookingsByBookingManagementClerkId(bookingManagementClerkId));
+//    }
 
 
     @PostMapping(value = "/addDriverShift")
@@ -81,6 +100,16 @@ public class BookingController {
 
     }
 
+    @GetMapping(value = "/getDriverShiftsByVehicleType/{vehicleType}")
+    public ResponseEntity getDriverShiftsByVehicleId(@PathVariable String vehicleType) {
+        return ResponseEntity.ok(bookingService.getDriverShiftsByVehicleType(vehicleType));
+
+    }
+
+
+
+
+
     //security officer
     @GetMapping(value = "/getBookingByDestination/{destination}")
     public ResponseEntity getBookingByDestination(@PathVariable String destination) {
@@ -88,3 +117,4 @@ public class BookingController {
     }
 
 }
+

@@ -35,7 +35,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
-    @Autowired BookingApplicationRepository bookingApplicationRepository;
+    @Autowired
+    BookingApplicationRepository bookingApplicationRepository;
 
 
     @Override
@@ -46,7 +47,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         userAccount.setApproved(true);
         return new UserAccountDTO(userAccountRepository.save(userAccount));
     }
-
 
     @Override
     public TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager) {
@@ -95,7 +95,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 
     @Override
-
     public Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager) {
         if (accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
@@ -111,6 +110,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     }
 
+    @Override
     public SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer) {
         if (securityOfficer.getUserAccount().getAccountType().equals("Security Officer")) {
             securityOfficer.setSecurityOfficerID(securityOfficer.getUserAccount().getEmployeeID());
@@ -123,7 +123,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return new SecurityOfficerDTO(securityOfficer, new UserAccountDTO(securityOfficer.getUserAccount()));
     }
 
-
+    @Override
     public UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount) {
 
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
@@ -163,7 +163,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
@@ -198,18 +198,28 @@ public class UserAccountServiceImpl implements UserAccountService {
         return null;
     }
 
+    @Override
+    public List<ApplicationDTO> getTransportByID(String applicationID) {
+        Application applicationByID = applicationRepository.getAapplicationByID(applicationID);
 
-//    @Override
-//    public List<PassengerApplicationDTO> getTransport() {
-//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
-//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
-//        for(BookingApplication bookingApplication: bookingApplications){
-//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
-//        }
-//
-//        return passengerApplicationDTOS;
-//    }
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
+        applicationDTO.setPassengerApplication(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTOS.add(applicationDTO);
+        return applicationDTOS;
+    }
 
+
+    @Override
+    public List<ApplicationDTO> getAllTransports() {
+        List<Application> applications = applicationRepository.findAll();
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+
+        for (Application application : applications) {
+            applicationDTOS.add(new ApplicationDTO(application));
+        }
+        return applicationDTOS;
+    }
 
     @Override
     public List<UserAccountDTO> getUserAccounts() {
@@ -240,6 +250,17 @@ public class UserAccountServiceImpl implements UserAccountService {
         UserAccount userAccountObj = userAccountRepository.findAllByEmailAndPasswordAndApproved(userAccount.getEmail(), userAccount.getPassword(), true);
         return new UserAccountDTO(userAccountObj);
     }
+
+//    @Override
+//    public List<PassengerApplicationDTO> getTransport() {
+//        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
+//        List<PassengerApplicationDTO> passengerApplicationDTOS=new ArrayList<>();
+//        for(BookingApplication bookingApplication: bookingApplications){
+//            passengerApplicationDTOS.add(new PassengerApplicationDTO(bookingApplication));
+//        }
+//
+//        return passengerApplicationDTOS;
+//    }
 
 
 //    @Override

@@ -9,26 +9,28 @@ import java.time.format.DateTimeFormatter;
 public class BookingDTO {
 
     private String bookingId;
-    private LocalDateTime bookingDateTime;
+    private String bookingDate;
+    private String bookingTime;
+    private String bookingTimeActual;
     private String destination;
     private boolean bookingStatus;
     private VehicleDTO vehicle;
     private DriverDTO driver;
-    //private TokenDTO tokenDetail;
+    private TokenDTO token;
 
     public BookingDTO(Booking booking) {
-        if(booking != null) {
+        if (booking != null) {
             this.bookingId = booking.getBookingId();
-            this.bookingDateTime =booking.getBookingDateTime();
+            if (booking.getBookingDateTime() != null) {
+                this.bookingDate = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                this.bookingTime = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("hh:mm a"));
+                this.bookingTimeActual = booking.getBookingDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            }
             this.destination = booking.getDestination();
             this.bookingStatus = booking.isBookingStatus();
         }
     }
 
-//    public BookingDTO(Booking booking, TokenDTO tokenDetail) {
-//        this(booking);
-//        this.tokenDetail = tokenDetail;
-//    }
 
     public String getBookingId() {
         return bookingId;
@@ -38,12 +40,28 @@ public class BookingDTO {
         this.bookingId = bookingId;
     }
 
-    public LocalDateTime getBookingDateTime() {
-        return bookingDateTime;
+    public String getBookingDate() {
+        return bookingDate;
     }
 
-    public void setBookingDateTime(LocalDateTime bookingDateTime) {
-        this.bookingDateTime = bookingDateTime;
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public String getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime;
+    }
+
+    public String getBookingTimeActual() {
+        return bookingTimeActual;
+    }
+
+    public void setBookingTimeActual(String bookingTimeActual) {
+        this.bookingTimeActual = bookingTimeActual;
     }
 
     public String getDestination() {
@@ -77,4 +95,17 @@ public class BookingDTO {
     public void setDriver(DriverDTO driver) {
         this.driver = driver;
     }
+
+    public TokenDTO getToken() {
+        return token;
+    }
+
+    public void setToken(TokenDTO token) {
+        this.token = token;
+    }
 }
+
+
+
+
+

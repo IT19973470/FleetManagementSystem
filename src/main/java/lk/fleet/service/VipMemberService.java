@@ -21,5 +21,5 @@ public interface VipMemberService {
     List<VipMemberDTO> getAllVipMembers();
 
 
-
+    List getVipMemberByNumber(String vipMemberNo);
 }

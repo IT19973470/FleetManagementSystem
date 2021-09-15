@@ -1,6 +1,8 @@
 package lk.fleet.entity;
 
 
+import lk.fleet.dto.BookingDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;

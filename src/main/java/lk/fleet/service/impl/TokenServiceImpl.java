@@ -1,8 +1,9 @@
 package lk.fleet.service.impl;
 
 
-import lk.fleet.dto.MeterDetailDTO;
-import lk.fleet.dto.TokenDTO;
+import lk.fleet.dto.*;
+import lk.fleet.entity.Booking;
+import lk.fleet.entity.DriverVehicle;
 import lk.fleet.entity.Token;
 import lk.fleet.repository.TokenRepository;
 import lk.fleet.service.TokenService;
@@ -25,7 +26,7 @@ public class TokenServiceImpl implements TokenService {
     public TokenDTO addToken(Token token) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
         token.setTokenID("TK" + dateTime);
-        token.getTokenID();
+//        token.getTokenID();
         return new TokenDTO(tokenRepository.save(token));
     }
 
@@ -49,7 +50,6 @@ public class TokenServiceImpl implements TokenService {
         return true;
     }
 
-
     @Override
     public List<TokenDTO> getAllTokens() {
         List<Token> tokens = tokenRepository.getNotCompletedTokens();
@@ -64,7 +64,12 @@ public class TokenServiceImpl implements TokenService {
         List<Token> tokens = tokenRepository.getAllCompletedTokens();
         List<TokenDTO> tokenDTOS = new ArrayList<>();
         for (Token token : tokens) {
-            tokenDTOS.add(new TokenDTO(token, new MeterDetailDTO(token.getMeterDetail())));
+            TokenDTO tokenDTO = new TokenDTO(token, new MeterDetailDTO(token.getMeterDetail()));
+            DriverVehicle driverVehicle = token.getBooking().getShift().getDriverVehicle();
+            tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
+            tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+            tokenDTO.setBooking(new BookingDTO(token.getBooking()));
+            tokenDTOS.add(tokenDTO);
         }
         return tokenDTOS;
     }
@@ -72,7 +77,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public List<TokenDTO> getTokenByID(String tokenID) {
         Token TokenByID = tokenRepository.getTokenByID(tokenID);
-        List<TokenDTO> tokenDTOS=new ArrayList<>();
+        List<TokenDTO> tokenDTOS = new ArrayList<>();
         tokenDTOS.add(new TokenDTO(TokenByID, new MeterDetailDTO(TokenByID.getMeterDetail())));
         return tokenDTOS;
     }
