@@ -1,7 +1,6 @@
 package lk.fleet.controller;
 
 import lk.fleet.dto.ApplicationDTO;
-import lk.fleet.dto.PassengerApplicationDTO;
 import lk.fleet.entity.*;
 import lk.fleet.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +50,18 @@ public class UserAccountController {
 
     }
 
+    @PutMapping(value = "/updateUserAccount/{employeeID}")
+    public ResponseEntity updateUserAccount(@PathVariable String employeeID, @RequestBody UserAccount userAccount) {
+        return ResponseEntity.ok(userAccountService.updateUserAccount(employeeID, userAccount));
+    }
+
+
+
     @PostMapping(value = "/login")
     public ResponseEntity login(@RequestBody UserAccount userAccount) {
         return ResponseEntity.ok(userAccountService.login(userAccount));
     }
 
-    @PutMapping(value = "/updateUserAccount/{employeeID}")
-    public ResponseEntity updateUserAccount(@PathVariable String employeeID, @RequestBody UserAccount userAccount) {
-        return ResponseEntity.ok(userAccountService.updateUserAccount(employeeID, userAccount));
-    }
 
     @DeleteMapping(value = "/deleteUserAccount/{employeeID}")
     public ResponseEntity deleteUserAccount(@PathVariable String employeeID) {

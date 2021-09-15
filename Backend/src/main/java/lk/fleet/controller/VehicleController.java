@@ -43,6 +43,7 @@ public class VehicleController {
     public ResponseEntity fualUpdate(@PathVariable String vehicleID, @PathVariable Vehicle vehicle) {
         return ResponseEntity.ok(vehicleService.fualUpdate(vehicleID, vehicle));
     }
+
     //SecurityOfficer
     @PutMapping(value = "/updateVehicleAvailability/{vehicleID}")
     public ResponseEntity updateVehicleAvailability(@PathVariable String vehicleID, @RequestBody Vehicle vehicle) {
@@ -52,6 +53,5 @@ public class VehicleController {
     @GetMapping(value = "/getVehicleByNumber/{vehicleNumber}")
     public ResponseEntity getVehicleByNumber(@PathVariable String vehicleNumber) {
         return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleNumber));
-
     }
 }
