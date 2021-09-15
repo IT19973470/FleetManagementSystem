@@ -84,6 +84,22 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
+            Email Address (Opt.) :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.emailAddress"
+                   #emailAddress="ngModel"
+                   name="emailAddress" appEmailValidator>
+            <div *ngIf="(emailAddress.dirty) && emailAddress.errors?.emailInvalid"
+                 class="validErr">
+              Invalid Email Address
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
             Address :
           </div>
           <div class="col-8">

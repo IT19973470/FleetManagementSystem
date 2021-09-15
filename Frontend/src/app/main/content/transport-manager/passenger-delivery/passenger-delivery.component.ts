@@ -19,6 +19,7 @@ export class PassengerDeliveryComponent implements OnInit {
     deliveryPersonNic: '',
     contactNumber: '',
     vehicleNumber: '',
+    emailAddress: '',
     address: '',
     companyName: '',
     deliveryDate: '',
