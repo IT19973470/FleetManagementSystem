@@ -35,6 +35,15 @@ public interface ApplicationPassengerService {
     ApplicationDTO getPassengerApp(String ID);
 
     //UserAccount addApplicant(UserAccount userAccount);
-    boolean deletePassengerApp(String passengerApplicationID, String passengerID);
+    ApplicationDTO getItemApp(String ID);
 
+    ItemItemApplication itemApplication(String itemID, String itemApplicationID, Item item);
+
+    boolean deleteItemApp(String itemApplicationID, String itemID);
+
+    Item updateItem(String itemID, Item item);
+
+    List<Item> getAllItem();
+
+    boolean deletePassengerApp(String passengerApplicationID, String passengerID);
 }
