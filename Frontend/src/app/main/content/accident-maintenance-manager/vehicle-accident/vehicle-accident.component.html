@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Accident Details</span>
@@ -14,12 +15,16 @@
           <div class="col-8">
             <input type="text" class="form-control"
                    [(ngModel)]="accidentDetail.driverVehicle.driverVehicleID.vehicleId"
-                   (focusout)="chkVehicle();chkDriver()"
                    #vehicleID="ngModel"
-                   name="vehicleID" required>
+                   name="vehicleID" required appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
             <div *ngIf="(vehicleID.touched || accidentDetailsForm.submitted) && vehicleID.errors?.required"
                  class="validErr">
               Vehicle ID is required
+            </div>
+            <div *ngIf="(vehicleID.dirty) && vehicleID.errors?.vehicleNumberInvalid"
+                 class="validErr">
+              Invalid Vehicle ID
             </div>
             <div class="validErr" *ngIf="vehicleIsPresent===2" style="color: red">
               Vehicle cannot be found
@@ -37,12 +42,16 @@
           <div class="col-8">
             <input type="text" class="form-control"
                    [(ngModel)]="accidentDetail.driverVehicle.driverVehicleID.driverID"
-                   (focusout)="chkDriver();chkVehicle()"
                    #driverID="ngModel"
-                   name="driverID" required>
+                   name="driverID" required appEmployeeIdValidator
+                   placeholder="Eg: [ 12345 ]">
             <div *ngIf="(driverID.touched || accidentDetailsForm.submitted) && driverID.errors?.required"
                  class="validErr">
               Driver ID is required
+            </div>
+            <div *ngIf="(driverID.dirty) && driverID.errors?.employeeIdInvalid"
+                 class="validErr">
+              Invalid Driver ID
             </div>
             <div class="validErr" *ngIf="driverIsPresent===2" style="color: red">
               Driver Vehicle cannot be found
@@ -61,6 +70,8 @@
             <input type="date" class="form-control"
                    [(ngModel)]="accidentDetail.accidentDate"
                    #accidentDate="ngModel"
+                   min="{{getMinDate()}}"
+                   max="{{getMaxDate()}}"
                    name="accidentDate" required>
             <div *ngIf="(accidentDate.touched || accidentDetailsForm.submitted) && accidentDate.errors?.required"
                  class="validErr">
@@ -124,7 +135,8 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px;">
           <div class="col-12" style="text-align: right">
-            <button [disabled]="vehicleIsPresent!==1 || driverIsPresent!==1" type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Details</button>
+<!--            <button [disabled]="vehicleIsPresent!==1 || driverIsPresent!==1" type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Details</button>-->
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Details</button>
           </div>
         </div>
       </div>

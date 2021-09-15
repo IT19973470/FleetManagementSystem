@@ -12,9 +12,6 @@ export class EmployeeIdValidatorDirective {
     if (control.value != undefined) {
       if (control.value.length == 0 || TEXT_REGEX.test(control.value)) {
         return null;
-      } else {
-        control.setValue(control.value.substr(0, control.value.length - 1))
-        return null;
       }
     } else {
       return null;

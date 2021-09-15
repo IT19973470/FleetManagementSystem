@@ -99,23 +99,13 @@ export class UpdateVipBookingComponent implements OnInit {
   })
 }
 
+  getMinDate() {
+    return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+  getMinimumDate(){
+    return this.bookingManagerService.getCurDate();
+  }
+
 }
 
 
-//
-// removeSpecialBooking() {
-//   this.alertBox.alert = true;
-//   this.alertBox.msg = 'Do you want to delete this special booking?';
-//   this.alertService.reply.observers = [];
-//   this.alertService.reply.subscribe(reply => {
-//     if (reply) {
-//       this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
-//         if (reply) {
-//           this.notifierService.notify("success", "Special Booking deleted successfully");
-//           this.router.navigate(['/main/view_special_booking'])
-//         }
-//       })
-//     }
-//     this.alertBox.alert = false;
-//   })
-// }

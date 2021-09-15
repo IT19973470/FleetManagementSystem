@@ -44,6 +44,7 @@
                 <input type="date" class="form-control"
                        [(ngModel)]="vipBooking.booking.bookingDate"
                        #bookingDate="ngModel"
+                       min="{{getMinDate()}}"
                        name="bookingDate" required>
                 <div *ngIf="(bookingDate.touched ||vipBookingForm.submitted) && bookingDate.errors?.required"
                      class="validErr">

@@ -4,6 +4,7 @@ import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-m
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 
 @Component({
@@ -18,11 +19,11 @@ export class UpdateVehicleComponent implements OnInit {
     vehicleId: '',
     vehicleType: '',
     model: '',
-    noOfSeats: '',
-    initialMeter: '',
-    serviceMeter: '',
-    fuelBalance: '',
-    fuelConsumption: '',
+    noOfSeats: 0,
+    initialMeter: 0,
+    serviceMeter: 0,
+    fuelBalance: 0,
+    fuelConsumption: 0,
     occupied: '',
     fuelType: ''
   };
@@ -34,7 +35,7 @@ export class UpdateVehicleComponent implements OnInit {
 
 
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router, private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,private commonService: CommonService) {
 
 
   }
@@ -65,10 +66,18 @@ export class UpdateVehicleComponent implements OnInit {
   }
 
   removeVehicle() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this vehicle detail?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
     this.vehicleDriverManagerService.deleteVehicle(this.vehicleDetail.vehicleId).subscribe((reply) => {
       if (reply) {
         this.router.navigate(['/main/view_vehicles'])
       }
+    })
+      }
+      this.alertBox.alert = false;
     })
   }
 
@@ -91,5 +100,8 @@ export class UpdateVehicleComponent implements OnInit {
   //     occupied: ''
   //   };
   // }
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
 }
 

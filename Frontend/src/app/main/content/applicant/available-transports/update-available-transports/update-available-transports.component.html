@@ -1,6 +1,7 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Item Delivery</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Passenger Transports</span>
   </div>
 
   <div style="display: flex;margin-top: 50px">
@@ -67,10 +68,16 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
                    #depatureDate1="ngModel"
+                   min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="depatureDate" required>
             <div *ngIf="(depatureDate1.touched || deliveryForm.submitted) && depatureDate1.errors?.required"
                  class="validErr">
               Depature Date is required
+            </div>
+            <div *ngIf="(this.dep==1)"
+                 class="validErr" style="color:red">
+              Depature Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -83,6 +90,8 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
                    #arrivaleDate1="ngModel"
+                   min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="deliveryDate" required>
             <div *ngIf="(arrivaleDate1.touched || deliveryForm.submitted) && arrivaleDate1.errors?.required"
                  class="validErr">
@@ -111,8 +120,8 @@
 
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-          <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold">Update Form
+          <div *ngIf="viewUpdete===true" class="col-12" style="text-align: right">
+            <button   type="submit" class="btn btn-success" style="font-weight: bold">Update Form
             </button>
           </div>
         </div>
@@ -136,11 +145,11 @@
                        #passengerId="ngModel"
                        (keyup)="chkPassengerId()"
                        name="passengerType" required>
-                <div *ngIf="(flag===1)"
+                <div *ngIf="(flag===false)"
                      class="validErr" style="color:red">
                   Passenger ID is Not Found
                 </div>
-                <div *ngIf="(flag===0)"
+                <div *ngIf="(flag===true)"
                      class="validErr" style="color:green">
                   Passenger ID Found
                 </div>

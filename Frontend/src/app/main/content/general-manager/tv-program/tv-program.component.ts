@@ -4,6 +4,7 @@ import {GeneralManagerService} from "../../../../_service/general-manager.servic
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-tv-program',
@@ -18,7 +19,7 @@ export class TvProgramComponent implements OnInit {
     programName: '',
     startingDate: '',
     endingDate: '',
-    transportCost: '',
+    transportCost: 0,
     producer: '',
 
   };
@@ -38,7 +39,8 @@ export class TvProgramComponent implements OnInit {
   constructor(private generalManagerService: GeneralManagerService,
               private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService
+              private alertService: AlertBoxService,
+              private commonService: CommonService
   ) {
     this.program = this.getNewProgram();
   }
@@ -142,12 +144,16 @@ export class TvProgramComponent implements OnInit {
       programName: '',
       startingDate: '',
       endingDate: '',
-      transportCost: '',
+      transportCost: 0,
       producer: ''
     };
   }
 
   setNewForm() {
     this.tvProgramForm.resetForm();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 }

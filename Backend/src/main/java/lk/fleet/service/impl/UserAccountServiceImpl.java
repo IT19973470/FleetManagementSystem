@@ -48,7 +48,6 @@ public class UserAccountServiceImpl implements UserAccountService {
         return new UserAccountDTO(userAccountRepository.save(userAccount));
     }
 
-
     @Override
     public TransportManagerDTO addTransportManagerUserAccount(TransportManager transportManager) {
         // LocalDateTime localDateTime = LocalDateTime.now();//current date
@@ -96,7 +95,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 
     @Override
-
     public Object addAccidentMaintenanceManagerUserAccount(AccidentMaintenanceManager accidentMaintenanceManager) {
         if (accidentMaintenanceManager.getUserAccount().getAccountType().equals("Accident and Maintenance Clerk")) {
             // vehicleDriverManagementClerk.setVehicleDriverManagementId("VMC" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
@@ -112,6 +110,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     }
 
+    @Override
     public SecurityOfficerDTO addSecurityOfficerUserAccount(SecurityOfficer securityOfficer) {
         if (securityOfficer.getUserAccount().getAccountType().equals("Security Officer")) {
             securityOfficer.setSecurityOfficerID(securityOfficer.getUserAccount().getEmployeeID());
@@ -124,7 +123,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return new SecurityOfficerDTO(securityOfficer, new UserAccountDTO(securityOfficer.getUserAccount()));
     }
 
-
+    @Override
     public UserAccountDTO updateUserAccount(String employeeID, UserAccount userAccount) {
 
         Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);

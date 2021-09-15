@@ -67,7 +67,8 @@ this.type="password"
     this.btn=true
   }
 
-
-
+  getMinDate() {
+    return this.applicant.getCurDate();
+  }
 
 }
