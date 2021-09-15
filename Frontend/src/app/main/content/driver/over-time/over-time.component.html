@@ -15,6 +15,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="addOT.otDate"
                    #otDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="otDate" required>
             <div *ngIf="(otDate.touched || otForm.submitted) && otDate.errors?.required"
                  class="validErr">
@@ -60,7 +61,9 @@
             No of Shifts :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
+                   [(ngModel)]="addOT.noOfShifts"
+                   (focusout)="addOT.noOfShifts = setNumberPositive(addOT.noOfShifts)"
                    [(ngModel)]="addOT.noOfShifts"
                    #noOfShifts="ngModel"
                    name="noOfShifts" required>

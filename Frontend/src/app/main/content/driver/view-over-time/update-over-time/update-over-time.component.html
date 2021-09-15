@@ -60,8 +60,9 @@
             No of Shifts :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
                    [(ngModel)]="OT.noOfShifts"
+                   (focusout)="OT.noOfShifts = setNumberPositive(OT.noOfShifts)"
                    #noOfShifts="ngModel"
                    name="noOfShifts" required>
             <div *ngIf="(noOfShifts.touched || otForm.submitted) && noOfShifts.errors?.required"

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DriverService} from "../../../../_service/driver.service";
 import {Router} from "@angular/router";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-over-time',
@@ -12,7 +13,7 @@ export class OverTimeComponent implements OnInit {
   addOT = {
     overTimeID: '',
     otDate: '',
-    noOfShifts: '',
+    noOfShifts: 0,
     startTime: '',
     endTime: '',
     driver: {
@@ -20,7 +21,7 @@ export class OverTimeComponent implements OnInit {
     }
   };
 
-  constructor(private driverService: DriverService, private router: Router) {
+  constructor(private driverService: DriverService, private router: Router,    private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -32,6 +33,20 @@ export class OverTimeComponent implements OnInit {
     this.driverService.addOT(this.addOT).subscribe((addOT) => {
       this.router.navigate(['main/view_over_time']);
     })
+  }
+
+  getMinDate() {
+    return this.driverService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    if (val < 0) {
+      return val * -1;
+    } else if (val === 0) {
+      return 1;
+    } else {
+      return val;
+    }
   }
 
 }
