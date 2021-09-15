@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class TransportRequestsComponent implements OnInit {
 
-   transportDetails = [];
+  transportDetails = [];
 
   isModalTable = {
     text: '',

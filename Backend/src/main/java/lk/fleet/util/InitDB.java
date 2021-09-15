@@ -27,6 +27,7 @@ public class InitDB {
             userAccount.setContactNo("0764105422");
             userAccount.setDob(LocalDate.parse("1995-08-12"));
             userAccount.setNic("956742089V");
+            userAccount.setAddress("Bandarwela");
             userAccount.setRegisteredDate(LocalDate.now());
             userAccount.setPassword("admin");
             userAccount.setApproved(true);
