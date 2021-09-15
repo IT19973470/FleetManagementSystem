@@ -19,6 +19,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
+    vehicleNumber: '',
     address: '',
     companyName: '',
     deliveryDate: '',
@@ -193,6 +194,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
         this.transportManagerService.deletePassengerOnDelivery(passengerDetailId).subscribe((reply) => {
           if (reply) {
             this.deliveryDetail.deliveryPassengerDetails.splice(i, 1)
+            this.notifierService.notify("success", "Passenger deleted successfully");
           }
         })
       }
@@ -209,6 +211,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
         this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
           if (reply) {
             this.deliveryDetail.deliveryItemDetails.splice(i, 1)
+            this.notifierService.notify("success", "Item deleted successfully");
           }
         })
       }
@@ -234,6 +237,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
 
   setItem(item, i) {
     this.tblIndexItem = i;
+    this.item.itemDetailId = item.itemDetailId;
     this.item.itemName = item.itemName;
     this.item.itemType = item.itemType;
     this.item.itemQty = item.itemQty;
@@ -242,6 +246,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
 
   setPassenger(passenger, i) {
     this.tblIndexPassenger = i;
+    this.passenger.passengerDetailId = passenger.passengerDetailId;
     this.passenger.passengerName = passenger.passengerName;
     this.passenger.passengerNic = passenger.passengerNic;
     this.passenger.contactNumber = passenger.contactNumber;
@@ -263,18 +268,30 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
 
   getNewItem() {
     return {
+      itemDetailId: '',
       itemName: '',
       itemType: '',
-      itemQty: 1
+      itemQty: 1,
+      delivery: {
+        deliveryId: ''
+      }
     };
   }
 
   getNewPassenger() {
     return {
+      passengerDetailId: '',
       passengerName: '',
       passengerNic: '',
       contactNumber: '',
-      passengerType: ''
+      passengerType: '',
+      delivery: {
+        deliveryId: ''
+      }
     };
+  }
+
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
   }
 }

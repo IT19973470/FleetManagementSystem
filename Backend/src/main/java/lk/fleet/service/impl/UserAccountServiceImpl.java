@@ -35,7 +35,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
-    @Autowired BookingApplicationRepository bookingApplicationRepository;
+    @Autowired
+    BookingApplicationRepository bookingApplicationRepository;
 
 
     @Override
@@ -163,7 +164,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setPassengerApplicationDTO(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
 
@@ -200,11 +201,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public List<ApplicationDTO> getTransportByID(String applicationID) {
-       Application applicationByID = applicationRepository.getAapplicationByID(applicationID);
+        Application applicationByID = applicationRepository.getAapplicationByID(applicationID);
 
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
         ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
-        applicationDTO.setPassengerApp(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTO.setPassengerApplication(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
         applicationDTOS.add(applicationDTO);
         return applicationDTOS;
     }
@@ -215,7 +216,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         List<Application> applications = applicationRepository.findAll();
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
 
-        for(Application application: applications){
+        for (Application application : applications) {
             applicationDTOS.add(new ApplicationDTO(application));
         }
         return applicationDTOS;

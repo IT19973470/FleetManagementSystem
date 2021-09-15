@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GeneralManagerService} from "../../../../_service/general-manager.service";
 import {Router} from "@angular/router";
 
@@ -72,7 +72,6 @@ export class UserAccountListComponent implements OnInit {
       // console.log(this.vehicles)
     })
   }
-
 
 
 }

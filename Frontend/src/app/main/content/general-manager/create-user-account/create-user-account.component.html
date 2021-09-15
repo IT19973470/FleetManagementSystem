@@ -1,9 +1,10 @@
-<div class="row"  style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
+<div class="row" style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create User Account</span>
   </div>
 
-  <form #createUserAccountForm="ngForm"  (ngSubmit)="createUserAccountForm.form.valid && onSubmit()" novalidate>
+  <form #createUserAccountForm="ngForm" (ngSubmit)="createUserAccountForm.form.valid && onSubmit()" novalidate>
 
     <div style="display: flex;margin-top: 50px">
       <div style="width: 50%;padding-right: 20px">
@@ -13,7 +14,7 @@
             User Account Type :
           </div>
           <div class="col-8">
-          <select name="accountType" class="form-control"  [(ngModel)]="userAccount.accountType">
+            <select name="accountType" class="form-control" [(ngModel)]="userAccount.accountType">
               <option value="">Select type</option>
               <option *ngFor="let type of accountTypes" [value]="type">
                 {{type}}
@@ -42,7 +43,7 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-           Name :
+            Name :
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
@@ -51,7 +52,7 @@
                    name="name" required appTextValidator="">
             <div *ngIf="(name.touched || createUserAccountForm.submitted) && name.errors?.required"
                  class="validErr">
-             Name is required
+              Name is required
             </div>
           </div>
         </div>
@@ -65,8 +66,9 @@
                    [(ngModel)]="userAccount.nameWithInitials"
                    #nameWithInitials="ngModel"
                    name="nameWithInitials" required appTextValidator>
-            <div *ngIf="(nameWithInitials.touched || createUserAccountForm.submitted) && nameWithInitials.errors?.required"
-                 class="validErr">
+            <div
+              *ngIf="(nameWithInitials.touched || createUserAccountForm.submitted) && nameWithInitials.errors?.required"
+              class="validErr">
               Name With Initials is required
             </div>
           </div>
@@ -103,7 +105,7 @@
                    name="dob" required>
             <div *ngIf="(dob.touched || createUserAccountForm.submitted) && dob.errors?.required"
                  class="validErr">
-              Date od birth is required
+              Date of birth is required
             </div>
           </div>
         </div>
@@ -127,7 +129,6 @@
             </div>
           </div>
         </div>
-
 
 
         <div class="row" style="margin-top: 10px">
@@ -203,14 +204,15 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Create Account</button>
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Create Account
+            </button>
           </div>
         </div>
 
       </div>
     </div>
 
-</form>
+  </form>
 
 </div>
 

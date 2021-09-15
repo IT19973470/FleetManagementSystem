@@ -1,7 +1,9 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.VehicleDTO;
+import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.Vehicle;
 import lk.fleet.repository.VehicleRepository;
@@ -79,8 +81,16 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public List<VehicleDTO> getVehicleByNumber(String vehicleID) {
         Vehicle VehicleByID = vehicleRepository.getVehicleByNumber(vehicleID);
-        List<VehicleDTO> vehicleDTOS=new ArrayList<>();
+        List<VehicleDTO> vehicleDTOS = new ArrayList<>();
         vehicleDTOS.add(new VehicleDTO(VehicleByID));
         return vehicleDTOS;
     }
+
+//    @Override
+//    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber){
+//        Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
+//        List<VehicleDTO> vehicleDTOS=new ArrayList<>();
+//        vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
+//        return vehicleDTOS;
+//    }
 }
