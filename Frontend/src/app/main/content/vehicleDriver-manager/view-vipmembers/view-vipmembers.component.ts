@@ -16,15 +16,15 @@ export class ViewVipmembersComponent implements OnInit {
     foundItem: ''
   };
   @ViewChild('vipmemberForm', {static: true}) public vipmemberForm: NgForm;
-  vipmembers=[];
+  vipmembers = [];
   vipmemberDetail = {
 
-    vipMemberId:'',
-    firstName:'',
-    lastName:'',
-    contactNumber:'',
-    address:'',
-    position:''
+    vipMemberId: '',
+    firstName: '',
+    lastName: '',
+    contactNumber: '',
+    address: '',
+    position: ''
 
 
   };
@@ -40,6 +40,7 @@ export class ViewVipmembersComponent implements OnInit {
   ngOnInit(): void {
     this.getAllVipMembers();
   }
+
   // setVipMember(vipmember) {
   //   this.vipmember = vipmember;
   //   this.isTrueOrFalse(true);
@@ -67,12 +68,10 @@ export class ViewVipmembersComponent implements OnInit {
   //   })
 
 
-
-
   getVipMemberByNumber() {
     this.vehicleDriverManagerService.getVipMemberByNumber(this.vipMemberNo).subscribe((vipmembers) => {
-      this.vipmembers = this.vipmembers;
-       console.log(this.vipmembers)
+      this.vipmembers = vipmembers;
+      console.log(this.vipmembers)
     })
   }
 
