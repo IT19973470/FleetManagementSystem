@@ -26,6 +26,7 @@ export class TvProgramComponent implements OnInit {
   TvDB;
   program;
   btnText = 'Add';
+
   tblIndex;
 
   alertBox = {
@@ -86,20 +87,18 @@ export class TvProgramComponent implements OnInit {
 
   }
 
-  y;
-
   removeProgram(tvProgram, i) {
     this.alertBox.alert = true;
     this.alertBox.msg = 'Do you want to remove tv program?';
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.y = tvProgram.programID;
-        this.generalManagerService.deleteTVProgram(this.y).subscribe((reply) => {
+        // this.y = tvProgram.programID;
+        this.generalManagerService.deleteTVProgram(tvProgram.programID).subscribe((reply) => {
           if (reply) {
             this.notifierService.notify("success", "TV program is removed successfully");
             this.router.navigate(['/main/tv_program'])
-            console.log(this.y);
+            // console.log(this.y);
             this.getAll();
           }
         })
@@ -126,7 +125,7 @@ export class TvProgramComponent implements OnInit {
     this.tvProgram.endingDate = program.endingDate;
     this.tvProgram.startingDate = program.startingDate;
     this.tvProgram.transportCost = program.transportCost;
-    // this.tvProgram = 'Update';
+    this.btnText = 'Update';
   }
 
   setNewProgram() {

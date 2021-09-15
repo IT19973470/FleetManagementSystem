@@ -72,7 +72,7 @@
     #viewItemPassengerDelivery="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':viewItemPassengerDelivery.isActive || updateItemPassengerDelivery.isActive?'#c0050e':''}">
-    View Passenger Item  Deliveries
+    View Passenger Item Deliveries
   </div>
 
   <div
@@ -82,6 +82,15 @@
     routerLinkActive
     [ngStyle]="{'color':passengerTransport.isActive?'#c0050e':''}">
     Passenger Transport
+  </div>
+
+  <div
+    routerLink="/main/item_transport"
+    (click)="setTopic('Item Transport')"
+    #itemTransport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':itemTransport.isActive?'#c0050e':''}">
+    Item Transport
   </div>
 
 </div>

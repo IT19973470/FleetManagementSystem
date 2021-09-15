@@ -35,3 +35,30 @@
 
   </div>
 </div>
+
+<div class="modalTable" [style.visibility]="isModalTable.openTable?'visible':'hidden'">
+  <div (click)="isTrueOrFalse(false)"></div>
+  <div style="">
+    <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
+      <div style="min-width: 1390px;">
+        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
+      </div>
+
+      <div class="">
+        <div style="font-size: 25px;color: green;font-weight: bold"
+             *ngIf="sAttendance!==undefined?sAttendance.attendance:false">
+          You have successfully marked the attendance
+        </div>
+        <div style="font-size: 20px;margin-top: 20px">
+          Mark the attendance
+        </div>
+        <div style="display: flex;justify-content: center">
+          <button type="submit" class="btn btn-success" style="font-weight: bold; margin-right: 20px"
+                  (click)="attencanceMarked(true)">Mark the Attendance
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

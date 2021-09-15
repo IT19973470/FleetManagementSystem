@@ -68,7 +68,8 @@ import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant
 import {UpdateMaintenanceDetailsComponent} from "./main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
-import {TransportApplicationsComponent} from "./main/content/transport-manager/transport-applications/transport-applications.component";
+import {TransportPassengerApplicationsComponent} from "./main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component";
+import {TransportItemApplicationsComponent} from "./main/content/transport-manager/transport-item-applications/transport-item-applications.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -123,7 +124,11 @@ const routes: Routes = [
       },
       {
         path: 'passenger_transport',
-        component: TransportApplicationsComponent
+        component: TransportPassengerApplicationsComponent
+      },
+      {
+        path: 'item_transport',
+        component: TransportItemApplicationsComponent
       },
       {
         path: 'create_user_account',

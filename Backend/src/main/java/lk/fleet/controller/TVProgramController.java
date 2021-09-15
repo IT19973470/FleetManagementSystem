@@ -19,21 +19,22 @@ public class TVProgramController {
     private TVProgramService tvProgramService;
 
     @PostMapping(value = "/addTVProgram")
-    public ResponseEntity addTVProgram(@RequestBody TVProgram tvProgram){
+    public ResponseEntity addTVProgram(@RequestBody TVProgram tvProgram) {
         return ResponseEntity.ok(tvProgramService.addTVProgram(tvProgram));
     }
 
     @PutMapping(value = "/updateTVProgram/{programID}")
-    public ResponseEntity updateTVProgram(@PathVariable String programID, @RequestBody TVProgram tvProgram){
+    public ResponseEntity updateTVProgram(@PathVariable String programID, @RequestBody TVProgram tvProgram) {
         return ResponseEntity.ok(tvProgramService.updateTVProgram(programID, tvProgram));
     }
 
     @DeleteMapping(value = "/deleteTVProgram/{programID}")
-    public ResponseEntity deleteTVProgram(@PathVariable String programID){
+    public ResponseEntity deleteTVProgram(@PathVariable String programID) {
         return ResponseEntity.ok(tvProgramService.deleteTVProgram(programID));
     }
+
     @GetMapping(value = "/getTvProgram")
-    public List<TVProgramDTO> getTvProgram(){
+    public List<TVProgramDTO> getTvProgram() {
         return tvProgramService.getTvProgram();
     }
 
