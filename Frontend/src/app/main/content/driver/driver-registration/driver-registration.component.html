@@ -32,10 +32,15 @@
             <input type="text" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.employeeID"
                    #employeeID="ngModel"
-                   name="employeeID" required>
+                   name="employeeID" required appEmployeeIdValidator
+                   placeholder="Eg: [ 12345 ]">
             <div *ngIf="(employeeID.touched || driverRegistrationForm.submitted) && employeeID.errors?.required"
                  class="validErr">
-              Employee is required
+              Driver ID is required
+            </div>
+            <div *ngIf="(employeeID.dirty) && employeeID.errors?.employeeIdInvalid"
+                 class="validErr">
+              Invalid Driver ID
             </div>
           </div>
         </div>
@@ -159,8 +164,9 @@
                    [(ngModel)]="driverDetail.userAccount.nameWithInitials"
                    #nameWithInitials="ngModel"
                    name="nameWithInitials" required appTextValidator>
-            <div *ngIf="(nameWithInitials.touched || driverRegistrationForm.submitted) && nameWithInitials.errors?.required"
-                 class="validErr">
+            <div
+              *ngIf="(nameWithInitials.touched || driverRegistrationForm.submitted) && nameWithInitials.errors?.required"
+              class="validErr">
               Name with Initials is required
             </div>
           </div>
@@ -174,55 +180,65 @@
             <input type="text" class="form-control"
                    [(ngModel)]="driverDetail.lisenseID"
                    #lisenseID="ngModel"
-                   name="lisenseID" required>
+                   name="lisenseID" required appLicenseValidator
+                   placeholder="Eg: [ B1234567 ]">
             <div *ngIf="(lisenseID.touched || driverRegistrationForm.submitted) && lisenseID.errors?.required"
                  class="validErr">
               License ID is required
             </div>
+            <div *ngIf="(lisenseID.dirty) && lisenseID.errors?.licenseInvalid"
+                 class="validErr">
+              Invalid License ID
+            </div>
           </div>
         </div>
 
-<!--        <div class="row" style="margin-top: 10px">-->
-<!--          <div class="col-4">-->
-<!--            Password :-->
-<!--          </div>-->
-<!--          <div class="col-8">-->
-<!--            <input type="text" class="form-control"-->
-<!--                   [(ngModel)]="driverDetail.userAccount.password"-->
-<!--                   #password="ngModel"-->
-<!--                   name="password" required>-->
-<!--            <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"-->
-<!--                 class="validErr">-->
-<!--              Password is required-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="row" style="margin-top: 10px">-->
+        <!--          <div class="col-4">-->
+        <!--            Password :-->
+        <!--          </div>-->
+        <!--          <div class="col-8">-->
+        <!--            <input type="text" class="form-control"-->
+        <!--                   [(ngModel)]="driverDetail.userAccount.password"-->
+        <!--                   #password="ngModel"-->
+        <!--                   name="password" required>-->
+        <!--            <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"-->
+        <!--                 class="validErr">-->
+        <!--              Password is required-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
             Password :
           </div>
-          <div class="col-7" >
-            <input type="{{type}}" class="form-control" name="passengerType" required [(ngModel)]="driverDetail.userAccount.password">
+          <div class="col-7">
+            <input type="{{type}}" class="form-control" name="passengerType" required
+                   [(ngModel)]="driverDetail.userAccount.password">
           </div>
 
-          <div class="col-1" >
-            <button *ngIf="btn==true"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px"  (click)="hide()">
-              <i class="fas far fa-eye"  style="font-size: 30px"  ></i>
+          <div class="col-1">
+            <button *ngIf="btn==true"
+                    style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px"
+                    (click)="hide()">
+              <i class="fas far fa-eye" style="font-size: 30px"></i>
             </button>
-            <button *ngIf="btn==false" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px" (click)="show()">
-              <i class="fas fa-eye-slash"  style="font-size: 30px"  ></i>
+            <button *ngIf="btn==false"
+                    style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px"
+                    (click)="show()">
+              <i class="fas fa-eye-slash" style="font-size: 30px"></i>
             </button>
           </div>
         </div>
 
 
-    <div class=""
-         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
-      <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Register</button>
-      </div>
-    </div>
+        <div class=""
+             style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+          <div class="col-12" style="text-align: right">
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Register</button>
+          </div>
+        </div>
       </div>
     </div>
   </form>
