@@ -120,6 +120,19 @@ export class UpdateItemTransportsComponent implements OnInit {
     })
   }
 
+  dep;
+  checkDate(){
+    this.dep=0;
+    if(this.passengerpassengerApp.arrivaleDate!=''&& this.passengerpassengerApp.depatureDate!='')
+    {
+      if(this.passengerpassengerApp.arrivaleDate<this.passengerpassengerApp.depatureDate)
+        // this.notifierService.notify("error", " Depature Date must be less than Arrival date ");
+        this.dep=1;
+    }
+    else {
+      this.dep=0;
+    }
+  }
 
   onSubmitPassenger() {
     //  console.log(this.passengerpassengerApp.applicationID);
