@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {VehicleMaintenanceService} from "../../../../_service/vehicle-maintenance.service";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-vehicle-maintenance',
@@ -41,7 +42,8 @@ export class VehicleMaintenanceComponent implements OnInit {
   constructor(private vehicleMaintenanceService: VehicleMaintenanceService,
               private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
 
   }
 
@@ -55,14 +57,14 @@ export class VehicleMaintenanceComponent implements OnInit {
     this.alertService.reply.subscribe(reply => {
       if (reply) {
 
-    this.maintenanceDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
-    this.vehicleMaintenanceService.addMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
-      this.router.navigate(['/main/view_maintenance'])
+        this.maintenanceDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
+        this.vehicleMaintenanceService.addMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
+          this.router.navigate(['/main/view_maintenance'])
 
-      this.notifierService.notify("success", "Details added successfully");
-    }, (err) => {
-      this.notifierService.notify("error", "Failed to add");
-    })
+          this.notifierService.notify("success", "Details added successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Failed to add");
+        })
       }
       this.alertBox.alert = false;
     })
@@ -80,5 +82,8 @@ export class VehicleMaintenanceComponent implements OnInit {
     }
   }
 
+  getMinDate() {
+    return this.commonService.getCurDate();
+  }
 
 }

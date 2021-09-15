@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {VehicleAccidentService} from "../../../../_service/vehicle-accident.service";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 import {NotifierService} from "angular-notifier";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-vehicle-accident',
@@ -44,7 +45,9 @@ export class VehicleAccidentComponent implements OnInit {
   constructor(private vehicleAccidentService: VehicleAccidentService,
               private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private datePipe: DatePipe
+  ) {
   }
 
   ngOnInit(): void {
@@ -66,9 +69,9 @@ export class VehicleAccidentComponent implements OnInit {
           this.notifierService.notify("error", "Failed to add");
         })
       }
-    this.alertBox.alert = false;
-  })
-   }
+      this.alertBox.alert = false;
+    })
+  }
 
   chkVehicle() {
     if (this.accidentDetail.driverVehicle.driverVehicleID.vehicleId !== '') {
@@ -98,5 +101,13 @@ export class VehicleAccidentComponent implements OnInit {
     return false;
   }
 
+  getMinDate() {
+    let curDate = new Date();
+    curDate.setDate(curDate.getDate() - 2)
+    return this.datePipe.transform(curDate, 'yyyy-MM-dd')
+  }
 
+  getMaxDate(){
+    return this.datePipe.transform(new Date(), 'yyyy-MM-dd')
+  }
 }
