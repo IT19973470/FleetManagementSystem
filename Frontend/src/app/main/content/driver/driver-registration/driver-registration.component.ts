@@ -36,6 +36,20 @@ export class DriverRegistrationComponent implements OnInit {
     msg: '',
     value: ''
   };
+
+  type="text";
+  btn:boolean=true;
+
+  hide(){
+    this.type="password"
+    this.btn=false
+  }
+
+  show(){
+    this.type="text"
+    this.btn=true
+  }
+
   constructor(private driverService: DriverService,
               private router: Router,
               private notifierService: NotifierService,
@@ -54,8 +68,9 @@ export class DriverRegistrationComponent implements OnInit {
       if (reply) {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
+      this.router.navigate(['/login']);
       this.notifierService.notify("success", "Driver added successfully. Please wait for the approval");
-      this.router.navigate(['/login'])
+
     }, (err) => {
       this.notifierService.notify("error", "Adding failed");
     })

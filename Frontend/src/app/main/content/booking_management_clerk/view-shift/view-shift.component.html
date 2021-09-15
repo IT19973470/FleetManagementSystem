@@ -37,9 +37,10 @@
         <th scope="col">Vehicle</th>
         <th scope="col">Vehicle Availability</th>
         <th scope="col">Shift Date</th>
-        <th scope="col" width="15%">Starting Time</th>
+        <th scope="col">Starting Time</th>
         <th scope="col" width="15%">Ending Time</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Select</th>
       </tr>
       </thead>
       <tbody>
@@ -57,9 +58,45 @@
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i>
         </td>
+        <td style="text-align: center">
+          <i class="fas fa-pen" style="cursor: pointer" (click)="selectShift(shift)"></i>
+        </td>
       </tr>
       </tbody>
     </table>
+<!--    <div style="width: 50%;padding-right: 20px">-->
+<!--    <div class="row">-->
+<!--      <div class="col-4">-->
+<!--        Shift ID :-->
+<!--      </div>-->
+<!--      <div class="col-8">-->
+<!--        <input type="text" class="form-control"-->
+<!--               [(ngModel)]="shift.shiftId"-->
+<!--               #shiftIDs="ngModel"-->
+<!--               name="shiftId" required readonly>-->
+<!--        <div *ngIf="(shiftIDs.touched || shiftForm.submitted) && shiftIDs.errors?.required"-->
+<!--             class="validErr">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--      </div>-->
+
+
+<!--    <div style="margin-top: 20px">-->
+<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="goToApplicationBooking()">-->
+<!--        Application Booking-->
+<!--      </button>-->
+
+<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="goToSpecialBooking(specialBooking)">-->
+<!--        Special Booking-->
+<!--      </button>-->
+<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByVehicle()">-->
+<!--        Vip Booking-->
+<!--      </button>-->
+<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByVehicle()">-->
+<!--        Program Booking-->
+<!--      </button>-->
+<!--    </div>-->
 
   </div>
 </div>

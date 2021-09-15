@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-vip-booking',
@@ -38,7 +40,9 @@ export class UpdateVipBookingComponent implements OnInit {
     this.selected = e.target.value
   }
 
-  constructor(private bookingManagerService: BookingManagerService, private router: Router) {
+  constructor(private bookingManagerService: BookingManagerService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +51,18 @@ export class UpdateVipBookingComponent implements OnInit {
 
   }
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   onSubmit() {
+    this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to update VIP booking?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
     this.vipBooking.booking.bookingDateTime= this.vipBooking.booking.bookingDate + 'T' + this.vipBooking.booking.bookingTimeActual
 
     this.vipBooking.bookingManagementClerk= {
@@ -55,15 +70,52 @@ export class UpdateVipBookingComponent implements OnInit {
     };
     console.log(this.vipBooking);
     this.bookingManagerService.updateVipBooking(this.vipBooking).subscribe(() => {
+      this.notifierService.notify("success", "VIP Booking updated successfully");
+
       this.router.navigate(['/main/view_vip_booking'])
     })
+        }
+        this.alertBox.alert = false;
+      })
   }
+
+
+
 
   removeVipBooking() {
+    this.alertBox.alert = true;
+  this.alertBox.msg = 'Do you want to delete this VIP booking?';
+  this.alertService.reply.observers = [];
+  this.alertService.reply.subscribe(reply => {
+    if (reply) {
     this.bookingManagerService.deleteVipBooking(this.vipBooking.booking.bookingId).subscribe(() => {
+      if (reply) {
+        this.notifierService.notify("success", "Special Booking deleted successfully");
       this.router.navigate(['/main/view_vip_booking'])
-    })
-  }
-
+      }
+      })
+    }
+    this.alertBox.alert = false;
+  })
+}
 
 }
+
+
+//
+// removeSpecialBooking() {
+//   this.alertBox.alert = true;
+//   this.alertBox.msg = 'Do you want to delete this special booking?';
+//   this.alertService.reply.observers = [];
+//   this.alertService.reply.subscribe(reply => {
+//     if (reply) {
+//       this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
+//         if (reply) {
+//           this.notifierService.notify("success", "Special Booking deleted successfully");
+//           this.router.navigate(['/main/view_special_booking'])
+//         }
+//       })
+//     }
+//     this.alertBox.alert = false;
+//   })
+// }

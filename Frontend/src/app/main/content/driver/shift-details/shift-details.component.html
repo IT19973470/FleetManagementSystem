@@ -27,11 +27,18 @@
         <td>End Time</td>
         <td>{{shift.endingTime}}</td>
       </tr>
-      <tr style="text-align: left">
-        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i></td>
-      </tr>
+<!--      <tr style="text-align: left">-->
+<!--        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i></td>-->
+<!--      </tr>-->
       </tbody>
     </table>
+
+    <div class=""
+         style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+      <div class="col-12" style="text-align: right">
+        <button class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="goToUpdate(shift)">Mark Attendance</button>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -45,14 +52,16 @@
       </div>
 
       <div class="">
+        <div style="font-size: 25px;color: red;font-weight: bold"
+             *ngIf="!shift.attendance">
+          You are not marked the attendance
+        </div>
         <div style="font-size: 25px;color: green;font-weight: bold"
-             *ngIf="sAttendance!==undefined?sAttendance.attendance:false">
+             *ngIf="shift.attendance">
           You have successfully marked the attendance
         </div>
-        <div style="font-size: 20px;margin-top: 20px">
-          Mark the attendance
-        </div>
-        <div style="display: flex;justify-content: center">
+
+        <div style="display: flex;justify-content: center;margin-top: 40px">
           <button type="submit" class="btn btn-success" style="font-weight: bold; margin-right: 20px"
                   (click)="attencanceMarked(true)">Mark the Attendance
           </button>

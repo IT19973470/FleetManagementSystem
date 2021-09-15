@@ -110,4 +110,9 @@ export class BookingManagerService {
   getVipBookingByVipBookingId(vipBookingId: any) {
     return this.http.get<any>(environment.backend_url + "/vipBooking/getVipBookingByVipBookingId/" + vipBookingId);
   }
+
+  getVipMember(vipMemberId: any) {
+    return this.http.get<any>(environment.backend_url + "/vipBooking/getVipMember/" + vipMemberId);
+
+  }
 }

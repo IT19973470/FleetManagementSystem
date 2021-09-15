@@ -1,3 +1,5 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
+
 <div class="row">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Special Booking</span>
@@ -101,7 +103,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="specialBooking.booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" required appTextValidator>
                 <div *ngIf="(destination.touched || specialBookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required
@@ -117,7 +119,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="specialBooking.description"
                        #description="ngModel"
-                       name="description" required>
+                       name="description" required appTextValidator>
                 <div *ngIf="(description.touched || specialBookingForm.submitted) && description.errors?.required"
                      class="validErr">
                   Description is required
@@ -131,7 +133,7 @@
                 Number of Passengers :
               </div>
               <div class="col-8" style="margin-left: 250px; margin-top: -20px;">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="specialBooking.noOfPassengers"
                        #noOfPassengers="ngModel"
                        name="noOfPassengers" required>
@@ -148,7 +150,7 @@
                 Approved Fuel Amount:
               </div>
               <div class="col-8" style="margin-left: 250px; margin-top: -20px;">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="specialBooking.approvedFuelAmount"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>
