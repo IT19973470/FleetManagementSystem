@@ -81,7 +81,8 @@
             Transport Cost :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="tvProgram.transportCost"
                    #transportCost="ngModel"
                    name="transportCost" required>
@@ -130,11 +131,12 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success"
-                    style="font-weight: bold; font-size: 20px; margin-right: 20px">Update
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px; margin-right: 20px">{{btnText}}
+              TV Program
             </button>
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">{{btnText}} TV
-              Program
+            <button type="button" class="btn btn-success" (click)="setNewProgram()"
+                    style="font-weight: bold; font-size: 20px">
+              New TV Program
             </button>
           </div>
         </div>

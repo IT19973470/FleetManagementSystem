@@ -13,4 +13,6 @@ public interface ShiftService {
     Object getShift();
 
     ShiftDTO getShiftByDriverID(String driverId);
+
+    ShiftDTO markAttendance(String driverID, boolean attendance);
 }

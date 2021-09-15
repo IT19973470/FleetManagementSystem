@@ -63,5 +63,12 @@ public class VipMemberServiceImpl implements VipMemberService {
         vipMemberRepository.deleteById(vipMemberId);
         return true;
     }
+    @Override
+    public List<VipMemberDTO> getVipMemberByNumber(String vipMemberNo){
+        VipMember getVipMemberByNumber = vipMemberRepository.getVipMemberByNumber(vipMemberNo);
+        List<VipMemberDTO> vipMemberDTOS=new ArrayList<>();
+        vipMemberDTOS.add(new VipMemberDTO(getVipMemberByNumber));
+        return vipMemberDTOS;
+    }
 
 }
