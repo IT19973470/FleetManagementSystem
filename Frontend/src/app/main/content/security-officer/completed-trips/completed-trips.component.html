@@ -7,7 +7,7 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
-    <span style="font-weight: bold;margin-left: 50px">Search by Token ID : </span>
+    <span style="font-weight: bold;margin-left: 60px">Search by Token ID : </span>
     <input type="search" placeholder="Enter TokenID.." style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByID()">
       Search
@@ -15,7 +15,19 @@
 
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getCompletedTokens()">
       All Completed Trips
-    </button><br><br><br>
+    </button><br><br>
+
+    <span style="font-weight: bold;margin-left: 10px">Search by Destination : </span>
+    <input type="search" placeholder="Enter Destination.." style="margin-left: 15px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+      Search
+    </button>
+
+    <span style="font-weight: bold;margin-left: 40px">Search by Driver : </span>
+    <input type="search" placeholder="Enter Driver Name.." style="margin-left: 10px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+      Search
+    </button> <br><br><br>
 
     <div style="width: 100%">
 
@@ -28,8 +40,7 @@
           <th scope="col">Vehicle</th>
           <th scope="col">Departure Date</th>
           <th scope="col">Departure Time</th>
-          <th scope="col">Arrival Date</th>
-          <th scope="col">Arrival Time</th>
+          <th scope="col">Destination</th>
           <th scope="col" style="text-align: center" width="15%">View Meter Details</th>
         </tr>
         </thead>
@@ -41,8 +52,7 @@
           <td>{{tokenDetail.vehicle.vehicleId}}</td>
           <td>{{tokenDetail.departureDate}}</td>
           <td>{{tokenDetail.departureTime}}</td>
-          <td>{{tokenDetail.arrivalDate}}</td>
-          <td>{{tokenDetail.arrivalTime}}</td>
+          <td>{{tokenDetail.booking.destination}}</td>
           <td style="text-align: center">
             <i class="fas fa-search" style="cursor: pointer" (click)="setToken(tokenDetail)"></i>
           </td>
@@ -56,12 +66,41 @@
 <div class="modalTable" [style.visibility]="isModalTable.openTable?'visible':'hidden'">
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
-    <div style="height: 250px">
-      <div style="width: 500px">
+    <div style="height: 450px">
+      <div style="width: 150px">
         <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
       </div>
 
       <div class="" >
+
+        <div style="text-align: center">
+          <h5><u>Token Details</u></h5>
+        </div><br>
+
+        <div style="font-size: medium; margin-left: 50px">
+          <span style="font-weight: bold">Token ID : </span>
+          <span style="margin-left: 10px">{{tokenDetail.tokenID}}</span>
+        </div>
+
+        <div style="font-size: medium; margin-left: 50px">
+          <span style="font-weight: bold">Departure Date : </span>
+          <span style="margin-left: 10px">{{tokenDetail.departureDate}}</span>
+        </div>
+
+        <div style="font-size: medium; margin-left: 50px">
+          <span style="font-weight: bold">Departure Date : </span>
+          <span style="margin-left: 10px">{{tokenDetail.departureTime}}</span>
+        </div>
+
+        <div style="font-size: medium; margin-left: 50px">
+          <span style="font-weight: bold">Arrival Date : </span>
+          <span style="margin-left: 10px">{{tokenDetail.arrivalDate}}</span>
+        </div>
+
+        <div style="font-size: medium; margin-left: 50px">
+          <span style="font-weight: bold">Arrival Time : </span>
+          <span style="margin-left: 10px">{{tokenDetail.arrivalTime}}</span>
+        </div> <br>
 
         <div style="text-align: center">
           <h5><u>Meter Details for Token {{tokenDetail.tokenID}}</u></h5>

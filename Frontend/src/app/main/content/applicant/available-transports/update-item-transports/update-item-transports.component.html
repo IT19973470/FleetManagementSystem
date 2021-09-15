@@ -69,10 +69,15 @@
                    [(ngModel)]="passengerpassengerApp.depatureDate"
                    #depatureDate1="ngModel"
                    min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="depatureDate" required>
             <div *ngIf="(depatureDate1.touched || deliveryForm.submitted) && depatureDate1.errors?.required"
                  class="validErr">
               Depature Date is required
+            </div>
+            <div *ngIf="(this.dep==1)"
+                 class="validErr" style="color:red">
+              Depature Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -86,6 +91,7 @@
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
                    #arrivaleDate1="ngModel"
                    min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="deliveryDate" required>
             <div *ngIf="(arrivaleDate1.touched || deliveryForm.submitted) && arrivaleDate1.errors?.required"
                  class="validErr">

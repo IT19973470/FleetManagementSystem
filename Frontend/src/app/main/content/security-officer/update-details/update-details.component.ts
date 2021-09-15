@@ -93,7 +93,7 @@ export class UpdateDetailsComponent implements OnInit {
             } else
               this.notifierService.notify("error", "Check the InMeter Value");
           } else
-            this.notifierService.notify("error", "Token Cannot be Updated!!");
+            this.notifierService.notify("error", "Token Cannot be Updated!! Please check the transport status");
         })
       }
       this.alertBox.alert = false;
@@ -106,5 +106,9 @@ export class UpdateDetailsComponent implements OnInit {
     }
     else
       this.meterDetail.mileage = 0;
+  }
+
+  getMinDate() {
+    return this.securityOfficerService.getCurDate();
   }
 }
