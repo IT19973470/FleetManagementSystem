@@ -183,6 +183,8 @@ export class PassengerItemDeliveryComponent implements OnInit {
 
   setNewForm() {
     this.deliveryForm.resetForm();
+    this.deliveryDetail.deliveryItemDetails = [];
+    this.deliveryDetail.deliveryPassengerDetails = [];
   }
 
   getNewItem() {
