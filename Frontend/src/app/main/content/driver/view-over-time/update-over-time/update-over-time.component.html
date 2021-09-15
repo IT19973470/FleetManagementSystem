@@ -60,7 +60,8 @@
             No of Shifts :
           </div>
           <div class="col-8">
-            <input type="text" class="form-control"
+            <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="OT.noOfShifts"
                    #noOfShifts="ngModel"
                    name="noOfShifts" required>

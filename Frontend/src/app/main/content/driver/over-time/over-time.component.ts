@@ -34,4 +34,8 @@ export class OverTimeComponent implements OnInit {
     })
   }
 
+  getMinDate() {
+    return this.driverService.getCurDate();
+  }
+
 }
