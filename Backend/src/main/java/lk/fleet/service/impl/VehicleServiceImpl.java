@@ -2,9 +2,11 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.DeliveryDTO;
+import lk.fleet.dto.ShiftDTO;
 import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
+import lk.fleet.entity.Shift;
 import lk.fleet.entity.Vehicle;
 import lk.fleet.repository.VehicleRepository;
 import lk.fleet.service.VehicleService;
@@ -78,6 +80,17 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleDTOS;
     }
 
+
+    @Override
+    public VehicleDTO fualUpdate(String vehicleID, Vehicle vehicle) {
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
+        if (optionalVehicle.isPresent()) {
+            Vehicle vehicleObj = optionalVehicle.get();
+            vehicleObj.setFuelBalance(vehicle.getFuelBalance());
+            return new VehicleDTO(vehicleRepository.save(vehicleObj));
+        }
+        return null;
+    }
     @Override
     public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
         Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
