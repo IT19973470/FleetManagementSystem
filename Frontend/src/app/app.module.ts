@@ -67,7 +67,8 @@ import {ViewApprovedTripDetailsComponent} from './main/content/security-officer/
 import {UpdateUserAccountComponent} from './main/content/general-manager/user-account-list/update-user-account/update-user-account.component';
 import {TvProgramComponent} from './main/content/general-manager/tv-program/tv-program.component';
 import {UpdateAccidentDetailsComponent} from './main/content/accident-maintenance-manager/update-accident-details/update-accident-details.component';
-import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/update-over-time/update-over-time.component';
+import {VehicleMaintenanceViewComponent} from './main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component';
+import {UpdateOverTimeComponent} from './main/content/Driver/view-over-time/update-over-time/update-over-time.component';
 import {VehiclePoolComponent} from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 // import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
@@ -82,10 +83,18 @@ import {TextValidatorDirective} from './_validator/text-validator.directive';
 import {TelephoneValidatorDirective} from "./_validator/telephone-validator.directive";
 import {UpdateShiftComponent} from "./main/content/booking_management_clerk/view-shift/update-shift/update-shift.component";
 import {UpdateBookingsComponent} from "./main/content/booking_management_clerk/view-bookings/update-bookings/update-bookings.component";
+import {UpdateMaintenanceDetailsComponent} from './main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component';
+import {SpecialBookingComponent} from './main/content/booking_management_clerk/special-booking/special-booking.component';
+import {ViewSpecialBookingComponent} from './main/content/booking_management_clerk/view-special-booking/view-special-booking.component';
+import {UpdateSpecialBookingComponent} from './main/content/booking_management_clerk/view-special-booking/update-special-booking/update-special-booking.component';
+import {VipBookingComponent} from './main/content/booking_management_clerk/vip-booking/vip-booking.component';
+import {ViewVipBookingComponent} from './main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component';
+import {UpdateVipBookingComponent} from './main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component';
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -200,6 +209,12 @@ const customNotifierOptions: NotifierOptions = {
     UpdatePassengerItemDeliveryComponent,
     UpdateAccidentDetailsComponent,
     VehiclePoolComponent,
+    // UpdateUserAccountComponent,
+    UpdateDriverComponent,
+    TvProgramComponent,
+    UpdateOverTimeComponent,
+    // UpdateUserAccountComponent,
+    VehicleMaintenanceViewComponent,
 //     VehiclePoolComponent,
     UpdateOverTimeComponent,
     UpdateOverTimeComponent,
@@ -210,7 +225,7 @@ const customNotifierOptions: NotifierOptions = {
     UpdateUserAccountComponent,
     UpdateUserAccountComponent,
     ApplicantRegestrationComponent,
-    UpdateUserAccountComponent,
+    //UpdateUserAccountComponent,
     NavBookingManagerComponent,
     EmailValidatorDirective,
     NicValidatorDirective,
@@ -218,6 +233,16 @@ const customNotifierOptions: NotifierOptions = {
     TelephoneValidatorDirective,
     UpdateUserAccountComponent,
     NavBookingManagerComponent,
+    UpdateUserAccountComponent,
+    UpdateMaintenanceDetailsComponent,
+    CompletedTripsComponent,
+    DeliveryStatusComponent,
+    SpecialBookingComponent,
+    ViewSpecialBookingComponent,
+    UpdateSpecialBookingComponent,
+    VipBookingComponent,
+    ViewVipBookingComponent,
+    UpdateVipBookingComponent,
     CompletedTripsComponent,
     UpdateUserAccountComponent,
     UpdateUserAccountComponent,

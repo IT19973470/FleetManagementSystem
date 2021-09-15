@@ -12,5 +12,5 @@ public interface ShiftService {
 
     Object getShift();
 
-//    Object getShiftByDriverID(String driverId);
+    ShiftDTO getShiftByDriverID(String driverId);
 }

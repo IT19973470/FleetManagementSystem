@@ -9,10 +9,18 @@ import {Router} from "@angular/router";
 })
 export class ViewBookingsComponent implements OnInit {
 
+
   bookings = [];
-  booking ={
-    bookings : []
-  };
+  //  booking ={
+  //    bookingId: '1',
+  //    bookingDateTime: '',
+  //    destination: '',
+  //    bookingStatus: '',
+  //    bookings : []
+  // };
+
+  bookingId;
+  bookingManagementClerkId;
 
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
@@ -21,6 +29,8 @@ export class ViewBookingsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllBookings();
   }
+
+
 
   goToUpdate(booking) {
     this.bookingManagerService.booking = booking;
@@ -34,5 +44,18 @@ export class ViewBookingsComponent implements OnInit {
     })
   }
 
+  getBookingsByBookingId(){
+    this.bookingManagerService.getBookingsByBookingId(this.bookingId).subscribe((bookings) => {
+      this.bookings=bookings;
 
+
+    })
+  }
+
+
+  getBookingsByBookingManagementClerkId() {
+    this.bookingManagerService.getBookingsByBookingManagementClerkId(this.bookingManagementClerkId).subscribe((bookings) => {
+      this.bookings=bookings;
+  })
+}
 }
