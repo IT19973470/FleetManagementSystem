@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-vehicle',
@@ -23,10 +25,16 @@ export class VehicleComponent implements OnInit {
     occupied: '',
     fuelType: ''
   };
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
 
   vehicle: any;
 
-  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
+  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router,private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
     this.vehicle = this.getNewVehicle();
   }
 
@@ -34,10 +42,26 @@ export class VehicleComponent implements OnInit {
   }
 
   OnSubmitVehicle() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this vehicle?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
     // console.log(this.vehicleDetail)
     this.vehicleDriverManagerService.addVehicle(this.vehicleDetail).subscribe((vehicle) => {
-      this.router.navigate(['/main/view_vehicles'])
+      this.setNewForm();
+      this.notifierService.notify("success", "Vehicle Detail added successfully");
+      // this.router.navigate(['/main/view_vehicles'])
+    }, (err) => {
+      this.notifierService.notify("error", "Vehicle failed");
     })
+      }
+      this.alertBox.alert = false;
+
+    })
+  }
+  setNewForm() {
+    this.vehicleForm.resetForm();
   }
 
   getNewVehicle() {

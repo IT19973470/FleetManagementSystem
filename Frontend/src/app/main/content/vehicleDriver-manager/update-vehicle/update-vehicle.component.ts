@@ -65,10 +65,18 @@ export class UpdateVehicleComponent implements OnInit {
   }
 
   removeVehicle() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this vehicle detail?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
     this.vehicleDriverManagerService.deleteVehicle(this.vehicleDetail.vehicleId).subscribe((reply) => {
       if (reply) {
         this.router.navigate(['/main/view_vehicles'])
       }
+    })
+      }
+      this.alertBox.alert = false;
     })
   }
 
