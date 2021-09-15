@@ -89,6 +89,7 @@ public class DeliveryServiceImpl implements DeliveryService {
             deliveryObj.setCompanyName(delivery.getCompanyName());
             deliveryObj.setDeliveryDateTime(delivery.getDeliveryDateTime());
             deliveryObj.setVehicleNumber(delivery.getVehicleNumber());
+            deliveryObj.setEmailAddress(delivery.getEmailAddress());
             return new DeliveryDTO(deliveryRepository.save(deliveryObj));
         }
         return null;

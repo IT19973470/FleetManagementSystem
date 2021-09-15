@@ -14,6 +14,7 @@ public class Delivery {
     private LocalDateTime deliveryDateTime;
     private String contactNumber;
     private String vehicleNumber;
+    private String emailAddress;
     private String deliveryPersonNic;
     private String deliveryPersonName;
     private String deliveryType;
@@ -130,5 +131,13 @@ public class Delivery {
 
     public void setVehicleNumber(String vehicleNumber) {
         this.vehicleNumber = vehicleNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }
