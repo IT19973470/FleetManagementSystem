@@ -4,6 +4,7 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-vip-booking',
@@ -24,7 +25,10 @@ export class VipBookingComponent implements OnInit {
       bookingStatus: true,
       bookingManagementClerk: {
         bookingManagementClerkId: 'BMC123'
-      }
+      },
+      // shift: {
+      //   shiftId: '',
+      // }
     },
     purpose: '',
     timePeriod: '',
@@ -37,7 +41,7 @@ export class VipBookingComponent implements OnInit {
 
   vipMemberId;
   selected = ""
-
+  shift;
 
   update(e) {
     this.selected = e.target.value
@@ -48,7 +52,8 @@ export class VipBookingComponent implements OnInit {
   }
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -80,7 +85,8 @@ export class VipBookingComponent implements OnInit {
   this.alertService.reply.observers = [];
   this.alertService.reply.subscribe(reply => {
     if (reply) {
-    this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+      //this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
+      this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
     this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
         this.setNewForm();
@@ -95,6 +101,17 @@ export class VipBookingComponent implements OnInit {
     this.alertBox.alert = false;
   })
 }
+
+  getMinDate() {
+    return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+  getMinimumDate(){
+    return this.bookingManagerService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
 }
 
 

@@ -1,8 +1,8 @@
 
 <div style="margin-top: 20px" align="center">
-  <span style="font-weight: bold;">Search by Employee ID : </span>
-  <input type="text" style="margin-left: 20px;width: 300px;height: 37px" >
-  <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" >
+  <span style="font-weight: bold;">Search by Application ID : </span>
+  <input type="text" [(ngModel)]="id" style="margin-left: 20px;width: 300px;height: 37px" >
+  <button (click)="searchByID(id)" class="btn btn-warning" style="font-weight: bold;margin-left: 20px" >
     Search
   </button>
 </div>
@@ -81,10 +81,10 @@
       </div>
 
       <div class="">
-        <h1> Passenger Details</h1>
-        <table class="table table-striped" style="margin-top: 20px">
+        <h1 *ngIf="view==true"> Passenger Details</h1>
+        <table *ngIf="view==true" class="table table-striped" style="margin-top: 20px" >
           <thead>
-          <tr>
+          <tr >
             <th scope="col">#</th>
             <th scope="col">Employee ID</th>
             <th scope="col">Employee Name</th>
@@ -93,12 +93,32 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let p of passenger.passengerPassengerApplications; let i = index">
+          <tr  *ngFor="let p of passenger.passengerPassengerApplications; let i = index">
             <th scope="row">{{i+1}}</th>
             <td>{{p.passenger.userAccount.employeeID}}</td>
             <td>{{p.passenger.userAccount.name}}</td>
             <td>{{p.passenger.userAccount.contactNo}}</td>
             <td>{{p.passenger.userAccount.email}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <h1 *ngIf="view==false"> Item Details</h1>
+        <table *ngIf="view==false" class="table table-striped" style="margin-top: 20px" >
+          <thead>
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">Item ID</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr  *ngFor="let I of passenger.itemItemApplicationDTOS; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{I.item.itemID}}</td>
+            <td>{{I.item.itemName}}</td>
+            <td>{{I.item.qty}}</td>
           </tr>
           </tbody>
         </table>
@@ -141,7 +161,7 @@
           <tr>
             <th scope="row">1</th>
             <td>{{passenger.vehicleId}}</td>
-            <td>{{passenger.vehicleType}}</td>
+            <td>{{passenger.BookedVehicleType}}</td>
             <td>{{passenger.model}}</td>
             <td>{{passenger.noOfSeats}}</td>
           </tr>

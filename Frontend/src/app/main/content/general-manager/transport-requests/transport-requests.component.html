@@ -1,6 +1,6 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Account Requests</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Transport Requests</span>
   </div>
   <div class="col-11" style="margin-top: 40px">
     <span style="font-weight: bold;margin-left: 50px">Search by ApplicationID : </span>
@@ -9,7 +9,7 @@
       Search
     </button>
 
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllTransports()">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllTransportRequests()">
       All Transport Requests
     </button>
 
@@ -103,7 +103,7 @@
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
     <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
-      <div style="min-width: 1390px;">
+      <div style="">
         <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
       </div>
 

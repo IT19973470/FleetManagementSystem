@@ -16,6 +16,7 @@ public class TokenDTO {
     private MeterDetailDTO meterDetail;
     private DriverDTO driver;
     private VehicleDTO vehicle;
+    private BookingDTO booking;
 
     public TokenDTO(Token token) {
         if (token != null) {
@@ -123,5 +124,13 @@ public class TokenDTO {
 
     public void setVehicle(VehicleDTO vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public BookingDTO getBooking() {
+        return booking;
+    }
+
+    public void setBooking(BookingDTO booking) {
+        this.booking = booking;
     }
 }

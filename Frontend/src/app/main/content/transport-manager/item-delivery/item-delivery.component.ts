@@ -21,6 +21,7 @@ export class ItemDeliveryComponent implements OnInit {
     deliveryPersonNic: '',
     contactNumber: '',
     vehicleNumber: '',
+    emailAddress: '',
     address: '',
     companyName: '',
     deliveryDate: '',

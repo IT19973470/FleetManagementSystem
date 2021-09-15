@@ -45,7 +45,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let shift of shifts; let i = index">
-        <th scope="row">{{i+1}}</th>
+        <th scope="row">{{i + 1}}</th>
         <td>{{shift.shiftId}}</td>
         <td>{{shift.driverVehicle.driver.driverID}}</td>
         <td>{{shift.driverVehicle.driver.userAccount.nameWithInitials}}</td>
@@ -64,39 +64,36 @@
       </tr>
       </tbody>
     </table>
-<!--    <div style="width: 50%;padding-right: 20px">-->
-<!--    <div class="row">-->
-<!--      <div class="col-4">-->
-<!--        Shift ID :-->
-<!--      </div>-->
-<!--      <div class="col-8">-->
-<!--        <input type="text" class="form-control"-->
-<!--               [(ngModel)]="shift.shiftId"-->
-<!--               #shiftIDs="ngModel"-->
-<!--               name="shiftId" required readonly>-->
-<!--        <div *ngIf="(shiftIDs.touched || shiftForm.submitted) && shiftIDs.errors?.required"-->
-<!--             class="validErr">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--      </div>-->
 
+    <div style="width: 50%;padding-right: 20px;margin-top: 50px">
+      <div class="row">
+        <div class="col-12" style="font-size: 20px;font-weight: bold">
+          Shift ID is {{selectedShift != undefined ? selectedShift.shiftId : 'not selected'}}
+        </div>
+      </div>
+    </div>
 
-<!--    <div style="margin-top: 20px">-->
-<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="goToApplicationBooking()">-->
-<!--        Application Booking-->
-<!--      </button>-->
+    <div style="margin-top: 20px;margin-bottom: 50px;">
 
-<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="goToSpecialBooking(specialBooking)">-->
-<!--        Special Booking-->
-<!--      </button>-->
-<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByVehicle()">-->
-<!--        Vip Booking-->
-<!--      </button>-->
-<!--      <button class="btn btn-dark" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByVehicle()">-->
+      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
+              (click)="goToSpecialBooking()">
+        Special Booking
+      </button>
+
+      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
+              (click)="goToVipBooking()">
+        Vip Booking
+      </button>
+      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
+              (click)="goToApplicationBooking()">
+        Application Booking
+      </button>
+
+<!--      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"-->
+<!--              (click)="goToProgramBooking()">-->
 <!--        Program Booking-->
 <!--      </button>-->
-<!--    </div>-->
+    </div>
 
   </div>
 </div>

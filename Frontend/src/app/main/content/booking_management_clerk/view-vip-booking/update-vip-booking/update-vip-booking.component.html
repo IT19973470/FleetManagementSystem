@@ -44,6 +44,7 @@
                 <input type="date" class="form-control"
                        [(ngModel)]="vipBooking.booking.bookingDate"
                        #bookingDate="ngModel"
+                       min="{{getMinDate()}}"
                        name="bookingDate" required>
                 <div *ngIf="(bookingDate.touched ||vipBookingForm.submitted) && bookingDate.errors?.required"
                      class="validErr">
@@ -168,6 +169,7 @@
               <div class="col-8">
                 <input type="number" class="form-control"
                        [(ngModel)]="vipBooking.approvedFuelAmount"
+                       (focusout)="vipBooking.approvedFuelAmount = setNumberPositive(vipBooking.approvedFuelAmount)"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>
                 <div *ngIf="(approvedFuelAmount.touched || vipBookingForm.submitted) && approvedFuelAmount.errors?.required"

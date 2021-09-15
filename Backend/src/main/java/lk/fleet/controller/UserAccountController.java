@@ -55,6 +55,50 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.updateUserAccount(employeeID, userAccount));
     }
 
+    //----Account Requests----//
+    //get applicant account requests
+    @GetMapping(value = "/getUserAccountsForApplicants")
+    public ResponseEntity getUserAccountsForApplicants() {
+        return ResponseEntity.ok(userAccountService.getUserAccountsForApplicants());
+    }
+
+    //Get all account requests / search all
+    @GetMapping(value = "/getUserAccounts")
+    public ResponseEntity getUserAccounts() {
+        return ResponseEntity.ok(userAccountService.getUserAccounts());
+    }
+
+    //search account request by id
+    @GetMapping(value = "/getUserAccountByID/{employeeID}")
+    public ResponseEntity getUserAccountByID(@PathVariable String employeeID) {
+        return ResponseEntity.ok(userAccountService.getUserAccountByID(employeeID));
+    }
+
+    //approve account request
+    @GetMapping(value = "/approveUserAccount/{employeeID}/{approval}")
+    public ResponseEntity approveUserAccount(@PathVariable String employeeID, @PathVariable boolean approval) {
+        return ResponseEntity.ok(userAccountService.approveUserAccount(employeeID, approval));
+    }
+
+    //----Transport Requests----//
+    //get transport requests
+    @GetMapping(value = "/getTransportApplication")
+    public List<ApplicationDTO> getTransportApplication() {
+        return userAccountService.getTransportApplication();
+    }
+
+
+    //search transport request by id
+    @GetMapping(value = "/getTransportByID/{applicationID}")
+    public ResponseEntity getTransportByID(@PathVariable String applicationID) {
+        return ResponseEntity.ok(userAccountService.getTransportByID(applicationID));
+    }
+
+    //approve transport request
+    @GetMapping(value = "/approveTransport/{applicationID}/{approval}")
+    public ResponseEntity approveTransport(@PathVariable String applicationID, @PathVariable boolean approval) {
+        return ResponseEntity.ok(userAccountService.approveTransport(applicationID, approval));
+    }
 
 
     @PostMapping(value = "/login")
@@ -63,39 +107,12 @@ public class UserAccountController {
     }
 
 
+//-------------------------------------------------------------------------------------------------------------//
+
+
     @DeleteMapping(value = "/deleteUserAccount/{employeeID}")
     public ResponseEntity deleteUserAccount(@PathVariable String employeeID) {
         return ResponseEntity.ok(userAccountService.deleteUserAccount(employeeID));
-    }
-
-    @GetMapping(value = "/getUserAccounts")
-    public ResponseEntity getUserAccounts() {
-        return ResponseEntity.ok(userAccountService.getUserAccounts());
-    }
-
-    @GetMapping(value = "/getUserAccountsForApplicants")
-    public ResponseEntity getUserAccountsForApplicants() {
-        return ResponseEntity.ok(userAccountService.getUserAccountsForApplicants());
-    }
-
-    @GetMapping(value = "/getTransportRequests")
-    public ResponseEntity getTransportRequests() {
-        return ResponseEntity.ok(userAccountService.getTransportRequests());
-    }
-
-    @GetMapping(value = "/getUserAccountByID/{employeeID}")
-    public ResponseEntity getUserAccountByID(@PathVariable String employeeID) {
-        return ResponseEntity.ok(userAccountService.getUserAccountByID(employeeID));
-    }
-
-    @GetMapping(value = "/approveUserAccount/{employeeID}/{approval}")
-    public ResponseEntity approveUserAccount(@PathVariable String employeeID, @PathVariable boolean approval) {
-        return ResponseEntity.ok(userAccountService.approveUserAccount(employeeID, approval));
-    }
-
-    @GetMapping(value = "/getTransportByID/{applicationID}")
-    public ResponseEntity getTransportByID(@PathVariable String applicationID) {
-        return ResponseEntity.ok(userAccountService.getTransportByID(applicationID));
     }
 
     @GetMapping(value = "/getAllTransports")
@@ -103,15 +120,12 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.getAllTransports());
     }
 
-    @GetMapping(value = "/approveTransport/{applicationID}/{approval}")
-    public ResponseEntity approveTransport(@PathVariable String applicationID, @PathVariable boolean approval) {
-        return ResponseEntity.ok(userAccountService.approveTransport(applicationID, approval));
+    //get transport request
+    @GetMapping(value = "/getTransportRequests")
+    public ResponseEntity getTransportRequests() {
+        return ResponseEntity.ok(userAccountService.getTransportRequests());
     }
 
-    @GetMapping(value = "/getTransportApplication")
-    public List<ApplicationDTO> getTransportApplication() {
-        return userAccountService.getTransportApplication();
-    }
 
 //    @GetMapping(value = "/getTransport")
 //    public List<PassengerApplicationDTO> getTransport(){

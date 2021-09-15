@@ -3,6 +3,7 @@ import {BookingManagerService} from "../../../../../_service/booking-manager.ser
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../../_service/common.service";
 
 @Component({
   selector: 'app-update-vip-booking',
@@ -42,7 +43,8 @@ export class UpdateVipBookingComponent implements OnInit {
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -99,23 +101,16 @@ export class UpdateVipBookingComponent implements OnInit {
   })
 }
 
+  getMinDate() {
+    return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+  getMinimumDate(){
+    return this.bookingManagerService.getCurDate();
+  }
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
+
 }
 
 
-//
-// removeSpecialBooking() {
-//   this.alertBox.alert = true;
-//   this.alertBox.msg = 'Do you want to delete this special booking?';
-//   this.alertService.reply.observers = [];
-//   this.alertService.reply.subscribe(reply => {
-//     if (reply) {
-//       this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
-//         if (reply) {
-//           this.notifierService.notify("success", "Special Booking deleted successfully");
-//           this.router.navigate(['/main/view_special_booking'])
-//         }
-//       })
-//     }
-//     this.alertBox.alert = false;
-//   })
-// }

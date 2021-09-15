@@ -26,40 +26,22 @@
   </div>
 
 
-  <div
-    routerLink="/main/bookings"
-    (click)="setTopic('Bookings')"
-    #bookings="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':bookings.isActive?'#c0050e':''}">
-    Bookings
-  </div>
+
+<!--  <div-->
+<!--    routerLink="/main/special_booking"-->
+<!--    (click)="setTopic('Special Booking')"-->
+<!--    #specialBooking="routerLinkActive"-->
+<!--    routerLinkActive-->
+<!--    [ngStyle]="{'color':specialBooking.isActive?'#c0050e':''}">-->
+<!--    Special Booking-->
+<!--  </div>-->
 
   <div
     style="border: 0px;padding: 0px"
-    routerLink="/main/update_bookings"
-    #updateBookings="routerLinkActive"
+    routerLink="/main/special_booking"
+    #specialBooking="routerLinkActive"
     routerLinkActive>
   </div>
-
-  <div
-    routerLink="/main/view_bookings"
-    (click)="setTopic('View Bookings')"
-    #viewBookings="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':viewBookings.isActive || updateBookings.isActive?'#c0050e':''}">
-    View Bookings
-  </div>
-
-  <div
-    routerLink="/main/special_booking"
-    (click)="setTopic('Special Booking')"
-    #specialBooking="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':specialBooking.isActive?'#c0050e':''}">
-    Special Booking
-  </div>
-
   <div
     style="border: 0px;padding: 0px"
     routerLink="/main/update_special_booking"
@@ -101,4 +83,53 @@
   </div>
 
 
+  <div
+    routerLink="/main/bookings"
+    (click)="setTopic('Bookings')"
+    #bookings="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':bookings.isActive?'#c0050e':''}">
+     Application Bookings
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_bookings"
+    #updateBookings="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_bookings"
+    (click)="setTopic('View Bookings')"
+    #viewBookings="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewBookings.isActive || updateBookings.isActive?'#c0050e':''}">
+    View Application Bookings
+  </div>
+
+<!--  <div-->
+<!--    routerLink="/main/program_booking"-->
+<!--    (click)="setTopic('Program Booking')"-->
+<!--    #programBooking="routerLinkActive"-->
+<!--    routerLinkActive-->
+<!--    [ngStyle]="{'color':programBooking.isActive?'#c0050e':''}">-->
+<!--    Program Booking-->
+<!--  </div>-->
+
+<!--  <div-->
+<!--    style="border: 0px;padding: 0px"-->
+<!--    routerLink="/main/update_program_booking"-->
+<!--    #updateProgramBooking="routerLinkActive"-->
+<!--    routerLinkActive>-->
+<!--  </div>-->
+
+<!--  <div-->
+<!--    routerLink="/main/view_program_booking"-->
+<!--    (click)="setTopic('View Program Booking')"-->
+<!--    #viewProgramBooking="routerLinkActive"-->
+<!--    routerLinkActive-->
+<!--    [ngStyle]="{'color':viewProgramBooking.isActive || updateProgramBooking.isActive?'#c0050e':''}">-->
+<!--    View Program Booking-->
+<!--  </div>-->
 </div>

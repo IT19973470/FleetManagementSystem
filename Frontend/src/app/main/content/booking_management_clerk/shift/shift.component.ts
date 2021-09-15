@@ -84,7 +84,9 @@ export class ShiftComponent implements OnInit {
   }
 
 
-
+  getMinDate() {
+    return this.bookingManagerService.getCurDate();
+  }
 
     setNewForm()
     {

@@ -9,41 +9,6 @@
 <div class="row" style="display: flex;justify-content: center;margin-top: 0px">
   <div class="col-11" style="margin-top: 20px">
 
-  <!--    <div style="margin-top: 20px">-->
-    <!--      <span style="font-weight: bold;margin-left: 0px">Search by driver : </span>-->
-    <!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="driverId">-->
-    <!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getDriveVehicles()">-->
-    <!--        Search-->
-    <!--      </button>-->
-    <!--    </div>-->
-
-    <!--    <table class="table table-striped" style="margin-top: 40px">-->
-    <!--      <thead>-->
-    <!--      <tr>-->
-    <!--        <th scope="col">#</th>-->
-    <!--        <th scope="col">Driver ID</th>-->
-    <!--        <th scope="col">Driver Name</th>-->
-    <!--        <th scope="col" width="10%" style="text-align: center">Vehicle No</th>-->
-    <!--        <th scope="col" width="10%" style="text-align: center">Vehicle</th>-->
-    <!--        <th scope="col" width="5%" style="text-align: center">Select</th>-->
-    <!--      </tr>-->
-    <!--      </thead>-->
-    <!--      <tbody>-->
-    <!--      <tr *ngFor="let driverVehicle of driverVehicles; let i = index">-->
-    <!--        <th scope="row">{{i+1}}</th>-->
-    <!--        <td>{{driverVehicle.driverVehicleID.driverID}}</td>-->
-    <!--        <td>{{driverVehicle.driver.userAccount.nameWithInitials}}</td>-->
-    <!--        <td style="text-align: center">{{driverVehicle.driverVehicleID.vehicleId}}</td>-->
-    <!--        <td style="text-align: center">{{driverVehicle.vehicle.vehicleType}}</td>-->
-    <!--        <td style="text-align: center">-->
-    <!--          <i class="fas fa-pen" style="cursor: pointer" (click)="selectDriver(driverVehicle)"></i>-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--      </tbody>-->
-    <!--    </table>-->
-
-    <!--  </div>-->
-    <!--</div>-->
 
     <div class="row" style="display: flex;justify-content: center;margin-top: 50px">
 
@@ -79,6 +44,7 @@
                 <input type="date" class="form-control"
                        [(ngModel)]="specialBooking.booking.bookingDate"
                        #bookingDate="ngModel"
+                       min="{{getMinDate()}}"
                        name="bookingDate" required>
                 <div *ngIf="(bookingDate.touched ||specialBookingForm.submitted) && bookingDate.errors?.required"
                      class="validErr">
@@ -113,13 +79,6 @@
                 Booking Status :
               </div>
               <div class="col-8">
-                <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
-                <!--              <option value="">Select status</option>-->
-                <!--              <option *ngFor="let type of bookingStatus" [value]="type">-->
-                <!--                {{type}}-->
-                <!--              </option>-->
-                <!--            </select>-->
-                <!--            <p> {{selected}}</p>-->
                 <label>
                   <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="specialBooking.booking.bookingStatus">
                   <span style="font-size: 18px"> Active</span>
@@ -173,8 +132,9 @@
                 Number of Passengers  :
               </div>
               <div class="col-8">
-                <input type="number" class="form-control"
+                <input type="number" class="form-control" min="0"
                        [(ngModel)]="specialBooking.noOfPassengers"
+                       (focusout)="specialBooking.noOfPassengers = setNumberPositive(specialBooking.noOfPassengers)"
                        #noOfPassengers="ngModel"
                        name="noOfPassengers" required>
                 <div *ngIf="(noOfPassengers.touched || specialBookingForm.submitted) && noOfPassengers.errors?.required"
@@ -190,8 +150,9 @@
                 Approved Fuel Amount :
               </div>
               <div class="col-8">
-                <input type="number" class="form-control"
+                <input type="number" class="form-control" min="0"
                        [(ngModel)]="specialBooking.approvedFuelAmount"
+                       (focusout)="specialBooking.approvedFuelAmount = setNumberPositive(specialBooking.approvedFuelAmount)"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>
                 <div *ngIf="(approvedFuelAmount.touched || specialBookingForm.submitted) && approvedFuelAmount.errors?.required"
