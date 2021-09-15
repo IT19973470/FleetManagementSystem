@@ -59,7 +59,9 @@ import {ViewSpecialBookingComponent} from "./main/content/booking_management_cle
 import {VipBookingComponent} from "./main/content/booking_management_clerk/vip-booking/vip-booking.component";
 import {UpdateVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component";
 import {ViewVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component";
+
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
+
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component";
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";

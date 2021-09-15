@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Booking</span>
@@ -117,7 +118,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" required appTextValidator>
                 <div *ngIf="(destination.touched || bookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required

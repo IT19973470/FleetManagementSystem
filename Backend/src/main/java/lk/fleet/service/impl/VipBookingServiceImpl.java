@@ -1,14 +1,11 @@
 package lk.fleet.service.impl;
 
-import lk.fleet.dto.BookingDTO;
-import lk.fleet.dto.SpecialBookingDTO;
-import lk.fleet.dto.VipBookingDTO;
-import lk.fleet.entity.Booking;
-import lk.fleet.entity.SpecialBooking;
-import lk.fleet.entity.VipBooking;
+import lk.fleet.dto.*;
+import lk.fleet.entity.*;
 import lk.fleet.repository.BookingRepository;
 import lk.fleet.repository.SpecialBookingRepository;
 import lk.fleet.repository.VipBookingRepository;
+import lk.fleet.repository.VipMemberRepository;
 import lk.fleet.service.VipBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,9 @@ public class VipBookingServiceImpl implements VipBookingService {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private VipMemberRepository vipMemberRepository;
 
     @Override
     public VipBookingDTO addVipBooking(VipBooking vipBooking) {
@@ -86,6 +86,19 @@ public class VipBookingServiceImpl implements VipBookingService {
         vipBookingDTOS.add(vipBookingDTO);
         return vipBookingDTOS;
     }
+
+    @Override
+    public List<VipMemberDTO> getVipMember(String vipMemberId) {
+        List<VipMember> vipMembers =vipMemberRepository.getVipMemberByVipMemberId(vipMemberId);
+        List<VipMemberDTO> vipMemberDTOS = new ArrayList<>();
+
+        for(VipMember vipMember : vipMembers){
+            vipMemberDTOS.add(new VipMemberDTO(vipMember));
+        }
+        return vipMemberDTOS;
+    }
+
+
 
 
 }

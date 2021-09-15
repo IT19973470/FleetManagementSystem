@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-vip-booking',
@@ -11,7 +13,8 @@ import {Router} from "@angular/router";
 export class VipBookingComponent implements OnInit {
 
 
-  @ViewChild('bookingForm', {static: true}) public bookingForm: NgForm;
+  @ViewChild('vipBookingForm', {static: true}) public vipBookingForm: NgForm;
+  vipMembers = [];
 
   vipBooking = {
     booking: {
@@ -27,8 +30,12 @@ export class VipBookingComponent implements OnInit {
     timePeriod: '',
     approvedFuelAmount: '',
     approval: true,
+    vipMember:{
+      vipMemberId:'',
+    }
   };
 
+  vipMemberId;
   selected = ""
 
 
@@ -36,19 +43,59 @@ export class VipBookingComponent implements OnInit {
     this.selected = e.target.value
   }
 
-  constructor(private bookingManagerService: BookingManagerService, private router: Router) {
+  selectVipMember(vipMember) {
+    this.vipBooking.vipMember.vipMemberId= vipMember.vipMemberId;
+  }
+  constructor(private bookingManagerService: BookingManagerService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
 
   }
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  setNewForm()
+  {
+    this.vipBookingForm.resetForm();
+  }
+
+
+  getVipMember() {
+    this.bookingManagerService.getVipMember(this.vipMemberId).subscribe((vipMembers) => {
+      this.vipMembers = vipMembers;
+      console.log(this.vipMembers)
+    })
+  }
+
   onSubmit() {
+    this.alertBox.alert = true;
+  this.alertBox.msg = 'Do you want to add this VIP booking?';
+  this.alertService.reply.observers = [];
+  this.alertService.reply.subscribe(reply => {
+    if (reply) {
     this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
     this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
-      this.router.navigate(['/main/view_vip_booking'])
-    })
-    console.log(this.vipBooking);
-  }
+        this.setNewForm();
+        this.notifierService.notify("success", "VIP Booking added successfully");
+
+
+     // this.router.navigate(['/main/view_vip_booking'])
+    }, (err) => {
+        this.notifierService.notify("error", "VIP booking failed");
+      })
+    }
+    this.alertBox.alert = false;
+  })
 }
+}
+
+
+
