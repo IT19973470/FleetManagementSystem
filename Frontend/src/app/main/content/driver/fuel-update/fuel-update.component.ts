@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-manager.service';
 import {Router} from '@angular/router';
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-fuel-update',
@@ -17,16 +18,16 @@ export class FuelUpdateComponent implements OnInit {
   vehicles = [];
   vehicle = {
     vehicleId: '',
-    fuelBalance: ''
+    fuelBalance:0
   };
 
   vehicleNumber;
   currentFuelDetail = {
-    fuelBalance: ''
+    fuelBalance:0
   };
 
-  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
-    this.vehicle = this.getVehicle();
+  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router,    private commonService: CommonService) {
+    // this.vehicle = this.getVehicle();
   }
 
   ngOnInit(): void {
@@ -72,4 +73,8 @@ export class FuelUpdateComponent implements OnInit {
         fuelBalance: ''
       };
     }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
 }

@@ -62,7 +62,8 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
+                   [(ngModel)]="addOT.noOfShifts"
+                   (focusout)="addOT.noOfShifts = setNumberPositive(addOT.noOfShifts)"
                    [(ngModel)]="addOT.noOfShifts"
                    #noOfShifts="ngModel"
                    name="noOfShifts" required>
