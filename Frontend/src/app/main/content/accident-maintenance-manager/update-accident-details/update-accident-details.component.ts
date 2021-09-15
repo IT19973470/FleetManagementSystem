@@ -29,6 +29,7 @@ export class UpdateAccidentDetailsComponent implements OnInit {
     this.accidentDetail = this.vehicleAccidentService.accident;
   }
 
+  //update
   addAccident() {
     console.log(this.accidentDetail);
     this.accidentDetail.accidentTime = this.accidentDetail.accidentTimeActual;

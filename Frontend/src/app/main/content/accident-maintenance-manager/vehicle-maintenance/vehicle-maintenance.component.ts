@@ -3,6 +3,8 @@ import {NgForm} from "@angular/forms";
 import {VehicleAccidentService} from "../../../../_service/vehicle-accident.service";
 import {Router} from "@angular/router";
 import {VehicleMaintenanceService} from "../../../../_service/vehicle-maintenance.service";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-vehicle-maintenance',
@@ -26,20 +28,43 @@ export class VehicleMaintenanceComponent implements OnInit {
     }
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   vehicleIsPresent = 0;
 
   maintenance: any;
 
-  constructor(private vehicleMaintenanceService: VehicleMaintenanceService, private router: Router) { }
+  constructor(private vehicleMaintenanceService: VehicleMaintenanceService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
+
+  }
 
   ngOnInit(): void {
   }
 
   addMaintenance() {
-    console.log(this.maintenanceDetail);
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add details?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+
     this.maintenanceDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
     this.vehicleMaintenanceService.addMaintenance(this.maintenanceDetail).subscribe((maintenance) => {
       this.router.navigate(['/main/view_maintenance'])
+
+      this.notifierService.notify("success", "Details added successfully");
+    }, (err) => {
+      this.notifierService.notify("error", "Failed to add");
+    })
+      }
+      this.alertBox.alert = false;
     })
   }
 

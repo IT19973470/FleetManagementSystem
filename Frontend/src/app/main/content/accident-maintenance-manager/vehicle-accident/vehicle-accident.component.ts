@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {VehicleAccidentService} from "../../../../_service/vehicle-accident.service";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-vehicle-accident',
@@ -28,24 +30,45 @@ export class VehicleAccidentComponent implements OnInit {
     }
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   driverIsPresent = 0;
   vehicleIsPresent = 0
 
   accident: any;
 
-  constructor(private vehicleAccidentService: VehicleAccidentService, private router: Router) {
+  constructor(private vehicleAccidentService: VehicleAccidentService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
   }
 
   addAccident() {
-    console.log(this.accidentDetail);
-    this.accidentDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
-    this.vehicleAccidentService.addAccident(this.accidentDetail).subscribe((accident) => {
-      this.router.navigate(['/main/vehicle_accident_view'])
-    })
-  }
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add details?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+
+        this.accidentDetail.accidentMaintenanceManager.employeeID = JSON.parse(localStorage.getItem('user'))['employeeID']
+        this.vehicleAccidentService.addAccident(this.accidentDetail).subscribe((accident) => {
+          this.router.navigate(['/main/vehicle_accident_view'])
+
+          this.notifierService.notify("success", "Details added successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Failed to add");
+        })
+      }
+    this.alertBox.alert = false;
+  })
+   }
 
   chkVehicle() {
     if (this.accidentDetail.driverVehicle.driverVehicleID.vehicleId !== '') {

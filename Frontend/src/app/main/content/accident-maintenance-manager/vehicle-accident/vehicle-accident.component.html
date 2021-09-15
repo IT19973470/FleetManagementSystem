@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Accident Details</span>
@@ -16,7 +17,9 @@
                    [(ngModel)]="accidentDetail.driverVehicle.driverVehicleID.vehicleId"
                    (focusout)="chkVehicle();chkDriver()"
                    #vehicleID="ngModel"
-                   name="vehicleID" required>
+                   name="vehicleID" required appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
+
             <div *ngIf="(vehicleID.touched || accidentDetailsForm.submitted) && vehicleID.errors?.required"
                  class="validErr">
               Vehicle ID is required
