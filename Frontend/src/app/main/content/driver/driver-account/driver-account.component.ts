@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DriverService} from '../../../../_service/driver.service';
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-driver-account',
@@ -35,7 +37,15 @@ export class DriverAccountComponent implements OnInit {
     foundUser: ''
   };
 
-  constructor(private driverService: DriverService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private driverService: DriverService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
 
   }
 
@@ -71,12 +81,21 @@ export class DriverAccountComponent implements OnInit {
   }
 
   deleteDriver() {
-    this.driverService.deleteDriver(this.driver.driverID).subscribe((reply) => {
-        if (reply) {
-          this.router.navigate(['/main/driver_registration'])
-        }
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to delete this account?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.driverService.deleteDriver(this.driver.driverID).subscribe((reply) => {
+          this.notifierService.notify("success", "Driver deleted successfully.");
+          this.router.navigate(['/login']);
+        }, (err) => {
+          this.notifierService.notify("error", "Driver delete failed");
+
+        })
       }
-    )
+      this.alertBox.alert = false;
+    })
   }
 
 }
