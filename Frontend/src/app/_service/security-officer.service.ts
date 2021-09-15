@@ -13,6 +13,7 @@ export class SecurityOfficerService {
   tokenDetail;
   meter;
   meterDetail;
+  vehicle;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
@@ -55,4 +56,17 @@ export class SecurityOfficerService {
   getAllBookings(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getAllBookings");
   }
+
+  getBookingByDestination(destination): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookingByDestination/" + destination);
+  }
+
+  getAllVehicles(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles")
+  }
+
+  updateVehicle(vehicleDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicle/" + vehicleDetail.vehicleId, vehicleDetail);
+  }
+
 }

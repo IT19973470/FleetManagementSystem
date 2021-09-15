@@ -15,18 +15,37 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   passengerpassengerApp = {
 
-    applicationID: '',
-    arrivaleDate: '',
-    depatureDate: "",
-    reason: '',
-    vehicleType: '',
-    destination: '',
+    applicationID: "",
+    approval: false,
+    arrivaleDate: null,
+    arrivaleDateActual: '',
+    depatureDate: null,
+    depatureDateActual: '',
+    destination: "",
+    vehicleType: "",
+    reason: "",
     passengerApp: {
-      noOfPassengers: '5',
+      noOfPassengers: '',
       passengerApplicationID:'',
       passengerPassengerApplications: []
     }
   }
+
+  // applicationID: "App20210911113145"
+  // approval: false
+  // arrivaleDate: "2021-09-29 11:31 AM"
+  // arrivaleDateActual: "2021-09-29T11:31:00"
+  // depatureDate: "2021-09-22 11:31 AM"
+  // depatureDateActual: "2021-09-22T11:31:00"
+  // destination: "Jaffna"
+  // passengerApp: {passengerApplicationID: 'PassApp20210911113145', noOfPassengers: 1, passengerPassengerApplications: Array(3)}
+  // passengerApplicationDTO: null
+  // reason: "Repair"
+  // type: "P"
+  // vehicleType: "Bus"
+  //
+
+
 
   Pass = {
     passenger: {
@@ -50,6 +69,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.passengerpassengerApp = this.applicantService.deliveryItem;
+    console.log(this.applicantService.deliveryItem)
     this.getAllIPassengers()
   }
 
@@ -58,7 +78,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
       this.DBPass=this.PassengerDB;
-      this.ViewPassenger=this.DBPass.passengerApp.passengerPassengerApplications;
+      this.ViewPassenger=this.DBPass.passengerApplicationDTO.passengerPassengerApplications;
       console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
     })
@@ -110,9 +130,9 @@ export class UpdateAvailableTransportsComponent implements OnInit {
   }
 
   removeDelivery() {
-    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe()
-    this.router.navigate(['/main/available_transports']);
+    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
+      this.router.navigate(['/main/available_transports']);
+    })
   }
-
 
 }

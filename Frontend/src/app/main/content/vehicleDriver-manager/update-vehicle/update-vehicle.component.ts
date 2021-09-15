@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class UpdateVehicleComponent implements OnInit {
 
-  @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
+  // @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
   vehicleDetail = {
     vehicleId: '',
     vehicleType: '',
@@ -36,6 +36,13 @@ export class UpdateVehicleComponent implements OnInit {
     console.log(this.vehicleDetail)
     this.vehicleDriverManagerService.updateVehicle(this.vehicleDetail).subscribe((vehicle) => {
       this.router.navigate(['/main/view_vehicles'])
+    })
+  }
+  removeVehicle() {
+    this.vehicleDriverManagerService.deleteVehicle(this.vehicleDetail.vehicleId).subscribe((reply) => {
+      if (reply) {
+        this.router.navigate(['/main/view_vehicles'])
+      }
     })
   }
 

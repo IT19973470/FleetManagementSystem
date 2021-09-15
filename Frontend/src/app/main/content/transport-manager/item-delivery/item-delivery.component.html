@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Item Delivery</span>
@@ -15,7 +16,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryPersonName"
                    #deliveryPersonName="ngModel"
-                   name="deliveryPersonName" required appTextValidator="">
+                   name="deliveryPersonName" required appTextValidator>
             <div *ngIf="(deliveryPersonName.touched || deliveryForm.submitted) && deliveryPersonName.errors?.required"
                  class="validErr">
               Delivery Person Name is required
@@ -51,7 +52,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="deliveryDetail.contactNumber"
                    #contactNumber="ngModel"
-                   name="contactNumber" required appTelephoneValidator>
+                   name="contactNumber" required appTelephoneValidator
+                   placeholder="Eg: [ 123-1234567 ]">
             <div *ngIf="(contactNumber.touched || deliveryForm.submitted) && contactNumber.errors?.required"
                  class="validErr">
               Contact Number is required
@@ -59,6 +61,23 @@
             <div *ngIf="(contactNumber.dirty) && contactNumber.errors?.telephoneInvalid"
                  class="validErr">
               Invalid Contact Number
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Vehicle Number (Opt.) :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.vehicleNumber"
+                   #vehicleNumber="ngModel"
+                   name="vehicleNumber" appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
+            <div *ngIf="(vehicleNumber.dirty) && vehicleNumber.errors?.vehicleNumberInvalid"
+                 class="validErr">
+              Invalid Vehicle Number
             </div>
           </div>
         </div>
@@ -103,6 +122,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryDate"
                    #deliveryDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
                  class="validErr">
@@ -181,9 +201,12 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-12" style="text-align: center">
-              <button type="button" class="btn btn-warning" style="font-weight: bold;margin-right: 20px"
-                      (click)="setNewItem()">New Item</button>
-              <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-left: 20px">{{btnText}} Item</button>
+              <button type="submit" class="btn btn-warning" style="font-weight: bold;margin-right: 20px">{{btnText}}
+                Item
+              </button>
+              <button type="button" class="btn btn-warning" style="font-weight: bold;margin-left: 20px"
+                      (click)="setNewItem()">New Item
+              </button>
             </div>
           </div>
         </form>
@@ -221,7 +244,8 @@
           </tbody>
         </table>
 
-        <div *ngIf="deliveryDetail.deliveryItemDetails.length===0" class="validErr" style="text-align: center;font-size: 20px">
+        <div *ngIf="deliveryDetail.deliveryItemDetails.length===0" class="validErr"
+             style="text-align: center;font-size: 20px">
           No items available
         </div>
 
@@ -231,7 +255,9 @@
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
       <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Delivery</button>
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px"
+                [disabled]="deliveryDetail.deliveryItemDetails.length===0">Add Delivery
+        </button>
       </div>
     </div>
   </form>

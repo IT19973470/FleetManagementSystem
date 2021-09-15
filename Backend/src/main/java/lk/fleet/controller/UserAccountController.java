@@ -91,6 +91,16 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.approveUserAccount(employeeID, approval));
     }
 
+    @GetMapping(value = "/getTransportByID/{applicationID}")
+    public ResponseEntity getTransportByID(@PathVariable String applicationID) {
+        return ResponseEntity.ok(userAccountService.getTransportByID(applicationID));
+    }
+
+    @GetMapping(value = "/getAllTransports")
+    public ResponseEntity getAllTransports() {
+        return ResponseEntity.ok(userAccountService.getAllTransports());
+    }
+
     @GetMapping(value = "/approveTransport/{applicationID}/{approval}")
     public ResponseEntity approveTransport(@PathVariable String applicationID, @PathVariable boolean approval) {
         return ResponseEntity.ok(userAccountService.approveTransport(applicationID, approval));

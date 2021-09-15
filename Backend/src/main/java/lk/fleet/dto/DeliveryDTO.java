@@ -14,6 +14,7 @@ public class DeliveryDTO {
     private String deliveryTime;
     private String deliveryTimeActual;
     private String contactNumber;
+    private String vehicleNumber;
     private String deliveryPersonNic;
     private String deliveryPersonName;
     private String deliveryType;
@@ -35,6 +36,7 @@ public class DeliveryDTO {
             this.deliveryPersonName = delivery.getDeliveryPersonName();
             this.deliveryStatus = delivery.isDeliveryStatus();
             this.deliveryType = delivery.getDeliveryType();
+            this.vehicleNumber = delivery.getVehicleNumber();
         }
     }
 
@@ -140,5 +142,13 @@ public class DeliveryDTO {
 
     public void setDeliveryType(String deliveryType) {
         this.deliveryType = deliveryType;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 }

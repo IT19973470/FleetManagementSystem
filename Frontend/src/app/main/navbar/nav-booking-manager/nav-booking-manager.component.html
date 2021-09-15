@@ -51,4 +51,54 @@
     View Bookings
   </div>
 
+  <div
+    routerLink="/main/special_booking"
+    (click)="setTopic('Special Booking')"
+    #specialBooking="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':specialBooking.isActive?'#c0050e':''}">
+    Special Booking
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_special_booking"
+    #updateSpecialBooking="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_special_booking"
+    (click)="setTopic('View Special Booking')"
+    #viewSpecialBooking="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewSpecialBooking.isActive || updateSpecialBooking.isActive?'#c0050e':''}">
+    View Special Booking
+  </div>
+  <div
+    routerLink="/main/vip_booking"
+    (click)="setTopic('Vip Booking')"
+    #vipBooking="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':vipBooking.isActive?'#c0050e':''}">
+    Vip Booking
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_vip_booking"
+    #updateVipBooking="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    routerLink="/main/view_vip_booking"
+    (click)="setTopic('View Vip Booking')"
+    #viewVipBooking="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':viewVipBooking.isActive || updateVipBooking.isActive?'#c0050e':''}">
+    View Vip Booking
+  </div>
+
+
 </div>

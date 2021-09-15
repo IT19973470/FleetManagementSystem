@@ -8,25 +8,36 @@
   <div class="col-10" style="margin-top: 20px">
 
     <div style="margin-top: 20px">
-<!--      <span style="font-weight: bold;margin-left: 0px">Search by driver : </span>-->
-<!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="driverId">-->
-<!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllShiftsByDriver()">-->
-<!--        Search-->
-<!--      </button>-->
-
+      <span style="font-weight: bold;margin-left: 0px">Search by Booking ID : </span>
+      <input type="text" style="margin-left: 112px;width: 300px;height: 37px" [(ngModel)]="bookingId">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingsByBookingId()">
+        Search
+      </button>
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllBookings()">
         All Bookings
       </button>
     </div>
+<!--    <div style="margin-top: 20px">-->
+<!--      <span style="font-weight: bold;margin-left: 0px">Search by Booking Management ID : </span>-->
+<!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="bookingManagementClerkId">-->
+<!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingsByBookingManagementClerkId()">-->
+<!--        Search-->
+<!--      </button>-->
+
+<!--      -->
+<!--    </div>-->
 
     <table class="table table-striped" style="margin-top: 40px">
       <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Booking ID</th>
-        <th scope="col" >Booking Date & Time</th>
+        <th scope="col" >Booking Date</th>
+        <th scope="col" >Booking Time</th>
         <th scope="col">Booking Status</th>
         <th scope="col" width="10%" >Destination</th>
+
+
         <th scope="col" width="10%" style="text-align: center">Update</th>
       </tr>
       </thead>
@@ -34,9 +45,11 @@
       <tr *ngFor="let booking of bookings; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{booking.bookingId}}</td>
-        <td>{{booking.bookingDateTime}}</td>
+        <td>{{booking.bookingDate}}</td>
+        <td>{{booking.bookingTime}}</td>
         <td>{{booking.bookingStatus}}</td>
         <td>{{booking.destination}}</td>
+
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(booking)"></i>
         </td>
