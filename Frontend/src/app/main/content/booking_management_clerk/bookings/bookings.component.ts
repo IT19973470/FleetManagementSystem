@@ -24,9 +24,9 @@ export class BookingsComponent implements OnInit {
     bookingManagementClerk: {
       bookingManagementClerkId: 'BMC123'
     },
-    shift:{
-      shiftId:''
-    }
+    // shift:{
+    //   shiftId:''
+    // }
   };
   // bookingStatuses = [
   //   "Active",

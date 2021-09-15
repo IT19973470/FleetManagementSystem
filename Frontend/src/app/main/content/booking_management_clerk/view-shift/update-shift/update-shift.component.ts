@@ -72,7 +72,7 @@ export class UpdateShiftComponent implements OnInit {
 
   onSubmit() {
     this.alertBox.alert = true;
-      this.alertBox.msg = 'Do you want to update user account?';
+      this.alertBox.msg = 'Do you want to update shift?';
       this.alertService.reply.observers = [];
       this.alertService.reply.subscribe(reply => {
         if (reply) {
@@ -103,6 +103,7 @@ export class UpdateShiftComponent implements OnInit {
       if (reply) {
     this.bookingManagerService.deleteDriverShift(this.shift.shiftId).subscribe(() => {
       if (reply) {
+        this.notifierService.notify("success", "Shift deleted successfully");
         this.router.navigate(['/main/view_shifts'])
       }
     })
