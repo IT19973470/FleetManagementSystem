@@ -68,6 +68,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.dob"
                    #dob="ngModel"
+                   max="{{getMaxDate()}}"
                    name="dob" required>
             <div *ngIf="(dob.touched || driverRegistrationForm.submitted) && dob.errors?.required"
                  class="validErr">
@@ -134,12 +135,13 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Registering Date :
+            Registered Date :
           </div>
           <div class="col-8">
             <input type="date" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.registeredDate"
                    #registeredDate="ngModel"
+                   max="{{getMaxDate()}}"
                    name="registeredDate" required>
             <div *ngIf="(registeredDate.touched || driverRegistrationForm.submitted) && registeredDate.errors?.required"
                  class="validErr">
@@ -205,10 +207,10 @@
           </div>
 
           <div class="col-1" >
-            <button *ngIf="btn==true"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 20px"  (click)="hide()">
+            <button *ngIf="btn==true"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px"  (click)="hide()">
               <i class="fas far fa-eye"  style="font-size: 30px"  ></i>
             </button>
-            <button *ngIf="btn==false" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 20px" (click)="show()">
+            <button *ngIf="btn==false" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 0px" (click)="show()">
               <i class="fas fa-eye-slash"  style="font-size: 30px"  ></i>
             </button>
           </div>
