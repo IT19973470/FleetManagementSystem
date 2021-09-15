@@ -1,14 +1,14 @@
 import {Directive} from '@angular/core';
-import {AbstractControl, NG_VALIDATORS, Validator} from "@angular/forms";
+import {AbstractControl, NG_VALIDATORS} from "@angular/forms";
 
 @Directive({
-  selector: '[appTextValidator]',
-  providers: [{provide: NG_VALIDATORS, useExisting: TextValidatorDirective, multi: true}]
+  selector: '[appEmployeeIdValidator]',
+  providers: [{provide: NG_VALIDATORS, useExisting: EmployeeIdValidatorDirective, multi: true}]
 })
-export class TextValidatorDirective implements Validator {
+export class EmployeeIdValidatorDirective {
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    let TEXT_REGEX = /^[A-Za-z. ]+$/; // Regular Expression 1
+    let TEXT_REGEX = /^[0-9]{5}$/; // Regular Expression 1
     if (control.value != undefined) {
       if (control.value.length == 0 || TEXT_REGEX.test(control.value)) {
         return null;
@@ -20,7 +20,7 @@ export class TextValidatorDirective implements Validator {
       return null;
     }
 
-    return {'textInvalid': true};
+    return {'employeeIdInvalid': true};
   }
 
   constructor() {
