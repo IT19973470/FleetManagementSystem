@@ -31,6 +31,7 @@ input {
 .modalTable > div:nth-child(2) {
   /*width: calc(100% - 30px);*/
   /*margin: 50px auto auto auto;*/
+  width: 1000px;
   margin-top: 60px;
 }
 

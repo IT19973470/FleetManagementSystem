@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {DriverService} from "../../../../../_service/driver.service";
 import {Router} from "@angular/router";
+import {CommonService} from "../../../../../_service/common.service";
 
 @Component({
   selector: 'app-update-over-time',
@@ -14,13 +15,13 @@ export class UpdateOverTimeComponent implements OnInit {
   OT = {
     overTimeID:'',
     otDate:'',
-    noOfShifts:'',
+    noOfShifts:0,
     startTime:'',
     endTime:''
   };
 
 
-  constructor(private driverService: DriverService, private router: Router) {
+  constructor(private driverService: DriverService, private router: Router, private commonService: CommonService) {
     this.OT = this.getOT();
   }
 
@@ -28,7 +29,7 @@ export class UpdateOverTimeComponent implements OnInit {
     return {
       overTimeID:'',
       otDate:'',
-      noOfShifts:'',
+      noOfShifts:0,
       startTime:'',
       endTime:''
     };
@@ -43,6 +44,10 @@ export class UpdateOverTimeComponent implements OnInit {
     this.driverService.updateOT(this.OT).subscribe((OT)=>{
       this.router.navigate(['main/view_over_time']);
     })
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 
 }

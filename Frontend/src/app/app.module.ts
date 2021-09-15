@@ -94,16 +94,13 @@ import {CompletedTripsComponent} from "./main/content/security-officer/completed
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
-
-import { TransportApplicationsComponent } from './main/content/transport-manager/transport-applications/transport-applications.component';
-import { ProgramBookingComponent } from './main/content/booking_management_clerk/program-booking/program-booking.component';
-import { ViewProgramBookingComponent } from './main/content/booking_management_clerk/view-program-booking/view-program-booking.component';
-import { UpdateProgramBookingComponent } from './main/content/booking_management_clerk/view-program-booking/update-program-booking/update-program-booking.component';
-
+import {ProgramBookingComponent} from './main/content/booking_management_clerk/program-booking/program-booking.component';
+import {ViewProgramBookingComponent} from './main/content/booking_management_clerk/view-program-booking/view-program-booking.component';
+import {UpdateProgramBookingComponent} from './main/content/booking_management_clerk/view-program-booking/update-program-booking/update-program-booking.component';
 import {TransportPassengerApplicationsComponent} from './main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component';
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
-
-
+import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
+import {LicenseValidatorDirective} from './_validator/license-validator.directive';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -259,15 +256,14 @@ const customNotifierOptions: NotifierOptions = {
     DeliveryStatusComponent,
     VehicleNumberValidatorDirective,
     AlertBoxComponent,
-
-    TransportApplicationsComponent,
     ProgramBookingComponent,
     ViewProgramBookingComponent,
-    UpdateProgramBookingComponent
-
+    UpdateProgramBookingComponent,
     TransportPassengerApplicationsComponent,
-    TransportItemApplicationsComponent
-
+    TransportItemApplicationsComponent,
+    TransportItemApplicationsComponent,
+    EmployeeIdValidatorDirective,
+    LicenseValidatorDirective
   ],
 
   imports: [

@@ -5,6 +5,59 @@
 </div>
 
 <div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+    <label><h1><b>OT Details</b></h1></label>
+
+
+    <table class="table table-striped" style="margin-top: 40px" >
+      <tbody *ngIf="ot">
+      <tr>
+        <td>Overtime ID</td>
+        <td>{{ot.overTimeID}}</td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>{{ot.otDate}}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{{ot.startTime}}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{{ot.endTime}}</td>
+      </tr>
+      <tr>
+        <td>No of Shifts</td>
+        <td>{{ot.noOfShifts}}</td>
+      </tr>
+      <tr>
+        <td>Approval</td>
+        <td>{{ot.approval}}</td>
+      </tr>
+      <!--      <tr style="text-align: left">-->
+      <!--        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(ot)"></i></td>-->
+      <!--        <td><i class="fas fa-trash" style="cursor: pointer" (click)="deleteOT()"></i> </td>-->
+      <!--      </tr>-->
+      <tr>
+        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="goToUpdate(ot)">Update OT</button> </td>
+        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="deleteOT()">Delete OT</button> </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<hr style="height: 5px">
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+<div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 10px">
     <label><h1><b>OT List</b></h1></label>
 
@@ -50,52 +103,6 @@
 
 
 
-<div class="row">
-  <div class="col-12">
-
-  </div>
-</div>
-
-<div class="row" style="display: flex;justify-content: center">
-  <div class="col-11" style="margin-top: 20px">
-    <label><h1><b>OT Details</b></h1></label>
-
-
-    <table class="table table-striped" style="margin-top: 40px" >
-      <tbody *ngIf="ot">
-      <tr>
-        <td>Overtime ID</td>
-        <td>{{ot.overTimeID}}</td>
-      </tr>
-      <tr>
-        <td>Date</td>
-        <td>{{ot.otDate}}</td>
-      </tr>
-      <tr>
-        <td>Start Time</td>
-        <td>{{ot.startTime}}</td>
-      </tr>
-      <tr>
-        <td>End Time</td>
-        <td>{{ot.endTime}}</td>
-      </tr>
-      <tr>
-        <td>No of Shifts</td>
-        <td>{{ot.noOfShifts}}</td>
-      </tr>
-      <tr>
-        <td>Approval</td>
-        <td>{{ot.approval}}</td>
-      </tr>
-      <tr style="text-align: left">
-        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(ot)"></i></td>
-        <td><i class="fas fa-trash" style="cursor: pointer" (click)="deleteOT()"></i> </td>
-      </tr>
-      </tbody>
-    </table>
-
-  </div>
-</div>
 
 
 

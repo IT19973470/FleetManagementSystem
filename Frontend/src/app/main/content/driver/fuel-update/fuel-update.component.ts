@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-manager.service';
 import {Router} from '@angular/router';
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-fuel-update',
@@ -17,23 +18,16 @@ export class FuelUpdateComponent implements OnInit {
   vehicles = [];
   vehicle = {
     vehicleId: '',
-    vehicleType: '',
-    model: '',
-    noOfSeats: '',
-    initialMeter: '',
-    serviceMeter: '',
-    fuelBalance: '',
-    fuelConsumption: '',
-    occupied: '',
-    fuelType: ''
+    fuelBalance:0
   };
 
   vehicleNumber;
   currentFuelDetail = {
-    fuelBalance: ''
+    fuelBalance:0
   };
 
-  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
+  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router,    private commonService: CommonService) {
+    // this.vehicle = this.getVehicle();
   }
 
   ngOnInit(): void {
@@ -68,10 +62,19 @@ export class FuelUpdateComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    // this.driverService.updateFuel(this.currentFuelDetail).subscribe((currentFuelDetail) => {
-    //   this.router.navigate(['/login'])
-    // })
-    return null;
+  onSubmit(){
+    this.vehicleDriverManagerService.updateFuel(this.vehicle.fuelBalance).subscribe((fuel)=>{
+    })
+  }
+
+  getVehicle(){
+    return{
+        vehicleId: '',
+        fuelBalance: ''
+      };
+    }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 }

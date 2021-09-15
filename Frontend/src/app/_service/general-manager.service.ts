@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,17 @@ export class GeneralManagerService {
   tvProgram;
   deliveryItem;
 
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, private datePipe: DatePipe) {
   }
+
+  getCurDate() {
+    return this.datePipe.transform(new Date(), 'yyyy-MM-dd')
+  }
+
+  //
+  // constructor(private http: HttpClient) {
+  //
+  // }
 
   addTransportManagerUserAccount(userAccount): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/userAccount/addTransportManagerUserAccount", userAccount);
@@ -64,20 +73,21 @@ export class GeneralManagerService {
     return this.http.get<any>(environment.backend_url + "/userAccount/getTransportByID/" + applicationID);
   }
 
-  getAllTransports(): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/userAccount/getAllTransports");
-  }
+  // getAllTransports(): Observable<any> {
+  //   return this.http.get<any>(environment.backend_url + "/userAccount/getAllTransports");
+  // }
 
   addTVProgram(tvProgram): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/tvProgram/addTVProgram", tvProgram);
   }
+
 
   getTvProgram(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/tvProgram/getTvProgram");
   }
 
   updateTVProgram(tvProgram): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + tvProgram.programID, tvProgram);
+    return this.http.put<any>(environment.backend_url + "/tvProgram/updateTVProgram/" + tvProgram.programID, tvProgram);
   }
 
   deleteTVProgram(programID): Observable<any> {

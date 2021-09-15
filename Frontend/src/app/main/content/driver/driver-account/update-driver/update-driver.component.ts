@@ -77,7 +77,7 @@ export class UpdateDriverComponent implements OnInit {
         email: '',
         registeredDate: '',
         nameWithInitials: '',
-        password: '',
+        password: ''
       }
   };
 }}
