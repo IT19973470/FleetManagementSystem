@@ -11,21 +11,21 @@
       <div style="width: 50%;padding-right: 20px">
 
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-4">
-            TV Program ID :
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="tvProgram.programID"
-                   #programID="ngModel"
-                   name="programID" required>
-            <div *ngIf="(programID.touched || tvProgramForm.submitted) && programID.errors?.required"
-                 class="validErr">
-              TV Program ID is required
-            </div>
-          </div>
-        </div>
+<!--        <div class="row" style="margin-top: 10px">-->
+<!--          <div class="col-4">-->
+<!--            TV Program ID :-->
+<!--          </div>-->
+<!--          <div class="col-8">-->
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="tvProgram.programID"-->
+<!--                   #programID="ngModel"-->
+<!--                   name="programID" required>-->
+<!--            <div *ngIf="(programID.touched || tvProgramForm.submitted) && programID.errors?.required"-->
+<!--                 class="validErr">-->
+<!--              TV Program ID is required-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
 
         <div class="row" style="margin-top: 10px">
@@ -117,7 +117,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="tvProgram.producer"
                    #producer="ngModel"
-                   name="producer" required>
+                   name="producer" required appTextValidator="">
             <div *ngIf="(producer.touched || tvProgramForm.submitted) && producer.errors?.required"
                  class="validErr">
               Producer Name is required
@@ -154,7 +154,7 @@
           <thead>
           <tr>
             <th scope="col" width="5%">#</th>
-            <th scope="col" width="10%">Program ID</th>
+<!--            <th scope="col" width="10%">Program ID</th>-->
             <th scope="col" width="10%">Program Name</th>
             <th scope="col" width="10%">Starting Date</th>
             <th scope="col" width="10%">Ending Date</th>
@@ -165,9 +165,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let tvProgram of TvDB; let i = index">
+          <tr *ngFor="let tvProgram of tvPrograms; let i = index">
             <th scope="row">{{i + 1}}</th>
-            <td>{{tvProgram.programID}}</td>
+<!--            <td>{{tvProgram.programID}}</td>-->
             <td>{{tvProgram.programName}}</td>
             <td>{{tvProgram.startingDate}}</td>
             <td>{{tvProgram.endingDate}}</td>

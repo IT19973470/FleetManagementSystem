@@ -72,12 +72,13 @@ export class GeneralManagerService {
     return this.http.post<any>(environment.backend_url + "/tvProgram/addTVProgram", tvProgram);
   }
 
+
   getTvProgram(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/tvProgram/getTvProgram");
   }
 
   updateTVProgram(tvProgram): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/userAccount/updateUserAccount/" + tvProgram.programID, tvProgram);
+    return this.http.put<any>(environment.backend_url + "/tvProgram/updateTVProgram/" + tvProgram.programID, tvProgram);
   }
 
   deleteTVProgram(programID): Observable<any> {
