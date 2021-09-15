@@ -169,6 +169,7 @@
               <div class="col-8">
                 <input type="number" class="form-control"
                        [(ngModel)]="vipBooking.approvedFuelAmount"
+                       (focusout)="vipBooking.approvedFuelAmount = setNumberPositive(vipBooking.approvedFuelAmount)"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>
                 <div *ngIf="(approvedFuelAmount.touched || vipBookingForm.submitted) && approvedFuelAmount.errors?.required"
