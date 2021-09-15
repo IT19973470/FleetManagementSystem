@@ -15,7 +15,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="passengerpassengerApp.applicationID"
                    #deliveryPersonName="ngModel"
-                   name="deliveryPersonName" required>
+                   name="deliveryPersonName" required readonly>
             <div *ngIf="(deliveryPersonName.touched || deliveryForm.submitted) && deliveryPersonName.errors?.required"
                  class="validErr">
               Application ID is required
