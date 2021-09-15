@@ -4,6 +4,7 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-vip-booking',
@@ -51,7 +52,8 @@ export class VipBookingComponent implements OnInit {
   }
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -105,6 +107,10 @@ export class VipBookingComponent implements OnInit {
   }
   getMinimumDate(){
     return this.bookingManagerService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 }
 

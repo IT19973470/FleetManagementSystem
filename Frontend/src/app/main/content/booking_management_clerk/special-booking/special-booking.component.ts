@@ -4,6 +4,7 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-special-booking',
@@ -40,7 +41,8 @@ export class SpecialBookingComponent implements OnInit {
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -80,6 +82,9 @@ export class SpecialBookingComponent implements OnInit {
   }
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 
 }

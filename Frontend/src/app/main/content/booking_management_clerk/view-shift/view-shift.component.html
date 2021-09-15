@@ -74,10 +74,6 @@
     </div>
 
     <div style="margin-top: 20px;margin-bottom: 50px;">
-      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
-              (click)="goToApplicationBooking()">
-        Application Booking
-      </button>
 
       <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
               (click)="goToSpecialBooking()">
@@ -87,6 +83,10 @@
       <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
               (click)="goToVipBooking()">
         Vip Booking
+      </button>
+      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
+              (click)="goToApplicationBooking()">
+        Application Booking
       </button>
 
 <!--      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"-->

@@ -134,6 +134,7 @@
               <div class="col-8">
                 <input type="number" class="form-control" min="0"
                        [(ngModel)]="specialBooking.noOfPassengers"
+                       (focusout)="specialBooking.noOfPassengers = setNumberPositive(specialBooking.noOfPassengers)"
                        #noOfPassengers="ngModel"
                        name="noOfPassengers" required>
                 <div *ngIf="(noOfPassengers.touched || specialBookingForm.submitted) && noOfPassengers.errors?.required"
@@ -151,6 +152,7 @@
               <div class="col-8">
                 <input type="number" class="form-control" min="0"
                        [(ngModel)]="specialBooking.approvedFuelAmount"
+                       (focusout)="specialBooking.approvedFuelAmount = setNumberPositive(specialBooking.approvedFuelAmount)"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>
                 <div *ngIf="(approvedFuelAmount.touched || specialBookingForm.submitted) && approvedFuelAmount.errors?.required"
