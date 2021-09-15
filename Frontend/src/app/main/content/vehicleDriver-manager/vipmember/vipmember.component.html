@@ -69,7 +69,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.contactNumber"
                    #contactNumber="ngModel"
-                   name="contactNumber" required appTelephoneValidator>
+                   name="contactNumber" required appTelephoneValidator
+                   placeholder="Eg: [ 123-1234567 ]">
             <div *ngIf="(contactNumber.touched || vipmemberForm.submitted) && contactNumber.errors?.required"
                  class="validErr">
               Contact Number is required
