@@ -79,18 +79,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<VehicleDTO> getVehicleByNumber(String vehicleID) {
-        Vehicle VehicleByID = vehicleRepository.getVehicleByNumber(vehicleID);
+    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
+        Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
         List<VehicleDTO> vehicleDTOS = new ArrayList<>();
-        vehicleDTOS.add(new VehicleDTO(VehicleByID));
+        if (getVehicleByNumber != null) {
+            vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
+        }
         return vehicleDTOS;
     }
-
-//    @Override
-//    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber){
-//        Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
-//        List<VehicleDTO> vehicleDTOS=new ArrayList<>();
-//        vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
-//        return vehicleDTOS;
-//    }
 }

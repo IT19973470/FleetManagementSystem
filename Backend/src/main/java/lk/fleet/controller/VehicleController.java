@@ -38,21 +38,15 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
-
-    @GetMapping(value = "/getVehicleByNumber/{vehicleID}")
-    public ResponseEntity getVehicleByNumber(@PathVariable String vehicleID) {
-        return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleID));
-    }
-
     //SecurityOfficer
     @PutMapping(value = "/updateVehicleAvailability/{vehicleID}")
     public ResponseEntity updateVehicleAvailability(@PathVariable String vehicleID, @RequestBody Vehicle vehicle) {
         return ResponseEntity.ok(vehicleService.updateVehicleAvailability(vehicleID, vehicle));
     }
 
-//    @GetMapping(value = "/getVehicleByNumber/{vehicleNumber}")
-//    public ResponseEntity getVehicleByNumber(@PathVariable String vehicleNumber) {
-//        return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleNumber));
-//
-//    }
+    @GetMapping(value = "/getVehicleByNumber/{vehicleNumber}")
+    public ResponseEntity getVehicleByNumber(@PathVariable String vehicleNumber) {
+        return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleNumber));
+
+    }
 }

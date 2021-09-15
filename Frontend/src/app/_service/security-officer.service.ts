@@ -70,7 +70,7 @@ export class SecurityOfficerService {
     return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicleAvailability/" + vehicleDetail.vehicleId, vehicleDetail);
   }
 
-  getVehicleByNumber(vehicleID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleID);
+  getVehicleByNumber(vehicleNumber): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
   }
 }
