@@ -96,6 +96,9 @@ export class UpdateSpecialBookingComponent implements OnInit {
         })
       }
 
+  getMinDate() {
+    return this.bookingManagerService.getCurDate();
+  }
 
 
 }

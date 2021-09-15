@@ -28,8 +28,11 @@ export class ViewShiftComponent implements OnInit {
     }
   };
 
+  selectedShift;
+
   driverId;
   vehicleType;
+
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
 
@@ -38,7 +41,7 @@ export class ViewShiftComponent implements OnInit {
   }
 
   selectShift(shift) {
-    this.shift.shiftId= shift.shiftId;
+    this.selectedShift = shift;
   }
 
   goToUpdate(shift) {
@@ -52,6 +55,13 @@ export class ViewShiftComponent implements OnInit {
       console.log(shifts)
     })
   }
+
+  // getShift() {
+  //   this.bookingManagerService.getShift(this.shiftId).subscribe((shifts) => {
+  //     this.shifts = shifts;
+  //     console.log(this.shifts)
+  //   })
+  // }
 
   getAllShiftsByDriver() {
     this.bookingManagerService.getAllShiftsByDriver(this.driverId).subscribe((shifts) => {
@@ -69,8 +79,17 @@ export class ViewShiftComponent implements OnInit {
 
   }
 
-  goToSpecialBooking(specialBooking) {
-    this.bookingManagerService.specialBooking = specialBooking;
+  goToSpecialBooking() {
+    this.bookingManagerService.shift = this.selectedShift;
     this.router.navigate(['/main/special_booking'])
+  }
+
+  goToVipBooking() {
+    // this.bookingManagerService.shift = this.selectedShift;
+    // this.router.navigate(['/main/vip_booking'])
+  }
+
+  goToProgramBooking() {
+
   }
 }

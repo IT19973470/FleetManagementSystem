@@ -91,6 +91,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="shift.shiftDate"
                    #shiftDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="shiftDate" required>
             <div *ngIf="(shiftDate.touched || shiftForm.submitted) && shiftDate.errors?.required"
                  class="validErr">
