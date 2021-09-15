@@ -16,7 +16,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.name"
                    #name="ngModel"
-                   name="name" required appTextValidator="">
+                   name="name" required appTextValidator>
             <div *ngIf="(name.touched || driverRegistrationForm.submitted) && name.errors?.required"
                  class="validErr">
               Driver Name is required
@@ -32,7 +32,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.employeeID"
                    #employeeID="ngModel"
-                   name="employeeID" required>
+                   name="employeeID" readonly>
             <div *ngIf="(employeeID.touched || driverRegistrationForm.submitted) && employeeID.errors?.required"
                  class="validErr">
               Employee is required
@@ -48,7 +48,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.nic"
                    #nic="ngModel"
-                   name="nic" required appNicValidator>
+                   name="nic" readonly>
             <div *ngIf="(nic.touched || driverRegistrationForm.submitted) && nic.errors?.required"
                  class="validErr">
               NIC is required
@@ -62,13 +62,13 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Date Of Birth :
+            Date of Birth :
           </div>
           <div class="col-8">
             <input type="date" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.dob"
                    #dob="ngModel"
-                   name="dob" required>
+                   name="dob" readonly>
             <div *ngIf="(dob.touched || driverRegistrationForm.submitted) && dob.errors?.required"
                  class="validErr">
               Date of Birth is required
@@ -140,7 +140,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="driverDetail.userAccount.registeredDate"
                    #registeredDate="ngModel"
-                   name="registeredDate" required>
+                   name="registeredDate" readonly>
             <div *ngIf="(registeredDate.touched || driverRegistrationForm.submitted) && registeredDate.errors?.required"
                  class="validErr">
               Registering Date is required

@@ -22,7 +22,7 @@ public class Shift {
     private DriverVehicle driverVehicle;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+//    @JoinColumn(nullable = false)
     private BookingManagementClerk bookingManagementClerk;
 
     @ManyToOne

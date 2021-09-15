@@ -14,4 +14,6 @@ public interface VehicleService {
     boolean deleteVehicle(String vehicleID);
 
     List<VehicleDTO> getAllVehicles();
+
+    VehicleDTO fualUpdate(String vehicleID, Vehicle vehicle);
 }

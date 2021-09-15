@@ -180,19 +180,37 @@
           </div>
         </div>
 
+<!--        <div class="row" style="margin-top: 10px">-->
+<!--          <div class="col-4">-->
+<!--            Password :-->
+<!--          </div>-->
+<!--          <div class="col-8">-->
+<!--            <input type="text" class="form-control"-->
+<!--                   [(ngModel)]="driverDetail.userAccount.password"-->
+<!--                   #password="ngModel"-->
+<!--                   name="password" required>-->
+<!--            <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"-->
+<!--                 class="validErr">-->
+<!--              Password is required-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
             Password :
           </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="driverDetail.userAccount.password"
-                   #password="ngModel"
-                   name="password" required>
-            <div *ngIf="(password.touched || driverRegistrationForm.submitted) && password.errors?.required"
-                 class="validErr">
-              Password is required
-            </div>
+          <div class="col-7" >
+            <input type="{{type}}" class="form-control" name="passengerType" required [(ngModel)]="driverDetail.userAccount.password">
+          </div>
+
+          <div class="col-1" >
+            <button *ngIf="btn==true"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 20px"  (click)="hide()">
+              <i class="fas far fa-eye"  style="font-size: 30px"  ></i>
+            </button>
+            <button *ngIf="btn==false" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer; padding-left: 20px" (click)="show()">
+              <i class="fas fa-eye-slash"  style="font-size: 30px"  ></i>
+            </button>
           </div>
         </div>
 

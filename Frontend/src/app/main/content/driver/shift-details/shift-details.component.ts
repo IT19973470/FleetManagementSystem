@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DriverService} from '../../../../_service/driver.service';
 import {Router} from '@angular/router';
 
@@ -58,8 +58,9 @@ export class ShiftDetailsComponent implements OnInit {
   }
 
   attencanceMarked(sAttendance) {
-    this.driverService.attencanceMarked(this.sAttendance.driverId, sAttendance).subscribe((attend) => {
-      this.sAttendance.attendance = attend.attendance;
+    console.log(this.shift.shiftId);
+    this.driverService.attencanceMarked(this.shift.shiftId, sAttendance).subscribe((attend) => {
+      this.shift.attendance = attend.attendance;
     })
   }
 }

@@ -53,4 +53,7 @@ export class VehicleDriverManagerService {
   // getDriver():Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/vipMember/getDriver");
   // }
+  updateFuel(cFuel):Observable<any> {
+    return this.http.get<any>(environment.backend_url +'/vehicle/fuelUpdate' + cFuel);
+  }
 }
