@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {ApplicantService} from "../../../../_service/applicant.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-application-status',
@@ -39,12 +40,18 @@ export class ApplicationStatusComponent implements OnInit {
     }
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   tblIndex;
   plus: boolean = true; //plus button
   pen: boolean = false;//pen button
   viewAllItem = [];
 
-  constructor(private applicant: ApplicantService, private router: Router, private notifierService: NotifierService) {
+  constructor(private applicant: ApplicantService, private router: Router, private notifierService: NotifierService,private alertService: AlertBoxService) {
     //this.Pass = this.getNewPassenger();
   }
 
@@ -56,9 +63,23 @@ export class ApplicationStatusComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.ItemApp);
-    this.applicant.addItem(this.ItemApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports'])
+    // console.log(this.ItemApp);
+    // this.applicant.addItem(this.ItemApp).subscribe((deliveryDetail) => {
+    //   this.router.navigate(['/main/available_transports'])
+    // })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to Insert ?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.applicant.addItem(this.ItemApp).subscribe((deliveryDetail) => {
+          this.router.navigate(['/main/available_transports'])
+          this.notifierService.notify("success", "Form Inserted Successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Form Insert Failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 

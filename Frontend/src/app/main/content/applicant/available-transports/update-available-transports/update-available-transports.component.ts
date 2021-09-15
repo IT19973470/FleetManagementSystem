@@ -192,15 +192,15 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     // })
 
     this.alertBox.alert = true;
-    this.alertBox.msg = 'Do you want to update the form ?';
+    this.alertBox.msg = 'Do you want to delete the form ?';
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
         this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
           this.router.navigate(['/main/available_transports']);
-          this.notifierService.notify("success", "Form updated successfully");
+          this.notifierService.notify("success", "Form deleted successfully");
         }, (err) => {
-          this.notifierService.notify("error", "Delivery failed");
+          this.notifierService.notify("error", "Delete failed");
         })
       }
       this.alertBox.alert = false;

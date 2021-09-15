@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApplicantService} from "../../../../_service/applicant.service";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 
 @Component({
@@ -72,7 +73,7 @@ export class CreateNewRequestComponent implements OnInit {
   // };
   //
 
-  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService) {
+  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService,private alertService: AlertBoxService) {
     //  this.Pass.passenger = this.getNewPassenger();
   }
 
@@ -91,9 +92,24 @@ export class CreateNewRequestComponent implements OnInit {
   onSubmit() {
     console.log(this.passengerpassengerApp);
     // this.passengerpassengerApp.passengerApplication.noOfPassengers=this.z
-    this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports'])
+    // this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+    //   this.router.navigate(['/main/available_transports'])
+    // })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to Insert ?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+          this.router.navigate(['/main/available_transports'])
+          this.notifierService.notify("success", "Form Inserted Successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Form Insert Failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
+
   }
 
   chkPassengerId() {

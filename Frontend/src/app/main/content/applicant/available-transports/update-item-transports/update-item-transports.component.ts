@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {ApplicantService} from "../../../../../_service/applicant.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-item-transports',
@@ -44,6 +45,11 @@ export class UpdateItemTransportsComponent implements OnInit {
     }
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
 
   tblIndex;
   plus: boolean = true; //plus button
@@ -58,7 +64,7 @@ export class UpdateItemTransportsComponent implements OnInit {
   errorP = 2; //
   passengerOBJ; //Array Object
 
-  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService) {
+  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService,private alertService: AlertBoxService) {
     // this.item = this.getNewItem();
   }
 
@@ -95,8 +101,22 @@ export class UpdateItemTransportsComponent implements OnInit {
 
   onSubmit() {
     // console.log(this.passengerpassengerApp)
-    this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports'])
+    // this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+    //   this.router.navigate(['/main/available_transports'])
+    // })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update the form ?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+          this.router.navigate(['/main/available_transports'])
+          this.notifierService.notify("success", "Form updated successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Form update failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
@@ -201,9 +221,25 @@ export class UpdateItemTransportsComponent implements OnInit {
 
 
   removeDelivery() {
-    this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports']);
+    // this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
+    //   this.router.navigate(['/main/available_transports']);
+    // })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to delete the form ?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
+          this.router.navigate(['/main/available_transports']);
+          this.notifierService.notify("success", "Form deleted successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Delete failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
+
+
   }
 
   setPassenger(item, j) {
