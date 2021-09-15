@@ -3,8 +3,10 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.dto.ShiftDTO;
+import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.OverTime;
 import lk.fleet.entity.Shift;
+import lk.fleet.entity.UserAccount;
 import lk.fleet.repository.OverTimeRepository;
 import lk.fleet.repository.ShiftRepository;
 import lk.fleet.service.ShiftService;
@@ -57,6 +59,17 @@ public class ShiftServiceImpl implements ShiftService {
         if (shiftByDriverID.size() > 0) {
             Shift shift = shiftByDriverID.get(0);
             return new ShiftDTO(shift);
+        }
+        return null;
+    }
+
+    @Override
+    public ShiftDTO markAttendance(String driverID, boolean attendance) {
+        Optional<Shift> shiftOptional = shiftRepository.findById(driverID);
+        if (shiftOptional.isPresent()) {
+            Shift shift = shiftOptional.get();
+            shift.setAttendance(attendance);
+            return new ShiftDTO(shiftRepository.save(shift));
         }
         return null;
     }
