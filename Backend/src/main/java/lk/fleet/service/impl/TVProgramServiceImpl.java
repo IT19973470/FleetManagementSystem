@@ -7,6 +7,8 @@ import lk.fleet.service.TVProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,8 @@ public class TVProgramServiceImpl implements TVProgramService {
 
     @Override
     public TVProgramDTO addTVProgram(TVProgram tvProgram) {
+        LocalDateTime localDateTime = LocalDateTime.now();//current date
+        tvProgram.setProgramID("P" + localDateTime.format(DateTimeFormatter.ofPattern("hhmmss")));
         return new TVProgramDTO(tvProgramRepository.save(tvProgram));
     }
 
@@ -27,8 +31,11 @@ public class TVProgramServiceImpl implements TVProgramService {
         Optional<TVProgram> optionalTVProgram = tvProgramRepository.findById(programID);
         if (optionalTVProgram.isPresent()) {
             TVProgram tvProgramObj = optionalTVProgram.get();
+            tvProgramObj.setProducer(tvProgram.getProducer());
             tvProgramObj.setProgramName(tvProgram.getProgramName());
+            tvProgramObj.setStartingDate(tvProgram.getStartingDate());
             tvProgramObj.setEndingDate(tvProgram.getEndingDate());
+            tvProgramObj.setTransportCost(tvProgram.getTransportCost());
             return new TVProgramDTO(tvProgramRepository.save(tvProgramObj));
         }
         return null;

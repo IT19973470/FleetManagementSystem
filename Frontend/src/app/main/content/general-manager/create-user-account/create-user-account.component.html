@@ -102,6 +102,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="userAccount.dob"
                    #dob="ngModel"
+                   max="{{getMaxDate()}}"
                    name="dob" required>
             <div *ngIf="(dob.touched || createUserAccountForm.submitted) && dob.errors?.required"
                  class="validErr">
@@ -175,6 +176,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="userAccount.registeredDate"
                    #registeredDate="ngModel"
+                   max="{{getMaxDate()}}"
                    name="registeredDate" required>
             <div *ngIf="(registeredDate.touched || createUserAccountForm.submitted) && registeredDate.errors?.required"
                  class="validErr">

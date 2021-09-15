@@ -141,6 +141,10 @@ export class CreateUserAccountComponent implements OnInit {
     this.createUserAccountForm.resetForm();
   }
 
+  getMaxDate() {
+    return this.generalManagerService.getCurDate();
+  }
+
 
 }
 

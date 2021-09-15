@@ -16,6 +16,8 @@ export class TextValidatorDirective implements Validator {
         control.setValue(control.value.substr(0, control.value.length - 1))
         return null;
       }
+    } else {
+      return null;
     }
 
     return {'textInvalid': true};

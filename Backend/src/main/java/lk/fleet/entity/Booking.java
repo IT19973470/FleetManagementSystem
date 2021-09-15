@@ -20,7 +20,10 @@ public class Booking {
     private BookingManagementClerk bookingManagementClerk;
 
     @OneToOne
-    private  Shift shift;
+    private Shift shift;
+
+    @OneToOne(mappedBy = "booking")
+    private Token token;
 
     public Shift getShift() {
         return shift;
@@ -68,5 +71,13 @@ public class Booking {
 
     public void setBookingManagementClerk(BookingManagementClerk bookingManagementClerk) {
         this.bookingManagementClerk = bookingManagementClerk;
+    }
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 }

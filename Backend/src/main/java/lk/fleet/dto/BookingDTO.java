@@ -16,7 +16,7 @@ public class BookingDTO {
     private boolean bookingStatus;
     private VehicleDTO vehicle;
     private DriverDTO driver;
-    //private TokenDTO tokenDetail;
+    private TokenDTO token;
 
     public BookingDTO(Booking booking) {
         if (booking != null) {
@@ -31,10 +31,6 @@ public class BookingDTO {
         }
     }
 
-//    public BookingDTO(Booking booking, TokenDTO tokenDetail) {
-//        this(booking);
-//        this.tokenDetail = tokenDetail;
-//    }
 
     public String getBookingId() {
         return bookingId;
@@ -98,6 +94,14 @@ public class BookingDTO {
 
     public void setDriver(DriverDTO driver) {
         this.driver = driver;
+    }
+
+    public TokenDTO getToken() {
+        return token;
+    }
+
+    public void setToken(TokenDTO token) {
+        this.token = token;
     }
 }
 

@@ -17,15 +17,7 @@ export class FuelUpdateComponent implements OnInit {
   vehicles = [];
   vehicle = {
     vehicleId: '',
-    vehicleType: '',
-    model: '',
-    noOfSeats: '',
-    initialMeter: '',
-    serviceMeter: '',
-    fuelBalance: '',
-    fuelConsumption: '',
-    occupied: '',
-    fuelType: ''
+    fuelBalance: ''
   };
 
   vehicleNumber;
@@ -34,6 +26,7 @@ export class FuelUpdateComponent implements OnInit {
   };
 
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
+    this.vehicle = this.getVehicle();
   }
 
   ngOnInit(): void {
@@ -68,10 +61,15 @@ export class FuelUpdateComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    // this.driverService.updateFuel(this.currentFuelDetail).subscribe((currentFuelDetail) => {
-    //   this.router.navigate(['/login'])
-    // })
-    return null;
+  onSubmit(){
+    this.vehicleDriverManagerService.updateFuel(this.vehicle.fuelBalance).subscribe((fuel)=>{
+    })
   }
+
+  getVehicle(){
+    return{
+        vehicleId: '',
+        fuelBalance: ''
+      };
+    }
 }

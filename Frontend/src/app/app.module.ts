@@ -97,6 +97,8 @@ import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-valid
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
 import {TransportPassengerApplicationsComponent} from './main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component';
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
+import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
+import { LicenseValidatorDirective } from './_validator/license-validator.directive';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -254,7 +256,9 @@ const customNotifierOptions: NotifierOptions = {
     VehicleNumberValidatorDirective,
     AlertBoxComponent,
     TransportPassengerApplicationsComponent,
-    TransportItemApplicationsComponent
+    TransportItemApplicationsComponent,
+    EmployeeIdValidatorDirective,
+    LicenseValidatorDirective
   ],
 
   imports: [
