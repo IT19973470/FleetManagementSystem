@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {GeneralManagerService} from "../../../../_service/general-manager.service";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 
 @Component({
@@ -46,7 +48,17 @@ export class CreateUserAccountComponent implements OnInit {
   btnText = 'Create Account';
   tblIndex;
 
-  constructor(private generalManagerService: GeneralManagerService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private generalManagerService: GeneralManagerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService
+  ) {
 
   }
 
@@ -54,58 +66,85 @@ export class CreateUserAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.userAccount.accountType === 'Transport Manager') {
-      let transportManager = {
-        userAccount: this.userAccount
-      }
-     // console.log(transportManager)
-      this.generalManagerService.addTransportManagerUserAccount(transportManager).subscribe((userAccount) => {
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
-    else if(this.userAccount.accountType === 'Booking Management Clerk'){
-      let bookingManagementClerk = {
-        userAccount: this.userAccount
-      }
-      this.generalManagerService.addBookingManagementClerkUserAccount(bookingManagementClerk).subscribe((userAccount) =>{
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
-    else if(this.userAccount.accountType === 'Vehicle and Driver Management Clerk'){
-      let vehicleDriverManagementClerk = {
-        userAccount: this.userAccount
-      }
-      this.generalManagerService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk).subscribe((userAccount) =>{
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
-    else if (this.userAccount.accountType === 'Accident and Maintenance Clerk'){
-      let accidentMaintenanceClerk = {
-        userAccount: this.userAccount
-      }
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this account?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        if (this.userAccount.accountType === 'Transport Manager') {
+          let transportManager = {
+            userAccount: this.userAccount
+          }
+          // console.log(transportManager)
+          this.generalManagerService.addTransportManagerUserAccount(transportManager).subscribe((userAccount) => {
+            this.notifierService.notify("success", "User Account added successfully");
+            this.setNewForm();
+            //  this.router.navigate(['/main/user_account_list'])
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+        } else if (this.userAccount.accountType === 'Booking Management Clerk') {
+          let bookingManagementClerk = {
+            userAccount: this.userAccount
+          }
+          this.generalManagerService.addBookingManagementClerkUserAccount(bookingManagementClerk).subscribe((userAccount) => {
+            this.notifierService.notify("success", "User Account added successfully");
+            this.setNewForm();
+            //this.router.navigate(['/main/user_account_list'])
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+        } else if (this.userAccount.accountType === 'Vehicle and Driver Management Clerk') {
+          let vehicleDriverManagementClerk = {
+            userAccount: this.userAccount
+          }
+          this.generalManagerService.addVehicleDiverManagementClerkUserAccount(vehicleDriverManagementClerk).subscribe((userAccount) => {
+            this.notifierService.notify("success", "User Account added successfully");
+            this.setNewForm();
+            // this.router.navigate(['/main/user_account_list'])
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+        } else if (this.userAccount.accountType === 'Accident and Maintenance Clerk') {
+          let accidentMaintenanceClerk = {
+            userAccount: this.userAccount
+          }
 
-      this.generalManagerService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceClerk).subscribe((userAccount) =>{
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
-    else if (this.userAccount.accountType === 'Security Officer'){
-      let securityOfficer = {
-        userAccount: this.userAccount
-      }
+          this.generalManagerService.addAccidentMaintenanceManagerUserAccount(accidentMaintenanceClerk).subscribe((userAccount) => {
+            this.notifierService.notify("success", "User Account added successfully");
+            this.setNewForm();
+            // this.router.navigate(['/main/user_account_list'])
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+        } else if (this.userAccount.accountType === 'Security Officer') {
+          let securityOfficer = {
+            userAccount: this.userAccount
+          }
 
-      this.generalManagerService.addSecurityOfficerUserAccount(securityOfficer).subscribe((userAccount) =>{
-        this.router.navigate(['/main/user_account_list'])
-      })
-    }
+          this.generalManagerService.addSecurityOfficerUserAccount(securityOfficer).subscribe((userAccount) => {
+            this.notifierService.notify("success", "User Account added successfully");
+            this.setNewForm();
+            // this.router.navigate(['/main/user_account_list'])
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+        }
+
+      }
+      this.alertBox.alert = false;
+    })
 
   }
 
+  setNewForm() {
+    this.createUserAccountForm.resetForm();
+  }
 
-  // onSubmitForm() {
-  //   if (this.btnText === 'Create Account') {
-  //
-  //     // this.userAccount.push(this.userAccount) ;
-  //   }
-  //   return false;
-  // }
+  getMaxDate() {
+    return this.generalManagerService.getCurDate();
+  }
+
+
 }
+

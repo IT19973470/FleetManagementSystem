@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DriverService} from '../../../../_service/driver.service';
 import {Router} from '@angular/router';
 
@@ -22,8 +22,10 @@ export class ShiftDetailsComponent implements OnInit {
     endingTime: '',
     shiftDate: '',
     startingTime: '',
-    driver_driverid: ''
+    driverID: ''
   };
+  sAttendance;
+  driverId;
 
   constructor(private driverService: DriverService, private router: Router) {
 
@@ -53,5 +55,12 @@ export class ShiftDetailsComponent implements OnInit {
       this.shift = myShift;
       console.log(this.shift);
     });
+  }
+
+  attencanceMarked(sAttendance) {
+    console.log(this.shift.shiftId);
+    this.driverService.attencanceMarked(this.shift.shiftId, sAttendance).subscribe((attend) => {
+      this.shift.attendance = attend.attendance;
+    })
   }
 }

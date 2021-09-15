@@ -17,9 +17,11 @@ public class ApplicationDTO {
     private String reason;
     private String type;
 
+    private VehicleDTO vehicle;
+    private DriverDTO driver;
 
-    private PassengerApplicationDTO passengerApplicationDTO;
-    private ItemApplicationDTO itemApplicationDTO;
+    private PassengerApplicationDTO passengerApplication;
+    private ItemApplicationDTO itemApplication;
 
     public ApplicationDTO(Application application) {
         if (application != null) {
@@ -36,12 +38,20 @@ public class ApplicationDTO {
         }
     }
 
-    public ItemApplicationDTO getItemApplicationDTO() {
-        return itemApplicationDTO;
+    public PassengerApplicationDTO getPassengerApplication() {
+        return passengerApplication;
     }
 
-    public void setItemApplicationDTO(ItemApplicationDTO itemApplicationDTO) {
-        this.itemApplicationDTO = itemApplicationDTO;
+    public void setPassengerApplication(PassengerApplicationDTO passengerApplication) {
+        this.passengerApplication = passengerApplication;
+    }
+
+    public ItemApplicationDTO getItemApplication() {
+        return itemApplication;
+    }
+
+    public void setItemApplication(ItemApplicationDTO itemApplication) {
+        this.itemApplication = itemApplication;
     }
 
     public String getApplicationID() {
@@ -124,11 +134,19 @@ public class ApplicationDTO {
         this.type = type;
     }
 
-    public PassengerApplicationDTO getPassengerApplicationDTO() {
-        return passengerApplicationDTO;
+    public VehicleDTO getVehicle() {
+        return vehicle;
     }
 
-    public void setPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO) {
-        this.passengerApplicationDTO = passengerApplicationDTO;
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
     }
 }

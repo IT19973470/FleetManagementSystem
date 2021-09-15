@@ -23,7 +23,9 @@
         <thead>
         <tr>
           <th scope="col" width="5%">#</th>
-          <th scope="col" width="20%">Token ID</th>
+          <th scope="col">Token ID</th>
+          <th scope="col">Driver</th>
+          <th scope="col">Vehicle</th>
           <th scope="col">Departure Date</th>
           <th scope="col">Departure Time</th>
           <th scope="col">Arrival Date</th>
@@ -35,6 +37,8 @@
         <tr *ngFor="let tokenDetail of tokens; let i = index">
           <th scope="row">{{i+1}}</th>
           <td>{{tokenDetail.tokenID}}</td>
+          <td>{{tokenDetail.driver.userAccount.nameWithInitials}}</td>
+          <td>{{tokenDetail.vehicle.vehicleId}}</td>
           <td>{{tokenDetail.departureDate}}</td>
           <td>{{tokenDetail.departureTime}}</td>
           <td>{{tokenDetail.arrivalDate}}</td>

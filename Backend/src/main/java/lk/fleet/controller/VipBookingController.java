@@ -44,4 +44,8 @@ public class VipBookingController {
     public ResponseEntity getVipBookingByVipBookingId(@PathVariable String vipBookingId) {
         return ResponseEntity.ok(vipBookingService.getVipBookingByVipBookingId(vipBookingId));
     }
+    @GetMapping(value = "/getVipMember/{vipMemberId}")
+    public ResponseEntity getVipMember(@PathVariable String vipMemberId) {
+        return ResponseEntity.ok(vipBookingService.getVipMember(vipMemberId));
+    }
 }

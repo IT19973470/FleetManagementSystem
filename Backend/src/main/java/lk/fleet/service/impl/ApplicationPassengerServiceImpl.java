@@ -196,8 +196,8 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
 
             }
 
-            applicationDTO.setPassengerApplicationDTO(passengerApplicationDTO);
-            applicationDTO.setItemApplicationDTO(itemApplicationDTO);
+            applicationDTO.setPassengerApplication(passengerApplicationDTO);
+            applicationDTO.setItemApplication(itemApplicationDTO);
            applicationDTOS.add(applicationDTO);
         }
 
@@ -223,7 +223,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
             passengerPassengerApplications.add(passengerPassengerApplicationDTO);
         }
         passengerApplicationDTO.setPassengerPassengerApplications(passengerPassengerApplications);
-        applicationDTOS.setPassengerApplicationDTO(passengerApplicationDTO);
+        applicationDTOS.setPassengerApplication(passengerApplicationDTO);
 
 
         return applicationDTOS;

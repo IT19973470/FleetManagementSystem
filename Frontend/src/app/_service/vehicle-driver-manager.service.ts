@@ -47,10 +47,14 @@ export class VehicleDriverManagerService {
     return this.http.delete<any>(environment.backend_url + "/vipMember/deleteVipMember/" + vipmemberDetail);
   }
 
-  // getVehicleByNumber(vehicleNumber): Observable<any> {
-  //   return this.http.get<any>(environment.backend_url + "/vipmeber/getVehicleByNumber/" + vehicleNumber);
-  // }
+    getVipMemberByNumber(vipMemberNo): Observable<any> {
+      return this.http.get<any>(environment.backend_url + "/vipMember/getVipMemberByNumber/" + vipMemberNo);
+    }
+
   // getDriver():Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/vipMember/getDriver");
   // }
+  updateFuel(cFuel):Observable<any> {
+    return this.http.get<any>(environment.backend_url +'/vehicle/fuelUpdate' + cFuel);
+  }
 }

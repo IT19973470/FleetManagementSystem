@@ -10,12 +10,10 @@
   </div>
 
   <div
+    style="border: 0px;padding: 0px"
     routerLink="/main/create_token"
-    (click)="setTopic('Create Token')"
     #createToken="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':createToken.isActive?'#c0050e':''}">
-    Create Token
+    routerLinkActive>
   </div>
 
   <div
@@ -68,9 +66,4 @@
     routerLinkActive>
   </div>
 
-  <!--  <div>-->
-  <!--    Passenger Transport-->
-  <!--  </div>-->
-  <!--<div style="color: #b56e04">Vehicle</div>-->
-  <!--<div>Driver</div>-->
 </div>

@@ -51,13 +51,13 @@
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Vehicle Model :
+            Vehicle Category :
           </div>
           <div class="col-8">
             <select class="form-control" [(ngModel)]="vehicleDetail.model"
                     #vehicleModel="ngModel"
                     name="vehicleModel" required>
-              <option value="">Select Model</option>
+              <option value="">Select Category</option>
               <option value="Passenger">Passenger</option>
               <option value="Carrier">Carrier</option>
               <option value="News">News</option>
@@ -68,7 +68,7 @@
             <!--                   name="vehicleModel" required>-->
             <div *ngIf="(vehicleModel.touched || vehicleForm.submitted) && vehicleModel.errors?.required"
                  class="validErr">
-              Vehicle Model is required
+              Vehicle Category is required
             </div>
           </div>
         </div>
@@ -152,10 +152,10 @@
             Occupied :
           </div>
           <div class="col-8">
-            <select name="" id="true" class="form-control" [(ngModel)]="vehicleDetail.occupied"
+            <select class="form-control" [(ngModel)]="vehicleDetail.occupied"
                     #occupied="ngModel"
                     name="occupied" required>
-
+              <option value="">Select Occupied</option>
               <option value="False">False</option>
               <option value="True">True</option>
 
@@ -175,10 +175,10 @@
             Fuel Type :
           </div>
           <div class="col-8">
-            <select name="" id="petrol" class="form-control" [(ngModel)]="vehicleDetail.fuelType"
+            <select  class="form-control" [(ngModel)]="vehicleDetail.fuelType"
                     #fuelType="ngModel"
                     name="fuelType" required>
-
+              <option value="">Select Fuel Type</option>
               <option value="Diesel">Diesel</option>
               <option value="Petrol">Petrol</option>
 

@@ -1,6 +1,8 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
+
 <div class="row">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Special Booking</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update VIP Booking</span>
   </div>
 </div>
 
@@ -76,13 +78,6 @@
                 Booking Status :
               </div>
               <div class="col-8">
-                <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
-                <!--              <option value="">Select status</option>-->
-                <!--              <option *ngFor="let type of bookingStatus" [value]="type">-->
-                <!--                {{type}}-->
-                <!--              </option>-->
-                <!--            </select>-->
-                <!--            <p> {{selected}}</p>-->
                 <label>
                   <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="vipBooking.booking.bookingStatus">
                   <span style="font-size: 18px"> Active</span>
@@ -104,7 +99,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="vipBooking.booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" required appTextValidator>
                 <div *ngIf="(destination.touched || vipBookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required
@@ -116,13 +111,13 @@
 
             <div class="row" style="margin-top: 10px">
               <div class="col-4">
-                Description :
+                Purpose :
               </div>
               <div class="col-8">
                 <input type="text" class="form-control"
                        [(ngModel)]="vipBooking.purpose"
                        #purpose="ngModel"
-                       name="purpose" required>
+                       name="purpose" required appTextValidator>
                 <div *ngIf="(purpose.touched || vipBookingForm.submitted) && purpose.errors?.required"
                      class="validErr">
                   Purpose is required
@@ -133,27 +128,45 @@
 
             <div class="row" style="margin-top: 10px">
               <div class="col-4">
-                Number of Passengers  :
+                Time Period :
               </div>
               <div class="col-8">
-                <input type="text" class="form-control"
-                       [(ngModel)]="vipBooking.noOfPassengers"
-                       #noOfPassengers="ngModel"
-                       name="noOfPassengers" required>
-                <div *ngIf="(noOfPassengers.touched || vipBookingForm.submitted) && noOfPassengers.errors?.required"
+                <input type="date" class="form-control"
+                       [(ngModel)]="vipBooking.timePeriod"
+                       #timePeriod="ngModel"
+                       name="timePeriod" required>
+                <div *ngIf="(timePeriod.touched ||vipBookingForm.submitted) && timePeriod.errors?.required"
                      class="validErr">
-                  Number Of Passengers is required
+                  Time Period is required
                 </div>
               </div>
             </div>
 
+
+
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
+                Approval :
+              </div>
+              <div class="col-8">
+                <label>
+                  <input name="approval" type="radio" [value]="true" [(ngModel)]="vipBooking.approval">
+                  <span style="font-size: 18px"> Approve</span>
+                </label>
+                <label style="margin-left: 40px">
+                  <input name="approval" type="radio" [value]="false" [(ngModel)]="vipBooking.approval">
+                  <span style="font-size: 18px"> Disapprove</span>
+                </label>
+              </div>
+
+            </div>
 
             <div class="row" style="margin-top: 10px">
               <div class="col-4">
                 Approved Fuel Amount :
               </div>
               <div class="col-8">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="vipBooking.approvedFuelAmount"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>

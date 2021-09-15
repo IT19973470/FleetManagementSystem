@@ -51,7 +51,7 @@
   <div style="">
     <div style="max-height: 300px">
       <div style="min-width: 1000px">
-        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
+        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
 
         <div style="font-size: 20px;margin-top: 20px">
@@ -64,11 +64,11 @@
                 Fuel Balance :
               </div>
               <div class="col-7">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="currentFuelDetail.fuelBalance"
-                       #password="ngModel"
-                       name="password" required>
-                <div *ngIf="(password.touched || fuelUpdateForm.submitted) && password.errors?.required"
+                       #fuel="ngModel"
+                       name="fuel" required>
+                <div *ngIf="(fuel.touched || fuelUpdateForm.submitted) && fuel.errors?.required"
                      class="validErr">
                   Fuel Balance is required
                 </div>

@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-meter-detail',
@@ -24,10 +25,18 @@ export class MeterDetailComponent implements OnInit {
     },
   };
 
-  btnText = 'Add';
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   meter: any;
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router,private notifierService: NotifierService) {
+  constructor(private securityOfficerService: SecurityOfficerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
@@ -44,17 +53,22 @@ export class MeterDetailComponent implements OnInit {
   // }
 
   addMeterDetail() {
-    this.meterDetail.token = this.token;
-    this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
-      let count = 0;
-      if (this.btnText === 'Add' && count === 0) {
-        this.meters.push(meter);
-        this.notifierService.notify("success", "Meter Detail added successfully");
-        this.newMeter();
-        this.router.navigate(['/main/arrival_departure_page'])
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this meter detail?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.meterDetail.token = this.token;
+        this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
+          this.meters.push(meter);
+          this.notifierService.notify("success", "Meter Detail added successfully");
+          this.newMeter();
+          this.router.navigate(['/main/arrival_departure_page'])
+        }, (err) => {
+          this.notifierService.notify("error", "Meter Detail cannot be added!!");
+        })
       }
-      else
-        this.notifierService.notify("error", "Meter Detail cannot be added!!");
+      this.alertBox.alert = false;
     })
   }
 

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-view-shift',
@@ -9,15 +10,23 @@ import {BookingManagerService} from "../../../../_service/booking-manager.servic
   styleUrls: ['./view-shift.component.css']
 })
 export class ViewShiftComponent implements OnInit {
-
+  @ViewChild('shiftForm', {static: true}) public shiftForm: NgForm;
   shifts = [];
-  // deliveryItem = {
-  //   deliveryId: '',
-  //   deliveryPersonName: '',
-  //   deliveryPersonNic: '',
-  //   deliveryStatus: false,
-  //   deliveryItemDetails: []
-  // };
+  shift = {
+    shiftId: '',
+    shiftDate: '',
+    startingTime: '',
+    endingTime: '',
+    driverVehicle: {
+      driverVehicleID: {
+        driverID: '',
+        vehicleId: ''
+      }
+    },
+    bookingManagementClerk: {
+      bookingManagementClerkId: ''
+    }
+  };
 
   driverId;
   vehicleType;
@@ -26,6 +35,10 @@ export class ViewShiftComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllShifts();
+  }
+
+  selectShift(shift) {
+    this.shift.shiftId= shift.shiftId;
   }
 
   goToUpdate(shift) {
@@ -52,4 +65,12 @@ export class ViewShiftComponent implements OnInit {
     })
   }
 
+  goToApplicationBooking() {
+
+  }
+
+  goToSpecialBooking(specialBooking) {
+    this.bookingManagerService.specialBooking = specialBooking;
+    this.router.navigate(['/main/special_booking'])
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {Router} from "@angular/router";
 
@@ -26,10 +26,15 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
     this.getAllBookings();
   }
 
+  createToken(booking) {
+    this.securityOfficerService.booking = booking;
+    this.router.navigate(['/main/create_token']);
+  }
+
   getAllBookings() {
     this.securityOfficerService.getAllBookings().subscribe((bookings) => {
       this.bookings = bookings;
-      //console.log(this.bookings)
+      // console.log(this.bookings)
     })
   }
 
@@ -38,7 +43,6 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
       this.bookings = bookings;
     })
   }
-
 
 
 }

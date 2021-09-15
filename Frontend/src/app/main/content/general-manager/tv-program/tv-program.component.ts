@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {GeneralManagerService} from "../../../../_service/general-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-tv-program',
@@ -21,12 +23,23 @@ export class TvProgramComponent implements OnInit {
 
   };
 
-  TvDB;
+  tvPrograms;
   program;
   btnText = 'Add';
+
   tblIndex;
 
-  constructor(private generalManagerService: GeneralManagerService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private generalManagerService: GeneralManagerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService
+  ) {
     this.program = this.getNewProgram();
   }
 
@@ -35,41 +48,66 @@ export class TvProgramComponent implements OnInit {
   }
 
   onSubmit() {
+    this.alertBox.alert = true;
     if (this.btnText === 'Add') {
-      this.generalManagerService.addTVProgram(this.tvProgram).subscribe((tvProgram) => {
-        this.router.navigate(['/main/tv_program'])
-        this.getAll();
-      })
-     // this.tvProgram.push(this.tvProgram);
+      this.alertBox.msg = 'Do you want to add tv program?';
     } else if (this.btnText === 'Update') {
-      this.tvProgram[this.tblIndex] = this.tvProgram
+      this.alertBox.msg = 'Do you want to update tv program?';
     }
-    this.setNewProgram();
-
-
-
-  }
-
-  getAll(){
-    this.generalManagerService.getTvProgram().subscribe((tvProgram) => {
-      this.TvDB = tvProgram;
-      console.log(this.TvDB);
-    })
-
-  }
-
-  y;
-  removeProgram(tvProgram,i) {
-    this.y=tvProgram.programID;
-    this.generalManagerService.deleteTVProgram(this.y).subscribe((reply) => {
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.router.navigate(['/main/tv_program'])
-        console.log(this.y);
-        this.getAll();
+        if (this.btnText === 'Add') {
+          this.generalManagerService.addTVProgram(this.tvProgram).subscribe((tvProgram) => {
+            this.notifierService.notify("success", "TV program added successfully");
+            this.tvPrograms.push(tvProgram)
+            this.setNewForm();
+          }, (err) => {
+            this.notifierService.notify("error", "Adding failed");
+          })
+          // this.tvProgram.push(this.tvProgram);
+        } else if (this.btnText === 'Update') {
+          this.generalManagerService.updateTVProgram(this.tvProgram).subscribe((tvProgram) => {
+            this.notifierService.notify("success", "TV program is updated successfully");
+            this.tvPrograms[this.tblIndex] = tvProgram
+            // this.getAll();
+            this.setNewForm();
+          })
+        }
+        this.setNewProgram();
       }
+      this.alertBox.alert = false;
     })
+
   }
 
+  getAll() {
+    this.generalManagerService.getTvProgram().subscribe((tvProgram) => {
+      this.tvPrograms = tvProgram;
+     // console.log(this.tvPrograms);
+    })
+
+  }
+
+  removeProgram(tvProgram, i) {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove tv program?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        // this.y = tvProgram.programID;
+        this.generalManagerService.deleteTVProgram(tvProgram.programID).subscribe((reply) => {
+          if (reply) {
+            this.notifierService.notify("success", "TV program is removed successfully");
+            this.router.navigate(['/main/tv_program'])
+            // console.log(this.y);
+            this.getAll();
+          }
+        })
+      }
+      this.alertBox.alert = false;
+    })
+  }
 
 
   // onSubmitItem() {
@@ -83,13 +121,13 @@ export class TvProgramComponent implements OnInit {
 
   setProgram(program, i) {
     this.tblIndex = i;
-    this.tvProgram.programID= program.programID;
+    this.tvProgram.programID = program.programID;
     this.tvProgram.programName = program.programName;
     this.tvProgram.producer = program.producer;
-    this.tvProgram.endingDate= program.endingDate;
+    this.tvProgram.endingDate = program.endingDate;
     this.tvProgram.startingDate = program.startingDate;
-    this.tvProgram.transportCost=program.transportCost;
-   // this.tvProgram = 'Update';
+    this.tvProgram.transportCost = program.transportCost;
+    this.btnText = 'Update';
   }
 
   setNewProgram() {
@@ -107,5 +145,9 @@ export class TvProgramComponent implements OnInit {
       transportCost: '',
       producer: ''
     };
+  }
+
+  setNewForm() {
+    this.tvProgramForm.resetForm();
   }
 }

@@ -51,7 +51,7 @@ import {ViewShiftComponent} from "./main/content/booking_management_clerk/view-s
 import {PassengerItemDeliveryComponent} from "./main/content/transport-manager/passenger-item-delivery/passenger-item-delivery.component";
 import {UpdatePassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component";
 import {ViewPassengerItemDeliveryComponent} from "./main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component";
-import {UpdateDriverComponent} from "./main/content/Driver/driver-account/update-driver/update-driver.component";
+import {UpdateDriverComponent} from "./main/content/driver/driver-account/update-driver/update-driver.component";
 import {VehicleMaintenanceViewComponent} from "./main/content/accident-maintenance-manager/vehicle-maintenance-view/vehicle-maintenance-view.component";
 import {SpecialBookingComponent} from "./main/content/booking_management_clerk/special-booking/special-booking.component";
 import {UpdateSpecialBookingComponent} from "./main/content/booking_management_clerk/view-special-booking/update-special-booking/update-special-booking.component";
@@ -59,13 +59,17 @@ import {ViewSpecialBookingComponent} from "./main/content/booking_management_cle
 import {VipBookingComponent} from "./main/content/booking_management_clerk/vip-booking/vip-booking.component";
 import {UpdateVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component";
 import {ViewVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component";
+
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
+
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component";
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
 import {UpdateMaintenanceDetailsComponent} from "./main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
 import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
+import {TransportPassengerApplicationsComponent} from "./main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component";
+import {TransportItemApplicationsComponent} from "./main/content/transport-manager/transport-item-applications/transport-item-applications.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -117,6 +121,14 @@ const routes: Routes = [
       {
         path: 'view_passenger_item_delivery',
         component: ViewPassengerItemDeliveryComponent
+      },
+      {
+        path: 'passenger_transport',
+        component: TransportPassengerApplicationsComponent
+      },
+      {
+        path: 'item_transport',
+        component: TransportItemApplicationsComponent
       },
       {
         path: 'create_user_account',
@@ -217,7 +229,6 @@ const routes: Routes = [
       {
         path: 'update_over_time',
         component: UpdateOverTimeComponent
-
       },
       {
         path: 'arrival_departure_page',

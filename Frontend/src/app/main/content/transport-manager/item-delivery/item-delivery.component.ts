@@ -5,6 +5,7 @@ import {TransportManagerService} from "../../../../_service/transport-manager.se
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-item-delivery',
@@ -42,7 +43,8 @@ export class ItemDeliveryComponent implements OnInit {
     private transportManagerService: TransportManagerService,
     private router: Router,
     private notifierService: NotifierService,
-    private alertService: AlertBoxService
+    private alertService: AlertBoxService,
+    private commonService: CommonService
   ) {
     this.item = this.getNewItem();
   }
@@ -128,5 +130,13 @@ export class ItemDeliveryComponent implements OnInit {
       itemType: '',
       itemQty: 1
     };
+  }
+
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 }
