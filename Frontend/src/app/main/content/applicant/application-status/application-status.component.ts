@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ApplicantService} from "../../../../_service/applicant.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-application-status',
@@ -29,7 +30,7 @@ export class ApplicationStatusComponent implements OnInit {
       itemItemApplications: []
     }
   }
-
+  duplicate:boolean;
   Pass={
     item:{
       itemID:'',
@@ -41,14 +42,17 @@ export class ApplicationStatusComponent implements OnInit {
   tblIndex;
   plus:boolean=true; //plus button
   pen:boolean=false;//pen button
+  viewAllItem=[];
 
-
-  constructor(private applicant: ApplicantService, private router: Router) {
+  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService) {
     //this.Pass = this.getNewPassenger();
   }
 
   ngOnInit(): void {
-
+    this.applicant.getAllItem().subscribe((deliveryItemDetails) => {
+      //console.log(deliveryItemDetails)
+      this.viewAllItem=deliveryItemDetails
+    })
   }
 
   onSubmit() {
@@ -82,6 +86,10 @@ export class ApplicationStatusComponent implements OnInit {
       if(this.flag==1)
       {
         this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
+        this.notifierService.notify("success", "Item Added successfully");
+      }
+      else if(this.flag==0){
+        this.notifierService.notify("error", "Item Id duplicated");
       }
 
       //this.passengerForm.resetForm();
@@ -100,11 +108,11 @@ export class ApplicationStatusComponent implements OnInit {
     this.pen=false;
   }
 
-  chkPassengerId() {
-    if (this.Pass.item.itemID != '') {
-       this.flag = 1;
-    }
-  }
+  // chkPassengerId() {
+  //   if (this.Pass.item.itemID != '') {
+  //      this.flag = 1;
+  //   }
+  // }
 
   setPassenger(item,i) {
     this.tblIndex = i;
@@ -125,6 +133,33 @@ export class ApplicationStatusComponent implements OnInit {
       }
     };
   }
+  chkPassengerId() {
 
+    // console.log(this.viewAllItem)
+    // let p =this.viewAllItem[0]
+    // console.log(p)
+
+    for (let x = 0; x <= this.viewAllItem.length - 1; x++) {
+
+      let p = this.viewAllItem[x]
+
+      if(this.Pass.item.itemID === ''){
+        this.setNewPassenger()
+      }
+      else if(this.Pass.item.itemID !== '') {
+        //  console.log(this.Pass.passenger.passengerId)
+        this.duplicate = false;
+        if (this.Pass.item.itemID === p.itemID) {
+          console.log(p)
+          this.Pass.item.itemName = p.itemName;
+          this.Pass.item.qty=p.qty;
+          break;
+        }
+        else {
+          this.Pass.item.itemName=''
+        }
+      }
+    }
+  }
 
 }

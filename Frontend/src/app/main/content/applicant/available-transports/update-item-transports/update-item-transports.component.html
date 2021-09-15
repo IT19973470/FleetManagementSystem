@@ -1,6 +1,6 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Item Delivery</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Item Transports</span>
   </div>
 
   <div style="display: flex;margin-top: 50px">
@@ -135,7 +135,7 @@
                          #passengerId="ngModel"
                          (keyup)="chkPassengerId()"
                          name="passengerId" >
-                <div *ngIf="(flag==0)"
+                <div *ngIf="(duplicate===true)"
                      class="validErr">
                   Item Id is duplicated
                 </div>

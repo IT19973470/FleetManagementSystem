@@ -23,15 +23,13 @@ export class AvailableTransportsComponent implements OnInit {
 
   application = [];
   driverVehicle=[];
-  mainarray1=[];
-  mainarray2=[];
   mainarray=[];
   main=[];
 
   deliveryItem = {
     deliveryItemDetails: []
   };
-
+  id;
 
 
 
@@ -90,7 +88,7 @@ export class AvailableTransportsComponent implements OnInit {
       this.view=true
     else
       this.view=false
-    console.log(this.passenger)
+   // console.log(this.passenger)
     this.isTrueOrFalse(true);
   }
 
@@ -109,6 +107,7 @@ export class AvailableTransportsComponent implements OnInit {
      // console.log(this.application)
       this.getAllDriverVehicle();
     })
+    console.log(this.application[1])
   }
 
 
@@ -124,6 +123,7 @@ export class AvailableTransportsComponent implements OnInit {
 
   checkArray(){
     var arr = this.application;
+    console.log(this.application)
     for(let x=0;x<=this.driverVehicle.length-1; x++){
       let a2=this.driverVehicle[x];
      // console.log(a2)
@@ -184,7 +184,7 @@ export class AvailableTransportsComponent implements OnInit {
       this.passenger.model=z2.vehicle.model
       this.passenger.noOfSeats =z2.vehicle.noOfSeats
       this.mainarray.push(this.passenger)
-      console.log(this.mainarray)
+     // console.log(this.mainarray)
       this.setNewPassenger();
     }
 
@@ -277,6 +277,34 @@ export class AvailableTransportsComponent implements OnInit {
     else
     this.router.navigate(['/main/update_item_transports'])
   }
+
+  searchByID(id){
+    // this.applicantService.GetPassengerApp(id).subscribe((application1) => {
+    //   console.log(application1);
+    //   this.getNewPassenger()
+    //   this.application=application1
+    //   this.mainarray.push(application1);
+    //
+    //  // this.getAllDriverVehicle();
+    // })
+    let size=this.mainarray.length
+    for (let x=0; x<=size-1;x++){
+      let c=this.mainarray[x]
+      if(id===c.applicationID){
+        this.mainarray=(this.mainarray.splice(x, 1))
+      }
+    }
+
+  }
+  // getAllIPassengers() {
+  //   this.applicantService.GetItemApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
+  //     this.PassengerDB = deliveryItemDetails;
+  //     this.DBPass = this.PassengerDB;
+  //     this.ViewPassenger = this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
+  //     // console.log(this.PassengerDB);
+  //     this.y = deliveryItemDetails.length;
+  //   })
+  // }
 
 
 }

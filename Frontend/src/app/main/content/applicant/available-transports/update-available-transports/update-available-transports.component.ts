@@ -3,6 +3,7 @@ import {TransportManagerService} from "../../../../../_service/transport-manager
 import {Router} from "@angular/router";
 import {ApplicantService} from "../../../../../_service/applicant.service";
 import {NgForm} from "@angular/forms";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-update-available-transports',
@@ -63,7 +64,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
   errorP =2; //
   passengerOBJ; //Array Object
 
-  constructor(private applicantService: ApplicantService, private router: Router) {
+  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService) {
    // this.item = this.getNewItem();
   }
 
@@ -78,7 +79,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     this.getAllIPassengers()
   }
 
-  flag;
+  flag:boolean;
   getAllIPassengers() {
     this.applicantService.GetPassengerApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
@@ -103,18 +104,33 @@ export class UpdateAvailableTransportsComponent implements OnInit {
       this.applicantService.AddPassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,this.Pass.passenger.passengerId).subscribe((deliveryDetail) =>
       {
         this.ngOnInit();
-        this.flag=0;
-        this.setNewPassenger();
+        let c=deliveryDetail
+        console.log(c.passenger)
+          this.flag=true;
+          this.set1(this.flag)
       })
-    this.flag=1;
+
+     // this.set2(this.flag=false)
+    this.setNewPassenger();
   }
 
+  set1 (x){
+    if(x==true){
+      this.notifierService.notify("success", "Passenger Id Found");
+    }
+  }
+  set2 (){
+      this.notifierService.notify("error", "Passenger Id Not Found");
+  }
   chkPassengerId() {
     if (this.Pass.passenger.passengerId != '') {
     //  console.log(this.Pass.passenger.passengerId)
-      this.flag=2;
+     // this.flag=2;
     }
   }
+
+
+
 
   removePassenger(i,passengerId){
     this.applicantService.deletePassengerApp(this.passengerpassengerApp.passengerApp.passengerApplicationID,passengerId).subscribe((deliveryDetail) => {

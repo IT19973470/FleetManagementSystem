@@ -59,5 +59,8 @@ export class ApplicantService {
   updateItem(item): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/application/updateItem/" + item.itemID, item);
   }
+  getAllItem(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getItems");
+  }
 
 }

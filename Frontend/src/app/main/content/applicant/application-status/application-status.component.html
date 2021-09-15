@@ -126,7 +126,7 @@
                          #passengerId="ngModel"
                            (keyup)="chkPassengerId()"
                          name="passengerId" >
-                  <div *ngIf="(flag==0)"
+                  <div *ngIf="(duplicate===true)"
                        class="validErr">
                     Item Id is duplicated
                   </div>
@@ -165,7 +165,6 @@
 
         </form>
 
-
       </div>
     </div>
 
@@ -198,47 +197,6 @@
           </tr>
           </tbody>
         </table>
-
-        <!--        <div *ngIf="deliveryDetail.passengers.length===0" class="validErr" style="text-align: center;font-size: 20px">-->
-        <!--          No passengers available-->
-        <!--        </div>-->
-
-        <!--      </div>-->
-        <!--    </div>-->
-        <!--    <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">-->
-        <!--      <div style="width: 100%">-->
-
-        <!--        <table class="table table-striped">-->
-        <!--          <thead>-->
-        <!--          <tr>-->
-        <!--            <th scope="col" width="3%">#</th>-->
-        <!--            <th scope="col">Item ID</th>-->
-        <!--            <th scope="col">Item Name</th>-->
-        <!--            <th scope="col">Item Qtantity</th>-->
-        <!--            <th scope="col" width="5%" style="text-align: center">Update</th>-->
-        <!--            <th scope="col" width="5%" style="text-align: center">Remove</th>-->
-        <!--          </tr>-->
-        <!--          </thead>-->
-        <!--          <tbody>-->
-        <!--          <tr *ngFor="let passenger of deliveryDetail.passengers; let i = index">-->
-        <!--            <th scope="row">{{i+1}}</th>-->
-        <!--            <td>{{passenger.passengerName}}</td>-->
-        <!--            <td>{{passenger.passengerNic}}</td>-->
-        <!--            <td>{{passenger.contactNumber}}</td>-->
-        <!--            <td>{{passenger.passengerType}}</td>-->
-        <!--            <td style="text-align: center">-->
-        <!--              <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger)"></i>-->
-        <!--            </td>-->
-        <!--            <td style="text-align: center" (click)="deliveryDetail.passengers.splice(i, 1)">-->
-        <!--              <i class="fas fa-times" style="color: red;font-size: 20px"></i>-->
-        <!--            </td>-->
-        <!--          </tr>-->
-        <!--          </tbody>-->
-        <!--        </table>-->
-
-        <!--        <div *ngIf="deliveryDetail.passengers.length===0" class="validErr" style="text-align: center;font-size: 20px">-->
-        <!--          No items available-->
-        <!--        </div>-->
 
       </div>
     </div>

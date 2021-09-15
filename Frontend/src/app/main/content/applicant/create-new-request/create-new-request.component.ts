@@ -126,6 +126,7 @@ export class CreateNewRequestComponent implements OnInit {
           this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
           this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
           this.ViewPassenger.push(this.passengerOBJ);
+          console.log(this.passengerOBJ)
           this.errorP = 0;
           break;
         } else {

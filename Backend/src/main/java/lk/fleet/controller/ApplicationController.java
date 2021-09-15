@@ -133,5 +133,9 @@ public class ApplicationController {
     public ResponseEntity<Item> updateItem(@PathVariable String applicationID, @RequestBody Item item){
         return ResponseEntity.ok(applicationPassengerService.updateItem(applicationID, item));
     }
+    @GetMapping(value = "/getItems")
+    public List<Item> getAllItem(){
+        return applicationPassengerService.getAllItem();
+    }
 
 }

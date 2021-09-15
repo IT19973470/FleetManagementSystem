@@ -127,8 +127,12 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         List<PassengerDTO> passengerDTOS =new ArrayList<>();
         List<Passenger> passengers =passengerRepo.findAll();
         for(Passenger passenger: passengers){
-            passengerDTOS.add(new PassengerDTO(passenger));
+            UserAccountDTO userAccountDTO =new UserAccountDTO(passenger.getUserAccount());
+            PassengerDTO passengerDTO =new PassengerDTO(passenger);
+            passengerDTO.setUserAccount(userAccountDTO);
+            passengerDTOS.add(passengerDTO);
         }
+
         return passengerDTOS;
     }
 
@@ -171,13 +175,13 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         return passengerPassengerApplication;
     }
 
-    public Item updateItem( String itemID,Item item) { //update Item
+    public Item updateItem(String itemID,Item item) { //update Item
         Optional<Item> itemOptional = itemRepository.findById(itemID);
         if(itemOptional.isPresent()) {
             Item itemobj=itemOptional.get();
             itemobj.setItemID(item.getItemID());
             itemobj.setItemName(item.getItemName());
-            itemobj.setQty(itemobj.getQty());
+            itemobj.setQty(item.getQty());
             return  itemRepository.save(itemobj);
         }
         return item;
@@ -276,6 +280,10 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         applicationDTOS.setItemApplicationDTO(itemApplicationDTO);
 
         return applicationDTOS;
+    }
+
+    public List<Item> getAllItem(){
+        return itemRepository.findAll();
     }
 
 

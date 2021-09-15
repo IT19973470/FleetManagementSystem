@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ApplicantService} from "../../../../../_service/applicant.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-update-item-transports',
@@ -15,83 +16,78 @@ export class UpdateItemTransportsComponent implements OnInit {
   passengerpassengerApp = {
 
     applicationID: "",
-    approval: false,
-    arrivaleDate: null,
+    approval: '',
+    arrivaleDate: '',
     arrivaleDateActual: '',
-    depatureDate: null,
+    depatureDate: '',
     depatureDateActual: '',
     destination: "",
     vehicleType: "",
     reason: "",
     passengerApp: {
       noOfPassengers: '',
-      passengerApplicationID:'',
+      passengerApplicationID: '',
       passengerPassengerApplications: []
     },
     itemApp: {
       noOfItems: '',
-      itemApplicationID:'',
+      itemApplicationID: '',
     }
   }
 
-  // applicationID: "App20210911113145"
-  // approval: false
-  // arrivaleDate: "2021-09-29 11:31 AM"
-  // arrivaleDateActual: "2021-09-29T11:31:00"
-  // depatureDate: "2021-09-22 11:31 AM"
-  // depatureDateActual: "2021-09-22T11:31:00"
-  // destination: "Jaffna"
-  // passengerApp: {passengerApplicationID: 'PassApp20210911113145', noOfPassengers: 1, passengerPassengerApplications: Array(3)}
-  // passengerApplicationDTO: null
-  // reason: "Repair"
-  // type: "P"
-  // vehicleType: "Bus"
-  //
 
-
-
-  Pass={
-    item:{
-      itemID:'',
-      itemName:'',
-      qty:''
+  Pass = {
+    item: {
+      itemID: '',
+      itemName: '',
+      qty: ''
     }
   };
 
 
   tblIndex;
-  plus:boolean=true; //plus button
-  pen:boolean=false;//pen button
+  plus: boolean = true; //plus button
+  pen: boolean = false;//pen button
   DBPass;
   PassengerDB = []; //DB Passenger
   ViewPassenger;//View Passenger
+  viewAllItem=[];
   y = 0; //DB Passenger size
   z = 0; //Array size
 
-  errorP =2; //
+  errorP = 2; //
   passengerOBJ; //Array Object
 
-  constructor(private applicantService: ApplicantService, private router: Router) {
+  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService) {
     // this.item = this.getNewItem();
   }
 
-  viewUpdete:boolean;
+  viewUpdete: boolean;
+
   ngOnInit(): void {
+
+    this.applicantService.getAllItem().subscribe((deliveryItemDetails) => {
+      //console.log(deliveryItemDetails)
+      this.viewAllItem=deliveryItemDetails
+
+    })
     this.passengerpassengerApp = this.applicantService.deliveryItem;
-    console.log(this.applicantService.deliveryItem)
-    if(this.applicantService.deliveryItem.bookingApplicationId==="null")
-      this.viewUpdete=true
+
+    if (this.applicantService.deliveryItem.bookingApplicationId === "null")
+      this.viewUpdete = true
     else
-      this.viewUpdete=false
+      this.viewUpdete = false
     this.getAllIPassengers()
   }
 
   flag;
+  duplicate:boolean;
+
   getAllIPassengers() {
     this.applicantService.GetItemApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
-      this.DBPass=this.PassengerDB;
-      this.ViewPassenger=this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
+      this.DBPass = this.PassengerDB;
+      this.ViewPassenger = this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
       // console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
     })
@@ -107,38 +103,81 @@ export class UpdateItemTransportsComponent implements OnInit {
 
   onSubmitPassenger() {
     //  console.log(this.passengerpassengerApp.applicationID);
-     console.log(this.Pass.item);
+   // console.log(this.Pass.item);
 
-    this.flag=1;
+    this.flag = 1;
 
     if (this.plus == true) {
-      this.applicantService.AddItemApp(this.passengerpassengerApp.itemApp.itemApplicationID,this.Pass.item.itemID,this.Pass.item).subscribe((deliveryDetail) => {
-        this.getAllIPassengers()
-      })
+      this.duplicate=false
+      for(let x=0; x<=this.ViewPassenger.length-1; x++){
+        let p =this.ViewPassenger[x]
+      //  console.log(p.item.itemID)
+
+        if(p.item.itemID===this.Pass.item.itemID)
+        {
+          this.duplicate=true;
+          console.log(this.duplicate)
+            break;
+
+        }
+      }
+      if(this.duplicate!==true){
+        this.applicantService.AddItemApp(this.passengerpassengerApp.itemApp.itemApplicationID, this.Pass.item.itemID, this.Pass.item).subscribe((deliveryDetail) => {
+          this.notifierService.notify("success", "Item Added successfully");
+          this.getAllIPassengers()
+        })
+      }
+      else {
+        this.notifierService.notify("error", " Item ID is Duplicated");
+      }
+      console.log(this.duplicate)
 
     }
-  else if(this.pen==true){
+    else if (this.pen == true) {
+      console.log(this.Pass.item)
       this.applicantService.updateItem(this.Pass.item).subscribe((deliveryDetail) => {
         this.getAllIPassengers()
       })
-      this.plus=true;
-      this.pen=false;
+      this.plus = true;
+      this.pen = false;
     }
 
     this.setNewPassenger();
 
-
   }
 
   chkPassengerId() {
-    if (this.Pass.item.itemID != '') {
-      //  console.log(this.Pass.passenger.passengerId)
-      this.flag=2;
+
+    // console.log(this.viewAllItem)
+    // let p =this.viewAllItem[0]
+    // console.log(p)
+
+    for (let x = 0; x <= this.viewAllItem.length - 1; x++) {
+
+      let p = this.viewAllItem[x]
+
+       if(this.Pass.item.itemID === ''){
+         this.duplicate=false
+        this.setNewPassenger()
+      }
+      else if(this.Pass.item.itemID !== '') {
+          //  console.log(this.Pass.passenger.passengerId)
+          this.duplicate = false;
+        if (this.Pass.item.itemID === p.itemID) {
+          console.log(p.itemName)
+          this.Pass.item.itemName = p.itemName;
+          this.Pass.item.qty =p.qty;
+          break;
+        }
+        else {
+          this.Pass.item.itemName=''
+        }
+        }
     }
   }
 
-  removePassenger(i,itemId){
-    this.applicantService.deleteItemApp(this.passengerpassengerApp.itemApp.itemApplicationID,itemId).subscribe((deliveryDetail) => {
+  removePassenger(i, itemId) {
+    this.applicantService.deleteItemApp(this.passengerpassengerApp.itemApp.itemApplicationID, itemId).subscribe((deliveryDetail) => {
       this.ngOnInit();
     })
   }
@@ -151,11 +190,15 @@ export class UpdateItemTransportsComponent implements OnInit {
   getNewPassenger() {
     return {
       item:
-        { itemID:'',
-          itemName:'',
-          qty:''},
+        {
+          itemID: '',
+          itemName: '',
+          qty: ''
+        },
     };
   }
+
+
 
   removeDelivery() {
     this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
@@ -163,12 +206,13 @@ export class UpdateItemTransportsComponent implements OnInit {
     })
   }
 
-  setPassenger(item,j){
+  setPassenger(item, j) {
     this.tblIndex = j;
     this.Pass.item.itemID = item.itemID;
-    this.Pass.item.itemName=item.itemName;
-    this.Pass.item.qty=item.qty;
-    this.pen=true;
-    this.plus=false;
+    this.Pass.item.itemName = item.itemName;
+    this.Pass.item.qty = item.qty;
+    console.log(this.Pass)
+    this.pen = true;
+    this.plus = false;
   }
 }

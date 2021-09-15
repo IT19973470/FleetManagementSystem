@@ -30,4 +30,5 @@ public interface ApplicationPassengerService {
     ItemItemApplication itemApplication( String itemID,String itemApplicationID,Item item);
     boolean deleteItemApp(String itemApplicationID,String itemID);
     Item updateItem(String itemID,Item item);
+    List<Item> getAllItem();
 }
