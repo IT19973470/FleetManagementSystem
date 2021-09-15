@@ -65,8 +65,12 @@ public class OverTimeServiceImpl implements OverTimeService {
 
     @Override
     public OverTimeDTO getOverTimeByID(String driverId) {
-        OverTime overTimeNow = overTimeRepository.getLastOverTime(driverId).get(0);
-        return new OverTimeDTO(overTimeNow);
+        List<OverTime> lastOverTime = overTimeRepository.getLastOverTime(driverId);
+        if (lastOverTime.size() > 0) {
+            OverTime overTimeNow = lastOverTime.get(0);
+            return new OverTimeDTO(overTimeNow);
+        }
+        return null;
     }
 
 }

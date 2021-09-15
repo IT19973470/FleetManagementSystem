@@ -25,7 +25,7 @@ public class TVProgramServiceImpl implements TVProgramService {
     @Override
     public TVProgramDTO updateTVProgram(String programID, TVProgram tvProgram) {
         Optional<TVProgram> optionalTVProgram = tvProgramRepository.findById(programID);
-        if(optionalTVProgram.isPresent()){
+        if (optionalTVProgram.isPresent()) {
             TVProgram tvProgramObj = optionalTVProgram.get();
             tvProgramObj.setProgramName(tvProgram.getProgramName());
             tvProgramObj.setEndingDate(tvProgram.getEndingDate());
@@ -41,9 +41,9 @@ public class TVProgramServiceImpl implements TVProgramService {
     }
 
     public List<TVProgramDTO> getTvProgram() {
-        List<TVProgramDTO> tvProgramDTOS =new ArrayList<>();
-        List<TVProgram> tvPrograms =tvProgramRepository.findAll();
-        for(TVProgram tvProgram: tvPrograms){
+        List<TVProgramDTO> tvProgramDTOS = new ArrayList<>();
+        List<TVProgram> tvPrograms = tvProgramRepository.findAll();
+        for (TVProgram tvProgram : tvPrograms) {
             tvProgramDTOS.add(new TVProgramDTO(tvProgram));
         }
         return tvProgramDTOS;

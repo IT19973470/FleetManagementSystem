@@ -9,7 +9,6 @@ import java.util.List;
 public interface VehicleAccidentService {
 
     VehicleAccidentDTO addAccident(VehicleAccident vehicleAccident);
-//   DriverVehicle addAccident(DriverVehicle vehicleAccident);
 
     VehicleAccidentDTO updateVehicleAccident (String vehicleAccidentID, VehicleAccident vehicleAccident);
 
@@ -20,5 +19,8 @@ public interface VehicleAccidentService {
     boolean chkVehicle(String vehicleId);
 
     boolean chkDriver(String vehicleId,String driverId);
+
+    List<VehicleAccidentDTO>  getAccidentById(String vehicleID);
+
 }
 

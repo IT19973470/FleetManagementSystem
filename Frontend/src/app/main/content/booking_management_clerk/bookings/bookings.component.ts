@@ -21,12 +21,15 @@ export class BookingsComponent implements OnInit {
 
     bookingManagementClerk: {
       bookingManagementClerkId: 'BMC123'
+    },
+    shift:{
+      shiftId:''
     }
   };
-  bookingStatuses = [
-    "Active",
-    "Inactive"
-  ]
+  // bookingStatuses = [
+  //   "Active",
+  //   "Inactive"
+  // ]
   selected = ""
 
   update(e) {
@@ -42,11 +45,13 @@ export class BookingsComponent implements OnInit {
 
   onSubmit() {
     this.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+    //this.booking.shift.shiftId = JSON.parse(localStorage.getItem('user'))['employeeID'];
     console.log(this.booking);
     this.bookingManagerService.addBooking(this.booking).subscribe(() => {
       this.router.navigate(['/main/view_bookings'])
     })
   }
+
 }
 
 

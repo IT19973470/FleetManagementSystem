@@ -59,7 +59,6 @@ export class UpdateItemDeliveryComponent implements OnInit {
       if (reply) {
         this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
         this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
-          console.log(deliveryDetail)
           let deliveryItemDetails = this.deliveryDetail.deliveryItemDetails
           this.deliveryDetail = deliveryDetail;
           this.deliveryDetail.deliveryItemDetails = deliveryItemDetails;
@@ -145,6 +144,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
         this.transportManagerService.deleteItemOnDelivery(itemDetailId).subscribe((reply) => {
           if (reply) {
             this.deliveryDetail.deliveryItemDetails.splice(i, 1)
+            this.notifierService.notify("success", "Item deleted successfully");
           }
         })
       }
@@ -195,4 +195,7 @@ export class UpdateItemDeliveryComponent implements OnInit {
     };
   }
 
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }
