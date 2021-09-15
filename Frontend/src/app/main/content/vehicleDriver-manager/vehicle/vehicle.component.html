@@ -79,6 +79,7 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="vehicleDetail.noOfSeats"
                    #noOfSeats="ngModel"
                    name="noofseats" required>
@@ -94,6 +95,7 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="vehicleDetail.initialMeter"
                    #initialMeter="ngModel"
                    name="initialMeter" required>
@@ -109,6 +111,7 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="vehicleDetail.serviceMeter"
                    #serviceMeter="ngModel"
                    name="serviceMeter" required>
@@ -124,6 +127,7 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="vehicleDetail.fuelBalance"
                    #fuelBalance="ngModel"
                    name="fuelBalance" required>
@@ -139,6 +143,7 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
+                   min="0"
                    [(ngModel)]="vehicleDetail.fuelConsumption"
                    #fuelConsumption="ngModel"
                    name="fuelConsumption" required>
