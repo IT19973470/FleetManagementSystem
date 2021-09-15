@@ -79,24 +79,3 @@ export class BookingsComponent implements OnInit {
  }
 
 }
-
-//
-// onSubmit() {
-//   this.alertBox.alert = true;
-//   this.alertBox.msg = 'Do you want to add this shift?';
-//   this.alertService.reply.observers = [];
-//   this.alertService.reply.subscribe(reply => {
-//     if (reply) {
-//       this.shift.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
-//       this.bookingManagerService.addShift(this.shift).subscribe(() => {
-//         this.setNewForm();
-//         this.notifierService.notify("success", "Shift added successfully");
-//
-//         // this.router.navigate(['/main/view_shifts'])
-//       }, (err) => {
-//         this.notifierService.notify("error", "Shift failed");
-//       })
-//     }
-//     this.alertBox.alert = false;
-//   })
-// }

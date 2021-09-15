@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Vip Member Details</span>
@@ -28,7 +29,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.firstName"
                    #firstName="ngModel"
-                   name="firstName" required appTextValidator>
+                   name="firstName" required appTextValidator
+                   placeholder="Enter qualitative value">
             <div *ngIf="(firstName.touched || vipmemberForm.submitted) && firstName.errors?.required"
                  class="validErr">
               First Name is required
@@ -43,7 +45,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.lastName"
                    #lastName="ngModel"
-                   name="lastName" required appTextValidator>
+                   name="lastName" required appTextValidator
+                   placeholder="Enter qualitative value">
             <div *ngIf="(lastName.touched || vipmemberForm.submitted) && lastName.errors?.required"
                  class="validErr">
               Last Name is required
@@ -68,7 +71,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.contactNumber"
                    #contactNumber="ngModel"
-                   name="contactNumber" required appTelephoneValidator>
+                   name="contactNumber" required appTelephoneValidator
+                   placeholder="Eg: [ 123-1234567 ]">
             <div *ngIf="(contactNumber.touched || vipmemberForm.submitted) && contactNumber.errors?.required"
                  class="validErr">
               Contact Number is required
