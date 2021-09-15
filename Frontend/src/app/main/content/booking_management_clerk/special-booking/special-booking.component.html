@@ -101,7 +101,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="specialBooking.booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" required appTextValidator>
                 <div *ngIf="(destination.touched || specialBookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required
@@ -117,7 +117,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="specialBooking.description"
                        #description="ngModel"
-                       name="description" required>
+                       name="description" required appTextValidator>
                 <div *ngIf="(description.touched || specialBookingForm.submitted) && description.errors?.required"
                      class="validErr">
                   Description is required

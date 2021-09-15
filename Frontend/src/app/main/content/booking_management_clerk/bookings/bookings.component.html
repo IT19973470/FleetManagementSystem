@@ -117,7 +117,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" required appTextValidator>
                 <div *ngIf="(destination.touched || bookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required

@@ -12,6 +12,7 @@ export class VipBookingComponent implements OnInit {
 
 
   @ViewChild('bookingForm', {static: true}) public bookingForm: NgForm;
+  vipMembers = [];
 
   vipBooking = {
     booking: {
@@ -27,8 +28,12 @@ export class VipBookingComponent implements OnInit {
     timePeriod: '',
     approvedFuelAmount: '',
     approval: true,
+    vipMember:{
+      vipMemberId:'',
+    }
   };
 
+  vipMemberId;
   selected = ""
 
 
@@ -36,11 +41,21 @@ export class VipBookingComponent implements OnInit {
     this.selected = e.target.value
   }
 
+  selectVipMember(vipMember) {
+    this.vipBooking.vipMember.vipMemberId= vipMember.vipMemberId;
+  }
   constructor(private bookingManagerService: BookingManagerService, private router: Router) {
   }
 
   ngOnInit(): void {
 
+  }
+
+  getVipMember() {
+    this.bookingManagerService.getVipMember(this.vipMemberId).subscribe((vipMembers) => {
+      this.vipMembers = vipMembers;
+      console.log(this.vipMembers)
+    })
   }
 
   onSubmit() {

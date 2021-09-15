@@ -40,9 +40,6 @@ export class ShiftComponent implements OnInit {
     this.shift.shiftDate = this.bookingManagerService.getCurDate();
   }
 
-  // setItem(deliveryItem) {
-  //   this.deliveryItem = deliveryItem;
-  // }
 
   selectDriver(driver) {
     // this.selectedDriver = driver;
