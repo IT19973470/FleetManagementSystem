@@ -96,7 +96,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.position"
                    #position="ngModel"
-                   name="position" required>
+                   name="position" required appTextValidator
+                   placeholder="Enter qualitative value">
             <div *ngIf="(position.touched || vipmemberForm.submitted) && position.errors?.required"
                  class="validErr">
               Position is required
