@@ -92,6 +92,7 @@ import {ViewVipBookingComponent} from './main/content/booking_management_clerk/v
 import {UpdateVipBookingComponent} from './main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component';
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {DeliveryStatusComponent} from './main/content/security-officer/delivery-status/delivery-status.component';
+import {UpdateItemTransportsComponent} from './main/content/applicant/available-transports/update-item-transports/update-item-transports.component';
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
 import {ProgramBookingComponent} from './main/content/booking_management_clerk/program-booking/program-booking.component';
@@ -254,6 +255,7 @@ const customNotifierOptions: NotifierOptions = {
     UpdateUserAccountComponent,
     VehiclePoolComponent,
     DeliveryStatusComponent,
+    UpdateItemTransportsComponent,
     VehicleNumberValidatorDirective,
     AlertBoxComponent,
     ProgramBookingComponent,

@@ -47,7 +47,13 @@ export class UpdateOverTimeComponent implements OnInit {
   }
 
   setNumberPositive(val) {
-    return this.commonService.setNumberPositive(val);
+    if (val < 0) {
+      return val * -1;
+    } else if (val === 0) {
+      return 1;
+    } else {
+      return val;
+    }
   }
 
 }

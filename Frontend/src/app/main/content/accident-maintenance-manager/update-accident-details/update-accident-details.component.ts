@@ -12,8 +12,12 @@ export class UpdateAccidentDetailsComponent implements OnInit {
 
   @ViewChild('accidentDetailsForm', {static: true}) public accidentDetailsForm: NgForm;
   accidentDetail = {
-    vehicleID: '',
-    driverID: '',
+    vehicle: {
+      vehicleId: '',
+    },
+    driver: {
+      driverID: '',
+    },
     vehicleAccidentID: '1',
     accidentDate: '',
     accidentTime: '',
@@ -29,6 +33,7 @@ export class UpdateAccidentDetailsComponent implements OnInit {
     this.accidentDetail = this.vehicleAccidentService.accident;
   }
 
+  //update
   addAccident() {
     console.log(this.accidentDetail);
     this.accidentDetail.accidentTime = this.accidentDetail.accidentTimeActual;

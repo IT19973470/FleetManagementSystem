@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApplicantService} from "../../../../_service/applicant.service";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 
 @Component({
@@ -50,6 +51,12 @@ export class CreateNewRequestComponent implements OnInit {
   passengerOBJ; //Array Object
   flag;
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
 // Item ={
 //   item:{
 //     itemID:'',
@@ -66,7 +73,7 @@ export class CreateNewRequestComponent implements OnInit {
   // };
   //
 
-  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService) {
+  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService,private alertService: AlertBoxService) {
     //  this.Pass.passenger = this.getNewPassenger();
   }
 
@@ -85,9 +92,24 @@ export class CreateNewRequestComponent implements OnInit {
   onSubmit() {
     console.log(this.passengerpassengerApp);
     // this.passengerpassengerApp.passengerApplication.noOfPassengers=this.z
-    this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/available_transports'])
+    // this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+    //   this.router.navigate(['/main/available_transports'])
+    // })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to Insert ?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.applicant.addApp(this.passengerpassengerApp).subscribe((deliveryDetail) => {
+          this.router.navigate(['/main/available_transports'])
+          this.notifierService.notify("success", "Form Inserted Successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Form Insert Failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
+
   }
 
   chkPassengerId() {
@@ -100,6 +122,20 @@ export class CreateNewRequestComponent implements OnInit {
 
   createAccount(){
     this.router.navigate(['/main/applicant_regestration'])
+  }
+  dep;
+  checkDate(){
+    this.dep=0;
+    if(this.passengerpassengerApp.arrivaleDate!=''&& this.passengerpassengerApp.depatureDate!='')
+    {
+      if(this.passengerpassengerApp.arrivaleDate<this.passengerpassengerApp.depatureDate)
+     // this.notifierService.notify("error", " Depature Date must be less than Arrival date ");
+      this.dep=1;
+    }
+    else {
+      this.dep=0;
+    }
+
   }
   onSubmitPassenger() {
     let check=this.Pass;
@@ -126,6 +162,7 @@ export class CreateNewRequestComponent implements OnInit {
           this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.push(this.Pass);
           this.z = this.passengerpassengerApp.passengerApplication.passengerPassengerApplications.length;
           this.ViewPassenger.push(this.passengerOBJ);
+          console.log(this.passengerOBJ)
           this.errorP = 0;
           break;
         } else {
@@ -158,5 +195,7 @@ export class CreateNewRequestComponent implements OnInit {
         },
     };
   }
-
+  getMinDate() {
+    return this.applicant.getCurDate() + 'T00:00';
+  }
 }
