@@ -14,7 +14,7 @@ public class ItemApplicationDTO {
     private String itemApplicationID;
     private int noOfItems;
 
-    private List<ItemItemApplicationDTO> itemItemApplicationDTOS;
+    private List<ItemItemApplicationDTO> itemItemApplication;
 
     public ItemApplicationDTO(ItemApplication itemApplication) {
         if (itemApplication != null) {
@@ -41,10 +41,10 @@ public class ItemApplicationDTO {
     }
 
     public List<ItemItemApplicationDTO> getItemItemApplicationDTOS() {
-        return itemItemApplicationDTOS;
+        return itemItemApplication;
     }
 
     public void setItemItemApplicationDTOS(List<ItemItemApplicationDTO> itemItemApplicationDTOS) {
-        this.itemItemApplicationDTOS = itemItemApplicationDTOS;
+        this.itemItemApplication = itemItemApplicationDTOS;
     }
 }
