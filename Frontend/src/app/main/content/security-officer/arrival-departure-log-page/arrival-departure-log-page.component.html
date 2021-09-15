@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row">
   <div class="col-12">
 
@@ -8,7 +9,8 @@
   <div class="col-11" style="margin-top: 20px">
 
     <span style="font-weight: bold;margin-left: 50px">Search by Token ID : </span>
-    <input type="search" placeholder="Enter TokenID.." style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
+    <input type="search" placeholder="Enter TokenID.."
+           style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="tokenIdSearch">
     <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByID()">
       Search
     </button>

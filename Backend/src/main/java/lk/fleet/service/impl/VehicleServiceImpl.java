@@ -50,6 +50,18 @@ public class VehicleServiceImpl implements VehicleService {
         return null;
     }
 
+    //SecurityOfficer
+    @Override
+    public VehicleDTO updateVehicleAvailability(String vehicleID, Vehicle vehicle) {
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
+        if (optionalVehicle.isPresent()) {
+            Vehicle vehicleObj = optionalVehicle.get();
+            vehicleObj.setOccupied(vehicle.isOccupied());
+            return new VehicleDTO(vehicleRepository.save(vehicleObj));
+        }
+        return null;
+    }
+
     @Override
     public boolean deleteVehicle(String vehicleID) {
         vehicleRepository.deleteById(vehicleID);
@@ -65,11 +77,14 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return vehicleDTOS;
     }
+
     @Override
-    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber){
+    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
         Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
-        List<VehicleDTO> vehicleDTOS=new ArrayList<>();
-        vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
+        List<VehicleDTO> vehicleDTOS = new ArrayList<>();
+        if (getVehicleByNumber != null) {
+            vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
+        }
         return vehicleDTOS;
     }
 }

@@ -37,10 +37,8 @@
           <td>{{booking.driver.userAccount.nameWithInitials}}</td>
           <td>{{booking.vehicle.vehicleType}}</td>
           <td>{{booking.destination}}</td>
-          <td>
-            <a href="/main/create_token">
-              <i class="far fa-plus-square fa-lg" style="cursor: pointer" title="Add Token"></i>
-            </a>
+          <td (click)="createToken(booking)">
+            <i class="far fa-plus-square fa-lg" style="cursor: pointer" title="Add Token"></i>
           </td>
         </tr>
         </tbody>
