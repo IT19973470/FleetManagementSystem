@@ -11,21 +11,21 @@
       <div style="width: 50%;padding-right: 20px">
 
 
-<!--        <div class="row" style="margin-top: 10px">-->
-<!--          <div class="col-4">-->
-<!--            TV Program ID :-->
-<!--          </div>-->
-<!--          <div class="col-8">-->
-<!--            <input type="text" class="form-control"-->
-<!--                   [(ngModel)]="tvProgram.programID"-->
-<!--                   #programID="ngModel"-->
-<!--                   name="programID" required>-->
-<!--            <div *ngIf="(programID.touched || tvProgramForm.submitted) && programID.errors?.required"-->
-<!--                 class="validErr">-->
-<!--              TV Program ID is required-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="row" style="margin-top: 10px">-->
+        <!--          <div class="col-4">-->
+        <!--            TV Program ID :-->
+        <!--          </div>-->
+        <!--          <div class="col-8">-->
+        <!--            <input type="text" class="form-control"-->
+        <!--                   [(ngModel)]="tvProgram.programID"-->
+        <!--                   #programID="ngModel"-->
+        <!--                   name="programID" required>-->
+        <!--            <div *ngIf="(programID.touched || tvProgramForm.submitted) && programID.errors?.required"-->
+        <!--                 class="validErr">-->
+        <!--              TV Program ID is required-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
 
         <div class="row" style="margin-top: 10px">
@@ -84,6 +84,7 @@
             <input type="number" class="form-control"
                    min="0"
                    [(ngModel)]="tvProgram.transportCost"
+                   (focusout)="tvProgram.transportCost = setNumberPositive(tvProgram.transportCost)"
                    #transportCost="ngModel"
                    name="transportCost" required>
             <div *ngIf="(transportCost.touched || tvProgramForm.submitted) && transportCost.errors?.required"
@@ -131,7 +132,8 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px; margin-right: 20px">{{btnText}}
+            <button type="submit" class="btn btn-success"
+                    style="font-weight: bold;font-size: 20px; margin-right: 20px">{{btnText}}
               TV Program
             </button>
             <button type="button" class="btn btn-success" (click)="setNewProgram()"
@@ -154,7 +156,7 @@
           <thead>
           <tr>
             <th scope="col" width="5%">#</th>
-<!--            <th scope="col" width="10%">Program ID</th>-->
+            <!--            <th scope="col" width="10%">Program ID</th>-->
             <th scope="col" width="10%">Program Name</th>
             <th scope="col" width="10%">Starting Date</th>
             <th scope="col" width="10%">Ending Date</th>
@@ -167,7 +169,7 @@
           <tbody>
           <tr *ngFor="let tvProgram of tvPrograms; let i = index">
             <th scope="row">{{i + 1}}</th>
-<!--            <td>{{tvProgram.programID}}</td>-->
+            <!--            <td>{{tvProgram.programID}}</td>-->
             <td>{{tvProgram.programName}}</td>
             <td>{{tvProgram.startingDate}}</td>
             <td>{{tvProgram.endingDate}}</td>

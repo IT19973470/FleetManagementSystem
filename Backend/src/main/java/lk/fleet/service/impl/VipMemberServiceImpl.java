@@ -67,7 +67,10 @@ public class VipMemberServiceImpl implements VipMemberService {
     public List<VipMemberDTO> getVipMemberByNumber(String vipMemberNo){
         VipMember getVipMemberByNumber = vipMemberRepository.getVipMemberByNumber(vipMemberNo);
         List<VipMemberDTO> vipMemberDTOS=new ArrayList<>();
-        vipMemberDTOS.add(new VipMemberDTO(getVipMemberByNumber));
+        if ( getVipMemberByNumber!= null) {
+            vipMemberDTOS.add(new VipMemberDTO(getVipMemberByNumber));
+        }
+
         return vipMemberDTOS;
     }
 

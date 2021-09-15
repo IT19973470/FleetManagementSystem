@@ -23,15 +23,13 @@ export class AvailableTransportsComponent implements OnInit {
 
   application = [];
   driverVehicle=[];
-  mainarray1=[];
-  mainarray2=[];
   mainarray=[];
   main=[];
 
   deliveryItem = {
     deliveryItemDetails: []
   };
-
+  id;
 
 
 
@@ -52,6 +50,7 @@ export class AvailableTransportsComponent implements OnInit {
       driveremail:'',
       type: "",
       BookedVehicleType:'',
+      bookingApplicationId:'',
       model:'',
       noOfSeats:'',
       vehicleType:'',
@@ -59,13 +58,19 @@ export class AvailableTransportsComponent implements OnInit {
         noOfPassengers: '5',
         passengerApplicationID: '',
       },
-      passengerPassengerApplications:[]
+      itemApp: {
+        noOfItems: '',
+        itemApplicationID: ''
+      },
+      passengerPassengerApplications:[],
+      itemItemApplicationDTOS:[]
     }
 
 
 
   user:boolean=true;
   item:boolean=true;
+  view:boolean=false;
   tblIndex;
 
   constructor(private applicantService: ApplicantService, private router: Router) {
@@ -75,10 +80,15 @@ export class AvailableTransportsComponent implements OnInit {
     this.getAllItemDeliveries();
   }
 
+
   setItem(deliveryItem,i) {
     this.tblIndex = i;
     this.passenger = deliveryItem;
-    console.log(this.passenger)
+    if(deliveryItem.passengerApp.passengerApplicationID!=null)
+      this.view=true
+    else
+      this.view=false
+   // console.log(this.passenger)
     this.isTrueOrFalse(true);
   }
 
@@ -97,6 +107,7 @@ export class AvailableTransportsComponent implements OnInit {
      // console.log(this.application)
       this.getAllDriverVehicle();
     })
+    console.log(this.application[1])
   }
 
 
@@ -112,6 +123,7 @@ export class AvailableTransportsComponent implements OnInit {
 
   checkArray(){
     var arr = this.application;
+    console.log(this.application)
     for(let x=0;x<=this.driverVehicle.length-1; x++){
       let a2=this.driverVehicle[x];
      // console.log(a2)
@@ -147,7 +159,7 @@ export class AvailableTransportsComponent implements OnInit {
     {
       let z2=this.driverVehicle[x]
       let z1=this.main[x]
-      // console.log(this.application)
+      console.log(this.passenger)
       this.passenger.applicationID =z1.applicationID;
        this.passenger.arrivaleDate = z1.depatureDateActual;
        this.passenger.depatureDate = z1.arrivaleDateActual;
@@ -156,8 +168,11 @@ export class AvailableTransportsComponent implements OnInit {
        this.passenger.type=z1.type;
        this.passenger.reason=z1.reason;
        this.passenger.vehicleType=z1.vehicleType;
-       this.passenger.passengerApp.passengerApplicationID=z1.passengerApplicationDTO.passengerApplicationID
-      this.passenger.passengerPassengerApplications=z1.passengerApplicationDTO.passengerPassengerApplications
+       this.passenger.passengerApp.passengerApplicationID=z1.passengerApplication.passengerApplicationID
+       this.passenger.itemApp.itemApplicationID=z1.itemApplication.itemApplicationID
+       this.passenger.passengerPassengerApplications=z1.passengerApplication.passengerPassengerApplications
+       this.passenger.itemItemApplicationDTOS=z1.itemApplication.itemItemApplicationDTOS
+       this.passenger.bookingApplicationId=z2.bookingApplicationId
        this.passenger.lisenseID=z2.driver.lisenseID;
        this.passenger.driveremployeeID=z2.driver.userAccount.employeeID;
        this.passenger.drivercontactNo=z2.driver.userAccount.contactNo
@@ -169,7 +184,7 @@ export class AvailableTransportsComponent implements OnInit {
       this.passenger.model=z2.vehicle.model
       this.passenger.noOfSeats =z2.vehicle.noOfSeats
       this.mainarray.push(this.passenger)
-      console.log(this.mainarray)
+     // console.log(this.mainarray)
       this.setNewPassenger();
     }
 
@@ -190,9 +205,12 @@ export class AvailableTransportsComponent implements OnInit {
       this.passenger.approval = z1.approval;
       this.passenger.type=z1.type;
       this.passenger.reason=z1.reason;
-      this.passenger.vehicleType="Not Assigned";
-      this.passenger.passengerApp.passengerApplicationID=z1.passengerApplicationDTO.passengerApplicationID
-      this.passenger.passengerPassengerApplications=z1.passengerApplicationDTO.passengerPassengerApplications
+      this.passenger.vehicleType=z1.vehicleType;
+      this.passenger.passengerApp.passengerApplicationID=z1.passengerApplication.passengerApplicationID
+      this.passenger.itemApp.itemApplicationID=z1.itemApplication.itemApplicationID
+      this.passenger.passengerPassengerApplications=z1.passengerApplication.passengerPassengerApplications
+      this.passenger.itemItemApplicationDTOS=z1.itemApplication.itemItemApplicationDTOS
+      this.passenger.bookingApplicationId='null'
       this.passenger.lisenseID="Not Assigned";
       this.passenger.driveremployeeID="Not Assigned";
       this.passenger.drivercontactNo="Not Assigned"
@@ -201,6 +219,7 @@ export class AvailableTransportsComponent implements OnInit {
       this.passenger.drivername = "Not Assigned";
       this.passenger.contactNumber ="Not Assigned";
       this.passenger.model="Not Assigned";
+      this.passenger.BookedVehicleType="Not Assigned"
       this.passenger.noOfSeats="Not Assigned"
       this.passenger.vehicleId ="Not Assigned";
       this.mainarray.push(this.passenger)
@@ -231,6 +250,8 @@ export class AvailableTransportsComponent implements OnInit {
       driveremployeeID:'',
       drivercontactNo:'',
       driveremail:'',
+      bookedvehicleType:'',
+      bookingApplicationId:'',
       approval:'',
       type: "",
       BookedVehicleType:'',
@@ -240,14 +261,50 @@ export class AvailableTransportsComponent implements OnInit {
         noOfPassengers: '',
         passengerApplicationID: ''
       },
-      passengerPassengerApplications:['']
+      itemApp: {
+        noOfItems: '',
+        itemApplicationID: ''
+      },
+      passengerPassengerApplications:[''],
+      itemItemApplicationDTOS:['']
     }}
 
   goToUpdate(deliveryItem) {
     this.applicantService.deliveryItem = deliveryItem;
-    // console.log(this.applicantService.deliveryItem);
+   //  console.log(this.applicantService.deliveryItem);
+     if(deliveryItem.passengerApp.passengerApplicationID!=null)
     this.router.navigate(['/main/update_available_transports'])
+    else
+    this.router.navigate(['/main/update_item_transports'])
   }
+
+  searchByID(id){
+    // this.applicantService.GetPassengerApp(id).subscribe((application1) => {
+    //   console.log(application1);
+    //   this.getNewPassenger()
+    //   this.application=application1
+    //   this.mainarray.push(application1);
+    //
+    //  // this.getAllDriverVehicle();
+    // })
+    let size=this.mainarray.length
+    for (let x=0; x<=size-1;x++){
+      let c=this.mainarray[x]
+      if(id===c.applicationID){
+        this.mainarray=(this.mainarray.splice(x, 1))
+      }
+    }
+
+  }
+  // getAllIPassengers() {
+  //   this.applicantService.GetItemApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
+  //     this.PassengerDB = deliveryItemDetails;
+  //     this.DBPass = this.PassengerDB;
+  //     this.ViewPassenger = this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
+  //     // console.log(this.PassengerDB);
+  //     this.y = deliveryItemDetails.length;
+  //   })
+  // }
 
 
 }

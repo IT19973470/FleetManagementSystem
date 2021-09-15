@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-manager.service';
 import {Router} from '@angular/router';
+import {CommonService} from "../../../../_service/common.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-fuel-update',
@@ -17,16 +19,20 @@ export class FuelUpdateComponent implements OnInit {
   vehicles = [];
   vehicle = {
     vehicleId: '',
-    fuelBalance: ''
+    fuelBalance: 0
   };
 
   vehicleNumber;
-  currentFuelDetail = {
-    fuelBalance: ''
+
+  selectedVehicle= {
+    vehicleId: '',
+    fuelBalance: 0
   };
 
-  constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
-    this.vehicle = this.getVehicle();
+  constructor(
+    private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router, private commonService: CommonService,
+    private notifierService: NotifierService) {
+    // this.vehicle = this.getVehicle();
   }
 
   ngOnInit(): void {
@@ -39,7 +45,7 @@ export class FuelUpdateComponent implements OnInit {
   }
 
   goToUpdate(vehicle) {
-    this.currentFuelDetail.fuelBalance = vehicle.fuelBalance;
+    this.selectedVehicle = vehicle;
     this.isTrueOrFalse(true);
   }
 
@@ -61,15 +67,30 @@ export class FuelUpdateComponent implements OnInit {
     })
   }
 
-  onSubmit(){
-    this.vehicleDriverManagerService.updateFuel(this.vehicle.fuelBalance).subscribe((fuel)=>{
+  onSubmit() {
+    this.vehicleDriverManagerService.updateFuel(this.selectedVehicle.vehicleId, this.selectedVehicle.fuelBalance).subscribe((fuel) => {
+      this.notifierService.notify("success", "Fuel balance updated successfully");
+      this.isTrueOrFalse(false);
+    }, (err) => {
+      this.notifierService.notify("error", "Fuel balance failed");
+      this.isTrueOrFalse(false);
     })
   }
 
-  getVehicle(){
-    return{
-        vehicleId: '',
-        fuelBalance: ''
-      };
+  getVehicle() {
+    return {
+      vehicleId: '',
+      fuelBalance: ''
+    };
+  }
+
+  setNumberPositive(val) {
+    if (val < 0) {
+      return val * -1;
+    } else if (val === 0) {
+      return 1;
+    } else {
+      return val;
     }
+  }
 }
