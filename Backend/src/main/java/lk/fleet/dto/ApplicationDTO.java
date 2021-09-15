@@ -17,6 +17,9 @@ public class ApplicationDTO {
     private String reason;
     private String type;
 
+    private VehicleDTO vehicle;
+    private DriverDTO driver;
+
     private PassengerApplicationDTO passengerApplication;
     private ItemApplicationDTO itemApplication;
 
@@ -131,4 +134,19 @@ public class ApplicationDTO {
         this.type = type;
     }
 
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
+    }
 }
