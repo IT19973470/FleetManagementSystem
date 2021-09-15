@@ -277,7 +277,7 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
             itemItemApplicationDTOS.add(itemItemApplicationDTO);
         }
         itemApplicationDTO.setItemItemApplicationDTOS(itemItemApplicationDTOS);
-        applicationDTOS.setItemApplicationDTO(itemApplicationDTO);
+        applicationDTOS.setItemApplication(itemApplicationDTO);
 
         return applicationDTOS;
     }
