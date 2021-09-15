@@ -10,7 +10,7 @@ export class DriverService {
 
   ot;
   driver;
-  shiftDetails;
+  shift;
 
   constructor(private http: HttpClient) {
   }
@@ -35,10 +35,6 @@ export class DriverService {
     return this.http.put<any>(environment.backend_url + '/overTime/updateOT/' + ot.overTimeID, ot);
   }
 
-  getShift(): Observable<any> {
-    return this.http.get(environment.backend_url + '/shift/getShift');
-  }
-
   deleteOT(otID): Observable<any> {
     return this.http.delete<any>(environment.backend_url + '/overTime/deleteOT/' + otID);
   }
@@ -49,5 +45,13 @@ export class DriverService {
 
   deleteDriver(driverID) {
     return this.http.delete<any>(environment.backend_url + '/driverAccount/deleteDriver/' + driverID);
+  }
+
+  getMyShift(driverID):Observable<any>{
+    return this.http.get<any>(environment.backend_url + '/shift/getShiftbyDriverID/' + driverID);
+  }
+
+  attencanceMarked(driverID, sAttendance):Observable<any> {
+    return this.http.get<any>(environment.backend_url + '/shift/markAttendance/' + driverID + "/" + sAttendance);
   }
 }

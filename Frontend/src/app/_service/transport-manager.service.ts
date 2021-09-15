@@ -33,7 +33,7 @@ export class TransportManagerService {
   }
 
   updateDelivery(deliveryDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryItem, deliveryDetail);
+    return this.http.put<any>(environment.backend_url + "/delivery/updateDelivery/" + deliveryDetail.deliveryId, deliveryDetail);
   }
 
   deleteDelivery(deliveryDetailId): Observable<any> {
@@ -75,6 +75,14 @@ export class TransportManagerService {
 
   getAllDeliveriesByCompany(deliveryTpe, company): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/delivery/getAllDeliveriesByCompany/" + deliveryTpe + "/" + company);
+  }
+
+  getApprovedApplications(type): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApprovedApplications/" + type);
+  }
+
+  getApprovedApplicationsByDestination(destination, type): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApprovedApplicationsByDestination/" + destination + "/" + type);
   }
 
   // getAllPassengerDeliveries(): Observable<any> {

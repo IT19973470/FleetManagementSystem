@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {DriverService} from "../../../../../_service/driver.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-driver',
@@ -27,7 +29,15 @@ export class UpdateDriverComponent implements OnInit {
     }
   };
 
-  constructor(private driverService: DriverService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private driverService: DriverService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
     this.driverDetail = this.getDriver();
   }
 
@@ -36,9 +46,20 @@ export class UpdateDriverComponent implements OnInit {
   }
 
   onSubmit() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this account?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['main/driver_account'])
+      this.notifierService.notify("success", "Driver updated successfully.");
+    }, (err) => {
+      this.router.navigate(['main/driver_account']);
+      this.notifierService.notify("error", "Update failed");
+    })
+      }
+      this.alertBox.alert = false;
     })
   }
 

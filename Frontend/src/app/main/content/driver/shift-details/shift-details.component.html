@@ -8,45 +8,57 @@
   <div class="col-11" style="margin-top: 20px">
     <label><h1><b>Shift Details</b></h1></label>
 
-    <span style="font-weight: bold;margin-left: 50px">Search by Driver ID : </span>
-    <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="driverID">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="geDriverByID()">
-      Search
-    </button>
 
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDrivers()">
-      All Shifts
-    </button>
-
-    <table class="table table-striped" style="margin-top: 40px">
-      <thead>
+    <table class="table table-striped" style="margin-top: 40px" >
+      <tbody *ngIf="shift">
       <tr>
-        <th scope="col" width="10%">#</th>
-        <th scope="col" width="10%">Shift ID</th>
-        <th scope="col" width="10%">Shift Date</th>
-        <th scope="col" width="10%">Start Time</th>
-        <th scope="col" width="10%">End Time</th>
-        <th scope="col" width="10%">Attendance</th>
+        <td>Shift ID</td>
+        <td>{{shift.shiftId}}</td>
       </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let shifts of shiftDetails; let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{shifts.shiftId}}</td>
-        <td>{{shifts.shiftDate}}</td>
-        <td>{{shifts.startingTime}}</td>
-        <td>{{shifts.endingTime}}</td>
-        <td>{{shifts.attendance}}</td>
-
-        <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setShift(shiftDetails)"></i>
-        </td>
-        <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shiftDetails)"></i>
-        </td>
+      <tr>
+        <td>Shift Date</td>
+        <td>{{shift.shiftDate}}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{{shift.startingTime}}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{{shift.endingTime}}</td>
+      </tr>
+      <tr style="text-align: left">
+        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i></td>
       </tr>
       </tbody>
     </table>
 
+  </div>
+</div>
+
+<div class="modalTable" [style.visibility]="isModalTable.openTable?'visible':'hidden'">
+  <div (click)="isTrueOrFalse(false)"></div>
+  <div style="">
+    <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
+      <div style="min-width: 1390px;">
+        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
+      </div>
+
+      <div class="">
+        <div style="font-size: 25px;color: green;font-weight: bold"
+             *ngIf="sAttendance!==undefined?sAttendance.attendance:false">
+          You have successfully marked the attendance
+        </div>
+        <div style="font-size: 20px;margin-top: 20px">
+          Mark the attendance
+        </div>
+        <div style="display: flex;justify-content: center">
+          <button type="submit" class="btn btn-success" style="font-weight: bold; margin-right: 20px"
+                  (click)="attencanceMarked(true)">Mark the Attendance
+          </button>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>

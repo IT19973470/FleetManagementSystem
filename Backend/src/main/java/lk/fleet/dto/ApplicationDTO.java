@@ -17,6 +17,8 @@ public class ApplicationDTO {
     private String reason;
     private String type;
 
+    private VehicleDTO vehicle;
+    private DriverDTO driver;
 
     private PassengerApplicationDTO passengerApplication;
     private ItemApplicationDTO itemApplication;
@@ -34,14 +36,6 @@ public class ApplicationDTO {
             this.reason = application.getReason();
             this.type = application.getType();
         }
-    }
-
-    public ItemApplicationDTO getItemApplicationDTO() {
-        return itemApplication;
-    }
-
-    public void setItemApplicationDTO(ItemApplicationDTO itemApplicationDTO) {
-        this.itemApplication = itemApplicationDTO;
     }
 
     public String getApplicationID() {
@@ -124,11 +118,35 @@ public class ApplicationDTO {
         this.type = type;
     }
 
-    public PassengerApplicationDTO getPassengerApplicationDTO() {
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
+    }
+
+    public PassengerApplicationDTO getPassengerApplication() {
         return passengerApplication;
     }
 
-    public void setPassengerApplicationDTO(PassengerApplicationDTO passengerApplicationDTO) {
-        this.passengerApplication = passengerApplicationDTO;
+    public void setPassengerApplication(PassengerApplicationDTO passengerApplication) {
+        this.passengerApplication = passengerApplication;
+    }
+
+    public ItemApplicationDTO getItemApplication() {
+        return itemApplication;
+    }
+
+    public void setItemApplication(ItemApplicationDTO itemApplication) {
+        this.itemApplication = itemApplication;
     }
 }

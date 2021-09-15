@@ -60,6 +60,13 @@ export class GeneralManagerService {
     return this.http.get<any>(environment.backend_url + "/userAccount/getUserAccountByID/" + employeeID);
   }
 
+  getTransportByID(applicationID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getTransportByID/" + applicationID);
+  }
+
+  getAllTransports(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getAllTransports");
+  }
 
   addTVProgram(tvProgram): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/tvProgram/addTVProgram", tvProgram);
@@ -85,8 +92,6 @@ export class GeneralManagerService {
   getTransportApplication(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/userAccount/getTransportApplication");
   }
-
-
 
 
 }

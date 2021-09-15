@@ -22,12 +22,13 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col" width="20%">Vehicle Number</th>
-        <th scope="col">Vehicle Model</th>
+        <th scope="col">Vehicle Category</th>
         <th scope="col">Vehicle Type</th>
         <th scope="col" width="10%">No Of Seats</th>
         <th scope="col" width="10%">Fuel Type</th>
         <th scope="col" width="5%" style="text-align: center">View</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col" width="5%" style="text-align: center">Delete</th>
       </tr>
       </thead>
       <tbody>
@@ -43,6 +44,9 @@
         </td>
         <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(vehicle)"></i>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-trash" style="cursor: pointer" (click)="goToUpdate(vehicle)"></i>
         </td>
       </tr>
       </tbody>
@@ -64,6 +68,26 @@
         <div>
           <span style="font-weight: bold">Initial Meter : </span>
           <span style="margin-left: 10px">{{vehicle.initialMeter}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold"> Service Meter : </span>
+          <span style="margin-left: 10px">{{vehicle.serviceMeter}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Fuel Balance : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelBalance}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Fuel Consumption : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelConsumption}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Occupied : </span>
+          <span style="margin-left: 10px">{{vehicle.occupied}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Fuel Type : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelType}}</span>
         </div>
 <!--        <div>-->
 <!--          <span style="font-weight: bold">Delivery person : </span>-->

@@ -1,8 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+
 
 @Component({
   selector: 'app-shift',
@@ -33,16 +35,20 @@ export class ShiftComponent implements OnInit {
   driverId;
   // selectedDriver;
 
-  constructor(private bookingManagerService: BookingManagerService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+  constructor(private bookingManagerService: BookingManagerService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
     this.shift.shiftDate = this.bookingManagerService.getCurDate();
   }
 
-  // setItem(deliveryItem) {
-  //   this.deliveryItem = deliveryItem;
-  // }
 
   selectDriver(driver) {
     // this.selectedDriver = driver;
@@ -58,9 +64,32 @@ export class ShiftComponent implements OnInit {
   }
 
   onSubmit() {
-    this.shift.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
-    this.bookingManagerService.addShift(this.shift).subscribe(() => {
-      this.router.navigate(['/main/view_shifts'])
-    })
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this shift?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.shift.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+        this.bookingManagerService.addShift(this.shift).subscribe(() => {
+          this.setNewForm();
+          this.notifierService.notify("success", "Shift added successfully");
+
+       // this.router.navigate(['/main/view_shifts'])
+        }, (err) => {
+          this.notifierService.notify("error", "Shift failed");
+        })
+      }
+      this.alertBox.alert = false;
+     })
   }
-}
+
+
+
+
+    setNewForm()
+    {
+      this.shiftForm.resetForm();
+    }
+  }
+
+

@@ -10,13 +10,22 @@ import lk.fleet.service.VipMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VipMemberImpl implements VipMemberService {
+public class VipMemberServiceImpl implements VipMemberService {
 
     @Autowired
     private VipMemberRepository vipMemberRepository;
+
+    @Override
+    public VipMemberDTO addVipmember(VipMember vipMember) {
+//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+//        vehicle.setVehicleId("Veh" + dateTime);
+        return new VipMemberDTO(vipMemberRepository.save(vipMember));
+    }
 
 
     @Override
@@ -39,6 +48,27 @@ public class VipMemberImpl implements VipMemberService {
             return new VipMemberDTO(vipMemberRepository.save(vipMemberObj));
         }
         return null;
+    }
+    @Override
+    public List<VipMemberDTO> getAllVipMembers() {
+        List<VipMember> vipMembers = vipMemberRepository.findAll();
+        List<VipMemberDTO> vipMemberDTOS = new ArrayList<>();
+        for (VipMember vipMember : vipMembers) {
+            vipMemberDTOS.add(new VipMemberDTO(vipMember));
+        }
+        return vipMemberDTOS;
+    }
+    @Override
+    public boolean deleteVipMember(String vipMemberId) {
+        vipMemberRepository.deleteById(vipMemberId);
+        return true;
+    }
+    @Override
+    public List<VipMemberDTO> getVipMemberByNumber(String vipMemberNo){
+        VipMember getVipMemberByNumber = vipMemberRepository.getVipMemberByNumber(vipMemberNo);
+        List<VipMemberDTO> vipMemberDTOS=new ArrayList<>();
+        vipMemberDTOS.add(new VipMemberDTO(getVipMemberByNumber));
+        return vipMemberDTOS;
     }
 
 }

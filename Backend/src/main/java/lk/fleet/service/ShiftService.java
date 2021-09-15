@@ -11,4 +11,8 @@ public interface ShiftService {
     boolean deleteShift(String shiftId);
 
     Object getShift();
+
+    ShiftDTO getShiftByDriverID(String driverId);
+
+    ShiftDTO markAttendance(String driverID, boolean attendance);
 }

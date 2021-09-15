@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Passenger Item Delivery</span>
@@ -14,7 +15,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryPersonName"
                    #deliveryPersonName="ngModel"
-                   name="deliveryPersonName" required>
+                   name="deliveryPersonName" required appTextValidator>
             <div *ngIf="(deliveryPersonName.touched || deliveryForm.submitted) && deliveryPersonName.errors?.required"
                  class="validErr">
               Delivery Person Name is required
@@ -30,10 +31,14 @@
             <input type="text" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryPersonNic"
                    #deliveryPersonNic="ngModel"
-                   name="deliveryPersonNic" required>
+                   name="deliveryPersonNic" required appNicValidator>
             <div *ngIf="(deliveryPersonNic.touched || deliveryForm.submitted) && deliveryPersonNic.errors?.required"
                  class="validErr">
               Delivery Person NIC is required
+            </div>
+            <div *ngIf="(deliveryPersonNic.dirty) && deliveryPersonNic.errors?.nicInvalid"
+                 class="validErr">
+              Invalid NIC
             </div>
           </div>
         </div>
@@ -46,10 +51,32 @@
             <input type="text" class="form-control"
                    [(ngModel)]="deliveryDetail.contactNumber"
                    #contactNumber="ngModel"
-                   name="contactNumber" required>
+                   name="contactNumber" required appTelephoneValidator
+                   placeholder="Eg: [ 123-1234567 ]">
             <div *ngIf="(contactNumber.touched || deliveryForm.submitted) && contactNumber.errors?.required"
                  class="validErr">
               Contact Number is required
+            </div>
+            <div *ngIf="(contactNumber.dirty) && contactNumber.errors?.telephoneInvalid"
+                 class="validErr">
+              Invalid Contact Number
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            Vehicle Number (Opt.) :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="deliveryDetail.vehicleNumber"
+                   #vehicleNumber="ngModel"
+                   name="vehicleNumber" appVehicleNumberValidator
+                   placeholder="Eg: [ 12-1234 / 123-1234 / AB-1234 / ABC 1234 ]">
+            <div *ngIf="(vehicleNumber.dirty) && vehicleNumber.errors?.vehicleNumberInvalid"
+                 class="validErr">
+              Invalid Vehicle Number
             </div>
           </div>
         </div>
@@ -94,6 +121,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="deliveryDetail.deliveryDate"
                    #deliveryDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(deliveryDate.touched || deliveryForm.submitted) && deliveryDate.errors?.required"
                  class="validErr">
@@ -138,7 +166,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="passenger.passengerName"
                    #passengerName="ngModel"
-                   name="passengerName" required>
+                   name="passengerName" required appTextValidator>
             <div *ngIf="(passengerName.touched || passengerForm.submitted) && passengerName.errors?.required"
                  class="validErr">
               Passenger Name is required
@@ -154,11 +182,15 @@
             <input type="text" class="form-control"
                    [(ngModel)]="passenger.passengerNic"
                    #passengerNic="ngModel"
-                   name="passengerNic">
+                   name="passengerNic" appNicValidator>
             <!--<div *ngIf="(passengerNic.touched || passengerForm.submitted) && passengerNic.errors?.required"-->
-            <!--class="validErr">-->
-            <!--Passenger NIC is required-->
+                 <!--class="validErr">-->
+              <!--Passenger NIC is required-->
             <!--</div>-->
+            <div *ngIf="(passengerNic.dirty) && passengerNic.errors?.nicInvalid"
+                 class="validErr">
+              Invalid NIC
+            </div>
           </div>
         </div>
 
@@ -169,12 +201,17 @@
           <div class="col-9">
             <input type="text" class="form-control"
                    [(ngModel)]="passenger.contactNumber"
-                   #contactNumber="ngModel"
-                   name="contactNumber">
-            <!--<div *ngIf="(contactNumber.touched || passengerForm.submitted) && contactNumber.errors?.required"-->
-            <!--class="validErr">-->
-            <!--Contact Number is required-->
-            <!--</div>-->
+                   #contactNumberP="ngModel"
+                   name="contactNumberP" appTelephoneValidator
+                   placeholder="Eg: [ 123-1234567 ]">
+            <div *ngIf="(contactNumberP.touched || passengerForm.submitted) && contactNumberP.errors?.required"
+                 class="validErr">
+              Contact Number is required
+            </div>
+            <div *ngIf="(contactNumberP.dirty) && contactNumberP.errors?.telephoneInvalid"
+                 class="validErr">
+              Invalid Contact Number
+            </div>
           </div>
         </div>
 
@@ -186,7 +223,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="passenger.passengerType"
                    #passengerType="ngModel"
-                   name="passengerType" required>
+                   name="passengerType" required appTextValidator>
             <div *ngIf="(passengerType.touched || passengerForm.submitted) && passengerType.errors?.required"
                  class="validErr">
               Passenger Type is required
@@ -232,7 +269,7 @@
             <input type="text" class="form-control"
                    [(ngModel)]="item.itemType"
                    #itemType="ngModel"
-                   name="itemType" required>
+                   name="itemType" required appTextValidator>
             <div *ngIf="(itemType.touched || itemForm.submitted) && itemType.errors?.required"
                  class="validErr">
               Item Type is required
@@ -297,7 +334,7 @@
           <td style="text-align: center">
             <i class="fas fa-search" style="font-size: 16px" (click)="setPassenger(passenger,i)"></i>
           </td>
-          <td style="text-align: center" (click)="deliveryDetail.deliveryPassengerDetails.splice(i, 1)">
+          <td style="text-align: center" (click)="removePassenger(passenger.passengerDetailId,i)">
             <i class="fas fa-times" style="color: red;font-size: 20px"></i>
           </td>
         </tr>
@@ -336,7 +373,7 @@
           <td style="text-align: center">
             <i class="fas fa-search" style="font-size: 16px" (click)="setItem(item, i)"></i>
           </td>
-          <td style="text-align: center" (click)="deliveryDetail.deliveryItemDetails.splice(i, 1)">
+          <td style="text-align: center" (click)="removeItem(item.itemDetailId,i)">
             <i class="fas fa-times" style="color: red;font-size: 20px"></i>
           </td>
         </tr>
@@ -348,6 +385,15 @@
         No items available
       </div>
 
+    </div>
+  </div>
+
+  <div class=""
+       style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
+    <div class="col-12" style="text-align: right">
+      <button type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px" (click)="removeDelivery()">
+        Delete Delivery
+      </button>
     </div>
   </div>
 </div>

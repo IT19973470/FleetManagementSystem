@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "fleet/" + "vipMember")
+@RequestMapping(value = "fleetmanagement/" + "vipMember")
 public class VipMemberController {
 
     @Autowired
@@ -24,4 +24,18 @@ public class VipMemberController {
     public ResponseEntity updateVipMember(@PathVariable String vipMemberId, @RequestBody VipMember vipMember){
         return ResponseEntity.ok(vipMemberService.updateVipMember(vipMemberId, vipMember));
     }
+    @GetMapping(value = "/getAllVipMembers")
+    public ResponseEntity getAllVipMembers() {
+        return ResponseEntity.ok(vipMemberService.getAllVipMembers());
+    }
+
+    @DeleteMapping(value = "/deleteVipMember/{vipMemberId}")
+    public ResponseEntity deleteVipMember(@PathVariable String vipMemberId) {
+        return ResponseEntity.ok(vipMemberService.deleteVipMember(vipMemberId));
+    }
+    @GetMapping(value = "/getVipMemberByNumber/{vipMemberNo}")
+    public ResponseEntity getVipMemberByNumber(@PathVariable String vipMemberNo) {
+        return ResponseEntity.ok(vipMemberService.getVipMemberByNumber(vipMemberNo));
+    }
+
 }

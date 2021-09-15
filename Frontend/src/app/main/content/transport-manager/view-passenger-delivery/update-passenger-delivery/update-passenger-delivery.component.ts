@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {TransportManagerService} from "../../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-passenger-delivery',
@@ -17,6 +18,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
+    vehicleNumber: '',
     address: '',
     companyName: '',
     deliveryDate: '',
@@ -26,11 +28,22 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     deliveryPassengerDetails: []
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   passenger;
   btnText = 'Add';
   tblIndex;
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router,private notifierService: NotifierService) {
+  constructor(
+    private transportManagerService: TransportManagerService,
+    private router: Router,
+    private notifierService: NotifierService,
+    private alertService: AlertBoxService
+  ) {
     this.passenger = this.getNewPassenger();
   }
 
@@ -39,58 +52,78 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.deliveryDetail)
-    this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-    this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
-      this.router.navigate(['/main/view_passenger_delivery'])
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this delivery?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
+        this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+          let deliveryPassengerDetails = this.deliveryDetail.deliveryPassengerDetails
+          this.deliveryDetail = deliveryDetail;
+          this.deliveryDetail.deliveryPassengerDetails = deliveryPassengerDetails;
+          this.notifierService.notify("success", "Delivery updated successfully");
+        }, (err) => {
+          this.notifierService.notify("error", "Delivery failed");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
   onSubmitPassenger() {
     this.passenger.delivery.deliveryId = this.deliveryDetail.deliveryId;
-    if (this.deliveryDetail.deliveryPassengerDetails.length === 0) {
-      this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
-        this.deliveryDetail.deliveryPassengerDetails.push(passenger);
-        this.notifierService.notify("success", "Passenger added successfully");
-        this.setNewPassenger();
+    let count = 0;
+    for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
+      if (this.btnText === 'Update' && i === this.tblIndex) {
+        continue;
+      }
+      let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
+      if (
+        (passenger.passengerNic !== '' && passenger.passengerNic === this.passenger.passengerNic) ||
+        (passenger.contactNumber !== '' && passenger.contactNumber === this.passenger.contactNumber)
+      ) {
+        count++;
+      }
+      if (passenger.passengerNic === this.passenger.passengerNic && passenger.contactNumber === this.passenger.contactNumber) {
+        this.notifierService.notify("error", "Duplicate NIC and Contact No found");
+        break;
+      } else if (passenger.contactNumber === this.passenger.contactNumber) {
+        this.notifierService.notify("error", "Duplicate Contact No found");
+        break;
+      } else if (passenger.passengerNic === this.passenger.passengerNic) {
+        this.notifierService.notify("error", "Duplicate NIC found");
+        break;
+      }
+    }
+    if (this.btnText === 'Add' && count === 0) {
+      this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to add this passenger?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
+          this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
+            this.deliveryDetail.deliveryPassengerDetails.push(passenger);
+            this.notifierService.notify("success", "Passenger added successfully");
+            this.setNewPassenger();
+          })
+        }
+        this.alertBox.alert = false;
       })
-    } else {
-      let count = 0;
-      for (let i = this.deliveryDetail.deliveryPassengerDetails.length - 1; i >= 0; i--) {
-        if (this.btnText === 'Update' && i === this.tblIndex) {
-          continue;
+    } else if (this.btnText === 'Update' && count === 0) {
+      this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to update this passenger?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
+          this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
+            this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
+            this.notifierService.notify("success", "Passenger updated successfully");
+            this.setNewPassenger();
+          })
         }
-        let passenger = this.deliveryDetail.deliveryPassengerDetails[i];
-        if (
-          (passenger.passengerNic !== '' && passenger.passengerNic === this.passenger.passengerNic) ||
-          (passenger.contactNumber !== '' && passenger.contactNumber === this.passenger.contactNumber)
-        ) {
-          count++;
-        }
-        if (passenger.passengerNic === this.passenger.passengerNic && passenger.contactNumber === this.passenger.contactNumber) {
-          this.notifierService.notify("error", "Duplicate NIC and Contact No found");
-          break;
-        } else if (passenger.contactNumber === this.passenger.contactNumber) {
-          this.notifierService.notify("error", "Duplicate Contact No found");
-          break;
-        } else if (passenger.passengerNic === this.passenger.passengerNic) {
-          this.notifierService.notify("error", "Duplicate NIC found");
-          break;
-        }
-      }
-      if (this.btnText === 'Add' && count === 0) {
-        this.transportManagerService.addPassengerToDelivery(this.passenger).subscribe((passenger) => {
-          this.deliveryDetail.deliveryPassengerDetails.push(passenger);
-          this.notifierService.notify("success", "Passenger added successfully");
-          this.setNewPassenger();
-        })
-      } else if (this.btnText === 'Update' && count === 0) {
-        this.transportManagerService.updatePassengerOnDelivery(this.passenger).subscribe((passenger) => {
-          this.deliveryDetail.deliveryPassengerDetails[this.tblIndex] = passenger
-          this.notifierService.notify("success", "Passenger updated successfully");
-          this.setNewPassenger();
-        })
-      }
+        this.alertBox.alert = false;
+      })
     }
 
     // // console.log(this.item)
@@ -108,18 +141,35 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
   }
 
   removePassenger(passengerDetailId, i) {
-    this.transportManagerService.deletePassengerOnDelivery(passengerDetailId).subscribe((reply) => {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this passenger?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.deliveryDetail.deliveryPassengerDetails.splice(i, 1)
+        this.transportManagerService.deletePassengerOnDelivery(passengerDetailId).subscribe((reply) => {
+          if (reply) {
+            this.deliveryDetail.deliveryPassengerDetails.splice(i, 1)
+            this.notifierService.notify("success", "Passenger deleted successfully");
+          }
+        })
       }
+      this.alertBox.alert = false;
     })
   }
 
   removeDelivery() {
-    this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to remove this delivery?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.router.navigate(['/main/view_passenger_delivery'])
+        this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
+          if (reply) {
+            this.router.navigate(['/main/view_passenger_delivery'])
+          }
+        })
       }
+      this.alertBox.alert = false;
     })
   }
 
@@ -141,6 +191,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
 
   getNewPassenger() {
     return {
+      passengerDetailId: '',
       passengerName: '',
       passengerNic: '',
       contactNumber: '',
@@ -151,5 +202,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     };
   }
 
-
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }
