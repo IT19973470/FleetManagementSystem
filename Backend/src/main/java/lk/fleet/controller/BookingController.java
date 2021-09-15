@@ -106,6 +106,10 @@ public class BookingController {
 
     }
 
+
+
+
+
     //security officer
     @GetMapping(value = "/getBookingByDestination/{destination}")
     public ResponseEntity getBookingByDestination(@PathVariable String destination) {

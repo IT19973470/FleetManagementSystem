@@ -14,6 +14,8 @@ public class TokenDTO {
     private String arrivalTimeActual;
     private boolean transportStatus;
     private MeterDetailDTO meterDetail;
+    private DriverDTO driver;
+    private VehicleDTO vehicle;
 
     public TokenDTO(Token token) {
         if (token != null) {
@@ -105,5 +107,21 @@ public class TokenDTO {
 
     public void setMeterDetail(MeterDetailDTO meterDetail) {
         this.meterDetail = meterDetail;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
+    }
+
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
     }
 }

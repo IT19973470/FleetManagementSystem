@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PublicKey;
+
 @CrossOrigin
 @RestController
 @RequestMapping(value = "fleetmanagement/" + "vehicle")
@@ -36,8 +38,15 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
+    //SecurityOfficer
+    @PutMapping(value = "/updateVehicleAvailability/{vehicleID}")
+    public ResponseEntity updateVehicleAvailability(@PathVariable String vehicleID, @RequestBody Vehicle vehicle) {
+        return ResponseEntity.ok(vehicleService.updateVehicleAvailability(vehicleID, vehicle));
+    }
+
     @GetMapping(value = "/getVehicleByNumber/{vehicleNumber}")
     public ResponseEntity getVehicleByNumber(@PathVariable String vehicleNumber) {
         return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleNumber));
+
     }
 }
