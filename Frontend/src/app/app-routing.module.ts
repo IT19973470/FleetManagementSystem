@@ -59,14 +59,13 @@ import {ViewSpecialBookingComponent} from "./main/content/booking_management_cle
 import {VipBookingComponent} from "./main/content/booking_management_clerk/vip-booking/vip-booking.component";
 import {UpdateVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/update-vip-booking/update-vip-booking.component";
 import {ViewVipBookingComponent} from "./main/content/booking_management_clerk/view-vip-booking/view-vip-booking.component";
-
 import {VehiclePoolComponent} from "./main/content/security-officer/vehicle-pool/vehicle-pool.component";
-
 import {CompletedTripsComponent} from "./main/content/security-officer/completed-trips/completed-trips.component";
 import {ViewApprovedTripDetailsComponent} from "./main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component";
 import {ApplicantRegestrationComponent} from "./applicant-regestration/applicant-regestration.component";
 import {UpdateMaintenanceDetailsComponent} from "./main/content/accident-maintenance-manager/update-maintenance-details/update-maintenance-details.component";
 import {DeliveryStatusComponent} from "./main/content/security-officer/delivery-status/delivery-status.component";
+import {UpdateItemTransportsComponent} from "./main/content/applicant/available-transports/update-item-transports/update-item-transports.component";
 import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember/vipmember.component";
 import {TransportPassengerApplicationsComponent} from "./main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component";
 import {TransportItemApplicationsComponent} from "./main/content/transport-manager/transport-item-applications/transport-item-applications.component";
@@ -349,6 +348,10 @@ const routes: Routes = [
       {
         path: 'applicant_regestration',
         component: ApplicantRegestrationComponent
+      },
+      {
+        path: 'update_item_transports',
+        component: UpdateItemTransportsComponent
       },
       {
         path: 'update_maintenance_details',

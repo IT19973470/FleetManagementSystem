@@ -112,6 +112,9 @@ export class UpdateShiftComponent implements OnInit {
        })
   }
 
+  getMinDate() {
+    return this.bookingManagerService.getCurDate();
+  }
 
 
 }

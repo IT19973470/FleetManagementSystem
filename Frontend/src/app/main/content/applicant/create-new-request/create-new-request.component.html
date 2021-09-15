@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Create New Request</span>
@@ -32,10 +33,16 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
                    #depatureDate="ngModel"
+                   (change)="checkDate()"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
               Depature Date is required
+            </div>
+            <div *ngIf="(this.dep==1)"
+                 class="validErr" style="color:red">
+              Depature Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -47,6 +54,8 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
                    #arrivaleDate="ngModel"
+                   (change)="checkDate()"
+                   min="{{getMinDate()}}"
                    name="deliveryDate1" required>
             <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
                  class="validErr">
@@ -115,6 +124,10 @@
                        class="validErr" style="color:red">
                     Passenger ID is Not Found
                   </div>
+                  <div *ngIf="(passengerId.touched || passengerForm.submitted) && passengerId.errors?.required"
+                       class="validErr">
+                    Passenger Id is required
+                  </div>
                   <div *ngIf="(errorP==0)"
                        class="validErr" style="color:green">
                     Passenger ID Found
@@ -164,9 +177,9 @@
           <tbody>
           <tr *ngFor="let Pass of ViewPassenger; let j = index">
             <th scope="row">{{j+1}}</th>
-            <td>{{Pass.passengerId}}</td>
-            <td>{{Pass.passengerName}}</td>
-            <td>{{Pass.contactNumber}}</td>
+            <td>{{Pass.userAccount.employeeID}}</td>
+            <td>{{Pass.userAccount.name}}</td>
+            <td>{{Pass.userAccount.contactNo}}</td>
             <td style="text-align: center" (click)="passengerpassengerApp.passengerApplication.passengerPassengerApplications.splice(j, 1);ViewPassenger.splice(j, 1)">
               <i class="fas fa-times" style="color: red;font-size: 20px"></i>
             </td>

@@ -24,7 +24,10 @@ export class VipBookingComponent implements OnInit {
       bookingStatus: true,
       bookingManagementClerk: {
         bookingManagementClerkId: 'BMC123'
-      }
+      },
+      // shift: {
+      //   shiftId: '',
+      // }
     },
     purpose: '',
     timePeriod: '',
@@ -37,7 +40,7 @@ export class VipBookingComponent implements OnInit {
 
   vipMemberId;
   selected = ""
-
+  shift;
 
   update(e) {
     this.selected = e.target.value
@@ -80,7 +83,8 @@ export class VipBookingComponent implements OnInit {
   this.alertService.reply.observers = [];
   this.alertService.reply.subscribe(reply => {
     if (reply) {
-    this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+      //this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
+      this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
     this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
         this.setNewForm();
@@ -95,6 +99,13 @@ export class VipBookingComponent implements OnInit {
     this.alertBox.alert = false;
   })
 }
+
+  getMinDate() {
+    return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+  getMinimumDate(){
+    return this.bookingManagerService.getCurDate();
+  }
 }
 
 

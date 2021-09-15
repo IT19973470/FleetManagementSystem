@@ -78,5 +78,9 @@ export class DriverRegistrationComponent implements OnInit {
       this.alertBox.alert = false;
     })
   }
+
+  getMaxDate() {
+    return this.driverService.getCurDate();
+  }
 }
 
