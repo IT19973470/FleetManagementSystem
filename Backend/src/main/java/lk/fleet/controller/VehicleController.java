@@ -39,9 +39,9 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
-    @GetMapping(value = "/fuelUpdate/{vehicleID}")
-    public ResponseEntity fualUpdate(@PathVariable String vehicleID, @PathVariable Vehicle vehicle) {
-        return ResponseEntity.ok(vehicleService.fualUpdate(vehicleID, vehicle));
+    @GetMapping(value = "/fuelUpdate/{vehicleID}/{fuelBalance}")
+    public ResponseEntity fualUpdate(@PathVariable String vehicleID, @PathVariable double fuelBalance) {
+        return ResponseEntity.ok(vehicleService.fualUpdate(vehicleID, fuelBalance));
     }
 
     //SecurityOfficer

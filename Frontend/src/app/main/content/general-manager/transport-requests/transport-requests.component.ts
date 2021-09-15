@@ -72,7 +72,8 @@ export class TransportRequestsComponent implements OnInit {
     })
   }
 
-  getAllTransports() {
+  //get all transports
+  getAllTransportRequests() {
     this.generalManagerService.getTransportApplication().subscribe((transportDetails) => {
       this.transportDetails = transportDetails;
       // console.log(this.vehicles)

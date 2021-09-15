@@ -13,7 +13,7 @@
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
-                   [(ngModel)]="accidentDetail.vehicleID"
+                   [(ngModel)]="accidentDetail.vehicle.vehicleId"
                    #vehicleID="ngModel"
                    name="vehicleID" disabled>
             <div *ngIf="(vehicleID.touched || accidentDetailsForm.submitted) && vehicleID.errors?.required"

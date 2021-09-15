@@ -48,12 +48,12 @@ export class AccountRequestsComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  getUserAccounts() {
-    this.generalManagerService.getUserAccounts().subscribe((userAccountDetails) => {
-      this.userAccountDetails = userAccountDetails;
-      // console.log(this.vehicles)
-    })
-  }
+  // getUserAccounts() {
+  //   this.generalManagerService.getUserAccounts().subscribe((userAccountDetails) => {
+  //     this.userAccountDetails = userAccountDetails;
+  //     // console.log(this.vehicles)
+  //   })
+  // }
 
   getUserAccountsForApplicants() {
     this.generalManagerService.getUserAccountsForApplicants().subscribe((userAccountDetails) => {

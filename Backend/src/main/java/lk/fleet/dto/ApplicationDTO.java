@@ -38,22 +38,6 @@ public class ApplicationDTO {
         }
     }
 
-    public PassengerApplicationDTO getPassengerApplication() {
-        return passengerApplication;
-    }
-
-    public void setPassengerApplication(PassengerApplicationDTO passengerApplication) {
-        this.passengerApplication = passengerApplication;
-    }
-
-    public ItemApplicationDTO getItemApplication() {
-        return itemApplication;
-    }
-
-    public void setItemApplication(ItemApplicationDTO itemApplication) {
-        this.itemApplication = itemApplication;
-    }
-
     public String getApplicationID() {
         return applicationID;
     }
@@ -148,5 +132,21 @@ public class ApplicationDTO {
 
     public void setDriver(DriverDTO driver) {
         this.driver = driver;
+    }
+
+    public PassengerApplicationDTO getPassengerApplication() {
+        return passengerApplication;
+    }
+
+    public void setPassengerApplication(PassengerApplicationDTO passengerApplication) {
+        this.passengerApplication = passengerApplication;
+    }
+
+    public ItemApplicationDTO getItemApplication() {
+        return itemApplication;
+    }
+
+    public void setItemApplication(ItemApplicationDTO itemApplication) {
+        this.itemApplication = itemApplication;
     }
 }
