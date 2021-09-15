@@ -11,6 +11,13 @@ export class ViewVipBookingComponent implements OnInit {
 
 
   vipBooking = [];
+  // vipBookings={
+  // vipBookingId:'',
+  //   vipMember:{
+  //   vipMemberId:'',
+  //     firstName:'',
+  //   }
+
 
   bookingId;
   bookingManagementClerkId;

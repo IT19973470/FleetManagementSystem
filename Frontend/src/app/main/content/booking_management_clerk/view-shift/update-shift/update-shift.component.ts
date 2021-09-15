@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-shift',
@@ -35,7 +37,15 @@ export class UpdateShiftComponent implements OnInit {
 
   // selectedDriver;
 
-  constructor(private bookingManagerService: BookingManagerService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private bookingManagerService: BookingManagerService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
@@ -61,20 +71,46 @@ export class UpdateShiftComponent implements OnInit {
   }
 
   onSubmit() {
+    this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to update user account?';
+      this.alertService.reply.observers = [];
+      this.alertService.reply.subscribe(reply => {
+        if (reply) {
     this.shift.startingTime = this.shift.startingTimeActual;
     this.shift.endingTime = this.shift.endingTimeActual;
     this.shift.bookingManagementClerk = {
       bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
     };
     this.bookingManagerService.updateShift(this.shift).subscribe(() => {
+      this.notifierService.notify("success", "Shift updated successfully");
       this.router.navigate(['/main/view_shifts'])
     })
   }
+  this.alertBox.alert = false;
+  })
+
+}
+
+
+
+
 
   removeShift() {
+    this.alertBox.alert = true;
+      this.alertBox.msg = 'Do you want to delete this shift?';
+      this.alertService.reply.observers = [];
+       this.alertService.reply.subscribe(reply => {
+      if (reply) {
     this.bookingManagerService.deleteDriverShift(this.shift.shiftId).subscribe(() => {
-      this.router.navigate(['/main/view_shifts'])
+      if (reply) {
+        this.router.navigate(['/main/view_shifts'])
+      }
     })
   }
+         this.alertBox.alert = false;
+       })
+  }
+
+
 
 }

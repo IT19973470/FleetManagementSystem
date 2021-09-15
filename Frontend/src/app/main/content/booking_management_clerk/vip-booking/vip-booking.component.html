@@ -110,7 +110,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="vipBooking.booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
+                       name="destination" appTextValidator>
                 <div *ngIf="(destination.touched || vipBookingForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required
@@ -126,7 +126,7 @@
                 <input type="text" class="form-control"
                        [(ngModel)]="vipBooking.purpose"
                        #purpose="ngModel"
-                       name="description" required>
+                       name="description" required appTextValidator>
                 <div *ngIf="(purpose.touched || vipBookingForm.submitted) && purpose.errors?.required"
                      class="validErr">
                   Description is required
@@ -157,7 +157,7 @@
                 Approved Fuel Amount:
               </div>
               <div class="col-8" style="margin-left: 250px; margin-top: -20px;">
-                <input type="text" class="form-control"
+                <input type="number" class="form-control"
                        [(ngModel)]="vipBooking.approvedFuelAmount"
                        #approvedFuelAmount="ngModel"
                        name="approvedFuelAmount" required>

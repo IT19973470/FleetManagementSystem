@@ -65,4 +65,12 @@ export class ViewShiftComponent implements OnInit {
     })
   }
 
+  goToApplicationBooking() {
+
+  }
+
+  goToSpecialBooking(specialBooking) {
+    this.bookingManagerService.specialBooking = specialBooking;
+    this.router.navigate(['/main/special_booking'])
+  }
 }
