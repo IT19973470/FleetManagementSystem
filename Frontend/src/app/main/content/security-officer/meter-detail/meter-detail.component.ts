@@ -4,6 +4,7 @@ import {SecurityOfficerService} from "../../../../_service/security-officer.serv
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-meter-detail',
@@ -17,9 +18,9 @@ export class MeterDetailComponent implements OnInit {
   meters = [];
   meterDetail = {
     meterId: '',
-    outMeter: '',
-    inMeter: '',
-    mileage: '',
+    outMeter: 0,
+    inMeter: 0,
+    mileage: 0,
     token: {
       tokenID: ''
     },
@@ -36,21 +37,13 @@ export class MeterDetailComponent implements OnInit {
   constructor(private securityOfficerService: SecurityOfficerService,
               private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
     this.token = this.securityOfficerService.tokenDetail;
   }
-
-  // addMeterDetail() {
-  //   this.meterDetail.token = this.token;
-  //   this.securityOfficerService.addMeterDetail(this.meterDetail).subscribe((meter) => {
-  //     this.meters.push(meter);
-  //     this.newMeter();
-  //     this.router.navigate(['/main/arrival_departure_page'])
-  //   })
-  // }
 
   addMeterDetail() {
     this.alertBox.alert = true;
@@ -75,13 +68,17 @@ export class MeterDetailComponent implements OnInit {
   newMeter() {
     this.meterDetail = {
       meterId: '',
-      outMeter: '',
-      inMeter: '',
-      mileage: '',
+      outMeter: 0,
+      inMeter: 0,
+      mileage: 0,
       token: {
         tokenID: ''
       },
     }
   };
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
 
 }

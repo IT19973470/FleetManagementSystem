@@ -2,6 +2,7 @@ package lk.fleet.service.impl;
 
 
 import lk.fleet.dto.*;
+import lk.fleet.entity.Booking;
 import lk.fleet.entity.DriverVehicle;
 import lk.fleet.entity.Token;
 import lk.fleet.repository.TokenRepository;
@@ -67,6 +68,7 @@ public class TokenServiceImpl implements TokenService {
             DriverVehicle driverVehicle = token.getBooking().getShift().getDriverVehicle();
             tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
             tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+            tokenDTO.setBooking(new BookingDTO(token.getBooking()));
             tokenDTOS.add(tokenDTO);
         }
         return tokenDTOS;

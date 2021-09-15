@@ -9,12 +9,19 @@ import {Router} from "@angular/router";
 })
 export class DeliveryStatusComponent implements OnInit {
 
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
+
   deliveryItemDetails = [];
   deliveryItem = {
     deliveryId: '',
     deliveryPersonName: '',
     deliveryPersonNic: '',
     deliveryStatus: false,
+    vehicleNumber: '',
     deliveryItemDetails: []
   };
 
@@ -40,7 +47,7 @@ export class DeliveryStatusComponent implements OnInit {
   }
 
   isTrueOrFalse(reply) {
-
+    this.isModalTable.openTable = reply;
   }
 
   getAllItemDeliveries() {
@@ -63,6 +70,5 @@ export class DeliveryStatusComponent implements OnInit {
       // console.log(this.deliveryItemDetails)
     })
   }
-
 
 }

@@ -130,6 +130,7 @@
             <input #arrivalDate="ngModel" [(ngModel)]="tokenDetail.arrivalDate"
                    class="form-control"
                    name="arrivalDate"
+                   min="{{getMinDate()}}"
                    required type="date">
             <div *ngIf="(arrivalDate.touched || tokenForm.submitted) && arrivalDate.errors?.required"
                  class="validErr">

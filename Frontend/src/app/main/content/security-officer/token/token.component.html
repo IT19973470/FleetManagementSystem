@@ -16,11 +16,11 @@
             <input class="form-control" type="date"
                    [(ngModel)]="setDepartureDate"
                    #departureDate="ngModel"
-                   name="departureDate" required>
-            <div *ngIf="(departureDate.touched || tokenForm.submitted) && departureDate.errors?.required"
-                 class="validErr">
-              Departure Date is required
-            </div>
+                   name="departureDate" disabled>
+<!--            <div *ngIf="(departureDate.touched || tokenForm.submitted) && departureDate.errors?.required"-->
+<!--                 class="validErr">-->
+<!--              Departure Date is required-->
+<!--            </div>-->
           </div>
         </div>
 
@@ -73,5 +73,3 @@
 
 
 
-
-<!--{{btnText}}-->
