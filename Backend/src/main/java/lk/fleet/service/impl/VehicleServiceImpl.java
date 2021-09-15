@@ -82,15 +82,16 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Override
-    public VehicleDTO fualUpdate(String vehicleID, Vehicle vehicle) {
+    public VehicleDTO fualUpdate(String vehicleID, double fuelBalance) {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
         if (optionalVehicle.isPresent()) {
             Vehicle vehicleObj = optionalVehicle.get();
-            vehicleObj.setFuelBalance(vehicle.getFuelBalance());
+            vehicleObj.setFuelBalance(fuelBalance);
             return new VehicleDTO(vehicleRepository.save(vehicleObj));
         }
         return null;
     }
+
     @Override
     public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
         Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
