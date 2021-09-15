@@ -33,5 +33,9 @@ public class VipMemberController {
     public ResponseEntity deleteVipMember(@PathVariable String vipMemberId) {
         return ResponseEntity.ok(vipMemberService.deleteVipMember(vipMemberId));
     }
+    @GetMapping(value = "/getVipMemberByNumber/{vipMemberNo}")
+    public ResponseEntity getVipMemberByNumber(@PathVariable String vipMemberNo) {
+        return ResponseEntity.ok(vipMemberService.getVipMemberByNumber(vipMemberNo));
+    }
 
 }
