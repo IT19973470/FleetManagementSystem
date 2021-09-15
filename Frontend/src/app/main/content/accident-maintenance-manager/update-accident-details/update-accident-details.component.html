@@ -9,6 +9,21 @@
       <div style="width: 50%;padding-right: 20px">
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
+            Vehicle ID :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="accidentDetail.vehicleID"
+                   #vehicleID="ngModel"
+                   name="vehicleID" disabled>
+            <div *ngIf="(vehicleID.touched || accidentDetailsForm.submitted) && vehicleID.errors?.required"
+                 class="validErr">
+              Accident Date is required
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
             Accident Date :
           </div>
           <div class="col-8">
@@ -84,5 +99,6 @@
         </div>
       </div>
     </div>
-  </form>
+
+ </form>
 </div>

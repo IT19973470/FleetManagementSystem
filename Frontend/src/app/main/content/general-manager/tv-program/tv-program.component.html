@@ -1,9 +1,11 @@
-<div class="row"  style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
+
+<div class="row" style="display: flex;justify-content: center" xmlns="http://www.w3.org/1999/html">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">TV Program</span>
   </div>
 
-  <form #tvProgramForm="ngForm"  (ngSubmit)="tvProgramForm.form.valid && onSubmit()" novalidate>
+  <form #tvProgramForm="ngForm" (ngSubmit)="tvProgramForm.form.valid && onSubmit()" novalidate>
 
     <div style="display: flex;margin-top: 50px">
       <div style="width: 50%;padding-right: 20px">
@@ -90,21 +92,21 @@
           </div>
         </div>
 
-<!--        <div class="row" style="margin-top: 10px">-->
-<!--          <div class="col-4">-->
-<!--            Contact Number :-->
-<!--          </div>-->
-<!--          <div class="col-8">-->
-<!--            <input type="text" class="form-control"-->
-<!--                   [(ngModel)]="tvProgram.contactNo"-->
-<!--                   #contactNo="ngModel"-->
-<!--                   name="contactNo" required>-->
-<!--            <div *ngIf="(contactNo.touched || tvProgramForm.submitted) && contactNo.errors?.required"-->
-<!--                 class="validErr">-->
-<!--              Contact Number is required-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="row" style="margin-top: 10px">-->
+        <!--          <div class="col-4">-->
+        <!--            Contact Number :-->
+        <!--          </div>-->
+        <!--          <div class="col-8">-->
+        <!--            <input type="text" class="form-control"-->
+        <!--                   [(ngModel)]="tvProgram.contactNo"-->
+        <!--                   #contactNo="ngModel"-->
+        <!--                   name="contactNo" required>-->
+        <!--            <div *ngIf="(contactNo.touched || tvProgramForm.submitted) && contactNo.errors?.required"-->
+        <!--                 class="validErr">-->
+        <!--              Contact Number is required-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
@@ -128,16 +130,18 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
           <div class="col-12" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold; font-size: 20px; margin-right: 20px">Update</button>
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">{{btnText}} TV Program</button>
+            <button type="submit" class="btn btn-success"
+                    style="font-weight: bold; font-size: 20px; margin-right: 20px">Update
+            </button>
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">{{btnText}} TV
+              Program
+            </button>
           </div>
         </div>
 
 
-
       </div>
     </div>
-
 
 
     <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
@@ -160,7 +164,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let tvProgram of TvDB; let i = index">
-            <th scope="row">{{i+1}}</th>
+            <th scope="row">{{i + 1}}</th>
             <td>{{tvProgram.programID}}</td>
             <td>{{tvProgram.programName}}</td>
             <td>{{tvProgram.startingDate}}</td>

@@ -8,7 +8,7 @@ import {AbstractControl, NG_VALIDATORS, Validator} from "@angular/forms";
 export class NicValidatorDirective implements Validator {
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    let NIC_REGEX1 = /^[0-9]{9}[V]$/; // Regular Expression 1
+    let NIC_REGEX1 = /^[0-9]{9}[Vv]$/; // Regular Expression 1
     let NIC_REGEX2 = /^[0-9]{12}$/; // Regular Expression 1
 
     if (control.value != undefined) {

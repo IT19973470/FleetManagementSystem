@@ -75,7 +75,12 @@
     View Passenger Item  Deliveries
   </div>
 
-  <div>
+  <div
+    routerLink="/main/passenger_transport"
+    (click)="setTopic('Passenger Transport')"
+    #passengerTransport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':passengerTransport.isActive?'#c0050e':''}">
     Passenger Transport
   </div>
 

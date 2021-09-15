@@ -1,6 +1,6 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Maintenance Details</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Accident Details</span>
   </div>
 
   <form #maintenanceDetailsForm="ngForm" (ngSubmit)="maintenanceDetailsForm.form.valid && addMaintenance()" novalidate>
@@ -9,45 +9,21 @@
       <div style="width: 50%;padding-right: 20px">
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Vehicle ID:
+            Vehicle ID :
           </div>
           <div class="col-8">
             <input type="text" class="form-control"
                    [(ngModel)]="maintenanceDetail.vehicle.vehicleId"
-                   (focusout)="chkVehicle();//chkDriver()"
                    #vehicleID="ngModel"
-                   name="vehicleID" required>
+                   name="vehicleID" disabled>
             <div *ngIf="(vehicleID.touched || maintenanceDetailsForm.submitted) && vehicleID.errors?.required"
                  class="validErr">
               Vehicle ID is required
             </div>
-            <div class="validErr" *ngIf="vehicleIsPresent===2" style="color: red">
-              Vehicle cannot be found
-            </div>
-            <div class="validErr" *ngIf="vehicleIsPresent===1" style="color: green">
-              Vehicle is present
-            </div>
           </div>
         </div>
 
-    <div class="row" style="margin-top: 10px">
-      <div class="col-4">
-        Maintenance Type:
-      </div>
-      <div class="col-8">
-        <input type="text" class="form-control"
-               [(ngModel)]="maintenanceDetail.maintenanceType"
-               #maintenanceType="ngModel"
-               name="maintenanceType" required>
-        <div *ngIf="(maintenanceType.touched || maintenanceDetailsForm.submitted) && maintenanceType.errors?.required"
-             class="validErr">
-          Maintenance type is required
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row" style="margin-top: 10px">
+        <div class="row" style="margin-top: 10px">
           <div class="col-4">
             Maintenance Date :
           </div>
@@ -55,7 +31,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="maintenanceDetail.maintenanceDate"
                    #maintenanceDate="ngModel"
-                   name="maintenanceDate" required>
+                   name="maintenanceDate" disabled>
             <div *ngIf="(maintenanceDate.touched || maintenanceDetailsForm.submitted) && maintenanceDate.errors?.required"
                  class="validErr">
               Maintenance Date is required
@@ -63,25 +39,24 @@
           </div>
         </div>
 
-    <div class="row" style="margin-top: 10px">
-      <div class="col-4">
-        Company Name:
-      </div>
-      <div class="col-8">
-        <input type="text" class="form-control"
-               [(ngModel)]="maintenanceDetail.companyName"
-               #companyName="ngModel"
-               name="companyName" required>
-        <div *ngIf="(companyName.touched || maintenanceDetailsForm.submitted) && companyName.errors?.required"
-             class="validErr">
-          Company name is required
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+           Maintenance Type :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="maintenanceDetail.maintenanceType"
+                   #maintenanceType="ngModel"
+                   name="maintenanceType" disabled>
+            <div *ngIf="(maintenanceType.touched || maintenanceDetailsForm.submitted) && maintenanceType.errors?.required"
+                 class="validErr">
+              Maintenance Type is required
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-
-    <div class="row" style="margin-top: 10px">
-      <div class="col-4">
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
             Vehicle Availability :
           </div>
           <div class="col-8">
@@ -97,15 +72,18 @@
                  class="validErr">
             </div>
           </div>
-    </div>
+        </div>
 
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px;">
           <div class="col-12" style="text-align: right">
-            <button [disabled]="vehicleIsPresent!==1 //driverIsPresent!==1" type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Details</button>
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Update Details
+            </button>
           </div>
         </div>
       </div>
     </div>
+
   </form>
 </div>
+

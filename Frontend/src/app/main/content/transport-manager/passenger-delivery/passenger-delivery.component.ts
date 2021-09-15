@@ -137,4 +137,7 @@ export class PassengerDeliveryComponent implements OnInit {
     };
   }
 
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }

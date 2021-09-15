@@ -37,11 +37,11 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDTO addItemDelivery(Delivery delivery) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        delivery.setDeliveryId("IDel" + dateTime);
+        delivery.setDeliveryId("IDEL" + dateTime);
         delivery.setDeliveryType("Item");
         int count = 0;
         for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
-            deliveryItemDetail.setItemDetailId("DelIt" + ++count + dateTime);
+            deliveryItemDetail.setItemDetailId("DELIT" + ++count + dateTime);
             deliveryItemDetail.setDelivery(delivery);
         }
         return new DeliveryDTO(deliveryRepository.save(delivery));
@@ -50,11 +50,11 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDTO addPassengerDelivery(Delivery delivery) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        delivery.setDeliveryId("PDel" + dateTime);
+        delivery.setDeliveryId("PDEL" + dateTime);
         delivery.setDeliveryType("Passenger");
         int count = 0;
         for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
-            deliveryPassengerDetail.setPassengerDetailId("DelPa" + ++count + dateTime);
+            deliveryPassengerDetail.setPassengerDetailId("DELPA" + ++count + dateTime);
             deliveryPassengerDetail.setDelivery(delivery);
         }
         return new DeliveryDTO(deliveryRepository.save(delivery));
@@ -63,15 +63,15 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDTO addPassengerItemDelivery(Delivery delivery) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        delivery.setDeliveryId("PIDel" + dateTime);
+        delivery.setDeliveryId("PIDEL" + dateTime);
         delivery.setDeliveryType("PassengerItem");
         int countItem = 0, countPassenger = 0;
         for (DeliveryPassengerDetail deliveryPassengerDetail : delivery.getDeliveryPassengerDetails()) {
-            deliveryPassengerDetail.setPassengerDetailId("DelPa" + ++countPassenger + dateTime);
+            deliveryPassengerDetail.setPassengerDetailId("DELPA" + ++countPassenger + dateTime);
             deliveryPassengerDetail.setDelivery(delivery);
         }
         for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
-            deliveryItemDetail.setItemDetailId("DelIt" + ++countItem + dateTime);
+            deliveryItemDetail.setItemDetailId("DELIT" + ++countItem + dateTime);
             deliveryItemDetail.setDelivery(delivery);
         }
         return new DeliveryDTO(deliveryRepository.save(delivery));
@@ -103,14 +103,14 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryItemDetailDTO addItemToDelivery(DeliveryItemDetail deliveryItemDetail) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        deliveryItemDetail.setItemDetailId("DelIt" + 0 + dateTime);
+        deliveryItemDetail.setItemDetailId("DELIT" + 0 + dateTime);
         return new DeliveryItemDetailDTO(deliveryItemDetailRepository.save(deliveryItemDetail));
     }
 
     @Override
     public DeliveryPassengerDetailDTO addPassengerToDelivery(DeliveryPassengerDetail deliveryPassengerDetail) {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        deliveryPassengerDetail.setPassengerDetailId("DelPa" + 0 + dateTime);
+        deliveryPassengerDetail.setPassengerDetailId("DELPA" + 0 + dateTime);
         return new DeliveryPassengerDetailDTO(deliveryPassengerDetailRepository.save(deliveryPassengerDetail));
     }
 

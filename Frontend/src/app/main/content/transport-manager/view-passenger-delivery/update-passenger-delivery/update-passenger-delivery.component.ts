@@ -18,6 +18,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     contactNumber: '',
+    vehicleNumber: '',
     address: '',
     companyName: '',
     deliveryDate: '',
@@ -148,6 +149,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
         this.transportManagerService.deletePassengerOnDelivery(passengerDetailId).subscribe((reply) => {
           if (reply) {
             this.deliveryDetail.deliveryPassengerDetails.splice(i, 1)
+            this.notifierService.notify("success", "Passenger deleted successfully");
           }
         })
       }
@@ -189,6 +191,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
 
   getNewPassenger() {
     return {
+      passengerDetailId: '',
       passengerName: '',
       passengerNic: '',
       contactNumber: '',
@@ -199,5 +202,7 @@ export class UpdatePassengerDeliveryComponent implements OnInit {
     };
   }
 
-
+  getMinDate() {
+    return this.transportManagerService.getCurDate();
+  }
 }
