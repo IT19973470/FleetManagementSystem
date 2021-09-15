@@ -22,8 +22,10 @@ export class ShiftDetailsComponent implements OnInit {
     endingTime: '',
     shiftDate: '',
     startingTime: '',
-    driver_driverid: ''
+    driverID: ''
   };
+  sAttendance;
+  driverId;
 
   constructor(private driverService: DriverService, private router: Router) {
 
@@ -53,5 +55,11 @@ export class ShiftDetailsComponent implements OnInit {
       this.shift = myShift;
       console.log(this.shift);
     });
+  }
+
+  attencanceMarked(sAttendance) {
+    this.driverService.attencanceMarked(this.sAttendance.driverId, sAttendance).subscribe((attend) => {
+      this.sAttendance.attendance = attend.attendance;
+    })
   }
 }
