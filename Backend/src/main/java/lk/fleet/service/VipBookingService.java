@@ -2,6 +2,7 @@ package lk.fleet.service;
 
 import lk.fleet.dto.SpecialBookingDTO;
 import lk.fleet.dto.VipBookingDTO;
+import lk.fleet.dto.VipMemberDTO;
 import lk.fleet.entity.SpecialBooking;
 import lk.fleet.entity.VipBooking;
 
@@ -17,4 +18,6 @@ public interface VipBookingService {
     VipBookingDTO updateVipBooking(String vipBookingId, VipBooking vipBooking);
 
     List<VipBookingDTO> getVipBookingByVipBookingId(String vipBookingId);
+
+    List<VipMemberDTO> getVipMember(String vipMemberId);
 }

@@ -10,6 +10,7 @@ import lk.fleet.repository.*;
 import lk.fleet.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -79,19 +80,22 @@ public class BookingServiceImpl implements BookingService {
         List<Booking> bookings = bookingRepository.findAll();
         List<BookingDTO> bookingDTOS = new ArrayList<>();
         for (Booking booking : bookings) {
-            BookingDTO bookingDTO = new BookingDTO(booking);
-            bookingDTO.setVehicle(new VehicleDTO(booking.getShift().getDriverVehicle().getVehicle()));
-            Driver driver = booking.getShift().getDriverVehicle().getDriver();
-            bookingDTO.setDriver(new DriverDTO(driver,new UserAccountDTO(driver.getUserAccount())));
-            bookingDTOS.add(bookingDTO);
+            if (booking.getToken() == null) {
+                BookingDTO bookingDTO = new BookingDTO(booking);
+                bookingDTO.setVehicle(new VehicleDTO(booking.getShift().getDriverVehicle().getVehicle()));
+                Driver driver = booking.getShift().getDriverVehicle().getDriver();
+                bookingDTO.setDriver(new DriverDTO(driver, new UserAccountDTO(driver.getUserAccount())));
+                bookingDTO.setToken(new TokenDTO(booking.getToken()));
+                bookingDTOS.add(bookingDTO);
+            }
         }
         return bookingDTOS;
     }
 
     public List<BookingDTO> getBookings() {
-        List<BookingDTO> bookingDTOS =new ArrayList<>();
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
         List<Booking> bookings = bookingRepository.findAll();
-        for(Booking booking: bookings){
+        for (Booking booking : bookings) {
             bookingDTOS.add(new BookingDTO(booking));
         }
         return bookingDTOS;
@@ -118,8 +122,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<BookingDTO> getBookingByDestination(String destination) {
         Booking bookingByDestination = bookingRepository.getBookingByDestination(destination);
-        List<BookingDTO> bookingDTOS=new ArrayList<>();
-        bookingDTOS.add(new BookingDTO(bookingByDestination));
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
+        BookingDTO bookingDTO = new BookingDTO(bookingByDestination);
+        bookingDTO.setVehicle(new VehicleDTO(bookingByDestination.getShift().getDriverVehicle().getVehicle()));
+        bookingDTO.setDriver(new DriverDTO(bookingByDestination.getShift().getDriverVehicle().getDriver(), new UserAccountDTO(bookingByDestination.getShift().getDriverVehicle().getDriver().getUserAccount())));
+        bookingDTOS.add(bookingDTO);
         return bookingDTOS;
     }
 

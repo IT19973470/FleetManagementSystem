@@ -1,8 +1,10 @@
 package lk.fleet.service.impl;
 
+import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.ShiftDTO;
 import lk.fleet.dto.VehicleDTO;
+import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.Shift;
 import lk.fleet.entity.Vehicle;
@@ -50,6 +52,18 @@ public class VehicleServiceImpl implements VehicleService {
         return null;
     }
 
+    //SecurityOfficer
+    @Override
+    public VehicleDTO updateVehicleAvailability(String vehicleID, Vehicle vehicle) {
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
+        if (optionalVehicle.isPresent()) {
+            Vehicle vehicleObj = optionalVehicle.get();
+            vehicleObj.setOccupied(vehicle.isOccupied());
+            return new VehicleDTO(vehicleRepository.save(vehicleObj));
+        }
+        return null;
+    }
+
     @Override
     public boolean deleteVehicle(String vehicleID) {
         vehicleRepository.deleteById(vehicleID);
@@ -67,7 +81,6 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
 
-
     @Override
     public VehicleDTO fualUpdate(String vehicleID, Vehicle vehicle) {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
@@ -77,5 +90,14 @@ public class VehicleServiceImpl implements VehicleService {
             return new VehicleDTO(vehicleRepository.save(vehicleObj));
         }
         return null;
+    }
+    @Override
+    public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
+        Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
+        List<VehicleDTO> vehicleDTOS = new ArrayList<>();
+        if (getVehicleByNumber != null) {
+            vehicleDTOS.add(new VehicleDTO(getVehicleByNumber));
+        }
+        return vehicleDTOS;
     }
 }

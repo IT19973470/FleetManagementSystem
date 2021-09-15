@@ -23,9 +23,10 @@ export class TvProgramComponent implements OnInit {
 
   };
 
-  TvDB;
+  tvPrograms;
   program;
   btnText = 'Add';
+
   tblIndex;
 
   alertBox = {
@@ -59,17 +60,19 @@ export class TvProgramComponent implements OnInit {
         if (this.btnText === 'Add') {
           this.generalManagerService.addTVProgram(this.tvProgram).subscribe((tvProgram) => {
             this.notifierService.notify("success", "TV program added successfully");
-            this.getAll();
+            this.tvPrograms.push(tvProgram)
             this.setNewForm();
           }, (err) => {
             this.notifierService.notify("error", "Adding failed");
           })
           // this.tvProgram.push(this.tvProgram);
         } else if (this.btnText === 'Update') {
-          this.notifierService.notify("success", "TV program is updated successfully");
-          this.tvProgram[this.tblIndex] = this.tvProgram
-
-          this.setNewForm();
+          this.generalManagerService.updateTVProgram(this.tvProgram).subscribe((tvProgram) => {
+            this.notifierService.notify("success", "TV program is updated successfully");
+            this.tvPrograms[this.tblIndex] = tvProgram
+            // this.getAll();
+            this.setNewForm();
+          })
         }
         this.setNewProgram();
       }
@@ -80,13 +83,11 @@ export class TvProgramComponent implements OnInit {
 
   getAll() {
     this.generalManagerService.getTvProgram().subscribe((tvProgram) => {
-      this.TvDB = tvProgram;
-      console.log(this.TvDB);
+      this.tvPrograms = tvProgram;
+     // console.log(this.tvPrograms);
     })
 
   }
-
-  y;
 
   removeProgram(tvProgram, i) {
     this.alertBox.alert = true;
@@ -94,12 +95,12 @@ export class TvProgramComponent implements OnInit {
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.y = tvProgram.programID;
-        this.generalManagerService.deleteTVProgram(this.y).subscribe((reply) => {
+        // this.y = tvProgram.programID;
+        this.generalManagerService.deleteTVProgram(tvProgram.programID).subscribe((reply) => {
           if (reply) {
             this.notifierService.notify("success", "TV program is removed successfully");
             this.router.navigate(['/main/tv_program'])
-            console.log(this.y);
+            // console.log(this.y);
             this.getAll();
           }
         })
@@ -126,7 +127,7 @@ export class TvProgramComponent implements OnInit {
     this.tvProgram.endingDate = program.endingDate;
     this.tvProgram.startingDate = program.startingDate;
     this.tvProgram.transportCost = program.transportCost;
-    // this.tvProgram = 'Update';
+    this.btnText = 'Update';
   }
 
   setNewProgram() {

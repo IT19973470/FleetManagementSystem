@@ -77,6 +77,14 @@ export class TransportManagerService {
     return this.http.get<any>(environment.backend_url + "/delivery/getAllDeliveriesByCompany/" + deliveryTpe + "/" + company);
   }
 
+  getApprovedApplications(type): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApprovedApplications/" + type);
+  }
+
+  getApprovedApplicationsByDestination(destination, type): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApprovedApplicationsByDestination/" + destination + "/" + type);
+  }
+
   // getAllPassengerDeliveries(): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
   // }
