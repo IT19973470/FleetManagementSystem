@@ -2,11 +2,11 @@
 
   <div
     routerLink="/main/available_transports"
-    (click)="setTopic('Approved Transports')"
+    (click)="setTopic('Available Transports')"
     #availableTransports="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':availableTransports.isActive?'#c0050e':''}">
-    Approved Transports
+    Available Transports
   </div>
 
   <div

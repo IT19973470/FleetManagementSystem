@@ -15,12 +15,12 @@
             <input type="text" class="form-control"
                    [(ngModel)]="App.userAccount.employeeID"
                    #name="ngModel"
-                   name="name" placeholder="Eg: [ 12345 ]" required appEmployeeIdValidator>
+                   name="name" placeholder="Eg: [ 12345 ]" required  appEmployeeIdValidator>
             <div *ngIf="(name.touched || applicantRegistrationForm.submitted) && name.errors?.required"
                  class="validErr" >
               Employee ID is required
             </div>
-            <div *ngIf="(employeeID.dirty) && employeeID.errors?.employeeIdInvalid"
+            <div *ngIf="(name.dirty) && name.errors?.employeeIdInvalid"
                  class="validErr">
               Invalid Employee ID
             </div>
