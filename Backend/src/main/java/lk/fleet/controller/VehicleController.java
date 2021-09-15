@@ -35,4 +35,9 @@ public class VehicleController {
     public ResponseEntity getAllVehicles() {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
+
+    @GetMapping(value = "/getVehicleByNumber/{vehicleNumber}")
+    public ResponseEntity getVehicleByNumber(@PathVariable String vehicleNumber) {
+        return ResponseEntity.ok(vehicleService.getVehicleByNumber(vehicleNumber));
+    }
 }

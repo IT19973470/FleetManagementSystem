@@ -16,6 +16,7 @@ export class ViewVipmembersComponent implements OnInit {
     foundItem: ''
   };
   @ViewChild('vipmemberForm', {static: true}) public vipmemberForm: NgForm;
+  vipmembers=[];
   vipmemberDetail = {
 
     vipMemberId:'',
@@ -27,7 +28,10 @@ export class ViewVipmembersComponent implements OnInit {
 
 
   };
-  vipmember:any;
+
+  vipMemberNo;
+  // vipMemberId;
+  // vipmember:any;
 
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
 
@@ -36,10 +40,10 @@ export class ViewVipmembersComponent implements OnInit {
   ngOnInit(): void {
     this.getAllVipMembers();
   }
-  setVipMember(vipmember) {
-    this.vipmember = vipmember;
-    this.isTrueOrFalse(true);
-  }
+  // setVipMember(vipmember) {
+  //   this.vipmember = vipmember;
+  //   this.isTrueOrFalse(true);
+  // }
   goToUpdate(vipmember) {
     this.vehicleDriverManagerService.vipmember = vipmember;
     this.router.navigate(['/main/update_vipmember'])
@@ -56,16 +60,21 @@ export class ViewVipmembersComponent implements OnInit {
     })
   }
 
-  // getVehicleByNumber() {
+  // getVipMemberByNumber() {
   //   this.vehicleDriverManagerService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
   //     this.vipmembers = vipmembers;
   //     // console.log(this.vehicles)
   //   })
-  vipmembers: any;
-  vipMemberId: any;
+
+
 
 
   getVipMemberByNumber() {
-
+    this.vehicleDriverManagerService.getVipMemberByNumber(this.vipMemberNo).subscribe((vipmembers) => {
+      this.vipmembers = this.vipmembers;
+       console.log(this.vipmembers)
+    })
   }
+
+
 }
