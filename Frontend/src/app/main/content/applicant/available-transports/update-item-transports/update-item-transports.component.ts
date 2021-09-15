@@ -87,7 +87,7 @@ export class UpdateItemTransportsComponent implements OnInit {
     this.applicantService.GetItemApp(this.passengerpassengerApp.applicationID).subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
       this.DBPass = this.PassengerDB;
-      this.ViewPassenger = this.DBPass.itemApplicationDTO.itemItemApplicationDTOS;
+      this.ViewPassenger = this.DBPass.itemApplication.itemItemApplicationDTOS;
       // console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
     })
@@ -214,5 +214,9 @@ export class UpdateItemTransportsComponent implements OnInit {
     console.log(this.Pass)
     this.pen = true;
     this.plus = false;
+  }
+
+  getMinDate() {
+    return this.applicantService.getCurDate() + 'T00:00';
   }
 }

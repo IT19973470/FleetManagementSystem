@@ -32,6 +32,7 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="ItemApp.depatureDate"
                    #depatureDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
@@ -47,6 +48,7 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="ItemApp.arrivaleDate"
                    #arrivaleDate="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate1" required>
             <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
                  class="validErr">

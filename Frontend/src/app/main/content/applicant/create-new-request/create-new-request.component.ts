@@ -50,6 +50,12 @@ export class CreateNewRequestComponent implements OnInit {
   passengerOBJ; //Array Object
   flag;
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
 // Item ={
 //   item:{
 //     itemID:'',
@@ -159,5 +165,7 @@ export class CreateNewRequestComponent implements OnInit {
         },
     };
   }
-
+  getMinDate() {
+    return this.applicant.getCurDate() + 'T00:00';
+  }
 }

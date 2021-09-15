@@ -159,7 +159,7 @@ export class AvailableTransportsComponent implements OnInit {
     {
       let z2=this.driverVehicle[x]
       let z1=this.main[x]
-      // console.log(this.application)
+      console.log(this.passenger)
       this.passenger.applicationID =z1.applicationID;
        this.passenger.arrivaleDate = z1.depatureDateActual;
        this.passenger.depatureDate = z1.arrivaleDateActual;
@@ -168,10 +168,10 @@ export class AvailableTransportsComponent implements OnInit {
        this.passenger.type=z1.type;
        this.passenger.reason=z1.reason;
        this.passenger.vehicleType=z1.vehicleType;
-       this.passenger.passengerApp.passengerApplicationID=z1.passengerApplicationDTO.passengerApplicationID
-       this.passenger.itemApp.itemApplicationID=z1.itemApplicationDTO.itemApplicationID
-       this.passenger.passengerPassengerApplications=z1.passengerApplicationDTO.passengerPassengerApplications
-       this.passenger.itemItemApplicationDTOS=z1.itemApplicationDTO.itemItemApplicationDTOS
+       this.passenger.passengerApp.passengerApplicationID=z1.passengerApplication.passengerApplicationID
+       this.passenger.itemApp.itemApplicationID=z1.itemApplication.itemApplicationID
+       this.passenger.passengerPassengerApplications=z1.passengerApplication.passengerPassengerApplications
+       this.passenger.itemItemApplicationDTOS=z1.itemApplication.itemItemApplicationDTOS
        this.passenger.bookingApplicationId=z2.bookingApplicationId
        this.passenger.lisenseID=z2.driver.lisenseID;
        this.passenger.driveremployeeID=z2.driver.userAccount.employeeID;
@@ -206,10 +206,10 @@ export class AvailableTransportsComponent implements OnInit {
       this.passenger.type=z1.type;
       this.passenger.reason=z1.reason;
       this.passenger.vehicleType=z1.vehicleType;
-      this.passenger.passengerApp.passengerApplicationID=z1.passengerApplicationDTO.passengerApplicationID
-      this.passenger.itemApp.itemApplicationID=z1.itemApplicationDTO.itemApplicationID
-      this.passenger.passengerPassengerApplications=z1.passengerApplicationDTO.passengerPassengerApplications
-      this.passenger.itemItemApplicationDTOS=z1.itemApplicationDTO.itemItemApplicationDTOS
+      this.passenger.passengerApp.passengerApplicationID=z1.passengerApplication.passengerApplicationID
+      this.passenger.itemApp.itemApplicationID=z1.itemApplication.itemApplicationID
+      this.passenger.passengerPassengerApplications=z1.passengerApplication.passengerPassengerApplications
+      this.passenger.itemItemApplicationDTOS=z1.itemApplication.itemItemApplicationDTOS
       this.passenger.bookingApplicationId='null'
       this.passenger.lisenseID="Not Assigned";
       this.passenger.driveremployeeID="Not Assigned";

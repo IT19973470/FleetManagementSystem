@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Passenger Transports</span>
@@ -67,6 +68,7 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
                    #depatureDate1="ngModel"
+                   min="{{getMinDate()}}"
                    name="depatureDate" required>
             <div *ngIf="(depatureDate1.touched || deliveryForm.submitted) && depatureDate1.errors?.required"
                  class="validErr">
@@ -83,6 +85,7 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
                    #arrivaleDate1="ngModel"
+                   min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(arrivaleDate1.touched || deliveryForm.submitted) && arrivaleDate1.errors?.required"
                  class="validErr">

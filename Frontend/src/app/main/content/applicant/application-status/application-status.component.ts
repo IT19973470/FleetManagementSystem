@@ -16,7 +16,7 @@ export class ApplicationStatusComponent implements OnInit {
   @ViewChild('applicationStatus', {static: true}) public applicationStatus: NgForm;
 
 
-  ItemApp= {
+  ItemApp = {
 
     applicationID: "",
     approval: "",
@@ -25,33 +25,33 @@ export class ApplicationStatusComponent implements OnInit {
     reason: "",
     vehicleType: "",
     destination: "",
-    type:'I',
+    type: 'I',
     itemApplication: {
       itemItemApplications: []
     }
   }
-  duplicate:boolean;
-  Pass={
-    item:{
-      itemID:'',
-      itemName:'',
-      qty:''
+  duplicate: boolean;
+  Pass = {
+    item: {
+      itemID: '',
+      itemName: '',
+      qty: ''
     }
   };
 
   tblIndex;
-  plus:boolean=true; //plus button
-  pen:boolean=false;//pen button
-  viewAllItem=[];
+  plus: boolean = true; //plus button
+  pen: boolean = false;//pen button
+  viewAllItem = [];
 
-  constructor(private applicant: ApplicantService, private router: Router,private notifierService: NotifierService) {
+  constructor(private applicant: ApplicantService, private router: Router, private notifierService: NotifierService) {
     //this.Pass = this.getNewPassenger();
   }
 
   ngOnInit(): void {
     this.applicant.getAllItem().subscribe((deliveryItemDetails) => {
       //console.log(deliveryItemDetails)
-      this.viewAllItem=deliveryItemDetails
+      this.viewAllItem = deliveryItemDetails
     })
   }
 
@@ -64,37 +64,33 @@ export class ApplicationStatusComponent implements OnInit {
 
   btnText = '';
   flag;
+
   onSubmitPassenger() {
     if (this.plus == true) {
-     let check=this.Pass;
-      this.flag=1;
+      let check = this.Pass;
+      this.flag = 1;
 
       console.log(check);
-      for (let x=0; x<=this.ItemApp.itemApplication.itemItemApplications.length-1; x++)
-      {
-        let a=this.ItemApp.itemApplication.itemItemApplications[x];
+      for (let x = 0; x <= this.ItemApp.itemApplication.itemItemApplications.length - 1; x++) {
+        let a = this.ItemApp.itemApplication.itemItemApplications[x];
         console.log(a);
-        if(a.item.itemID==check.item.itemID){
-           this.flag=0;
-           break;
-        }
-        else {
-          this.flag=1;
+        if (a.item.itemID == check.item.itemID) {
+          this.flag = 0;
+          break;
+        } else {
+          this.flag = 1;
         }
 
       }
-      if(this.flag==1)
-      {
+      if (this.flag == 1) {
         this.ItemApp.itemApplication.itemItemApplications.push(this.Pass);
         this.notifierService.notify("success", "Item Added successfully");
-      }
-      else if(this.flag==0){
+      } else if (this.flag == 0) {
         this.notifierService.notify("error", "Item Id duplicated");
       }
 
       //this.passengerForm.resetForm();
-    }
-    else if(this.pen==true){
+    } else if (this.pen == true) {
       this.ItemApp.itemApplication.itemItemApplications[this.tblIndex] = this.Pass
     }
 
@@ -104,8 +100,8 @@ export class ApplicationStatusComponent implements OnInit {
   setNewPassenger() {
     this.Pass = this.getNewPassenger();
     this.passengerForm.resetForm(this.Pass.item);
-    this.plus=true;
-    this.pen=false;
+    this.plus = true;
+    this.pen = false;
   }
 
   // chkPassengerId() {
@@ -114,25 +110,26 @@ export class ApplicationStatusComponent implements OnInit {
   //   }
   // }
 
-  setPassenger(item,i) {
+  setPassenger(item, i) {
     this.tblIndex = i;
     this.Pass.item.itemID = item.itemID;
-    this.Pass.item.itemName=item.itemName;
-    this.Pass.item.qty=item.qty;
+    this.Pass.item.itemName = item.itemName;
+    this.Pass.item.qty = item.qty;
     this.btnText = 'Update';
-    this.pen=true;
-    this.plus=false;
+    this.pen = true;
+    this.plus = false;
   }
 
   getNewPassenger() {
     return {
       item: {
-        itemID:'',
-        itemName:'',
-        qty:''
+        itemID: '',
+        itemName: '',
+        qty: ''
       }
     };
   }
+
   chkPassengerId() {
 
     // console.log(this.viewAllItem)
@@ -143,23 +140,25 @@ export class ApplicationStatusComponent implements OnInit {
 
       let p = this.viewAllItem[x]
 
-      if(this.Pass.item.itemID === ''){
+      if (this.Pass.item.itemID === '') {
         this.setNewPassenger()
-      }
-      else if(this.Pass.item.itemID !== '') {
+      } else if (this.Pass.item.itemID !== '') {
         //  console.log(this.Pass.passenger.passengerId)
         this.duplicate = false;
         if (this.Pass.item.itemID === p.itemID) {
           console.log(p)
           this.Pass.item.itemName = p.itemName;
-          this.Pass.item.qty=p.qty;
+          this.Pass.item.qty = p.qty;
           break;
-        }
-        else {
-          this.Pass.item.itemName=''
+        } else {
+          this.Pass.item.itemName = ''
         }
       }
     }
+  }
+
+  getMinDate() {
+    return this.applicant.getCurDate() + 'T00:00';
   }
 
 }
