@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DriverService} from "../_service/driver.service";
+import {DriverService} from "../../../../_service/driver.service";
 import {Router} from "@angular/router";
-import {ApplicantService} from "../_service/applicant.service";
+import {ApplicantService} from "../../../../_service/applicant.service";
 import {NotifierService} from "angular-notifier";
 
 @Component({
