@@ -25,10 +25,6 @@ public class BookingDTO {
         }
     }
 
-//    public BookingDTO(Booking booking, TokenDTO tokenDetail) {
-//        this(booking);
-//        this.tokenDetail = tokenDetail;
-//    }
 
     public String getBookingId() {
         return bookingId;

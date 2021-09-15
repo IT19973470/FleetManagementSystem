@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-update-details',
@@ -35,12 +36,21 @@ export class UpdateDetailsComponent implements OnInit {
     meters: []
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   btnTextToken = 'Update Token';
   btnTextMeter = 'Update Meter Details'
   meter: any;
   token;
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router,private notifierService: NotifierService) {
+  constructor(private securityOfficerService: SecurityOfficerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
@@ -49,39 +59,44 @@ export class UpdateDetailsComponent implements OnInit {
     this.chkMeter();
   }
 
-  // onSubmit() {
-  //   this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTimeActual;
-  //   this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTimeActual;
-  //   this.securityOfficerService.updateToken(this.tokenDetail).subscribe((tokenDetail) => {
-  //     this.router.navigate(['/main/update_details'])
-  //   })
-  // }
-
-  onSubmit() {
-    this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTimeActual;
-    this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTimeActual;
-    this.securityOfficerService.updateToken(this.tokenDetail).subscribe((tokenDetail) => {
-      let count = 0;
-      if (this.btnTextToken === 'Update Token' && count === 0 && tokenDetail.transportStatus === true) {
-          this.notifierService.notify("success", "Token updated successfully");
-        this.router.navigate(['/main/update_details'])
-      } else this.notifierService.notify("error", "Token cannot be updated!!");
+  addMeterDetail() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this meter details?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.securityOfficerService.updateMeterDetail(this.meterDetail).subscribe((meterDetail) => {
+          if (this.btnTextMeter === 'Update Meter Details' && meterDetail.inMeter > meterDetail.outMeter)
+            this.notifierService.notify("success", "Meter Detail updated successfully");
+          if (meterDetail.inMeter <= meterDetail.outMeter)
+            this.notifierService.notify("error", "Check the InMeter Value");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
-  // addMeterDetail() {
-  //   this.securityOfficerService.updateMeterDetail(this.meterDetail).subscribe((meterDetail) => {
-  //     this.router.navigate(['/main/arrival_departure_page'])
-  //   })
-  // }
 
-  addMeterDetail() {
-    this.securityOfficerService.updateMeterDetail(this.meterDetail).subscribe((meterDetail) => {
-      if (this.btnTextMeter === 'Update Meter Details' && meterDetail.inMeter > meterDetail.outMeter) {
-        this.notifierService.notify("success", "Meter Detail updated successfully");
-        this.router.navigate(['/main/completed_trips'])
-      } if(meterDetail.inMeter <= meterDetail.outMeter)
-        this.notifierService.notify("error", "Meter Detail cannot be updated!!!");
+  onSubmit() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this token details?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTimeActual;
+        this.tokenDetail.arrivalDateTime = this.tokenDetail.arrivalDate + 'T' + this.tokenDetail.arrivalTimeActual;
+        this.securityOfficerService.updateToken(this.tokenDetail).subscribe((tokenDetail) => {
+          if (this.btnTextToken === 'Update Token' && tokenDetail.transportStatus === true) {
+            if (this.meterDetail.inMeter > this.meterDetail.outMeter) {
+              this.notifierService.notify("success", "Token updated successfully");
+              this.router.navigate(['/main/completed_trips'])
+            } else
+              this.notifierService.notify("error", "Check the InMeter Value");
+          } else
+            this.notifierService.notify("error", "Token Cannot be Updated!!");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 
@@ -89,5 +104,7 @@ export class UpdateDetailsComponent implements OnInit {
     if (this.meterDetail.inMeter > this.meterDetail.outMeter) {
       this.meterDetail.mileage = this.meterDetail.inMeter - this.meterDetail.outMeter
     }
+    else
+      this.meterDetail.mileage = 0;
   }
 }

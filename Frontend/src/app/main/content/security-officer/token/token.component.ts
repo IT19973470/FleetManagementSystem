@@ -4,6 +4,7 @@ import {TransportManagerService} from "../../../../_service/transport-manager.se
 import {Router} from "@angular/router";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-token',
@@ -29,15 +30,25 @@ export class TokenComponent implements OnInit {
     },
   };
 
-  token;
-  btnText = 'Add';
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router, private notifierService: NotifierService) {
+  token;
+  setDepartureDate;
+
+  constructor(private securityOfficerService: SecurityOfficerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
     this.getAllTokens();
     this.booking = this.securityOfficerService.booking;
+    this.setDepartureDate = this.securityOfficerService.getCurDate();
   }
 
 
@@ -54,17 +65,24 @@ export class TokenComponent implements OnInit {
   // }
 
   onSubmit() {
-    this.tokenDetail.booking = this.booking;
-    this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
-    this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
-    this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
-      if (this.btnText === 'Add') {
-        this.tokens.push(token);
-        this.notifierService.notify("success", "Token added successfully");
-        this.newToken()
-        this.router.navigate(['/main/arrival_departure_page'])
-      } else
-        this.notifierService.notify("error", "Token cannot be added!!");
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to add this token?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.tokenDetail.booking = this.booking;
+        this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
+        this.tokenDetail.departureDateTime = this.setDepartureDate + 'T' + this.tokenDetail.departureTime;
+        this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
+            this.tokens.push(token);
+            this.notifierService.notify("success", "Token added successfully");
+            this.newToken()
+            this.router.navigate(['/main/arrival_departure_page'])
+        }, (err) => {
+            this.notifierService.notify("error", "Token cannot be added!!");
+        })
+      }
+      this.alertBox.alert = false;
     })
   }
 

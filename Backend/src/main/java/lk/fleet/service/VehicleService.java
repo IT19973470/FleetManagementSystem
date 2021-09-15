@@ -15,6 +15,9 @@ public interface VehicleService {
 
     List<VehicleDTO> getAllVehicles();
 
+    List<VehicleDTO> getVehicleByNumber(String vehicleID);
+
     //SecurityOfficer
     VehicleDTO updateVehicleAvailability (String vehicleID, Vehicle vehicle);
+
 }

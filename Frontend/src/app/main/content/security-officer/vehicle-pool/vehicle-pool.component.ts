@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-vehicle-pool',
@@ -23,9 +25,18 @@ export class VehiclePoolComponent implements OnInit {
     fuelType: ''
   };
 
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
   vehicleNumber;
 
-  constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
+  constructor(private securityOfficerService: SecurityOfficerService,
+              private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
   }
 
   ngOnInit(): void {
@@ -33,15 +44,32 @@ export class VehiclePoolComponent implements OnInit {
   }
 
   updateVehicleStatus(vehicle) {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update this vehicle availability?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
     vehicle.occupied = !vehicle.occupied;
     this.securityOfficerService.updateVehicleAvailability(vehicle).subscribe((vehicleObj) => {
       vehicle.occupied = vehicleObj.occupied;
-      // this.router.navigate(['/main/update_vehicle_pool'])
+      this.notifierService.notify("success", "Vehicle availability updated successfully");
+    }, (err) => {
+      this.notifierService.notify("error", "Vehicle availability cannot be updated!!");
+    })
+      }
+      this.alertBox.alert = false;
     })
   }
 
+
   getAllVehicles() {
     this.securityOfficerService.getAllVehicles().subscribe((vehicles) => {
+      this.vehicles = vehicles;
+    })
+  }
+
+  getVehicleByNumber() {
+    this.securityOfficerService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
       this.vehicles = vehicles;
     })
   }

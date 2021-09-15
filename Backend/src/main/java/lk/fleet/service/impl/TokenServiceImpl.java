@@ -49,7 +49,6 @@ public class TokenServiceImpl implements TokenService {
         return true;
     }
 
-
     @Override
     public List<TokenDTO> getAllTokens() {
         List<Token> tokens = tokenRepository.getNotCompletedTokens();
