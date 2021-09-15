@@ -4,6 +4,7 @@ import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-m
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-vehicle',
@@ -17,11 +18,11 @@ export class VehicleComponent implements OnInit {
     vehicleId: '',
     vehicleType: '',
     model: '',
-    noOfSeats: '',
-    initialMeter: '',
-    serviceMeter: '',
-    fuelBalance: '',
-    fuelConsumption: '',
+    noOfSeats: 0,
+    initialMeter: 0,
+    serviceMeter: 0,
+    fuelBalance: 0,
+    fuelConsumption: 0,
     occupied: '',
     fuelType: ''
   };
@@ -33,8 +34,9 @@ export class VehicleComponent implements OnInit {
 
   vehicle: any;
 
+
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router,private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,private commonService: CommonService) {
     this.vehicle = this.getNewVehicle();
   }
 
@@ -69,13 +71,18 @@ export class VehicleComponent implements OnInit {
       vehicleId: '',
       vehicleType: '',
       model: '',
-      noOfSeats: '',
-      initialMeter: '',
-      serviceMeter: '',
-      fuelBalance: '',
+      noOfSeats: 0,
+      initialMeter: 0,
+      serviceMeter: 0,
+      fuelBalance: 0,
       fuelType: '',
-      fuelConsumption: '',
+      fuelConsumption: 0,
       occupied: ''
     };
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+
   }
 }

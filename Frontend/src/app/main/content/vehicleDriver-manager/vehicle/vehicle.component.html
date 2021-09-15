@@ -79,10 +79,10 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
                    [(ngModel)]="vehicleDetail.noOfSeats"
+                   (focusout)="vehicleDetail.noOfSeats = setNumberPositive(vehicleDetail.noOfSeats)"
                    #noOfSeats="ngModel"
-                   name="noofseats" required>
+                   name="noofseats" required min="1">
             <div *ngIf="(noOfSeats.touched || vehicleForm.submitted) && noOfSeats.errors?.required"
                  class="validErr">
               No of seats are required
@@ -95,15 +95,17 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
                    [(ngModel)]="vehicleDetail.initialMeter"
+                   (focusout)="vehicleDetail.initialMeter = setNumberPositive(vehicleDetail.initialMeter)"
+
                    #initialMeter="ngModel"
-                   name="initialMeter" required>
+                   name="initialMeter" required min="1">
             <div *ngIf="(initialMeter.touched || vehicleForm.submitted) && initialMeter.errors?.required"
                  class="validErr">
               Initial Meter Reading is required
             </div>
           </div>
+
         </div>
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
@@ -111,10 +113,10 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
                    [(ngModel)]="vehicleDetail.serviceMeter"
+                   (focusout)="vehicleDetail.serviceMeter = setNumberPositive(vehicleDetail.serviceMeter)"
                    #serviceMeter="ngModel"
-                   name="serviceMeter" required>
+                   name="serviceMeter" required min="1">
             <div *ngIf="(serviceMeter.touched || vehicleForm.submitted) && serviceMeter.errors?.required"
                  class="validErr">
               Service Meter is required
@@ -127,10 +129,10 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
                    [(ngModel)]="vehicleDetail.fuelBalance"
+                   (focusout)="vehicleDetail.fuelBalance = setNumberPositive(vehicleDetail.fuelBalance)"
                    #fuelBalance="ngModel"
-                   name="fuelBalance" required>
+                   name="fuelBalance"  required min="1">
             <div *ngIf="(fuelBalance.touched || vehicleForm.submitted) && fuelBalance.errors?.required"
                  class="validErr">
               Fuel Balance is required
@@ -143,10 +145,10 @@
           </div>
           <div class="col-8">
             <input type="number" class="form-control"
-                   min="0"
                    [(ngModel)]="vehicleDetail.fuelConsumption"
+                   (focusout)="vehicleDetail.fuelConsumption= setNumberPositive(vehicleDetail.fuelConsumption)"
                    #fuelConsumption="ngModel"
-                   name="fuelConsumption" required>
+                   name="fuelConsumption" required min="1">
             <div *ngIf="(fuelConsumption.touched || vehicleForm.submitted) && fuelConsumption.errors?.required"
                  class="validErr">
               Fuel Consumption is required

@@ -29,7 +29,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.firstName"
                    #firstName="ngModel"
-                   name="firstName" required appTextValidator>
+                   name="firstName" required appTextValidator
+                   placeholder="Enter qualitative value">
             <div *ngIf="(firstName.touched || vipmemberForm.submitted) && firstName.errors?.required"
                  class="validErr">
               First Name is required
@@ -44,7 +45,8 @@
             <input type="text" class="form-control"
                    [(ngModel)]="vipmemberDetail.lastName"
                    #lastName="ngModel"
-                   name="lastName" required appTextValidator>
+                   name="lastName" required appTextValidator
+                   placeholder="Enter qualitative value">
             <div *ngIf="(lastName.touched || vipmemberForm.submitted) && lastName.errors?.required"
                  class="validErr">
               Last Name is required
