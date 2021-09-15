@@ -95,6 +95,9 @@ import {DeliveryStatusComponent} from './main/content/security-officer/delivery-
 import {VehicleNumberValidatorDirective} from './_validator/vehicle-number-validator.directive';
 import {AlertBoxComponent} from "./alert-box/alert-box.component";
 import { TransportApplicationsComponent } from './main/content/transport-manager/transport-applications/transport-applications.component';
+import { ProgramBookingComponent } from './main/content/booking_management_clerk/program-booking/program-booking.component';
+import { ViewProgramBookingComponent } from './main/content/booking_management_clerk/view-program-booking/view-program-booking.component';
+import { UpdateProgramBookingComponent } from './main/content/booking_management_clerk/view-program-booking/update-program-booking/update-program-booking.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -251,7 +254,10 @@ const customNotifierOptions: NotifierOptions = {
     DeliveryStatusComponent,
     VehicleNumberValidatorDirective,
     AlertBoxComponent,
-    TransportApplicationsComponent
+    TransportApplicationsComponent,
+    ProgramBookingComponent,
+    ViewProgramBookingComponent,
+    UpdateProgramBookingComponent
   ],
 
   imports: [
