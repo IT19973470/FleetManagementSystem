@@ -34,10 +34,15 @@
                    [(ngModel)]="ItemApp.depatureDate"
                    #depatureDate="ngModel"
                    min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="deliveryDate" required>
             <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
               Depature Date is required
+            </div>
+            <div *ngIf="(this.dep==1)"
+                 class="validErr" style="color:red">
+              Depature Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -50,6 +55,7 @@
                    [(ngModel)]="ItemApp.arrivaleDate"
                    #arrivaleDate="ngModel"
                    min="{{getMinDate()}}"
+                   (change)="checkDate()"
                    name="deliveryDate1" required>
             <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
                  class="validErr">
@@ -157,7 +163,9 @@
                 Quantity :
                 </div>
                 <div class="col-7" style="padding-left:10px; padding-top: 10px " >
-                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="Pass.item.qty"
+                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;"
+                         [(ngModel)]="Pass.item.qty"
+                         (focusout)="Pass.item.qty = setNumberPositive(Pass.item.qty)"
                          #Qty="ngModel"
                          name="passengerQty" required>
                 </div>

@@ -4,6 +4,7 @@ import {ApplicantService} from "../../../../_service/applicant.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-application-status',
@@ -36,7 +37,7 @@ export class ApplicationStatusComponent implements OnInit {
     item: {
       itemID: '',
       itemName: '',
-      qty: ''
+      qty: 0
     }
   };
 
@@ -51,7 +52,7 @@ export class ApplicationStatusComponent implements OnInit {
   pen: boolean = false;//pen button
   viewAllItem = [];
 
-  constructor(private applicant: ApplicantService, private router: Router, private notifierService: NotifierService,private alertService: AlertBoxService) {
+  constructor(private applicant: ApplicantService, private router: Router, private notifierService: NotifierService,private alertService: AlertBoxService,private commonService: CommonService) {
     //this.Pass = this.getNewPassenger();
   }
 
@@ -86,6 +87,15 @@ export class ApplicationStatusComponent implements OnInit {
   btnText = '';
   flag;
 
+  setNumberPositive(val) {
+    if (val < 0) {
+      return val * -1;
+    } else if (val === 0) {
+      return 1;
+    } else {
+      return val;
+    }
+  }
   onSubmitPassenger() {
     if (this.plus == true) {
       let check = this.Pass;
@@ -135,7 +145,7 @@ export class ApplicationStatusComponent implements OnInit {
     this.tblIndex = i;
     this.Pass.item.itemID = item.itemID;
     this.Pass.item.itemName = item.itemName;
-    this.Pass.item.qty = item.qty;
+    this.Pass.item.qty = item.qty
     this.btnText = 'Update';
     this.pen = true;
     this.plus = false;
@@ -146,10 +156,25 @@ export class ApplicationStatusComponent implements OnInit {
       item: {
         itemID: '',
         itemName: '',
-        qty: ''
+        qty: 0
       }
     };
   }
+
+  dep;
+  checkDate(){
+    this.dep=0;
+    if(this.ItemApp.arrivaleDate!=''&& this.ItemApp.depatureDate!='')
+    {
+      if(this.ItemApp.arrivaleDate<this.ItemApp.depatureDate)
+        // this.notifierService.notify("error", " Depature Date must be less than Arrival date ");
+        this.dep=1;
+    }
+    else {
+      this.dep=0;
+    }
+  }
+
 
   chkPassengerId() {
 

@@ -33,11 +33,16 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.depatureDate"
                    #depatureDate="ngModel"
+                   (change)="checkDate()"
                    min="{{getMinDate()}}"
                    name="deliveryDate" required>
             <div *ngIf="(depatureDate.touched || applicationStatus.submitted) && depatureDate.errors?.required"
                  class="validErr">
               Depature Date is required
+            </div>
+            <div *ngIf="(this.dep==1)"
+                 class="validErr" style="color:red">
+              Depature Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -49,6 +54,7 @@
             <input type="datetime-local" class="form-control"
                    [(ngModel)]="passengerpassengerApp.arrivaleDate"
                    #arrivaleDate="ngModel"
+                   (change)="checkDate()"
                    min="{{getMinDate()}}"
                    name="deliveryDate1" required>
             <div *ngIf="(arrivaleDate.touched || applicationStatus.submitted) && arrivaleDate.errors?.required"
