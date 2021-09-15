@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS, Validator} from "@angular/forms";
 
 @Directive({
@@ -14,6 +14,8 @@ export class EmailValidatorDirective implements Validator {
       if (control.value.length == 0 || EMAIL_REGEX.test(control.value)) {
         return null;
       }
+    } else {
+      return null;
     }
 
     if (control.value === null) {
@@ -23,6 +25,7 @@ export class EmailValidatorDirective implements Validator {
     return {'emailInvalid': true};
   }
 
-  constructor() { }
+  constructor() {
+  }
 
 }

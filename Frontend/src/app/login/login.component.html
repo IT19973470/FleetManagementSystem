@@ -11,7 +11,7 @@
       <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()" novalidate>
         <div style="margin-top: 15px">
           <!--<div style="margin-top: 5px">Email</div>-->
-          <input class="form-control" type="text" style="width: 100%" placeholder="Email Address"
+          <input class="form-control" type="text" style="width: 100%" placeholder="Email Address / User ID"
                  [(ngModel)]="user.email"
                  #username="ngModel"
                  name="username" required>

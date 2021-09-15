@@ -72,7 +72,7 @@ import {UpdateOverTimeComponent} from './main/content/driver/view-over-time/upda
 import {VehiclePoolComponent} from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
 //import { ViewApprovedTripDetailsComponent } from './main/content/security-officer/view-approved-trip-details/view-approved-trip-details.component';
 // import { VehiclePoolComponent } from './main/content/security-officer/vehicle-pool/vehicle-pool.component';
-import {ApplicantRegestrationComponent} from './applicant-regestration/applicant-regestration.component';
+import {ApplicantRegestrationComponent} from './main/content/applicant/applicant-regestration/applicant-regestration.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {ViewPassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/view-passenger-item-delivery.component';
 import {UpdatePassengerItemDeliveryComponent} from './main/content/transport-manager/view-passenger-item-delivery/update-passenger-item-delivery/update-passenger-item-delivery.component';
