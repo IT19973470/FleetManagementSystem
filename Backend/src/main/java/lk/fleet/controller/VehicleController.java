@@ -1,5 +1,6 @@
 package lk.fleet.controller;
 
+import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.TVProgram;
 import lk.fleet.entity.Vehicle;
 import lk.fleet.service.TVProgramService;
@@ -38,6 +39,10 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
+    @GetMapping(value = "/fuelUpdate/{vehicleID}")
+    public ResponseEntity fualUpdate(@PathVariable String vehicleID, @PathVariable Vehicle vehicle){
+        return ResponseEntity.ok(vehicleService.fualUpdate(vehicleID,vehicle));
+      
     //SecurityOfficer
     @PutMapping(value = "/updateVehicleAvailability/{vehicleID}")
     public ResponseEntity updateVehicleAvailability(@PathVariable String vehicleID, @RequestBody Vehicle vehicle) {
