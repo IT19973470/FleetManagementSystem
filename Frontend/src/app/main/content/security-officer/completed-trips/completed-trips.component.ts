@@ -15,6 +15,7 @@ export class CompletedTripsComponent implements OnInit {
     foundItem: ''
   };
 
+  bookings = [];
   booking;
   tokens = [];
   tokenDetail = {
@@ -43,6 +44,7 @@ export class CompletedTripsComponent implements OnInit {
     meters: []
   };
 
+  bookingDestination;
   tokenIdSearch;
 
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
@@ -72,6 +74,12 @@ export class CompletedTripsComponent implements OnInit {
   getTokenByID() {
     this.securityOfficerService.getTokenByID(this.tokenIdSearch).subscribe((tokens) => {
       this.tokens = tokens;
+    })
+  }
+
+  getBookingByDestination() {
+    this.securityOfficerService.getBookingByDestination(this.bookingDestination).subscribe((bookings) => {
+      this.bookings = bookings;
     })
   }
 
