@@ -64,18 +64,18 @@ export class UpdateSpecialBookingComponent implements OnInit {
       this.alertService.reply.observers = [];
       this.alertService.reply.subscribe(reply => {
         if (reply) {
-    this.specialBooking.booking.bookingDateTime= this.specialBooking.booking.bookingDate + 'T' + this.specialBooking.booking.bookingTimeActual
+          this.specialBooking.booking.bookingDateTime= this.specialBooking.booking.bookingDate + 'T' + this.specialBooking.booking.bookingTimeActual
 
-    this.specialBooking.bookingManagementClerk= {
-      bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
-    };
-    console.log(this.specialBooking);
-    this.bookingManagerService.updateSpecialBooking(this.specialBooking).subscribe(() => {
-      this.notifierService.notify("success", "Special Booking updated successfully");
-      this.router.navigate(['/main/view_special_booking'])
-    })
+          this.specialBooking.bookingManagementClerk= {
+             bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+          };
+          console.log(this.specialBooking);
+          this.bookingManagerService.updateSpecialBooking(this.specialBooking).subscribe(() => {
+            this.notifierService.notify("success", "Special Booking updated successfully");
+            this.router.navigate(['/main/view_special_booking'])
+          })
         }
-        this.alertBox.alert = false;
+         this.alertBox.alert = false;
       })
 
     }
@@ -87,16 +87,16 @@ export class UpdateSpecialBookingComponent implements OnInit {
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-    this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
-      if (reply) {
-        this.notifierService.notify("success", "Special Booking deleted successfully");
-      this.router.navigate(['/main/view_special_booking'])
-      }
-            })
-          }
-          this.alertBox.alert = false;
+        this.bookingManagerService.deleteSpecialBooking(this.specialBooking.booking.bookingId).subscribe(() => {
+          if (reply) {
+            this.notifierService.notify("success", "Special Booking deleted successfully");
+            this.router.navigate(['/main/view_special_booking'])
+           }
         })
       }
+      this.alertBox.alert = false;
+    })
+  }
 
   getMinDate() {
     return this.bookingManagerService.getCurDate();
