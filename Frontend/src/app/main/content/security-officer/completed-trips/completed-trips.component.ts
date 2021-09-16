@@ -28,7 +28,8 @@ export class CompletedTripsComponent implements OnInit {
     arrivalDateTime: '',
     transportStatus: '',
     booking: {
-      bookingId: ''
+      bookingId: '',
+      destination: ''
     },
     securityOfficer: {
       securityOfficerID: ''
