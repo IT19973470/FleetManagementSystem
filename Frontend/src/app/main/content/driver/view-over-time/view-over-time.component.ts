@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DriverService} from '../../../../_service/driver.service';
 import {Router} from '@angular/router';
+import {NotifierService} from "angular-notifier";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-view-over-time',
@@ -26,7 +28,15 @@ export class ViewOverTimeComponent implements OnInit {
     driver_driverid: ''
   };
 
-  constructor(private driverService: DriverService, private router: Router) {
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
+
+  constructor(private driverService: DriverService, private router: Router,
+              private notifierService: NotifierService,
+              private alertService: AlertBoxService) {
 
   }
 
@@ -58,11 +68,23 @@ export class ViewOverTimeComponent implements OnInit {
   }
 
   deleteOT() {
-    this.driverService.deleteOT(this.ot.overTimeID).subscribe((reply) => {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to delete this OT?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+      this.driverService.deleteOT(this.ot.overTimeID).subscribe((reply) => {
         if (reply) {
-          this.router.navigate(['/main/over_time'])
+          this.router.navigate(['/main/over_time']);
+          this.notifierService.notify("success","OT deleted successfully")
         }
+      },(err)=>{
+        this.notifierService.notify("error", "OT delete  failed");
+        }
+      )
       }
+      this.alertBox.alert = false;
+    }
     )
   }
 

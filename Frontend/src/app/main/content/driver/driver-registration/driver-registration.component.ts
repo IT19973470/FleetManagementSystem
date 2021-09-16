@@ -38,17 +38,17 @@ export class DriverRegistrationComponent implements OnInit {
     value: ''
   };
 
-  type="text";
-  btn:boolean=true;
+  type = "text";
+  btn: boolean = true;
 
-  hide(){
-    this.type="password"
-    this.btn=false
+  hide() {
+    this.type = "password"
+    this.btn = false
   }
 
-  show(){
-    this.type="text"
-    this.btn=true
+  show() {
+    this.type = "text"
+    this.btn = true
   }
 
   constructor(private driverService: DriverService,
@@ -67,14 +67,14 @@ export class DriverRegistrationComponent implements OnInit {
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-    console.log(this.driverDetail);
-    this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
-      this.router.navigate(['/login']);
-      this.notifierService.notify("success", "Driver added successfully. Please wait for the approval");
+        console.log(this.driverDetail);
+        this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
+          this.router.navigate(['/login']);
+          this.notifierService.notify("success", "Driver added successfully. Please wait for the approval");
 
-    }, (err) => {
-      this.notifierService.notify("error", "Adding failed");
-    })
+        }, (err) => {
+          this.notifierService.notify("error", "Adding failed");
+        })
       }
       this.alertBox.alert = false;
     })
