@@ -62,7 +62,7 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
-            Depature Date :
+            Departure Date :
           </div>
           <div class="col-8">
             <input type="datetime-local" class="form-control"
@@ -73,11 +73,11 @@
                    name="depatureDate" required>
             <div *ngIf="(depatureDate1.touched || deliveryForm.submitted) && depatureDate1.errors?.required"
                  class="validErr">
-              Depature Date is required
+              Departure Date is required
             </div>
             <div *ngIf="(this.dep==1)"
                  class="validErr" style="color:red">
-              Depature Date must be less than Arrival date
+              Departure Date must be less than Arrival date
             </div>
           </div>
         </div>
@@ -115,8 +115,6 @@
             </div>
           </div>
         </div>
-
-
 
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
@@ -172,7 +170,9 @@
                 Quantity :
               </div>
               <div class="col-7" style="padding-left:10px; padding-top: 10px " >
-                <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;" [(ngModel)]="Pass.item.qty"
+                <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;"
+                       [(ngModel)]="Pass.item.qty"
+                       (focusout)="Pass.item.qty = setNumberPositive(Pass.item.qty)"
                        #Qty="ngModel"
                        name="passengerQty" required>
               </div>
