@@ -21,6 +21,7 @@ export class DriverRegistrationComponent implements OnInit {
       nic: '',
       dob: '',
       name: '',
+      approved: true,
       address: '',
       contactNo: '',
       email: '',
