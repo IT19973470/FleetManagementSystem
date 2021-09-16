@@ -61,4 +61,16 @@ export class VehicleDriverManagerService {
   updateFuel(vehicleId, cFuel): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/vehicle/fuelUpdate/' + vehicleId + '/' + cFuel);
   }
+
+  addDriverVehicle(driverVehicle): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/driverVehicle/addDriverVehicle", driverVehicle);
+  }
+
+  deleteDriverVehicle(driverVehicle): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/driverVehicle/deleteDriverVehicle/" + driverVehicle.driver.driverID + "/" + driverVehicle.vehicle.vehicleId);
+  }
+
+  getDriverVehicles(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/driverVehicle/getDriverVehicles");
+  }
 }

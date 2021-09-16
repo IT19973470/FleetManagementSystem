@@ -10,13 +10,23 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="fleet/"+"driverVehicle")
+@RequestMapping(value = "fleetmanagement/" + "driverVehicle")
 public class DriverVehicleController {
     @Autowired
     private DriverVehicleService driverVehicleServicee;
 
     @PostMapping(value = "/addDriverVehicle")
-    public ResponseEntity addDriverVehicle(@RequestBody DriverVehicle driverVehicle){
+    public ResponseEntity addDriverVehicle(@RequestBody DriverVehicle driverVehicle) {
         return ResponseEntity.ok(driverVehicleServicee.addDriverVehicle(driverVehicle));
+    }
+
+    @DeleteMapping(value = "/deleteDriverVehicle/{driverId}/{vehicleID}")
+    public ResponseEntity deleteDriverVehicle(@PathVariable String driverId, @PathVariable String vehicleID) {
+        return ResponseEntity.ok(driverVehicleServicee.deleteDriverVehicle(driverId, vehicleID));
+    }
+
+    @GetMapping(value = "/getDriverVehicles")
+    public ResponseEntity getDriverVehicles() {
+        return ResponseEntity.ok(driverVehicleServicee.getDriverVehicles());
     }
 }
