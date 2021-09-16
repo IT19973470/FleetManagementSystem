@@ -35,7 +35,8 @@ export class UpdateDriverComponent implements OnInit {
     value: ''
   };
 
-  constructor(private driverService: DriverService, private router: Router,
+  constructor(private driverService: DriverService,
+              private router: Router,
               private notifierService: NotifierService,
               private alertService: AlertBoxService) {
     this.driverDetail = this.getDriver();
@@ -53,9 +54,9 @@ export class UpdateDriverComponent implements OnInit {
       if (reply) {
     console.log(this.driverDetail);
     this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
+      this.router.navigate(['main/driver_account']);
       this.notifierService.notify("success", "Driver updated successfully.");
     }, (err) => {
-      this.router.navigate(['main/driver_account']);
       this.notifierService.notify("error", "Update failed");
     })
       }

@@ -70,6 +70,8 @@ import {VipmemberComponent} from "./main/content/vehicleDriver-manager/vipmember
 import {TransportPassengerApplicationsComponent} from "./main/content/transport-manager/transport-passenger-applications/transport-passenger-applications.component";
 import {TransportItemApplicationsComponent} from "./main/content/transport-manager/transport-item-applications/transport-item-applications.component";
 import {SignupComponent} from "./signup/signup.component";
+import {DriverVehicleComponent} from "./main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component";
+import {DriverConfirmComponent} from "./main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -361,6 +363,14 @@ const routes: Routes = [
       {
         path: 'update_maintenance_details',
         component: UpdateMaintenanceDetailsComponent
+      },
+      {
+        path: 'driver_vehicle',
+        component: DriverVehicleComponent
+      },
+      {
+        path: 'driver_confirm',
+        component: DriverConfirmComponent
       }
     ]
   }

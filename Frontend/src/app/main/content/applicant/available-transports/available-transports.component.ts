@@ -105,6 +105,7 @@ export class AvailableTransportsComponent implements OnInit {
     this.applicantService.getAllApplication().subscribe((application) => {
       this.application = application;
      // console.log(this.application)
+      this.mainarray=[]
       this.getAllDriverVehicle();
     })
     console.log(this.application[1])
