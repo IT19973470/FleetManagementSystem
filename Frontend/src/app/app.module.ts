@@ -102,6 +102,8 @@ import {TransportPassengerApplicationsComponent} from './main/content/transport-
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
 import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
 import {LicenseValidatorDirective} from './_validator/license-validator.directive';
+import { DriverVehicleComponent } from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
+import { DriverConfirmComponent } from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -265,7 +267,9 @@ const customNotifierOptions: NotifierOptions = {
     TransportItemApplicationsComponent,
     TransportItemApplicationsComponent,
     EmployeeIdValidatorDirective,
-    LicenseValidatorDirective
+    LicenseValidatorDirective,
+    DriverVehicleComponent,
+    DriverConfirmComponent
   ],
 
   imports: [

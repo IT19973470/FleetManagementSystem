@@ -4,6 +4,7 @@ import {ApplicantService} from "../../../../../_service/applicant.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../../_service/common.service";
 
 @Component({
   selector: 'app-update-item-transports',
@@ -64,7 +65,7 @@ export class UpdateItemTransportsComponent implements OnInit {
   errorP = 2; //
   passengerOBJ; //Array Object
 
-  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService,private alertService: AlertBoxService) {
+  constructor(private applicantService: ApplicantService, private router: Router,private notifierService: NotifierService,private alertService: AlertBoxService,private commonService: CommonService) {
     // this.item = this.getNewItem();
   }
 
@@ -98,7 +99,15 @@ export class UpdateItemTransportsComponent implements OnInit {
       this.y = deliveryItemDetails.length;
     })
   }
-
+  setNumberPositive(val) {
+    if (val < 0) {
+      return val * -1;
+    } else if (val === 0) {
+      return 1;
+    } else {
+      return val;
+    }
+  }
   onSubmit() {
     // console.log(this.passengerpassengerApp)
     // this.applicantService.updateform(this.passengerpassengerApp).subscribe((deliveryDetail) => {

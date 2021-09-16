@@ -26,7 +26,7 @@ export class CreateNewRequestComponent implements OnInit {
     destination: '',
     type: 'P',
     passengerApplication: {
-      noOfPassengers: '1',
+      noOfPassengers: 0,
       passengerPassengerApplications: []
     },
     // itemApplication:{
@@ -86,6 +86,7 @@ export class CreateNewRequestComponent implements OnInit {
     this.applicant.getAllPassengers().subscribe((deliveryItemDetails) => {
       this.PassengerDB = deliveryItemDetails;
       this.y = deliveryItemDetails.length;
+      this.passengerpassengerApp.passengerApplication.noOfPassengers=this.y;
     })
   }
 
@@ -121,7 +122,7 @@ export class CreateNewRequestComponent implements OnInit {
 
 
   createAccount(){
-    this.router.navigate(['/main/applicant_regestration'])
+    this.router.navigate(['/applicant_regestration'])
   }
   dep;
   checkDate(){
@@ -135,8 +136,8 @@ export class CreateNewRequestComponent implements OnInit {
     else {
       this.dep=0;
     }
-
   }
+
   onSubmitPassenger() {
     let check=this.Pass;
     this.flag=1;
