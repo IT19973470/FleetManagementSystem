@@ -27,7 +27,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
     vehicleType: "",
     reason: "",
     passengerApp: {
-      noOfPassengers: '',
+      noOfPassengers: 0,
       passengerApplicationID: '',
       passengerPassengerApplications: []
     }
@@ -90,6 +90,7 @@ export class UpdateAvailableTransportsComponent implements OnInit {
       this.ViewPassenger = this.DBPass.passengerApplication.passengerPassengerApplications;
       // console.log(this.PassengerDB);
       this.y = deliveryItemDetails.length;
+      this.passengerpassengerApp.passengerApp.noOfPassengers=this.y
     })
   }
 
