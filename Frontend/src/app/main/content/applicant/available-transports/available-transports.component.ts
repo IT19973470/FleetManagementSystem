@@ -106,6 +106,7 @@ export class AvailableTransportsComponent implements OnInit {
       this.application = application;
      // console.log(this.application)
       this.mainarray=[]
+      this.main=[]
       this.getAllDriverVehicle();
     })
     console.log(this.application[1])
