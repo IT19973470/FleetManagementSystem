@@ -25,7 +25,7 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-    @PostMapping(value = "/newapplication")   // jarawa epa
+    @PostMapping(value = "/newapplication")
     public ResponseEntity addApplication(@RequestBody Application application) {
         return ResponseEntity.ok(applicationPassengerService.addApplication(application));
     }
