@@ -46,4 +46,6 @@ public interface ApplicationPassengerService {
     List<Item> getAllItem();
 
     boolean deletePassengerApp(String passengerApplicationID, String passengerID);
+
+    ApplicationDTO addApplicationItemPass(Application application);
 }

@@ -28,6 +28,15 @@
   </div>
 
   <div
+    routerLink="/main/Item_passenger"
+    (click)="setTopic('Item Passenger Application')"
+    #itemPassenger="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':itemPassenger.isActive?'#c0050e':''}">
+    Item Passenger Application
+  </div>
+
+  <div
     routerLink="/main/notifications"
     (click)="setTopic('Notifications')"
     #notificationsapplcant="routerLinkActive"
