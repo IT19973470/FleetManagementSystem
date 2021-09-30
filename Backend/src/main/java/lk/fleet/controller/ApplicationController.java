@@ -39,6 +39,12 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
     }
 
+    @PostMapping(value = "/addItemPassengers")
+    public ResponseEntity addApplicationItemPass(@RequestBody Application application) {
+        return ResponseEntity.ok(applicationPassengerService.addApplicationItemPass(application));
+    }
+
+
     @GetMapping(value = "/getPassengers")
     public List<PassengerDTO> getPassengers() {
         return applicationPassengerService.getPassengers();

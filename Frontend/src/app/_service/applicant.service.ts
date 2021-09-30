@@ -14,6 +14,9 @@ export class ApplicantService {
   addApp(application): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/application/newapplication", application);
   }
+  addItemPassengers(application): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/application/addItemPassengers", application);
+  }
   addPass(passenger): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/application/newapplication", passenger);
   }
@@ -66,5 +69,6 @@ export class ApplicantService {
   getCurDate() {
     return this.datePipe.transform(new Date(), 'yyyy-MM-dd')
   }
+
 
 }

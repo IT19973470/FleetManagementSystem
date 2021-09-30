@@ -108,9 +108,14 @@
         <form #passengerForm="ngForm" (ngSubmit)="passengerForm.form.valid && onSubmitPassenger()" novalidate>
           <legend>Add Passengers:
             <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">
+              <div class="row" style="margin-left:0px;">
+                <div class="col-4" style="padding-right: 100px">
+                </div>
+                <div class="col-7" >
+                  <input   type="text" class="form-control" style="margin-left: 0px;border: none"
+                           name="passengerId" >
 
-
-
+                </div>
                 <div class="col-4" style="padding-right: 50px">
                   Employee ID :
                 </div>
@@ -120,6 +125,7 @@
                          #passengerId="ngModel"
                          (keyup)="chkPassengerId()"
                          name="passengerType" required>
+
                   <div *ngIf="(errorP==1)"
                        class="validErr" style="color:red">
                     Passenger ID is Not Found
@@ -152,7 +158,69 @@
                 <div class="col-9" style="padding-right: 50px; padding-top: 10px ">
                 </div>
               </div>
+            </div>
 
+          </legend>
+
+        </form>
+
+        <form #itemForm="ngForm" (ngSubmit)="itemForm.form.valid && onSubmitItem()" novalidate>
+          <legend>Add Items:
+            <div style="border-top: 1px solid #dfcda0;display: flex;margin-bottom: 10px;padding-top: 20px">
+
+              <div class="row" style="margin-left:0px;">
+
+                <div class="col-4" style="padding-right: 100px">
+                </div>
+                <div class="col-7" >
+                  <input   type="text" class="form-control" style="margin-left: 0px;border: none"
+                           name="passengerId" >
+                </div>
+
+                <div class="col-4" style="padding-right: 50px">
+                  Item ID :
+                </div>
+                <div class="col-7" >
+                  <input   type="text" class="form-control" style="margin-left: 0px" [(ngModel)]="Item.item.itemID"
+                           #ItemID="ngModel"
+                           (keyup)="checkItemId()"
+                           name="passengerId" >
+                  <div *ngIf="(flagI===0)"
+                       class="validErr">
+                    Item Id is duplicated
+                  </div>
+                </div>
+
+                <div class="col-1" >
+                  <button *ngIf="plus" style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                    <i class="fas fa-plus-circle"  style="font-size: 30px"  ></i>
+                  </button>
+                  <button *ngIf="pen"  style=" background-color: Transparent;background-repeat:no-repeat;border: none; cursor:pointer;overflow: hidden;" >
+                    <i  class="fas fa-pen" style="cursor: pointer"  ></i>
+                  </button>
+                </div>
+
+                <div class="col-4" style="padding-right: 50px; padding-top: 10px ">
+                  Item Name :
+                </div>
+                <div class="col-7" style="padding-top: 10px " >
+                  <input type="text" class="form-control" style="margin-left: 0px;  " [(ngModel)]="Item.item.itemName"
+                         #passengerName="ngModel"
+                         name="passengerName" >
+                </div>
+
+                <div class="col-4" style="padding-right: 50px; padding-top: 10px">
+                  Quantity :
+                </div>
+                <div class="col-7" style="padding-left:10px; padding-top: 10px " >
+                  <input type="number" id="quantity" name="quantity" min="1"  class="form-control" style="padding-right: 10%;"
+                         [(ngModel)]="Item.item.qty"
+                         (focusout)="Item.item.qty = setNumberPositive(Item.item.qty)"
+                         #Qty="ngModel"
+                         name="passengerQty" required>
+                </div>
+              </div>
+            </div>
 
           </legend>
 
@@ -189,6 +257,41 @@
         <div *ngIf="ViewPassenger.length===0" class="validErr"
              style="text-align: center;font-size: 20px">
           No passengers available
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #dfcda0;display: flex;margin-top: 20px;padding-top: 20px">
+      <div style="width: 100%">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col" width="3%">#</th>
+            <th scope="col">Item ID</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col" width="5%" style="text-align: center">Update</th>
+            <th scope="col" width="5%" style="text-align: center">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let Item of passengerpassengerApp.itemApplication.itemItemApplications; let j = index">
+            <th scope="row">{{j+1}}</th>
+            <td>{{Item.item.itemID}}</td>
+            <td>{{Item.item.itemName}}</td>
+            <td>{{Item.item.qty}}</td>
+            <td style="text-align: center">
+              <i class="fas fa-pen" style="font-size: 16px" (click)="setItem(Item.item,j)"></i>
+            </td>
+            <td style="text-align: center" (click)="passengerpassengerApp.itemApplication.itemItemApplications.splice(j, 1)">
+              <i class="fas fa-times" style="color: red;font-size: 20px"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div *ngIf="passengerpassengerApp.itemApplication.itemItemApplications.length===0" class="validErr"
+             style="text-align: center;font-size: 20px">
+          No items available
         </div>
       </div>
     </div>
