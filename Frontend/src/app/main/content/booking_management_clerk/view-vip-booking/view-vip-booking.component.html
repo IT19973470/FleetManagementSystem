@@ -18,11 +18,6 @@
       </button>
     </div>
     <div style="margin-top: 20px">
-      <!--      <span style="font-weight: bold;margin-left: 0px">Search by Booking Management ID : </span>-->
-      <!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="bookingManagementClerkId">-->
-      <!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingsByBookingManagementClerkId()">-->
-      <!--        Search-->
-      <!--      </button>-->
 
 
     </div>
@@ -35,6 +30,7 @@
         <th scope="col" >Booking Date</th>
         <th scope="col" >Booking Time</th>
         <th scope="col">Booking Status</th>
+<!--        <th scope="col">Name</th>-->
         <th scope="col">Destination</th>
         <th scope="col">Purpose</th>
         <th scope="col">Time Period</th>
@@ -44,12 +40,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let vipBooking of vipBooking; let i = index">
+      <tr *ngFor="let vipBooking of vipBookings; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{vipBooking.booking.bookingId}}</td>
         <td>{{vipBooking.booking.bookingDate}}</td>
         <td>{{vipBooking.booking.bookingTime}}</td>
         <td>{{vipBooking.booking.bookingStatus}}</td>
+<!--        <td>{{vipBooking.vipMember.firstName}}</td>-->
         <td>{{vipBooking.booking.destination}}</td>
         <td>{{vipBooking.purpose}}</td>
         <td>{{vipBooking.timePeriod}}</td>

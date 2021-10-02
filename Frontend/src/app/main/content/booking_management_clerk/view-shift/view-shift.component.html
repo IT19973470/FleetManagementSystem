@@ -32,13 +32,14 @@
         <th scope="col">#</th>
         <th scope="col">Shift ID</th>
         <th scope="col">Driver ID</th>
-        <th scope="col">Driver</th>
+        <th scope="col" width="10%">Driver</th>
         <th scope="col" width="10%">Vehicle No</th>
         <th scope="col">Vehicle</th>
+        <th scope="col">Driver attendance</th>
         <th scope="col">Vehicle Availability</th>
-        <th scope="col">Shift Date</th>
+        <th scope="col" width="10%">Shift Date</th>
         <th scope="col">Starting Time</th>
-        <th scope="col" width="15%">Ending Time</th>
+        <th scope="col">Ending Time</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
         <th scope="col" width="5%" style="text-align: center">Select</th>
       </tr>
@@ -51,6 +52,7 @@
         <td>{{shift.driverVehicle.driver.userAccount.nameWithInitials}}</td>
         <td>{{shift.driverVehicle.vehicle.vehicleId}}</td>
         <td>{{shift.driverVehicle.vehicle.vehicleType}}</td>
+        <td>{{shift.attendance}}</td>
         <td>{{shift.driverVehicle.vehicle.occupied}}</td>
         <td>{{shift.shiftDate}}</td>
         <td>{{shift.startingTime}}</td>
@@ -89,10 +91,10 @@
         Application Booking
       </button>
 
-<!--      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"-->
-<!--              (click)="goToProgramBooking()">-->
-<!--        Program Booking-->
-<!--      </button>-->
+      <button [disabled]="selectedShift===undefined" class="btn btn-dark" style="font-weight: bold;margin-left: 20px"
+              (click)="goToProgramBooking()">
+        Program Booking
+      </button>
     </div>
 
   </div>

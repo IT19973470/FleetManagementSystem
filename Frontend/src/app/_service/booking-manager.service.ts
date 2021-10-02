@@ -13,6 +13,9 @@ export class BookingManagerService {
   booking;
   specialBooking;
   vipBooking;
+  programBooking;
+  bookingApplication;
+
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }
@@ -35,6 +38,9 @@ export class BookingManagerService {
 
   getDriveVehicles(driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverVehicles/" + driverId);
+  }
+  getAllDriverVehicles(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getAllDriverVehicles");
   }
 
   getAllShifts(): Observable<any> {
@@ -118,5 +124,68 @@ export class BookingManagerService {
   getVipMember(vipMemberId: any) {
     return this.http.get<any>(environment.backend_url + "/vipBooking/getVipMember/" + vipMemberId);
 
+  }
+
+  getTvProgram(programID:any) {
+    return this.http.get<any>(environment.backend_url + "/programBooking/getTvProgram/" + programID);
+
+  }
+
+  addProgramBooking(ProgramBookingDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/programBooking/addProgramBooking" ,ProgramBookingDetail);
+  }
+  updateProgramBooking(ProgramBookingDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/programBooking/updateProgramBooking/" + ProgramBookingDetail.programBookingId, ProgramBookingDetail);
+  }
+
+  deleteProgramBooking(programBookingId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/programBooking/deleteProgramBooking/" + programBookingId);
+  }
+
+  getAllProgramBooking(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/programBooking/getProgramBooking");
+  }
+
+
+  getProgramBookingByProgramBookingId(programBookingId: any) {
+    return this.http.get<any>(environment.backend_url + "/programBooking/getProgramBookingByProgramBookingId/" + programBookingId);
+  }
+
+
+  getApplication(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getApplication");
+  }
+
+  getApplicationById(applicationID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getApplicationById/" + applicationID);
+  }
+  addBookingApplication(BookingApplicationDetail): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/booking/addBookingApplication" ,BookingApplicationDetail);
+  }
+
+
+  updateBookingApplication(BookingApplicationDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/booking/updateBookingApplication/" + BookingApplicationDetail.bookingApplicationId, BookingApplicationDetail);
+  }
+
+  deleteBookingApplication(bookingApplicationId): Observable<any> {
+    return this.http.delete<any>(environment.backend_url + "/booking/deleteBookingApplication/" + bookingApplicationId);
+  }
+
+  getAllBookingApplication(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookingApplication");
+  }
+
+
+  getBookingApplicationByBookingApplicationId(bookingApplicationId: any) {
+    return this.http.get<any>(environment.backend_url + "/booking/getBookingApplicationByBookingApplicationId/" + bookingApplicationId);
+  }
+
+  approveOt(overTimeID, approval): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/approveOt/" + overTimeID + "/" + approval);
+  }
+
+  getOt(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/booking/getOt");
   }
 }

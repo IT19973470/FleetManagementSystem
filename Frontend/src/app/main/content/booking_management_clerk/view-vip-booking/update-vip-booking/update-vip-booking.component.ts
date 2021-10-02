@@ -92,7 +92,7 @@ export class UpdateVipBookingComponent implements OnInit {
     if (reply) {
     this.bookingManagerService.deleteVipBooking(this.vipBooking.booking.bookingId).subscribe(() => {
       if (reply) {
-        this.notifierService.notify("success", "Special Booking deleted successfully");
+        this.notifierService.notify("success", "VIP Booking deleted successfully");
       this.router.navigate(['/main/view_vip_booking'])
       }
       })
