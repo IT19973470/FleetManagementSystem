@@ -27,13 +27,16 @@ export class ShiftComponent implements OnInit {
       driverVehicleID: {
         driverID: '',
         vehicleId: ''
-      }
+      },
+     driver: {
+        driverID:'',
+     }
     },
     bookingManagementClerk: {
       bookingManagementClerkId: ''
     },
     overTime:{
-      overTimeID:''
+      overTimeID:'',
     }
   };
 
@@ -53,6 +56,7 @@ export class ShiftComponent implements OnInit {
     openTable: false,
     foundItem: ''
   };
+
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,

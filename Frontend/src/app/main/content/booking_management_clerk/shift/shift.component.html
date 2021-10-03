@@ -23,9 +23,9 @@
         <th scope="col">#</th>
         <th scope="col">Driver ID</th>
         <th scope="col">Driver Name</th>
-        <th scope="col" width="10%" style="text-align: center">Vehicle No</th>
-        <th scope="col" width="10%" style="text-align: center">Vehicle</th>
-        <th scope="col" width="5%" style="text-align: center">Select</th>
+        <th scope="col" style="text-align: center">Vehicle No</th>
+        <th scope="col" style="text-align: center">Vehicle</th>
+        <th scope="col"style="text-align: center">Select</th>
       </tr>
       </thead>
       <tbody>
@@ -54,12 +54,12 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">OverTime ID</th>
+          <th scope="col">Driver ID</th>
           <th scope="col">OT Date</th>
           <th scope="col">No.of shifts</th>
           <th scope="col">Starting Time</th>
           <th scope="col">Ending Time</th>
-          <th scope="col">Approval</th>
-          <th scope="col" width="10%" style="text-align: center">Approve/Deny</th>
+          <th scope="col" width="10%" style="text-align: center">Approval</th>
           <th scope="col" width="10%" style="text-align: center">Select</th>
         </tr>
         </thead>
@@ -67,11 +67,11 @@
         <tr *ngFor="let ot of otDetails; let i = index">
           <th scope="row">{{i + 1}}</th>
           <td>{{ot.overTimeID}}</td>
+          <td>{{ot.driverID}}</td>
           <td>{{ot.otDate}}</td>
           <td>{{ot.noOfShifts}}</td>
           <td>{{ot.startTime}}</td>
           <td>{{ot.endTime}}</td>
-          <td>{{ot.approval}}</td>
 
           <td style="text-align: center" (click)="setOt(ot)">
             <i class="fas fa-pen" style="cursor: pointer"></i>
@@ -165,6 +165,18 @@
 
         <div class="row" style="margin-top: 10px">
           <div class="col-4">
+            Overtime ID :
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control"
+                   [(ngModel)]="shift.overTime.overTimeID"
+                   #overTimeIds="ngModel"
+                   name="overTimeID" readonly>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
             Shift Date :
           </div>
           <div class="col-8">
@@ -181,17 +193,7 @@
         </div>
 
 
-        <div class="row" style="margin-top: 10px">
-          <div class="col-4">
-            Overtime ID :
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control"
-                   [(ngModel)]="shift.overTime.overTimeID"
-                   #overTimeIds="ngModel"
-                   name="overTimeID" readonly>
-          </div>
-        </div>
+
 
 
         <div class="row" style="margin-top: 10px">
