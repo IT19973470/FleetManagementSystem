@@ -39,7 +39,7 @@ export class DriverRegistrationComponent implements OnInit {
   };
 
   type = "text";
-  btn: boolean = true;
+  btn: boolean = false;
 
   hide() {
     this.type = "password"

@@ -53,7 +53,7 @@ export class UpdateDriverComponent implements OnInit {
     this.alertService.reply.subscribe(reply => {
       if (reply) {
     console.log(this.driverDetail);
-    this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
+    this.driverService.updateDriver(this.driverDetail).subscribe((driverDetail) => {
       this.router.navigate(['main/driver_account']);
       this.notifierService.notify("success", "Driver updated successfully.");
     }, (err) => {

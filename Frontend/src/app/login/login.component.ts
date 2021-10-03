@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       } else if (user['accountType'] === 'SO') {
         this.router.navigate(['/main/view_approved_trip_details'])
       } else if (user['accountType'] === 'DR') {
-        this.router.navigate(['/main/shift_details'])
+        this.router.navigate(['/main/driver_account'])
       } else if (user['accountType'] === 'GM') {
         this.router.navigate(['/main/create_user_account'])
       } else if (user['accountType'] === 'AP') {
