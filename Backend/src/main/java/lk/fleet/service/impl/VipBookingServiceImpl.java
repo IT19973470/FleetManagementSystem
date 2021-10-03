@@ -71,6 +71,10 @@ public class VipBookingServiceImpl implements VipBookingService {
         List<VipBooking> vipBookings = vipBookingRepository.findAll();
         for (VipBooking vipBooking : vipBookings) {
             VipBookingDTO vipBookingDTO = new VipBookingDTO(vipBooking);
+            vipBookingDTO.setDriver(new DriverDTO(vipBooking.getBooking().getShift().getDriverVehicle().getDriver()));
+
+            vipBookingDTO.setVehicle(new VehicleDTO(vipBooking.getBooking().getShift().getDriverVehicle().getVehicle()));
+            vipBookingDTO.setVipMember(new VipMemberDTO(vipBooking.getVipMember()));
             vipBookingDTO.setBooking(new BookingDTO(vipBooking.getBooking()));
             vipBookingDTOS.add(vipBookingDTO);
         }

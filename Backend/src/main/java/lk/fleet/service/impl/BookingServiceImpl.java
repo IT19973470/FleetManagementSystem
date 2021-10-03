@@ -83,6 +83,11 @@ public class BookingServiceImpl implements BookingService {
         List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
         for (BookingApplication bookingApplication : bookingApplications) {
             BookingApplicationDTO bookingApplicationDTO = new BookingApplicationDTO(bookingApplication);
+
+            bookingApplicationDTO.setDriver(new DriverDTO(bookingApplication.getBooking().getShift().getDriverVehicle().getDriver()));
+
+            bookingApplicationDTO.setVehicle(new VehicleDTO(bookingApplication.getBooking().getShift().getDriverVehicle().getVehicle()));
+            bookingApplicationDTO.setApplication(new ApplicationDTO(bookingApplication.getApplication()));
             bookingApplicationDTO.setBooking(new BookingDTO(bookingApplication.getBooking()));
             bookingApplicationDTOS.add(bookingApplicationDTO);
         }
@@ -249,10 +254,12 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-
     @Override
     public ShiftDTO addDriverShift(Shift shift) {
         shift.setShiftId("SH" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        if (shift.getOverTime().getOverTimeID() == 0) {
+            shift.setOverTime(null);
+        }
         return new ShiftDTO(shiftRepository.save(shift));
     }
 
@@ -330,11 +337,14 @@ public class BookingServiceImpl implements BookingService {
         List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
         List<OverTime> overTimes = overTimeRepository.findAll();
         for (OverTime overTime : overTimes) {
-            overTimeDTOS.add(new OverTimeDTO(overTime));
+            OverTimeDTO overTimeDTO = new OverTimeDTO(overTime);
+            overTimeDTO.setDriver(new DriverDTO(overTime.getDriver()));
+            overTimeDTOS.add(overTimeDTO);
         }
 
         return overTimeDTOS;
     }
+
     @Override
     public OverTimeDTO approveOt(Long overTimeID, boolean approval) {
         Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
