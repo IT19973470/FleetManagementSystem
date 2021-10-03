@@ -72,9 +72,14 @@ import {TransportItemApplicationsComponent} from "./main/content/transport-manag
 import {SignupComponent} from "./signup/signup.component";
 import {DriverVehicleComponent} from "./main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component";
 import {DriverConfirmComponent} from "./main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component";
+
 import {ProgramBookingComponent} from "./main/content/booking_management_clerk/program-booking/program-booking.component";
 import {UpdateProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/update-program-booking/update-program-booking.component";
 import {ViewProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/view-program-booking.component";
+
+import {ItemPassengerComponent} from "./main/content/applicant/item-passenger/item-passenger.component";
+import {UpdateItemPassengerComponent} from "./main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component";
+
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -398,6 +403,14 @@ const routes: Routes = [
       {
         path: 'driver_confirm',
         component: DriverConfirmComponent
+      },
+      {
+        path: 'Item_passenger',
+        component: ItemPassengerComponent
+      },
+      {
+        path: 'update_item_passenger_transports',
+        component: UpdateItemPassengerComponent
       }
     ]
   }

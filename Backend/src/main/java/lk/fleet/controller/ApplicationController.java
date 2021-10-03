@@ -25,7 +25,7 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-    @PostMapping(value = "/newapplication")   // jarawa epa
+    @PostMapping(value = "/newapplication")
     public ResponseEntity addApplication(@RequestBody Application application) {
         return ResponseEntity.ok(applicationPassengerService.addApplication(application));
     }
@@ -38,6 +38,12 @@ public class ApplicationController {
     public ResponseEntity addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
         return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
     }
+
+    @PostMapping(value = "/addItemPassengers")
+    public ResponseEntity addApplicationItemPass(@RequestBody Application application) {
+        return ResponseEntity.ok(applicationPassengerService.addApplicationItemPass(application));
+    }
+
 
     @GetMapping(value = "/getPassengers")
     public List<PassengerDTO> getPassengers() {
