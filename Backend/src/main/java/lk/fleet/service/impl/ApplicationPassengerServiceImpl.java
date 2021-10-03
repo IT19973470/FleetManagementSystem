@@ -50,30 +50,37 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
         return new ApplicationDTO(applicationRepository.save(application)); //Insert
     }
 
-//    public ApplicationDTO addApplicationItemPass(Application application) {
-//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-//
-//        application.setApplicationID("App" + dateTime);
-//
-//        PassengerApplication passengerApplication =application.getPassengerApplication();
-//        passengerApplication.setPassengerApplicationID("PassApp" + dateTime);
-//        passengerApplication.setApplication(application);
-//
-//        ItemApplication itemApplication =application.getItemApplication();
-//        itemApplication.setItemApplicationId("ItemApp"+dateTime);
-//        itemApplication.setApplication(application);
-//
-//        for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
-//            passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
-//
-//        }
-//        for(ItemItemApplication itemItemApplication: application.getItemApplication().getItemItemApplications()){
-//            itemRepository.save(itemItemApplication.getItem());
-//            itemItemApplication.setItemItemApplicationId(new ItemItemApplicationPK(itemItemApplication.getItem().getItemID(),application.getItemApplication().getItemApplicationId()));
-//
-//        }
-//        return   new ApplicationDTO(applicationRepository.save(application)); //Jarawa epaa
-//    }
+    public ApplicationDTO addApplicationItemPass(Application application) {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+
+        application.setApplicationID("App" + dateTime);
+
+        PassengerApplication passengerApplication =application.getPassengerApplication();
+
+        if (passengerApplication != null){
+        passengerApplication.setPassengerApplicationID("PassApp" + dateTime);
+        passengerApplication.setApplication(application);
+
+            for(PassengerPassengerApplication passengerPassengerApplication: application.getPassengerApplication().getPassengerPassengerApplications()){
+                passengerPassengerApplication.setPassengerPassengerApplicationId(new PassengerPassengerApplicationPK(application.getPassengerApplication().getPassengerApplicationID(),passengerPassengerApplication.getPassenger().getPassengerId()));
+
+            }
+
+        }
+        ItemApplication itemApplication =application.getItemApplication();
+        if (itemApplication != null){
+            itemApplication.setItemApplicationId("ItemApp"+dateTime);
+            itemApplication.setApplication(application);
+
+            for(ItemItemApplication itemItemApplication: application.getItemApplication().getItemItemApplications()){
+                itemRepository.save(itemItemApplication.getItem());
+                itemItemApplication.setItemItemApplicationId(new ItemItemApplicationPK(itemItemApplication.getItem().getItemID(),application.getItemApplication().getItemApplicationId()));
+
+            }
+        }
+
+        return   new ApplicationDTO(applicationRepository.save(application)); //Jarawa epaa
+    }
 
 
 //    public Application application(String aplicationID,Application application){
