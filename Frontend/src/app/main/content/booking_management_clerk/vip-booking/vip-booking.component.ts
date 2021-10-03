@@ -26,9 +26,9 @@ export class VipBookingComponent implements OnInit {
       bookingManagementClerk: {
         bookingManagementClerkId: 'BMC123'
       },
-      // shift: {
-      //   shiftId: '',
-      // }
+      shift: {
+        shiftId: '',
+      }
     },
     purpose: '',
     timePeriod: '',
@@ -57,7 +57,7 @@ export class VipBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.shift = this.bookingManagerService.shift;
   }
 
   alertBox = {
@@ -85,7 +85,7 @@ export class VipBookingComponent implements OnInit {
   this.alertService.reply.observers = [];
   this.alertService.reply.subscribe(reply => {
     if (reply) {
-      //this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
+      this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
       this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
     this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {

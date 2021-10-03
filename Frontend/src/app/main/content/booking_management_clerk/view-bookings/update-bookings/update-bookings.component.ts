@@ -3,6 +3,7 @@ import {BookingManagerService} from "../../../../../_service/booking-manager.ser
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../../_service/common.service";
 
 @Component({
   selector: 'app-update-bookings',
@@ -10,20 +11,119 @@ import {AlertBoxService} from "../../../../../alert-box/alert-box.service";
   styleUrls: ['./update-bookings.component.css']
 })
 export class UpdateBookingsComponent implements OnInit {
+//
+//
+//   booking = {
+//     bookingId: '',
+//     bookingDate:'',
+//     bookingTime:'',
+//     bookingTimeActual:'',
+//     bookingDateTime: '',
+//     destination:'',
+//     bookingStatus:'',
+//
+//     bookingManagementClerk: {
+//       bookingManagementClerkId: ''
+//     }
+//   };
+//
+//   selected = ""
+//
+//   update(e) {
+//     this.selected = e.target.value
+//   }
+//
+//   constructor(private bookingManagerService: BookingManagerService, private router: Router,
+//               private notifierService: NotifierService,
+//               private alertService: AlertBoxService) {
+//   }
+//
+//   ngOnInit(): void {
+//     this.booking.bookingDateTime = this.bookingManagerService.getCurDate();
+//     this.booking = this.bookingManagerService.booking;
+//
+//   }
+//
+//
+//   alertBox = {
+//     alert: false,
+//     msg: '',
+//     value: ''
+//   };
+//
+//   onSubmit() {
+//       this.alertBox.alert = true;
+//   this.alertBox.msg = 'Do you want to update booking?';
+//   this.alertService.reply.observers = [];
+//   this.alertService.reply.subscribe(reply => {
+//     if (reply) {
+//     this.booking.bookingDateTime= this.booking.bookingDate + 'T' + this.booking.bookingTimeActual
+//
+//     this.booking.bookingManagementClerk= {
+//       bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+//     };
+//     console.log(this.booking);
+//     this.bookingManagerService.updateBooking(this.booking).subscribe(() => {
+//       this.notifierService.notify("success", "Booking updated successfully");
+//          this.router.navigate(['/main/view_bookings'])
+//       })
+//     }
+//     this.alertBox.alert = false;
+//   })
+//
+// }
+//
+//   removeBooking() {
+//     this.alertBox.alert = true;
+//   this.alertBox.msg = 'Do you want to delete this booking?';
+//   this.alertService.reply.observers = [];
+//   this.alertService.reply.subscribe(reply => {
+//     if (reply) {
+//     this.bookingManagerService.deleteBooking(this.booking.bookingId).subscribe(() => {
+//       if (reply) {
+//         this.notifierService.notify("success", "Booking deleted successfully");
+//       this.router.navigate(['/main/view_bookings'])
+//       }
+//       })
+//     }
+//     this.alertBox.alert = false;
+//   })
+// }
+//
+//
+// }
+// //
+// // removeShift() {
+// //   this.alertBox.alert = true;
+// //   this.alertBox.msg = 'Do you want to delete this shift?';
+// //   this.alertService.reply.observers = [];
+// //   this.alertService.reply.subscribe(reply => {
+// //     if (reply) {
+// //       this.bookingManagerService.deleteDriverShift(this.shift.shiftId).subscribe(() => {
+// //         if (reply) {
+// //           this.router.navigate(['/main/view_shifts'])
+// //         }
+// //       })
+// //     }
+// //     this.alertBox.alert = false;
+// //   })
+// // }
 
-
-  booking = {
-    bookingId: '',
-    bookingDate:'',
-    bookingTime:'',
-    bookingTimeActual:'',
-    bookingDateTime: '',
-    destination:'',
-    bookingStatus:'',
-
+  bookingApplication = {
     bookingManagementClerk: {
       bookingManagementClerkId: ''
-    }
+    },
+    booking: {
+      bookingId: '',
+      bookingDate: '',
+      bookingTime: '',
+      bookingTimeActual: '',
+      bookingDateTime: '',
+      destination: '',
+      bookingStatus: '',
+    },
+
+
   };
 
   selected = ""
@@ -34,15 +134,15 @@ export class UpdateBookingsComponent implements OnInit {
 
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
-              private alertService: AlertBoxService) {
+              private alertService: AlertBoxService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
-    this.booking.bookingDateTime = this.bookingManagerService.getCurDate();
-    this.booking = this.bookingManagerService.booking;
+    this.bookingApplication.booking.bookingDateTime = this.bookingManagerService.getCurDate();
+    this.bookingApplication = this.bookingManagerService.bookingApplication;
 
   }
-
 
   alertBox = {
     alert: false,
@@ -51,59 +151,56 @@ export class UpdateBookingsComponent implements OnInit {
   };
 
   onSubmit() {
-      this.alertBox.alert = true;
-  this.alertBox.msg = 'Do you want to update booking?';
-  this.alertService.reply.observers = [];
-  this.alertService.reply.subscribe(reply => {
-    if (reply) {
-    this.booking.bookingDateTime= this.booking.bookingDate + 'T' + this.booking.bookingTimeActual
-
-    this.booking.bookingManagementClerk= {
-      bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
-    };
-    console.log(this.booking);
-    this.bookingManagerService.updateBooking(this.booking).subscribe(() => {
-      this.notifierService.notify("success", "Booking updated successfully");
-         this.router.navigate(['/main/view_bookings'])
-      })
-    }
-    this.alertBox.alert = false;
-  })
-
-}
-
-  removeBooking() {
     this.alertBox.alert = true;
-  this.alertBox.msg = 'Do you want to delete this booking?';
-  this.alertService.reply.observers = [];
-  this.alertService.reply.subscribe(reply => {
-    if (reply) {
-    this.bookingManagerService.deleteBooking(this.booking.bookingId).subscribe(() => {
+    this.alertBox.msg = 'Do you want to update Application booking?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.notifierService.notify("success", "Booking deleted successfully");
-      this.router.navigate(['/main/view_bookings'])
+        this.bookingApplication.booking.bookingDateTime = this.bookingApplication.booking.bookingDate + 'T' + this.bookingApplication.booking.bookingTimeActual
+
+        this.bookingApplication.bookingManagementClerk = {
+          bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+        };
+        console.log(this.bookingApplication);
+        this.bookingManagerService.updateBookingApplication(this.bookingApplication).subscribe(() => {
+          this.notifierService.notify("success", "Application Booking updated successfully");
+
+          this.router.navigate(['/main/view_booking_application'])
+        })
       }
-      })
-    }
-    this.alertBox.alert = false;
-  })
-}
+      this.alertBox.alert = false;
+    })
+  }
+
+
+  // removeBookingApplication() {
+  //   this.alertBox.alert = true;
+  //   this.alertBox.msg = 'Do you want to delete this Application booking?';
+  //   this.alertService.reply.observers = [];
+  //   this.alertService.reply.subscribe(reply => {
+  //     if (reply) {
+  //       this.bookingManagerService.deleteBookingApplication(this.bookingApplication.booking.bookingId).subscribe(() => {
+  //         if (reply) {
+  //           this.notifierService.notify("success", "Application Booking deleted successfully");
+  //           this.router.navigate(['/main/view_booking_application'])
+  //         }
+  //       })
+  //     }
+  //     this.alertBox.alert = false;
+  //   })
+  // }
+
+  getMinDate() {
+    return this.bookingManagerService.getCurDate() + 'T00:00';
+  }
+
+  getMinimumDate() {
+    return this.bookingManagerService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
+  }
 
 
 }
-//
-// removeShift() {
-//   this.alertBox.alert = true;
-//   this.alertBox.msg = 'Do you want to delete this shift?';
-//   this.alertService.reply.observers = [];
-//   this.alertService.reply.subscribe(reply => {
-//     if (reply) {
-//       this.bookingManagerService.deleteDriverShift(this.shift.shiftId).subscribe(() => {
-//         if (reply) {
-//           this.router.navigate(['/main/view_shifts'])
-//         }
-//       })
-//     }
-//     this.alertBox.alert = false;
-//   })
-// }

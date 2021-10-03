@@ -14,7 +14,10 @@ import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 export class ShiftComponent implements OnInit {
 
   @ViewChild('shiftForm', {static: true}) public shiftForm: NgForm;
+
   driverVehicles = [];
+  otDetails=[];
+
   shift = {
     shiftId: '',
     shiftDate: '',
@@ -24,15 +27,22 @@ export class ShiftComponent implements OnInit {
       driverVehicleID: {
         driverID: '',
         vehicleId: ''
-      }
+      },
+     driver: {
+        driverID:'',
+     }
     },
     bookingManagementClerk: {
       bookingManagementClerkId: ''
+    },
+    overTime:{
+      overTimeID:'',
     }
   };
 
   deliveryDate;
   driverId;
+  selectedOt;
   // selectedDriver;
 
   alertBox = {
@@ -40,6 +50,14 @@ export class ShiftComponent implements OnInit {
     msg: '',
     value: ''
   };
+
+  isModalTable = {
+    text: '',
+    openTable: false,
+    foundItem: ''
+  };
+
+
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
               private alertService: AlertBoxService) {
@@ -47,9 +65,20 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit(): void {
     this.shift.shiftDate = this.bookingManagerService.getCurDate();
+    this.getAllDriverVehicles();
+    this.getOt();
   }
 
 
+  getOt() {
+    this.bookingManagerService.getOt().subscribe((otDetails) => {
+      this.otDetails = otDetails;
+      console.log(this.otDetails)
+    })
+  }
+  selectOt(ot) {
+    this.shift.overTime.overTimeID= ot.overTimeID;
+  }
   selectDriver(driver) {
     // this.selectedDriver = driver;
     this.shift.driverVehicle.driverVehicleID.driverID = driver.driverVehicleID.driverID;
@@ -62,6 +91,13 @@ export class ShiftComponent implements OnInit {
       console.log(this.driverVehicles)
     })
   }
+  getAllDriverVehicles() {
+    this.bookingManagerService.getAllDriverVehicles().subscribe((driverVehicles) => {
+      this.driverVehicles = driverVehicles;
+      console.log(this.driverVehicles)
+    })
+  }
+
 
   onSubmit() {
     this.alertBox.alert = true;
@@ -92,6 +128,21 @@ export class ShiftComponent implements OnInit {
     {
       this.shiftForm.resetForm();
     }
+
+  setOt(ot) {
+    this.selectedOt = ot;
+    this.isTrueOrFalse(true);
   }
+  isTrueOrFalse(reply) {
+    this.isModalTable.openTable = reply;
+  }
+
+
+  approveOt(approval) {
+    this.bookingManagerService.approveOt(this.selectedOt.overTimeID, approval).subscribe((ot) => {
+      this.selectedOt.approval = ot.approval;
+    })
+  }
+}
 
 

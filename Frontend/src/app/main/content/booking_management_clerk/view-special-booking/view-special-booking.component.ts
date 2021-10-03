@@ -10,13 +10,29 @@ import {Router} from "@angular/router";
 export class ViewSpecialBookingComponent implements OnInit {
 
   specialBooking = [];
-  //  booking ={
-  //    bookingId: '1',
-  //    bookingDateTime: '',
-  //    destination: '',
-  //    bookingStatus: '',
-  //    bookings : []
-  // };
+  specialBookings={
+   booking: {
+        bookingId: '',
+        bookingDateTime: '',
+        destination: '',
+        bookingStatus: true,
+        bookingManagementClerk: {
+          bookingManagementClerkId: ''
+        },
+        shift: {
+          shiftId: '',
+          shiftDate: '',
+          startingTime: '',
+          endingTime: '',
+          driverVehicle: {
+            driverVehicleID: {
+              driverID: '',
+              vehicleId: ''
+            }
+          },
+        }
+      }
+  }
 
   bookingId;
   bookingManagementClerkId;

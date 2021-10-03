@@ -21,7 +21,7 @@ public interface BookingService {
 
     boolean deleteDriverShift(String shiftId);
 
-    Booking addBooking(Booking booking);
+    //Booking addBooking(Booking booking);
     //BookingApplicationDTO addBooking(BookingApplication bookingApplication);
     BookingDTO updateBooking(String bookingId, Booking booking);
 
@@ -30,6 +30,7 @@ public interface BookingService {
     List<BookingDTO> getAllBookings();
 
     List<BookingDTO> getBookings();
+
 
 
 
@@ -47,4 +48,29 @@ public interface BookingService {
 
     List<BookingDTO> getBookingByDestination(String destination);
 
+    BookingApplicationDTO addBookingApplication(BookingApplication bookingApplication);
+
+
+    List<BookingApplicationDTO> getBookingApplication();
+
+
+//    boolean deleteBookingApplication(String bookingApplicationId);
+
+
+
+
+    BookingApplicationDTO updateBookingApplication(String bookingApplicationId, BookingApplication bookingApplication);
+
+
+    List<ApplicationDTO> getApplicationById(String applicationID);
+
+    List <BookingApplicationDTO>getBookingApplicationByBookingApplicationId(String bookingApplicationId);
+
+    List<ApplicationDTO> getApplication();
+
+   OverTimeDTO approveOt(Long overTimeID, boolean approval);
+
+    List<OverTimeDTO> getOt();
+
+    List<DriverVehicleDTO> getAllDriverVehicles();
 }
