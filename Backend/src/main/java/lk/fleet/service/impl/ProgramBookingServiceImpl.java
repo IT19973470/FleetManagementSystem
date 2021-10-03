@@ -71,6 +71,10 @@ public class ProgramBookingServiceImpl implements ProgramBookingService {
         List<ProgramBooking> programBookings = programBookingRepository.findAll();
         for (ProgramBooking programBooking : programBookings) {
             ProgramBookingDTO programBookingDTO = new ProgramBookingDTO(programBooking);
+            programBookingDTO.setDriver(new DriverDTO(programBooking.getBooking().getShift().getDriverVehicle().getDriver()));
+
+            programBookingDTO.setVehicle(new VehicleDTO(programBooking.getBooking().getShift().getDriverVehicle().getVehicle()));
+            programBookingDTO.setTvProgram(new TVProgramDTO(programBooking.getTvProgram()));
             programBookingDTO.setBooking(new BookingDTO(programBooking.getBooking()));
             programBookingDTOS.add(programBookingDTO);
         }

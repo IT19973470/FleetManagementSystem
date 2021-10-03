@@ -67,7 +67,7 @@
         <tr *ngFor="let ot of otDetails; let i = index">
           <th scope="row">{{i + 1}}</th>
           <td>{{ot.overTimeID}}</td>
-          <td>{{ot.driverID}}</td>
+          <td>{{ot.driver.driverID}}</td>
           <td>{{ot.otDate}}</td>
           <td>{{ot.noOfShifts}}</td>
           <td>{{ot.startTime}}</td>
