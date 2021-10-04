@@ -148,6 +148,7 @@
             <input type="date" class="form-control"
                    [(ngModel)]="App.userAccount.registeredDate"
                    #registeredDate="ngModel"
+                   max="{{getMinDate()}}"
                    name="registeredDate" required>
             <div *ngIf="(registeredDate.touched || applicantRegistrationForm.submitted) && registeredDate.errors?.required"
                  class="validErr">

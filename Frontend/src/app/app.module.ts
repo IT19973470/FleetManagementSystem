@@ -106,6 +106,8 @@ import {DriverVehicleComponent} from './main/content/vehicleDriver-manager/drive
 import {DriverConfirmComponent} from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
 import {DeliveryReportComponent} from './main/content/transport-manager/delivery-report/delivery-report.component';
 import {NgApexchartsModule} from "ng-apexcharts";
+import {ItemPassengerComponent} from './main/content/applicant/item-passenger/item-passenger.component';
+import {UpdateItemPassengerComponent} from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -272,7 +274,9 @@ const customNotifierOptions: NotifierOptions = {
     LicenseValidatorDirective,
     DriverVehicleComponent,
     DriverConfirmComponent,
-    DeliveryReportComponent
+    DeliveryReportComponent,
+    ItemPassengerComponent,
+    UpdateItemPassengerComponent
   ],
 
   imports: [

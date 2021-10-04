@@ -18,17 +18,17 @@ public class ShiftController {
     private ShiftService shiftService;
 
     @PostMapping(value = "/addShift")
-    public ResponseEntity addShift(@RequestBody Shift shift){
+    public ResponseEntity addShift(@RequestBody Shift shift) {
         return ResponseEntity.ok(shiftService.addShift(shift));
     }
 
     @PutMapping(value = "/updateShift/{shiftId}")
-    public ResponseEntity updateShift(@PathVariable String shiftId, @RequestBody Shift shift){
+    public ResponseEntity updateShift(@PathVariable String shiftId, @RequestBody Shift shift) {
         return ResponseEntity.ok(shiftService.updateShift(shiftId, shift));
     }
 
     @DeleteMapping(value = "/deleteShift/{shiftId}")
-    public ResponseEntity deleteShift(@PathVariable String shiftId){
+    public ResponseEntity deleteShift(@PathVariable String shiftId) {
         return ResponseEntity.ok(shiftService.deleteShift(shiftId));
     }
 
