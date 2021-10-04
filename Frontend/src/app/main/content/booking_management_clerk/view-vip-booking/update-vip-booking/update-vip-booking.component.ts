@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -15,8 +15,8 @@ export class UpdateVipBookingComponent implements OnInit {
   vipBooking = {
     approvedFuelAmount: '',
     purpose: '',
-    timePeriod:'',
-    approval:'',
+    timePeriod: '',
+    approval: '',
     noOfPassengers: '',
     bookingManagementClerk: {
       bookingManagementClerkId: ''
@@ -30,7 +30,6 @@ export class UpdateVipBookingComponent implements OnInit {
       destination: '',
       bookingStatus: '',
     },
-
 
 
   };
@@ -61,52 +60,52 @@ export class UpdateVipBookingComponent implements OnInit {
 
   onSubmit() {
     this.alertBox.alert = true;
-      this.alertBox.msg = 'Do you want to update VIP booking?';
-      this.alertService.reply.observers = [];
-      this.alertService.reply.subscribe(reply => {
-        if (reply) {
-    this.vipBooking.booking.bookingDateTime= this.vipBooking.booking.bookingDate + 'T' + this.vipBooking.booking.bookingTimeActual
+    this.alertBox.msg = 'Do you want to update VIP booking?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.vipBooking.booking.bookingDateTime = this.vipBooking.booking.bookingDate + 'T' + this.vipBooking.booking.bookingTimeActual
 
-    this.vipBooking.bookingManagementClerk= {
-      bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
-    };
-    console.log(this.vipBooking);
-    this.bookingManagerService.updateVipBooking(this.vipBooking).subscribe(() => {
-      this.notifierService.notify("success", "VIP Booking updated successfully");
+        this.vipBooking.bookingManagementClerk = {
+          bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+        };
+        console.log(this.vipBooking);
+        this.bookingManagerService.updateVipBooking(this.vipBooking).subscribe(() => {
+          this.notifierService.notify("success", "VIP Booking updated successfully");
 
-      this.router.navigate(['/main/view_vip_booking'])
+          this.router.navigate(['/main/view_vip_booking'])
+        })
+      }
+      this.alertBox.alert = false;
     })
-        }
-        this.alertBox.alert = false;
-      })
   }
-
-
 
 
   removeVipBooking() {
     this.alertBox.alert = true;
-  this.alertBox.msg = 'Do you want to delete this VIP booking?';
-  this.alertService.reply.observers = [];
-  this.alertService.reply.subscribe(reply => {
-    if (reply) {
-    this.bookingManagerService.deleteVipBooking(this.vipBooking.booking.bookingId).subscribe(() => {
+    this.alertBox.msg = 'Do you want to delete this VIP booking?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.notifierService.notify("success", "VIP Booking deleted successfully");
-      this.router.navigate(['/main/view_vip_booking'])
+        this.bookingManagerService.deleteVipBooking(this.vipBooking.booking.bookingId).subscribe(() => {
+          if (reply) {
+            this.notifierService.notify("success", "VIP Booking deleted successfully");
+            this.router.navigate(['/main/view_vip_booking'])
+          }
+        })
       }
-      })
-    }
-    this.alertBox.alert = false;
-  })
-}
+      this.alertBox.alert = false;
+    })
+  }
 
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
   }
-  getMinimumDate(){
+
+  getMinimumDate() {
     return this.bookingManagerService.getCurDate();
   }
+
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }

@@ -16,7 +16,7 @@ export class ShiftComponent implements OnInit {
   @ViewChild('shiftForm', {static: true}) public shiftForm: NgForm;
 
   driverVehicles = [];
-  otDetails=[];
+  otDetails = [];
 
   shift = {
     shiftId: '',
@@ -28,15 +28,15 @@ export class ShiftComponent implements OnInit {
         driverID: '',
         vehicleId: ''
       },
-     driver: {
-        driverID:'',
-     }
+      driver: {
+        driverID: '',
+      }
     },
     bookingManagementClerk: {
       bookingManagementClerkId: ''
     },
-    overTime:{
-      overTimeID:'',
+    overTime: {
+      overTimeID: '',
     }
   };
 
@@ -76,9 +76,11 @@ export class ShiftComponent implements OnInit {
       console.log(this.otDetails)
     })
   }
+
   selectOt(ot) {
-    this.shift.overTime.overTimeID= ot.overTimeID;
+    this.shift.overTime.overTimeID = ot.overTimeID;
   }
+
   selectDriver(driver) {
     // this.selectedDriver = driver;
     this.shift.driverVehicle.driverVehicleID.driverID = driver.driverVehicleID.driverID;
@@ -91,6 +93,7 @@ export class ShiftComponent implements OnInit {
       console.log(this.driverVehicles)
     })
   }
+
   getAllDriverVehicles() {
     this.bookingManagerService.getAllDriverVehicles().subscribe((driverVehicles) => {
       this.driverVehicles = driverVehicles;
@@ -110,13 +113,13 @@ export class ShiftComponent implements OnInit {
           this.setNewForm();
           this.notifierService.notify("success", "Shift added successfully");
 
-       // this.router.navigate(['/main/view_shifts'])
+          // this.router.navigate(['/main/view_shifts'])
         }, (err) => {
           this.notifierService.notify("error", "Shift failed");
         })
       }
       this.alertBox.alert = false;
-     })
+    })
   }
 
 
@@ -124,15 +127,15 @@ export class ShiftComponent implements OnInit {
     return this.bookingManagerService.getCurDate();
   }
 
-    setNewForm()
-    {
-      this.shiftForm.resetForm();
-    }
+  setNewForm() {
+    this.shiftForm.resetForm();
+  }
 
   setOt(ot) {
     this.selectedOt = ot;
     this.isTrueOrFalse(true);
   }
+
   isTrueOrFalse(reply) {
     this.isModalTable.openTable = reply;
   }

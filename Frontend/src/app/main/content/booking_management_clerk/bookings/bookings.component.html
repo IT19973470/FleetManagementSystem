@@ -34,7 +34,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let application of applications; let i = index">
-        <th scope="row">{{i+1}}</th>
+        <th scope="row">{{i + 1}}</th>
         <td>{{application.applicationID}}</td>
         <td>{{application.vehicleType}}</td>
         <td>{{application.depatureDate}}</td>
@@ -125,8 +125,9 @@
                    #bookingDateTime="ngModel"
                    min="{{getMinDate()}}"
                    name="bookingDateTime" required>
-            <div *ngIf="(bookingDateTime.touched || bookingApplicationForm.submitted) && bookingDateTime.errors?.required"
-                 class="validErr">
+            <div
+              *ngIf="(bookingDateTime.touched || bookingApplicationForm.submitted) && bookingDateTime.errors?.required"
+              class="validErr">
               Booking Date is required
             </div>
           </div>
@@ -139,17 +140,18 @@
           </div>
           <div class="col-8" style="margin-left: 250px; margin-top: -20px;">
             <label>
-              <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="bookingApplication.booking.bookingStatus">
+              <input name="bookingStatus" type="radio" [value]="true"
+                     [(ngModel)]="bookingApplication.booking.bookingStatus">
               <span style="font-size: 16px"> Active</span>
             </label>
             <label style="margin-left: 40px">
-              <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="bookingApplication.booking.bookingStatus">
+              <input name="bookingStatus" type="radio" [value]="false"
+                     [(ngModel)]="bookingApplication.booking.bookingStatus">
               <span style="font-size: 16px"> Inactive</span>
             </label>
           </div>
 
         </div>
-
 
 
         <div class="row" style="margin-top: 20px">
@@ -169,21 +171,18 @@
         </div>
 
 
-
       </div>
     </div>
-
-
-
 
 
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
       <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Application Booking</button>
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Application
+          Booking
+        </button>
       </div>
     </div>
-
 
 
   </form>

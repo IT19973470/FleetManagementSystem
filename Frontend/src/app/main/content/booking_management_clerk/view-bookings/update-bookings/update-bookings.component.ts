@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -11,7 +11,6 @@ import {CommonService} from "../../../../../_service/common.service";
   styleUrls: ['./update-bookings.component.css']
 })
 export class UpdateBookingsComponent implements OnInit {
-
 
   bookingApplication = {
     bookingManagementClerk: {

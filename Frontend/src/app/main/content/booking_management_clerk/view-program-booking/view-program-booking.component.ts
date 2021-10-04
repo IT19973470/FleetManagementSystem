@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 
@@ -10,9 +10,6 @@ import {Router} from "@angular/router";
 export class ViewProgramBookingComponent implements OnInit {
 
   programBookings = [];
-
-
-
 
   bookingId;
   bookingManagementClerkId;
@@ -43,8 +40,8 @@ export class ViewProgramBookingComponent implements OnInit {
       this.programBookings = programBookings;
       console.log(programBookings)
 
-   })
- }
+    })
+  }
 
 
 }

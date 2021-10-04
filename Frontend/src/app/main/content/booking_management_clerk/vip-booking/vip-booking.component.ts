@@ -34,8 +34,8 @@ export class VipBookingComponent implements OnInit {
     timePeriod: '',
     approvedFuelAmount: '',
     approval: true,
-    vipMember:{
-      vipMemberId:'',
+    vipMember: {
+      vipMemberId: '',
     }
   };
 
@@ -48,8 +48,9 @@ export class VipBookingComponent implements OnInit {
   }
 
   selectVipMember(vipMember) {
-    this.vipBooking.vipMember.vipMemberId= vipMember.vipMemberId;
+    this.vipBooking.vipMember.vipMemberId = vipMember.vipMemberId;
   }
+
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
               private alertService: AlertBoxService,
@@ -58,6 +59,7 @@ export class VipBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.shift = this.bookingManagerService.shift;
+    this.getAllVipMembers();
   }
 
   alertBox = {
@@ -66,11 +68,16 @@ export class VipBookingComponent implements OnInit {
     value: ''
   };
 
-  setNewForm()
-  {
+  setNewForm() {
     this.vipBookingForm.resetForm();
   }
 
+  getAllVipMembers() {
+    this.bookingManagerService.getAllVipMembers().subscribe((vipmembers) => {
+      this.vipMembers = vipmembers;
+      // console.log(this.vipmember)
+    })
+  }
 
   getVipMember() {
     this.bookingManagerService.getVipMember(this.vipMemberId).subscribe((vipMembers) => {
@@ -81,31 +88,32 @@ export class VipBookingComponent implements OnInit {
 
   onSubmit() {
     this.alertBox.alert = true;
-  this.alertBox.msg = 'Do you want to add this VIP booking?';
-  this.alertService.reply.observers = [];
-  this.alertService.reply.subscribe(reply => {
-    if (reply) {
-      this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
-      this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
+    this.alertBox.msg = 'Do you want to add this VIP booking?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.vipBooking.booking.shift.shiftId = this.shift.shiftId;
+        this.vipBooking.booking.bookingManagementClerk.bookingManagementClerkId = JSON.parse(localStorage.getItem('user'))['employeeID'];
 
-    this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
-        this.setNewForm();
-        this.notifierService.notify("success", "VIP Booking added successfully");
+        this.bookingManagerService.addVipBooking(this.vipBooking).subscribe(() => {
+          this.setNewForm();
+          this.notifierService.notify("success", "VIP Booking added successfully");
 
 
-     // this.router.navigate(['/main/view_vip_booking'])
-    }, (err) => {
-        this.notifierService.notify("error", "VIP booking failed");
-      })
-    }
-    this.alertBox.alert = false;
-  })
-}
+          // this.router.navigate(['/main/view_vip_booking'])
+        }, (err) => {
+          this.notifierService.notify("error", "VIP booking failed");
+        })
+      }
+      this.alertBox.alert = false;
+    })
+  }
 
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
   }
-  getMinimumDate(){
+
+  getMinimumDate() {
     return this.bookingManagerService.getCurDate();
   }
 

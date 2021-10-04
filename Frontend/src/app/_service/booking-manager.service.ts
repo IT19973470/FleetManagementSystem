@@ -39,6 +39,7 @@ export class BookingManagerService {
   getDriveVehicles(driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverVehicles/" + driverId);
   }
+
   getAllDriverVehicles(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getAllDriverVehicles");
   }
@@ -50,18 +51,19 @@ export class BookingManagerService {
   getAllShiftsByDriver(driverId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverShiftsByDriverId/" + driverId);
   }
+
   getAllShiftsByVehicle(vehicleType): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getDriverShiftsByVehicleType/" + vehicleType);
   }
+
   // getShift(shiftId: any) {
   //   return this.http.get<any>(environment.backend_url + "/booking/getShift/" + shiftId);
   //
   // }
 
 
-
   addBooking(BookingDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/booking/addBooking" ,BookingDetail);
+    return this.http.post<any>(environment.backend_url + "/booking/addBooking", BookingDetail);
   }
 
   updateBooking(BookingDetail): Observable<any> {
@@ -75,6 +77,7 @@ export class BookingManagerService {
   getAllBookings(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getBookings");
   }
+
   getBookingsByBookingId(bookingId): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getBookingsByBookingId/" + bookingId);
   }
@@ -85,8 +88,9 @@ export class BookingManagerService {
   }
 
   addSpecialBooking(SpecialBookingDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/specialBooking/addSpecialBooking" ,SpecialBookingDetail);
+    return this.http.post<any>(environment.backend_url + "/specialBooking/addSpecialBooking", SpecialBookingDetail);
   }
+
   updateSpecialBooking(SpecialBookingDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/specialBooking/updateSpecialBooking/" + SpecialBookingDetail.specialBookingId, SpecialBookingDetail);
   }
@@ -98,12 +102,15 @@ export class BookingManagerService {
   getAllSpecialBooking(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/specialBooking/getSpecialBooking");
   }
+
   getSpecialBookingBySpecialBookingId(specialBookingId: any) {
     return this.http.get<any>(environment.backend_url + "/specialBooking/getSpecialBookingBySpecialBookingId/" + specialBookingId);
   }
+
   addVipBooking(VipBookingDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/vipBooking/addVipBooking" ,VipBookingDetail);
+    return this.http.post<any>(environment.backend_url + "/vipBooking/addVipBooking", VipBookingDetail);
   }
+
   updateVipBooking(VipBookingDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/vipBooking/updateVipBooking/" + VipBookingDetail.vipBookingId, VipBookingDetail);
   }
@@ -126,14 +133,15 @@ export class BookingManagerService {
 
   }
 
-  getTvProgram(programID:any) {
+  getTvProgram(programID: any) {
     return this.http.get<any>(environment.backend_url + "/programBooking/getTvProgram/" + programID);
 
   }
 
   addProgramBooking(ProgramBookingDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/programBooking/addProgramBooking" ,ProgramBookingDetail);
+    return this.http.post<any>(environment.backend_url + "/programBooking/addProgramBooking", ProgramBookingDetail);
   }
+
   updateProgramBooking(ProgramBookingDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/programBooking/updateProgramBooking/" + ProgramBookingDetail.programBookingId, ProgramBookingDetail);
   }
@@ -159,8 +167,9 @@ export class BookingManagerService {
   getApplicationById(applicationID): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getApplicationById/" + applicationID);
   }
+
   addBookingApplication(BookingApplicationDetail): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/booking/addBookingApplication" ,BookingApplicationDetail);
+    return this.http.post<any>(environment.backend_url + "/booking/addBookingApplication", BookingApplicationDetail);
   }
 
 
@@ -187,5 +196,13 @@ export class BookingManagerService {
 
   getOt(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/booking/getOt");
+  }
+
+  getAllVipMembers(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vipMember/getAllVipMembers");
+  }
+
+  getAllTvPrograms(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/tvProgram/getTvProgram");
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -28,8 +28,7 @@ export class UpdateSpecialBookingComponent implements OnInit {
       bookingDateTime: '',
       destination: '',
       bookingStatus: '',
-  },
-
+    },
 
 
   };
@@ -59,26 +58,26 @@ export class UpdateSpecialBookingComponent implements OnInit {
   };
 
   onSubmit() {
-      this.alertBox.alert = true;
-      this.alertBox.msg = 'Do you want to update special booking?';
-      this.alertService.reply.observers = [];
-      this.alertService.reply.subscribe(reply => {
-        if (reply) {
-          this.specialBooking.booking.bookingDateTime= this.specialBooking.booking.bookingDate + 'T' + this.specialBooking.booking.bookingTimeActual
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to update special booking?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.specialBooking.booking.bookingDateTime = this.specialBooking.booking.bookingDate + 'T' + this.specialBooking.booking.bookingTimeActual
 
-          this.specialBooking.bookingManagementClerk= {
-             bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
-          };
-          console.log(this.specialBooking);
-          this.bookingManagerService.updateSpecialBooking(this.specialBooking).subscribe(() => {
-            this.notifierService.notify("success", "Special Booking updated successfully");
-            this.router.navigate(['/main/view_special_booking'])
-          })
-        }
-         this.alertBox.alert = false;
-      })
+        this.specialBooking.bookingManagementClerk = {
+          bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
+        };
+        console.log(this.specialBooking);
+        this.bookingManagerService.updateSpecialBooking(this.specialBooking).subscribe(() => {
+          this.notifierService.notify("success", "Special Booking updated successfully");
+          this.router.navigate(['/main/view_special_booking'])
+        })
+      }
+      this.alertBox.alert = false;
+    })
 
-    }
+  }
 
 
   removeSpecialBooking() {
@@ -91,7 +90,7 @@ export class UpdateSpecialBookingComponent implements OnInit {
           if (reply) {
             this.notifierService.notify("success", "Special Booking deleted successfully");
             this.router.navigate(['/main/view_special_booking'])
-           }
+          }
         })
       }
       this.alertBox.alert = false;

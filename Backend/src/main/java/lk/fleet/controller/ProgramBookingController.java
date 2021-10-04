@@ -24,21 +24,22 @@ public class ProgramBookingController {
 
 
     @PostMapping(value = "/addProgramBooking")
-    public ResponseEntity addProgramBooking(@RequestBody ProgramBooking programBooking){
+    public ResponseEntity addProgramBooking(@RequestBody ProgramBooking programBooking) {
         return ResponseEntity.ok(programBookingService.addProgramBooking(programBooking));
     }
 
     @DeleteMapping(value = "/deleteProgramBooking/{programBookingId}")
-    public ResponseEntity deleteProgramBooking(@PathVariable String programBookingId){
+    public ResponseEntity deleteProgramBooking(@PathVariable String programBookingId) {
         return ResponseEntity.ok(programBookingService.deleteProgramBooking(programBookingId));
     }
+
     @GetMapping(value = "/getProgramBooking")
-    public List<ProgramBookingDTO> getProgramBooking(){
+    public List<ProgramBookingDTO> getProgramBooking() {
         return programBookingService.getProgramBooking();
     }
 
     @PutMapping(value = "/updateProgramBooking/{programBookingId}")
-    public ResponseEntity updateProgramBooking(@PathVariable String programBookingId, @RequestBody ProgramBooking programBooking){
+    public ResponseEntity updateProgramBooking(@PathVariable String programBookingId, @RequestBody ProgramBooking programBooking) {
         return ResponseEntity.ok(programBookingService.updateProgramBooking(programBookingId, programBooking));
     }
 
@@ -46,6 +47,7 @@ public class ProgramBookingController {
     public ResponseEntity getProgramBookingByProgramBookingId(@PathVariable String programBookingId) {
         return ResponseEntity.ok(programBookingService.getProgramBookingByProgramBookingId(programBookingId));
     }
+
     @GetMapping(value = "/getTvProgram/{programID}")
     public ResponseEntity getTvProgram(@PathVariable String programID) {
         return ResponseEntity.ok(programBookingService.getTvProgram(programID));

@@ -99,6 +99,11 @@ public class BookingServiceImpl implements BookingService {
         BookingApplication bookingApplicationByID = bookingApplicationRepository.getBookingApplicationByBookingApplicationId(bookingApplicationId);
         List<BookingApplicationDTO> bookingApplicationDTOS = new ArrayList<>();
         BookingApplicationDTO bookingApplicationDTO = new BookingApplicationDTO(bookingApplicationByID);
+        bookingApplicationDTO.setDriver(new DriverDTO(bookingApplicationByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        bookingApplicationDTO.setVehicle(new VehicleDTO(bookingApplicationByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+        bookingApplicationDTO.setApplication(new ApplicationDTO(bookingApplicationByID.getApplication()));
+
         bookingApplicationDTO.setBooking(new BookingDTO(bookingApplicationByID.getBooking()));
         bookingApplicationDTOS.add(bookingApplicationDTO);
         return bookingApplicationDTOS;
