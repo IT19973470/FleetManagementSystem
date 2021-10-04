@@ -191,11 +191,11 @@
               <input type="text" class="form-control"
                      [(ngModel)]="passenger.passengerNic"
                      #passengerNic="ngModel"
-                     name="passengerNic" required appNicValidator>
-              <div *ngIf="(passengerNic.touched || passengerForm.submitted) && passengerNic.errors?.required"
-                   class="validErr">
-                Passenger NIC is required
-              </div>
+                     name="passengerNic" appNicValidator>
+              <!--<div *ngIf="(passengerNic.touched || passengerForm.submitted) && passengerNic.errors?.required"-->
+                   <!--class="validErr">-->
+                <!--Passenger NIC is required-->
+              <!--</div>-->
               <div *ngIf="(passengerNic.dirty) && passengerNic.errors?.nicInvalid"
                    class="validErr">
                 Invalid NIC
@@ -211,12 +211,12 @@
               <input type="text" class="form-control"
                      [(ngModel)]="passenger.contactNumber"
                      #contactNumberP="ngModel"
-                     name="contactNumberP" required appTelephoneValidator
+                     name="contactNumberP" appTelephoneValidator
                      placeholder="Eg: [ 123-1234567 ]">
-              <div *ngIf="(contactNumberP.touched || passengerForm.submitted) && contactNumberP.errors?.required"
-                   class="validErr">
-                Contact Number is required
-              </div>
+              <!--<div *ngIf="(contactNumberP.touched || passengerForm.submitted) && contactNumberP.errors?.required"-->
+                   <!--class="validErr">-->
+                <!--Contact Number is required-->
+              <!--</div>-->
               <div *ngIf="(contactNumberP.dirty) && contactNumberP.errors?.telephoneInvalid"
                    class="validErr">
                 Invalid Contact Number
