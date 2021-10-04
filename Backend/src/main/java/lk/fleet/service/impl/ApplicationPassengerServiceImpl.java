@@ -315,4 +315,33 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
     }
 
 
+    public List<ApplicationDTO> getWaitingReport() { //get all report
+
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
+            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+
+            PassengerApplicationDTO passengerApplicationDTO = new PassengerApplicationDTO(application.getPassengerApplication());
+            PassengerApplication passengerApplication = application.getPassengerApplication();
+            if (passengerApplication != null) {
+                List<PassengerPassengerApplicationDTO> passengerPassengerApplications = new ArrayList<>();
+                for (PassengerPassengerApplication passengerPassengerApplication : passengerApplication.getPassengerPassengerApplications()) {
+                    PassengerPassengerApplicationDTO passengerPassengerApplicationDTO = new PassengerPassengerApplicationDTO(passengerPassengerApplication);
+                    passengerPassengerApplicationDTO.setPassenger(passengerPassengerApplication.getPassenger());
+                    passengerPassengerApplications.add(passengerPassengerApplicationDTO);
+                }
+
+                passengerApplicationDTO.setPassengerPassengerApplications(passengerPassengerApplications);
+            }
+
+
+            applicationDTO.setPassengerApplication(passengerApplicationDTO);
+            applicationDTOS.add(applicationDTO);
+        }
+
+        return applicationDTOS;
+    }
+
+
 }

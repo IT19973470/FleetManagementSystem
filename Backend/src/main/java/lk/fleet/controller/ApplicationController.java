@@ -156,4 +156,9 @@ public class ApplicationController {
     public ResponseEntity getApprovedApplicationsByDestination(@PathVariable String destination, @PathVariable String type) {
         return ResponseEntity.ok(applicationService.getApprovedApplicationsByDestination(destination, type));
     }
+    @GetMapping(value = "/getWaitingReport")
+    public List<ApplicationDTO> getWaitingReport() {
+        return applicationPassengerService.getWaitingReport();
+    }
+
 }
