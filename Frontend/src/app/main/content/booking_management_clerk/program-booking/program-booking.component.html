@@ -14,6 +14,9 @@
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTvProgram()">
         Search
       </button>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllTvPrograms()">
+        All TV programs
+      </button>
     </div>
 
     <table class="table table-striped" style="margin-top: 40px">
@@ -29,7 +32,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let tvProgram of tvPrograms; let i = index">
-        <th scope="row">{{i+1}}</th>
+        <th scope="row">{{i + 1}}</th>
         <td>{{tvProgram.programID}}</td>
         <td>{{tvProgram.programName}}</td>
         <td>{{tvProgram.startingDate}}</td>
@@ -129,17 +132,18 @@
           </div>
           <div class="col-8" style="margin-left: 250px; margin-top: -20px;">
             <label>
-              <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="programBooking.booking.bookingStatus">
+              <input name="bookingStatus" type="radio" [value]="true"
+                     [(ngModel)]="programBooking.booking.bookingStatus">
               <span style="font-size: 16px"> Active</span>
             </label>
             <label style="margin-left: 40px">
-              <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="programBooking.booking.bookingStatus">
+              <input name="bookingStatus" type="radio" [value]="false"
+                     [(ngModel)]="programBooking.booking.bookingStatus">
               <span style="font-size: 16px"> Inactive</span>
             </label>
           </div>
 
         </div>
-
 
 
         <div class="row" style="margin-top: 20px">
@@ -159,21 +163,17 @@
         </div>
 
 
-
       </div>
     </div>
-
-
-
 
 
     <div class=""
          style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px">
       <div class="col-12" style="text-align: right">
-        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Program Booking</button>
+        <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Add Program Booking
+        </button>
       </div>
     </div>
-
 
 
   </form>

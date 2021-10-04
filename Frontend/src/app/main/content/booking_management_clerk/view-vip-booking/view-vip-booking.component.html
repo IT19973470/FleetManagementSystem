@@ -10,7 +10,8 @@
     <div style="margin-top: 20px">
       <span style="font-weight: bold;margin-left: 0px">Search by Vip Booking ID : </span>
       <input type="text" style="margin-left: 112px;width: 300px;height: 37px" [(ngModel)]="vipBookingId">
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getVipBookingByVipBookingId()">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px"
+              (click)="getVipBookingByVipBookingId()">
         Search
       </button>
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 10px" (click)="getAllVipBooking()">
@@ -36,14 +37,14 @@
         <th scope="col">Destination</th>
         <th scope="col" width="10%">Purpose</th>
         <th scope="col" width="10%">Time Period</th>
-        <th scope="col"width="10%">Approved fuel Amount</th>
+        <th scope="col" width="10%">Approved fuel Amount</th>
         <th scope="col" width="5%">Approval</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let vipBooking of vipBookings; let i = index">
-        <th scope="row">{{i+1}}</th>
+        <th scope="row">{{i + 1}}</th>
         <td>{{vipBooking.booking.bookingId}}</td>
         <td>{{vipBooking.driver.driverID}}</td>
         <td>{{vipBooking.vehicle.vehicleId}}</td>

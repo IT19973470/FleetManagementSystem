@@ -18,7 +18,6 @@ public class BookingController {
     private BookingService bookingService;
 
 
-
 //    @PostMapping(value = "/addBooking")
 //    public ResponseEntity addBooking(@RequestBody Booking booking){
 //        return ResponseEntity.ok(bookingService.addBooking(booking));
@@ -26,7 +25,7 @@ public class BookingController {
 
 
     @PostMapping(value = "/addBookingApplication")
-    public ResponseEntity addBookingApplication(@RequestBody BookingApplication bookingApplication){
+    public ResponseEntity addBookingApplication(@RequestBody BookingApplication bookingApplication) {
         return ResponseEntity.ok(bookingService.addBookingApplication(bookingApplication));
     }
 
@@ -42,17 +41,17 @@ public class BookingController {
 //    }
 
 
-//    @DeleteMapping(value = "/deleteBookingApplication/{bookingApplicationId}")
+    //    @DeleteMapping(value = "/deleteBookingApplication/{bookingApplicationId}")
 //    public ResponseEntity deleteBookingApplication(@PathVariable String bookingApplicationId){
 //        return ResponseEntity.ok(bookingService.deleteBookingApplication(bookingApplicationId));
 //    }
     @GetMapping(value = "/getBookingApplication")
-    public List<BookingApplicationDTO> getBookingApplication(){
+    public List<BookingApplicationDTO> getBookingApplication() {
         return bookingService.getBookingApplication();
     }
 
     @PutMapping(value = "/updateBookingApplication/{bookingApplicationId}")
-    public ResponseEntity updateBookingApplication(@PathVariable String bookingApplicationId, @RequestBody BookingApplication bookingApplication){
+    public ResponseEntity updateBookingApplication(@PathVariable String bookingApplicationId, @RequestBody BookingApplication bookingApplication) {
         return ResponseEntity.ok(bookingService.updateBookingApplication(bookingApplicationId, bookingApplication));
     }
 
@@ -60,7 +59,6 @@ public class BookingController {
     public ResponseEntity getBookingApplicationByBookingApplicationId(@PathVariable String bookingApplicationId) {
         return ResponseEntity.ok(bookingService.getBookingApplicationByBookingApplicationId(bookingApplicationId));
     }
-
 
 
     @GetMapping(value = "/getApplication")
@@ -75,8 +73,6 @@ public class BookingController {
     }
 
 
-
-
     @GetMapping(value = "/getAllBookings")
     public ResponseEntity getAllBookings() {
         return ResponseEntity.ok(bookingService.getAllBookings());
@@ -89,7 +85,7 @@ public class BookingController {
 
 
     @GetMapping(value = "/getBookings")
-    public List<BookingDTO> getBookings(){
+    public List<BookingDTO> getBookings() {
         return bookingService.getBookings();
     }
 
@@ -134,6 +130,7 @@ public class BookingController {
     public ResponseEntity getDriver(@PathVariable String driverId) {
         return ResponseEntity.ok(bookingService.getDriverVehicles(driverId));
     }
+
     @GetMapping(value = "/getAllDriverVehicles")
     public List<DriverVehicleDTO> getAllDriverVehicles() {
         return bookingService.getAllDriverVehicles();
@@ -155,9 +152,6 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getDriverShiftsByVehicleType(vehicleType));
 
     }
-
-
-
 
 
     //security officer

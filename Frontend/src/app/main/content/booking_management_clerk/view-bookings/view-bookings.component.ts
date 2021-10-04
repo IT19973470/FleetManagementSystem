@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 
@@ -17,7 +17,6 @@ export class ViewBookingsComponent implements OnInit {
       vehicleId: ''
     }
   }
-
 
 
   bookingId;

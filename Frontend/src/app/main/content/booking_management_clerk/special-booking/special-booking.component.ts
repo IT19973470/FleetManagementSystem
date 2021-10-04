@@ -80,9 +80,11 @@ export class SpecialBookingComponent implements OnInit {
       this.alertBox.alert = false;
     })
   }
+
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
   }
+
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }

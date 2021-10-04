@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 
@@ -11,15 +11,6 @@ export class ViewVipBookingComponent implements OnInit {
 
 
   vipBookings = [];
-  // vipBooking= {
-  //   vipBookingId: '',
-  //   vipMember: {
-  //     vipMemberId: '',
-  //     firstName: '',
-  //   },
-  //  }
-
-
   bookingId;
   bookingManagementClerkId;
   vipBookingId;

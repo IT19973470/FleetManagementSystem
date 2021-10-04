@@ -86,6 +86,10 @@ public class ProgramBookingServiceImpl implements ProgramBookingService {
         ProgramBooking programBookingByID = programBookingRepository.getProgramBookingByProgramBookingId(programBookingId);
         List<ProgramBookingDTO> programBookingDTOS = new ArrayList<>();
         ProgramBookingDTO programBookingDTO = new ProgramBookingDTO(programBookingByID);
+        programBookingDTO.setDriver(new DriverDTO(programBookingByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        programBookingDTO.setVehicle(new VehicleDTO(programBookingByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+        programBookingDTO.setTvProgram(new TVProgramDTO(programBookingByID.getTvProgram()));
         programBookingDTO.setBooking(new BookingDTO(programBookingByID.getBooking()));
         programBookingDTOS.add(programBookingDTO);
         return programBookingDTOS;
@@ -96,7 +100,7 @@ public class ProgramBookingServiceImpl implements ProgramBookingService {
         List<TVProgram> tvPrograms = tvProgramRepository.getTvProgramByProgramID(programID);
         List<TVProgramDTO> tvProgramDTOS = new ArrayList<>();
 
-        for(TVProgram tvProgram : tvPrograms){
+        for (TVProgram tvProgram : tvPrograms) {
             tvProgramDTOS.add(new TVProgramDTO(tvProgram));
         }
         return tvProgramDTOS;

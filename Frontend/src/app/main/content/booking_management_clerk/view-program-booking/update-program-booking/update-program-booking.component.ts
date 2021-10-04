@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -25,7 +25,6 @@ export class UpdateProgramBookingComponent implements OnInit {
       destination: '',
       bookingStatus: '',
     },
-
 
 
   };
@@ -60,9 +59,9 @@ export class UpdateProgramBookingComponent implements OnInit {
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.programBooking.booking.bookingDateTime= this.programBooking.booking.bookingDate + 'T' + this.programBooking.booking.bookingTimeActual
+        this.programBooking.booking.bookingDateTime = this.programBooking.booking.bookingDate + 'T' + this.programBooking.booking.bookingTimeActual
 
-        this.programBooking.bookingManagementClerk= {
+        this.programBooking.bookingManagementClerk = {
           bookingManagementClerkId: JSON.parse(localStorage.getItem('user'))['employeeID']
         };
         console.log(this.programBooking);
@@ -75,8 +74,6 @@ export class UpdateProgramBookingComponent implements OnInit {
       this.alertBox.alert = false;
     })
   }
-
-
 
 
   removeProgramBooking() {
@@ -99,14 +96,14 @@ export class UpdateProgramBookingComponent implements OnInit {
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
   }
-  getMinimumDate(){
+
+  getMinimumDate() {
     return this.bookingManagerService.getCurDate();
   }
+
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }
-
-
 
 
 }

@@ -86,6 +86,11 @@ public class VipBookingServiceImpl implements VipBookingService {
         VipBooking vipBookingByID = vipBookingRepository.getVipBookingByVipBookingId(vipBookingId);
         List<VipBookingDTO> vipBookingDTOS = new ArrayList<>();
         VipBookingDTO vipBookingDTO = new VipBookingDTO(vipBookingByID);
+        vipBookingDTO.setDriver(new DriverDTO(vipBookingByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        vipBookingDTO.setVehicle(new VehicleDTO(vipBookingByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+        vipBookingDTO.setVipMember(new VipMemberDTO(vipBookingByID.getVipMember()));
+
         vipBookingDTO.setBooking(new BookingDTO(vipBookingByID.getBooking()));
         vipBookingDTOS.add(vipBookingDTO);
         return vipBookingDTOS;
@@ -93,16 +98,14 @@ public class VipBookingServiceImpl implements VipBookingService {
 
     @Override
     public List<VipMemberDTO> getVipMember(String vipMemberId) {
-        List<VipMember> vipMembers =vipMemberRepository.getVipMemberByVipMemberId(vipMemberId);
+        List<VipMember> vipMembers = vipMemberRepository.getVipMemberByVipMemberId(vipMemberId);
         List<VipMemberDTO> vipMemberDTOS = new ArrayList<>();
 
-        for(VipMember vipMember : vipMembers){
+        for (VipMember vipMember : vipMembers) {
             vipMemberDTOS.add(new VipMemberDTO(vipMember));
         }
         return vipMemberDTOS;
     }
-
-
 
 
 }

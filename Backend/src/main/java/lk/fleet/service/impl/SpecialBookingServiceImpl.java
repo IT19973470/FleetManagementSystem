@@ -88,6 +88,10 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
         SpecialBooking specialBookingByID = specialBookingRepository.getSpecialBookingBySpecialBookingId(specialBookingId);
         List<SpecialBookingDTO> specialBookingDTOS = new ArrayList<>();
         SpecialBookingDTO specialBookingDTO = new SpecialBookingDTO(specialBookingByID);
+        specialBookingDTO.setDriver(new DriverDTO(specialBookingByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        specialBookingDTO.setVehicle(new VehicleDTO(specialBookingByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+
         specialBookingDTO.setBooking(new BookingDTO(specialBookingByID.getBooking()));
         specialBookingDTOS.add(specialBookingDTO);
         return specialBookingDTOS;

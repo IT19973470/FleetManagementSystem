@@ -10,28 +10,28 @@ import {Router} from "@angular/router";
 export class ViewSpecialBookingComponent implements OnInit {
 
   specialBooking = [];
-  specialBookings={
-   booking: {
-        bookingId: '',
-        bookingDateTime: '',
-        destination: '',
-        bookingStatus: true,
-        bookingManagementClerk: {
-          bookingManagementClerkId: ''
+  specialBookings = {
+    booking: {
+      bookingId: '',
+      bookingDateTime: '',
+      destination: '',
+      bookingStatus: true,
+      bookingManagementClerk: {
+        bookingManagementClerkId: ''
+      },
+      shift: {
+        shiftId: '',
+        shiftDate: '',
+        startingTime: '',
+        endingTime: '',
+        driverVehicle: {
+          driverVehicleID: {
+            driverID: '',
+            vehicleId: ''
+          }
         },
-        shift: {
-          shiftId: '',
-          shiftDate: '',
-          startingTime: '',
-          endingTime: '',
-          driverVehicle: {
-            driverVehicleID: {
-              driverID: '',
-              vehicleId: ''
-            }
-          },
-        }
       }
+    }
   }
 
   bookingId;
@@ -61,7 +61,7 @@ export class ViewSpecialBookingComponent implements OnInit {
   getSpecialBookingBySpecialBookingId() {
     this.bookingManagerService.getSpecialBookingBySpecialBookingId(this.specialBookingId).subscribe((specialBooking) => {
       this.specialBooking = specialBooking;
-       console.log(specialBooking)
+      console.log(specialBooking)
 
     })
   }

@@ -31,8 +31,8 @@ export class ProgramBookingComponent implements OnInit {
       }
     },
 
-    tvProgram:{
-      programID:'',
+    tvProgram: {
+      programID: '',
     }
   };
 
@@ -45,8 +45,9 @@ export class ProgramBookingComponent implements OnInit {
   }
 
   selectTvProgram(tvProgram) {
-    this.programBooking.tvProgram.programID= tvProgram.programID;
+    this.programBooking.tvProgram.programID = tvProgram.programID;
   }
+
   constructor(private bookingManagerService: BookingManagerService, private router: Router,
               private notifierService: NotifierService,
               private alertService: AlertBoxService,
@@ -55,6 +56,7 @@ export class ProgramBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.shift = this.bookingManagerService.shift;
+    this.getAllTvPrograms();
   }
 
   alertBox = {
@@ -63,9 +65,15 @@ export class ProgramBookingComponent implements OnInit {
     value: ''
   };
 
-  setNewForm()
-  {
+  setNewForm() {
     this.programBookingForm.resetForm();
+  }
+
+  getAllTvPrograms() {
+    this.bookingManagerService.getAllTvPrograms().subscribe((tvProgram) => {
+      this.tvPrograms = tvProgram;
+      // console.log(this.tvPrograms);
+    })
   }
 
 
@@ -102,7 +110,8 @@ export class ProgramBookingComponent implements OnInit {
   getMinDate() {
     return this.bookingManagerService.getCurDate() + 'T00:00';
   }
-  getMinimumDate(){
+
+  getMinimumDate() {
     return this.bookingManagerService.getCurDate();
   }
 
