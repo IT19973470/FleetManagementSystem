@@ -1,0 +1,145 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+
+    <!--<div>-->
+    <!--<span style="font-weight: bold">Search by :</span>-->
+    <!--<span style="margin-left: 20px">Deliveries for</span>-->
+    <!--<input type="date" style="margin-left: 20px;height: 37px" [(ngModel)]="deliveryDate">-->
+    <!--<button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getAllDeliveriesByDate()">-->
+    <!--Search-->
+    <!--</button>-->
+    <!--</div>-->
+
+    <div style="margin-top: 20px">
+      <span style="font-weight: bold;margin-left: 0px;font-size: 17px">Year : </span>
+      <select style="font-size: 17px">
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+      </select>
+
+      <span style="font-weight: bold;margin-left: 50px;font-size: 17px">Month : </span>
+      <select style="font-size: 17px">
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+      </select>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 50px">
+        Search
+      </button>
+    </div>
+
+    <div style="margin-top: 20px;font-size: 25px">
+      Weekly Deliveries
+    </div>
+
+    <table class="table table-striped" style="margin-top: 20px">
+      <thead>
+      <tr>
+        <!--<th scope="col">#</th>-->
+        <th scope="col" width="15%">Week</th>
+        <th scope="col" width="20%">Passenger Deliveries</th>
+        <th scope="col" width="20%">Item Deliveries</th>
+        <th scope="col" width="20%">Passenger Item Deliveries</th>
+        <th scope="col" width="5%" style="text-align: center">Select</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let deliveryItem of weeklyDeliveries; let i = index">
+        <!--<th scope="row">{{i+1}}</th>-->
+        <td style="font-weight: bold">{{deliveryItem.week}}</td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pd.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pd.completed}}
+          <i class="fas fa-check-circle" style="margin-left: 10px;color: green"></i>
+          </span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pd.cancelled}}</span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.id.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.id.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.id.cancelled}}
+          <i class="fas fa-check-circle" style="margin-left: 10px;color: red"></i></span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pid.deliveries}}
+          <i class="fas fa-check-circle" style="margin-left: 10px;color: #0c95cb"></i></span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pid.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pid.cancelled}}</span>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer"></i>
+        </td>
+        <!--<td style="text-align: center">-->
+        <!--<i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
+        <!--</td>-->
+      </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Passenger Deliveries (Weekly)
+    </div>
+
+    <div id="chart" style="margin-top: 40px">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [yaxis]="chartOptions.yaxis"
+        [fill]="chartOptions.fill"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [xaxis]="chartOptions.xaxis"
+      ></apx-chart>
+    </div>
+
+    <hr style="margin-top: 80px;margin-bottom: 80px">
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Daily Deliveries
+    </div>
+
+    <table class="table table-striped" style="margin-top: 20px">
+      <thead>
+      <tr>
+        <!--<th scope="col">#</th>-->
+        <th scope="col" width="15%">Day</th>
+        <th scope="col" width="20%">Passenger Deliveries</th>
+        <th scope="col" width="20%">Item Deliveries</th>
+        <th scope="col" width="20%">Passenger Item Deliveries</th>
+        <th scope="col" width="5%" style="text-align: center">Select</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let deliveryItem of weeklyDeliveries; let i = index">
+        <!--<th scope="row">{{i+1}}</th>-->
+        <td style="font-weight: bold">{{deliveryItem.week}}</td>
+        <td style="font-weight: bold">
+          <span style="color: #d29302">Total Deliveries - {{deliveryItem.pd.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pd.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pd.cancelled}}</span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #d29302">Total Deliveries - {{deliveryItem.id.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.id.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.id.cancelled}}</span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #d29302">Total Deliveries - {{deliveryItem.pid.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pid.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pid.cancelled}}</span>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer"></i>
+        </td>
+        <!--<td style="text-align: center">-->
+        <!--<i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
+        <!--</td>-->
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

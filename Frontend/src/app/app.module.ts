@@ -102,10 +102,12 @@ import {TransportPassengerApplicationsComponent} from './main/content/transport-
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
 import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
 import {LicenseValidatorDirective} from './_validator/license-validator.directive';
-import { DriverVehicleComponent } from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
-import { DriverConfirmComponent } from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
-import { ItemPassengerComponent } from './main/content/applicant/item-passenger/item-passenger.component';
-import { UpdateItemPassengerComponent } from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
+import {DriverVehicleComponent} from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
+import {DriverConfirmComponent} from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
+import {DeliveryReportComponent} from './main/content/transport-manager/delivery-report/delivery-report.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import {ItemPassengerComponent} from './main/content/applicant/item-passenger/item-passenger.component';
+import {UpdateItemPassengerComponent} from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -272,6 +274,7 @@ const customNotifierOptions: NotifierOptions = {
     LicenseValidatorDirective,
     DriverVehicleComponent,
     DriverConfirmComponent,
+    DeliveryReportComponent,
     ItemPassengerComponent,
     UpdateItemPassengerComponent
   ],
@@ -282,6 +285,7 @@ const customNotifierOptions: NotifierOptions = {
     RouterModule,
     HttpClientModule,
     FormsModule,
+    NgApexchartsModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [DatePipe],
