@@ -1,5 +1,7 @@
 package lk.fleet.service;
 
+import lk.fleet.dto.DriverDTO;
+import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.Vehicle;
 
@@ -20,4 +22,10 @@ public interface VehicleService {
     VehicleDTO updateVehicleAvailability (String vehicleID, Vehicle vehicle);
 
     List<VehicleDTO> getVehicleByNumber(String vehicleNumber);
+
+    List<UserAccountDTO> getDriverRequest();
+
+    VehicleDTO approveDriver(String driverID, boolean approval);
+
+//    UserAccountDTO approveUserAccount(String employeeID, boolean approval);
 }

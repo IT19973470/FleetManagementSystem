@@ -98,4 +98,8 @@ public class Vehicle {
     public void setOccupied(boolean occupied) {
         this.occupied = occupied;
     }
+//approval ain karanan
+    public void setApproved(boolean approval) {
+
+    }
 }
