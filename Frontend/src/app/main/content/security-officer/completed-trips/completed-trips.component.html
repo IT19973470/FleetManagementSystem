@@ -71,7 +71,7 @@
         <i (click)="isTrueOrFalse(false)" class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
 
-      <div class="">
+      <div class="" id="SummaryReport">
 
         <table width="100%">
 
@@ -143,7 +143,9 @@
         <div style="font-size: medium; margin-left: 50px">
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
-        </div>
+        </div><br>
+        <button style="margin-left: 50px" type="button" class="btn btn-danger"
+                (click)="downloadPdf()">Report</button>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {Router} from "@angular/router";
+import {jsPDF} from "jspdf";
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-completed-trips',
@@ -84,4 +86,15 @@ export class CompletedTripsComponent implements OnInit {
     })
   }
 
+  downloadPdf() {
+    var element = document.getElementById('SummaryReport')
+    html2canvas(element).then((canvas) => {
+      console.log(canvas)
+      var imgData = canvas.toDataURL('image/png')
+      var doc = new jsPDF();
+      var imgHeight = canvas.height * 208 / canvas.width;
+      doc.addImage(imgData, 0, 0, 208, imgHeight)
+      doc.save("Report.pdf")
+    })
+  }
 }
