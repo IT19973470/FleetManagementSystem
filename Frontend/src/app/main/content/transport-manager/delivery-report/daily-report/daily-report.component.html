@@ -22,23 +22,23 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let deliveryItem of weeklyDeliveries; let i = index">
+      <tr *ngFor="let deliveryItem of dailyDeliveries; let i = index">
         <!--<th scope="row">{{i+1}}</th>-->
-        <td style="font-weight: bold">{{deliveryItem.week}}</td>
+        <td style="font-weight: bold">{{days[i]}}</td>
         <td style="font-weight: bold">
-          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pd.deliveries}}</span> <br>
-          <span style="color: #018002">Completed - {{deliveryItem.pd.completed}}</span> <br>
-          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pd.cancelled}}</span>
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem[0][0]}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem[0][1]}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem[0][0] - deliveryItem[0][1]}}</span>
         </td>
         <td style="font-weight: bold">
-          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.id.deliveries}}</span> <br>
-          <span style="color: #018002">Completed - {{deliveryItem.id.completed}}</span> <br>
-          <span style="color: #ff0a03">Cancelled - {{deliveryItem.id.cancelled}}</span>
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem[1][0]}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem[1][1]}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem[1][0] - deliveryItem[1][1]}}</span>
         </td>
         <td style="font-weight: bold">
-          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pid.deliveries}}</span> <br>
-          <span style="color: #018002">Completed - {{deliveryItem.pid.completed}}</span> <br>
-          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pid.cancelled}}</span>
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem[2][0]}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem[2][1]}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem[2][0] - deliveryItem[2][1]}}</span>
         </td>
         <td style="text-align: center">
           <i class="fas fa-search" style="cursor: pointer"></i>
@@ -56,15 +56,51 @@
 
     <div style="margin-top: 40px">
       <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [dataLabels]="chartOptions.dataLabels"
-        [plotOptions]="chartOptions.plotOptions"
-        [yaxis]="chartOptions.yaxis"
-        [fill]="chartOptions.fill"
-        [stroke]="chartOptions.stroke"
-        [tooltip]="chartOptions.tooltip"
-        [xaxis]="chartOptions.xaxis"
+        [series]="chartOptionsP.series"
+        [chart]="chartOptionsP.chart"
+        [dataLabels]="chartOptionsP.dataLabels"
+        [plotOptions]="chartOptionsP.plotOptions"
+        [yaxis]="chartOptionsP.yaxis"
+        [fill]="chartOptionsP.fill"
+        [stroke]="chartOptionsP.stroke"
+        [tooltip]="chartOptionsP.tooltip"
+        [xaxis]="chartOptionsP.xaxis"
+      ></apx-chart>
+    </div>
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Item Deliveries (Daily)
+    </div>
+
+    <div style="margin-top: 40px">
+      <apx-chart
+        [series]="chartOptionsI.series"
+        [chart]="chartOptionsI.chart"
+        [dataLabels]="chartOptionsI.dataLabels"
+        [plotOptions]="chartOptionsI.plotOptions"
+        [yaxis]="chartOptionsI.yaxis"
+        [fill]="chartOptionsI.fill"
+        [stroke]="chartOptionsI.stroke"
+        [tooltip]="chartOptionsI.tooltip"
+        [xaxis]="chartOptionsI.xaxis"
+      ></apx-chart>
+    </div>
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Passenger Item Deliveries (Daily)
+    </div>
+
+    <div style="margin-top: 40px">
+      <apx-chart
+        [series]="chartOptionsPI.series"
+        [chart]="chartOptionsPI.chart"
+        [dataLabels]="chartOptionsPI.dataLabels"
+        [plotOptions]="chartOptionsPI.plotOptions"
+        [yaxis]="chartOptionsPI.yaxis"
+        [fill]="chartOptionsPI.fill"
+        [stroke]="chartOptionsPI.stroke"
+        [tooltip]="chartOptionsPI.tooltip"
+        [xaxis]="chartOptionsPI.xaxis"
       ></apx-chart>
     </div>
 

@@ -255,10 +255,27 @@ public class DeliveryServiceImpl implements DeliveryService {
         int week = LocalDate.now().get(woy);
         List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
         int[][][] reports = new int[7][3][2];
+        String[] dates = new String[7];
         for (Delivery delivery : deliveriesReportWeekly) {
             int day = delivery.getDeliveryDateTime().getDayOfWeek().getValue();
-            System.out.println();
+            if (delivery.getDeliveryType().equals("Passenger")) {
+                reports[day - 1][0][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[day - 1][0][1]++;
+                }
+            } else if (delivery.getDeliveryType().equals("Item")) {
+                reports[day - 1][1][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[day - 1][1][1]++;
+                }
+            } else if (delivery.getDeliveryType().equals("PassengerItem")) {
+                reports[day - 1][2][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[day - 1][2][1]++;
+                }
+            }
         }
+        deliveryReportDTO.setDailyDeliveries(reports);
         return deliveryReportDTO;
     }
 }
