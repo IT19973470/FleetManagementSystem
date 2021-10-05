@@ -54,6 +54,15 @@
     Notifications
   </div>
 
+  <div
+    routerLink="/main/transport_report"
+    (click)="setTopic('Transport Report')"
+    #transportReport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':transportReport.isActive?'#c0050e':''}">
+    Transport Report
+  </div>
+
 
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
