@@ -21,20 +21,22 @@ public class SpecialBookingController {
     private SpecialBookingService specialBookingService;
 
     @PostMapping(value = "/addSpecialBooking")
-    public ResponseEntity addSpecialBooking(@RequestBody SpecialBooking specialBooking){
+    public ResponseEntity addSpecialBooking(@RequestBody SpecialBooking specialBooking) {
         return ResponseEntity.ok(specialBookingService.addSpecialBooking(specialBooking));
     }
+
     @GetMapping(value = "/getSpecialBooking")
-    public List<SpecialBookingDTO> getSpecialBooking(){
+    public List<SpecialBookingDTO> getSpecialBooking() {
         return specialBookingService.getSpecialBooking();
     }
 
     @PutMapping(value = "/updateSpecialBooking/{SpecialBookingId}")
-    public ResponseEntity updateSpecialBooking(@PathVariable String SpecialBookingId, @RequestBody SpecialBooking specialBooking){
+    public ResponseEntity updateSpecialBooking(@PathVariable String SpecialBookingId, @RequestBody SpecialBooking specialBooking) {
         return ResponseEntity.ok(specialBookingService.updateSpecialBooking(SpecialBookingId, specialBooking));
     }
+
     @DeleteMapping(value = "/deleteSpecialBooking/{specialBookingId}")
-    public ResponseEntity deleteSpecialBooking(@PathVariable String specialBookingId){
+    public ResponseEntity deleteSpecialBooking(@PathVariable String specialBookingId) {
         return ResponseEntity.ok(specialBookingService.deleteSpecialBooking(specialBookingId));
     }
 
@@ -46,7 +48,6 @@ public class SpecialBookingController {
 //    public ResponseEntity updateBooking(@PathVariable String bookingId, @RequestBody Booking booking){
 //        return ResponseEntity.ok(bookingService.updateBooking(bookingId, booking));
 //    }
-
 
 
 }

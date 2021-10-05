@@ -85,8 +85,12 @@
           <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>
         </div>
         <div>
+          <span style="font-weight: bold">Email Address : </span>
+          <span style="margin-left: 10px">{{deliveryItem.emailAddress!=''?deliveryItem.emailAddress:'N/A'}}</span>
+        </div>
+        <div>
           <span style="font-weight: bold">Vehicle Number : </span>
-          <span style="margin-left: 10px">{{deliveryItem.vehicleNumber!=undefined?deliveryItem.vehicleNumber:'N/A'}}</span>
+          <span style="margin-left: 10px">{{deliveryItem.vehicleNumber!=''?deliveryItem.vehicleNumber:'N/A'}}</span>
         </div>
 
         <div style="margin-top: 30px;font-weight: bold;font-size: 24px">

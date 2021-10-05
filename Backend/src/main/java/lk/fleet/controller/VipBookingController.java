@@ -23,20 +23,22 @@ public class VipBookingController {
     private VipBookingService vipBookingService;
 
     @PostMapping(value = "/addVipBooking")
-    public ResponseEntity addVipBooking(@RequestBody VipBooking vipBooking){
+    public ResponseEntity addVipBooking(@RequestBody VipBooking vipBooking) {
         return ResponseEntity.ok(vipBookingService.addVipBooking(vipBooking));
     }
+
     @GetMapping(value = "/getVipBooking")
-    public List<VipBookingDTO> getVipBooking(){
+    public List<VipBookingDTO> getVipBooking() {
         return vipBookingService.getVipBooking();
     }
 
     @PutMapping(value = "/updateVipBooking/{VipBookingId}")
-    public ResponseEntity updateVipBooking(@PathVariable String VipBookingId, @RequestBody VipBooking vipBooking){
+    public ResponseEntity updateVipBooking(@PathVariable String VipBookingId, @RequestBody VipBooking vipBooking) {
         return ResponseEntity.ok(vipBookingService.updateVipBooking(VipBookingId, vipBooking));
     }
+
     @DeleteMapping(value = "/deleteVipBooking/{vipBookingId}")
-    public ResponseEntity deleteVipBooking(@PathVariable String vipBookingId){
+    public ResponseEntity deleteVipBooking(@PathVariable String vipBookingId) {
         return ResponseEntity.ok(vipBookingService.deleteVipBooking(vipBookingId));
     }
 
@@ -44,6 +46,7 @@ public class VipBookingController {
     public ResponseEntity getVipBookingByVipBookingId(@PathVariable String vipBookingId) {
         return ResponseEntity.ok(vipBookingService.getVipBookingByVipBookingId(vipBookingId));
     }
+
     @GetMapping(value = "/getVipMember/{vipMemberId}")
     public ResponseEntity getVipMember(@PathVariable String vipMemberId) {
         return ResponseEntity.ok(vipBookingService.getVipMember(vipMemberId));

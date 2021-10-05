@@ -13,6 +13,9 @@ public class VipBookingDTO {
     private String purpose;
     private boolean approval;
     private BookingDTO booking;
+    private VehicleDTO vehicle;
+    private DriverDTO driver;
+    private VipMemberDTO vipMember;
 
     public VipBookingDTO(VipBooking vipBooking) {
         this.vipBookingId = vipBooking.getVipBookingId();
@@ -24,6 +27,30 @@ public class VipBookingDTO {
     public VipBookingDTO(VipBooking vipBooking, BookingDTO booking) {
         this(vipBooking);
         this.booking = booking;
+    }
+
+    public VipMemberDTO getVipMember() {
+        return vipMember;
+    }
+
+    public void setVipMember(VipMemberDTO vipMember) {
+        this.vipMember = vipMember;
+    }
+
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
     }
 
     public String getVipBookingId() {
