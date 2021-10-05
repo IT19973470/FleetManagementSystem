@@ -108,7 +108,10 @@ import {DeliveryReportComponent} from './main/content/transport-manager/delivery
 import {NgApexchartsModule} from "ng-apexcharts";
 import {ItemPassengerComponent} from './main/content/applicant/item-passenger/item-passenger.component';
 import {UpdateItemPassengerComponent} from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
-import { ShiftReportComponent } from './main/content/Driver/shift-report/shift-report.component';
+import {WeeklyReportComponent} from './main/content/transport-manager/delivery-report/weekly-report/weekly-report.component';
+import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
+import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
+import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -278,6 +281,9 @@ const customNotifierOptions: NotifierOptions = {
     DeliveryReportComponent,
     ItemPassengerComponent,
     UpdateItemPassengerComponent,
+    WeeklyReportComponent,
+    DailyReportComponent,
+    DetailReportComponent,
     ShiftReportComponent
   ],
 
