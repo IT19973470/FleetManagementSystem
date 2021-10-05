@@ -90,4 +90,9 @@ public class DeliveryController {
     public ResponseEntity getDeliveriesReportWeekly(@PathVariable int weeks) {
         return ResponseEntity.ok(deliveryService.getDeliveriesReportWeekly(weeks));
     }
+
+    @GetMapping(value = "/getDeliveriesReportDaily/{weeks}")
+    public ResponseEntity getDeliveriesReportDaily(@PathVariable int weeks) {
+        return ResponseEntity.ok(deliveryService.getDeliveriesReportDaily(weeks));
+    }
 }
