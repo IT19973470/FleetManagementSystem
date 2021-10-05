@@ -27,6 +27,7 @@ export class WeeklyReportComponent implements OnInit {
   }
 
   getDeliveriesReportWeekly(weeks) {
+    this.weekValue = weeks;
     // this.transportManagerService.reportYear = year.value;
     // this.transportManagerService.reportMonth = month.value;
     this.transportManagerService.getDeliveriesReportWeekly(weeks).subscribe((report) => {
@@ -37,7 +38,8 @@ export class WeeklyReportComponent implements OnInit {
     })
   }
 
-  goToDailyReport(week) {
+  goToDailyReport() {
+    this.transportManagerService.reportWeek = this.weekValue;
     this.router.navigate(['/main/delivery_report/daily_report'])
   }
 
@@ -122,7 +124,7 @@ export class WeeklyReportComponent implements OnInit {
     };
   }
 
-  sendToPdf(){
+  sendToPdf() {
     let data = document.getElementById("pdf");
     // let data = document.getElementById("maindiv");
     // console.log(data);
