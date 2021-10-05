@@ -78,6 +78,7 @@ import {UpdateProgramBookingComponent} from "./main/content/booking_management_c
 import {ViewProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/view-program-booking.component";
 import {ItemPassengerComponent} from "./main/content/applicant/item-passenger/item-passenger.component";
 import {UpdateItemPassengerComponent} from "./main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component";
+import {ShiftReportComponent} from "./main/content/Driver/shift-report/shift-report.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -229,6 +230,10 @@ const routes: Routes = [
       {
         path: 'shift_details',
         component: ShiftDetailsComponent
+      },
+      {
+        path: 'shift_report',
+        component: ShiftReportComponent
       },
       {
         path: 'create_token',
