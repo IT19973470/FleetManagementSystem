@@ -3,6 +3,7 @@ package lk.fleet.service.impl;
 import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.DeliveryItemDetailDTO;
 import lk.fleet.dto.DeliveryPassengerDetailDTO;
+import lk.fleet.dto.DeliveryReportDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.DeliveryItemDetail;
@@ -19,9 +20,12 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -211,5 +215,36 @@ public class DeliveryServiceImpl implements DeliveryService {
         }
 
         return deliveryDTOS;
+    }
+
+    @Override
+    public DeliveryReportDTO getDeliveriesReportWeekly(int weeks) {
+        DeliveryReportDTO deliveryReportDTO = new DeliveryReportDTO();
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfYear();
+        int week = LocalDate.now().get(woy);
+        week = week - weeks;
+        List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
+        int[][] reports = new int[3][2];
+        for (Delivery delivery : deliveriesReportWeekly) {
+            if (delivery.getDeliveryType().equals("Passenger")) {
+                reports[0][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[0][1]++;
+                }
+            } else if (delivery.getDeliveryType().equals("Item")) {
+                reports[1][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[1][1]++;
+                }
+            } else if (delivery.getDeliveryType().equals("PassengerItem")) {
+                reports[2][0]++;
+                if (delivery.isDeliveryStatus()) {
+                    reports[2][1]++;
+                }
+            }
+        }
+        deliveryReportDTO.setWeeklyDeliveries(reports);
+
+        return deliveryReportDTO;
     }
 }
