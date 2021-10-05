@@ -1,52 +1,18 @@
 <app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
+
 <div class="row">
   <div class="col-12">
-    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Booking</span>
+    <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Update Application Booking</span>
   </div>
 </div>
 
 <div class="row" style="display: flex;justify-content: center;margin-top: 0px">
   <div class="col-11" style="margin-top: 20px">
 
-    <!--    <div style="margin-top: 20px">-->
-    <!--      <span style="font-weight: bold;margin-left: 0px">Search by driver : </span>-->
-    <!--      <input type="text" style="margin-left: 20px;width: 300px;height: 37px" [(ngModel)]="driverId">-->
-    <!--      <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getDriveVehicles()">-->
-    <!--        Search-->
-    <!--      </button>-->
-    <!--    </div>-->
-
-    <!--    <table class="table table-striped" style="margin-top: 40px">-->
-    <!--      <thead>-->
-    <!--      <tr>-->
-    <!--        <th scope="col">#</th>-->
-    <!--        <th scope="col">Driver ID</th>-->
-    <!--        <th scope="col">Driver Name</th>-->
-    <!--        <th scope="col" width="10%" style="text-align: center">Vehicle No</th>-->
-    <!--        <th scope="col" width="10%" style="text-align: center">Vehicle</th>-->
-    <!--        <th scope="col" width="5%" style="text-align: center">Select</th>-->
-    <!--      </tr>-->
-    <!--      </thead>-->
-    <!--      <tbody>-->
-    <!--      <tr *ngFor="let driverVehicle of driverVehicles; let i = index">-->
-    <!--        <th scope="row">{{i+1}}</th>-->
-    <!--        <td>{{driverVehicle.driverVehicleID.driverID}}</td>-->
-    <!--        <td>{{driverVehicle.driver.userAccount.nameWithInitials}}</td>-->
-    <!--        <td style="text-align: center">{{driverVehicle.driverVehicleID.vehicleId}}</td>-->
-    <!--        <td style="text-align: center">{{driverVehicle.vehicle.vehicleType}}</td>-->
-    <!--        <td style="text-align: center">-->
-    <!--          <i class="fas fa-pen" style="cursor: pointer" (click)="selectDriver(driverVehicle)"></i>-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--      </tbody>-->
-    <!--    </table>-->
-
-    <!--  </div>-->
-    <!--</div>-->
 
     <div class="row" style="display: flex;justify-content: center;margin-top: 50px">
 
-      <form #bookingForm="ngForm" (ngSubmit)="bookingForm.form.valid && onSubmit()" novalidate>
+      <form #bookingApplicationForm="ngForm" (ngSubmit)="bookingApplicationForm.form.valid && onSubmit()" novalidate>
 
         <div style="display: flex;margin-top: 50px">
           <div style="width: 50%;padding-right: 20px">
@@ -58,16 +24,14 @@
               </div>
               <div class="col-8">
                 <input type="text" class="form-control"
-                       [(ngModel)]="booking.bookingId"
+                       [(ngModel)]="bookingApplication.booking.bookingId"
                        #bookingId="ngModel"
                        name="bookingId" readonly>
-                <div *ngIf="(bookingId.touched || bookingForm.submitted) && bookingId.errors?.required"
+                <div *ngIf="(bookingId.touched || bookingApplicationForm.submitted) && bookingId.errors?.required"
                      class="validErr">
                 </div>
               </div>
             </div>
-
-
 
 
             <div class="row" style="margin-top: 10px">
@@ -76,17 +40,16 @@
               </div>
               <div class="col-8">
                 <input type="date" class="form-control"
-                       [(ngModel)]="booking.bookingDate"
+                       [(ngModel)]="bookingApplication.booking.bookingDate"
                        #bookingDate="ngModel"
+                       min="{{getMinDate()}}"
                        name="bookingDate" required>
-                <div *ngIf="(bookingDate.touched || bookingForm.submitted) && bookingDate.errors?.required"
+                <div *ngIf="(bookingDate.touched ||bookingApplicationForm.submitted) && bookingDate.errors?.required"
                      class="validErr">
                   Booking Date is required
                 </div>
               </div>
             </div>
-
-
 
 
             <div class="row" style="margin-top: 10px">
@@ -95,10 +58,10 @@
               </div>
               <div class="col-8">
                 <input type="time" class="form-control"
-                       [(ngModel)]="booking.bookingTimeActual"
+                       [(ngModel)]="bookingApplication.booking.bookingTimeActual"
                        #bookingTime="ngModel"
                        name="bookingTime" required>
-                <div *ngIf="(bookingTime.touched || bookingForm.submitted) && bookingTime.errors?.required"
+                <div *ngIf="(bookingTime.touched || bookingApplicationForm.submitted) && bookingTime.errors?.required"
                      class="validErr">
                   Booking Time is required
                 </div>
@@ -106,30 +69,24 @@
             </div>
 
 
+            <div class="row" style="margin-top: 10px">
+              <div class="col-4">
+                Booking Status :
+              </div>
+              <div class="col-8">
+                <label>
+                  <input name="bookingStatus" type="radio" [value]="true"
+                         [(ngModel)]="bookingApplication.booking.bookingStatus">
+                  <span style="font-size: 18px"> Active</span>
+                </label>
+                <label style="margin-left: 40px">
+                  <input name="bookingStatus" type="radio" [value]="false"
+                         [(ngModel)]="bookingApplication.booking.bookingStatus">
+                  <span style="font-size: 18px"> Inactive</span>
+                </label>
+              </div>
 
-                    <div class="row" style="margin-top: 10px">
-                      <div class="col-4">
-                        Booking Status :
-                      </div>
-                      <div class="col-8">
-            <!--            <select name="bookingStatus" class="form-control" #bookingStatus [(ngModel)]="booking.bookingStatus">-->
-            <!--              <option value="">Select status</option>-->
-            <!--              <option *ngFor="let type of bookingStatus" [value]="type">-->
-            <!--                {{type}}-->
-            <!--              </option>-->
-            <!--            </select>-->
-            <!--            <p> {{selected}}</p>-->
-                        <label>
-                          <input name="bookingStatus" type="radio" [value]="true" [(ngModel)]="booking.bookingStatus">
-                          <span style="font-size: 18px"> Active</span>
-                        </label>
-                        <label style="margin-left: 40px">
-                          <input name="bookingStatus" type="radio" [value]="false" [(ngModel)]="booking.bookingStatus">
-                          <span style="font-size: 18px"> Inactive</span>
-                        </label>
-                        </div>
-
-                      </div>
+            </div>
 
 
             <div class="row" style="margin-top: 10px">
@@ -138,15 +95,16 @@
               </div>
               <div class="col-8">
                 <input type="text" class="form-control"
-                       [(ngModel)]="booking.destination"
+                       [(ngModel)]="bookingApplication.booking.destination"
                        #destination="ngModel"
-                       name="destination" required>
-                <div *ngIf="(destination.touched || bookingForm.submitted) && destination.errors?.required"
+                       name="destination" required appTextValidator>
+                <div *ngIf="(destination.touched || bookingApplicationForm.submitted) && destination.errors?.required"
                      class="validErr">
                   Destination is required
                 </div>
               </div>
             </div>
+
 
           </div>
         </div>
@@ -155,11 +113,12 @@
         <div class=""
              style="border-top: 0px solid #dfdfdf;display: flex;margin-top: 20px;padding-top: 20px;margin-bottom: 40px ;justify-content: flex-end">
           <div class="" style="text-align: right">
-            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Update Booking</button>
+            <button type="submit" class="btn btn-success" style="font-weight: bold;font-size: 20px">Update Booking
+            </button>
           </div>
-          <div class="" style="text-align: right;margin-left: 20px">
-            <button (click)="removeBooking()" type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px">Delete Booking</button>
-          </div>
+          <!--          <div class="" style="text-align: right;margin-left: 20px">-->
+          <!--            <button (click)="removeBookingApplication()" type="button" class="btn btn-danger" style="font-weight: bold;font-size: 20px">Delete Booking</button>-->
+          <!--          </div>-->
         </div>
 
       </form>

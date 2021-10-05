@@ -123,6 +123,7 @@ export class ItemDeliveryComponent implements OnInit {
 
   setNewForm() {
     this.deliveryForm.resetForm();
+    this.deliveryDetail.deliveryItemDetails = [];
   }
 
   getNewItem() {

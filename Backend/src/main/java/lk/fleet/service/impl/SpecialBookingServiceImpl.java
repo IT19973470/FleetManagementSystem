@@ -3,6 +3,7 @@ package lk.fleet.service.impl;
 import lk.fleet.dto.BookingDTO;
 import lk.fleet.dto.DriverDTO;
 import lk.fleet.dto.SpecialBookingDTO;
+import lk.fleet.dto.VehicleDTO;
 import lk.fleet.entity.Booking;
 import lk.fleet.entity.Driver;
 import lk.fleet.entity.SpecialBooking;
@@ -72,6 +73,10 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
         List<SpecialBooking> specialBookings = specialBookingRepository.findAll();
         for (SpecialBooking specialBooking : specialBookings) {
             SpecialBookingDTO specialBookingDTO = new SpecialBookingDTO(specialBooking);
+            specialBookingDTO.setDriver(new DriverDTO(specialBooking.getBooking().getShift().getDriverVehicle().getDriver()));
+
+            specialBookingDTO.setVehicle(new VehicleDTO(specialBooking.getBooking().getShift().getDriverVehicle().getVehicle()));
+
             specialBookingDTO.setBooking(new BookingDTO(specialBooking.getBooking()));
             specialBookingDTOS.add(specialBookingDTO);
         }
@@ -83,6 +88,10 @@ public class SpecialBookingServiceImpl implements SpecialBookingService {
         SpecialBooking specialBookingByID = specialBookingRepository.getSpecialBookingBySpecialBookingId(specialBookingId);
         List<SpecialBookingDTO> specialBookingDTOS = new ArrayList<>();
         SpecialBookingDTO specialBookingDTO = new SpecialBookingDTO(specialBookingByID);
+        specialBookingDTO.setDriver(new DriverDTO(specialBookingByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        specialBookingDTO.setVehicle(new VehicleDTO(specialBookingByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+
         specialBookingDTO.setBooking(new BookingDTO(specialBookingByID.getBooking()));
         specialBookingDTOS.add(specialBookingDTO);
         return specialBookingDTOS;

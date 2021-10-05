@@ -23,6 +23,7 @@ export class ViewItemDeliveryComponent implements OnInit {
     deliveryPersonNic: '',
     deliveryStatus: false,
     vehicleNumber: '',
+    emailAddress: '',
     deliveryItemDetails: []
   };
 

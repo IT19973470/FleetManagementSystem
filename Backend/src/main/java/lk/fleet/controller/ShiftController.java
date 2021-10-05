@@ -18,17 +18,17 @@ public class ShiftController {
     private ShiftService shiftService;
 
     @PostMapping(value = "/addShift")
-    public ResponseEntity addShift(@RequestBody Shift shift){
+    public ResponseEntity addShift(@RequestBody Shift shift) {
         return ResponseEntity.ok(shiftService.addShift(shift));
     }
 
     @PutMapping(value = "/updateShift/{shiftId}")
-    public ResponseEntity updateShift(@PathVariable String shiftId, @RequestBody Shift shift){
+    public ResponseEntity updateShift(@PathVariable String shiftId, @RequestBody Shift shift) {
         return ResponseEntity.ok(shiftService.updateShift(shiftId, shift));
     }
 
     @DeleteMapping(value = "/deleteShift/{shiftId}")
-    public ResponseEntity deleteShift(@PathVariable String shiftId){
+    public ResponseEntity deleteShift(@PathVariable String shiftId) {
         return ResponseEntity.ok(shiftService.deleteShift(shiftId));
     }
 
@@ -40,6 +40,11 @@ public class ShiftController {
     @GetMapping(value = "/getShiftbyDriverID/{driverId}")
     public ResponseEntity getShiftByDriverID(@PathVariable String driverId) {
         return ResponseEntity.ok(shiftService.getShiftByDriverID(driverId));
+    }
+
+    @GetMapping(value = "/getDriverShiftsByDriverIdByCurrentDate/{driverId}")
+    public ResponseEntity getDriverShiftsByDriverIdByCurrentDate(@PathVariable String driverId){
+        return ResponseEntity.ok(shiftService.getDriverShiftsByDriverIdByCurrentDate(driverId));
     }
 
     @GetMapping(value = "/markAttendance/{driverID}/{attendance}")

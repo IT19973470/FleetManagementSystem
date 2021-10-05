@@ -30,14 +30,14 @@ export class TransportPassengerApplicationsComponent implements OnInit {
   }
 
   getApprovedApplications() {
-    this.transportManagerService.getApprovedApplications("Passenger").subscribe((applications) => {
+    this.transportManagerService.getApprovedApplications("P").subscribe((applications) => {
       this.applications = applications;
-      // console.log(applications);
+      console.log(applications);
     })
   }
 
   getApprovedApplicationsByDestination(destination) {
-    this.transportManagerService.getApprovedApplicationsByDestination(destination, "Passenger").subscribe((applications) => {
+    this.transportManagerService.getApprovedApplicationsByDestination(destination, "P").subscribe((applications) => {
       this.applications = applications;
       // console.log(applications);
     })

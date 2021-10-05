@@ -72,7 +72,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
           this.deliveryDetail = deliveryDetail;
           this.deliveryDetail.deliveryPassengerDetails = deliveryPassengerDetails;
           this.deliveryDetail.deliveryItemDetails = deliveryItemDetails;
-          this.notifierService.notify("success", "Delivery added successfully");
+          this.notifierService.notify("success", "Delivery updated successfully");
         }, (err) => {
           this.notifierService.notify("error", "Delivery failed");
         })
