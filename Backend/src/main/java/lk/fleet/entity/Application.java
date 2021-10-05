@@ -62,9 +62,7 @@ public class Application {
         return approval;
     }
 
-    public void setApproval(boolean approval) {
-        this.approval = approval;
-    }
+    public void setApproval(boolean approval) { this.approval = approval; }
 
     public LocalDateTime getDepatureDate() {
         return depatureDate;
