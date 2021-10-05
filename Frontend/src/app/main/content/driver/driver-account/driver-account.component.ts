@@ -87,7 +87,7 @@ export class DriverAccountComponent implements OnInit {
     this.alertService.reply.subscribe(reply => {
       if (reply) {
         this.driverService.deleteDriver(this.driver.driverID).subscribe((reply) => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['login']);
           this.notifierService.notify("success", "Driver deleted successfully.");
         }, (err) => {
           this.notifierService.notify("error", "Driver delete failed");

@@ -78,6 +78,10 @@ import {UpdateProgramBookingComponent} from "./main/content/booking_management_c
 import {ViewProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/view-program-booking.component";
 import {ItemPassengerComponent} from "./main/content/applicant/item-passenger/item-passenger.component";
 import {UpdateItemPassengerComponent} from "./main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component";
+import {WeeklyReportComponent} from "./main/content/transport-manager/delivery-report/weekly-report/weekly-report.component";
+import {DailyReportComponent} from "./main/content/transport-manager/delivery-report/daily-report/daily-report.component";
+import {DetailReportComponent} from "./main/content/transport-manager/delivery-report/detail-report/detail-report.component";
+import {ShiftReportComponent} from "./main/content/Driver/shift-report/shift-report.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -144,7 +148,21 @@ const routes: Routes = [
       },
       {
         path: 'delivery_report',
-        component: DeliveryReportComponent
+        component: DeliveryReportComponent,
+        children: [
+          {
+            path: 'weekly_report',
+            component: WeeklyReportComponent
+          },
+          {
+            path: 'daily_report',
+            component: DailyReportComponent
+          },
+          {
+            path: 'detail_report',
+            component: DetailReportComponent
+          },
+        ]
       },
       {
         path: 'passenger_transport',
@@ -229,6 +247,10 @@ const routes: Routes = [
       {
         path: 'shift_details',
         component: ShiftDetailsComponent
+      },
+      {
+        path: 'shift_report',
+        component: ShiftReportComponent
       },
       {
         path: 'create_token',
