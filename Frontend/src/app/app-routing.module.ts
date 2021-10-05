@@ -81,6 +81,7 @@ import {UpdateItemPassengerComponent} from "./main/content/applicant/available-t
 import {WeeklyReportComponent} from "./main/content/transport-manager/delivery-report/weekly-report/weekly-report.component";
 import {DailyReportComponent} from "./main/content/transport-manager/delivery-report/daily-report/daily-report.component";
 import {DetailReportComponent} from "./main/content/transport-manager/delivery-report/detail-report/detail-report.component";
+import {ShiftReportComponent} from "./main/content/Driver/shift-report/shift-report.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -246,6 +247,10 @@ const routes: Routes = [
       {
         path: 'shift_details',
         component: ShiftDetailsComponent
+      },
+      {
+        path: 'shift_report',
+        component: ShiftReportComponent
       },
       {
         path: 'create_token',

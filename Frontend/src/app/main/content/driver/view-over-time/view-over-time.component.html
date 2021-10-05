@@ -37,13 +37,9 @@
         <td>Approval</td>
         <td>{{ot.approval}}</td>
       </tr>
-      <!--      <tr style="text-align: left">-->
-      <!--        <td><i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(ot)"></i></td>-->
-      <!--        <td><i class="fas fa-trash" style="cursor: pointer" (click)="deleteOT()"></i> </td>-->
-      <!--      </tr>-->
       <tr>
-        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="goToUpdate(ot)">Update OT</button> </td>
-        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" (click)="deleteOT()">Delete OT</button> </td>
+        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" [disabled]="disableBtn()" (click)="goToUpdate(ot)">Update OT</button> </td>
+        <td><button class="btn btn-success" style="font-weight: bold;font-size: 20px" [disabled]="disableBtn()" (click)="deleteOT()">Delete OT</button> </td>
 
       </tr>
       </tbody>

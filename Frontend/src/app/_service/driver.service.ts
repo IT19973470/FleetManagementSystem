@@ -58,10 +58,22 @@ export class DriverService {
   }
 
   getMyShift(driverID): Observable<any> {
-    return this.http.get<any>(environment.backend_url + '/shift/getShiftbyDriverID/' + driverID);
+    return this.http.get<any>(environment.backend_url + '/shift/getDriverShiftsByDriverIdByCurrentDate/' + driverID);
   }
 
   attencanceMarked(driverID, sAttendance): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/shift/markAttendance/' + driverID + "/" + sAttendance);
+  }
+
+  getAllVehicles(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles");
+  }
+
+  getVehicleByNumber(vehicleNumber): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
+  }
+
+  updateFuel(vehicleId, cFuel): Observable<any> {
+    return this.http.get<any>(environment.backend_url + '/vehicle/fuelUpdate/' + vehicleId + '/' + cFuel);
   }
 }

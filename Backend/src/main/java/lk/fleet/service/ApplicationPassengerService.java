@@ -48,4 +48,6 @@ public interface ApplicationPassengerService {
     boolean deletePassengerApp(String passengerApplicationID, String passengerID);
 
     ApplicationDTO addApplicationItemPass(Application application);
+
+    List<ApplicationDTO> getWaitingReport();
 }

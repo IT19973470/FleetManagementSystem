@@ -24,7 +24,7 @@ export class ViewOverTimeComponent implements OnInit {
     noOfShifts: '',
     startTime: '',
     endTime: '',
-    approval: '',
+    approval:false,
     driver_driverid: ''
   };
 
@@ -39,7 +39,6 @@ export class ViewOverTimeComponent implements OnInit {
               private alertService: AlertBoxService) {
 
   }
-
 
   ngOnInit(): void {
     this.getOT();
@@ -95,6 +94,14 @@ export class ViewOverTimeComponent implements OnInit {
     });
   }
 
+  buttonDisabled: boolean;
+
+  disableBtn(){
+    if (this.ot.approval == true)
+      return this.buttonDisabled = true;
+    else
+      return this.buttonDisabled = false;
+  }
 
 }
 
