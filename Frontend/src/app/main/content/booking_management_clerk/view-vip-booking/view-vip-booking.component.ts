@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {Router} from "@angular/router";
 
@@ -10,15 +10,7 @@ import {Router} from "@angular/router";
 export class ViewVipBookingComponent implements OnInit {
 
 
-  vipBooking = [];
-  // vipBookings={
-  // vipBookingId:'',
-  //   vipMember:{
-  //   vipMemberId:'',
-  //     firstName:'',
-  //   }
-
-
+  vipBookings = [];
   bookingId;
   bookingManagementClerkId;
   vipBookingId;
@@ -31,22 +23,22 @@ export class ViewVipBookingComponent implements OnInit {
     this.getAllVipBooking();
   }
 
-  goToUpdate(booking) {
-    this.bookingManagerService.vipBooking = booking;
+  goToUpdate(vipBooking) {
+    this.bookingManagerService.vipBooking = vipBooking;
     this.router.navigate(['/main/update_vip_booking'])
   }
 
   getAllVipBooking() {
-    this.bookingManagerService.getAllVipBooking().subscribe((vipBooking) => {
-      this.vipBooking = vipBooking;
+    this.bookingManagerService.getAllVipBooking().subscribe((vipBookings) => {
+      this.vipBookings = vipBookings;
       // console.log(specialBooking)
     })
   }
 
   getVipBookingByVipBookingId() {
-    this.bookingManagerService.getVipBookingByVipBookingId(this.vipBookingId).subscribe((vipBooking) => {
-      this.vipBooking = vipBooking;
-      console.log(vipBooking)
+    this.bookingManagerService.getVipBookingByVipBookingId(this.vipBookingId).subscribe((vipBookings) => {
+      this.vipBookings = vipBookings;
+      console.log(vipBookings)
 
     })
   }

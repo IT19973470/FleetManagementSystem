@@ -117,6 +117,7 @@ export class PassengerDeliveryComponent implements OnInit {
     this.passenger.passengerNic = passenger.passengerNic;
     this.passenger.contactNumber = passenger.contactNumber;
     this.passenger.passengerType = passenger.passengerType;
+    this.btnText = 'Update';
   }
 
   setNewPassenger() {
@@ -127,6 +128,7 @@ export class PassengerDeliveryComponent implements OnInit {
 
   setNewForm() {
     this.deliveryForm.resetForm();
+    this.deliveryDetail.deliveryPassengerDetails = [];
   }
 
   getNewPassenger() {

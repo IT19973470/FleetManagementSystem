@@ -218,12 +218,12 @@
             <input type="text" class="form-control"
                    [(ngModel)]="passenger.contactNumber"
                    #contactNumberP="ngModel"
-                   name="contactNumberP" required appTelephoneValidator
+                   name="contactNumberP" appTelephoneValidator
                    placeholder="Eg: [ 123-1234567 ]">
-            <div *ngIf="(contactNumberP.touched || passengerForm.submitted) && contactNumberP.errors?.required"
-                 class="validErr">
-              Contact Number is required
-            </div>
+            <!--<div *ngIf="(contactNumberP.touched || passengerForm.submitted) && contactNumberP.errors?.required"-->
+                 <!--class="validErr">-->
+              <!--Contact Number is required-->
+            <!--</div>-->
             <div *ngIf="(contactNumberP.dirty) && contactNumberP.errors?.telephoneInvalid"
                  class="validErr">
               Invalid Contact Number

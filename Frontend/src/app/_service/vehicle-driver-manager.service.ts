@@ -58,9 +58,6 @@ export class VehicleDriverManagerService {
   // getDriver():Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/vipMember/getDriver");
   // }
-  updateFuel(vehicleId, cFuel): Observable<any> {
-    return this.http.get<any>(environment.backend_url + '/vehicle/fuelUpdate/' + vehicleId + '/' + cFuel);
-  }
 
   addDriverVehicle(driverVehicle): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/driverVehicle/addDriverVehicle", driverVehicle);

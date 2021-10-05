@@ -43,7 +43,7 @@ public class DriverServiceImpl implements DriverService {
             driver1.getUserAccount().setEmail(driver.getUserAccount().getEmail());
             driver1.getUserAccount().setNic(driver.getUserAccount().getNic());
             driver1.getUserAccount().setNameWithInitials(driver.getUserAccount().getNameWithInitials());
-            driver1.getUserAccount().setPassword(driver.getUserAccount().getPassword());
+//            driver1.getUserAccount().setPassword(driver.getUserAccount().getPassword());
             driver1.setLisenseID(driver.getLisenseID());
             driver1.getUserAccount().setApproved(driver.getUserAccount().isApproved());
 

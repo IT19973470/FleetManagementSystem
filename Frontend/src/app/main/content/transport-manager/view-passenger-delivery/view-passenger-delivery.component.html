@@ -1,4 +1,4 @@
-<div class="row" style="display: flex;justify-content: center">
+n<div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
     <div>
@@ -77,6 +77,10 @@
         <div>
           <span style="font-weight: bold">Delivery person's NIC : </span>
           <span style="margin-left: 10px">{{deliveryPassenger.deliveryPersonNic}}</span>
+        </div>
+        <div>
+          <span style="font-weight: bold">Email Address : </span>
+          <span style="margin-left: 10px">{{deliveryPassenger.emailAddress!=''?deliveryPassenger.emailAddress:'N/A'}}</span>
         </div>
         <div>
           <span style="font-weight: bold">Vehicle Number : </span>

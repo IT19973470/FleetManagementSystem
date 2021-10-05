@@ -72,6 +72,13 @@ import {TransportItemApplicationsComponent} from "./main/content/transport-manag
 import {SignupComponent} from "./signup/signup.component";
 import {DriverVehicleComponent} from "./main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component";
 import {DriverConfirmComponent} from "./main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component";
+import {DeliveryReportComponent} from "./main/content/transport-manager/delivery-report/delivery-report.component";
+import {ProgramBookingComponent} from "./main/content/booking_management_clerk/program-booking/program-booking.component";
+import {UpdateProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/update-program-booking/update-program-booking.component";
+import {ViewProgramBookingComponent} from "./main/content/booking_management_clerk/view-program-booking/view-program-booking.component";
+import {ItemPassengerComponent} from "./main/content/applicant/item-passenger/item-passenger.component";
+import {UpdateItemPassengerComponent} from "./main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component";
+import {ShiftReportComponent} from "./main/content/Driver/shift-report/shift-report.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -135,6 +142,10 @@ const routes: Routes = [
       {
         path: 'view_passenger_item_delivery',
         component: ViewPassengerItemDeliveryComponent
+      },
+      {
+        path: 'delivery_report',
+        component: DeliveryReportComponent
       },
       {
         path: 'passenger_transport',
@@ -221,6 +232,10 @@ const routes: Routes = [
         component: ShiftDetailsComponent
       },
       {
+        path: 'shift_report',
+        component: ShiftReportComponent
+      },
+      {
         path: 'create_token',
         component: TokenComponent
       },
@@ -296,16 +311,28 @@ const routes: Routes = [
         path: 'update_vipmember',
         component: UpdateVipmemberComponent
       },
+      // {
+      //   path: 'bookings',
+      //   component: BookingsComponent
+      // },
+      // {
+      //   path: 'update_bookings',
+      //   component: UpdateBookingsComponent
+      // },
+      // {
+      //   path: 'view_bookings',
+      //   component: ViewBookingsComponent
+      // },
       {
-        path: 'bookings',
+        path: 'booking_application',
         component: BookingsComponent
       },
       {
-        path: 'update_bookings',
+        path: 'update_booking_application',
         component: UpdateBookingsComponent
       },
       {
-        path: 'view_bookings',
+        path: 'view_booking_application',
         component: ViewBookingsComponent
       },
       {
@@ -331,6 +358,18 @@ const routes: Routes = [
       {
         path: 'view_vip_booking',
         component: ViewVipBookingComponent
+      },
+      {
+        path: 'program_booking',
+        component: ProgramBookingComponent
+      },
+      {
+        path: 'update_program_booking',
+        component: UpdateProgramBookingComponent
+      },
+      {
+        path: 'view_program_booking',
+        component: ViewProgramBookingComponent
       },
       {
         path: 'shift',
@@ -371,6 +410,14 @@ const routes: Routes = [
       {
         path: 'driver_confirm',
         component: DriverConfirmComponent
+      },
+      {
+        path: 'Item_passenger',
+        component: ItemPassengerComponent
+      },
+      {
+        path: 'update_item_passenger_transports',
+        component: UpdateItemPassengerComponent
       }
     ]
   }
