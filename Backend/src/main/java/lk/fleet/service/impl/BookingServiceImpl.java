@@ -29,26 +29,111 @@ public class BookingServiceImpl implements BookingService {
     private DriverVehicleRepository driverVehicleRepository;
     @Autowired
     private ShiftRepository shiftRepository;
+    @Autowired
+    private ApplicationRepository applicationRepository;
+    @Autowired
+    private OverTimeRepository overTimeRepository;
+
+
+//    @Override
+//    public Booking addBooking(Booking booking) {
+//        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
+//        booking.setBookingId("B" + dateTime);
+//        booking.setBookingManagementClerk(booking.getBookingManagementClerk());
+//        return bookingRepository.save(booking);
+//    }
 
     @Override
-    public Booking addBooking(Booking booking) {
-        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
-        booking.setBookingId("B" + dateTime);
-        booking.setBookingManagementClerk(booking.getBookingManagementClerk());
-        return bookingRepository.save(booking);
+    public BookingApplicationDTO addBookingApplication(BookingApplication bookingApplication) {
+        bookingApplication.getBooking().setBookingId("B" + bookingApplication.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        bookingApplication.setBookingApplicationId((bookingApplication.getBooking().getBookingId()));
+        bookingRepository.save(bookingApplication.getBooking());
+        return new BookingApplicationDTO(bookingApplicationRepository.save(bookingApplication), new BookingDTO(bookingApplication.getBooking()));
+    }
+
+
+    @Override
+    public BookingApplicationDTO updateBookingApplication(String bookingApplicationId, BookingApplication bookingApplication) {
+
+        Optional<BookingApplication> optionalBookingApplication = bookingApplicationRepository.findById(bookingApplicationId);
+        if (optionalBookingApplication.isPresent()) {
+            BookingApplication bookingApplicationObj = optionalBookingApplication.get();
+
+            bookingApplicationObj.getBooking().setBookingDateTime(bookingApplication.getBooking().getBookingDateTime());
+            bookingApplicationObj.getBooking().setBookingStatus(bookingApplication.getBooking().isBookingStatus());
+            bookingApplicationObj.getBooking().setDestination(bookingApplication.getBooking().getDestination());
+
+            bookingRepository.save(bookingApplicationObj.getBooking());
+            return new BookingApplicationDTO(bookingApplicationRepository.save(bookingApplicationObj));
+        }
+        return null;
     }
 
 
 //    @Override
-//    public BookingApplicationDTO addBooking(BookingApplication bookingApplication) {
-//        bookingApplication.getBooking().setBookingId("B" + bookingApplication.getBooking().getBookingDateTime().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
-//        bookingApplication.setBookingApplicationId((bookingApplication.getBooking().getBookingId()));
-//        bookingRepository.save(bookingApplication.getBooking());
-//        bookingApplicationRepository.save(bookingApplication);
-//        return new BookingApplicationDTO(bookingApplication, new BookingDTO(bookingApplication.getBooking()));
+//    public boolean deleteBookingApplication(String bookingApplicationId) {
+//        bookingApplicationRepository.deleteById(bookingApplicationId);
+//        bookingRepository.deleteById(bookingApplicationId);
+//        return true;
 //    }
 
+    @Override
+    public List<BookingApplicationDTO> getBookingApplication() {
+        List<BookingApplicationDTO> bookingApplicationDTOS = new ArrayList<>();
+        List<BookingApplication> bookingApplications = bookingApplicationRepository.findAll();
+        for (BookingApplication bookingApplication : bookingApplications) {
+            BookingApplicationDTO bookingApplicationDTO = new BookingApplicationDTO(bookingApplication);
 
+            bookingApplicationDTO.setDriver(new DriverDTO(bookingApplication.getBooking().getShift().getDriverVehicle().getDriver()));
+
+            bookingApplicationDTO.setVehicle(new VehicleDTO(bookingApplication.getBooking().getShift().getDriverVehicle().getVehicle()));
+            bookingApplicationDTO.setApplication(new ApplicationDTO(bookingApplication.getApplication()));
+            bookingApplicationDTO.setBooking(new BookingDTO(bookingApplication.getBooking()));
+            bookingApplicationDTOS.add(bookingApplicationDTO);
+        }
+        return bookingApplicationDTOS;
+    }
+
+    @Override
+    public List<BookingApplicationDTO> getBookingApplicationByBookingApplicationId(String bookingApplicationId) {
+        BookingApplication bookingApplicationByID = bookingApplicationRepository.getBookingApplicationByBookingApplicationId(bookingApplicationId);
+        List<BookingApplicationDTO> bookingApplicationDTOS = new ArrayList<>();
+        BookingApplicationDTO bookingApplicationDTO = new BookingApplicationDTO(bookingApplicationByID);
+        bookingApplicationDTO.setDriver(new DriverDTO(bookingApplicationByID.getBooking().getShift().getDriverVehicle().getDriver()));
+
+        bookingApplicationDTO.setVehicle(new VehicleDTO(bookingApplicationByID.getBooking().getShift().getDriverVehicle().getVehicle()));
+        bookingApplicationDTO.setApplication(new ApplicationDTO(bookingApplicationByID.getApplication()));
+
+        bookingApplicationDTO.setBooking(new BookingDTO(bookingApplicationByID.getBooking()));
+        bookingApplicationDTOS.add(bookingApplicationDTO);
+        return bookingApplicationDTOS;
+    }
+
+    @Override
+    public List<ApplicationDTO> getApplication() {
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
+            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+
+            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTOS.add(applicationDTO);
+        }
+
+        return applicationDTOS;
+    }
+
+
+    @Override
+    public List<ApplicationDTO> getApplicationById(String applicationID) {
+        Application applicationByID = applicationRepository.getAapplicationByID(applicationID);
+
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        ApplicationDTO applicationDTO = new ApplicationDTO(applicationByID);
+        applicationDTO.setPassengerApplication(new PassengerApplicationDTO(applicationByID.getPassengerApplication()));
+        applicationDTOS.add(applicationDTO);
+        return applicationDTOS;
+    }
 
 
     @Override
@@ -102,11 +187,10 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-
     @Override
-    public List<BookingDTO> getBookingsByBookingId(String bookingId){
-        Booking bookingByID=bookingRepository.getBookingsByBookingId(bookingId);
-        List<BookingDTO> bookingDTOS=new ArrayList<>();
+    public List<BookingDTO> getBookingsByBookingId(String bookingId) {
+        Booking bookingByID = bookingRepository.getBookingsByBookingId(bookingId);
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
         bookingDTOS.add(new BookingDTO(bookingByID));
         return bookingDTOS;
     }
@@ -161,8 +245,26 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public List<DriverVehicleDTO> getAllDriverVehicles() {
+
+        List<DriverVehicleDTO> driverVehicleDTOS = new ArrayList<>();
+        List<DriverVehicle> driverVehicles = driverVehicleRepository.findAll();
+        for (DriverVehicle driverVehicle : driverVehicles) {
+            DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverVehicle);
+            driverVehicleDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+            driverVehicleDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
+            driverVehicleDTOS.add(driverVehicleDTO);
+        }
+        return driverVehicleDTOS;
+    }
+
+
+    @Override
     public ShiftDTO addDriverShift(Shift shift) {
         shift.setShiftId("SH" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss")));
+        if (shift.getOverTime().getOverTimeID() == 0) {
+            shift.setOverTime(null);
+        }
         return new ShiftDTO(shiftRepository.save(shift));
     }
 
@@ -212,9 +314,10 @@ public class BookingServiceImpl implements BookingService {
         }
         return shiftDTOS;
     }
+
     @Override
     public List<ShiftDTO> getDriverShiftsByVehicleType(String vehicleType) {
-        List<Shift> driverShiftsByVehicleType= shiftRepository.getDriverShiftsByVehicleType(vehicleType);
+        List<Shift> driverShiftsByVehicleType = shiftRepository.getDriverShiftsByVehicleType(vehicleType);
         List<ShiftDTO> shiftDTOS = new ArrayList<>();
         for (Shift driverShift : driverShiftsByVehicleType) {
             ShiftDTO shiftDTO = new ShiftDTO(driverShift);
@@ -231,6 +334,32 @@ public class BookingServiceImpl implements BookingService {
     public boolean deleteDriverShift(String shiftId) {
         shiftRepository.deleteById(shiftId);
         return true;
+    }
+
+    @Override
+    public List<OverTimeDTO> getOt() {
+
+        List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
+        List<OverTime> overTimes = overTimeRepository.findAll();
+        for (OverTime overTime : overTimes) {
+            OverTimeDTO overTimeDTO = new OverTimeDTO(overTime);
+            overTimeDTO.setDriver(new DriverDTO(overTime.getDriver()));
+            overTimeDTOS.add(overTimeDTO);
+        }
+
+        return overTimeDTOS;
+    }
+
+    @Override
+    public OverTimeDTO approveOt(Long overTimeID, boolean approval) {
+        Optional<OverTime> optionalOverTime = overTimeRepository.findById(overTimeID);
+        if (optionalOverTime.isPresent()) {
+            OverTime overTime = optionalOverTime.get();
+            overTime.setApproval(approval);
+            return new OverTimeDTO(overTimeRepository.save(overTime));
+        }
+
+        return null;
     }
 
 }

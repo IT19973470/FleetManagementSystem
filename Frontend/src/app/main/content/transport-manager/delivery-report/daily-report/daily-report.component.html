@@ -1,0 +1,72 @@
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+
+    <div style="display: flex" routerLink="/main/delivery_report/weekly_report">
+      <i style="font-size: 30px" class="fas fa-arrow-circle-left"></i>
+      <div style="font-size: 20px;margin-left: 10px;font-weight: bold">Back</div>
+    </div>
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Daily Deliveries
+    </div>
+
+    <table class="table table-striped" style="margin-top: 20px">
+      <thead>
+      <tr>
+        <!--<th scope="col">#</th>-->
+        <th scope="col" width="15%">Day</th>
+        <th scope="col" width="20%">Passenger Deliveries</th>
+        <th scope="col" width="20%">Item Deliveries</th>
+        <th scope="col" width="20%">Passenger Item Deliveries</th>
+        <th scope="col" width="5%" style="text-align: center">View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let deliveryItem of weeklyDeliveries; let i = index">
+        <!--<th scope="row">{{i+1}}</th>-->
+        <td style="font-weight: bold">{{deliveryItem.week}}</td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pd.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pd.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pd.cancelled}}</span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.id.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.id.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.id.cancelled}}</span>
+        </td>
+        <td style="font-weight: bold">
+          <span style="color: #0c95cb">Total Deliveries - {{deliveryItem.pid.deliveries}}</span> <br>
+          <span style="color: #018002">Completed - {{deliveryItem.pid.completed}}</span> <br>
+          <span style="color: #ff0a03">Cancelled - {{deliveryItem.pid.cancelled}}</span>
+        </td>
+        <td style="text-align: center">
+          <i class="fas fa-search" style="cursor: pointer"></i>
+        </td>
+        <!--<td style="text-align: center">-->
+        <!--<i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>-->
+        <!--</td>-->
+      </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 40px;font-size: 25px">
+      Passenger Deliveries (Daily)
+    </div>
+
+    <div style="margin-top: 40px">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [yaxis]="chartOptions.yaxis"
+        [fill]="chartOptions.fill"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [xaxis]="chartOptions.xaxis"
+      ></apx-chart>
+    </div>
+
+  </div>
+</div>

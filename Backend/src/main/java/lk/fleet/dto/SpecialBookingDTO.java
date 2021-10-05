@@ -10,6 +10,8 @@ public class SpecialBookingDTO {
     private double approvedFuelAmount;
     private String description;
     private BookingDTO booking;
+    private DriverDTO driver;
+    private VehicleDTO vehicle;
 
 
 
@@ -26,6 +28,21 @@ public class SpecialBookingDTO {
             this.booking = booking;
 	}
 
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
+    }
+
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
+    }
 
     public String getSpecialBookingId() {
         return specialBookingId;

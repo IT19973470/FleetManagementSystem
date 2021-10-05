@@ -1,6 +1,8 @@
 package lk.fleet.entity;
 
 
+import lk.fleet.dto.BookingApplicationDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -11,11 +13,16 @@ public class BookingApplication {
     @Id
     private String bookingApplicationId;
 
+
+
+
     @OneToOne
     private Booking booking;
 
     @OneToOne
     private Application application;
+
+
 
     public String getBookingApplicationId() {
         return bookingApplicationId;
@@ -40,4 +47,6 @@ public class BookingApplication {
     public void setBooking(Booking booking) {
         this.booking = booking;
     }
+
+
 }

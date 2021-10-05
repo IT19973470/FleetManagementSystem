@@ -17,6 +17,7 @@ export class ViewShiftComponent implements OnInit {
     shiftDate: '',
     startingTime: '',
     endingTime: '',
+    attendance: '',
     driverVehicle: {
       driverVehicleID: {
         driverID: '',
@@ -76,7 +77,8 @@ export class ViewShiftComponent implements OnInit {
   }
 
   goToApplicationBooking() {
-
+    this.bookingManagerService.shift = this.selectedShift;
+    this.router.navigate(['/main/booking_application'])
   }
 
   goToSpecialBooking() {
@@ -85,11 +87,12 @@ export class ViewShiftComponent implements OnInit {
   }
 
   goToVipBooking() {
-    // this.bookingManagerService.shift = this.selectedShift;
-    // this.router.navigate(['/main/vip_booking'])
+    this.bookingManagerService.shift = this.selectedShift;
+    this.router.navigate(['/main/vip_booking'])
   }
 
   goToProgramBooking() {
-
+    this.bookingManagerService.shift = this.selectedShift;
+    this.router.navigate(['/main/program_booking'])
   }
 }

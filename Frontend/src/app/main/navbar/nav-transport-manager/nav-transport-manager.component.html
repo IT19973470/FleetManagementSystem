@@ -93,4 +93,13 @@
     Item Transport
   </div>
 
+  <div
+    routerLink="/main/delivery_report/weekly_report"
+    (click)="setTopic('Delivery Report')"
+    #deliveryReport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':deliveryReport.isActive?'#c0050e':''}">
+    Delivery Report
+  </div>
+
 </div>

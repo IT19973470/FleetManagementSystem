@@ -3,6 +3,7 @@ import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-m
 import {Router} from '@angular/router';
 import {CommonService} from "../../../../_service/common.service";
 import {NotifierService} from "angular-notifier";
+import {DriverService} from "../../../../_service/driver.service";
 
 @Component({
   selector: 'app-fuel-update',
@@ -29,8 +30,14 @@ export class FuelUpdateComponent implements OnInit {
     fuelBalance: 0
   };
 
+  // constructor(
+  //   private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router, private commonService: CommonService,
+  //   private notifierService: NotifierService) {
+  //   // this.vehicle = this.getVehicle();
+  // }
+
   constructor(
-    private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router, private commonService: CommonService,
+    private driverService: DriverService, private router: Router, private commonService: CommonService,
     private notifierService: NotifierService) {
     // this.vehicle = this.getVehicle();
   }
@@ -54,21 +61,21 @@ export class FuelUpdateComponent implements OnInit {
   }
 
   getAllVehicles() {
-    this.vehicleDriverManagerService.getAllVehicles().subscribe((vehicles) => {
+    this.driverService.getAllVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
       // console.log(this.vehicles)
     })
   }
 
   getVehicleByNumber() {
-    this.vehicleDriverManagerService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
+    this.driverService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
       this.vehicles = vehicles;
       // console.log(this.vehicles)
     })
   }
 
   onSubmit() {
-    this.vehicleDriverManagerService.updateFuel(this.selectedVehicle.vehicleId, this.selectedVehicle.fuelBalance).subscribe((fuel) => {
+    this.driverService.updateFuel(this.selectedVehicle.vehicleId, this.selectedVehicle.fuelBalance).subscribe((fuel) => {
       this.notifierService.notify("success", "Fuel balance updated successfully");
       this.isTrueOrFalse(false);
     }, (err) => {

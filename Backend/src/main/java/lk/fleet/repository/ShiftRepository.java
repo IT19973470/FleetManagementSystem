@@ -17,4 +17,7 @@ public interface ShiftRepository extends JpaRepository<Shift, String> {
     @Query(value = "from Shift order by shiftDate desc")
     List<Shift> getDriverShifts();
 
+    @Query(value = "from Shift where driverVehicle.driver.driverID=?1 and shiftDate = current_date and current_time >=startingTime and current_time <=endingTime ")
+    List<Shift> getDriverShiftsByDriverIdByCurrentDate(String driverId);
+
 }

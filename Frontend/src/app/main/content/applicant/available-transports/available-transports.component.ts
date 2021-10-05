@@ -70,7 +70,8 @@ export class AvailableTransportsComponent implements OnInit {
 
   user:boolean=true;
   item:boolean=true;
-  view:boolean=false;
+  viewP:boolean=false;
+  viewI:boolean=false;
   tblIndex;
 
   constructor(private applicantService: ApplicantService, private router: Router) {
@@ -82,12 +83,17 @@ export class AvailableTransportsComponent implements OnInit {
 
 
   setItem(deliveryItem,i) {
+    this.viewP=false;
+    this.viewI=false;
     this.tblIndex = i;
     this.passenger = deliveryItem;
-    if(deliveryItem.passengerApp.passengerApplicationID!=null)
-      this.view=true
-    else
-      this.view=false
+    console.log(deliveryItem)
+    if(deliveryItem.passengerApp.passengerApplicationID!=null){
+      this.viewP=true
+    }
+    if(deliveryItem.itemApp.itemApplicationID!=null){
+      this.viewI=true
+    }
    // console.log(this.passenger)
     this.isTrueOrFalse(true);
   }
@@ -104,8 +110,9 @@ export class AvailableTransportsComponent implements OnInit {
   getAllItemDeliveries() {
     this.applicantService.getAllApplication().subscribe((application) => {
       this.application = application;
-     // console.log(this.application)
+      console.log(this.application)
       this.mainarray=[]
+      this.main=[]
       this.getAllDriverVehicle();
     })
     console.log(this.application[1])
@@ -273,10 +280,12 @@ export class AvailableTransportsComponent implements OnInit {
   goToUpdate(deliveryItem) {
     this.applicantService.deliveryItem = deliveryItem;
    //  console.log(this.applicantService.deliveryItem);
-     if(deliveryItem.passengerApp.passengerApplicationID!=null)
+     if(deliveryItem.passengerApp.passengerApplicationID!=null && deliveryItem.itemApp.itemApplicationID==null)
     this.router.navigate(['/main/update_available_transports'])
-    else
+    if(deliveryItem.itemApp.itemApplicationID!=null && deliveryItem.passengerApp.passengerApplicationID==null)
     this.router.navigate(['/main/update_item_transports'])
+    if(deliveryItem.itemApp.itemApplicationID!=null && deliveryItem.passengerApp.passengerApplicationID!=null)
+      this.router.navigate(['/main/update_item_passenger_transports'])
   }
 
   searchByID(id){
