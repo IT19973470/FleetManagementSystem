@@ -45,5 +45,14 @@
     Shift Details
   </div>
 
+  <div
+    routerLink="/main/shift_report"
+    (click)="setTopic('Shift Report')"
+    #shiftReport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':shiftReport.isActive?'#c0050e':''}">
+    Shift Report
+  </div>
+
 </div>
 
