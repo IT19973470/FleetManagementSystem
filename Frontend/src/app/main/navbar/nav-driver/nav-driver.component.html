@@ -47,20 +47,11 @@
 
   <div
     routerLink="/main/shift_report"
-    (click)="setTopic('Attendance Report')"
+    (click)="setTopic('Shift Report')"
     #shiftReport="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':shiftReport.isActive?'#c0050e':''}">
-    Attendance Report
-  </div>
-
-  <div
-    routerLink="/main/ot_report"
-    (click)="setTopic('OT Report')"
-    #otReport="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':otReport.isActive?'#c0050e':''}">
-    Overtime Report
+    Shift Report
   </div>
 
 </div>
