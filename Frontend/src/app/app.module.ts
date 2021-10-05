@@ -104,6 +104,7 @@ import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.d
 import {LicenseValidatorDirective} from './_validator/license-validator.directive';
 import { DriverVehicleComponent } from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
 import { DriverConfirmComponent } from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
+import { UpdateDeliveryStatusComponent } from './main/content/security-officer/update-delivery-status/update-delivery-status.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -269,7 +270,8 @@ const customNotifierOptions: NotifierOptions = {
     EmployeeIdValidatorDirective,
     LicenseValidatorDirective,
     DriverVehicleComponent,
-    DriverConfirmComponent
+    DriverConfirmComponent,
+    UpdateDeliveryStatusComponent
   ],
 
   imports: [

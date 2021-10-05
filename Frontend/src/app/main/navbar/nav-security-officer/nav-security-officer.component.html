@@ -44,11 +44,11 @@
   </div>
 
   <div
-    routerLink="/main/update_delivery_status"
+    routerLink="/main/view_delivery_status"
     (click)="setTopic('Delivery Status')"
-    #updateDeliveryStatus="routerLinkActive"
+    #viewDeliveryStatus="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'color':updateDeliveryStatus.isActive?'#c0050e':''}">
+    [ngStyle]="{'color':viewDeliveryStatus.isActive?'#c0050e':''}">
     Delivery Status
   </div>
 
@@ -63,6 +63,13 @@
     style="border: 0px;padding: 0px"
     routerLink="/main/update_details"
     #updateDetail="routerLinkActive"
+    routerLinkActive>
+  </div>
+
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/update_delivery_status"
+    #updateDeliveryStatus="routerLinkActive"
     routerLinkActive>
   </div>
 

@@ -72,6 +72,7 @@ import {TransportItemApplicationsComponent} from "./main/content/transport-manag
 import {SignupComponent} from "./signup/signup.component";
 import {DriverVehicleComponent} from "./main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component";
 import {DriverConfirmComponent} from "./main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component";
+import {UpdateDeliveryStatusComponent} from "./main/content/security-officer/update-delivery-status/update-delivery-status.component";
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -265,8 +266,12 @@ const routes: Routes = [
         component: ViewApprovedTripDetailsComponent
       },
       {
-        path: 'update_delivery_status',
+        path: 'view_delivery_status',
         component: DeliveryStatusComponent
+      },
+      {
+        path: 'update_delivery_status',
+        component: UpdateDeliveryStatusComponent
       },
       {
         path: 'vehicle',
