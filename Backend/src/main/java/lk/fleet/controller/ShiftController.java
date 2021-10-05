@@ -42,6 +42,11 @@ public class ShiftController {
         return ResponseEntity.ok(shiftService.getShiftByDriverID(driverId));
     }
 
+    @GetMapping(value = "/getDriverShiftsByDriverIdByCurrentDate/{driverId}")
+    public ResponseEntity getDriverShiftsByDriverIdByCurrentDate(@PathVariable String driverId){
+        return ResponseEntity.ok(shiftService.getDriverShiftsByDriverIdByCurrentDate(driverId));
+    }
+
     @GetMapping(value = "/markAttendance/{driverID}/{attendance}")
     public ResponseEntity markAttendance(@PathVariable String driverID, @PathVariable boolean attendance) {
         return ResponseEntity.ok(shiftService.markAttendance(driverID, attendance));

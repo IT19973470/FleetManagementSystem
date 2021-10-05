@@ -70,10 +70,9 @@ export class DriverRegistrationComponent implements OnInit {
         console.log(this.driverDetail);
         this.driverService.addDriver(this.driverDetail).subscribe((driverDetail) => {
           this.router.navigate(['/login']);
-          this.notifierService.notify("success", "Driver added successfully. Please wait for the approval");
-
-        }, (err) => {
-          this.notifierService.notify("error", "Adding failed");
+          this.notifierService.notify("success", "Driver registered successfully. Please wait for the approval");
+          }, (err) => {
+          this.notifierService.notify("error", "Registration failed");
         })
       }
       this.alertBox.alert = false;

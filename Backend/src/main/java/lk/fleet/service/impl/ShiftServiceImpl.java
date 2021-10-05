@@ -13,6 +13,7 @@ import lk.fleet.service.ShiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +57,16 @@ public class ShiftServiceImpl implements ShiftService {
     @Override
     public ShiftDTO getShiftByDriverID(String driverId) {
         List<Shift> shiftByDriverID = shiftRepository.getDriverShiftsByDriverId(driverId);
+        if (shiftByDriverID.size() > 0) {
+            Shift shift = shiftByDriverID.get(0);
+            return new ShiftDTO(shift);
+        }
+        return null;
+    }
+
+    @Override
+    public ShiftDTO getDriverShiftsByDriverIdByCurrentDate(String driverId) {
+        List<Shift> shiftByDriverID = shiftRepository.getDriverShiftsByDriverIdByCurrentDate(driverId);
         if (shiftByDriverID.size() > 0) {
             Shift shift = shiftByDriverID.get(0);
             return new ShiftDTO(shift);
