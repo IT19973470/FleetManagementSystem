@@ -18,4 +18,7 @@ public interface DeliveryRepository extends JpaRepository<Delivery, String> {
 
     @Query(value = "from Delivery where deliveryType=?1 and companyName=?2 order by deliveryDateTime asc")
     List<Delivery> getAllDeliveriesByCompany(String deliveryType, String companyName);
+
+    @Query(value = "from Delivery where week(deliveryDateTime)=?1")
+    List<Delivery> getDeliveriesReportWeekly(int weeks);
 }
