@@ -24,8 +24,12 @@
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllShifts()">
         All Driver Shifts
       </button>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="sendToPdf(pdf)">
+        Download Shift Report
+      </button>
     </div>
 
+    <div id="pdf">
     <table class="table table-striped" style="margin-top: 40px">
       <thead>
       <tr>
@@ -66,6 +70,7 @@
       </tr>
       </tbody>
     </table>
+    </div>
 
     <div style="width: 50%;padding-right: 20px;margin-top: 50px">
       <div class="row">

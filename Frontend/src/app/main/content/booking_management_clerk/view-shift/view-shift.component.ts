@@ -3,6 +3,9 @@ import {TransportManagerService} from "../../../../_service/transport-manager.se
 import {Router} from "@angular/router";
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {NgForm} from "@angular/forms";
+import html2canvas from "html2canvas";
+import {jsPDF} from "jspdf";
+import * as jspdf from "jspdf";
 
 @Component({
   selector: 'app-view-shift',
@@ -57,12 +60,38 @@ export class ViewShiftComponent implements OnInit {
     })
   }
 
+  // sendToPdf(){
+  //   let data = document.getElementById("pdf");
+  //   // let data = document.getElementById("maindiv");
+  //   // console.log(data);
+  //   html2canvas(data).then(canvas => {
+  //     const contentDataURL = canvas.toDataURL('image/jpeg', 2.0)
+  //     console.log(contentDataURL);
+  //     let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
+  //     // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
+  //     pdf.addImage(contentDataURL, 'PNG', 0, 0, 45.7, 21.0);
+  //     pdf.save('Filename.pdf');
+  //   });
+  // }
+
+  sendToPdf(pdf)
+  {
+    let data = document.getElementById('pdf');
+    html2canvas(data).then(canvas => {
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('l', 'cm', 'a4'); //Generates PDF in landscape mode
+      // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);
+      pdf.save('Filename.pdf');
+    });
+  }
   // getShift() {
   //   this.bookingManagerService.getShift(this.shiftId).subscribe((shifts) => {
   //     this.shifts = shifts;
   //     console.log(this.shifts)
   //   })
   // }
+  pdf: jsPDF;
 
   getAllShiftsByDriver() {
     this.bookingManagerService.getAllShiftsByDriver(this.driverId).subscribe((shifts) => {
