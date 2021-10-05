@@ -1,8 +1,27 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
+    <div style="margin-top: 20px">
+      <span style="font-weight: bold;margin-left: 0px;font-size: 17px">Year : </span>
+      <select style="font-size: 17px">
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+      </select>
+
+      <span style="font-weight: bold;margin-left: 50px;font-size: 17px">Month : </span>
+      <select style="font-size: 17px">
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+      </select>
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 50px">
+        Search
+      </button>
+    </div>
+
     <div style="margin-top: 20px;font-size: 25px">
-      Attendance Report
+      Overtime Report
     </div>
     <table style="margin-top: 20px">
       <tr>
@@ -14,10 +33,6 @@
         <td>March</td>
       </tr>
       <tr>
-        <td style="padding-right: 100px">Date : </td>
-        <td>12/03/2020</td>
-      </tr>
-      <tr>
         <td style="padding-right: 100px">Driver ID : </td>
         <td>{{driver.driverID}}</td>
       </tr>
@@ -27,24 +42,6 @@
       </tr>
       <tr>
     </table>
-
-    <table class="table table-striped" style="margin-top: 20px">
-      <thead>
-      <tr>
-        <th scope="col" width="15%">Date</th>
-        <th scope="col" width="20%">Number of shifts</th>
-        <th scope="col" width="20%">Total number of shifts</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tbody *ngIf="shift">
-      <td>{{shift.shiftDate}}</td>
-<!--      <tr *ngFor="let shifts of shiftDetails">-->
-<!--        <td>{{shifts.}}</td>-->
-<!--      </tr>-->
-      </tbody>
-    </table>
-
   </div>
 </div>
 
