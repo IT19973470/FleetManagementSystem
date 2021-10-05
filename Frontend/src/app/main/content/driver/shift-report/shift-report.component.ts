@@ -25,15 +25,6 @@ export class ShiftReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDriver();
-    this.getMyShift();
-  }
-
-  getDriver() {
-    this.driverService.getDriver(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((driver) => {
-      this.driver = driver;
-      console.log(this.driverDetails);
-    });
   }
 
   shiftDetails = [];

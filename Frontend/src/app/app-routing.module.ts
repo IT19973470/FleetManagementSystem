@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {ItemDeliveryComponent} from './main/content/transport-manager/item-delivery/item-delivery.component';
@@ -80,10 +79,9 @@ import {ViewProgramBookingComponent} from './main/content/booking_management_cle
 import {ItemPassengerComponent} from './main/content/applicant/item-passenger/item-passenger.component';
 import {UpdateItemPassengerComponent} from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
 import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
-import {OtReportComponent} from './main/content/Driver/ot-report/ot-report.component';
-
 import {WeeklyReportComponent} from './main/content/transport-manager/delivery-report/weekly-report/weekly-report.component';
 import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
+// import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
   {
@@ -248,10 +246,6 @@ const routes: Routes = [
       {
         path: 'shift_report',
         component: ShiftReportComponent
-      },
-      {
-        path: 'ot_report',
-        component: OtReportComponent
       },
       {
         path: 'create_token',
