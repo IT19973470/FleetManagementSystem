@@ -47,5 +47,8 @@ public class Driver {
     public void setLisenseID(String lisenseID) {
         this.lisenseID = lisenseID;
     }
-
+//approval
+//    public void setApproval(boolean approval) {
+//        this.approval = approval;
+//    }
 }

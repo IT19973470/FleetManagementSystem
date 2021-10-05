@@ -247,4 +247,17 @@ public class DeliveryServiceImpl implements DeliveryService {
 
         return deliveryReportDTO;
     }
+
+    @Override
+    public DeliveryReportDTO getDeliveriesReportDaily(int weeks) {
+        DeliveryReportDTO deliveryReportDTO = new DeliveryReportDTO();
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfYear();
+        int week = LocalDate.now().get(woy);
+        week = week - weeks;
+        List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
+        for (Delivery delivery : deliveriesReportWeekly) {
+
+        }
+        return deliveryReportDTO;
+    }
 }
