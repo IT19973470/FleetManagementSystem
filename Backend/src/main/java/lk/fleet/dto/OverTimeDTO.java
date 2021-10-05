@@ -12,6 +12,7 @@ public class OverTimeDTO {
     private LocalTime startTime;
     private LocalTime endTime;
     private boolean approval;
+    private DriverDTO driver;
 
     public OverTimeDTO(OverTime overTime) {
         if (overTime != null) {
@@ -71,5 +72,13 @@ public class OverTimeDTO {
 
     public void setApproval(boolean approval) {
         this.approval = approval;
+    }
+
+    public DriverDTO getDriver() {
+        return driver;
+    }
+
+    public void setDriver(DriverDTO driver) {
+        this.driver = driver;
     }
 }

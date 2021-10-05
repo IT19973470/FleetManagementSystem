@@ -54,7 +54,7 @@
       <div class="">
         <div style="font-size: 25px;color: red;font-weight: bold"
              *ngIf="!shift.attendance">
-          You are not marked the attendance
+          You have not marked the attendance
         </div>
         <div style="font-size: 25px;color: green;font-weight: bold"
              *ngIf="shift.attendance">
@@ -68,6 +68,30 @@
         </div>
 
       </div>
+
+<!--      <div style="min-width: 1390px;">-->
+<!--        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(true)"></i>-->
+<!--      </div>-->
+
+      <div class="">
+        <div style="font-size: 25px;color: red;font-weight: bold"
+             *ngIf="!shift.attendance">
+          You have not started a transport yet
+        </div>
+        <div style="font-size: 25px;color: green;font-weight: bold"
+             *ngIf="shift.attendance">
+          You can start the transport right now
+        </div>
+
+        <div style="display: flex;justify-content: center;margin-top: 40px">
+          <button type="submit" class="btn btn-success" style="font-weight: bold; margin-right: 20px"
+                  (click)="attencanceMarked(false)">Start the transport
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
+
 </div>
+

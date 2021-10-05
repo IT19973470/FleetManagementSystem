@@ -48,6 +48,25 @@
     [ngStyle]="{'color':viewVipMembers.isActive || updateVipmember.isActive?'#c0050e':''}">
     View Vip Members
   </div>
+
+  <div
+    routerLink="/main/driver_vehicle"
+    (click)="setTopic('Driver Vehicle')"
+    #driverVehicle="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':driverVehicle.isActive?'#c0050e':''}">
+    Driver Vehicle
+  </div>
+
+  <div
+    routerLink="/main/driver_confirm"
+    (click)="setTopic('Driver Confirmation')"
+    #driverConfirm="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':driverConfirm.isActive?'#c0050e':''}">
+    Driver Confirmation
+  </div>
+
   <div
     style="border: 0px;padding: 0px"
     routerLink="/main/view_driverapproval"

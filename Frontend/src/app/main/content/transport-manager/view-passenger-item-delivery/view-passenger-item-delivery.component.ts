@@ -21,6 +21,7 @@ export class ViewPassengerItemDeliveryComponent implements OnInit {
     deliveryPersonName: '',
     deliveryPersonNic: '',
     vehicleNumber: '',
+    emailAddress: '',
     deliveryStatus: false,
     deliveryItemDetails: [],
     deliveryPassengerDetails: []

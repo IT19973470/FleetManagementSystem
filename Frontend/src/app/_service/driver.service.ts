@@ -25,6 +25,10 @@ export class DriverService {
     return this.http.post<any>(environment.backend_url + '/driverAccount/addDriver', driverDetail);
   }
 
+  updateDriver(driverDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + '/driverAccount/updateDriver/' + driverDetail.driverID, driverDetail);
+  }
+
   addOT(addOT): Observable<any> {
     return this.http.post(environment.backend_url + '/overTime/addOT', addOT);
   }
@@ -45,7 +49,7 @@ export class DriverService {
     return this.http.delete<any>(environment.backend_url + '/overTime/deleteOT/' + otID);
   }
 
-  getMyOT(driverID):Observable<any>{
+  getMyOT(driverID): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/overTime/getOTbyID/' + driverID);
   }
 
@@ -53,11 +57,11 @@ export class DriverService {
     return this.http.delete<any>(environment.backend_url + '/driverAccount/deleteDriver/' + driverID);
   }
 
-  getMyShift(driverID):Observable<any>{
+  getMyShift(driverID): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/shift/getShiftbyDriverID/' + driverID);
   }
 
-  attencanceMarked(driverID, sAttendance):Observable<any> {
+  attencanceMarked(driverID, sAttendance): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/shift/markAttendance/' + driverID + "/" + sAttendance);
   }
 }

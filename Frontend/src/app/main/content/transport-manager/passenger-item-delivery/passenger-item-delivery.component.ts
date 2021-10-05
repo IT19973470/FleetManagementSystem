@@ -4,6 +4,7 @@ import {TransportManagerService} from "../../../../_service/transport-manager.se
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {CommonService} from "../../../../_service/common.service";
 
 @Component({
   selector: 'app-passenger-item-delivery',
@@ -48,7 +49,8 @@ export class PassengerItemDeliveryComponent implements OnInit {
     private transportManagerService: TransportManagerService,
     private router: Router,
     private notifierService: NotifierService,
-    private alertService: AlertBoxService
+    private alertService: AlertBoxService,
+    private commonService: CommonService
   ) {
     this.item = this.getNewItem();
     this.passenger = this.getNewPassenger();
@@ -183,6 +185,8 @@ export class PassengerItemDeliveryComponent implements OnInit {
 
   setNewForm() {
     this.deliveryForm.resetForm();
+    this.deliveryDetail.deliveryItemDetails = [];
+    this.deliveryDetail.deliveryPassengerDetails = [];
   }
 
   getNewItem() {
@@ -204,5 +208,9 @@ export class PassengerItemDeliveryComponent implements OnInit {
 
   getMinDate() {
     return this.transportManagerService.getCurDate();
+  }
+
+  setNumberPositive(val) {
+    return this.commonService.setNumberPositive(val);
   }
 }
