@@ -115,7 +115,7 @@ import { OtReportComponent } from './main/content/Driver/ot-report/ot-report.com
 import {WeeklyReportComponent} from './main/content/transport-manager/delivery-report/weekly-report/weekly-report.component';
 import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
 import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
-import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
+
 
 
 const customNotifierOptions: NotifierOptions = {

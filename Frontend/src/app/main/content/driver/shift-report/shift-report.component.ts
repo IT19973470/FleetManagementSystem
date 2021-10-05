@@ -18,6 +18,8 @@ export class ShiftReportComponent implements OnInit {
   };
   driverDetails: [];
 
+  currentYear: number = new Date().getFullYear();
+
   constructor(private driverService: DriverService,private router: Router) {
 
   }
@@ -36,8 +38,7 @@ export class ShiftReportComponent implements OnInit {
 
   shiftDetails = [];
 
-  shift = {
-    shiftId: '',
+  shift = {shiftId: '',
     attendance: '',
     endingTime: '',
     shiftDate: '',
