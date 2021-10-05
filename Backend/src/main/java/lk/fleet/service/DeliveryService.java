@@ -41,4 +41,6 @@ public interface DeliveryService {
     DeliveryDTO addPassengerItemDelivery(Delivery delivery);
 
     DeliveryReportDTO getDeliveriesReportWeekly(int weeks);
+
+    DeliveryReportDTO getDeliveriesReportDaily(int weeks);
 }
