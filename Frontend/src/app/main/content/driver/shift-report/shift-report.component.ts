@@ -17,19 +17,29 @@ export class ShiftReportComponent implements OnInit {
     },
   };
   driverDetails: [];
-
   currentYear: number = new Date().getFullYear();
+
 
   constructor(private driverService: DriverService,private router: Router) {
 
   }
 
   ngOnInit(): void {
+    this.getDriver();
+    this.getMyShift();
+  }
+
+  getDriver() {
+    this.driverService.getDriver(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((driver) => {
+      this.driver = driver;
+      console.log(this.driverDetails);
+    });
   }
 
   shiftDetails = [];
 
-  shift = {shiftId: '',
+  shift = {
+    shiftId: '',
     attendance: '',
     endingTime: '',
     shiftDate: '',
