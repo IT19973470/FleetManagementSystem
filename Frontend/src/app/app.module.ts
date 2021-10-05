@@ -118,6 +118,9 @@ import {DetailReportComponent} from './main/content/transport-manager/delivery-r
 
 
 
+import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
+import { VehicleReportComponent } from './main/content/vehicleDriver-manager/vehicle-report/vehicle-report.component';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -291,7 +294,9 @@ const customNotifierOptions: NotifierOptions = {
     WeeklyReportComponent,
     DailyReportComponent,
     DetailReportComponent,
-    ShiftReportComponent
+    ShiftReportComponent,
+    ShiftReportComponent,
+    VehicleReportComponent
   ],
 
   imports: [

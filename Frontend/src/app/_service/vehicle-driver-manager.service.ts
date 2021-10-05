@@ -70,4 +70,17 @@ export class VehicleDriverManagerService {
   getDriverVehicles(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/driverVehicle/getDriverVehicles");
   }
+//view driver requsets
+  getDriverRequest():Observable<any>  {
+    return this.http.get<any>(environment.backend_url + "/vehicle/getDriverRequest");
+
+  }
+//approval
+  approveDriver(driverID, approval): Observable<any>  {
+    return this.http.get<any>(environment.backend_url + "/vehicle/approveDriver/" + driverID + "/" + approval);
+
+  }
+  // approveUserAccount(employeeId, approval): Observable<any> {
+  //   return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
+  // }
 }
