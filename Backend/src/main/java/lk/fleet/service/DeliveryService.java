@@ -3,6 +3,7 @@ package lk.fleet.service;
 import lk.fleet.dto.DeliveryDTO;
 import lk.fleet.dto.DeliveryItemDetailDTO;
 import lk.fleet.dto.DeliveryPassengerDetailDTO;
+import lk.fleet.dto.DeliveryReportDTO;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.DeliveryItemDetail;
 import lk.fleet.entity.DeliveryPassengerDetail;
@@ -38,4 +39,6 @@ public interface DeliveryService {
     List<DeliveryDTO> getAllDeliveriesByCompany(String deliveryType, String company);
 
     DeliveryDTO addPassengerItemDelivery(Delivery delivery);
+
+    DeliveryReportDTO getDeliveriesReportWeekly(int weeks);
 }
