@@ -201,7 +201,7 @@ export class DailyReportComponent implements OnInit {
             contentDataURL = canvas4.toDataURL('image/png')
             pdf.addPage();
             pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, 100);
-            pdf.save('MYPdf.pdf'); // Generated PDF
+            pdf.save('Report.pdf'); // Generated PDF
           })
         })
       })

@@ -84,9 +84,7 @@ import {DailyReportComponent} from './main/content/transport-manager/delivery-re
 import {DetailReportComponent} from "./main/content/transport-manager/delivery-report/detail-report/detail-report.component";
 import {TransportReportComponent} from "./main/content/general-manager/transport-report/transport-report.component";
 import {UserAccountsReportComponent} from "./main/content/general-manager/user-accounts-report/user-accounts-report.component";
-
 import {BookingReportComponent} from "./main/content/booking_management_clerk/booking-report/booking-report.component";
-
 // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
