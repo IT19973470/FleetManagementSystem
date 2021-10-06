@@ -25,7 +25,7 @@ public interface VehicleService {
 
     List<UserAccountDTO> getDriverRequest();
 
-    VehicleDTO approveDriver(String driverID, boolean approval);
+    UserAccountDTO approveDriver(String driverID, boolean approval);
 
 //    UserAccountDTO approveUserAccount(String employeeID, boolean approval);
 }

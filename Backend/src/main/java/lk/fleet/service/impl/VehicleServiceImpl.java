@@ -18,7 +18,9 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
     private DriverRepository driverRepository;
+    @Autowired
     private UserAccountRepository userAccountRepository;
 
     @Override
@@ -113,12 +115,13 @@ public class VehicleServiceImpl implements VehicleService {
     }
 //
     @Override
-    public VehicleDTO approveDriver(String driverID, boolean approval) {
-        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(driverID);
-        if (optionalVehicle.isPresent()) {
-            Vehicle driverObj = optionalVehicle.get();
-            driverObj.setApproved(approval);
-            return new VehicleDTO(vehicleRepository.save(driverObj));
+    public UserAccountDTO approveDriver(String driverID, boolean approval) {
+        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(driverID);
+        if (optionalUserAccount.isPresent()) {
+//            VehicleDTO vehicleDTO=new VehicleDTO(optionalVehicle);
+            UserAccount userAccount = optionalUserAccount.get();
+            userAccount.setApproved(approval);
+            return new UserAccountDTO(userAccountRepository.save(userAccount));
         }
 
         return null;
