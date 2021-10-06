@@ -78,12 +78,6 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getAllBookings());
     }
 
-//    @GetMapping(value = "/getBookings")
-//    public ResponseEntity getBookings() {
-//        return ResponseEntity.ok(bookingService.getBookings());
-//    }
-
-
     @GetMapping(value = "/getBookings")
     public List<BookingDTO> getBookings() {
         return bookingService.getBookings();
@@ -93,11 +87,6 @@ public class BookingController {
     public ResponseEntity getBookingsByBookingId(@PathVariable String bookingId) {
         return ResponseEntity.ok(bookingService.getBookingsByBookingId(bookingId));
     }
-
-//    @GetMapping(value = "/getBookingsByBookingManagementClerkId/{bookingManagementClerkId}")
-//    public ResponseEntity getBookingsByBookingManagementClerkId(@PathVariable String bookingManagementClerkId) {
-//        return ResponseEntity.ok(bookingService.getBookingsByBookingManagementClerkId(bookingManagementClerkId));
-//    }
 
 
     @GetMapping(value = "/getOt")

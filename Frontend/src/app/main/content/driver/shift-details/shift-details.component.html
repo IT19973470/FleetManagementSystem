@@ -74,13 +74,14 @@
 <!--      </div>-->
 
       <div class="">
-        <div style="font-size: 25px;color: red;font-weight: bold"
-             *ngIf="!shift.attendance">
-          You have not started a transport yet
-        </div>
         <div style="font-size: 25px;color: green;font-weight: bold"
-             *ngIf="shift.attendance">
+             *ngIf="!shift.attendance">
           You can start the transport right now
+
+        </div>
+        <div style="font-size: 25px;color: red;font-weight: bold"
+             *ngIf="shift.attendance">
+          You have not started a transport yet
         </div>
 
         <div style="display: flex;justify-content: center;margin-top: 40px">

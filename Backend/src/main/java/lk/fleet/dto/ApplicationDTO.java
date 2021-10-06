@@ -1,6 +1,7 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Application;
+import lk.fleet.entity.Shift;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,7 @@ public class ApplicationDTO {
 
     private VehicleDTO vehicle;
     private DriverDTO driver;
+    private TokenDTO token;
 
     private PassengerApplicationDTO passengerApplication;
     private ItemApplicationDTO itemApplication;
@@ -158,5 +160,13 @@ public class ApplicationDTO {
 
     public void setItemApplication(ItemApplicationDTO itemApplication) {
         this.itemApplication = itemApplication;
+    }
+
+    public TokenDTO getToken() {
+        return token;
+    }
+
+    public void setToken(TokenDTO token) {
+        this.token = token;
     }
 }

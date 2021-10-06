@@ -1,10 +1,8 @@
 package lk.fleet.controller;
 
-import lk.fleet.entity.Booking;
 import lk.fleet.entity.Delivery;
 import lk.fleet.entity.DeliveryItemDetail;
 import lk.fleet.entity.DeliveryPassengerDetail;
-import lk.fleet.service.BookingService;
 import lk.fleet.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -88,4 +86,13 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryService.getAllDeliveriesByCompany(deliveryType, company));
     }
 
+    @GetMapping(value = "/getDeliveriesReportWeekly/{weeks}")
+    public ResponseEntity getDeliveriesReportWeekly(@PathVariable int weeks) {
+        return ResponseEntity.ok(deliveryService.getDeliveriesReportWeekly(weeks));
+    }
+
+    @GetMapping(value = "/getDeliveriesReportDaily/{weeks}")
+    public ResponseEntity getDeliveriesReportDaily(@PathVariable int weeks) {
+        return ResponseEntity.ok(deliveryService.getDeliveriesReportDaily(weeks));
+    }
 }

@@ -41,11 +41,6 @@ public interface BookingService {
 
     //VipBooking addVipBooking(VipBooking vipBooking);
 
-
-    //List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId);
-
-
-
     List<BookingDTO> getBookingByDestination(String destination);
 
     BookingApplicationDTO addBookingApplication(BookingApplication bookingApplication);
