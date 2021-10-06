@@ -16,4 +16,7 @@ public interface OverTimeRepository extends JpaRepository<OverTime, Long> {
     List<OverTime> getAllLastOverTimes();
 
     Optional<OverTime> findById(Long overTimeID);
+
+    @Query(value = "from OverTime where driver.driverID=?1 order by otDate desc")
+    List<OverTime> getAllLastOverTimesbyDriverID(String driverId);
 }

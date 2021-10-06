@@ -117,6 +117,7 @@ import {TransportReportComponent} from './main/content/general-manager/transport
 import { UserAccountsReportComponent } from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 
 import { BookingReportComponent } from './main/content/booking_management_clerk/booking-report/booking-report.component';
+import { OtReportComponent } from './main/content/Driver/ot-report/ot-report.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -291,12 +292,12 @@ const customNotifierOptions: NotifierOptions = {
     DailyReportComponent,
     DetailReportComponent,
     ShiftReportComponent,
-
+    BookingReportComponent,
+    OtReportComponent,
     TransportReportComponent,
     UserAccountsReportComponent,
 
     BookingReportComponent
-
   ],
 
   imports: [
