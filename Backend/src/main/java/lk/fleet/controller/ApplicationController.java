@@ -60,9 +60,10 @@ public class ApplicationController {
     public ResponseEntity passengerApplication(@PathVariable String ApplicationID, @PathVariable String applicationID) {
         return ResponseEntity.ok(applicationPassengerService.passengerApplication(ApplicationID, applicationID));
     }
-    @PostMapping(value ="/AddItemApp/{applicationID}/{itemID}")
-    public ResponseEntity itemApplication(@PathVariable String applicationID,@PathVariable String itemID,@RequestBody Item item) {
-        return ResponseEntity.ok(applicationPassengerService.itemApplication(itemID,applicationID,item));
+
+    @PostMapping(value = "/AddItemApp/{applicationID}/{itemID}")
+    public ResponseEntity itemApplication(@PathVariable String applicationID, @PathVariable String itemID, @RequestBody Item item) {
+        return ResponseEntity.ok(applicationPassengerService.itemApplication(itemID, applicationID, item));
     }
 
     @PostMapping(value = "/newApplication1")
@@ -111,7 +112,7 @@ public class ApplicationController {
     }
 
     @GetMapping(value = "/getAItempplicationID/{applicationID}")
-    public ApplicationDTO getItemApp(@PathVariable String applicationID){
+    public ApplicationDTO getItemApp(@PathVariable String applicationID) {
         return applicationPassengerService.getItemApp(applicationID);
     }
 
@@ -134,16 +135,19 @@ public class ApplicationController {
     public ResponseEntity deleteBooking(@PathVariable String ApplicationID, @PathVariable String applicationID) {
         return ResponseEntity.ok(applicationPassengerService.deletePassengerApp(ApplicationID, applicationID));
     }
+
     @DeleteMapping(value = "/deleteItemApp/{ApplicationID}/{itemID}")
-    public ResponseEntity deleteItemApp(@PathVariable String ApplicationID,@PathVariable String itemID) {
-        return ResponseEntity.ok(applicationPassengerService.deleteItemApp(ApplicationID ,itemID));
+    public ResponseEntity deleteItemApp(@PathVariable String ApplicationID, @PathVariable String itemID) {
+        return ResponseEntity.ok(applicationPassengerService.deleteItemApp(ApplicationID, itemID));
     }
+
     @PutMapping(value = "/updateItem/{applicationID}")
-    public ResponseEntity<Item> updateItem(@PathVariable String applicationID, @RequestBody Item item){
+    public ResponseEntity<Item> updateItem(@PathVariable String applicationID, @RequestBody Item item) {
         return ResponseEntity.ok(applicationPassengerService.updateItem(applicationID, item));
     }
+
     @GetMapping(value = "/getItems")
-    public List<Item> getAllItem(){
+    public List<Item> getAllItem() {
         return applicationPassengerService.getAllItem();
     }
 
@@ -162,6 +166,12 @@ public class ApplicationController {
     public ResponseEntity getApprovedApplicationsByPassenger(@PathVariable String passengerId) {
         return ResponseEntity.ok(applicationService.getApprovedApplicationsByPassenger(passengerId));
     }
+
+    @GetMapping(value = "/changePassengerApplication/{oldAppId}/{newAppId}/{passengerId}")
+    public ResponseEntity changePassengerApplication(@PathVariable String oldAppId, @PathVariable String newAppId, @PathVariable String passengerId) {
+        return ResponseEntity.ok(applicationService.changePassengerApplication(oldAppId, newAppId, passengerId));
+    }
+    //
 
     @GetMapping(value = "/getWaitingReport")
     public List<ApplicationDTO> getWaitingReport() {

@@ -13,6 +13,8 @@ public class PassengerApplicationDTO {
 
     private List<PassengerPassengerApplicationDTO> passengerPassengerApplications;
 
+    public PassengerApplicationDTO() {
+    }
 
     public PassengerApplicationDTO(PassengerApplication passengerApplication) {
         if (passengerApplication != null) {
