@@ -106,6 +106,11 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountService.login(userAccount));
     }
 
+    @GetMapping(value = "/getTransportReportWeekly/{weeks}")
+    public ResponseEntity getTransportReportWeekly(@PathVariable int weeks) {
+        return ResponseEntity.ok(userAccountService.getTransportReportWeekly(weeks));
+    }
+
 
 //-------------------------------------------------------------------------------------------------------------//
 
