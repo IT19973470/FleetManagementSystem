@@ -97,6 +97,10 @@ export class TransportManagerService {
     return this.http.get<any>(environment.backend_url + "/delivery/getDeliveriesReportDaily/" + weeks);
   }
 
+  getApprovedApplicationsByPassenger(passengerId): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/getApprovedApplicationsByPassenger/" + passengerId);
+  }
+
   // getAllPassengerDeliveries(): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
   // }
