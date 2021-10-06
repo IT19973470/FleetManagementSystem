@@ -21,6 +21,6 @@ public interface TokenRepository extends JpaRepository<Token,String> {
     Token getTokenByDestination(String destination);
 
     @Query(value = "from Token where booking.shift.driverVehicle.driver.driverID=?1")
-    Token getTokenByDriverID(String driverID);
+    List <Token> getTokenByDriverID(String driverID);
 
 }

@@ -105,17 +105,18 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public List<TokenDTO> getTokenByDriverID(String driverID) {
-        Token TokenByID = tokenRepository.getTokenByDriverID(driverID);
+        List<Token> tokens = tokenRepository.getTokenByDriverID(driverID);
         List<TokenDTO> tokenDTOS = new ArrayList<>();
-        TokenDTO tokenDTO = new TokenDTO(TokenByID);
-        DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
-        tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver()));
-        tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
-        tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
-        tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
-        tokenDTOS.add(tokenDTO);
+        for (Token token : tokens) {
+            TokenDTO tokenDTO = new TokenDTO(token);
+            DriverVehicle driverVehicle = token.getBooking().getShift().getDriverVehicle();
+            tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver()));
+            tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+            tokenDTO.setBooking(new BookingDTO(token.getBooking()));
+            tokenDTO.setMeterDetail(new MeterDetailDTO(token.getMeterDetail()));
+            tokenDTOS.add(tokenDTO);
+        }
         return tokenDTOS;
     }
-
 
 }
