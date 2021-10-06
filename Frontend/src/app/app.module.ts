@@ -115,6 +115,12 @@ import {DetailReportComponent} from './main/content/transport-manager/delivery-r
 import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
 
 
+import {TransportReportComponent} from './main/content/general-manager/transport-report/transport-report.component';
+import { UserAccountsReportComponent } from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
+
+import { BookingReportComponent } from './main/content/booking_management_clerk/booking-report/booking-report.component';
+
+
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -287,7 +293,13 @@ const customNotifierOptions: NotifierOptions = {
     WeeklyReportComponent,
     DailyReportComponent,
     DetailReportComponent,
-    ShiftReportComponent
+    ShiftReportComponent,
+
+    TransportReportComponent,
+    UserAccountsReportComponent,
+
+    BookingReportComponent
+
   ],
 
   imports: [
