@@ -80,4 +80,8 @@ export class DriverService {
   updateFuel(vehicleId, cFuel): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/vehicle/fuelUpdate/' + vehicleId + '/' + cFuel);
   }
+
+  getAllLastOverTimesbyDriverID(driverID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + '/overTime/getAllLastOverTimesbyDriverID/' + driverID);
+  }
 }

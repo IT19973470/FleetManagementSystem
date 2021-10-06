@@ -164,6 +164,7 @@ import {DailyReportComponent} from './main/content/transport-manager/delivery-re
 // import {DetailReportComponent} from "./main/content/transport-manager/delivery-report/detail-report/detail-report.component";
 // import {ShiftReportComponent} from "./main/content/Driver/shift-report/shift-report.component";
 import {BookingReportComponent} from "./main/content/booking_management_clerk/booking-report/booking-report.component";
+import {OtReportComponent} from "./main/content/Driver/ot-report/ot-report.component";
 // // import {ViewDriverapprovalComponent} from "./main/content/vehicleDriver-manager/view-driverapproval/view-driverapproval.component";
 
 const routes: Routes = [
@@ -329,6 +330,10 @@ const routes: Routes = [
       {
         path: 'shift_report',
         component: ShiftReportComponent
+      },
+      {
+        path:'ot_report',
+        component:OtReportComponent
       },
       {
         path: 'create_token',

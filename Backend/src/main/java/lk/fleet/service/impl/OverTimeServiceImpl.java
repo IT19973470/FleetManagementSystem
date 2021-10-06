@@ -64,6 +64,25 @@ public class OverTimeServiceImpl implements OverTimeService {
     }
 
     @Override
+    public List<OverTimeDTO> getAllLastOverTimesbyDriverID(String driverId) {
+        List<OverTime> overTimes = overTimeRepository.getAllLastOverTimesbyDriverID(driverId);
+        List<OverTimeDTO> overTimeDTOS = new ArrayList<>();
+
+        int count = 0;
+        if (overTimes.size() < 7) {
+            count = overTimes.size();
+        } else {
+            count = 7;
+        }
+
+        for (int i = 0; i < count; i++) {
+            overTimeDTOS.add(new OverTimeDTO(overTimes.get(i)));
+        }
+
+        return overTimeDTOS;
+    }
+
+    @Override
     public OverTimeDTO getOverTimeByID(String driverId) {
         List<OverTime> lastOverTime = overTimeRepository.getLastOverTime(driverId);
         if (lastOverTime.size() > 0) {
