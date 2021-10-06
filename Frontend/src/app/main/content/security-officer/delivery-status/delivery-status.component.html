@@ -34,11 +34,10 @@
         <th scope="col">#</th>
         <th scope="col">Company</th>
         <th scope="col">Address</th>
-        <th scope="col" width="10%">Contact No</th>
-        <th scope="col" width="10%">Delivery Date</th>
-        <th scope="col" width="10%">Delivery Time</th>
-        <th scope="col" width="8%" style="text-align: center">View More</th>
-        <th scope="col" width="5%" style="text-align: center">Update</th>
+        <th scope="col">Contact No</th>
+        <th scope="col">Delivery Date</th>
+        <th scope="col">Delivery Time</th>
+        <th scope="col" width="10%" style="text-align: center">Update</th>
       </tr>
       </thead>
       <tbody>
@@ -50,9 +49,6 @@
         <td>{{deliveryItem.deliveryDate}}</td>
         <td>{{deliveryItem.deliveryTime}}</td>
         <td style="text-align: center">
-          <i class="fas fa-search" style="cursor: pointer" (click)="setItem(deliveryItem)"></i>
-        </td>
-        <td style="text-align: center">
           <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(deliveryItem)"></i>
         </td>
       </tr>
@@ -62,57 +58,3 @@
   </div>
 </div>
 
-<div class="modalTable" [style.visibility]="isModalTable.openTable?'visible':'hidden'">
-  <div (click)="isTrueOrFalse(false)"></div>
-  <div style="">
-    <div style="max-height: calc(100vh - 100px);overflow-y: scroll">
-      <div style="">
-        <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
-      </div>
-
-      <div>
-
-        <div>
-          <span style="font-weight: bold">Delivery ID : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryId}}</span>
-        </div>
-        <div>
-          <span style="font-weight: bold">Delivery person : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonName}}</span>
-        </div>
-        <div>
-          <span style="font-weight: bold">Delivery person's NIC : </span>
-          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>
-        </div>
-        <div>
-          <span style="font-weight: bold">Vehicle Number : </span>
-          <span style="margin-left: 10px">{{deliveryItem.vehicleNumber!=undefined?deliveryItem.vehicleNumber:'N/A'}}</span>
-        </div>
-
-        <div style="margin-top: 30px;font-weight: bold;font-size: 24px">
-          Delivery Items
-        </div>
-
-        <table class="table table-striped" style="margin-top: 10px">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Item Name</th>
-            <th scope="col">Item Type</th>
-            <th scope="col">Quantity</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of deliveryItem.deliveryItemDetails; let i = index">
-            <th scope="row">{{i+1}}</th>
-            <td>{{item.itemName}}</td>
-            <td>{{item.itemType}}</td>
-            <td>{{item.itemQty}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </div>
-</div>

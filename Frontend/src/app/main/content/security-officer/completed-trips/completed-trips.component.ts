@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SecurityOfficerService} from "../../../../_service/security-officer.service";
 import {Router} from "@angular/router";
+import {jsPDF} from "jspdf";
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-completed-trips',
@@ -47,6 +49,7 @@ export class CompletedTripsComponent implements OnInit {
 
   bookingDestination;
   tokenIdSearch;
+  driverID;
 
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
@@ -78,10 +81,27 @@ export class CompletedTripsComponent implements OnInit {
     })
   }
 
-  getBookingByDestination() {
-    this.securityOfficerService.getBookingByDestination(this.bookingDestination).subscribe((bookings) => {
-      this.bookings = bookings;
+  getTokenByDestination() {
+    this.securityOfficerService.getTokenByDestination(this.bookingDestination).subscribe((tokens) => {
+      this.tokens = tokens;
     })
   }
 
+  getTokenByDriverID() {
+    this.securityOfficerService.getTokenByDriverID(this.driverID).subscribe((tokens) => {
+      this.tokens = tokens;
+    })
+  }
+
+  downloadPdf() {
+    var element = document.getElementById('SummaryReport')
+    html2canvas(element).then((canvas) => {
+      console.log(canvas)
+      var imgData = canvas.toDataURL('image/png')
+      var doc = new jsPDF();
+      var imgHeight = canvas.height * 208 / canvas.width;
+      doc.addImage(imgData, 0, 0, 208, imgHeight)
+      doc.save("Report.pdf")
+    })
+  }
 }

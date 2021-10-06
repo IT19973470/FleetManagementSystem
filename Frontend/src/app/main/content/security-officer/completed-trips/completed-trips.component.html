@@ -19,13 +19,13 @@
 
     <span style="font-weight: bold;margin-left: 10px">Search by Destination : </span>
     <input type="search" placeholder="Enter Destination.." style="margin-left: 15px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByDestination()">
       Search
     </button>
 
     <span style="font-weight: bold;margin-left: 40px">Search by Driver : </span>
-    <input type="search" placeholder="Enter Driver Name.." style="margin-left: 10px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+    <input type="search" placeholder="Enter Driver ID.." style="margin-left: 10px;width: 200px;height: 37px" [(ngModel)]="driverID">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByDriverID()">
       Search
     </button> <br><br><br>
 
@@ -48,7 +48,7 @@
         <tr *ngFor="let tokenDetail of tokens; let i = index">
           <th scope="row">{{i+1}}</th>
           <td>{{tokenDetail.tokenID}}</td>
-          <td>{{tokenDetail.driver.userAccount.nameWithInitials}}</td>
+          <td>{{tokenDetail.driver.driverID}}</td>
           <td>{{tokenDetail.vehicle.vehicleId}}</td>
           <td>{{tokenDetail.booking.destination}}</td>
           <td>{{tokenDetail.departureDate}}</td>
@@ -66,15 +66,20 @@
 <div [style.visibility]="isModalTable.openTable?'visible':'hidden'" class="modalTable">
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
-    <div style="height: 550px; width: 600px">
+    <div style="height: 1000px; width: 700px">
       <div style="">
         <i (click)="isTrueOrFalse(false)" class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
 
-      <div class="">
+      <div class="" id="SummaryReport" style="border: groove; color: #323130">
 
         <table width="100%">
-
+          <br>
+          <div>
+            <h4 style="color: #850606">Independent Television Network</h4>
+            <b>Security Department</b><br>>
+            <b>Completed trip details Report</b>
+          </div>
           <tr>
             <td>
               <div style="font-size: medium; margin-left: 50px">
@@ -90,10 +95,10 @@
             </td>
           </tr>
         </table>
-        <br><br>
+        <br>
 
-        <div style="text-align: center">
-          <h5><u>Token Details</u></h5>
+        <div style="text-align: center; color: blue">
+          <b><h5><u>Token Details</u></h5></b>
         </div>
         <br>
 
@@ -123,8 +128,8 @@
         </div>
         <br><br>
 
-        <div style="text-align: center">
-          <h5><u>Meter Details for Token {{tokenDetail.tokenID}}</u></h5>
+        <div style="text-align: center; color: darkgreen">
+         <b><h5><u>Meter Details for Token {{tokenDetail.tokenID}}</u></h5></b>
         </div>
         <br>
 
@@ -144,7 +149,10 @@
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
         </div>
+
       </div>
+      <button style="margin-left: 100px" type="button" class="btn btn-danger"
+              (click)="downloadPdf()">Download PDF</button>
     </div>
   </div>
 </div>
