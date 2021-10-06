@@ -111,7 +111,7 @@ import {UpdateItemPassengerComponent} from './main/content/applicant/available-t
 import {WeeklyReportComponent} from './main/content/transport-manager/delivery-report/weekly-report/weekly-report.component';
 import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
 import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
-import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
+import {ShiftReportComponent} from './main/content/driver/shift-report/shift-report.component';
 import { BookingReportComponent } from './main/content/booking_management_clerk/booking-report/booking-report.component';
 
 const customNotifierOptions: NotifierOptions = {
