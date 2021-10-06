@@ -66,8 +66,6 @@ export class AvailableTransportsComponent implements OnInit {
       itemItemApplicationDTOS:[]
     }
 
-
-
   user:boolean=true;
   item:boolean=true;
   viewP:boolean=false;
