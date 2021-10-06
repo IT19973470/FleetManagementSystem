@@ -224,22 +224,34 @@ public class DeliveryServiceImpl implements DeliveryService {
         int week = LocalDate.now().get(woy);
         week = week - weeks;
         List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
-        int[][] reports = new int[3][2];
+        int[][] reports = new int[3][4];
         for (Delivery delivery : deliveriesReportWeekly) {
             if (delivery.getDeliveryType().equals("Passenger")) {
                 reports[0][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[0][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[0][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[0][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("Item")) {
                 reports[1][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[1][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[1][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[1][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("PassengerItem")) {
                 reports[2][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[2][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[2][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[2][3]++;
                 }
             }
         }
@@ -254,24 +266,35 @@ public class DeliveryServiceImpl implements DeliveryService {
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfYear();
         int week = LocalDate.now().get(woy);
         List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
-        int[][][] reports = new int[7][3][2];
-        String[] dates = new String[7];
+        int[][][] reports = new int[7][3][4];
         for (Delivery delivery : deliveriesReportWeekly) {
             int day = delivery.getDeliveryDateTime().getDayOfWeek().getValue();
             if (delivery.getDeliveryType().equals("Passenger")) {
                 reports[day - 1][0][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[day - 1][0][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day - 1][0][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day - 1][0][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("Item")) {
                 reports[day - 1][1][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[day - 1][1][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day - 1][1][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day - 1][1][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("PassengerItem")) {
                 reports[day - 1][2][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[day - 1][2][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day - 1][2][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day - 1][2][3]++;
                 }
             }
         }

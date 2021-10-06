@@ -18,13 +18,13 @@ export class DailyReportComponent implements OnInit {
   deliveryItemDetails = [];
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   dailyDeliveries = [
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]],
-    [[0, 0], [0, 0], [0, 0]]
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
   ]
 
   constructor(private transportManagerService: TransportManagerService) {
@@ -36,24 +36,27 @@ export class DailyReportComponent implements OnInit {
     this.transportManagerService.getDeliveriesReportDaily(this.reportWeek).subscribe((report) => {
       console.log(this.dailyDeliveries)
       this.dailyDeliveries = report.dailyDeliveries;
-      this.refillChart(this.chartOptionsP,0)
-      this.refillChart(this.chartOptionsI,1)
-      this.refillChart(this.chartOptionsPI,2)
+      this.refillChart(this.chartOptionsP, 0)
+      this.refillChart(this.chartOptionsI, 1)
+      this.refillChart(this.chartOptionsPI, 2)
       console.log(this.dailyDeliveries)
     })
     // this.fillChart();
   }
 
-  refillChart(chartOptions,i) {
+  refillChart(chartOptions, i) {
     chartOptions.series = [
       {
-        data: [this.dailyDeliveries[0][i][0], this.dailyDeliveries[1][i][0], this.dailyDeliveries[2][i][0], this.dailyDeliveries[3][i][0], this.dailyDeliveries[4][i][0], this.dailyDeliveries[5][i][0], , this.dailyDeliveries[6][i][0]]
+        data: [this.dailyDeliveries[0][i][0], this.dailyDeliveries[1][i][0], this.dailyDeliveries[2][i][0], this.dailyDeliveries[3][i][0], this.dailyDeliveries[4][i][0], this.dailyDeliveries[5][i][0], this.dailyDeliveries[6][i][0]]
       },
       {
-        data: [this.dailyDeliveries[0][i][1], this.dailyDeliveries[1][i][1], this.dailyDeliveries[2][i][1], this.dailyDeliveries[3][i][1], this.dailyDeliveries[4][i][1], this.dailyDeliveries[5][i][1], , this.dailyDeliveries[6][i][1]]
+        data: [this.dailyDeliveries[0][i][1], this.dailyDeliveries[1][i][1], this.dailyDeliveries[2][i][1], this.dailyDeliveries[3][i][1], this.dailyDeliveries[4][i][1], this.dailyDeliveries[5][i][1], this.dailyDeliveries[6][i][1]]
       },
       {
-        data: [this.dailyDeliveries[0][i][1], this.dailyDeliveries[1][i][1], this.dailyDeliveries[2][i][1], this.dailyDeliveries[3][i][1], this.dailyDeliveries[4][i][1], this.dailyDeliveries[5][i][1], , this.dailyDeliveries[6][i][1]]
+        data: [this.dailyDeliveries[0][i][2], this.dailyDeliveries[1][i][2], this.dailyDeliveries[2][i][2], this.dailyDeliveries[3][i][2], this.dailyDeliveries[4][i][2], this.dailyDeliveries[5][i][2], this.dailyDeliveries[6][i][2]]
+      },
+      {
+        data: [this.dailyDeliveries[0][i][3], this.dailyDeliveries[1][i][3], this.dailyDeliveries[2][i][3], this.dailyDeliveries[3][i][3], this.dailyDeliveries[4][i][3], this.dailyDeliveries[5][i][3], this.dailyDeliveries[6][i][3]]
       }
     ]
   }
@@ -82,6 +85,11 @@ export class DailyReportComponent implements OnInit {
           name: "Cancelled",
           data: [0, 0, 0, 0, 0, 0, 0],
           color: '#ff0a03'
+        },
+        {
+          name: "Pending",
+          data: [0, 0, 0, 0, 0, 0, 0],
+          color: '#d29302'
         }
       ],
       chart: {
