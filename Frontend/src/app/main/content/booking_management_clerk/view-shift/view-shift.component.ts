@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
 import {BookingManagerService} from "../../../../_service/booking-manager.service";
 import {NgForm} from "@angular/forms";
@@ -57,12 +56,6 @@ export class ViewShiftComponent implements OnInit {
     })
   }
 
-  // getShift() {
-  //   this.bookingManagerService.getShift(this.shiftId).subscribe((shifts) => {
-  //     this.shifts = shifts;
-  //     console.log(this.shifts)
-  //   })
-  // }
 
   getAllShiftsByDriver() {
     this.bookingManagerService.getAllShiftsByDriver(this.driverId).subscribe((shifts) => {
