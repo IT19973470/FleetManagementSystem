@@ -113,6 +113,7 @@ import {DailyReportComponent} from './main/content/transport-manager/delivery-re
 import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
 import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
 import {TransportReportComponent} from './main/content/general-manager/transport-report/transport-report.component';
+import { UserAccountsReportComponent } from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -286,7 +287,8 @@ const customNotifierOptions: NotifierOptions = {
     DailyReportComponent,
     DetailReportComponent,
     ShiftReportComponent,
-    TransportReportComponent
+    TransportReportComponent,
+    UserAccountsReportComponent
   ],
 
   imports: [

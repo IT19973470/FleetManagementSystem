@@ -163,6 +163,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
+            applicationDTO.setToken(new TokenDTO(application.getBookingApplication().getBooking().getToken()));
+
             applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
         }
@@ -219,6 +221,11 @@ public class UserAccountServiceImpl implements UserAccountService {
             applicationDTOS.add(new ApplicationDTO(application));
         }
         return applicationDTOS;
+    }
+
+    @Override
+    public Object getTransportReportWeekly(int weeks) {
+        return null;
     }
 
     @Override

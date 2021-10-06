@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GeneralManagerService} from "../../../../_service/general-manager.service";
 import {Router} from "@angular/router";
 import html2canvas from "html2canvas";
@@ -81,9 +81,7 @@ export class TransportReportComponent implements OnInit {
   }
 
 
-
-
-  sendToPdf(){
+  sendToPdf() {
     let data = document.getElementById("pdf");
     // let data = document.getElementById("maindiv");
     // console.log(data);
@@ -92,8 +90,29 @@ export class TransportReportComponent implements OnInit {
       console.log(contentDataURL);
       let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
       // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 45.7, 21.0);
+      pdf.addImage(contentDataURL, 'PNG', 2, 5, 40, 15);
       pdf.save('Filename.pdf');
     });
   }
+
+
+  // getTimeDiff() {
+  //   let date1 = new Time("06/30/2019");
+  //   let date2 = new Date("07/30/2019");
+  //   let time = date2.getTime() - date1.getTime();
+  //   return time;
+  // }
+
+
+  getDataDiff(startDate, endDate) {
+    let diff = new Date(endDate).getTime() - new Date(startDate).getTime();
+    // console.log(diff)
+    let days = Math.floor(diff / (60 * 60 * 24 * 1000));
+    let hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+    let minutes = Math.floor(diff / (60 * 1000)) - ((days * 24 * 60) + (hours * 60));
+    // var seconds = Math.floor(diff / 1000) - ((days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60));
+    return hours + 'h ' + minutes + 'm';
+  }
+
+
 }

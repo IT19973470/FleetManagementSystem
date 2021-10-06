@@ -46,15 +46,6 @@
   </div>
 
   <div
-    routerLink="/main/notifications"
-    (click)="setTopic('Notifications')"
-    #notifications="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'color':notifications.isActive?'#c0050e':''}">
-    Notifications
-  </div>
-
-  <div
     routerLink="/main/transport_report"
     (click)="setTopic('Transport Report')"
     #transportReport="routerLinkActive"
@@ -63,8 +54,27 @@
     Transport Report
   </div>
 
+  <div
+    routerLink="/main/user_accounts_report"
+    (click)="setTopic('User Accounts Report')"
+    #userAccountsReport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':userAccountsReport.isActive?'#c0050e':''}">
+    User Accounts Report
+  </div>
+
 
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
+
+
+  <!--  <div-->
+  <!--    routerLink="/main/notifications"-->
+  <!--    (click)="setTopic('Notifications')"-->
+  <!--    #notifications="routerLinkActive"-->
+  <!--    routerLinkActive-->
+  <!--    [ngStyle]="{'color':notifications.isActive?'#c0050e':''}">-->
+  <!--    Notifications-->
+  <!--  </div>-->
 </div>
 
