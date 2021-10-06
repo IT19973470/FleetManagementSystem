@@ -3,6 +3,7 @@ package lk.fleet.service.impl;
 
 import lk.fleet.dto.*;
 import lk.fleet.entity.Booking;
+import lk.fleet.entity.Delivery;
 import lk.fleet.entity.DriverVehicle;
 import lk.fleet.entity.Token;
 import lk.fleet.repository.TokenRepository;
@@ -78,8 +79,43 @@ public class TokenServiceImpl implements TokenService {
     public List<TokenDTO> getTokenByID(String tokenID) {
         Token TokenByID = tokenRepository.getTokenByID(tokenID);
         List<TokenDTO> tokenDTOS = new ArrayList<>();
-        tokenDTOS.add(new TokenDTO(TokenByID, new MeterDetailDTO(TokenByID.getMeterDetail())));
+        TokenDTO tokenDTO = new TokenDTO(TokenByID);
+        DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
+        tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
+        tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+        tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
+        tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
+        tokenDTOS.add(tokenDTO);
         return tokenDTOS;
     }
+
+    @Override
+    public List<TokenDTO> getTokenByDestination(String destination) {
+        Token TokenByID = tokenRepository.getTokenByDestination(destination);
+        List<TokenDTO> tokenDTOS = new ArrayList<>();
+        TokenDTO tokenDTO = new TokenDTO(TokenByID);
+        DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
+        tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
+        tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+        tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
+        tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
+        tokenDTOS.add(tokenDTO);
+        return tokenDTOS;
+    }
+
+    @Override
+    public List<TokenDTO> getTokenByDriverID(String driverID) {
+        Token TokenByID = tokenRepository.getTokenByDriverID(driverID);
+        List<TokenDTO> tokenDTOS = new ArrayList<>();
+        TokenDTO tokenDTO = new TokenDTO(TokenByID);
+        DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
+        tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver()));
+        tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+        tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
+        tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
+        tokenDTOS.add(tokenDTO);
+        return tokenDTOS;
+    }
+
 
 }
