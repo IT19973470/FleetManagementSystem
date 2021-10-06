@@ -25,6 +25,7 @@ public class ApplicationDTO {
     private PassengerApplicationDTO passengerApplication;
     private ItemApplicationDTO itemApplication;
 
+
     public ApplicationDTO(Application application) {
         if (application != null) {
             this.applicationID = application.getApplicationID();

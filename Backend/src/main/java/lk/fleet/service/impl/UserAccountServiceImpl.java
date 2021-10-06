@@ -163,7 +163,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         for (Application application : applications) {
             ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setToken(new TokenDTO(application.getBookingApplication().getBooking().getToken()));
+          // applicationDTO.setToken(new TokenDTO(application.getBookingApplication().getBooking().getToken()));
 
             applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
             applicationDTOS.add(applicationDTO);
@@ -171,6 +171,31 @@ public class UserAccountServiceImpl implements UserAccountService {
 
         return applicationDTOS;
     }
+
+    @Override
+    public List<ApplicationDTO> getTransportApplicationforReport() {
+
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        List<Application> applications = applicationRepository.findAll();
+        for (Application application : applications) {
+            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+
+            if(application.getBookingApplication()!= null){
+                TokenDTO tokenDTO=new TokenDTO(application.getBookingApplication().getBooking().getToken());
+                applicationDTO.setToken(tokenDTO);
+            }
+
+
+//            if(application.getBookingApplication() != null) {
+//                applicationDTO.setToken(new TokenDTO(application.getBookingApplication().getBooking().getToken()));
+//            }
+            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
+            applicationDTOS.add(applicationDTO);
+        }
+
+        return applicationDTOS;
+    }
+
 
     @Override
     public List<PassengerPassengerApplicationDTO> getTransportRequests() {
