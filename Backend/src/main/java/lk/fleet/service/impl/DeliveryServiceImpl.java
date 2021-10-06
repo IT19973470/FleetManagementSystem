@@ -183,8 +183,16 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     private List<DeliveryDTO> setDeliveryDTOs(List<Delivery> deliveries, String deliveryType) {
         List<DeliveryDTO> deliveryDTOS = new ArrayList<>();
+        //0 - Completed, 1 - Cancelled, 2 - Pending
         for (Delivery delivery : deliveries) {
             DeliveryDTO deliveryDTO = new DeliveryDTO(delivery);
+            if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
+                deliveryDTO.setStatus(0);
+            } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                deliveryDTO.setStatus(1);
+            } else if (delivery.getSecurityOfficer() == null) {
+                deliveryDTO.setStatus(2);
+            }
             if (deliveryType.equals("Item")) {
                 List<DeliveryItemDetailDTO> deliveryItemDetailDTOS = new ArrayList<>();
                 for (DeliveryItemDetail deliveryItemDetail : delivery.getDeliveryItemDetails()) {
@@ -221,25 +229,37 @@ public class DeliveryServiceImpl implements DeliveryService {
     public DeliveryReportDTO getDeliveriesReportWeekly(int weeks) {
         DeliveryReportDTO deliveryReportDTO = new DeliveryReportDTO();
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfYear();
-        int week = LocalDate.now().get(woy);
+        int week = LocalDate.now().get(woy) - 1;
         week = week - weeks;
         List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
-        int[][] reports = new int[3][2];
+        int[][] reports = new int[3][4];
         for (Delivery delivery : deliveriesReportWeekly) {
             if (delivery.getDeliveryType().equals("Passenger")) {
                 reports[0][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[0][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[0][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[0][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("Item")) {
                 reports[1][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[1][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[1][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[1][3]++;
                 }
             } else if (delivery.getDeliveryType().equals("PassengerItem")) {
                 reports[2][0]++;
-                if (delivery.isDeliveryStatus()) {
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
                     reports[2][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[2][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[2][3]++;
                 }
             }
         }
@@ -252,12 +272,45 @@ public class DeliveryServiceImpl implements DeliveryService {
     public DeliveryReportDTO getDeliveriesReportDaily(int weeks) {
         DeliveryReportDTO deliveryReportDTO = new DeliveryReportDTO();
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfYear();
-        int week = LocalDate.now().get(woy);
+        int week = LocalDate.now().get(woy) - 1;
         week = week - weeks;
         List<Delivery> deliveriesReportWeekly = deliveryRepository.getDeliveriesReportWeekly(week);
+        int[][][] reports = new int[7][3][4];
         for (Delivery delivery : deliveriesReportWeekly) {
-
+            int day = delivery.getDeliveryDateTime().getDayOfWeek().getValue();
+            if (day == 7) {
+                day = 0;
+            }
+            if (delivery.getDeliveryType().equals("Passenger")) {
+                reports[day][0][0]++;
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
+                    reports[day][0][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day][0][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day][0][3]++;
+                }
+            } else if (delivery.getDeliveryType().equals("Item")) {
+                reports[day][1][0]++;
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
+                    reports[day][1][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day][1][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day][1][3]++;
+                }
+            } else if (delivery.getDeliveryType().equals("PassengerItem")) {
+                reports[day][2][0]++;
+                if (delivery.getSecurityOfficer() != null && delivery.isDeliveryStatus()) {
+                    reports[day][2][1]++;
+                } else if (delivery.getSecurityOfficer() != null && !delivery.isDeliveryStatus()) {
+                    reports[day][2][2]++;
+                } else if (delivery.getSecurityOfficer() == null) {
+                    reports[day][2][3]++;
+                }
+            }
         }
+        deliveryReportDTO.setDailyDeliveries(reports);
         return deliveryReportDTO;
     }
 }

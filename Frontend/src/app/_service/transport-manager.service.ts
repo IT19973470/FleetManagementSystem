@@ -12,8 +12,10 @@ export class TransportManagerService {
   deliveryItem;
   deliveryPassenger;
   deliveryPassengerItem;
-  reportYear;
-  reportMonth
+  reportWeek;
+  reportDates = '';
+  startDate;
+  reportDate;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }
@@ -89,6 +91,10 @@ export class TransportManagerService {
 
   getDeliveriesReportWeekly(weeks): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/delivery/getDeliveriesReportWeekly/" + weeks);
+  }
+
+  getDeliveriesReportDaily(weeks): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/delivery/getDeliveriesReportDaily/" + weeks);
   }
 
   // getAllPassengerDeliveries(): Observable<any> {

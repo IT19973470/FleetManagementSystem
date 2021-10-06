@@ -78,9 +78,13 @@ import {UpdateProgramBookingComponent} from './main/content/booking_management_c
 import {ViewProgramBookingComponent} from './main/content/booking_management_clerk/view-program-booking/view-program-booking.component';
 import {ItemPassengerComponent} from './main/content/applicant/item-passenger/item-passenger.component';
 import {UpdateItemPassengerComponent} from './main/content/applicant/available-transports/update-item-passenger/update-item-passenger.component';
-import {ShiftReportComponent} from './main/content/Driver/shift-report/shift-report.component';
+import {ShiftReportComponent} from './main/content/driver/shift-report/shift-report.component';
 import {WeeklyReportComponent} from './main/content/transport-manager/delivery-report/weekly-report/weekly-report.component';
 import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
+
+import {DetailReportComponent} from "./main/content/transport-manager/delivery-report/detail-report/detail-report.component";
+import {TransportReportComponent} from "./main/content/general-manager/transport-report/transport-report.component";
+import {UserAccountsReportComponent} from "./main/content/general-manager/user-accounts-report/user-accounts-report.component";
 
 
 import {BookingReportComponent} from "./main/content/booking_management_clerk/booking-report/booking-report.component";
