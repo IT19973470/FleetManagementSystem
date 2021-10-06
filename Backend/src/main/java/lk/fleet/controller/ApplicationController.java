@@ -147,6 +147,7 @@ public class ApplicationController {
         return applicationPassengerService.getAllItem();
     }
 
+    //Tr
     @GetMapping(value = "/getApprovedApplications/{type}")
     public ResponseEntity getApprovedApplications(@PathVariable String type) {
         return ResponseEntity.ok(applicationService.getApprovedApplications(type));
@@ -156,6 +157,12 @@ public class ApplicationController {
     public ResponseEntity getApprovedApplicationsByDestination(@PathVariable String destination, @PathVariable String type) {
         return ResponseEntity.ok(applicationService.getApprovedApplicationsByDestination(destination, type));
     }
+
+    @GetMapping(value = "/getApprovedApplicationsByPassenger/{passengerId}")
+    public ResponseEntity getApprovedApplicationsByPassenger(@PathVariable String passengerId) {
+        return ResponseEntity.ok(applicationService.getApprovedApplicationsByPassenger(passengerId));
+    }
+
     @GetMapping(value = "/getWaitingReport")
     public List<ApplicationDTO> getWaitingReport() {
         return applicationPassengerService.getWaitingReport();

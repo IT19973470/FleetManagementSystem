@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShiftReportComponent } from './shift-report.component';
+import { OtReportComponent } from './ot-report.component';
 
-describe('ShiftReportComponent', () => {
-  let component: ShiftReportComponent;
-  let fixture: ComponentFixture<ShiftReportComponent>;
+describe('OtReportComponent', () => {
+  let component: OtReportComponent;
+  let fixture: ComponentFixture<OtReportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShiftReportComponent ]
+      declarations: [ OtReportComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShiftReportComponent);
+    fixture = TestBed.createComponent(OtReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

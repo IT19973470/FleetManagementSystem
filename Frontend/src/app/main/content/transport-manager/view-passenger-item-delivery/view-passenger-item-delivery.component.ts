@@ -34,8 +34,12 @@ export class ViewPassengerItemDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.deliveryDate = this.transportManagerService.getCurDate();
-    this.getAllPassengerItemDeliveries();
+    if (this.transportManagerService.reportDate === undefined) {
+      this.deliveryDate = this.transportManagerService.getCurDate();
+    } else {
+      this.deliveryDate = this.transportManagerService.reportDate;
+    }
+    this.getAllDeliveriesByDate();
   }
 
   isTrueOrFalse(reply) {
@@ -43,14 +47,14 @@ export class ViewPassengerItemDeliveryComponent implements OnInit {
   }
 
   getAllDeliveriesByDate() {
-    this.transportManagerService.getAllDeliveriesByDate('Item', this.deliveryDate).subscribe((deliveryPassengerItemDetails) => {
+    this.transportManagerService.getAllDeliveriesByDate('PassengerItem', this.deliveryDate).subscribe((deliveryPassengerItemDetails) => {
       this.deliveryPassengerItemDetails = deliveryPassengerItemDetails;
       // console.log(this.deliveryItemDetails)
     })
   }
 
   getAllDeliveriesByCompany() {
-    this.transportManagerService.getAllDeliveriesByCompany('Item', this.companyName).subscribe((deliveryPassengerItemDetails) => {
+    this.transportManagerService.getAllDeliveriesByCompany('PassengerItem', this.companyName).subscribe((deliveryPassengerItemDetails) => {
       this.deliveryPassengerItemDetails = deliveryPassengerItemDetails;
       // console.log(this.deliveryItemDetails)
     })

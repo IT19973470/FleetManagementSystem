@@ -21,6 +21,8 @@ public class ApplicationServiceimpl implements ApplicationService {
 
     @Autowired
     private ApplicationRepository applicationRepository;
+    @Autowired
+    private PassengerPassengerApplicationRepository passengerPassengerApplicationRepository;
 
     @Override
     public ApplicationDTO updateApplication(String aplicationID, Application application) {
@@ -56,6 +58,17 @@ public class ApplicationServiceimpl implements ApplicationService {
     public List<ApplicationDTO> getApprovedApplicationsByDestination(String destination, String type) {
         List<Application> applicationList = applicationRepository.getApplicationsByApprovalAndDestinationAndTypeOrderByDepatureDateDesc(true, destination, type);
         return setApprovedApplications(applicationList, type);
+    }
+
+    @Override
+    public List<ApplicationDTO> getApprovedApplicationsByPassenger(String passengerId) {
+        List<PassengerPassengerApplication> allByPassengerPassengerId = passengerPassengerApplicationRepository.getAllByPassengerPassengerId(passengerId);
+        List<ApplicationDTO> applicationDTOS = new ArrayList<>();
+        for (PassengerPassengerApplication passengerPassengerApplication : allByPassengerPassengerId) {
+            applicationDTOS.add(new ApplicationDTO(passengerPassengerApplication.getPassengerApplication().getApplication()));
+        }
+
+        return applicationDTOS;
     }
 
     private List<ApplicationDTO> setApprovedApplications(List<Application> applicationList, String type) {
