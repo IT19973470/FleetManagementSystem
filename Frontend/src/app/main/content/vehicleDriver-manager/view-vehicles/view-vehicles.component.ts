@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-manager.service";
-
+import jspdf from 'jspdf'
+import html2canvas from "html2canvas";
+// import * as module from "module";
+import {image} from "html2canvas/dist/types/css/types/image";
 @Component({
   selector: 'app-view-vehicles',
   templateUrl: './view-vehicles.component.html',
@@ -30,6 +33,7 @@ export class ViewVehiclesComponent implements OnInit {
   };
 
   vehicleNumber;
+  private table: string;
 
   constructor(private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router) {
   }
@@ -66,4 +70,22 @@ export class ViewVehiclesComponent implements OnInit {
     })
   }
 
+  download() {
+    var element=document.getElementById('table')
+
+    html2canvas(element).then((canvas)=>{
+
+      var imageData=canvas.toDataURL('image/png')
+      // var doc: module
+      var doc = new jspdf();
+
+      var imgHeight=canvas.height*208/canvas.width
+
+      doc.addImage(imageData,0,0,208,imgHeight)
+      doc.save("image.pdf")
+
+
+    })
+
+  }
 }
