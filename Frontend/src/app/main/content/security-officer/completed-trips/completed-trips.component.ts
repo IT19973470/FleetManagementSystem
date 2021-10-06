@@ -49,6 +49,7 @@ export class CompletedTripsComponent implements OnInit {
 
   bookingDestination;
   tokenIdSearch;
+  driverID;
 
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
@@ -80,9 +81,15 @@ export class CompletedTripsComponent implements OnInit {
     })
   }
 
-  getBookingByDestination() {
-    this.securityOfficerService.getBookingByDestination(this.bookingDestination).subscribe((bookings) => {
-      this.bookings = bookings;
+  getTokenByDestination() {
+    this.securityOfficerService.getTokenByDestination(this.bookingDestination).subscribe((tokens) => {
+      this.tokens = tokens;
+    })
+  }
+
+  getTokenByDriverID() {
+    this.securityOfficerService.getTokenByDriverID(this.driverID).subscribe((tokens) => {
+      this.tokens = tokens;
     })
   }
 

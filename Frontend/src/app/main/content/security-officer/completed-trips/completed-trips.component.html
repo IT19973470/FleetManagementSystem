@@ -19,13 +19,13 @@
 
     <span style="font-weight: bold;margin-left: 10px">Search by Destination : </span>
     <input type="search" placeholder="Enter Destination.." style="margin-left: 15px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByDestination()">
       Search
     </button>
 
     <span style="font-weight: bold;margin-left: 40px">Search by Driver : </span>
-    <input type="search" placeholder="Enter Driver Name.." style="margin-left: 10px;width: 200px;height: 37px" [(ngModel)]="bookingDestination">
-    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getBookingByDestination()">
+    <input type="search" placeholder="Enter Driver ID.." style="margin-left: 10px;width: 200px;height: 37px" [(ngModel)]="driverID">
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="getTokenByDriverID()">
       Search
     </button> <br><br><br>
 
@@ -48,7 +48,7 @@
         <tr *ngFor="let tokenDetail of tokens; let i = index">
           <th scope="row">{{i+1}}</th>
           <td>{{tokenDetail.tokenID}}</td>
-          <td>{{tokenDetail.driver.userAccount.nameWithInitials}}</td>
+          <td>{{tokenDetail.driver.driverID}}</td>
           <td>{{tokenDetail.vehicle.vehicleId}}</td>
           <td>{{tokenDetail.booking.destination}}</td>
           <td>{{tokenDetail.departureDate}}</td>
@@ -144,9 +144,9 @@
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
         </div><br>
-        <button style="margin-left: 50px" type="button" class="btn btn-danger"
-                (click)="downloadPdf()">Report</button>
       </div>
+      <button style="margin-left: 50px" type="button" class="btn btn-danger"
+              (click)="downloadPdf()">Report</button>
     </div>
   </div>
 </div>

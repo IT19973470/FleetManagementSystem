@@ -94,4 +94,9 @@ export class TransportManagerService {
   // getAllPassengerDeliveries(): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
   // }
+
+  //SecurityOfficer
+  updateDeliveryStatus(deliveryDetail): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/delivery/updateDeliveryStatus/" + deliveryDetail.deliveryId, deliveryDetail);
+  }
 }

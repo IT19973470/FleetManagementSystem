@@ -54,17 +54,17 @@ export class UpdateDeliveryStatusComponent implements OnInit {
 
   onSubmit() {
     this.alertBox.alert = true;
-    this.alertBox.msg = 'Do you want to update this delivery?';
+    this.alertBox.msg = 'Do you want to update delivery status?';
     this.alertService.reply.observers = [];
     this.alertService.reply.subscribe(reply => {
       if (reply) {
-        this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-        this.transportManagerService.updateDelivery(this.deliveryDetail).subscribe((deliveryDetail) => {
+        //this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
+        this.transportManagerService.updateDeliveryStatus(this.deliveryDetail).subscribe((deliveryDetail) => {
           let deliveryItemDetails = this.deliveryDetail.deliveryItemDetails
           this.deliveryDetail = deliveryDetail;
           this.deliveryDetail.deliveryItemDetails = deliveryItemDetails;
           this.notifierService.notify("success", "Delivery updated successfully");
-          // this.router.navigate(['/main/view_item_delivery'])
+          this.router.navigate(['/main//view_delivery_status'])
         }, (err) => {
           this.notifierService.notify("error", "Delivery failed");
         })
