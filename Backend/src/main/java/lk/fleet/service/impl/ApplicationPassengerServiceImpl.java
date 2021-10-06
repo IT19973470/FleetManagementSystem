@@ -241,9 +241,15 @@ public class ApplicationPassengerServiceImpl implements ApplicationPassengerServ
                 itemApplicationDTO.setItemItemApplicationDTOS(itemItemApplicationDTOS);
             }
 
+            if(application.getBookingApplication()!= null){
+                TokenDTO tokenDTO=new TokenDTO(application.getBookingApplication().getBooking().getToken());
+                applicationDTO.setTokenDTO(tokenDTO);
+            }
             applicationDTO.setPassengerApplication(passengerApplicationDTO);
             applicationDTO.setItemApplication(itemApplicationDTO);
             applicationDTOS.add(applicationDTO);
+
+
         }
 
         return applicationDTOS;
