@@ -115,7 +115,7 @@ import {ShiftReportComponent} from './main/content/driver/shift-report/shift-rep
 import {TransportReportComponent} from './main/content/general-manager/transport-report/transport-report.component';
 import {UserAccountsReportComponent} from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 import {BookingReportComponent} from './main/content/booking_management_clerk/booking-report/booking-report.component';
-import {OtReportComponent} from './main/content/Driver/ot-report/ot-report.component';
+import {OtReportComponent} from './main/content/driver/ot-report/ot-report.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
