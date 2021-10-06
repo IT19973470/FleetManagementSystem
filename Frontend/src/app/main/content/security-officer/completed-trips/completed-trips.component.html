@@ -66,15 +66,15 @@
 <div [style.visibility]="isModalTable.openTable?'visible':'hidden'" class="modalTable">
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
-    <div style="height: 550px; width: 600px">
+    <div style="height: 850px; width: 700px">
       <div style="">
         <i (click)="isTrueOrFalse(false)" class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
-
-      <div class="" id="SummaryReport">
+        
+      <div class="" id="SummaryReport" style="border: groove; color: #323130">
 
         <table width="100%">
-
+          <br>
           <tr>
             <td>
               <div style="font-size: medium; margin-left: 50px">
@@ -90,10 +90,10 @@
             </td>
           </tr>
         </table>
-        <br><br>
+        <br>
 
-        <div style="text-align: center">
-          <h5><u>Token Details</u></h5>
+        <div style="text-align: center; color: blue">
+          <b><h5><u>Token Details</u></h5></b>
         </div>
         <br>
 
@@ -123,8 +123,8 @@
         </div>
         <br><br>
 
-        <div style="text-align: center">
-          <h5><u>Meter Details for Token {{tokenDetail.tokenID}}</u></h5>
+        <div style="text-align: center; color: darkgreen">
+         <b><h5><u>Meter Details for Token {{tokenDetail.tokenID}}</u></h5></b>
         </div>
         <br>
 
@@ -143,10 +143,11 @@
         <div style="font-size: medium; margin-left: 50px">
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
-        </div><br>
-      </div>
-      <button style="margin-left: 50px" type="button" class="btn btn-danger"
-              (click)="downloadPdf()">Report</button>
+        </div><br><br>
+
+      </div> <br><br>
+      <button style="margin-left: 100px" type="button" class="btn btn-danger"
+              (click)="downloadPdf()">Download PDF</button>
     </div>
   </div>
 </div>
