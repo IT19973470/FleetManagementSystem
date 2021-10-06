@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {TransportManagerService} from "../../../../../_service/transport-manager.service";
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-weekly-report',
@@ -13,20 +14,24 @@ export class WeeklyReportComponent implements OnInit {
 
   chartOptionsP;
   weekValue = 1;
+  datesRange = ''
 
   deliveryItemDetails = [];
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  weeklyDeliveries = [[0, 0], [0, 0], [0, 0]]
+  weeklyDeliveries = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
-  constructor(private router: Router, private transportManagerService: TransportManagerService,) {
+  constructor(private router: Router, private transportManagerService: TransportManagerService, private datePipe: DatePipe) {
     this.fillChart();
   }
 
   ngOnInit(): void {
     this.fillChart();
+    this.getDatesRange()
   }
 
   getDeliveriesReportWeekly(weeks) {
+    this.weekValue = weeks;
+    this.getDatesRange();
     // this.transportManagerService.reportYear = year.value;
     // this.transportManagerService.reportMonth = month.value;
     this.transportManagerService.getDeliveriesReportWeekly(weeks).subscribe((report) => {
@@ -37,7 +42,8 @@ export class WeeklyReportComponent implements OnInit {
     })
   }
 
-  goToDailyReport(week) {
+  goToDailyReport() {
+    this.transportManagerService.reportWeek = this.weekValue;
     this.router.navigate(['/main/delivery_report/daily_report'])
   }
 
@@ -50,7 +56,10 @@ export class WeeklyReportComponent implements OnInit {
         data: [this.weeklyDeliveries[0][1], this.weeklyDeliveries[1][1], this.weeklyDeliveries[2][1]]
       },
       {
-        data: [this.weeklyDeliveries[0][0] - this.weeklyDeliveries[0][1], this.weeklyDeliveries[1][0] - this.weeklyDeliveries[1][1], this.weeklyDeliveries[2][0] - this.weeklyDeliveries[2][1]]
+        data: [this.weeklyDeliveries[0][2], this.weeklyDeliveries[1][2], this.weeklyDeliveries[2][2]]
+      },
+      {
+        data: [this.weeklyDeliveries[0][3], this.weeklyDeliveries[1][3], this.weeklyDeliveries[2][3]]
       }
     ]
   }
@@ -64,18 +73,23 @@ export class WeeklyReportComponent implements OnInit {
       series: [
         {
           name: "Total",
-          data: [0, 0, 0],
+          data: [0, 0, 0, 0],
           color: '#0c8dc0'
         },
         {
           name: "Completed",
-          data: [0, 0, 0],
+          data: [0, 0, 0, 0],
           color: '#018002'
         },
         {
           name: "Cancelled",
-          data: [0, 0, 0],
+          data: [0, 0, 0, 0],
           color: '#ff0a03'
+        },
+        {
+          name: "Pending",
+          data: [0, 0, 0, 0],
+          color: '#d29302'
         }
       ],
       chart: {
@@ -122,17 +136,38 @@ export class WeeklyReportComponent implements OnInit {
     };
   }
 
-  sendToPdf(){
-    let data = document.getElementById("pdf");
-    // let data = document.getElementById("maindiv");
-    // console.log(data);
+  getDatesRange() {
+    let curr = new Date; // get current date
+    let first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+    let last = first + 6; // last day is the first day + 6
+
+    let firstD = new Date(curr.setDate(first));
+    let lastD = new Date(curr.setDate(last));
+    firstD.setDate(firstD.getDate() - (this.weekValue * 7));
+    lastD.setDate(lastD.getDate() - (this.weekValue * 7));
+
+    let firstday = this.datePipe.transform(firstD, 'yyyy-MM-dd');
+    let lastday = this.datePipe.transform(lastD, 'yyyy-MM-dd');
+
+    this.datesRange = firstday + ' to ' + lastday;
+    this.transportManagerService.reportDates = this.datesRange;
+    this.transportManagerService.startDate = firstday;
+  }
+
+  sendToPdf() {
+    let data = document.getElementById('pdf');  //Id of the table
     html2canvas(data).then(canvas => {
-      const contentDataURL = canvas.toDataURL('image/jpeg', 2.0)
-      console.log(contentDataURL);
-      let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
-      // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 45.7, 21.0);
-      pdf.save('Filename.pdf');
+      // Few necessary setting options
+      let imgWidth = 320;
+      // let pageHeight = 350;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('l', 'mm', 'a4'); // A4 size page of PDF
+      let position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+      pdf.save('MYPdf.pdf'); // Generated PDF
     });
   }
 }

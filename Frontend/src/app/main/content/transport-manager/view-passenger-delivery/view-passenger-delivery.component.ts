@@ -33,8 +33,12 @@ export class ViewPassengerDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.deliveryDate = this.transportManagerService.getCurDate();
-    this.getAllPassengerDeliveries();
+    if (this.transportManagerService.reportDate === undefined) {
+      this.deliveryDate = this.transportManagerService.getCurDate();
+    } else {
+      this.deliveryDate = this.transportManagerService.reportDate;
+    }
+    this.getAllDeliveriesByDate();
   }
 
   setPassenger(deliveryPassenger) {

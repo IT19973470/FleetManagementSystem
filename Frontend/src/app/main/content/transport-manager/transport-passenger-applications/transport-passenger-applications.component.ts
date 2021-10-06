@@ -15,7 +15,9 @@ export class TransportPassengerApplicationsComponent implements OnInit {
     foundItem: ''
   };
 
+  applicationsP;
   applications;
+  passengerDetails = [];
 
   constructor(private transportManagerService: TransportManagerService, private router: Router) {
 
@@ -39,6 +41,13 @@ export class TransportPassengerApplicationsComponent implements OnInit {
   getApprovedApplicationsByDestination(destination) {
     this.transportManagerService.getApprovedApplicationsByDestination(destination, "P").subscribe((applications) => {
       this.applications = applications;
+      // console.log(applications);
+    })
+  }
+
+  getApprovedApplicationsByPassenger(passengerId) {
+    this.transportManagerService.getApprovedApplicationsByPassenger(passengerId).subscribe((applications) => {
+      this.applicationsP = applications;
       // console.log(applications);
     })
   }
