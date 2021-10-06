@@ -61,6 +61,10 @@ export class DriverService {
     return this.http.get<any>(environment.backend_url + '/shift/getDriverShiftsByDriverIdByCurrentDate/' + driverID);
   }
 
+  getMyShifts(driverID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + '/shift/getShiftbyDriverID/' + driverID);
+  }
+
   attencanceMarked(driverID, sAttendance): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/shift/markAttendance/' + driverID + "/" + sAttendance);
   }

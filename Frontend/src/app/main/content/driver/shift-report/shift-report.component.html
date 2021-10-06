@@ -1,6 +1,13 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
+    <div style="margin-top: 20px">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 50px"
+              (click)="sendToPdf()">
+        Download
+      </button>
+    </div>
+<div id="pdf">
     <div style="margin-top: 20px;font-size: 25px">
       Attendance Report
     </div>
@@ -15,7 +22,7 @@
       </tr>
       <tr>
         <td style="padding-right: 100px">Date : </td>
-<!--        <td>{{}}</td>-->
+<!--        <td>{{datapipe | date:'MM-dd'}}</td>-->
       </tr>
       <tr>
         <td style="padding-right: 100px">Driver ID : </td>
@@ -37,13 +44,11 @@
       </tr>
       </thead>
       <tbody>
-      <tbody *ngIf="shift">
-      <td>{{shift.shiftDate}}</td>
-<!--      <tr *ngFor="let shifts of shiftDetails">-->
-<!--        <td>{{shifts.}}</td>-->
-<!--      </tr>-->
+      <tr *ngIf="shift" >
+        <td>{{shift.shiftDate}}</td>
+      </tr>
       </tbody>
     </table>
-
+</div>
   </div>
 </div>
