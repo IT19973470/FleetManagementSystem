@@ -14,6 +14,8 @@ public interface ApplicationService {
     List<ApplicationDTO> getApprovedApplications(String type);
 
     List<ApplicationDTO> getApprovedApplicationsByDestination(String destination, String type);
+
+    List<ApplicationDTO> getApprovedApplicationsByPassenger(String passengerId);
     //List<ApplicationDTO> getdto();
 
 }

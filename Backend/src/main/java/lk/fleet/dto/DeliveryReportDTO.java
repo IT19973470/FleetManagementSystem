@@ -22,4 +22,5 @@ public class DeliveryReportDTO {
     public void setDailyDeliveries(int[][][] dailyDeliveries) {
         this.dailyDeliveries = dailyDeliveries;
     }
+
 }

@@ -181,7 +181,12 @@ public class BookingServiceImpl implements BookingService {
         List<BookingDTO> bookingDTOS = new ArrayList<>();
         List<Booking> bookings = bookingRepository.findAll();
         for (Booking booking : bookings) {
-            bookingDTOS.add(new BookingDTO(booking));
+            BookingDTO bookingDTO = new BookingDTO(booking);
+            bookingDTO.setDriver(new DriverDTO(booking.getShift().getDriverVehicle().getDriver()));
+
+            bookingDTO.setVehicle(new VehicleDTO(booking.getShift().getDriverVehicle().getVehicle()));
+
+            bookingDTOS.add(bookingDTO);
         }
         return bookingDTOS;
     }
@@ -194,13 +199,6 @@ public class BookingServiceImpl implements BookingService {
         bookingDTOS.add(new BookingDTO(bookingByID));
         return bookingDTOS;
     }
-//    @Override
-//    public List<BookingDTO> getBookingsByBookingManagementClerkId(String bookingManagementClerkId) {
-//        Booking bookingsByBookingManagementClerkId = bookingRepository.getBookingsByBookingManagementClerkId(bookingManagementClerkId);
-//        List<BookingDTO> bookingDTOS = new ArrayList<>();
-//        bookingDTOS.add(new BookingDTO(bookingsByBookingManagementClerkId));
-//        return bookingDTOS;
-//    }
 
     //securityOfficer
     @Override
@@ -218,22 +216,6 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<DriverVehicleDTO> getDriverVehicles(String driverId) {
         List<DriverVehicle> driverVehicles = driverVehicleRepository.getDriverVehicleByDriverDriverID(driverId);
-//        List<DriverVehicle> driverVehicles = new ArrayList<>();
-//        DriverVehicle driverVehicle1 = new DriverVehicle();
-//        driverVehicle1.setDriverVehicleID(new DriverVehiclePK("D001", "V001"));
-//        Driver driver = new Driver();
-//        UserAccount userAccount = new UserAccount();
-//        userAccount.setNameWithInitials("A.B.C Silva");
-//        userAccount.setDob(LocalDate.now());
-//        userAccount.setRegisteredDate(LocalDate.now());
-//        driver.setUserAccount(userAccount);
-//        driver.setDriverID("D001");
-//        driverVehicle1.setDriver(driver);
-//        Vehicle vehicle = new Vehicle();
-//        vehicle.setVehicleType("Car");
-//        driverVehicle1.setVehicle(vehicle);
-//        driverVehicles.add(driverVehicle1);
-
         List<DriverVehicleDTO> driverVehicleDTOS = new ArrayList<>();
         for (DriverVehicle driverVehicle : driverVehicles) {
             DriverVehicleDTO driverVehicleDTO = new DriverVehicleDTO(driverVehicle);
@@ -246,7 +228,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<DriverVehicleDTO> getAllDriverVehicles() {
-
         List<DriverVehicleDTO> driverVehicleDTOS = new ArrayList<>();
         List<DriverVehicle> driverVehicles = driverVehicleRepository.findAll();
         for (DriverVehicle driverVehicle : driverVehicles) {

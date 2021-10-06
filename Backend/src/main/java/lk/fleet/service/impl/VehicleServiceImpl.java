@@ -1,20 +1,14 @@
 package lk.fleet.service.impl;
 
-import lk.fleet.dto.BookingDTO;
-import lk.fleet.dto.DeliveryDTO;
-import lk.fleet.dto.ShiftDTO;
-import lk.fleet.dto.VehicleDTO;
-import lk.fleet.entity.Booking;
-import lk.fleet.entity.Delivery;
-import lk.fleet.entity.Shift;
-import lk.fleet.entity.Vehicle;
+import lk.fleet.dto.*;
+import lk.fleet.entity.*;
+import lk.fleet.repository.DriverRepository;
+import lk.fleet.repository.UserAccountRepository;
 import lk.fleet.repository.VehicleRepository;
 import lk.fleet.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +18,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Autowired
     private VehicleRepository vehicleRepository;
+    private DriverRepository driverRepository;
+    private UserAccountRepository userAccountRepository;
 
     @Override
     public VehicleDTO addVehicle(Vehicle vehicle) {
@@ -101,4 +97,51 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return vehicleDTOS;
     }
+    //get drivers
+    @Override
+    public List<UserAccountDTO> getDriverRequest() {
+
+        List<UserAccount> userAccounts = vehicleRepository.getDriverRequest();
+        List<UserAccountDTO> userAccountDTOS = new ArrayList<>();
+
+        for (UserAccount userAccount : userAccounts) {
+            userAccountDTOS.add(new UserAccountDTO(userAccount));
+        }
+
+        return userAccountDTOS;
+
+    }
+//
+    @Override
+    public VehicleDTO approveDriver(String driverID, boolean approval) {
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(driverID);
+        if (optionalVehicle.isPresent()) {
+            Vehicle driverObj = optionalVehicle.get();
+            driverObj.setApproved(approval);
+            return new VehicleDTO(vehicleRepository.save(driverObj));
+        }
+
+        return null;
+    }
+//    @Override
+//    public VehicleDTO approveDriver(String driverID, boolean approval) {
+//        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(driverID);
+//        if (optionalVehicle.isPresent()) {
+//            Vehicle driverObj = optionalVehicle.get();
+//            driverObj.setApproved(approval);
+//            return new VehicleDTO(vehicleRepository.save(driverObj));
+//        }
+//
+//        return null;
+//    }
+//    @Override
+//    public UserAccountDTO approveDriver(String employeeID, boolean approval) {
+//        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(employeeID);
+//        if (optionalUserAccount.isPresent()) {
+//            UserAccount userAccountObj = optionalUserAccount.get();
+//            userAccountObj.setApproved(approval);
+//            return new UserAccountDTO(userAccountRepository.save(userAccountObj));
+//        }
+//        return null;
+//    }
 }

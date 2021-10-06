@@ -16,4 +16,6 @@ public interface OverTimeService {
     List<OverTimeDTO> getOT();
 
     OverTimeDTO getOverTimeByID(String driverId);
+
+    List<OverTimeDTO> getAllLastOverTimesbyDriverID(String driverId);
 }
