@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApplicantService} from "../../../../_service/applicant.service";
 import {Router} from "@angular/router";
+import html2canvas from "html2canvas";
+import {jsPDF} from "jspdf";
 
 @Component({
   selector: 'app-feedback',
@@ -14,7 +16,6 @@ export class FeedbackComponent implements OnInit {
   application;
 
   deliveryItemDetails = [];
-  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   weeklyDeliveries = []
 
   obj= {
@@ -46,7 +47,7 @@ export class FeedbackComponent implements OnInit {
     color: '#018002'
   }
   total3={
-    name:'Cancelled',
+    name:'Not-Completed',
     data: [],
     color: '#ff0a03'
   }
@@ -111,14 +112,14 @@ export class FeedbackComponent implements OnInit {
     console.log(itemcountCom)
     console.log(itempasscountCom)
      this.obj.pd.deliveries=passcount
-    this.obj.pd.completed=passcountCom
-    this.obj.pd.cancelled=passcount-passcountCom
+    this.obj.pd.completed=passcount-passcountCom
+    this.obj.pd.cancelled=passcountCom
     this.obj.id.deliveries=itemReq
-    this.obj.id.completed=itemcountCom
-    this.obj.id.cancelled=itemReq-itemcountCom
+    this.obj.id.completed=itemReq-itemcountCom
+    this.obj.id.cancelled= itemcountCom
     this.obj.pid.deliveries=itemPass
-    this.obj.pid.completed=itempasscountCom
-    this.obj.pid.cancelled=itemPass-itempasscountCom
+    this.obj.pid.completed=itemPass-itempasscountCom
+    this.obj.pid.cancelled= itempasscountCom
 
 
 
@@ -135,6 +136,23 @@ export class FeedbackComponent implements OnInit {
   ngOnInit(): void {
     this.fillChart();
     this.getAllApplication();
+  }
+
+  sendToPdf() {
+    let data = document.getElementById('pdf');  //Id of the table
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options
+      let imgWidth = 320;
+      // let pageHeight = 350;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('l', 'mm', 'a4'); // A4 size page of PDF
+      let position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+      pdf.save('MYPdf.pdf'); // Generated PDF
+    });
   }
 
   fillChart() {
