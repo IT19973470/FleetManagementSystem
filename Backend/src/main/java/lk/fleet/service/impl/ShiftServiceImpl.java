@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,5 +84,23 @@ public class ShiftServiceImpl implements ShiftService {
             return new ShiftDTO(shiftRepository.save(shift));
         }
         return null;
+    }
+
+    @Override
+    public List<ShiftDTO> getAllShiftsbyDriverID(String driverId) {
+        List<Shift> shifts = shiftRepository.getAllShiftsbyDriverID(driverId);
+        List<ShiftDTO> shiftDTOs = new ArrayList<>();
+
+        int count = 0;
+        if (shifts.size() < 31) {
+            count = shifts.size();
+        } else {
+            count = 31;
+        }
+
+        for (int i = 0; i < count; i++) {
+            shiftDTOs.add(new ShiftDTO(shifts.get(i)));
+        }
+        return shiftDTOs;
     }
 }

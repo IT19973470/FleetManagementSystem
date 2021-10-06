@@ -41,6 +41,7 @@
       <table class="table table-striped" style="margin-top: 20px">
         <thead>
         <tr>
+          <th scope="col" width="10%">#</th>
           <th scope="col" width="15%">Date</th>
           <th scope="col" width="20%">Start Time</th>
           <th scope="col" width="20%">End Time</th>
@@ -49,6 +50,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let ots of otDetails; let i = index">
+          <th scope="row">{{i+1}}</th>
           <td>{{ots.otDate}}</td>
           <td>{{ots.startTime}}</td>
           <td>{{ots.endTime}}</td>
