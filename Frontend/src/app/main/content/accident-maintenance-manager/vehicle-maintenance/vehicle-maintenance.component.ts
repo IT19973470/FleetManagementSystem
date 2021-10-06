@@ -70,18 +70,6 @@ export class VehicleMaintenanceComponent implements OnInit {
     })
   }
 
-  chkVehicle() {
-    if (this.maintenanceDetail.vehicle.vehicleId !== '') {
-      this.vehicleMaintenanceService.chkVehicle(this.maintenanceDetail.vehicle.vehicleId).subscribe((vehicle) => {
-        if (vehicle) {
-          this.vehicleIsPresent = 1;
-        } else {
-          this.vehicleIsPresent = 2;
-        }
-      })
-    }
-  }
-
   getMinDate() {
     return this.commonService.getCurDate();
   }

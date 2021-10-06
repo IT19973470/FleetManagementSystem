@@ -23,7 +23,8 @@
         Search
       </button>
 
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllPassengerItemDeliveries()">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px"
+              (click)="getAllPassengerItemDeliveries()">
         All Deliveries
       </button>
     </div>
@@ -37,6 +38,7 @@
         <th scope="col" width="10%">Contact No</th>
         <th scope="col" width="10%">Delivery Date</th>
         <th scope="col" width="10%">Delivery Time</th>
+        <th scope="col" width="8%">Status</th>
         <th scope="col" width="8%" style="text-align: center">View More</th>
         <th scope="col" width="5%" style="text-align: center">Update</th>
       </tr>
@@ -49,6 +51,15 @@
         <td>{{deliveryPassengerItem.contactNumber}}</td>
         <td>{{deliveryPassengerItem.deliveryDate}}</td>
         <td>{{deliveryPassengerItem.deliveryTime}}</td>
+        <td *ngIf="deliveryPassengerItem.status===0" style="color: #018002;font-weight: bold">
+          Completed
+        </td>
+        <td *ngIf="deliveryPassengerItem.status===1" style="color: #ff0a03;font-weight: bold">
+          Cancelled
+        </td>
+        <td *ngIf="deliveryPassengerItem.status===2" style="color: #d29302;font-weight: bold">
+          Pending
+        </td>
         <td style="text-align: center">
           <i class="fas fa-search" style="cursor: pointer" (click)="setPassengerItem(deliveryPassengerItem)"></i>
         </td>

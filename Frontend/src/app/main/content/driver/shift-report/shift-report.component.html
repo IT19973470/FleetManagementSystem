@@ -1,1 +1,60 @@
+
 <p>shift-report works!</p>
+
+<div class="row" style="display: flex;justify-content: center">
+  <div class="col-11" style="margin-top: 20px">
+
+    <div style="margin-top: 20px">
+      <button class="btn btn-warning" style="font-weight: bold;margin-left: 1050px"
+              (click)="sendToPdf()">
+        Download
+      </button>
+    </div>
+<div id="pdf">
+    <div style="margin-top: 20px;font-size: 25px">
+      Attendance Report
+    </div>
+    <table style="margin-top: 20px">
+      <tr>
+        <td style="padding-right: 100px">Year : </td>
+        <td>{{currentYear}}</td>
+      </tr>
+      <tr>
+        <td style="padding-right: 100px">Month : </td>
+        <td><div id="demo">{{myFunction()}}</div></td>
+      </tr>
+      <tr>
+        <td style="padding-right: 100px">Date : </td>
+        <td><div ng-app ng-controller="Ctrl">
+          {{myFunction()}}
+          {{date | date:'yyyy-MM-dd'}}
+        </div></td>
+      </tr>
+      <tr>
+        <td style="padding-right: 100px">Driver ID : </td>
+        <td>{{driver.driverID}}</td>
+      </tr>
+      <tr>
+        <td style="padding-right: 100px">Driver Name : </td>
+        <td>{{driver.userAccount.name}}</td>
+      </tr>
+      <tr>
+    </table>
+
+    <table class="table table-striped" style="margin-top: 20px">
+      <thead>
+      <tr>
+        <th scope="col" width="15%">Date</th>
+        <th scope="col" width="20%">Number of shifts</th>
+        <th scope="col" width="20%">Total number of shifts</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="shift" >
+        <td>{{shift.shiftDate}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+  </div>
+</div>
