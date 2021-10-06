@@ -50,11 +50,15 @@ export class ShiftReportComponent implements OnInit {
   }
 
   constructor(private driverService: DriverService,private router: Router, private datepipe: DatePipe) {
+
+  constructor(private driverService: DriverService,private router: Router) {
+
   }
 
   ngOnInit(): void {
     this.getDriver();
     this.getAllShiftsbyDriverID();
+    this.getMyShift();
   }
 
   getDriver() {
@@ -92,6 +96,12 @@ export class ShiftReportComponent implements OnInit {
       // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
       pdf.addImage(contentDataURL, 'PNG', 3, 3, 0, 0);
       pdf.save('Filename.pdf');
+
+  getMyShift() {
+    this.driverService.getMyShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
+      this.shift = myShift;
+      console.log(this.shift);
+
     });
   }
 }
