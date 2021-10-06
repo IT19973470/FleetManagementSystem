@@ -71,7 +71,7 @@ export class ViewVehiclesComponent implements OnInit {
   }
 
   download() {
-    var element=document.getElementById('table')
+    var element=document.getElementById('abc')
 
     html2canvas(element).then((canvas)=>{
 

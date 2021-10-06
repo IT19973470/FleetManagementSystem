@@ -22,6 +22,7 @@ export class DriverConfirmComponent implements OnInit {
   tblIndex;
 
   driverID;
+  employeeID;
   selectedDriver;
   selectedUserAccount;
 
@@ -38,17 +39,17 @@ export class DriverConfirmComponent implements OnInit {
     })
   }
 
-  approveDriver(approval) {
-    this.vehicleDriverManagerService.approveDriver(this.selectedDriver.driverID, approval).subscribe((driver) => {
-      this.selectedDriver.approval = driver.approval;
-    })
-
-  }
-  // approveUserAccount(approval) {
-  //   this.vehicleDriverManagerService.approveUserAccount(this.selectedUserAccount.employeeID, approval).subscribe((userAccount) => {
-  //     this.selectedUserAccount.approved = userAccount.approved;
+  // approveDriver(approval) {
+  //   this.vehicleDriverManagerService.approveDriver(this.selectedDriver.driverID, approval).subscribe((driver) => {
+  //     this.selectedDriver.approval = driver.approval;
   //   })
+  //
   // }
+  approveUserAccount(approval) {
+    this.vehicleDriverManagerService.approveUserAccount(this.selectedUserAccount.employeeID, approval).subscribe((userAccount) => {
+      this.selectedUserAccount.approved = userAccount.approved;
+    })
+  }
 
 
 

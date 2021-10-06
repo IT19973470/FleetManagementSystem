@@ -20,6 +20,7 @@
       <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Employee Id</th>
         <th scope="col">Name</th>
         <!--        <th scope="col">Passenger ID</th>-->
         <th scope="col">Name ID</th>
@@ -38,6 +39,7 @@
       <tbody>
       <tr *ngFor="let driver of driverDetails; let i = index">
         <th scope="row">{{i + 1}}</th>
+        <td>{{driver.employeeID}}</td>
         <td>{{driver.name}}</td>
         <!--        <td>{{deliveryItem.passengerId}}</td>-->
         <td>{{driver.nameWithInitials}}</td>
@@ -123,10 +125,10 @@
             </div>
             <div style="display: flex;justify-content: center">
               <button type="submit" class="btn btn-success" style="font-weight: bold; margin-right: 20px"
-                      (click)="approveDriver(true)">Approve
+                      (click)="approveUserAccount(true)">Approve
                 <!--            (click)="approveDriver(true)">Approve-->
               </button>
-              <button type="submit" class="btn btn-danger" style="font-weight: bold;" (click)="approveDriver(false)">
+              <button type="submit" class="btn btn-danger" style="font-weight: bold;" (click)="approveUserAccount(false)">
                 Deny
               </button>
             </div>

@@ -66,32 +66,56 @@
         <i class="fas fa-times" style="cursor: pointer;margin-right: 10px" (click)="isTrueOrFalse(false)"></i>
       </div>
 
-      <div class="">
+      <div id="abc" class="" >
+        <span style="font-weight: bold;margin-left: 50px" >Vehicle Details  :: </span><br><br>
 
         <div>
-          <span style="font-weight: bold">Initial Meter : </span>
-          <span style="margin-left: 10px">{{vehicle.initialMeter}}</span>
-        </div>
+          <span style="font-weight: bold;margin-left: 50px" >Vehicle Id: </span>
+          <span style="margin-left: 10px">{{vehicle.vehicleId}}</span>
+        </div><br><br>
         <div>
-          <span style="font-weight: bold"> Service Meter : </span>
-          <span style="margin-left: 10px">{{vehicle.serviceMeter}}</span>
-        </div>
+          <span style="font-weight: bold;margin-left: 50px" >Vehicle Model : </span>
+          <span style="margin-left: 10px">{{vehicle.model}}</span>
+        </div><br><br>
         <div>
-          <span style="font-weight: bold">Fuel Balance : </span>
-          <span style="margin-left: 10px">{{vehicle.fuelBalance}}</span>
-        </div>
+          <span style="font-weight: bold;margin-left: 50px" >Vehicle Type  : </span>
+          <span style="margin-left: 10px">{{vehicle.vehicleType}}</span>
+        </div><br><br>
         <div>
-          <span style="font-weight: bold">Fuel Consumption : </span>
-          <span style="margin-left: 10px">{{vehicle.fuelConsumption}}</span>
-        </div>
+          <span style="font-weight: bold;margin-left: 50px" >Number Of Seats : </span>
+          <span style="margin-left: 10px">{{vehicle.noOfSeats}}</span>
+        </div><br><br>
         <div>
-          <span style="font-weight: bold">Occupied : </span>
-          <span style="margin-left: 10px">{{vehicle.occupied}}</span>
-        </div>
-        <div>
-          <span style="font-weight: bold">Fuel Type : </span>
+          <span style="font-weight: bold;margin-left: 50px" >Fuel Type  : </span>
           <span style="margin-left: 10px">{{vehicle.fuelType}}</span>
-        </div>
+        </div><br><br>
+
+
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" >Initial Meter : </span>
+          <span style="margin-left: 10px">{{vehicle.initialMeter}}</span>
+        </div><br><br>
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" > Service Meter : </span>
+          <span style="margin-left: 10px">{{vehicle.serviceMeter}}</span>
+        </div><br><br>
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" >Fuel Balance : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelBalance}}</span>
+        </div><br><br>
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" >Fuel Consumption : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelConsumption}}</span>
+        </div><br><br>
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" >Occupied    : </span>
+          <span style="margin-left: 10px">{{vehicle.occupied}}</span>
+        </div><br><br>
+        <div>
+          <span style="font-weight: bold;margin-left: 50px" >Fuel Type    : </span>
+          <span style="margin-left: 10px">{{vehicle.fuelType}}</span>
+        </div><br><br>
+      </div>
         <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="download()">
           Report
         </button>
@@ -103,7 +127,7 @@
 <!--          <span style="font-weight: bold">Delivery person's NIC : </span>-->
 <!--          <span style="margin-left: 10px">{{deliveryItem.deliveryPersonNic}}</span>-->
 <!--        </div>-->
-      </div>
+<!--      </div>-->
 
     </div>
   </div>

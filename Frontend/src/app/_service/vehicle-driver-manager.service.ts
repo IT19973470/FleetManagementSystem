@@ -76,9 +76,12 @@ export class VehicleDriverManagerService {
 
   }
 //approval
-  approveDriver(driverID, approval): Observable<any>  {
-    return this.http.get<any>(environment.backend_url + "/vehicle/approveDriver/" + driverID + "/" + approval);
-
+//   approveDriver(driverID, approval): Observable<any>  {
+//     return this.http.get<any>(environment.backend_url + "/vehicle/approveDriver/" + driverID + "/" + approval);
+//
+//   }
+  approveUserAccount(employeeId, approval): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
   }
   // approveUserAccount(employeeId, approval): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
