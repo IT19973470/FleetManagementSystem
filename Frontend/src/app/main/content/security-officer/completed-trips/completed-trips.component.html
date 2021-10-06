@@ -66,15 +66,20 @@
 <div [style.visibility]="isModalTable.openTable?'visible':'hidden'" class="modalTable">
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
-    <div style="height: 850px; width: 700px">
+    <div style="height: 1000px; width: 700px">
       <div style="">
         <i (click)="isTrueOrFalse(false)" class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
-        
+
       <div class="" id="SummaryReport" style="border: groove; color: #323130">
 
         <table width="100%">
           <br>
+          <div>
+            <h4 style="color: #850606">Independent Television Network</h4>
+            <b>Security Department</b><br>>
+            <b>Completed trip details Report</b>
+          </div>
           <tr>
             <td>
               <div style="font-size: medium; margin-left: 50px">
@@ -143,9 +148,9 @@
         <div style="font-size: medium; margin-left: 50px">
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
-        </div><br><br>
+        </div>
 
-      </div> <br><br>
+      </div>
       <button style="margin-left: 100px" type="button" class="btn btn-danger"
               (click)="downloadPdf()">Download PDF</button>
     </div>
