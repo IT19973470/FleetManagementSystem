@@ -188,7 +188,7 @@ export class FeedbackComponent implements OnInit {
       },
       yaxis: {
         title: {
-          text: "Requests"
+          text: "Request"
         }
       },
       fill: {
