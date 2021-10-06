@@ -32,10 +32,8 @@ export class VehicleAccidentViewComponent implements OnInit {
   getVehicleAccidents() {
     this.vehicleAccidentService.getVehicleAccidents().subscribe((vehicleAccidentDetails) => {
       this.vehicleAccidentDetails = vehicleAccidentDetails;
-      //console.log(this.vehicleAccident)
     })
   }
-
 
   goToUpdate(accident) {
     this.vehicleAccidentService.accident = accident;
@@ -54,7 +52,6 @@ export class VehicleAccidentViewComponent implements OnInit {
   getAccidentById() {
     this.vehicleAccidentService.getAccidentById(this.accidentIdSearch).subscribe((vehicleAccidentDetails) => {
       this.vehicleAccidentDetails = vehicleAccidentDetails;
-      // console.log(this.vehicles)
     })
   }
 }
