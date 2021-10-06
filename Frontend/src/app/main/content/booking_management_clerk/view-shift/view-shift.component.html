@@ -1,9 +1,3 @@
-<div class="row">
-  <div class="col-12">
-
-  </div>
-</div>
-
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-11" style="margin-top: 20px">
 
@@ -24,52 +18,55 @@
       <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="getAllShifts()">
         All Driver Shifts
       </button>
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 60px" (click)="sendToPdf(pdf)">
-        Download Shift Report
-      </button>
+
     </div>
 
-    <div id="pdf">
-    <table class="table table-striped" style="margin-top: 40px">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Shift ID</th>
-        <th scope="col">Driver ID</th>
-        <th scope="col" width="10%">Driver</th>
-        <th scope="col" width="10%">Vehicle No</th>
-        <th scope="col">Vehicle</th>
-        <th scope="col">Driver attendance</th>
-        <th scope="col">Vehicle Availability</th>
-        <th scope="col" width="10%">Shift Date</th>
-        <th scope="col">Starting Time</th>
-        <th scope="col">Ending Time</th>
-        <th scope="col" width="5%" style="text-align: center">Update</th>
-        <th scope="col" width="5%" style="text-align: center">Select</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let shift of shifts; let i = index">
-        <th scope="row">{{i + 1}}</th>
-        <td>{{shift.shiftId}}</td>
-        <td>{{shift.driverVehicle.driver.driverID}}</td>
-        <td>{{shift.driverVehicle.driver.userAccount.nameWithInitials}}</td>
-        <td>{{shift.driverVehicle.vehicle.vehicleId}}</td>
-        <td>{{shift.driverVehicle.vehicle.vehicleType}}</td>
-        <td>{{shift.attendance}}</td>
-        <td>{{shift.driverVehicle.vehicle.occupied}}</td>
-        <td>{{shift.shiftDate}}</td>
-        <td>{{shift.startingTime}}</td>
-        <td>{{shift.endingTime}}</td>
-        <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i>
-        </td>
-        <td style="text-align: center">
-          <i class="fas fa-pen" style="cursor: pointer" (click)="selectShift(shift)"></i>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div id="pdf" style="margin-top: 50px">
+      <div style="margin-top: 20px; margin-left: 450px; font-size: 30px">
+        Driver Shifts
+      </div>
+
+      <table class="table table-striped" style="margin-top: 40px">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Shift ID</th>
+          <th scope="col">Driver ID</th>
+          <th scope="col" width="10%">Driver</th>
+          <th scope="col" width="10%">Vehicle No</th>
+          <th scope="col">Vehicle</th>
+          <th scope="col">Driver attendance</th>
+          <th scope="col">Vehicle Availability</th>
+          <th scope="col" width="10%">Shift Date</th>
+          <th scope="col">Starting Time</th>
+          <th scope="col">Ending Time</th>
+          <th scope="col" width="5%" style="text-align: center">Update</th>
+          <th scope="col" width="5%" style="text-align: center">Select</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let shift of shifts; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{shift.shiftId}}</td>
+          <td>{{shift.driverVehicle.driver.driverID}}</td>
+          <td>{{shift.driverVehicle.driver.userAccount.nameWithInitials}}</td>
+          <td>{{shift.driverVehicle.vehicle.vehicleId}}</td>
+          <td>{{shift.driverVehicle.vehicle.vehicleType}}</td>
+          <td>{{shift.attendance}}</td>
+          <td>{{shift.driverVehicle.vehicle.occupied}}</td>
+          <td>{{shift.shiftDate}}</td>
+          <td>{{shift.startingTime}}</td>
+          <td>{{shift.endingTime}}</td>
+          <td style="text-align: center">
+            <i class="fas fa-pen" style="cursor: pointer" (click)="goToUpdate(shift)"></i>
+          </td>
+          <td style="text-align: center">
+            <i class="fas fa-pen" style="cursor: pointer" (click)="selectShift(shift)"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
 
     <div style="width: 50%;padding-right: 20px;margin-top: 50px">
