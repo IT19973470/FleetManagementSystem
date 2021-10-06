@@ -15,15 +15,15 @@
               (click)="getDeliveriesReportWeekly(0)">
         Current Week
       </button>
-      <button class="btn btn-warning" style="font-weight: bold;margin-left: 50px"
+      <button class="btn btn-success" style="font-weight: bold;margin-left: 50px"
               (click)="sendToPdf()">
-        Download
+        Download Report
       </button>
     </div>
 
     <div id="pdf">
       <div style="margin-top: 20px;font-size: 25px">
-        Weekly Deliveries ({{datesRange}})
+        Weekly Deliveries ( from {{datesRange}} )
       </div>
 
       <table class="table table-striped" style="margin-top: 20px">

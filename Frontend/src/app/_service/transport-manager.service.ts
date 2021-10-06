@@ -13,6 +13,9 @@ export class TransportManagerService {
   deliveryPassenger;
   deliveryPassengerItem;
   reportWeek;
+  reportDates = '';
+  startDate;
+  reportDate;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {
   }

@@ -150,19 +150,24 @@ export class WeeklyReportComponent implements OnInit {
     let lastday = this.datePipe.transform(lastD, 'yyyy-MM-dd');
 
     this.datesRange = firstday + ' to ' + lastday;
+    this.transportManagerService.reportDates = this.datesRange;
+    this.transportManagerService.startDate = firstday;
   }
 
   sendToPdf() {
-    let data = document.getElementById("pdf");
-    // let data = document.getElementById("maindiv");
-    // console.log(data);
+    let data = document.getElementById('pdf');  //Id of the table
     html2canvas(data).then(canvas => {
-      const contentDataURL = canvas.toDataURL('image/jpeg', 2.0)
-      console.log(contentDataURL);
-      let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
-      // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 45.7, 21.0);
-      pdf.save('Filename.pdf');
+      // Few necessary setting options
+      let imgWidth = 320;
+      // let pageHeight = 350;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('l', 'mm', 'a4'); // A4 size page of PDF
+      let position = 10;
+      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+      pdf.save('MYPdf.pdf'); // Generated PDF
     });
   }
 }
