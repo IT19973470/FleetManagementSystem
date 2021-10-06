@@ -96,7 +96,7 @@ export class ApplicationStatusComponent implements OnInit {
       return val;
     }
   }
-  onSubmitPassenger() {
+  onSubmitItem() {
     if (this.plus == true) {
       let check = this.Pass;
       this.flag = 1;
@@ -125,11 +125,11 @@ export class ApplicationStatusComponent implements OnInit {
       this.ItemApp.itemApplication.itemItemApplications[this.tblIndex] = this.Pass
     }
 
-    this.setNewPassenger();
+    this.setNewItem();
   }
 
-  setNewPassenger() {
-    this.Pass = this.getNewPassenger();
+  setNewItem() {
+    this.Pass = this.getNewItem();
     this.passengerForm.resetForm(this.Pass.item);
     this.plus = true;
     this.pen = false;
@@ -141,7 +141,7 @@ export class ApplicationStatusComponent implements OnInit {
   //   }
   // }
 
-  setPassenger(item, i) {
+  setItem(item, i) {
     this.tblIndex = i;
     this.Pass.item.itemID = item.itemID;
     this.Pass.item.itemName = item.itemName;
@@ -151,7 +151,7 @@ export class ApplicationStatusComponent implements OnInit {
     this.plus = false;
   }
 
-  getNewPassenger() {
+  getNewItem() {
     return {
       item: {
         itemID: '',
@@ -176,7 +176,7 @@ export class ApplicationStatusComponent implements OnInit {
   }
 
 
-  chkPassengerId() {
+  chkItemId() {
 
     // console.log(this.viewAllItem)
     // let p =this.viewAllItem[0]
@@ -187,7 +187,7 @@ export class ApplicationStatusComponent implements OnInit {
       let p = this.viewAllItem[x]
 
       if (this.Pass.item.itemID === '') {
-        this.setNewPassenger()
+        this.setNewItem()
       } else if (this.Pass.item.itemID !== '') {
         //  console.log(this.Pass.passenger.passengerId)
         this.duplicate = false;

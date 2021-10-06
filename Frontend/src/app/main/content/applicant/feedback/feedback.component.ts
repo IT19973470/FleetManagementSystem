@@ -157,9 +157,7 @@ export class FeedbackComponent implements OnInit {
 
   fillChart() {
     this.chartOptions = {
-      series: [
-
-      ],
+      series: [],
       chart: {
         type: "bar",
         height: 350
