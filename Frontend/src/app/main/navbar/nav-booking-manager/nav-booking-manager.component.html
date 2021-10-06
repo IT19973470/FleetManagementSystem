@@ -118,4 +118,13 @@
     [ngStyle]="{'color':viewProgramBooking.isActive || updateProgramBooking.isActive?'#c0050e':''}">
     View Program Booking
   </div>
+
+  <div
+    routerLink="/main/booking_report"
+    (click)="setTopic('Booking Report')"
+    #bookingReport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':bookingReport.isActive?'#c0050e':''}">
+    Booking Report
+  </div>
 </div>
