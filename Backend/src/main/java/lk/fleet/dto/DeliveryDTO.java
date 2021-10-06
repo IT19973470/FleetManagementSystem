@@ -20,6 +20,7 @@ public class DeliveryDTO {
     private String deliveryPersonName;
     private String deliveryType;
     private boolean deliveryStatus;
+    private int status;
 
     private List<DeliveryItemDetailDTO> deliveryItemDetails;
     private List<DeliveryPassengerDetailDTO> deliveryPassengerDetails;
@@ -160,5 +161,13 @@ public class DeliveryDTO {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

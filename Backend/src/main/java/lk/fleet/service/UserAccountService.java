@@ -50,6 +50,8 @@ public interface UserAccountService {
 
     List<ApplicationDTO> getAllTransports();
 
+    Object getTransportReportWeekly(int weeks);
+
 //    List<PassengerApplicationDTO> getTransport();
 
     //UserAccountDTO updateGeneralManagerUserAccount(String employeeID, UserAccount userAccount);

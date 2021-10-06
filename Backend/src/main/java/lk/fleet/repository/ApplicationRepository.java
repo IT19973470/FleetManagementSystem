@@ -18,5 +18,4 @@ public interface ApplicationRepository extends JpaRepository<Application, String
 
     List<Application> getApplicationsByApprovalAndDestinationAndTypeOrderByDepatureDateDesc(boolean approval, String destination, String type);
 
-
 }
