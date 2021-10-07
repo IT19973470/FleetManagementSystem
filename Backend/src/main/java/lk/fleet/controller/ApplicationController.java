@@ -151,7 +151,7 @@ public class ApplicationController {
         return applicationPassengerService.getAllItem();
     }
 
-    //Tr
+    //Transport Manger
     @GetMapping(value = "/getApprovedApplications/{type}")
     public ResponseEntity getApprovedApplications(@PathVariable String type) {
         return ResponseEntity.ok(applicationService.getApprovedApplications(type));

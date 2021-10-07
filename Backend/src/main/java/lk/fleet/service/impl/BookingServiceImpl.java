@@ -205,12 +205,14 @@ public class BookingServiceImpl implements BookingService {
     //securityOfficer
     @Override
     public List<BookingDTO> getBookingByDestination(String destination) {
-        Booking bookingByDestination = bookingRepository.getBookingByDestination(destination);
+        List<Booking> bookingByDestinations = bookingRepository.getBookingByDestination(destination);
         List<BookingDTO> bookingDTOS = new ArrayList<>();
-        BookingDTO bookingDTO = new BookingDTO(bookingByDestination);
-        bookingDTO.setVehicle(new VehicleDTO(bookingByDestination.getShift().getDriverVehicle().getVehicle()));
-        bookingDTO.setDriver(new DriverDTO(bookingByDestination.getShift().getDriverVehicle().getDriver(), new UserAccountDTO(bookingByDestination.getShift().getDriverVehicle().getDriver().getUserAccount())));
-        bookingDTOS.add(bookingDTO);
+        for (Booking bookingByDestination : bookingByDestinations) {
+            BookingDTO bookingDTO = new BookingDTO(bookingByDestination);
+            bookingDTO.setVehicle(new VehicleDTO(bookingByDestination.getShift().getDriverVehicle().getVehicle()));
+            bookingDTO.setDriver(new DriverDTO(bookingByDestination.getShift().getDriverVehicle().getDriver(), new UserAccountDTO(bookingByDestination.getShift().getDriverVehicle().getDriver().getUserAccount())));
+            bookingDTOS.add(bookingDTO);
+        }
         return bookingDTOS;
     }
 

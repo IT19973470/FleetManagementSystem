@@ -23,6 +23,6 @@ public interface BookingRepository extends JpaRepository<Booking, String> {
 
     //securityOfficer
     @Query(value = "from Booking where destination=?1" )
-    Booking getBookingByDestination(String destination);
+    List<Booking> getBookingByDestination(String destination);
 
 }
