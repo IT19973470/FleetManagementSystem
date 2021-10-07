@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShiftReportComponent } from './shift-report.component';
+import { VipReportComponent } from './vip-report.component';
 
-describe('ShiftReportComponent', () => {
-  let component: ShiftReportComponent;
-  let fixture: ComponentFixture<ShiftReportComponent>;
+describe('VipReportComponent', () => {
+  let component: VipReportComponent;
+  let fixture: ComponentFixture<VipReportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShiftReportComponent ]
+      declarations: [ VipReportComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShiftReportComponent);
+    fixture = TestBed.createComponent(VipReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

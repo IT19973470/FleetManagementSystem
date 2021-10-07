@@ -73,15 +73,6 @@ export class UpdateVipmemberComponent implements OnInit {
       this.alertBox.alert = false;
     })
   }
-  // getNewVipmember() {
-  //   return {
-  //     vipMemberId:'',
-  //     firstName:'',
-  //     lastName:'',
-  //     contactNumber:'',
-  //     address:'',
-  //     position:''
-  //   };
-  // }
+
 
 }

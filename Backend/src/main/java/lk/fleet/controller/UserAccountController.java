@@ -87,6 +87,12 @@ public class UserAccountController {
         return userAccountService.getTransportApplication();
     }
 
+    @GetMapping(value = "/getTransportApplicationforReport")
+    public List<ApplicationDTO> getTransportApplicationforReport() {
+        return userAccountService.getTransportApplicationforReport();
+    }
+
+
 
     //search transport request by id
     @GetMapping(value = "/getTransportByID/{applicationID}")

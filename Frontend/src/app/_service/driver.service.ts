@@ -84,4 +84,8 @@ export class DriverService {
   getAllLastOverTimesbyDriverID(driverID): Observable<any> {
     return this.http.get<any>(environment.backend_url + '/overTime/getAllLastOverTimesbyDriverID/' + driverID);
   }
+
+  getAllShiftsbyDriverID(driverID): Observable<any>{
+    return this.http.get<any>(environment.backend_url + '/shift/getAllShiftsbyDriverID/' + driverID);
+  }
 }

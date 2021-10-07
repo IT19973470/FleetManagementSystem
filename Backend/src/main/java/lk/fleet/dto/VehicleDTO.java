@@ -14,6 +14,15 @@ public class VehicleDTO {
     private boolean occupied;
     private double fuelConsumption;
     private double fuelBalance;
+//    private UserAccountDTO userAccountDTO;
+
+//    public UserAccountDTO getUserAccountDTO() {
+//        return userAccountDTO;
+//    }
+//
+//    public void setUserAccountDTO(UserAccountDTO userAccountDTO) {
+//        this.userAccountDTO = userAccountDTO;
+//    }
 
     public VehicleDTO(Vehicle vehicle) {
         if (vehicle != null) {
