@@ -143,4 +143,24 @@ export class PassengerDeliveryComponent implements OnInit {
   getMinDate() {
     return this.transportManagerService.getCurDate();
   }
+
+  demoForm() {
+    this.deliveryDetail.deliveryPersonName = 'Nimal Silva';
+    this.deliveryDetail.deliveryPersonNic = '936451120V';
+    this.deliveryDetail.contactNumber = '077-1234568';
+    this.deliveryDetail.vehicleNumber = 'CAB 4563';
+    this.deliveryDetail.emailAddress = 'nimal@gmail.com';
+    this.deliveryDetail.address = '123, ABC Road, Colombo';
+    this.deliveryDetail.companyName = 'DHL';
+    this.deliveryDetail.deliveryDate = '2021-10-07';
+    this.deliveryDetail.deliveryTime = '10:30';
+    // this.deliveryDetail.deliveryDateTime = '';
+  }
+
+  demoPassenger() {
+    this.passenger.passengerName = 'Sirisena';
+    this.passenger.passengerNic = '651452230V';
+    this.passenger.contactNumber = '071-7654321';
+    this.passenger.passengerType = 'Teacher'
+  }
 }

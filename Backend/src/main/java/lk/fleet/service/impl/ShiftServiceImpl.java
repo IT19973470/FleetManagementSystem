@@ -13,7 +13,7 @@ import lk.fleet.service.ShiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +22,6 @@ public class ShiftServiceImpl implements ShiftService {
 
     @Autowired
     private ShiftRepository shiftRepository;
-    @Autowired
-    private OverTimeRepository overTimeRepository;
 
     @Override
     public ShiftDTO addShift(Shift shift) {
@@ -64,6 +62,7 @@ public class ShiftServiceImpl implements ShiftService {
         return null;
     }
 
+    //Get the shift
     @Override
     public ShiftDTO getDriverShiftsByDriverIdByCurrentDate(String driverId) {
         List<Shift> shiftByDriverID = shiftRepository.getDriverShiftsByDriverIdByCurrentDate(driverId);
@@ -74,6 +73,7 @@ public class ShiftServiceImpl implements ShiftService {
         return null;
     }
 
+    //mark attendance
     @Override
     public ShiftDTO markAttendance(String driverID, boolean attendance) {
         Optional<Shift> shiftOptional = shiftRepository.findById(driverID);
@@ -83,5 +83,24 @@ public class ShiftServiceImpl implements ShiftService {
             return new ShiftDTO(shiftRepository.save(shift));
         }
         return null;
+    }
+
+    //Driver Attendaance
+    @Override
+    public List<ShiftDTO> getAllShiftsbyDriverID(String driverId) {
+        List<Shift> shifts = shiftRepository.getAllShiftsbyDriverID(driverId);
+        List<ShiftDTO> shiftDTOs = new ArrayList<>();
+
+        int count = 0;
+        if (shifts.size() < 30) {
+            count = shifts.size();
+        } else {
+            count = 30;
+        }
+
+        for (int i = 0; i < count; i++) {
+            shiftDTOs.add(new ShiftDTO(shifts.get(i)));
+        }
+        return shiftDTOs;
     }
 }

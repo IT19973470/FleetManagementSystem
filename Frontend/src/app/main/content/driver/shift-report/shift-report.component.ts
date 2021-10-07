@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DriverService} from "../../../../_service/driver.service";
 import {Router} from "@angular/router";
-
 import {DatePipe} from "@angular/common";
 import html2canvas from "html2canvas";
 import {jsPDF} from "jspdf";
-import {BookingManagerService} from "../../../../_service/booking-manager.service";
-
 
 @Component({
   selector: 'app-shift-report',
@@ -25,13 +22,8 @@ export class ShiftReportComponent implements OnInit {
   driverDetails: [];
   currentYear: number = new Date().getFullYear();
 
-
-
-  constructor(private driverService: DriverService,private router: Router) {
-
-  }
   date
-    n
+  n
   myFunction() {
     var month = new Array();
     month[0] = "January";
@@ -57,9 +49,12 @@ export class ShiftReportComponent implements OnInit {
     $scope.date = new Date();
   }
 
+  constructor(private driverService: DriverService,private router: Router, private datepipe: DatePipe) {
+  }
+
   ngOnInit(): void {
     this.getDriver();
-    this.getMyShift();
+    this.getAllShiftsbyDriverID();
   }
 
   getDriver() {
@@ -80,13 +75,11 @@ export class ShiftReportComponent implements OnInit {
     driverID: ''
   };
 
-  getMyShift() {
-    this.driverService.getMyShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
-      this.shift = myShift;
-      console.log(this.shift);
+  getAllShiftsbyDriverID() {
+    this.driverService.getAllShiftsbyDriverID(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
+      this.shiftDetails = myShift;
     });
   }
-
 
   sendToPdf(){
     let data = document.getElementById("pdf");
@@ -101,5 +94,4 @@ export class ShiftReportComponent implements OnInit {
       pdf.save('Filename.pdf');
     });
   }
-
 }

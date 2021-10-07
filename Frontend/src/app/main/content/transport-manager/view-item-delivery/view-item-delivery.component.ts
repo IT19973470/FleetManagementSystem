@@ -34,11 +34,13 @@ export class ViewItemDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // console.log(this.transportManagerService.reportDate)
     if (this.transportManagerService.reportDate === undefined) {
       this.deliveryDate = this.transportManagerService.getCurDate();
     } else {
       this.deliveryDate = this.transportManagerService.reportDate;
     }
+    // console.log(this.deliveryDate)
     this.getAllDeliveriesByDate();
   }
 

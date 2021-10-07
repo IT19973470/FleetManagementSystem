@@ -113,12 +113,16 @@ import {WeeklyReportComponent} from './main/content/transport-manager/delivery-r
 import {DailyReportComponent} from './main/content/transport-manager/delivery-report/daily-report/daily-report.component';
 import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
 import {ShiftReportComponent} from './main/content/driver/shift-report/shift-report.component';
-
-
 import {TransportReportComponent} from './main/content/general-manager/transport-report/transport-report.component';
 import {UserAccountsReportComponent} from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 import {BookingReportComponent} from './main/content/booking_management_clerk/booking-report/booking-report.component';
+
 import {OtReportComponent} from './main/content/Driver/ot-report/ot-report.component';
+import { WaitingReportComponent } from './main/content/applicant/waiting-report/waiting-report.component';
+
+
+
+import { VipReportComponent } from './main/content/vehicleDriver-manager/vip-report/vip-report.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -290,16 +294,29 @@ const customNotifierOptions: NotifierOptions = {
     DeliveryReportComponent,
     ItemPassengerComponent,
     UpdateItemPassengerComponent,
+
+
+
+
+
     WeeklyReportComponent,
     DailyReportComponent,
     DetailReportComponent,
     ShiftReportComponent,
+
     BookingReportComponent,
     OtReportComponent,
     TransportReportComponent,
     UserAccountsReportComponent,
 
-    BookingReportComponent
+    BookingReportComponent,
+
+      WaitingReportComponent,
+
+      VipReportComponent,
+
+
+
   ],
 
   imports: [

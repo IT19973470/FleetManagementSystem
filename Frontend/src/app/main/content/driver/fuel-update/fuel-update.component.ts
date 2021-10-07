@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {VehicleDriverManagerService} from '../../../../_service/vehicle-driver-manager.service';
 import {Router} from '@angular/router';
 import {CommonService} from "../../../../_service/common.service";
 import {NotifierService} from "angular-notifier";
@@ -30,25 +29,13 @@ export class FuelUpdateComponent implements OnInit {
     fuelBalance: 0
   };
 
-  // constructor(
-  //   private vehicleDriverManagerService: VehicleDriverManagerService, private router: Router, private commonService: CommonService,
-  //   private notifierService: NotifierService) {
-  //   // this.vehicle = this.getVehicle();
-  // }
-
   constructor(
     private driverService: DriverService, private router: Router, private commonService: CommonService,
     private notifierService: NotifierService) {
-    // this.vehicle = this.getVehicle();
   }
 
   ngOnInit(): void {
     this.getAllVehicles();
-  }
-
-  setVehicle(vehicle) {
-    this.vehicle = vehicle;
-    this.isTrueOrFalse(true);
   }
 
   goToUpdate(vehicle) {
@@ -63,14 +50,12 @@ export class FuelUpdateComponent implements OnInit {
   getAllVehicles() {
     this.driverService.getAllVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
-      // console.log(this.vehicles)
     })
   }
 
   getVehicleByNumber() {
     this.driverService.getVehicleByNumber(this.vehicleNumber).subscribe((vehicles) => {
       this.vehicles = vehicles;
-      // console.log(this.vehicles)
     })
   }
 
@@ -82,13 +67,6 @@ export class FuelUpdateComponent implements OnInit {
       this.notifierService.notify("error", "Fuel balance failed");
       this.isTrueOrFalse(false);
     })
-  }
-
-  getVehicle() {
-    return {
-      vehicleId: '',
-      fuelBalance: ''
-    };
   }
 
   setNumberPositive(val) {

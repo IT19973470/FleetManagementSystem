@@ -18,7 +18,6 @@
       <thead>
       <tr>
         <!--<th scope="col">#</th>-->
-        <th scope="col" width="15%"></th>
         <th scope="col" width="20%">Passenger Requests</th>
         <th scope="col" width="20%">Item Requests</th>
         <th scope="col" width="20%">Item Passenger Requests</th>
@@ -28,7 +27,6 @@
       <tbody>
       <tr *ngFor="let deliveryItem of weeklyDeliveries; let i = index">
         <!--<th scope="row">{{i+1}}</th>-->
-        <td style="font-weight: bold">{{deliveryItem.pd.week}}</td>
         <td style="font-weight: bold">
           <span style="color: #0c95cb">Total Requests - {{deliveryItem.pd.deliveries}}</span> <br>
           <span style="color: #018002">Completed - {{deliveryItem.pd.completed}}

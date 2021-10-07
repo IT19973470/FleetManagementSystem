@@ -3,6 +3,8 @@ package lk.fleet.service;
 import lk.fleet.dto.ShiftDTO;
 import lk.fleet.entity.Shift;
 
+import java.util.List;
+
 public interface ShiftService {
     ShiftDTO addShift(Shift shift);
 
@@ -17,4 +19,6 @@ public interface ShiftService {
     ShiftDTO getDriverShiftsByDriverIdByCurrentDate(String driverId);
 
     ShiftDTO markAttendance(String driverID, boolean attendance);
+
+    List<ShiftDTO> getAllShiftsbyDriverID(String driverId);
 }

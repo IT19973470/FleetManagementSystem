@@ -1,7 +1,6 @@
 package lk.fleet.dto;
 
 import lk.fleet.entity.Driver;
-import lk.fleet.entity.OverTime;
 
 public class DriverDTO {
     private String driverID;

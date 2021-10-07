@@ -18,7 +18,9 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
     private DriverRepository driverRepository;
+    @Autowired
     private UserAccountRepository userAccountRepository;
 
     @Override
@@ -66,6 +68,7 @@ public class VehicleServiceImpl implements VehicleService {
         return true;
     }
 
+    //View all vehicles
     @Override
     public List<VehicleDTO> getAllVehicles() {
         List<Vehicle> vehicles = vehicleRepository.findAll();
@@ -76,7 +79,7 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleDTOS;
     }
 
-
+    //Fuel Update
     @Override
     public VehicleDTO fualUpdate(String vehicleID, double fuelBalance) {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
@@ -88,6 +91,7 @@ public class VehicleServiceImpl implements VehicleService {
         return null;
     }
 
+    //Search by vehicle number
     @Override
     public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
         Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
@@ -97,6 +101,7 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return vehicleDTOS;
     }
+
     //get drivers
     @Override
     public List<UserAccountDTO> getDriverRequest() {
@@ -113,12 +118,13 @@ public class VehicleServiceImpl implements VehicleService {
     }
 //
     @Override
-    public VehicleDTO approveDriver(String driverID, boolean approval) {
-        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(driverID);
-        if (optionalVehicle.isPresent()) {
-            Vehicle driverObj = optionalVehicle.get();
-            driverObj.setApproved(approval);
-            return new VehicleDTO(vehicleRepository.save(driverObj));
+    public UserAccountDTO approveDriver(String driverID, boolean approval) {
+        Optional<UserAccount> optionalUserAccount = userAccountRepository.findById(driverID);
+        if (optionalUserAccount.isPresent()) {
+//            VehicleDTO vehicleDTO=new VehicleDTO(optionalVehicle);
+            UserAccount userAccount = optionalUserAccount.get();
+            userAccount.setApproved(approval);
+            return new UserAccountDTO(userAccountRepository.save(userAccount));
         }
 
         return null;
