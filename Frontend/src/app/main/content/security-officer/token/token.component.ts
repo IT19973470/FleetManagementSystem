@@ -51,19 +51,6 @@ export class TokenComponent implements OnInit {
     this.setDepartureDate = this.securityOfficerService.getCurDate();
   }
 
-
-  // onSubmit() {
-  //   this.tokenDetail.booking = this.booking;
-  //   this.tokenDetail.securityOfficer.securityOfficerID = this.getUser()['employeeID']
-  //   this.tokenDetail.departureDateTime = this.tokenDetail.departureDate + 'T' + this.tokenDetail.departureTime;
-  //   //console.log(this.tokenDetail)
-  //   this.securityOfficerService.addToken(this.tokenDetail).subscribe((token) => {
-  //     this.tokens.push(token);
-  //     this.newToken()
-  //     this.router.navigate(['/main/arrival_departure_page'])
-  //   })
-  // }
-
   onSubmit() {
     this.alertBox.alert = true;
     this.alertBox.msg = 'Do you want to add this token?';

@@ -93,6 +93,10 @@ export class CompletedTripsComponent implements OnInit {
     })
   }
 
+  getCurDate() {
+    return this.securityOfficerService.getCurDate();
+  }
+
   downloadPdf() {
     var element = document.getElementById('SummaryReport')
     html2canvas(element).then((canvas) => {

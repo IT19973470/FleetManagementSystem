@@ -66,7 +66,7 @@
 <div [style.visibility]="isModalTable.openTable?'visible':'hidden'" class="modalTable">
   <div (click)="isTrueOrFalse(false)"></div>
   <div style="">
-    <div style="height: 1000px; width: 700px">
+    <div style="height: 1000px; width: 800px">
       <div style="">
         <i (click)="isTrueOrFalse(false)" class="fas fa-times" style="cursor: pointer;margin-right: 10px"></i>
       </div>
@@ -76,24 +76,14 @@
         <table width="100%">
           <br>
           <div>
-            <h4 style="color: #850606">Independent Television Network</h4>
-            <b>Security Department</b><br>>
-            <b>Completed trip details Report</b>
+            <u style="color: #E3A71F"><h5 style="color: darkred">Independent Television Network - Security Department</h5></u>
+            <span style="font-weight: bold"> Date : </span>
+            <span style="margin-left: 10px">{{getCurDate()}}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-weight: bold">Booking ID : </span>
+            <span style="margin-left: 10px">{{tokenDetail.booking.bookingId}}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-weight: bold">Destination : </span>
+            <span style="margin-left: 10px">{{tokenDetail.booking.destination}}</span>
           </div>
-          <tr>
-            <td>
-              <div style="font-size: medium; margin-left: 50px">
-                <span style="font-weight: bold">Booking ID : </span>
-                <span style="margin-left: 10px">{{tokenDetail.booking.bookingId}}</span>
-              </div>
-            </td>
-            <td>
-              <div style="font-size: medium; margin-left: 50px">
-                <span style="font-weight: bold">Destination : </span>
-                <span style="margin-left: 10px">{{tokenDetail.booking.destination}}</span>
-              </div>
-            </td>
-          </tr>
         </table>
         <br>
 
@@ -149,9 +139,9 @@
           <span style="font-weight: bold">Mileage : </span>
           <span style="margin-left: 10px">{{meterDetail.mileage}}</span>
         </div>
-
+        <br><br>
       </div>
-      <button style="margin-left: 100px" type="button" class="btn btn-danger"
+      <button style="text-align: center" type="button" class="btn btn-danger"
               (click)="downloadPdf()">Download PDF</button>
     </div>
   </div>
