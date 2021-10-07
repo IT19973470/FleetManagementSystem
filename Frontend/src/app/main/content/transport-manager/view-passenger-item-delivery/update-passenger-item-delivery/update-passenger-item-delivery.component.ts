@@ -28,7 +28,8 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
     deliveryDateTime: '',
     deliveryTimeActual: '',
     deliveryItemDetails: [],
-    deliveryPassengerDetails: []
+    deliveryPassengerDetails: [],
+    status: 0
   };
 
   alertBox = {
@@ -228,7 +229,7 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
       if (reply) {
         this.transportManagerService.deleteDelivery(this.deliveryDetail.deliveryId).subscribe((reply) => {
           if (reply) {
-            this.router.navigate(['/main/view_passenger_delivery'])
+            this.router.navigate(['/main/view_passenger_item_delivery'])
           }
         })
       }

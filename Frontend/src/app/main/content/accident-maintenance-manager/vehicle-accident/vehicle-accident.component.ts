@@ -73,30 +73,6 @@ export class VehicleAccidentComponent implements OnInit {
     })
   }
 
-  chkVehicle() {
-    if (this.accidentDetail.driverVehicle.driverVehicleID.vehicleId !== '') {
-      this.vehicleAccidentService.chkVehicle(this.accidentDetail.driverVehicle.driverVehicleID.vehicleId).subscribe((vehicle) => {
-        if (vehicle) {
-          this.vehicleIsPresent = 1;
-        } else {
-          this.vehicleIsPresent = 2;
-        }
-      })
-    }
-  }
-
-  chkDriver() {
-    if (this.accidentDetail.driverVehicle.driverVehicleID.vehicleId !== '' && this.accidentDetail.driverVehicle.driverVehicleID.driverID !== '') {
-      this.vehicleAccidentService.chkDriver(this.accidentDetail.driverVehicle.driverVehicleID.vehicleId, this.accidentDetail.driverVehicle.driverVehicleID.driverID).subscribe((driver) => {
-        if (driver) {
-          this.driverIsPresent = 1;
-        } else {
-          this.driverIsPresent = 2;
-        }
-      })
-    }
-  }
-
   onSubmit() {
     return false;
   }

@@ -114,10 +114,12 @@ public class BookingServiceImpl implements BookingService {
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
         List<Application> applications = applicationRepository.findAll();
         for (Application application : applications) {
-            ApplicationDTO applicationDTO = new ApplicationDTO(application);
+            if (application.getBookingApplication() == null) {
+                ApplicationDTO applicationDTO = new ApplicationDTO(application);
 
-            applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
-            applicationDTOS.add(applicationDTO);
+                applicationDTO.setPassengerApplication(new PassengerApplicationDTO(application.getPassengerApplication()));
+                applicationDTOS.add(applicationDTO);
+            }
         }
 
         return applicationDTOS;

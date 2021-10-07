@@ -73,4 +73,15 @@ export class SecurityOfficerService {
   getVehicleByNumber(vehicleNumber): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
   }
+
+  getTokenByDestination(destination): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/token/getTokenByDestination/" + destination);
+  }
+
+  getTokenByDriverID(driverID): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/token/getTokenByDriverID/" + driverID);
+  }
+
+
+
 }

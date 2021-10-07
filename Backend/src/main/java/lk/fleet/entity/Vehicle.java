@@ -19,6 +19,7 @@ public class Vehicle {
     private double fuelConsumption;
     private double fuelBalance;
 
+
     public String getVehicleId() {
         return vehicleId;
     }

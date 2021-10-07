@@ -2,6 +2,15 @@
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Add Passenger Item Delivery</span>
+    <button type="button" class="btn btn-outline-dark" style="font-weight: bold;margin-left: 20px"
+            (click)="demoForm()">Demo Form
+    </button>
+    <button type="button" class="btn btn-outline-dark" style="font-weight: bold;margin-left: 20px"
+            (click)="demoItem()">Demo Item
+    </button>
+    <button type="button" class="btn btn-outline-dark" style="font-weight: bold;margin-left: 20px"
+            (click)="demoPassenger()">Demo Passenger
+    </button>
   </div>
 
   <form #deliveryForm="ngForm" (ngSubmit)="deliveryForm.form.valid && onSubmit()" novalidate>

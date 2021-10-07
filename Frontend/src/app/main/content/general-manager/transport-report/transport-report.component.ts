@@ -42,7 +42,7 @@ export class TransportReportComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getTransports();
+    this.getTransportApplicationforReport();
   }
 
   // setItem(deliveryItem, i) {
@@ -77,6 +77,19 @@ export class TransportReportComponent implements OnInit {
     this.generalManagerService.getTransportApplication().subscribe((transportDetails) => {
       this.transportDetails = transportDetails;
       // console.log(this.vehicles)
+    })
+  }
+
+  getTransportApplicationforReport() {
+    this.generalManagerService.getTransportApplicationforReport().subscribe((transportDetails) => {
+
+      // console.log(transportDetails)
+      for (let transport of transportDetails) {
+        if (transport.token != null) {
+          this.transportDetails.push(transport)
+        }
+      }
+
     })
   }
 

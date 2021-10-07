@@ -156,4 +156,13 @@ export class TvProgramComponent implements OnInit {
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }
+
+  demoForm() {
+    this.tvProgram.programName = 'Program 9';
+    this.tvProgram.startingDate = '2021-03-04';
+    this.tvProgram.endingDate = '2021-09-08';
+    this.tvProgram.transportCost = 1200;
+    this.tvProgram.producer = 'Thulya';
+
+  }
 }

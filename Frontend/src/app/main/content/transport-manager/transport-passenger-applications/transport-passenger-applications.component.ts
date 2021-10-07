@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TransportManagerService} from "../../../../_service/transport-manager.service";
 import {Router} from "@angular/router";
+import {AlertBoxService} from "../../../../alert-box/alert-box.service";
 
 @Component({
   selector: 'app-transport-passenger-applications',
@@ -15,9 +16,20 @@ export class TransportPassengerApplicationsComponent implements OnInit {
     foundItem: ''
   };
 
-  applications;
+  alertBox = {
+    alert: false,
+    msg: '',
+    value: ''
+  };
 
-  constructor(private transportManagerService: TransportManagerService, private router: Router) {
+  applicationsP;
+  applications;
+  passengerDetails = [];
+  oldAppId;
+  newAppId;
+  passengerId;
+
+  constructor(private transportManagerService: TransportManagerService, private router: Router, private alertService: AlertBoxService) {
 
   }
 
@@ -39,14 +51,40 @@ export class TransportPassengerApplicationsComponent implements OnInit {
   getApprovedApplicationsByDestination(destination) {
     this.transportManagerService.getApprovedApplicationsByDestination(destination, "P").subscribe((applications) => {
       this.applications = applications;
-      // console.log(applications);
+      console.log(applications);
     })
   }
 
-  goToUpdate(deliveryItem) {
-    // this.applicantService.deliveryItem = deliveryItem;
-    // // console.log(this.applicantService.deliveryItem);
-    // this.router.navigate(['/main/update_available_transports'])
+  getApprovedApplicationsByPassenger(passengerId) {
+    this.passengerId = passengerId;
+    this.transportManagerService.getApprovedApplicationsByPassenger(passengerId).subscribe((applications) => {
+      this.applicationsP = applications;
+      console.log(applications);
+    })
   }
 
+  viewPassengers(application) {
+    this.newAppId = application;
+    this.isModalTable.openTable = true;
+    if (application.passengerApplication !== null) {
+      this.passengerDetails = application.passengerApplication.passengerPassengerApplications;
+    } else {
+      this.passengerDetails = [];
+    }
+  }
+
+  changePassengerApplication() {
+    this.alertBox.alert = true;
+    this.alertBox.msg = 'Do you want to proceed the transfer?';
+    this.alertService.reply.observers = [];
+    this.alertService.reply.subscribe(reply => {
+      if (reply) {
+        this.transportManagerService.changePassengerApplication(this.oldAppId.passengerApplication.passengerApplicationID, this.newAppId.passengerApplication.passengerApplicationID, this.passengerId).subscribe((rep) => {
+          this.passengerDetails.push(rep)
+          this.getApprovedApplications()
+        })
+      }
+      this.alertBox.alert = false;
+    })
+  }
 }

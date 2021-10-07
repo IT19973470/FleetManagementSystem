@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {VehicleDriverManagerService} from "../../../../_service/vehicle-driver-manager.service";
 import {Router} from "@angular/router";
+import jspdf from 'jspdf'
+import html2canvas from "html2canvas";
 
 @Component({
   selector: 'app-view-vipmembers',
@@ -76,4 +78,21 @@ export class ViewVipmembersComponent implements OnInit {
   }
 
 
+  download() {
+    var element=document.getElementById('table')
+
+    html2canvas(element).then((canvas)=>{
+
+      var imageData=canvas.toDataURL('image/png')
+      // var doc: module
+      var doc = new jspdf();
+
+      var imgHeight=canvas.height*208/canvas.width
+
+      doc.addImage(imageData,0,0,208,imgHeight)
+      doc.save("image.pdf")
+
+    })
+
+  }
 }

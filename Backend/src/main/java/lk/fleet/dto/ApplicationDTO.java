@@ -24,6 +24,8 @@ public class ApplicationDTO {
 
     private PassengerApplicationDTO passengerApplication;
     private ItemApplicationDTO itemApplication;
+    private TokenDTO tokenDTO;
+
 
     public ApplicationDTO(Application application) {
         if (application != null) {
@@ -38,6 +40,15 @@ public class ApplicationDTO {
             this.reason = application.getReason();
             this.type = application.getType();
         }
+    }
+
+
+    public TokenDTO getTokenDTO() {
+        return tokenDTO;
+    }
+
+    public void setTokenDTO(TokenDTO tokenDTO) {
+        this.tokenDTO = tokenDTO;
     }
 
     public String getApplicationID() {

@@ -95,4 +95,12 @@ public class DeliveryController {
     public ResponseEntity getDeliveriesReportDaily(@PathVariable int weeks) {
         return ResponseEntity.ok(deliveryService.getDeliveriesReportDaily(weeks));
     }
+
+    //SecurityOfficer
+    @PutMapping(value = "/updateDeliveryStatus/{deliveryId}/{officerId}")
+    public ResponseEntity updateDeliveryStatus(@PathVariable String deliveryId, @RequestBody Delivery delivery, @PathVariable String officerId) {
+        return ResponseEntity.ok(deliveryService.updateDeliveryStatus(deliveryId, delivery, officerId));
+    }
+
+
 }

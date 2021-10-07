@@ -1,13 +1,7 @@
 package lk.fleet.service.impl;
 
-import lk.fleet.dto.DeliveryDTO;
-import lk.fleet.dto.DeliveryItemDetailDTO;
-import lk.fleet.dto.DeliveryPassengerDetailDTO;
-import lk.fleet.dto.DeliveryReportDTO;
-import lk.fleet.entity.Booking;
-import lk.fleet.entity.Delivery;
-import lk.fleet.entity.DeliveryItemDetail;
-import lk.fleet.entity.DeliveryPassengerDetail;
+import lk.fleet.dto.*;
+import lk.fleet.entity.*;
 import lk.fleet.repository.DeliveryItemDetailRepository;
 import lk.fleet.repository.DeliveryPassengerDetailRepository;
 import lk.fleet.repository.DeliveryRepository;
@@ -312,5 +306,20 @@ public class DeliveryServiceImpl implements DeliveryService {
         }
         deliveryReportDTO.setDailyDeliveries(reports);
         return deliveryReportDTO;
+    }
+
+    //SecurityOfficer
+    @Override
+    public DeliveryDTO updateDeliveryStatus(String deliveryId, Delivery delivery, String officerId) {
+        Optional<Delivery> optionalDelivery = deliveryRepository.findById(deliveryId);
+        if (optionalDelivery.isPresent()) {
+            Delivery deliveryObj = optionalDelivery.get();
+            deliveryObj.setDeliveryStatus(delivery.isDeliveryStatus());
+            SecurityOfficer securityOfficer = new SecurityOfficer();
+            securityOfficer.setSecurityOfficerID(officerId);
+            deliveryObj.setSecurityOfficer(securityOfficer);
+            return new DeliveryDTO(deliveryRepository.save(deliveryObj));
+        }
+        return null;
     }
 }

@@ -13,17 +13,17 @@ public interface ApplicationPassengerService {
     ApplicationDTO addApplication(Application application);
 
     //PassengerPassengerApplication UpdatePassengerApp(String aplicationID,PassengerPassengerApplication passengerPassengerApplication);
-    PassengerPassengerApplication addPassengerpassenger(PassengerPassengerApplication passengerPassengerApplication);
+   // PassengerPassengerApplication addPassengerpassenger(PassengerPassengerApplication passengerPassengerApplication);
 
     //    PassengerApplication addPassengerApplication(PassengerApplication application);
-    PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication);
+   // PassengerPassengerApplication addPassengerPassengerApplication(PassengerPassengerApplication passengerPassengerApplication);
 
     Passenger addPassenger(Passenger passenger);
 
     //    ApplicationDTO updateApplication(String applicationID, PassengerPassengerApplication passengerPassengerApplication);
     List<ApplicationDTO> getPassengerApp();
 
-    List<PassengerApplication> getAPassengerApp();
+   // List<PassengerApplication> getAPassengerApp();
 
     // List<PassengerApplicationDTO> getdto();
     List<BookingApplicationDTO> gatPassengerAppData();

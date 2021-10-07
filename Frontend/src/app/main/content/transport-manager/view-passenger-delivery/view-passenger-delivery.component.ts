@@ -63,14 +63,14 @@ export class ViewPassengerDeliveryComponent implements OnInit {
   }
 
   getAllDeliveriesByDate() {
-    this.transportManagerService.getAllDeliveriesByDate('Item', this.deliveryDate).subscribe((deliveryPassengerDetails) => {
+    this.transportManagerService.getAllDeliveriesByDate('Passenger', this.deliveryDate).subscribe((deliveryPassengerDetails) => {
       this.deliveryPassengerDetails = deliveryPassengerDetails;
       // console.log(this.deliveryItemDetails)
     })
   }
 
   getAllDeliveriesByCompany() {
-    this.transportManagerService.getAllDeliveriesByCompany('Item', this.companyName).subscribe((deliveryPassengerDetails) => {
+    this.transportManagerService.getAllDeliveriesByCompany('Passenger', this.companyName).subscribe((deliveryPassengerDetails) => {
       this.deliveryPassengerDetails = deliveryPassengerDetails;
       // console.log(this.deliveryItemDetails)
     })
