@@ -69,6 +69,8 @@ export class ApplicantService {
   getCurDate() {
     return this.datePipe.transform(new Date(), 'yyyy-MM-dd')
   }
-
+  getwaiting() {
+    return this.http.get<any>(environment.backend_url + "/application/getWaitingReport");
+  }
 
 }

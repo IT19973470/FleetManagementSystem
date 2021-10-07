@@ -47,11 +47,19 @@
 
   <div
     routerLink="/main/feedback"
-    (click)="setTopic('Reports')"
+    (click)="setTopic('Transport Usage Report')"
     #feedback="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'color':feedback.isActive?'#c0050e':''}">
-    Reports
+    Transport Usage Report
+  </div>
+  <div
+    routerLink="/main/waiting"
+    (click)="setTopic('Waiting Report')"
+    #waiting="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':waiting.isActive?'#c0050e':''}">
+    Waiting Report
   </div>
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
