@@ -86,6 +86,7 @@ import {TransportReportComponent} from "./main/content/general-manager/transport
 import {UserAccountsReportComponent} from "./main/content/general-manager/user-accounts-report/user-accounts-report.component";
 import {BookingReportComponent} from "./main/content/booking_management_clerk/booking-report/booking-report.component";
 import {OtReportComponent} from "./main/content/Driver/ot-report/ot-report.component";
+import {VipReportComponent} from "./main/content/vehicleDriver-manager/vip-report/vip-report.component";
 
 const routes: Routes = [
   {
@@ -450,7 +451,11 @@ const routes: Routes = [
       {
         path: 'update_item_passenger_transports',
         component: UpdateItemPassengerComponent
-      }
+      },
+      {
+        path: 'vip_Report',
+        component: VipReportComponent
+      },
     ]
   }
 ];

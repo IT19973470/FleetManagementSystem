@@ -13,51 +13,49 @@ export class VehicleDriverManagerService {
 
   constructor(private http: HttpClient) {
   }
-
+//add vehicle
   addVehicle(vehicleDetail): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/vehicle/addVehicle", vehicleDetail);
   }
-
+//update vehicle
   updateVehicle(vehicleDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/vehicle/updateVehicle/" + vehicleDetail.vehicleId, vehicleDetail);
   }
-
+//view vehicle
   getAllVehicles(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles");
   }
-
+//search
   getVehicleByNumber(vehicleNumber): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
   }
-
+//delete vehicle
   deleteVehicle(vehicleDetail): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/vehicle/deleteVehicle/" + vehicleDetail);
   }
-
+// add vip
   addVipmember(vipmemberDetail): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/vipMember/addVipMember", vipmemberDetail);
 
   }
-
+//update vip
   updateVipMember(vipmemberDetail): Observable<any> {
     return this.http.put<any>(environment.backend_url + "/vipMember/updateVipMember/" + vipmemberDetail.vipMemberId, vipmemberDetail);
   }
-
+//view vip
   getAllVipMembers(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vipMember/getAllVipMembers");
   }
-
+//delete vip
   deleteVipMember(vipmemberDetail): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/vipMember/deleteVipMember/" + vipmemberDetail);
   }
-
+//search vip
   getVipMemberByNumber(vipMemberNo): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/vipMember/getVipMemberByNumber/" + vipMemberNo);
   }
 
-  // getDriver():Observable<any> {
-  //   return this.http.get<any>(environment.backend_url + "/vipMember/getDriver");
-  // }
+  //add drivervehicle
 
   addDriverVehicle(driverVehicle): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/driverVehicle/addDriverVehicle", driverVehicle);
@@ -66,7 +64,7 @@ export class VehicleDriverManagerService {
   deleteDriverVehicle(driverVehicle): Observable<any> {
     return this.http.delete<any>(environment.backend_url + "/driverVehicle/deleteDriverVehicle/" + driverVehicle.driver.driverID + "/" + driverVehicle.vehicle.vehicleId);
   }
-
+//view driver vehicle
   getDriverVehicles(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/driverVehicle/getDriverVehicles");
   }
@@ -80,10 +78,5 @@ export class VehicleDriverManagerService {
     return this.http.get<any>(environment.backend_url + "/vehicle/approveDriver/" + driverID + "/" + approval);
 
   }
-//   approveUserAccount(employeeId, approval): Observable<any> {
-//     return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
-//   }
-  // approveUserAccount(employeeId, approval): Observable<any> {
-  //   return this.http.get<any>(environment.backend_url + "/userAccount/approveUserAccount/" + employeeId + "/" + approval);
-  // }
+
 }

@@ -73,6 +73,14 @@
     #viewDriverapproval="routerLinkActive"
     routerLinkActive>
   </div>
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/vip_report"
+    #vipreport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':vipreport.isActive?'#c0050e':''}">
+    Vip Report
+  </div>
 
 
 <!--  <div>-->

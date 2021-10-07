@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VipMemberReportComponent } from './vip-member-report.component';
+import { VipReportComponent } from './vip-report.component';
 
-describe('VipMemberReportComponent', () => {
-  let component: VipMemberReportComponent;
-  let fixture: ComponentFixture<VipMemberReportComponent>;
+describe('VipReportComponent', () => {
+  let component: VipReportComponent;
+  let fixture: ComponentFixture<VipReportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VipMemberReportComponent ]
+      declarations: [ VipReportComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VipMemberReportComponent);
+    fixture = TestBed.createComponent(VipReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
