@@ -70,4 +70,21 @@ this.type="password"
     return this.applicant.getCurDate();
   }
 
+  demo(){
+
+      this.App.userAccount.employeeID= "10000",
+        this.App.userAccount.accountType= "AP",
+      this.App.userAccount.nic= "111111111111",
+      this.App.userAccount.dob= "2000-01-23",
+      this.App.userAccount.name="abc",
+      this.App.userAccount.address= "11/3 abc street",
+      this.App.userAccount.nameWithInitials="a.b c",
+      this.App.userAccount.contactNo= "077-6322294",
+      this.App.userAccount.email= "abc@gmail.com",
+      this.App.userAccount.registeredDate= "2021-01-23",
+      this.App.userAccount.password= "asd",
+      this.App.userAccount.approved=true
+
+  }
+
 }

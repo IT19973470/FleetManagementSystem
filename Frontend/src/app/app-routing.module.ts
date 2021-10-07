@@ -92,6 +92,7 @@ import {UserAccountsReportComponent} from "./main/content/general-manager/user-a
 import {BookingReportComponent} from "./main/content/booking_management_clerk/booking-report/booking-report.component";
 import {OtReportComponent} from "./main/content/Driver/ot-report/ot-report.component";
 import {UpdateDeliveryStatusComponent} from "./main/content/security-officer/update-delivery-status/update-delivery-status.component";
+import {WaitingReportComponent} from "./main/content/applicant/waiting-report/waiting-report.component";
 
 const routes: Routes = [
   {
@@ -460,7 +461,11 @@ const routes: Routes = [
       {
         path: 'update_item_passenger_transports',
         component: UpdateItemPassengerComponent
-      }
+      },
+      {
+        path: 'waiting',
+        component: WaitingReportComponent
+      },
     ]
   }
 ];
