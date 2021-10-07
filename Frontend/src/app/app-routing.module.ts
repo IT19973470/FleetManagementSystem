@@ -88,6 +88,7 @@ import {BookingReportComponent} from "./main/content/booking_management_clerk/bo
 import {OtReportComponent} from "./main/content/driver/ot-report/ot-report.component";
 import {VipReportComponent} from "./main/content/vehicleDriver-manager/vip-report/vip-report.component";
 import {UpdateDeliveryStatusComponent} from "./main/content/security-officer/update-delivery-status/update-delivery-status.component";
+import {WaitingReportComponent} from "./main/content/applicant/waiting-report/waiting-report.component";
 
 const routes: Routes = [
   {
@@ -458,8 +459,14 @@ const routes: Routes = [
         component: UpdateItemPassengerComponent
       },
       {
+
+        path: 'waiting',
+        component: WaitingReportComponent
+      },
+      {
         path: 'vip_Report',
         component: VipReportComponent
+
       },
     ]
   }
