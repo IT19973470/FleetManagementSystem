@@ -73,11 +73,19 @@
     #viewDriverapproval="routerLinkActive"
     routerLinkActive>
   </div>
-
-
-  <div>
-    Vehicle Report
+  <div
+    style="border: 0px;padding: 0px"
+    routerLink="/main/vip_report"
+    #vipreport="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'color':vipreport.isActive?'#c0050e':''}">
+    Vip Report
   </div>
+
+
+<!--  <div>-->
+<!--    Vehicle Report-->
+<!--  </div>-->
   <!--<div style="color: #b56e04">Vehicle</div>-->
   <!--<div>Driver</div>-->
 </div>

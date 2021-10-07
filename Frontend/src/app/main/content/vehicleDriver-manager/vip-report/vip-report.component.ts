@@ -6,11 +6,12 @@ import jspdf from 'jspdf'
 import html2canvas from "html2canvas";
 
 @Component({
-  selector: 'app-view-vipmembers',
-  templateUrl: './view-vipmembers.component.html',
-  styleUrls: ['./view-vipmembers.component.css']
+  selector: 'app-vip-report',
+  templateUrl: './vip-report.component.html',
+  styleUrls: ['./vip-report.component.css']
 })
-export class ViewVipmembersComponent implements OnInit {
+export class VipReportComponent implements OnInit {
+
 
   isModalTable = {
     text: '',
@@ -32,6 +33,7 @@ export class ViewVipmembersComponent implements OnInit {
   };
 
   vipMemberNo;
+  vipmember;
   // vipMemberId;
   // vipmember:any;
 
@@ -43,10 +45,10 @@ export class ViewVipmembersComponent implements OnInit {
     this.getAllVipMembers();
   }
 
-  // setVipMember(vipmember) {
-  //   this.vipmember = vipmember;
-  //   this.isTrueOrFalse(true);
-  // }
+  setVipMember(vipmember) {
+    this.vipmember = vipmember;
+    this.isTrueOrFalse(true);
+  }
   goToUpdate(vipmember) {
     this.vehicleDriverManagerService.vipmember = vipmember;
     this.router.navigate(['/main/update_vipmember'])
@@ -95,4 +97,5 @@ export class ViewVipmembersComponent implements OnInit {
     })
 
   }
+
 }

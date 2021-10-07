@@ -14,7 +14,7 @@ import {CommonService} from "../../../../_service/common.service";
 })
 export class UpdateVehicleComponent implements OnInit {
 
-  // @ViewChild('vehicleForm', {static: true}) public vehicleForm: NgForm;
+
   vehicleDetail = {
     vehicleId: '',
     vehicleType: '',
@@ -81,25 +81,7 @@ export class UpdateVehicleComponent implements OnInit {
     })
   }
 
-  // setNewVehicle() {
-  //   this.vehicle = this.getNewVehicle();
-  //   this.vehicleForm.resetForm(this.vehicle);
-  // }
 
-  // getNewVehicle() {
-  //   return {
-  //     vehicleId: '',
-  //     vehicleType: '',
-  //     model: '',
-  //     noOfSeats: '',
-  //     initialMeter: '',
-  //     serviceMeter: '',
-  //     fuelBalance: '',
-  //     fuelType: '',
-  //     fuelConsumption: '',
-  //     occupied: ''
-  //   };
-  // }
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }
