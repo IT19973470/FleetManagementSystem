@@ -8,7 +8,7 @@ public interface ApplicationItemService {
 
 
     //    PassengerApplication addPassengerApplication(PassengerApplication application);
-    ItemItemApplication addItemItemApplication (ItemItemApplication itemApplication);
+    //ItemItemApplication addItemItemApplication (ItemItemApplication itemApplication);
     ApplicationDTO addItemApplication(Application application);
 
 }

@@ -76,7 +76,7 @@ export class AvailableTransportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllItemDeliveries();
+    this.getAllItemForm();
   }
 
 
@@ -105,7 +105,7 @@ export class AvailableTransportsComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  getAllItemDeliveries() {
+  getAllItemForm() {
     this.applicantService.getAllApplication().subscribe((application) => {
       this.application = application;
       console.log(this.application)

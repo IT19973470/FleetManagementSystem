@@ -22,7 +22,7 @@ public class ApplicationServiceimpl implements ApplicationService {
     private PassengerPassengerApplicationRepository passengerPassengerApplicationRepository;
 
     @Override
-    public ApplicationDTO updateApplication(String aplicationID, Application application) {
+    public ApplicationDTO updateApplication(String aplicationID, Application application) { //update application
         Optional<Application> applicationOptional = applicationRepository.findById(aplicationID);
         if (applicationOptional.isPresent()) {
             Application applicationobj = applicationOptional.get();
@@ -39,7 +39,7 @@ public class ApplicationServiceimpl implements ApplicationService {
     }
 
     @Override
-    public boolean deleteApplication(String aplicationID) {
+    public boolean deleteApplication(String aplicationID) { //delete application
         applicationRepository.deleteById(aplicationID);
         return true;
     }
