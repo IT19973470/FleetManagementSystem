@@ -77,19 +77,34 @@ export class CompletedTripsComponent implements OnInit {
 
   getTokenByID() {
     this.securityOfficerService.getTokenByID(this.tokenIdSearch).subscribe((tokens) => {
-      this.tokens = tokens;
+      this.tokens = [];
+      for (let token of tokens) {
+        if (token.meterDetail.meterId !== null) {
+          this.tokens.push(token)
+        }
+      }
     })
   }
 
   getTokenByDestination() {
     this.securityOfficerService.getTokenByDestination(this.bookingDestination).subscribe((tokens) => {
-      this.tokens = tokens;
+      this.tokens = [];
+      for (let token of tokens) {
+        if (token.meterDetail.meterId !== null) {
+          this.tokens.push(token)
+        }
+      }
     })
   }
 
   getTokenByDriverID() {
     this.securityOfficerService.getTokenByDriverID(this.driverID).subscribe((tokens) => {
-      this.tokens = tokens;
+      this.tokens = [];
+      for (let token of tokens) {
+        if (token.meterDetail.meterId !== null) {
+          this.tokens.push(token)
+        }
+      }
     })
   }
 

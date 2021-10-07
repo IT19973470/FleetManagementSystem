@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./view-approved-trip-details.component.css']
 })
 export class ViewApprovedTripDetailsComponent implements OnInit {
-
   bookings = [];
   booking = {
     bookingId: '',
@@ -18,6 +17,7 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
   };
 
   bookingDestination;
+
 
   constructor(private securityOfficerService: SecurityOfficerService, private router: Router) {
   }
@@ -43,6 +43,7 @@ export class ViewApprovedTripDetailsComponent implements OnInit {
       this.bookings = bookings;
     })
   }
+
 
 
 }

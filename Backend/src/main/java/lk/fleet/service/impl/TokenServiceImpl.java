@@ -91,15 +91,17 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public List<TokenDTO> getTokenByDestination(String destination) {
-        Token TokenByID = tokenRepository.getTokenByDestination(destination);
+        List<Token> TokensByID = tokenRepository.getTokenByDestination(destination);
         List<TokenDTO> tokenDTOS = new ArrayList<>();
-        TokenDTO tokenDTO = new TokenDTO(TokenByID);
-        DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
-        tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
-        tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
-        tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
-        tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
-        tokenDTOS.add(tokenDTO);
+        for (Token TokenByID : TokensByID) {
+            TokenDTO tokenDTO = new TokenDTO(TokenByID);
+            DriverVehicle driverVehicle = TokenByID.getBooking().getShift().getDriverVehicle();
+            tokenDTO.setDriver(new DriverDTO(driverVehicle.getDriver(), new UserAccountDTO(driverVehicle.getDriver().getUserAccount())));
+            tokenDTO.setVehicle(new VehicleDTO(driverVehicle.getVehicle()));
+            tokenDTO.setBooking(new BookingDTO(TokenByID.getBooking()));
+            tokenDTO.setMeterDetail(new MeterDetailDTO(TokenByID.getMeterDetail()));
+            tokenDTOS.add(tokenDTO);
+        }
         return tokenDTOS;
     }
 

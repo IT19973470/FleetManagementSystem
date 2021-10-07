@@ -25,7 +25,8 @@
           <th scope="col" width="5%">#</th>
           <th scope="col" width="20%">Booking ID</th>
           <th scope="col">Driver</th>
-          <th scope="col">Vehicle</th>
+          <th scope="col">Vehicle Number</th>
+          <th scope="col">Vehicle Type</th>
           <th scope="col">Destination</th>
           <th scope="col">Add Token</th>
         </tr>
@@ -35,6 +36,7 @@
           <th scope="row">{{i+1}}</th>
           <td>{{booking.bookingId}}</td>
           <td>{{booking.driver.userAccount.nameWithInitials}}</td>
+          <td>{{booking.vehicle.vehicleId}}</td>
           <td>{{booking.vehicle.vehicleType}}</td>
           <td>{{booking.destination}}</td>
           <td (click)="createToken(booking)">
