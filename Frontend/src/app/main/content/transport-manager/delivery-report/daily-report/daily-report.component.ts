@@ -159,7 +159,7 @@ export class DailyReportComponent implements OnInit {
       tooltip: {
         y: {
           formatter: function (val) {
-            return "$ " + val + " thousands";
+            return "Deliveries - " + val;
           }
         }
       }
@@ -201,7 +201,7 @@ export class DailyReportComponent implements OnInit {
             contentDataURL = canvas4.toDataURL('image/png')
             pdf.addPage();
             pdf.addImage(contentDataURL, 'PNG', 5, position, imgWidth, 100);
-            pdf.save('Report.pdf'); // Generated PDF
+            pdf.save('Daily Report.pdf'); // Generated PDF
           })
         })
       })
