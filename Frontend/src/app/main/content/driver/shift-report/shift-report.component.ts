@@ -5,7 +5,6 @@ import {Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import html2canvas from "html2canvas";
 import {jsPDF} from "jspdf";
-import {BookingManagerService} from "../../../../_service/booking-manager.service";
 
 
 @Component({
@@ -59,7 +58,7 @@ export class ShiftReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDriver();
-    this.getMyShift();
+    this.getAllShiftsbyDriverID();
   }
 
   getDriver() {
@@ -80,10 +79,9 @@ export class ShiftReportComponent implements OnInit {
     driverID: ''
   };
 
-  getMyShift() {
-    this.driverService.getMyShift(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
-      this.shift = myShift;
-      console.log(this.shift);
+  getAllShiftsbyDriverID() {
+    this.driverService.getAllShiftsbyDriverID(JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((myShift) => {
+      this.shiftDetails = myShift;
     });
   }
 
