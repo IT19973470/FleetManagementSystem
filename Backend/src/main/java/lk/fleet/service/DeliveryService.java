@@ -43,4 +43,7 @@ public interface DeliveryService {
     DeliveryReportDTO getDeliveriesReportWeekly(int weeks);
 
     DeliveryReportDTO getDeliveriesReportDaily(int weeks);
+
+    //SecurityOfficer
+    DeliveryDTO updateDeliveryStatus(String deliveryId, Delivery delivery);
 }

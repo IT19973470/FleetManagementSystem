@@ -7,7 +7,6 @@ export const environment = {
   backend_url: 'http://localhost:8082/fleetmanagement'
   // backend_url: 'http://imalkag.ddns.net:8082/fleetmanagement'
   // backend_url: 'https://fleet-management-itn.herokuapp.com/fleetmanagement'
-
 };
 
 

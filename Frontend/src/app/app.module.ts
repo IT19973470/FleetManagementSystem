@@ -102,6 +102,7 @@ import {TransportPassengerApplicationsComponent} from './main/content/transport-
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
 import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
 import {LicenseValidatorDirective} from './_validator/license-validator.directive';
+import {UpdateDeliveryStatusComponent} from './main/content/security-officer/update-delivery-status/update-delivery-status.component';
 import {DriverVehicleComponent} from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
 import {DriverConfirmComponent} from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
 import {DeliveryReportComponent} from './main/content/transport-manager/delivery-report/delivery-report.component';
@@ -116,11 +117,14 @@ import {DailyReportComponent} from './main/content/transport-manager/delivery-re
 import {DetailReportComponent} from './main/content/transport-manager/delivery-report/detail-report/detail-report.component';
 
 import {ShiftReportComponent} from './main/content/driver/shift-report/shift-report.component';
+
+
 import {TransportReportComponent} from './main/content/general-manager/transport-report/transport-report.component';
 import {UserAccountsReportComponent} from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 import {BookingReportComponent} from './main/content/booking_management_clerk/booking-report/booking-report.component';
 import {OtReportComponent} from './main/content/Driver/ot-report/ot-report.component';
 import { VipReportComponent } from './main/content/vehicleDriver-manager/vip-report/vip-report.component';
+
 
 
 
@@ -289,6 +293,7 @@ const customNotifierOptions: NotifierOptions = {
     LicenseValidatorDirective,
     DriverVehicleComponent,
     DriverConfirmComponent,
+    UpdateDeliveryStatusComponent,
     DeliveryReportComponent,
     ItemPassengerComponent,
     UpdateItemPassengerComponent,
