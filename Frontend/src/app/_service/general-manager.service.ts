@@ -72,6 +72,12 @@ export class GeneralManagerService {
     return this.http.get<any>(environment.backend_url + "/userAccount/getTransportApplication");
   }
 
+  getTransportApplicationforReport(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/userAccount/getTransportApplicationforReport");
+  }
+
+
+
   getTransportByID(applicationID): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/userAccount/getTransportByID/" + applicationID);
   }

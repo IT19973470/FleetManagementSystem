@@ -26,6 +26,7 @@ public class ApplicationDTO {
     private ItemApplicationDTO itemApplication;
     private TokenDTO tokenDTO;
 
+
     public ApplicationDTO(Application application) {
         if (application != null) {
             this.applicationID = application.getApplicationID();
