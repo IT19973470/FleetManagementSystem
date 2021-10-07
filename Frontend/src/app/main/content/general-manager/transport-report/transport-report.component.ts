@@ -82,12 +82,16 @@ export class TransportReportComponent implements OnInit {
 
   getTransportApplicationforReport() {
     this.generalManagerService.getTransportApplicationforReport().subscribe((transportDetails) => {
-      this.transportDetails = transportDetails;
-      // console.log(this.vehicles)
+
+      // console.log(transportDetails)
+      for (let transport of transportDetails) {
+        if (transport.token != null) {
+          this.transportDetails.push(transport)
+        }
+      }
+
     })
   }
-
-
 
 
   sendToPdf() {
