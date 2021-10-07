@@ -102,6 +102,7 @@ import {TransportPassengerApplicationsComponent} from './main/content/transport-
 import {TransportItemApplicationsComponent} from './main/content/transport-manager/transport-item-applications/transport-item-applications.component';
 import {EmployeeIdValidatorDirective} from './_validator/employee-id-validator.directive';
 import {LicenseValidatorDirective} from './_validator/license-validator.directive';
+import {UpdateDeliveryStatusComponent} from './main/content/security-officer/update-delivery-status/update-delivery-status.component';
 import {DriverVehicleComponent} from './main/content/vehicleDriver-manager/driver-vehicle/driver-vehicle.component';
 import {DriverConfirmComponent} from './main/content/vehicleDriver-manager/driver-confirm/driver-confirm.component';
 import {DeliveryReportComponent} from './main/content/transport-manager/delivery-report/delivery-report.component';
@@ -116,6 +117,7 @@ import {TransportReportComponent} from './main/content/general-manager/transport
 import {UserAccountsReportComponent} from './main/content/general-manager/user-accounts-report/user-accounts-report.component';
 import {BookingReportComponent} from './main/content/booking_management_clerk/booking-report/booking-report.component';
 import {OtReportComponent} from './main/content/driver/ot-report/ot-report.component';
+import { VipReportComponent } from './main/content/vehicleDriver-manager/vip-report/vip-report.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -282,19 +284,29 @@ const customNotifierOptions: NotifierOptions = {
     LicenseValidatorDirective,
     DriverVehicleComponent,
     DriverConfirmComponent,
+    UpdateDeliveryStatusComponent,
     DeliveryReportComponent,
     ItemPassengerComponent,
     UpdateItemPassengerComponent,
+
+
+
+
+
     WeeklyReportComponent,
     DailyReportComponent,
     DetailReportComponent,
     ShiftReportComponent,
+
     BookingReportComponent,
     OtReportComponent,
     TransportReportComponent,
     UserAccountsReportComponent,
 
-    BookingReportComponent
+    BookingReportComponent,
+      VipReportComponent,
+
+
   ],
 
   imports: [

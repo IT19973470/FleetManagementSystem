@@ -17,7 +17,8 @@
       All vip members
     </button>
 
-    <table class="table table-striped" style="margin-top: 40px">
+    <table id="table" class="table table-striped" style="margin-top: 40px">
+
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -53,6 +54,9 @@
       </tr>
       </tbody>
     </table>
+    <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px" (click)="download()">
+      Report
+    </button>
 
   </div>
 </div>

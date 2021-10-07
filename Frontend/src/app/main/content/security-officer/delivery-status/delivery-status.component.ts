@@ -43,7 +43,7 @@ export class DeliveryStatusComponent implements OnInit {
 
   goToUpdate(deliveryItem) {
     this.transportManagerService.deliveryItem = deliveryItem;
-    this.router.navigate(['/main/update_item_delivery'])
+    this.router.navigate(['/main/update_delivery_status'])
   }
 
   isTrueOrFalse(reply) {

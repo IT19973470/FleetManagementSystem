@@ -221,7 +221,7 @@ export class UpdateItemPassengerComponent implements OnInit {
     };
   }
 
-  removeDelivery() {
+  removeForm() {
     // this.applicantService.deleteForm(this.passengerpassengerApp.applicationID).subscribe((deliveryDetail) => {
     //   this.router.navigate(['/main/available_transports']);
     // })

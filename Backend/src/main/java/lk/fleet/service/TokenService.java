@@ -19,5 +19,8 @@ public interface TokenService {
 
     List<TokenDTO> getTokenByID(String tokenID);
 
+    List<TokenDTO> getTokenByDestination(String destination);
+
+    List<TokenDTO> getTokenByDriverID(String driverID);
 
 }
