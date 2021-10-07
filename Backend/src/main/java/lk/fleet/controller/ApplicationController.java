@@ -34,10 +34,10 @@ public class ApplicationController {
 //        public PassengerApplication addPassengerApplication(@RequestBody PassengerApplication application){
 //             return applicationService.addPassengerApplication(application);
 //         }
-    @PostMapping(value = "/addPassengers")
-    public ResponseEntity addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
-        return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
-    }
+//    @PostMapping(value = "/addPassengers")
+//    public ResponseEntity addPassengerpassenger(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
+//        return ResponseEntity.ok(applicationPassengerService.addPassengerpassenger(passengerPassengerApplication));
+//    }
 
     @PostMapping(value = "/addItemPassengers")
     public ResponseEntity addApplicationItemPass(@RequestBody Application application) {
@@ -70,15 +70,15 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationPassengerService.addPassenger(passenger));
     }
 
-    @PostMapping(value = "/Insertall")
-    public ResponseEntity addPassengerPassengerApplication(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
-        return ResponseEntity.ok(applicationPassengerService.addPassengerPassengerApplication(passengerPassengerApplication));
-    }
+//    @PostMapping(value = "/Insertall")
+//    public ResponseEntity addPassengerPassengerApplication(@RequestBody PassengerPassengerApplication passengerPassengerApplication) {
+//        return ResponseEntity.ok(applicationPassengerService.addPassengerPassengerApplication(passengerPassengerApplication));
+//    }
 
-    @PostMapping(value = "/InserItall")
-    public ResponseEntity addItemItemApplication(@RequestBody ItemItemApplication itemApplication) {
-        return ResponseEntity.ok(applicationItemService.addItemItemApplication(itemApplication));
-    }
+//    @PostMapping(value = "/InserItall")
+//    public ResponseEntity addItemItemApplication(@RequestBody ItemItemApplication itemApplication) {
+//        return ResponseEntity.ok(applicationItemService.addItemItemApplication(itemApplication));
+//    }
 
     @DeleteMapping(value = "/deleteApplication/{applicationID}")
     public ResponseEntity deleteBooking(@PathVariable String applicationID) {
@@ -115,10 +115,10 @@ public class ApplicationController {
         return applicationPassengerService.getItemApp(applicationID);
     }
 
-    @GetMapping(value = "/getPassengerApplication")
-    public List<PassengerApplication> getAPassengerApp() {
-        return applicationPassengerService.getAPassengerApp();
-    }
+//    @GetMapping(value = "/getPassengerApplication")
+//    public List<PassengerApplication> getAPassengerApp() {
+//        return applicationPassengerService.getAPassengerApp();
+//    }
 
     @GetMapping(value = "/getdto")
     public List<BookingApplicationDTO> gatPassengerAppData() {
