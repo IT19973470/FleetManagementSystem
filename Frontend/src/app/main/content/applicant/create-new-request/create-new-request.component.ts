@@ -199,4 +199,15 @@ export class CreateNewRequestComponent implements OnInit {
   getMinDate() {
     return this.applicant.getCurDate() + 'T00:00';
   }
+
+  demo(){
+
+         this.passengerpassengerApp.arrivaleDate= '2021-07-02T03:12',
+        this.passengerpassengerApp.depatureDate= "2021-07-02T03:12",
+        this.passengerpassengerApp.reason= "Repair",
+        this.passengerpassengerApp.vehicleType= "Van",
+        this.passengerpassengerApp.destination= "Colombo 07"
+
+  }
+
 }

@@ -93,6 +93,7 @@
               <option value="Van">Van</option>
               <option value="Car">Car</option>
               <option value="Bus">Bus</option>
+              <option value="Bus">Lorry</option>
             </select>
             <div *ngIf="(placeFrom.touched || applicationStatus.submitted) && placeFrom.errors?.required"
                  class="validErr">
@@ -113,6 +114,15 @@
             <div *ngIf="(reason.touched || applicationStatus.submitted) && reason.errors?.required"
                  class="validErr">
               Reason is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+          <div class="col-4">
+            <div class="col-8">
+
+              <button type="button" class="btn btn-success" style="font-weight: bold;font-size: 20px;margin-right: 30px; background-color:#0c95cb " (click)="demo()">Demo</button>
             </div>
           </div>
         </div>
