@@ -1,3 +1,4 @@
+<app-alert-box *ngIf="alertBox.alert" [alertMsg]="alertBox"></app-alert-box>
 <div class="row" style="display: flex;justify-content: center">
   <div class="col-12">
     <span style="font-size: 25px;font-weight: bold;color: #5d5b5a">Passenger Transport Applications</span>
@@ -39,12 +40,12 @@
             <!--<td></td>-->
             <!--<td>{{application.vehicle.vehicleId}}</td>-->
             <td style="text-align: center">{{application.vehicleType}}</td>
-            <td style="text-align: center">
-              <i class="fas fa-search"></i>
-            </td>
             <!--<td style="text-align: center">-->
-            <!--<i class="fas fa-pen"></i>-->
+            <!--<i class="fas fa-search"></i>-->
             <!--</td>-->
+            <td style="text-align: center" (click)="oldAppId = application">
+              <i class="fas fa-pen"></i>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -94,7 +95,7 @@
             <!--<td></td>-->
             <!--<td>{{application.vehicle.vehicleId}}</td>-->
             <td style="text-align: center">{{application.vehicleType}}</td>
-            <td style="text-align: center">
+            <td style="text-align: center" (click)="viewPassengers(application)">
               <i class="fas fa-search"></i>
             </td>
             <!--<td style="text-align: center">-->
@@ -119,10 +120,19 @@
       </div>
 
       <div style="padding-right: 10px">
+        <div *ngIf="oldAppId!==undefined && newAppId!==undefined">
+          <span style="font-size: 18px">Transfer passenger {{passengerId}} from {{oldAppId.applicationID}} to {{newAppId.applicationID}}</span>
+          <button class="btn btn-warning" style="font-weight: bold;margin-left: 20px;margin-right: 40px"
+                  (click)="changePassengerApplication()">
+            Change
+          </button>
+        </div>
+
         <table class="table table-striped" style="margin-top: 10px">
           <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Passenger ID</th>
             <th scope="col">Passenger Name</th>
             <th scope="col">Passenger NIC</th>
           </tr>
@@ -130,8 +140,9 @@
           <tbody>
           <tr *ngFor="let passenger of passengerDetails; let i = index">
             <th scope="row">{{i+1}}</th>
-            <td>{{passenger.passengerName}}</td>
-            <td>{{passenger.passengerNic}}</td>
+            <td>{{passenger.passenger.passengerId}}</td>
+            <td>{{passenger.passenger.userAccount.name}}</td>
+            <td>{{passenger.passenger.userAccount.nic}}</td>
           </tr>
           </tbody>
         </table>

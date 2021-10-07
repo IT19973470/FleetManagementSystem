@@ -141,4 +141,23 @@ export class ItemDeliveryComponent implements OnInit {
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }
+
+  demoForm() {
+    this.deliveryDetail.deliveryPersonName = 'Nimal Silva';
+    this.deliveryDetail.deliveryPersonNic = '936451120V';
+    this.deliveryDetail.contactNumber = '077-1234568';
+    this.deliveryDetail.vehicleNumber = 'CAB-4563';
+    this.deliveryDetail.emailAddress = 'nimal@gmail.com';
+    this.deliveryDetail.address = '123, ABC Road, Colombo';
+    this.deliveryDetail.companyName = 'DHL';
+    this.deliveryDetail.deliveryDate = '2020-10-07';
+    this.deliveryDetail.deliveryTime = '10:30';
+    // this.deliveryDetail.deliveryDateTime = '';
+  }
+
+  demoItem() {
+    this.item.itemName = 'Samsung246';
+    this.item.itemType = 'Camera';
+    this.item.itemQty = 3
+  }
 }

@@ -101,6 +101,10 @@ export class TransportManagerService {
     return this.http.get<any>(environment.backend_url + "/application/getApprovedApplicationsByPassenger/" + passengerId);
   }
 
+  changePassengerApplication(oldAppId, newAppId, passengerId): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/application/changePassengerApplication/" + oldAppId + '/' + newAppId + '/' + passengerId);
+  }
+
   // getAllPassengerDeliveries(): Observable<any> {
   //   return this.http.get<any>(environment.backend_url + "/delivery/getAllPassengerDeliveries");
   // }
