@@ -150,7 +150,7 @@ export class ItemDeliveryComponent implements OnInit {
     this.deliveryDetail.emailAddress = 'nimal@gmail.com';
     this.deliveryDetail.address = '123, ABC Road, Colombo';
     this.deliveryDetail.companyName = 'DHL';
-    this.deliveryDetail.deliveryDate = '2020-10-07';
+    this.deliveryDetail.deliveryDate = '2021-10-07';
     this.deliveryDetail.deliveryTime = '10:30';
     // this.deliveryDetail.deliveryDateTime = '';
   }

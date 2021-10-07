@@ -129,7 +129,7 @@ export class WeeklyReportComponent implements OnInit {
       tooltip: {
         y: {
           formatter: function (val) {
-            return "$ " + val + " thousands";
+            return "Deliveries - " + val;
           }
         }
       }
@@ -167,7 +167,7 @@ export class WeeklyReportComponent implements OnInit {
       let pdf = new jsPDF('l', 'mm', 'a4'); // A4 size page of PDF
       let position = 10;
       pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
-      pdf.save('MYPdf.pdf'); // Generated PDF
+      pdf.save('Weekly Report.pdf'); // Generated PDF
     });
   }
 }
