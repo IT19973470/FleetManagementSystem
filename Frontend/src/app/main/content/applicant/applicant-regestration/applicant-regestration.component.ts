@@ -29,7 +29,6 @@ App={
     approved:true
   }
 }
-  driverDetails: [];
 
   isModalTable = {
     text: '',

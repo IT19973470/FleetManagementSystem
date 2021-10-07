@@ -26,17 +26,17 @@ public class ApplicationItemServiceImpl implements ApplicationItemService {
     PassengerApplicationRepository passengerApplicationRepository;
 
 
-    @Override
-    public ItemItemApplication addItemItemApplication(ItemItemApplication itemItemApplication) {
-        itemRepository.save(itemItemApplication.getItem());
-        applicationRepository.save(itemItemApplication.getItemApplication().getApplication());
-        itemItemApplication.getItemApplication().setItemApplicationId(itemItemApplication.getItemApplication().getApplication().getApplicationID());
-        itemApplicationRepository.save(itemItemApplication.getItemApplication());
-        itemItemApplication.setItemItemApplicationId(new ItemItemApplicationPK(itemItemApplication.getItem().getItemID(),itemItemApplication.getItemApplication().getItemApplicationId()));
-
-
-        return itemItemApplicationRepository.save(itemItemApplication);
-    }
+//    @Override
+//    public ItemItemApplication addItemItemApplication(ItemItemApplication itemItemApplication) {
+//        itemRepository.save(itemItemApplication.getItem());
+//        applicationRepository.save(itemItemApplication.getItemApplication().getApplication());
+//        itemItemApplication.getItemApplication().setItemApplicationId(itemItemApplication.getItemApplication().getApplication().getApplicationID());
+//        itemApplicationRepository.save(itemItemApplication.getItemApplication());
+//        itemItemApplication.setItemItemApplicationId(new ItemItemApplicationPK(itemItemApplication.getItem().getItemID(),itemItemApplication.getItemApplication().getItemApplicationId()));
+//
+//
+//        return itemItemApplicationRepository.save(itemItemApplication);
+//    }
 
     public ApplicationDTO addItemApplication(Application application){
 

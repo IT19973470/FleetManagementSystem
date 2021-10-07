@@ -44,5 +44,14 @@ public class TokenController {
         return ResponseEntity.ok(tokenService.getTokenByID(tokenID));
     }
 
+    @GetMapping(value = "/getTokenByDestination/{destination}")
+    public ResponseEntity getTokenByDestination(@PathVariable String destination) {
+        return ResponseEntity.ok(tokenService.getTokenByDestination(destination));
+    }
+
+    @GetMapping(value = "/getTokenByDriverID/{driverID}")
+    public ResponseEntity getTokenByDriverID(@PathVariable String driverID) {
+        return ResponseEntity.ok(tokenService.getTokenByDriverID(driverID));
+    }
 
 }

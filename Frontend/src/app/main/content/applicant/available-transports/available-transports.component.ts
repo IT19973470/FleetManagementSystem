@@ -66,8 +66,6 @@ export class AvailableTransportsComponent implements OnInit {
       itemItemApplicationDTOS:[]
     }
 
-
-
   user:boolean=true;
   item:boolean=true;
   viewP:boolean=false;
@@ -78,7 +76,7 @@ export class AvailableTransportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllItemDeliveries();
+    this.getAllItemForm();
   }
 
 
@@ -107,7 +105,7 @@ export class AvailableTransportsComponent implements OnInit {
     this.isModalTable.openTable = reply;
   }
 
-  getAllItemDeliveries() {
+  getAllItemForm() {
     this.applicantService.getAllApplication().subscribe((application) => {
       this.application = application;
       console.log(this.application)
