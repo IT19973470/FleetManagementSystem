@@ -46,6 +46,15 @@ public class VehicleAccidentController {
         return ResponseEntity.ok(vehicleAccidentService.getAccidentById(vehicleID));
     }
 
+
+
+
+
+
+
+
+
+
     //vehicle id field validation
     @GetMapping(value = "/chkVehicle/{vehicleId}")
     public ResponseEntity chkVehicle(@PathVariable String vehicleId) {
