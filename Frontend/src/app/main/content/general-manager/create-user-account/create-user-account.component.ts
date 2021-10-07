@@ -146,5 +146,20 @@ export class CreateUserAccountComponent implements OnInit {
   }
 
 
+    demoForm() {
+    this.userAccount.employeeID = '10010';
+    this.userAccount.accountType = 'Security Officer';
+    this.userAccount.nic = '997845234V';
+    this.userAccount.dob = '1999-09-08';
+    this.userAccount.name = 'Udyani';
+    this.userAccount.address = 'Bandarawela';
+    this.userAccount.contactNo = '074-9867177';
+    this.userAccount.email = 'udyani@gmail.com';
+    this.userAccount.registeredDate = '2018-12-12';
+    this.userAccount.nameWithInitials = 'A.B.Udyani';
+    this.userAccount.password = 'udyani';
+  }
+
+
 }
 
