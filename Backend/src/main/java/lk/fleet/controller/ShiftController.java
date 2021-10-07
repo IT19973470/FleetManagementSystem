@@ -51,4 +51,9 @@ public class ShiftController {
     public ResponseEntity markAttendance(@PathVariable String driverID, @PathVariable boolean attendance) {
         return ResponseEntity.ok(shiftService.markAttendance(driverID, attendance));
     }
+
+    @GetMapping(value = "/getAllShiftsbyDriverID/{driverId}")
+    public ResponseEntity getAllShiftsbyDriverID(@PathVariable String driverId){
+        return ResponseEntity.ok(shiftService.getAllShiftsbyDriverID(driverId));
+    }
 }

@@ -68,6 +68,7 @@ public class VehicleServiceImpl implements VehicleService {
         return true;
     }
 
+    //View all vehicles
     @Override
     public List<VehicleDTO> getAllVehicles() {
         List<Vehicle> vehicles = vehicleRepository.findAll();
@@ -78,7 +79,7 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleDTOS;
     }
 
-
+    //Fuel Update
     @Override
     public VehicleDTO fualUpdate(String vehicleID, double fuelBalance) {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleID);
@@ -90,6 +91,7 @@ public class VehicleServiceImpl implements VehicleService {
         return null;
     }
 
+    //Search by vehicle number
     @Override
     public List<VehicleDTO> getVehicleByNumber(String vehicleNumber) {
         Vehicle getVehicleByNumber = vehicleRepository.getVehicleByNumber(vehicleNumber);
@@ -99,6 +101,7 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return vehicleDTOS;
     }
+
     //get drivers
     @Override
     public List<UserAccountDTO> getDriverRequest() {

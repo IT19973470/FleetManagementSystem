@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DriverService} from '../../../../_service/driver.service';
-import {NotifierService} from "angular-notifier";
-import {AlertBoxService} from "../../../../alert-box/alert-box.service";
+import {NotifierService} from 'angular-notifier';
+import {AlertBoxService} from '../../../../alert-box/alert-box.service';
 
 @Component({
   selector: 'app-driver-account',
@@ -46,12 +46,10 @@ export class DriverAccountComponent implements OnInit {
   constructor(private driverService: DriverService, private router: Router,
               private notifierService: NotifierService,
               private alertService: AlertBoxService) {
-
   }
 
 
   ngOnInit(): void {
-
     this.getDriver();
   }
 
@@ -64,7 +62,7 @@ export class DriverAccountComponent implements OnInit {
     this.isTrueOrFalse(true);
   }
 
-  goToUpdate(driverDetails) {
+  goToUpdate() {
     this.driverService.driver = this.driver;
     this.router.navigate(['/main/update_driver']);
   }

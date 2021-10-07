@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DriverService} from "../../../../_service/driver.service";
 import {Router} from "@angular/router";
-
 import {DatePipe} from "@angular/common";
 import html2canvas from "html2canvas";
 import {jsPDF} from "jspdf";
-
 
 @Component({
   selector: 'app-shift-report',
@@ -24,13 +22,8 @@ export class ShiftReportComponent implements OnInit {
   driverDetails: [];
   currentYear: number = new Date().getFullYear();
 
-
-
-  constructor(private driverService: DriverService,private router: Router) {
-
-  }
   date
-    n
+  n
   myFunction() {
     var month = new Array();
     month[0] = "January";
@@ -54,6 +47,9 @@ export class ShiftReportComponent implements OnInit {
   Ctrl($scope)
   {
     $scope.date = new Date();
+  }
+
+  constructor(private driverService: DriverService,private router: Router, private datepipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -85,7 +81,6 @@ export class ShiftReportComponent implements OnInit {
     });
   }
 
-
   sendToPdf(){
     let data = document.getElementById("pdf");
     // let data = document.getElementById("maindiv");
@@ -99,5 +94,4 @@ export class ShiftReportComponent implements OnInit {
       pdf.save('Filename.pdf');
     });
   }
-
 }

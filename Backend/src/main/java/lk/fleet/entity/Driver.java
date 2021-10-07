@@ -1,7 +1,6 @@
 package lk.fleet.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Driver {
@@ -12,17 +11,6 @@ public class Driver {
 
     @OneToOne
     private UserAccount userAccount;
-
-//    @ManyToOne
-//    private VehicleDriverManagementClerk vehicleDriverManagementClerk;
-
-//    public VehicleDriverManagementClerk getVehicleDriverManagementClerk() {
-//        return vehicleDriverManagementClerk;
-//    }
-
-//    public void setVehicleDriverManagementClerk(VehicleDriverManagementClerk vehicleDriverManagementClerk) {
-//        this.vehicleDriverManagementClerk = vehicleDriverManagementClerk;
-//    }
 
     public String getDriverID() {
         return driverID;
@@ -47,8 +35,5 @@ public class Driver {
     public void setLisenseID(String lisenseID) {
         this.lisenseID = lisenseID;
     }
-//approval
-//    public void setApproval(boolean approval) {
-//        this.approval = approval;
-//    }
+
 }

@@ -70,11 +70,11 @@ export class DriverService {
   }
 
   getAllVehicles(): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/vehicle/getAllVehicles");
+    return this.http.get<any>(environment.backend_url + '/vehicle/getAllVehicles');
   }
 
   getVehicleByNumber(vehicleNumber): Observable<any> {
-    return this.http.get<any>(environment.backend_url + "/vehicle/getVehicleByNumber/" + vehicleNumber);
+    return this.http.get<any>(environment.backend_url + '/vehicle/getVehicleByNumber/' + vehicleNumber);
   }
 
   updateFuel(vehicleId, cFuel): Observable<any> {

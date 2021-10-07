@@ -14,8 +14,6 @@ export class ShiftDetailsComponent implements OnInit {
     foundUser: ''
   };
 
-  shiftDetails = [];
-
   shift = {
     shiftId: '',
     attendance: '',
@@ -30,7 +28,6 @@ export class ShiftDetailsComponent implements OnInit {
   constructor(private driverService: DriverService, private router: Router) {
 
   }
-
 
   ngOnInit(): void {
     this.getMyShift();

@@ -1,13 +1,10 @@
 package lk.fleet.controller;
 
 import lk.fleet.entity.Driver;
-import lk.fleet.entity.UserAccount;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin
 @RestController
