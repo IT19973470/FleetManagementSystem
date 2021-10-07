@@ -28,7 +28,8 @@ export class UpdatePassengerItemDeliveryComponent implements OnInit {
     deliveryDateTime: '',
     deliveryTimeActual: '',
     deliveryItemDetails: [],
-    deliveryPassengerDetails: []
+    deliveryPassengerDetails: [],
+    status: 0
   };
 
   alertBox = {
