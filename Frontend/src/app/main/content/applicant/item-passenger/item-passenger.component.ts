@@ -291,6 +291,16 @@ export class ItemPassengerComponent implements OnInit {
       }
     };
   }
+
+  demo(){
+
+    this.passengerpassengerApp.arrivaleDate= '2021-02-02T03:12',
+      this.passengerpassengerApp.depatureDate= "2021-02-02T03:12",
+      this.passengerpassengerApp.reason= "Repair",
+      this.passengerpassengerApp.vehicleType= "Van",
+      this.passengerpassengerApp.destination= "Colombo 07"
+
+  }
   checkItemId() {
 
     // console.log(this.viewAllItem)

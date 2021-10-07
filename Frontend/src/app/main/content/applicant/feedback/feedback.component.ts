@@ -85,9 +85,9 @@ export class FeedbackComponent implements OnInit {
       if(ApplicationReq.type=="P")
       {
         passcount++
-        //console.log(ApplicationReq)
-        if(ApplicationReq.tokenDTO==null){
 
+        if(ApplicationReq.tokenDTO==null){
+          console.log(ApplicationReq)
             passcountCom++
 
         }
@@ -108,9 +108,9 @@ export class FeedbackComponent implements OnInit {
 
 
     }
-    console.log(passcountCom)
-    console.log(itemcountCom)
-    console.log(itempasscountCom)
+    // console.log(passcountCom)
+    // console.log(itemcountCom)
+    // console.log(itempasscountCom)
      this.obj.pd.deliveries=passcount
     this.obj.pd.completed=passcount-passcountCom
     this.obj.pd.cancelled=passcountCom

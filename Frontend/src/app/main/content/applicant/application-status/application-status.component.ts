@@ -175,6 +175,16 @@ export class ApplicationStatusComponent implements OnInit {
     }
   }
 
+  demo(){
+
+    this.ItemApp.arrivaleDate= '2021-02-02T03:12',
+      this.ItemApp.depatureDate= "2021-02-02T03:12",
+      this.ItemApp.reason= "Repair",
+      this.ItemApp.vehicleType= "Van",
+      this.ItemApp.destination= "Colombo 07"
+
+  }
+
 
   chkItemId() {
 
