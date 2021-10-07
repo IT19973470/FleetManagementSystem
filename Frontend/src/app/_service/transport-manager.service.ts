@@ -110,7 +110,7 @@ export class TransportManagerService {
   // }
 
   //SecurityOfficer
-  updateDeliveryStatus(deliveryDetail): Observable<any> {
-    return this.http.put<any>(environment.backend_url + "/delivery/updateDeliveryStatus/" + deliveryDetail.deliveryId, deliveryDetail);
+  updateDeliveryStatus(deliveryDetail, user): Observable<any> {
+    return this.http.put<any>(environment.backend_url + "/delivery/updateDeliveryStatus/" + deliveryDetail.deliveryId + "/" + user, deliveryDetail);
   }
 }

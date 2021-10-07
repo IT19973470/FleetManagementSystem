@@ -59,7 +59,7 @@ export class UpdateDeliveryStatusComponent implements OnInit {
     this.alertService.reply.subscribe(reply => {
       if (reply) {
         //this.deliveryDetail.deliveryDateTime = this.deliveryDetail.deliveryDate + 'T' + this.deliveryDetail.deliveryTimeActual
-        this.transportManagerService.updateDeliveryStatus(this.deliveryDetail).subscribe((deliveryDetail) => {
+        this.transportManagerService.updateDeliveryStatus(this.deliveryDetail, JSON.parse(localStorage.getItem('user'))['employeeID']).subscribe((deliveryDetail) => {
           let deliveryItemDetails = this.deliveryDetail.deliveryItemDetails
           this.deliveryDetail = deliveryDetail;
           this.deliveryDetail.deliveryItemDetails = deliveryItemDetails;

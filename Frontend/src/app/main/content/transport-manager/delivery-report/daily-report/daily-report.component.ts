@@ -178,7 +178,7 @@ export class DailyReportComponent implements OnInit {
 
     html2canvas(data1).then(canvas1 => {
       // Few necessary setting options
-      let imgWidth = 320;
+      let imgWidth = 300;
       // let pageHeight = 350;
       let imgHeight = canvas1.height * imgWidth / canvas1.width;
 
@@ -190,17 +190,17 @@ export class DailyReportComponent implements OnInit {
       html2canvas(data2).then(canvas2 => {
         contentDataURL = canvas2.toDataURL('image/png')
         pdf.addPage();
-        pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, 100);
+        pdf.addImage(contentDataURL, 'PNG', 5, position, imgWidth, 100);
 
         html2canvas(data3).then(canvas3 => {
           contentDataURL = canvas3.toDataURL('image/png')
           pdf.addPage();
-          pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, 100);
+          pdf.addImage(contentDataURL, 'PNG', 5, position, imgWidth, 100);
 
           html2canvas(data4).then(canvas4 => {
             contentDataURL = canvas4.toDataURL('image/png')
             pdf.addPage();
-            pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, 100);
+            pdf.addImage(contentDataURL, 'PNG', 5, position, imgWidth, 100);
             pdf.save('Report.pdf'); // Generated PDF
           })
         })

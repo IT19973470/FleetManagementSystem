@@ -97,9 +97,9 @@ public class DeliveryController {
     }
 
     //SecurityOfficer
-    @PutMapping(value = "/updateDeliveryStatus/{deliveryId}")
-    public ResponseEntity updateDeliveryStatus(@PathVariable String deliveryId, @RequestBody Delivery delivery) {
-        return ResponseEntity.ok(deliveryService.updateDeliveryStatus(deliveryId, delivery));
+    @PutMapping(value = "/updateDeliveryStatus/{deliveryId}/{officerId}")
+    public ResponseEntity updateDeliveryStatus(@PathVariable String deliveryId, @RequestBody Delivery delivery, @PathVariable String officerId) {
+        return ResponseEntity.ok(deliveryService.updateDeliveryStatus(deliveryId, delivery, officerId));
     }
 
 
