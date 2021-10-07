@@ -83,7 +83,7 @@ export class UserAccountsReportComponent implements OnInit {
       console.log(contentDataURL);
       let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
       // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 2, 5, 40, 15);
+      pdf.addImage(contentDataURL, 'PNG', 2, 5, 40, 23);
       pdf.save('Filename.pdf');
     });
   }

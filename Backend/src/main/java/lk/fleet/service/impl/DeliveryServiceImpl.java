@@ -310,11 +310,14 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     //SecurityOfficer
     @Override
-    public DeliveryDTO updateDeliveryStatus(String deliveryId, Delivery delivery) {
+    public DeliveryDTO updateDeliveryStatus(String deliveryId, Delivery delivery, String officerId) {
         Optional<Delivery> optionalDelivery = deliveryRepository.findById(deliveryId);
         if (optionalDelivery.isPresent()) {
             Delivery deliveryObj = optionalDelivery.get();
             deliveryObj.setDeliveryStatus(delivery.isDeliveryStatus());
+            SecurityOfficer securityOfficer = new SecurityOfficer();
+            securityOfficer.setSecurityOfficerID(officerId);
+            deliveryObj.setSecurityOfficer(securityOfficer);
             return new DeliveryDTO(deliveryRepository.save(deliveryObj));
         }
         return null;
