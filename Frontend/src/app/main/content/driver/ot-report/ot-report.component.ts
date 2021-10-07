@@ -83,8 +83,6 @@ export class OtReportComponent implements OnInit {
 
   sendToPdf(){
     let data = document.getElementById("pdf");
-    // let data = document.getElementById("maindiv");
-    // console.log(data);
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/jpeg', 2.0)
       console.log(contentDataURL);

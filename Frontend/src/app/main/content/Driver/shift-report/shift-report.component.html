@@ -23,7 +23,6 @@
         <tr>
           <td style="padding-right: 100px">Date : </td>
           <td><div ng-app ng-controller="Ctrl">
-            {{myFunction()}}
             {{date | date:'yyyy-MM-dd'}}
           </div></td>
         </tr>
@@ -37,32 +36,6 @@
         </tr>
         <tr>
       </table>
-    <div style="margin-top: 20px;font-size: 25px">
-      Attendance Report
-    </div>
-    <table style="margin-top: 20px">
-      <tr>
-        <td style="padding-right: 100px">Year : </td>
-        <td>{{currentYear}}</td>
-      </tr>
-      <tr>
-        <td style="padding-right: 100px">Month : </td>
-        <td>March</td>
-      </tr>
-      <tr>
-        <td style="padding-right: 100px">Date : </td>
-<!--        <td>{{}}</td>-->
-      </tr>
-      <tr>
-        <td style="padding-right: 100px">Driver ID : </td>
-        <td>{{driver.driverID}}</td>
-      </tr>
-      <tr>
-        <td style="padding-right: 100px">Driver Name : </td>
-        <td>{{driver.userAccount.name}}</td>
-      </tr>
-      <tr>
-    </table>
 
     <table class="table table-striped" style="margin-top: 20px">
       <thead>
@@ -71,7 +44,6 @@
         <th scope="col" width="15%">Date</th>
         <th scope="col" width="20%">Starting Time</th>
         <th scope="col" width="20%">Ending Time</th>
-<!--        <th scope="col" width="20%">Attendance</th>-->
       </tr>
       </thead>
       <tbody>
@@ -81,21 +53,7 @@
         <td>{{shifts.shiftDate}}</td>
         <td>{{shifts.startingTime}}</td>
         <td>{{shifts.endingTime}}</td>
-<!--        <td>{{shifts.attendance}}</td>-->
       </tr>
-
-        <th scope="col" width="15%">Date</th>
-        <th scope="col" width="20%">Number of shifts</th>
-        <th scope="col" width="20%">Total number of shifts</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tbody *ngIf="shift">
-      <td>{{shift.shiftDate}}</td>
-<!--      <tr *ngFor="let shifts of shiftDetails">-->
-<!--        <td>{{shifts.}}</td>-->
-<!--      </tr>-->
-
       </tbody>
     </table>
 

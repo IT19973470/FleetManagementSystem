@@ -1,19 +1,14 @@
 package lk.fleet.service.impl;
 
 import lk.fleet.dto.DriverDTO;
-import lk.fleet.dto.OverTimeDTO;
 import lk.fleet.dto.UserAccountDTO;
 import lk.fleet.entity.Driver;
-import lk.fleet.entity.OverTime;
 import lk.fleet.repository.DriverRepository;
-import lk.fleet.repository.OverTimeRepository;
+import lk.fleet.repository.DriverVehicleRepository;
 import lk.fleet.repository.UserAccountRepository;
 import lk.fleet.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +19,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Autowired
     private UserAccountRepository userAccountRepository;
+
+    @Autowired
+    private DriverVehicleRepository driverVehicleRepository;
 
     @Override
     public DriverDTO addDriver(Driver driver) {
@@ -43,7 +41,6 @@ public class DriverServiceImpl implements DriverService {
             driver1.getUserAccount().setEmail(driver.getUserAccount().getEmail());
             driver1.getUserAccount().setNic(driver.getUserAccount().getNic());
             driver1.getUserAccount().setNameWithInitials(driver.getUserAccount().getNameWithInitials());
-//            driver1.getUserAccount().setPassword(driver.getUserAccount().getPassword());
             driver1.setLisenseID(driver.getLisenseID());
             driver1.getUserAccount().setApproved(driver.getUserAccount().isApproved());
 
@@ -57,7 +54,6 @@ public class DriverServiceImpl implements DriverService {
     public boolean deleteDriver(String driverID) {
         driverRepository.deleteById(driverID);
         userAccountRepository.deleteById(driverID);
-//        overTimeRepository.deleteById(driverID);
         return true;
     }
 

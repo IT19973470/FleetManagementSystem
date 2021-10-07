@@ -88,7 +88,7 @@ export class ShiftReportComponent implements OnInit {
     html2canvas(data).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/jpeg', 2.0)
       console.log(contentDataURL);
-      const pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
+      let pdf = new jsPDF('l', 'cm', 'a3'); //Generates PDF in landscape mode
       // let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
       pdf.addImage(contentDataURL, 'PNG', 3, 3, 0, 0);
       pdf.save('Filename.pdf');
