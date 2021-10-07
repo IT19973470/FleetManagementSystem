@@ -213,4 +213,30 @@ export class PassengerItemDeliveryComponent implements OnInit {
   setNumberPositive(val) {
     return this.commonService.setNumberPositive(val);
   }
+
+  demoForm() {
+    this.deliveryDetail.deliveryPersonName = 'Nimal Silva';
+    this.deliveryDetail.deliveryPersonNic = '936451120V';
+    this.deliveryDetail.contactNumber = '077-1234568';
+    this.deliveryDetail.vehicleNumber = 'CAB 4563';
+    this.deliveryDetail.emailAddress = 'nimal@gmail.com';
+    this.deliveryDetail.address = '123, ABC Road, Colombo';
+    this.deliveryDetail.companyName = 'DHL';
+    this.deliveryDetail.deliveryDate = '2020-10-07';
+    this.deliveryDetail.deliveryTime = '10:30';
+    // this.deliveryDetail.deliveryDateTime = '';
+  }
+
+  demoPassenger() {
+    this.passenger.passengerName = 'Sirisena';
+    this.passenger.passengerNic = '651452230V';
+    this.passenger.contactNumber = '071-7654321';
+    this.passenger.passengerType = 'Teacher'
+  }
+
+  demoItem() {
+    this.item.itemName = 'Samsung246';
+    this.item.itemType = 'Camera';
+    this.item.itemQty = 3
+  }
 }

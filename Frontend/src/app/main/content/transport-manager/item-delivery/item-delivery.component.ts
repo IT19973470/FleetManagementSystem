@@ -146,7 +146,7 @@ export class ItemDeliveryComponent implements OnInit {
     this.deliveryDetail.deliveryPersonName = 'Nimal Silva';
     this.deliveryDetail.deliveryPersonNic = '936451120V';
     this.deliveryDetail.contactNumber = '077-1234568';
-    this.deliveryDetail.vehicleNumber = 'CAB-4563';
+    this.deliveryDetail.vehicleNumber = 'CAB 4563';
     this.deliveryDetail.emailAddress = 'nimal@gmail.com';
     this.deliveryDetail.address = '123, ABC Road, Colombo';
     this.deliveryDetail.companyName = 'DHL';
